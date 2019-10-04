@@ -1,0 +1,45 @@
+// COLOR PALETTE ==============================================================
+$color--primary--emerald: #05c0a5;
+$color--primary--royal-blue: #5a78f0;
+$color--primary--dark-sacramento: #003945;
+$color--primary--dark-space: #0b2840;
+$color--secondary--violet: #7070e3;
+$color--secondary--police-strobe: #25b0e8;
+$color--secondary--independence: #536d8b;
+$color--secondary--dark-independence: #334758;
+$color--secondary--cerise: #e96071;
+$color--secondary--cardinal: #a70015;
+$color--secondary--naples-yellow: #fcb755;
+$color--secondary--primary-silver: #f2f4fa;
+$color--secondary--mint: #cdf2ee;
+$color--secondary--light-mint: #f2fafa;
+$color--text--dark-sacramento: #003945;
+$color--text--spruce: #506175;
+$color--text--silver: #cecece;
+$color--disabled--1: #d8d8d8;
+
+// SWITCH/CHECKBOX LABEL
+$label--active--color: $color--text--dark-sacramento;
+$label--inactive--color: $color--disabled--1;
+
+// BUTTON PROPS ===============================================================
+$button--height: 60px;
+$button--min-width: 240px;
+$button--text-transform: none;
+$button--letter-spacing: 1px;
+
+$button--primary--disabled--background-color: $color--disabled--1;
+$button--primary--disabled--text-color: white;
+
+$button--secondary--disabled--background-color: white;
+$button--secondary--disabled--border-color: $color--disabled--1;
+$button--secondary--disabled--text-color: $color--disabled--1;
+
+// SWITCH PROPS ===============================================================
+$switch--font-size: 16px;
+$switch--font-weight: normal;
+$switch--font-color: $label--active--color;
+
+// CHECKBOX PROPS =============================================================
+$checkbox--active--font-color: $label--active--color;
+$checkbox--inactive--font-color: $label--inactive--color;
