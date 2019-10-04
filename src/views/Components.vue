@@ -139,10 +139,15 @@
         />
       </cc>
       <cc subtitle="Input" title="Input Normal">
-        <SwitchToggle v-model="modelInputNormal" title="Off" label-on="On" />
+        <InputNormal
+          v-model="modelInputNormal"
+          title="Eth amount to send"
+          placeholder="Placeholder111"
+          value="0"
+        />
         <div>
           <span class="font-weight-light caption">Emitted v-model value </span>
-          <code>{{ modelSwitchToggle }}</code>
+          <code>{{ modelInputNormal }}</code>
         </div>
       </cc>
     </v-row>
@@ -160,6 +165,7 @@ import Checkbox from "@/components/Checkbox/Checkbox";
 import Radio from "@/components/Radio/Radio";
 import Popover from "@/components/Popover/Popover";
 import Warningbox from "@/components/Warningbox/Warningbox";
+import InputNormal from "@/components/Input/InputNormal";
 
 export default {
   components: {
@@ -172,7 +178,8 @@ export default {
     Checkbox,
     Radio,
     Popover,
-    Warningbox
+    Warningbox,
+    InputNormal
   },
   data: () => ({
     snackbarOpen: false,
