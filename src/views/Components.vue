@@ -141,13 +141,29 @@
       <cc subtitle="Input" title="Input Normal">
         <InputNormal
           v-model="modelInputNormal"
-          title="Eth amount to send"
-          placeholder="Placeholder111"
-          value="0"
+          title="Eth to send"
+          placeholder="Eth amount"
+          :showhint="true"
+          hint="Amount must be larger than 1 eth."
+        />
+        <div class="mt-8">
+          <span class="font-weight-light caption">Emitted v-model value </span>
+          <code>{{ modelInputNormal }}</code>
+        </div>
+      </cc>
+      <cc subtitle="Input" title="Input Password">
+        <InputPassword
+          v-model="modelInputPassword"
+          title1="Password"
+          title2="Confirm"
+          placeholder1=""
+          placeholder2=""
+          hint1="At least 8 characters"
+          hint2="At least 8 characters"
         />
         <div>
           <span class="font-weight-light caption">Emitted v-model value </span>
-          <code>{{ modelInputNormal }}</code>
+          <code>{{ modelInputPassword }}</code>
         </div>
       </cc>
     </v-row>
@@ -166,6 +182,7 @@ import Radio from "@/components/Radio/Radio";
 import Popover from "@/components/Popover/Popover";
 import Warningbox from "@/components/Warningbox/Warningbox";
 import InputNormal from "@/components/Input/InputNormal";
+import InputPassword from "@/components/Input/InputPassword";
 
 export default {
   components: {
@@ -179,7 +196,8 @@ export default {
     Radio,
     Popover,
     Warningbox,
-    InputNormal
+    InputNormal,
+    InputPassword
   },
   data: () => ({
     snackbarOpen: false,
@@ -193,7 +211,8 @@ export default {
       { label: "Item2", value: 2 },
       { label: "Item3", value: 3 }
     ],
-    modelInputNormal: ""
+    modelInputNormal: "",
+    modelInputPassword: ""
   })
 };
 </script>

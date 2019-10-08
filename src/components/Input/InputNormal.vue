@@ -4,7 +4,9 @@
     :placeholder="placeholder"
     outlined
     color="teal accent-4"
-    :model="input1"
+    v-model="input1"
+    :persistent-hint="showhint"
+    :hint="hint"
   ></v-text-field>
 </template>
 
@@ -13,25 +15,20 @@ export default {
   props: {
     title: String,
     placeholder: String,
-    value: String
+    value: String,
+    showhint: Boolean,
+    hint: String
   },
   data: () => ({
-    input1: this.value
+    input1: ""
   }),
   watch: {
     input1(newValue) {
       this.$emit("input", newValue);
     }
+  },
+  mounted() {
+    this.input1 = this.value;
   }
 };
 </script>
-
-<style lang="scss">
-@import "@/global.scss";
-
-.the-switch-component-47593549909b70d53c2eb634ce982523 label {
-  color: $switch--font-color !important;
-  font-size: $switch--font-size !important;
-  font-weight: $switch--font-weight !important;
-}
-</style>
