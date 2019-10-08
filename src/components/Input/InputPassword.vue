@@ -32,7 +32,8 @@ export default {
     title2: String,
     placeholder1: String,
     placeholder2: String,
-    errorMinimum: String
+    errorMinimum: String,
+    errorPasswordNoMatch: String
   },
   data: () => ({
     password1: "",
@@ -66,9 +67,7 @@ export default {
       }
     },
     rulePasswordMatch(v) {
-      return v == this.password1
-        ? false
-        : "The email and password you entered don't match";
+      return v == this.password1 ? false : this.errorPasswordNoMatch;
     }
   },
   mounted() {

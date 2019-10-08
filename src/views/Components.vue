@@ -159,10 +159,31 @@
           placeholder1=""
           placeholder2=""
           errorMinimum="At least 8 characters"
+          errorPasswordNoMatch="The password you entered don't match"
         />
-        <div>
+        <div class="mt-8">
           <span class="font-weight-light caption">Emitted v-model value </span>
           <code>{{ modelInputPassword }}</code>
+        </div>
+      </cc>
+      <cc subtitle="Input" title="Input Search">
+        <p class="mb-7 caption">
+          Before use this component, do your research first @
+          <a
+            href="https://vuetifyjs.com/en/components/autocompletes"
+            target="_balnk"
+            >https://vuetifyjs.com/en/components/autocompletes</a
+          >
+        </p>
+        <InputSearch
+          v-model="modelInputSearch"
+          title="Cryptocurrency"
+          placeholder="Search for a coin..."
+          :items="searchItems"
+        />
+        <div class="mt-8">
+          <span class="font-weight-light caption">Emitted v-model value </span>
+          <code>{{ modelInputSearch }}</code>
         </div>
       </cc>
     </v-row>
@@ -182,6 +203,10 @@ import Popover from "@/components/Popover/Popover";
 import Warningbox from "@/components/Warningbox/Warningbox";
 import InputNormal from "@/components/Input/InputNormal";
 import InputPassword from "@/components/Input/InputPassword";
+import InputSearch from "@/components/Input/InputSearch";
+
+import btc from "@/assets/coins/btc.png";
+import aion from "@/assets/coins/aion.png";
 
 export default {
   components: {
@@ -196,7 +221,8 @@ export default {
     Popover,
     Warningbox,
     InputNormal,
-    InputPassword
+    InputPassword,
+    InputSearch
   },
   data: () => ({
     snackbarOpen: false,
@@ -211,7 +237,13 @@ export default {
       { label: "Item3", value: 3 }
     ],
     modelInputNormal: "",
-    modelInputPassword: ""
+    modelInputPassword: false,
+    modelInputSearch: "",
+    searchItems: [
+      { header: "Group 1" },
+      { name: "Bitcoin", group: "Group 1", avatar: btc },
+      { name: "Ethereum", group: "Group 1", avatar: aion }
+    ]
   })
 };
 </script>
