@@ -7,7 +7,7 @@
       v-model="password1"
       outlined
       :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-      :rules="[rules.min]"
+      :rules="[ruleMin]"
       :type="show1 ? 'text' : 'password'"
       counter
       @click:append="show1 = !show1"
@@ -18,9 +18,8 @@
       v-model="password2"
       outlined
       :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
-      :rules="[rulePasswordMatch]"
+      :rules="[ruleMin, rulePasswordMatch]"
       :type="show2 ? 'text' : 'password'"
-      :hint="hint2"
       @click:append="show2 = !show2"
     />
   </div>
@@ -29,29 +28,21 @@
 <script>
 export default {
   props: {
-    value: String,
     title1: String,
     title2: String,
     placeholder1: String,
     placeholder2: String,
-    hint1: String,
-    hint2: String
+    errorMinimum: String
   },
   data: () => ({
     password1: "",
     password2: "",
     show1: false,
-    show2: false,
-    rules: {
-      required: value => !!value || "Required",
-      min: v => v.length >= 8 || "Min 8 characters"
-    }
+    show2: false
   }),
   watch: {
     password1(newValue) {
-      const temp = this.password2;
-      this.password2 = "1";
-      this.password2 = temp;
+      this.password2 = "";
       if (newValue == this.password2) {
         this.$emit("input", newValue);
       } else {
@@ -67,6 +58,13 @@ export default {
     }
   },
   methods: {
+    ruleMin(v) {
+      if (v) {
+        return v.length >= 8 ? false : this.errorMinimum;
+      } else {
+        return false;
+      }
+    },
     rulePasswordMatch(v) {
       return v == this.password1
         ? false

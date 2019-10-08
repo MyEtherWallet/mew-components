@@ -158,8 +158,7 @@
           title2="Confirm"
           placeholder1=""
           placeholder2=""
-          hint1="At least 8 characters"
-          hint2="At least 8 characters"
+          errorMinimum="At least 8 characters"
         />
         <div>
           <span class="font-weight-light caption">Emitted v-model value </span>
