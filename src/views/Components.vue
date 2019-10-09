@@ -206,7 +206,9 @@ import InputPassword from "@/components/Input/InputPassword";
 import InputSearch from "@/components/Input/InputSearch";
 
 import btc from "@/assets/coins/btc.png";
-import aion from "@/assets/coins/aion.png";
+import eth from "@/assets/coins/eth.png";
+import bch from "@/assets/coins/bch.png";
+import xrp from "@/assets/coins/xrp.png";
 
 export default {
   components: {
@@ -240,9 +242,12 @@ export default {
     modelInputPassword: false,
     modelInputSearch: "",
     searchItems: [
-      { header: "Group 1" },
+      { header: "Major Cryptocurrency" },
       { name: "Bitcoin", value: "btc", group: "Group 1", avatar: btc },
-      { name: "Ethereum", value: "eth", group: "Group 1", avatar: aion }
+      { name: "Ethereum", value: "eth", group: "Group 1", avatar: eth },
+      { header: "Miner Cryptocurrency" },
+      { name: "Bitcoin Cash", value: "bch", group: "Group 2", avatar: bch },
+      { name: "XRP", value: "xrp", group: "Group 2", avatar: xrp }
     ]
   })
 };
