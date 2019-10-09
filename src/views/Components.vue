@@ -156,8 +156,8 @@
           v-model="modelInputPassword"
           title1="Password"
           title2="Confirm"
-          placeholder1=""
-          placeholder2=""
+          placeholder1="Enter password..."
+          placeholder2="Re-enter password..."
           errorMinimum="At least 8 characters"
           errorPasswordNoMatch="The password you entered don't match"
         />
@@ -166,24 +166,44 @@
           <code>{{ modelInputPassword }}</code>
         </div>
       </cc>
-      <cc subtitle="Input" title="Input Search">
+      <cc subtitle="Input" title="Input Search1">
         <p class="mb-7 caption">
-          Before use this component, do your research @
+          *** Before use this component, do your research @
           <a
             href="https://vuetifyjs.com/en/components/autocompletes"
             target="_balnk"
             >https://vuetifyjs.com/en/components/autocompletes</a
           >
         </p>
-        <InputSearch
-          v-model="modelInputSearch"
+        <InputSearch1
+          v-model="modelInputSearch1"
           title="Cryptocurrency"
           placeholder="Search for a coin..."
-          :items="searchItems"
+          :items="searchItems1"
         />
         <div class="mt-8">
           <span class="font-weight-light caption">Emitted v-model value </span>
-          <code>{{ modelInputSearch }}</code>
+          <code>{{ modelInputSearch1 }}</code>
+        </div>
+      </cc>
+      <cc subtitle="Input" title="Input Search2">
+        <p class="mb-7 caption">
+          *** Before use this component, do your research @
+          <a
+            href="https://vuetifyjs.com/en/components/autocompletes"
+            target="_balnk"
+            >https://vuetifyjs.com/en/components/autocompletes</a
+          >
+        </p>
+        <InputSearch2
+          v-model="modelInputSearch2"
+          title="Contract"
+          placeholder="Search for a contract..."
+          :items="searchItems2"
+        />
+        <div class="mt-8">
+          <span class="font-weight-light caption">Emitted v-model value </span>
+          <code>{{ modelInputSearch2 }}</code>
         </div>
       </cc>
     </v-row>
@@ -203,7 +223,8 @@ import Popover from "@/components/Popover/Popover";
 import Warningbox from "@/components/Warningbox/Warningbox";
 import InputNormal from "@/components/Input/InputNormal";
 import InputPassword from "@/components/Input/InputPassword";
-import InputSearch from "@/components/Input/InputSearch";
+import InputSearch1 from "@/components/Input/InputSearch1";
+import InputSearch2 from "@/components/Input/InputSearch2";
 
 import btc from "@/assets/coins/btc.png";
 import eth from "@/assets/coins/eth.png";
@@ -224,7 +245,8 @@ export default {
     Warningbox,
     InputNormal,
     InputPassword,
-    InputSearch
+    InputSearch1,
+    InputSearch2
   },
   data: () => ({
     snackbarOpen: false,
@@ -240,14 +262,27 @@ export default {
     ],
     modelInputNormal: "",
     modelInputPassword: false,
-    modelInputSearch: "",
-    searchItems: [
+    modelInputSearch1: "",
+    searchItems1: [
       { header: "Major Cryptocurrency" },
       { name: "Bitcoin", value: "btc", group: "Group 1", avatar: btc },
       { name: "Ethereum", value: "eth", group: "Group 1", avatar: eth },
       { header: "Miner Cryptocurrency" },
       { name: "Bitcoin Cash", value: "bch", group: "Group 2", avatar: bch },
       { name: "XRP", value: "xrp", group: "Group 2", avatar: xrp }
+    ],
+    modelInputSearch2: "",
+    searchItems2: [
+      { header: "My Contracts" },
+      { name: "Battle of thermopylae", value: "thermopylae" },
+      { name: "BattleDrome ICO", value: "drome" },
+      { header: "Others" },
+      { name: "ADST - AdShares", value: "adst", group: "Cloud" },
+      {
+        name: "Athenian: Warrior for Bathroom",
+        value: "athenian",
+        group: "Game"
+      }
     ]
   })
 };
