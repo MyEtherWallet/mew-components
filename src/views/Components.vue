@@ -168,7 +168,7 @@
       </cc>
       <cc subtitle="Input" title="Input Search">
         <p class="mb-7 caption">
-          Before use this component, do your research first @
+          Before use this component, do your research @
           <a
             href="https://vuetifyjs.com/en/components/autocompletes"
             target="_balnk"
@@ -241,8 +241,8 @@ export default {
     modelInputSearch: "",
     searchItems: [
       { header: "Group 1" },
-      { name: "Bitcoin", group: "Group 1", avatar: btc },
-      { name: "Ethereum", group: "Group 1", avatar: aion }
+      { name: "Bitcoin", value: "btc", group: "Group 1", avatar: btc },
+      { name: "Ethereum", value: "eth", group: "Group 1", avatar: aion }
     ]
   })
 };

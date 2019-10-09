@@ -8,21 +8,11 @@
     clearable
     :items="items"
     item-text="name"
-    item-value="name"
+    item-value="value"
   >
     <template v-slot:selection="data">
-      <v-chip
-        v-bind="data.attrs"
-        :input-value="data.selected"
-        close
-        @click="data.select"
-        @click:close="remove(data.item)"
-      >
-        <v-avatar left>
-          <v-img :src="data.item.avatar"></v-img>
-        </v-avatar>
-        {{ data.item.name }}
-      </v-chip>
+      <img :src="data.item.avatar" height="30" width="30" class="mr-3" />
+      {{ data.item.name }}
     </template>
     <template v-slot:item="data">
       <template v-if="typeof data.item !== 'object'">
@@ -57,6 +47,7 @@ export default {
       this.$emit("input", newValue);
     }
   },
+  methods: {},
   mounted() {
     this.input1 = this.value;
   }
