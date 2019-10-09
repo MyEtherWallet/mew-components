@@ -1,7 +1,7 @@
 <template>
   <v-col cols="12" sm="3" md="3">
     <v-card class="" flat>
-      <div class="py-12" style="background-color: red"></div>
+      <div class="py-12" :style="background"></div>
       <v-card-text>I'm card text</v-card-text>
     </v-card>
   </v-col>
@@ -13,7 +13,12 @@ export default {
     color: String,
     colorName: String
   },
-  data: () => ({})
+  data: () => ({}),
+  computed: {
+    background() {
+      return `background-color: ${this.color}`;
+    }
+  }
 };
 </script>
 
