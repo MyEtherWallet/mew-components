@@ -16,6 +16,10 @@
     <!--================================================================================-->
 
     <v-row>
+      <CardColor />
+    </v-row>
+
+    <v-row>
       <cc subtitle="Button" title="Button Green">
         <ButtonGreen
           label="Button"
@@ -168,7 +172,7 @@
       </cc>
       <cc subtitle="Input" title="Input Search1">
         <p class="mb-7 caption">
-          *** Before use this component, do your research @
+          ** For more information, visit
           <a
             href="https://vuetifyjs.com/en/components/autocompletes"
             target="_balnk"
@@ -188,7 +192,7 @@
       </cc>
       <cc subtitle="Input" title="Input Search2">
         <p class="mb-7 caption">
-          *** Before use this component, do your research @
+          ** For more information, visit
           <a
             href="https://vuetifyjs.com/en/components/autocompletes"
             target="_balnk"
@@ -212,6 +216,7 @@
 
 <script>
 import cc from "@/views/components/ComponentContainer";
+import CardColor from "@/views/components/CardColor";
 import ButtonGreen from "@/components/Button/ButtonGreen";
 import ButtonGreenBorder from "@/components/Button/ButtonGreenBorder";
 import ButtonBlue from "@/components/Button/ButtonBlue";
@@ -234,6 +239,7 @@ import xrp from "@/assets/coins/xrp.png";
 export default {
   components: {
     cc,
+    CardColor,
     ButtonGreen,
     ButtonGreenBorder,
     ButtonBlue,
