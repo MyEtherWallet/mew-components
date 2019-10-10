@@ -16,7 +16,7 @@
     <!--================================================================================-->
 
     <v-row>
-      <CardColor color="#05c0a5" />
+      <CardColor color="#05c0a5" colorName="Emerald" />
     </v-row>
 
     <v-row>

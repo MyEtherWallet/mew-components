@@ -2,7 +2,8 @@
   <v-col cols="12" sm="3" md="3">
     <v-card class="" flat>
       <div class="py-12" :style="background"></div>
-      <v-card-text>I'm card text</v-card-text>
+      <v-card-text>{{ colorName }}</v-card-text>
+      <v-card-text>HEX: {{ color }}</v-card-text>
     </v-card>
   </v-col>
 </template>
