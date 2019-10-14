@@ -237,6 +237,18 @@
           <code>{{ modelInputSearch2 }}</code>
         </div>
       </cc>
+      <cc subtitle="Input" title="Input Search3">
+        <InputSearch3
+          v-model="modelInputSearch3"
+          placeholder="Choose existing contract"
+          maxwidth="250"
+          :items="searchItems3"
+        />
+        <div class="mt-8">
+          <span class="font-weight-light caption">Emitted v-model value </span>
+          <code>{{ modelInputSearch3 }}</code>
+        </div>
+      </cc>
     </v-row>
   </v-container>
 </template>
@@ -259,6 +271,7 @@ import InputNormal from "@/components/Input/InputNormal";
 import InputPassword from "@/components/Input/InputPassword";
 import InputSearch1 from "@/components/Input/InputSearch1";
 import InputSearch2 from "@/components/Input/InputSearch2";
+import InputSearch3 from "@/components/Input/InputSearch3";
 
 import btc from "@/assets/coins/btc.png";
 import eth from "@/assets/coins/eth.png";
@@ -282,7 +295,8 @@ export default {
     InputNormal,
     InputPassword,
     InputSearch1,
-    InputSearch2
+    InputSearch2,
+    InputSearch3
   },
   data: () => ({
     snackbarOpen: false,
@@ -319,7 +333,20 @@ export default {
         value: "athenian",
         group: "Game"
       }
-    ]
+    ],
+    searchItems3: [
+      { header: "My Contracts" },
+      { name: "Battle of thermopylae", value: "thermopylae" },
+      { name: "BattleDrome ICO", value: "drome" },
+      { header: "Others" },
+      { name: "ADST - AdShares", value: "adst", group: "Cloud" },
+      {
+        name: "Athenian: Warrior for Bathroom",
+        value: "athenian",
+        group: "Game"
+      }
+    ],
+    modelInputSearch3: ""
   })
 };
 </script>

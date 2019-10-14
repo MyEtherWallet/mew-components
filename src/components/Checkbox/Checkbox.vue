@@ -25,6 +25,7 @@ export default {
 </script>
 
 <style lang="scss">
+/*
 @import "@/global.scss";
 .the-checkbox-component-aaeff97c707f505af0ea3e32e276dcd7 {
   .v-icon.v-icon {
@@ -49,4 +50,5 @@ export default {
     }
   }
 }
+*/
 </style>
