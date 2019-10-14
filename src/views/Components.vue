@@ -43,6 +43,7 @@
       <CardColor color="#cecece" colorName="Silver" />
     </v-row>
 
+    <div class="title">Icons</div>
     <Icons />
 
     <v-row>

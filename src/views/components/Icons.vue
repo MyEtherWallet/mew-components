@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col cols="12" sm="3" md="3" v-for="(i, key) in icons" :key="key">
+    <v-col cols="12" sm="2" md="2" v-for="(i, key) in icons" :key="key" class="mb-8">
       <v-img :src="i" :max-height="imageSize" :max-width="imageSize" />
     </v-col>
   </v-row>
