@@ -20,7 +20,46 @@ export default {
 </script>
 
 <style lang="scss">
+p {
+  //font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+h5 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.v-label {
+  font-size: 14px !important;
+}
+
 .theme--light.v-application {
   background: white !important;
+}
+
+@media (min-width: 1904px) {
+  .container {
+    max-width: 1264px;
+  }
 }
 </style>

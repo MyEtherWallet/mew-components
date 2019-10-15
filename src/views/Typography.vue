@@ -10,6 +10,20 @@
         <p>Body</p>
       </v-col>
     </v-row>
+    <v-row>
+      <v-col>
+        <div class="display-1 font-weight-light mb-8">
+          <div>ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+          <div>abcdefghijklmnopqrstuvwxyz</div>
+          <div>0123456789!@#$%^&*()</div>
+        </div>
+        <div class="display-1 font-weight-bold">
+          <div>ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+          <div>abcdefghijklmnopqrstuvwxyz</div>
+          <div>0123456789!@#$%^&*()</div>
+        </div>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 

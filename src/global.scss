@@ -18,6 +18,61 @@ $color--text--spruce: #506175;
 $color--text--silver: #cecece;
 $color--disabled--1: #d8d8d8;
 
+.text--color--primary--emerald {
+  color: $color--primary--emerald;
+}
+.text--color--primary--royal-blue {
+  $color--primary--royal-blue: #5a78f0;
+}
+.text--color--primary--dark-sacramento {
+  $color--primary--dark-sacramento: #003945;
+}
+.text--color--primary--dark-space {
+  $color--primary--dark-space: #0b2840;
+}
+.text--color--secondary--violet {
+  $color--secondary--violet: #7070e3;
+}
+.text--color--secondary--police-strobe {
+  $color--secondary--police-strobe: #25b0e8;
+}
+.text--color--secondary--independence {
+  $color--secondary--independence: #536d8b;
+}
+.text--color--secondary--dark-independence {
+  $color--secondary--dark-independence: #334758;
+}
+.text--color--secondary--cerise {
+  $color--secondary--cerise: #e96071;
+}
+.text--color--secondary--cardinal {
+  $color--secondary--cardinal: #a70015;
+}
+.text--color--secondary--naples-yellow {
+  $color--secondary--naples-yellow: #fcb755;
+}
+.text--color--secondary--primary-silver {
+  $color--secondary--primary-silver: #f2f4fa;
+}
+.text--color--secondary--mint {
+  $color--secondary--mint: #cdf2ee;
+}
+.text--color--secondary--light-mint {
+  $color--secondary--light-mint: #f2fafa;
+}
+.text--color--text--dark-sacramento {
+  $color--text--dark-sacramento: #003945;
+}
+.text--color--text--spruce {
+  $color--text--spruce: #506175;
+}
+.text--color--text--silver {
+  $color--text--silver: #cecece;
+}
+.text--color--disabled--1 {
+  $color--disabled--1: #d8d8d8;
+}
+
 // SWITCH/CHECKBOX LABEL ======================================================
 $label--active--color: $color--text--dark-sacramento;
 $label--inactive--color: $color--disabled--1;
@@ -36,8 +91,6 @@ $button--secondary--disabled--border-color: $color--disabled--1;
 $button--secondary--disabled--text-color: $color--disabled--1;
 
 // SWITCH PROPS ===============================================================
-$switch--font-size: 16px;
-$switch--font-weight: normal;
 $switch--font-color: $label--active--color;
 
 // CHECKBOX PROPS =============================================================

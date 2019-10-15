@@ -6,7 +6,7 @@
       <v-img
         src="@/assets/logo-small.png"
         aspect-ratio="1"
-        max-width="120"
+        max-width="40"
         class="mr-2"
       ></v-img>
       <span class="mr-2">MEW</span>
@@ -30,5 +30,3 @@ export default {
   data: () => ({})
 };
 </script>
-
-<style lang="scss" scoped></style>

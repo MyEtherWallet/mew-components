@@ -1,7 +1,7 @@
 <template>
-  <v-tooltip top>
+  <v-tooltip top close-delay="200">
     <template v-slot:activator="{ on }">
-      <v-btn color="orange" dark v-on="on">Hover</v-btn>
+      <v-icon class="hover-icon" v-on="on">mdi-alert-circle</v-icon>
     </template>
     <span>
       {{ text }}
@@ -19,6 +19,14 @@ export default {
   mounted() {}
 };
 </script>
+
+<style lang="scss" scoped>
+@import "@/global.scss";
+.hover-icon {
+  font-size: 20px;
+  color: $color--primary--emerald;
+}
+</style>
 
 <style lang="scss">
 @import "@/global.scss";

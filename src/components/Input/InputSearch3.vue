@@ -4,7 +4,7 @@
     :max-width="maxwidth"
   >
     <v-autocomplete
-      single-line
+      :single-line="singleline"
       dense
       :label="title"
       :placeholder="placeholder"
@@ -37,7 +37,8 @@ export default {
     placeholder: String,
     maxwidth: String,
     value: String,
-    items: Array
+    items: Array,
+    singleline: Boolean
   },
   data: () => ({
     input1: ""

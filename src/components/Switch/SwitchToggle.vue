@@ -30,7 +30,5 @@ export default {
 
 .the-switch-component-47593549909b70d53c2eb634ce982523 label {
   color: $switch--font-color !important;
-  font-size: $switch--font-size !important;
-  font-weight: $switch--font-weight !important;
 }
 </style>
