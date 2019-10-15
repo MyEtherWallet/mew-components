@@ -5,7 +5,7 @@
         <h1 class="text-uppercase display-2 font-weight-bold">
           Styles and Components
         </h1>
-        <div class="">MyEtherWallet V6</div>
+        <div class="text--color--text--silver">MyEtherWallet V6</div>
       </v-container>
     </div>
     <div class="py-12">
@@ -38,5 +38,9 @@ export default {
 
 .title-container {
   background-color: $color--primary--dark-space;
+}
+
+.text--color--text--silver {
+  $color--text--silver: #cecece;
 }
 </style>
