@@ -14,7 +14,7 @@
       </v-btn>
     </v-snackbar>
     <!--================================================================================-->
-
+    <v-divider></v-divider>
     <v-row>
       <cc subtitle="Button" title="Button Green">
         <ButtonGreen
@@ -88,6 +88,9 @@
           "
         />
       </cc>
+    </v-row>
+    <v-divider></v-divider>
+    <v-row>
       <cc subtitle="Switch" title="Switch Toggle">
         <SwitchToggle
           v-model="modelSwitchToggle"
@@ -128,17 +131,18 @@
           <code>{{ modelRadio1 }}</code>
         </div>
       </cc>
+    </v-row>
+    <v-divider></v-divider>
+    <v-row>
       <cc subtitle="Popover" title="Popover">
         <popover
           text="An MD5 hash is created by taking a string of an any length and encoding it into a 128-bit fingerprint. Encoding the same string using the MD5 algorithm will always result in the same 128-bit hash output. MD5 hashes are commonly used with smaller strings when storing passwords, credit card numbers or other sensitive data in databases such as the popular MySQL. This tool provides a quick and easy way to encode an MD5 hash from a simple string of up to 256 characters in length."
         />
         <span class="ml-3">Hover to see tooltip</span>
       </cc>
-      <cc subtitle="Popover" title="Popover">
-        <Warningbox
-          text="WARNING: You and only you are responsible for your security."
-        />
-      </cc>
+    </v-row>
+    <v-divider></v-divider>
+    <v-row>
       <cc subtitle="Input" title="Input Normal">
         <InputNormal
           v-model="modelInputNormal"
@@ -147,7 +151,7 @@
           :showhint="true"
           hint="Amount must be larger than 1 eth."
         />
-        <div class="mt-8">
+        <div class="mt-3">
           <span class="font-weight-light caption">Emitted v-model value </span>
           <code>{{ modelInputNormal }}</code>
         </div>
@@ -162,7 +166,7 @@
           errorMinimum="At least 8 characters"
           errorPasswordNoMatch="The password you entered don't match"
         />
-        <div class="mt-8">
+        <div class="mt-3">
           <span class="font-weight-light caption">Emitted v-model value </span>
           <code>{{ modelInputPassword }}</code>
         </div>
@@ -182,7 +186,7 @@
           placeholder="Search for a coin..."
           :items="searchItems1"
         />
-        <div class="mt-8">
+        <div class="mt-3">
           <span class="font-weight-light caption">Emitted v-model value </span>
           <code>{{ modelInputSearch1 }}</code>
         </div>
@@ -202,7 +206,7 @@
           placeholder="Search for a contract..."
           :items="searchItems2"
         />
-        <div class="mt-8">
+        <div class="mt-3">
           <span class="font-weight-light caption">Emitted v-model value </span>
           <code>{{ modelInputSearch2 }}</code>
         </div>
@@ -223,10 +227,36 @@
           :singleline="true"
           :items="searchItems3"
         />
-        <div class="mt-8">
+        <div class="mt-3">
           <span class="font-weight-light caption">Emitted v-model value </span>
           <code>{{ modelInputSearch3 }}</code>
         </div>
+      </cc>
+    </v-row>
+    <v-divider></v-divider>
+    <v-row>
+      <cc subtitle="Help Center" title="Community">
+        <Community
+          v-model="modelInputSearch3"
+          placeholder="Choose existing contract"
+          maxwidth="250"
+          :singleline="true"
+          :items="searchItems3"
+        />
+      </cc>
+      <cc subtitle="Help Center" title="CustomerSupport">
+        <CustomerSupport
+          v-model="modelInputSearch3"
+          placeholder="Choose existing contract"
+          maxwidth="250"
+          :singleline="true"
+          :items="searchItems3"
+        />
+      </cc>
+      <cc subtitle="Warning" title="Warning Box">
+        <Warningbox
+          text="WARNING: You and only you are responsible for your security."
+        />
       </cc>
     </v-row>
   </v-container>
@@ -249,6 +279,8 @@ import InputPassword from "@/components/Input/InputPassword";
 import InputSearch1 from "@/components/Input/InputSearch1";
 import InputSearch2 from "@/components/Input/InputSearch2";
 import InputSearch3 from "@/components/Input/InputSearch3";
+import Community from "@/components/HelpCenter/Community";
+import CustomerSupport from "@/components/HelpCenter/CustomerSupport";
 
 import btc from "@/assets/coins/btc.png";
 import eth from "@/assets/coins/eth.png";
@@ -271,7 +303,9 @@ export default {
     InputPassword,
     InputSearch1,
     InputSearch2,
-    InputSearch3
+    InputSearch3,
+    Community,
+    CustomerSupport
   },
   data: () => ({
     snackbarOpen: false,

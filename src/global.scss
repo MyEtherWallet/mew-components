@@ -19,7 +19,7 @@ $color--text--silver: #cecece;
 $color--disabled--1: #d8d8d8;
 
 .text--color--primary--emerald {
-  color: $color--primary--emerald;
+  color: $color--primary--emerald !important;
 }
 .text--color--primary--royal-blue {
   $color--primary--royal-blue: #5a78f0;
