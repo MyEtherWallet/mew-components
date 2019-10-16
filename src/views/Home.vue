@@ -2,7 +2,7 @@
   <div>
     <div class="title-container white--text py-12">
       <v-container>
-        <h1 class="text-uppercase display-2 font-weight-bold">
+        <h1 class="text-uppercase display-2 font-weight-bold white--text">
           Styles and Components
         </h1>
         <div class="headline text--color--primary--emerald font-weight-bold">
@@ -19,7 +19,7 @@
           found below.
         </v-sheet>
 
-        <v-card class="mt-8 mb-3" max-width="300">
+        <v-card class="mt-8 mb-3 grey lighten-3" max-width="300">
           <v-list-item three-line>
             <v-list-item-content>
               <div class="overline mb-2">

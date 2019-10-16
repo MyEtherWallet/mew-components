@@ -244,6 +244,11 @@
           text="WARNING: You and only you are responsible for your security."
         />
       </cc>
+      <cc subtitle="Ad" title="Advertisement">
+        <Warningbox
+          text="WARNING: You and only you are responsible for your security."
+        />
+      </cc>
     </v-row>
   </v-container>
 </template>
