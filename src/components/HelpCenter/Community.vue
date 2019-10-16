@@ -1,7 +1,7 @@
 <template>
   <v-card
     class="d-flex flex-no-wrap align-center justify-space-between community pa-7"
-    max-width="400"
+    :max-width="maxwidth"
     flat
   >
     <v-avatar size="75" tile>
@@ -19,7 +19,7 @@
 <script>
 export default {
   props: {
-    text: String
+    maxwidth: String
   },
   data: () => ({}),
   watch: {}

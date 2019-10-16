@@ -235,23 +235,9 @@
     </v-row>
     <v-divider></v-divider>
     <v-row>
-      <cc subtitle="Help Center" title="Community">
-        <Community
-          v-model="modelInputSearch3"
-          placeholder="Choose existing contract"
-          maxwidth="250"
-          :singleline="true"
-          :items="searchItems3"
-        />
-      </cc>
-      <cc subtitle="Help Center" title="CustomerSupport">
-        <CustomerSupport
-          v-model="modelInputSearch3"
-          placeholder="Choose existing contract"
-          maxwidth="250"
-          :singleline="true"
-          :items="searchItems3"
-        />
+      <cc subtitle="Help Center" title="Help Center Buttons">
+        <Community class="mb-4" maxwidth="400" />
+        <CustomerSupport maxwidth="400" />
       </cc>
       <cc subtitle="Warning" title="Warning Box">
         <Warningbox

@@ -1,7 +1,7 @@
 <template>
   <v-card
     class="d-flex flex-no-wrap align-center justify-space-between community px-7 py-5"
-    max-width="400"
+    :max-width="maxwidth"
     flat
   >
     <v-avatar size="75" tile>
@@ -13,7 +13,7 @@
         Can't find answer? Get in touch and we'll get back ASAP.
       </p>
       <div class="d-flex flex-no-wrap align-center">
-        <p class="ma-0 mr-1 teal--text text--lighten-2 font-weight-medium">
+        <p class="ma-0 mr-1 teal--text text--lighten-2 font-weight-regular">
           Email us
         </p>
         <v-icon class="icon teal--text text--lighten-2">mdi-arrow-right</v-icon>
@@ -25,7 +25,7 @@
 <script>
 export default {
   props: {
-    text: String
+    maxwidth: String
   },
   data: () => ({}),
   watch: {}
