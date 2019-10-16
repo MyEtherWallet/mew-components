@@ -9,7 +9,7 @@
     </v-avatar>
     <div class="ml-6">
       <h3 class="font-weight-medium">Community</h3>
-      <p class="ma-0">
+      <p class="">
         Join our MEW community, and get more information from us.
       </p>
     </div>

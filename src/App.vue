@@ -20,6 +20,12 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/global.scss";
+
+* {
+  color: $color--text--dark-sacramento;
+}
+
 p {
   //font-family: "Montserrat", sans-serif;
   font-size: 14px;
