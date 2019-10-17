@@ -244,10 +244,11 @@
           text="WARNING: You and only you are responsible for your security."
         />
       </cc>
-      <cc subtitle="Ad" title="Advertisement">
-        <Warningbox
-          text="WARNING: You and only you are responsible for your security."
-        />
+      <cc subtitle="Community" title="Community Buttons">
+        <CommunityButtons />
+      </cc>
+      <cc subtitle="Reminder" title="Reminder Box">
+        <ReminderBox />
       </cc>
     </v-row>
   </v-container>
@@ -272,6 +273,8 @@ import InputSearch2 from "@/components/Input/InputSearch2";
 import InputSearch3 from "@/components/Input/InputSearch3";
 import Community from "@/components/HelpCenter/Community";
 import CustomerSupport from "@/components/HelpCenter/CustomerSupport";
+import CommunityButtons from "@/components/Community/CommunityButtons";
+import ReminderBox from "@/components/Reminder/ReminderBox";
 
 import btc from "@/assets/coins/btc.png";
 import eth from "@/assets/coins/eth.png";
@@ -296,7 +299,9 @@ export default {
     InputSearch2,
     InputSearch3,
     Community,
-    CustomerSupport
+    CustomerSupport,
+    CommunityButtons,
+    ReminderBox
   },
   data: () => ({
     snackbarOpen: false,

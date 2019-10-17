@@ -5,7 +5,7 @@
     flat
   >
     <v-avatar size="75" tile>
-      <v-img src="@/assets/icons/icon24.png"></v-img>
+      <v-img src="@/assets/icons/Common/icon24.png"></v-img>
     </v-avatar>
     <div class="ml-6">
       <h3 class="font-weight-medium">Customer Support</h3>
