@@ -13,6 +13,7 @@
         Close
       </v-btn>
     </v-snackbar>
+
     <!--================================================================================-->
     <v-divider></v-divider>
     <v-row>
@@ -248,7 +249,10 @@
         <CommunityButtons />
       </cc>
       <cc subtitle="Reminder" title="Reminder Box">
-        <ReminderBox />
+        <ReminderBox
+          title="Don't share it"
+          text="Your funds could be in danger if you use this file on malicious sites."
+        />
       </cc>
     </v-row>
   </v-container>
