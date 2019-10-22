@@ -1,5 +1,5 @@
 <template>
-  <v-card max-width="344">
+  <v-card max-width="280">
     <v-img src="@/assets/news.jpg" height="194"></v-img>
     <v-card-title>Cafe Badilico</v-card-title>
     <v-card-text>

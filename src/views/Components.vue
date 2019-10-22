@@ -274,6 +274,9 @@
       <cc subtitle="News" title="News Box">
         <NewsBox />
       </cc>
+      <cc subtitle="Ad" title="Ad Slider">
+        <AdSlider />
+      </cc>
     </v-row>
   </v-container>
 </template>
@@ -300,6 +303,7 @@ import CustomerSupport from "@/components/HelpCenter/CustomerSupport";
 import CommunityButtons from "@/components/Community/CommunityButtons";
 import ReminderBox from "@/components/Reminder/ReminderBox";
 import NewsBox from "@/components/News/NewsBox";
+import AdSlider from "@/components/Ad/AdSlider";
 
 import btc from "@/assets/coins/btc.png";
 import eth from "@/assets/coins/eth.png";
@@ -327,7 +331,8 @@ export default {
     CustomerSupport,
     CommunityButtons,
     ReminderBox,
-    NewsBox
+    NewsBox,
+    AdSlider
   },
   data: () => ({
     snackbarOpen: false,
@@ -385,8 +390,8 @@ export default {
 <style lang="scss" scoped>
 .icon-container {
   i {
-    font-size: 40px;
-    margin-right: 15px;
+    font-size: 30px;
+    margin-right: 20px;
     color: #bdbdbd;
   }
 }
