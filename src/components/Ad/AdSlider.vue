@@ -1,9 +1,9 @@
 <template>
   <v-carousel>
-    <v-carousel-item v-for="(color, i) in colors" :key="color">
-      <v-sheet :color="color" height="100%" tile>
+    <v-carousel-item v-for="(i, k) in items" :key="k">
+      <v-sheet height="100%" tile>
         <v-row class="fill-height" align="center" justify="center">
-          <div class="display-3">Slide {{ i + 1 }}</div>
+          <img :src="i.image" />
         </v-row>
       </v-sheet>
     </v-carousel-item>
@@ -11,9 +11,23 @@
 </template>
 
 <script>
+import Slider1 from "@/assets/slider/mewconnect.png";
+import Slider2 from "@/assets/slider/myetherwallet.png";
+
 export default {
   props: {},
-  data: () => ({}),
+
+  data: () => ({
+    image1: Slider1,
+    items: [
+      {
+        image: Slider1
+      },
+      {
+        image: Slider2
+      }
+    ]
+  }),
   watch: {}
 };
 </script>
