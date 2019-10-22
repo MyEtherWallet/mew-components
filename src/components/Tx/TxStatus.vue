@@ -1,32 +1,43 @@
 <template>
-  <v-card max-width="280">
-    <v-img src="@/assets/news.jpg" height="194"></v-img>
-    <v-card-title>Cafe Badilico</v-card-title>
-    <v-card-text>
-      Visit ten places on our planet that are undergoing the biggest changes
-      today.
-    </v-card-text>
-
-    <v-card-actions>
-      <v-btn text color="teal lighten-2">
-        Read More...
-      </v-btn>
-      <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon color="grey lighten-1">mdi-facebook</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon color="grey lighten-1">mdi-twitter</v-icon>
-      </v-btn>
-    </v-card-actions>
+  <v-card class="pa-4" max-width="250" outlined>
+    <v-row align="center" justify="space-between" no-gutters>
+      <v-col>
+        <v-row align="center" no-gutters>
+          <v-img src="@/assets/coins/eth.png" max-width="28" class="mr-2" />
+          <div>ETH</div>
+        </v-row>
+        <div class="caption font-weight-medium">1.00000</div>
+      </v-col>
+      <v-col class="text-center">
+        <v-icon>mdi-arrow-right</v-icon>
+      </v-col>
+      <v-col>
+        <v-row align="center" no-gutters>
+          <v-img src="@/assets/coins/btc.png" max-width="28" class="mr-2" />
+          <div>BTC</div>
+        </v-row>
+        <div class="caption font-weight-medium">1.000</div>
+      </v-col>
+    </v-row>
+    <v-progress-linear
+      color="teal lighten-2"
+      class="mt-1"
+      active
+      height="15"
+      rounded="rounded"
+      value="25"
+      :striped="false"
+    ></v-progress-linear>
+    <div class="text-center">08:25</div>
+    <v-sheet class="text-center mt-2">
+      <v-btn color="grey lighten-3" depressed small>Check History</v-btn>
+    </v-sheet>
   </v-card>
 </template>
 
 <script>
 export default {
-  props: {
-    text: String
-  },
+  props: {},
   data: () => ({}),
   watch: {}
 };

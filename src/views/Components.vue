@@ -278,6 +278,9 @@
         <p>** All the images must be in same size!</p>
         <AdSlider />
       </cc>
+      <cc subtitle="TX" title="TX Status">
+        <TxStatus />
+      </cc>
     </v-row>
   </v-container>
 </template>
@@ -305,6 +308,7 @@ import CommunityButtons from "@/components/Community/CommunityButtons";
 import ReminderBox from "@/components/Reminder/ReminderBox";
 import NewsBox from "@/components/News/NewsBox";
 import AdSlider from "@/components/Ad/AdSlider";
+import TxStatus from "@/components/Tx/TxStatus";
 
 import btc from "@/assets/coins/btc.png";
 import eth from "@/assets/coins/eth.png";
@@ -333,7 +337,8 @@ export default {
     CommunityButtons,
     ReminderBox,
     NewsBox,
-    AdSlider
+    AdSlider,
+    TxStatus
   },
   data: () => ({
     snackbarOpen: false,
