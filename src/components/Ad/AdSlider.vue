@@ -1,11 +1,27 @@
 <template>
   <div class="carousel-container">
-    <v-carousel height="200">
-      <v-carousel-item v-for="(i, k) in items" :key="k">
-        <v-sheet tile>
-          <v-row class="fill-height" align="center" justify="center">
-            <img :src="i.image" />
-          </v-row>
+    <v-carousel
+      class="border-radius--4"
+      height="180"
+      hide-delimiter-background
+      show-arrows-on-hover
+    >
+      <v-carousel-item>
+        <v-sheet tile color="grey lighten-4">
+          <div class="text-content">
+            <h2 class="font-weight-medium">MEWconnect</h2>
+            <v-sheet width="170" color="transparent">
+              <div class="font-weight-light line-height--medium">
+                Free and secure mobile wallet
+              </div>
+            </v-sheet>
+          </div>
+          <img src="@/assets/slider/mewconnect.png" />
+        </v-sheet>
+      </v-carousel-item>
+      <v-carousel-item>
+        <v-sheet tile color="grey lighten-4">
+          <img src="@/assets/slider/myetherwallet.jpg" />
         </v-sheet>
       </v-carousel-item>
     </v-carousel>
@@ -13,22 +29,10 @@
 </template>
 
 <script>
-import Slider1 from "@/assets/slider/mewconnect.png";
-
 export default {
   props: {},
 
-  data: () => ({
-    image1: Slider1,
-    items: [
-      {
-        image: Slider1
-      },
-      {
-        image: Slider1
-      }
-    ]
-  }),
+  data: () => ({}),
   watch: {}
 };
 </script>
@@ -38,5 +42,12 @@ export default {
 
 .carousel-container {
   width: 500px;
+}
+
+.text-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 20px 30px;
 }
 </style>

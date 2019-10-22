@@ -275,6 +275,7 @@
         <NewsBox />
       </cc>
       <cc subtitle="Ad" title="Ad Slider">
+        <p>** All the images must be in same size!</p>
         <AdSlider />
       </cc>
     </v-row>
