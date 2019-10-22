@@ -254,6 +254,26 @@
           text="Your funds could be in danger if you use this file on malicious sites."
         />
       </cc>
+      <cc subtitle="Social" title="Social Buttons" class="icon-container">
+        <v-icon>mdi-facebook</v-icon>
+        <v-icon>mdi-twitter</v-icon>
+        <v-icon>mdi-instagram</v-icon>
+        <v-icon>mdi-linkedin</v-icon>
+        <v-icon>mdi-github-circle</v-icon>
+        <v-icon>mdi-reddit</v-icon>
+        <v-icon>mdi-medium</v-icon>
+      </cc>
+      <cc subtitle="Social" title="Flags">
+        <img class="mr-4" src="@/assets/icons/Flags/china.png" />
+        <img class="mr-4" src="@/assets/icons/Flags/japan.png" />
+        <img class="mr-4" src="@/assets/icons/Flags/korea.png" />
+        <img class="mr-4" src="@/assets/icons/Flags/russia.png" />
+        <img class="mr-4" src="@/assets/icons/Flags/uk.png" />
+        <img class="mr-4" src="@/assets/icons/Flags/germany.png" />
+      </cc>
+      <cc subtitle="News" title="News Box">
+        <NewsBox />
+      </cc>
     </v-row>
   </v-container>
 </template>
@@ -279,6 +299,7 @@ import Community from "@/components/HelpCenter/Community";
 import CustomerSupport from "@/components/HelpCenter/CustomerSupport";
 import CommunityButtons from "@/components/Community/CommunityButtons";
 import ReminderBox from "@/components/Reminder/ReminderBox";
+import NewsBox from "@/components/News/NewsBox";
 
 import btc from "@/assets/coins/btc.png";
 import eth from "@/assets/coins/eth.png";
@@ -305,7 +326,8 @@ export default {
     Community,
     CustomerSupport,
     CommunityButtons,
-    ReminderBox
+    ReminderBox,
+    NewsBox
   },
   data: () => ({
     snackbarOpen: false,
@@ -359,3 +381,13 @@ export default {
   })
 };
 </script>
+
+<style lang="scss" scoped>
+.icon-container {
+  i {
+    font-size: 40px;
+    margin-right: 15px;
+    color: #bdbdbd;
+  }
+}
+</style>
