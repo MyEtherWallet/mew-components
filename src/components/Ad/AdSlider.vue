@@ -1,10 +1,13 @@
 <template>
   <div class="carousel-container">
     <v-carousel
+      cycle
       class="border-radius--4"
       height="180"
       hide-delimiter-background
+      show-arrows
       show-arrows-on-hover
+      vertical
     >
       <v-carousel-item>
         <v-sheet tile color="grey lighten-4">
@@ -22,6 +25,11 @@
       <v-carousel-item>
         <v-sheet tile color="grey lighten-4">
           <img src="@/assets/slider/myetherwallet.jpg" />
+        </v-sheet>
+      </v-carousel-item>
+      <v-carousel-item>
+        <v-sheet tile color="grey lighten-4">
+          <img src="@/assets/slider/spaceman.jpg" />
         </v-sheet>
       </v-carousel-item>
     </v-carousel>

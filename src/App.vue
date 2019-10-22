@@ -4,16 +4,19 @@
     <v-content>
       <router-view />
     </v-content>
+    <Footer />
   </v-app>
 </template>
 
 <script>
 import Header from "@/views/Header";
+import Footer from "@/views/Footer";
 
 export default {
   name: "App",
   components: {
-    Header
+    Header,
+    Footer
   },
   data: () => ({})
 };
