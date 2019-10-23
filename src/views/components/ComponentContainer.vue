@@ -1,6 +1,6 @@
 <template>
   <v-col cols="12" sm="6" md="6">
-    <v-card class="py-12" flat>
+    <v-card class="pb-12" flat>
       <div class="dark-sacramento caption" :text="subtitle">
         {{ subtitle }}
       </div>

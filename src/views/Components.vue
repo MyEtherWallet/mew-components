@@ -255,21 +255,47 @@
         />
       </cc>
       <cc subtitle="Social" title="Social Buttons" class="icon-container">
-        <v-icon>mdi-facebook</v-icon>
-        <v-icon>mdi-twitter</v-icon>
-        <v-icon>mdi-instagram</v-icon>
-        <v-icon>mdi-linkedin</v-icon>
-        <v-icon>mdi-github-circle</v-icon>
-        <v-icon>mdi-reddit</v-icon>
-        <v-icon>mdi-medium</v-icon>
+        <v-btn icon class="mr-2" color="grey lighten-1">
+          <v-icon>mdi-facebook</v-icon>
+        </v-btn>
+        <v-btn icon class="mr-2" color="grey lighten-1">
+          <v-icon>mdi-twitter</v-icon>
+        </v-btn>
+        <v-btn icon class="mr-2" color="grey lighten-1">
+          <v-icon>mdi-instagram</v-icon>
+        </v-btn>
+        <v-btn icon class="mr-2" color="grey lighten-1">
+          <v-icon>mdi-linkedin</v-icon>
+        </v-btn>
+        <v-btn icon class="mr-2" color="grey lighten-1">
+          <v-icon>mdi-github-circle</v-icon>
+        </v-btn>
+        <v-btn icon class="mr-2" color="grey lighten-1">
+          <v-icon>mdi-reddit</v-icon>
+        </v-btn>
+        <v-btn icon class="mr-2" color="grey lighten-1">
+          <v-icon>mdi-medium</v-icon>
+        </v-btn>
       </cc>
       <cc subtitle="Social" title="Flags">
-        <img class="mr-4" src="@/assets/icons/Flags/china.png" />
-        <img class="mr-4" src="@/assets/icons/Flags/japan.png" />
-        <img class="mr-4" src="@/assets/icons/Flags/korea.png" />
-        <img class="mr-4" src="@/assets/icons/Flags/russia.png" />
-        <img class="mr-4" src="@/assets/icons/Flags/uk.png" />
-        <img class="mr-4" src="@/assets/icons/Flags/germany.png" />
+        <v-btn height="50" width="50" icon class="mr-2" color="grey lighten-1">
+          <img width="30" src="@/assets/icons/Flags/china.png" />
+        </v-btn>
+        <v-btn height="50" width="50" icon class="mr-2" color="grey lighten-1">
+          <img width="30" src="@/assets/icons/Flags/japan.png" />
+        </v-btn>
+        <v-btn height="50" width="50" icon class="mr-2" color="grey lighten-1">
+          <img width="30" src="@/assets/icons/Flags/korea.png" />
+        </v-btn>
+        <v-btn height="50" width="50" icon class="mr-2" color="grey lighten-1">
+          <img width="30" src="@/assets/icons/Flags/russia.png" />
+        </v-btn>
+        <v-btn height="50" width="50" icon class="mr-2" color="grey lighten-1">
+          <img width="30" src="@/assets/icons/Flags/uk.png" />
+        </v-btn>
+        <v-btn height="50" width="50" icon class="mr-2" color="grey lighten-1">
+          <img width="30" src="@/assets/icons/Flags/germany.png" />
+        </v-btn>
       </cc>
       <cc subtitle="News" title="News Box">
         <NewsBox />
@@ -397,8 +423,6 @@ export default {
 .icon-container {
   i {
     font-size: 30px;
-    margin-right: 20px;
-    color: #bdbdbd;
   }
 }
 </style>
