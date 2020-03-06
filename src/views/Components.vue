@@ -19,7 +19,7 @@
     <h2 class="mt-4 mb-2">Buttons</h2>
     <v-row>
       <cc title="Green">
-        <button-component
+        <mew-button
           class="white--text mr-1"
           color="#05c0a5"
           @click.native="
@@ -30,7 +30,7 @@
         />
       </cc>
       <cc title="Green Outline">
-        <button-component
+        <mew-button
           label="Button"
           color="#05c0a5"
           outlined
@@ -42,7 +42,7 @@
         />
       </cc>
       <cc title="Blue">
-        <button-component
+        <mew-button
           label="Button"
           color="#5a78f0"
           @click.native="
@@ -53,7 +53,7 @@
         />
       </cc>
       <cc title="Blue Outline">
-        <button-component
+        <mew-button
           label="Button"
           color="#5a78f0"
           outlined
@@ -65,7 +65,7 @@
         />
       </cc>
       <cc title="Disabled">
-        <button-component
+        <mew-button
           label="Button"
           color="#5a78f0"
           disabled
@@ -77,7 +77,7 @@
         />
       </cc>
       <cc title="Outline Disabled">
-        <button-component
+        <mew-button
           label="Button"
           color="#5a78f0"
           outlined
@@ -314,7 +314,7 @@
 <script>
 import cc from "@/views/components/ComponentContainer";
 
-import ButtonComponent from "@/components/Button/Button";
+import MewButton from "@/components/MewButton/MewButton";
 import SwitchToggle from "@/components/Switch/SwitchToggle";
 import Checkbox from "@/components/Checkbox/Checkbox";
 import Radio from "@/components/Radio/Radio";
@@ -341,7 +341,7 @@ import xrp from "@/assets/coins/xrp.png";
 export default {
   components: {
     cc,
-    "button-component": ButtonComponent,
+    "mew-button": MewButton,
     SwitchToggle,
     Checkbox,
     Radio,
