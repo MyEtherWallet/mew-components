@@ -26,7 +26,7 @@ export default {
 @import "@/global.scss";
 
 * {
-  color: var(--v-primaryText-base);
+  color: var(--v-info-base);
 }
 
 p {
@@ -63,7 +63,7 @@ h5 {
 }
 
 .theme--light.v-application {
-  background: white !important;
+  background: var(--v-white-base) !important;
 }
 
 @media (min-width: 1904px) {

@@ -24,7 +24,7 @@ export default {
 @import "@/global.scss";
 .hover-icon {
   font-size: 20px;
-  color: $color--primary--emerald;
+  color: var(--v-primary-base);
 }
 </style>
 
@@ -33,8 +33,8 @@ export default {
 .v-tooltip__content {
   max-width: 300px;
   opacity: 1 !important;
-  background-color: white !important;
-  border: 1px solid $color--primary--emerald;
+  background-color: var(--v-white-base) !important;
+  border: 1px solid var(--v-primary-base);
   padding: 10px 14px !important;
 
   span {
@@ -42,7 +42,7 @@ export default {
     line-height: 17px;
     font-size: 12px;
     display: inline-block;
-    color: $color--text--spruce;
+    color: var(--v-spruce-base);
   }
 }
 </style>
