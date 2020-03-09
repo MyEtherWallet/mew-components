@@ -5,7 +5,7 @@
     <card-color :colors="greenShades" />
     <h5 class="mt-2">Blue</h5>
     <card-color :colors="blueShades" />
-    <h5 class="mt-2">Grey</h5>
+    <h5 class="mt-2">Grey/White</h5>
     <card-color :colors="greyShades" />
     <h5 class="mt-2">Red</h5>
     <card-color :colors="redShades" />
@@ -89,6 +89,10 @@ export default {
         }
       ],
       greyShades: [
+        {
+          type: "white",
+          hex: "fff"
+        },
         {
           type: "primary-silver",
           hex: "#f2f4fa"

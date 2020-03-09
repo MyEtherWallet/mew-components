@@ -76,7 +76,7 @@ export default {
 @import "@/global.scss";
 
 .title-container {
-  background-color: $color--primary--dark-space;
+  background-color: var(--v-dark-space-base);
 }
 
 .text--color--text--silver {

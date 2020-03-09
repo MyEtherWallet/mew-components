@@ -36,7 +36,6 @@ export default new Vuetify({
         "grey-1": "#96a8b6",
         "yellow-1": "#ffe9c5"
       }
-      // dark:
     }
   }
 });

@@ -1,78 +1,6 @@
-// // COLOR PALETTE ==============================================================
-$color--primary--emerald: #05c0a5;
-$color--primary--royal-blue: #5a78f0;
-$color--primary--dark-sacramento: #003945;
-$color--primary--dark-space: #0b2840;
-$color--secondary--violet: #7070e3;
-$color--secondary--police-strobe: #25b0e8;
-$color--secondary--independence: #536d8b;
-$color--secondary--dark-independence: #334758;
-$color--secondary--cerise: #e96071;
-$color--secondary--cardinal: #a70015;
-$color--secondary--naples-yellow: #fcb755;
-$color--secondary--primary-silver: #f2f4fa;
-$color--secondary--mint: #cdf2ee;
-$color--secondary--light-mint: #f2fafa;
-$color: #003945;
-$color--text--spruce: #506175;
-$color--text--silver: #cecece;
-$color--disabled--1: #d8d8d8;
-
-.text--color--primary--emerald {
-  color: $color--primary--emerald !important;
-}
-.text--color--primary--royal-blue {
-  $color--primary--royal-blue: #5a78f0;
-}
-.text--color--primary--dark-sacramento {
-  $color--primary--dark-sacramento: #003945;
-}
-.text--color--primary--dark-space {
-  $color--primary--dark-space: #0b2840;
-}
-.text--color--secondary--violet {
-  $color--secondary--violet: #7070e3;
-}
-.text--color--secondary--police-strobe {
-  $color--secondary--police-strobe: #25b0e8;
-}
-.text--color--secondary--independence {
-  $color--secondary--independence: #536d8b;
-}
-.text--color--secondary--dark-independence {
-  $color--secondary--dark-independence: #334758;
-}
-.text--color--secondary--cerise {
-  $color--secondary--cerise: #e96071;
-}
-.text--color--secondary--cardinal {
-  $color--secondary--cardinal: #a70015;
-}
-.text--color--secondary--naples-yellow {
-  $color--secondary--naples-yellow: #fcb755;
-}
-.text--color--secondary--primary-silver {
-  $color--secondary--primary-silver: #f2f4fa;
-}
-.text--color--secondary--mint {
-  $color--secondary--mint: #cdf2ee;
-}
-.text--color--secondary--light-mint {
-  $color--secondary--light-mint: #f2fafa;
-}
-.text--color {
-  color: #003945;
-}
-.text--color--text--spruce {
-  $color--text--spruce: #506175;
-}
-.text--color--text--silver {
-  $color--text--silver: #cecece;
-}
-
 // SWITCH/CHECKBOX LABEL ======================================================
-$label--active--color:  var(--v-primaryText-base);
-$label--inactive--color: $color--disabled--1;
+$label--active--color:  var(--v-info-base);
+$label--inactive--color: var(--v-disabled-1-base);
 
 // BUTTON PROPS ===============================================================
 $button--height: 60px;
@@ -80,12 +8,12 @@ $button--min-width: 240px;
 $button--text-transform: none;
 $button--letter-spacing: 1px;
 
-$button--primary--disabled--background-color: $color--disabled--1;
-$button--primary--disabled--text-color: white;
+$button--primary--disabled--background-color: var(--v-disabled-1-base);
+$button--primary--disabled--text-color: var(--v-white-base);
 
-$button--secondary--disabled--background-color: white;
-$button--secondary--disabled--border-color: $color--disabled--1;
-$button--secondary--disabled--text-color: $color--disabled--1;
+$button--secondary--disabled--background-color: var(--v-white-base);
+$button--secondary--disabled--border-color: var(--v-disabled-1-base);
+$button--secondary--disabled--text-color: var(--v-disabled-1-base);
 
 // SWITCH PROPS ===============================================================
 $switch--font-color: $label--active--color;
