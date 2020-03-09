@@ -41,7 +41,7 @@ export default {
 }
 
 .icon {
-  color: $color--text--dark-sacramento;
+  color: var(--v-primaryText-base);
   font-size: 18px;
 }
 </style>

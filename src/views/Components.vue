@@ -16,77 +16,77 @@
 
     <!--================================================================================-->
     <v-divider></v-divider>
+    <h2 class="mt-4 mb-2">Buttons</h2>
     <v-row>
-      <cc subtitle="Button" title="Button Green">
-        <ButtonGreen
-          label="Button"
+      <cc title="Green">
+        <mew-button
+          class="white--text mr-1"
+          color="#05c0a5"
           @click.native="
             snackbarOpen = true;
             snackbarMsg = 'Clicked';
           "
-          class="mr-1"
-        />
-        <ButtonGreen
           label="Button"
-          disabled
-          @click.native="
-            snackbarOpen = true;
-            snackbarMsg = 'Clicked';
-          "
         />
       </cc>
-      <cc subtitle="Button" title="Button Green Border">
-        <ButtonGreenBorder
+      <cc title="Green Outline">
+        <mew-button
           label="Button"
+          color="#05c0a5"
+          outlined
           @click.native="
             snackbarOpen = true;
             snackbarMsg = 'Clicked';
           "
           class="mr-1"
-        />
-        <ButtonGreenBorder
-          label="Button"
-          disabled
-          @click.native="
-            snackbarOpen = true;
-            snackbarMsg = 'Clicked';
-          "
         />
       </cc>
-      <cc subtitle="Button" title="Button Blue">
-        <ButtonBlue
+      <cc title="Blue">
+        <mew-button
           label="Button"
+          color="#5a78f0"
           @click.native="
             snackbarOpen = true;
             snackbarMsg = 'Clicked';
           "
-          class="mr-1"
-        />
-        <ButtonBlue
-          label="Button"
-          disabled
-          @click.native="
-            snackbarOpen = true;
-            snackbarMsg = 'Clicked';
-          "
+          class="mr-1 white--text"
         />
       </cc>
-      <cc subtitle="Button" title="Button Blue Border">
-        <ButtonBlueBorder
+      <cc title="Blue Outline">
+        <mew-button
           label="Button"
+          color="#5a78f0"
+          outlined
           @click.native="
             snackbarOpen = true;
             snackbarMsg = 'Clicked';
           "
           class="mr-1"
         />
-        <ButtonBlueBorder
+      </cc>
+      <cc title="Disabled">
+        <mew-button
           label="Button"
+          color="#5a78f0"
           disabled
           @click.native="
             snackbarOpen = true;
             snackbarMsg = 'Clicked';
           "
+          class="mr-1"
+        />
+      </cc>
+      <cc title="Outline Disabled">
+        <mew-button
+          label="Button"
+          color="#5a78f0"
+          outlined
+          disabled
+          @click.native="
+            snackbarOpen = true;
+            snackbarMsg = 'Clicked';
+          "
+          class="mr-1"
         />
       </cc>
     </v-row>
@@ -314,10 +314,7 @@
 <script>
 import cc from "@/views/components/ComponentContainer";
 
-import ButtonGreen from "@/components/Button/ButtonGreen";
-import ButtonGreenBorder from "@/components/Button/ButtonGreenBorder";
-import ButtonBlue from "@/components/Button/ButtonBlue";
-import ButtonBlueBorder from "@/components/Button/ButtonBlueBorder";
+import MewButton from "@/components/MewButton/MewButton";
 import SwitchToggle from "@/components/Switch/SwitchToggle";
 import Checkbox from "@/components/Checkbox/Checkbox";
 import Radio from "@/components/Radio/Radio";
@@ -344,10 +341,7 @@ import xrp from "@/assets/coins/xrp.png";
 export default {
   components: {
     cc,
-    ButtonGreen,
-    ButtonGreenBorder,
-    ButtonBlue,
-    ButtonBlueBorder,
+    "mew-button": MewButton,
     SwitchToggle,
     Checkbox,
     Radio,

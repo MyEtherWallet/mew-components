@@ -25,6 +25,6 @@ export default {
 <style lang="scss" scoped>
 @import "@/global.scss";
 .dark-sacramento {
-  color: $color--text--dark-sacramento;
+  color: var(--v-primaryText-base);
 }
 </style>

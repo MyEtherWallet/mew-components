@@ -26,7 +26,7 @@ export default {
 @import "@/global.scss";
 
 * {
-  color: $color--text--dark-sacramento;
+  color: var(--v-primaryText-base);
 }
 
 p {
