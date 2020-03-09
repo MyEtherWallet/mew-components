@@ -7,7 +7,7 @@
   "browser": {
     "./sfc": "src/my-component.vue"
   },
-  "private": true,
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",

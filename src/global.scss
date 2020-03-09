@@ -1,4 +1,4 @@
-// COLOR PALETTE ==============================================================
+// // COLOR PALETTE ==============================================================
 $color--primary--emerald: #05c0a5;
 $color--primary--royal-blue: #5a78f0;
 $color--primary--dark-sacramento: #003945;
@@ -13,7 +13,7 @@ $color--secondary--naples-yellow: #fcb755;
 $color--secondary--primary-silver: #f2f4fa;
 $color--secondary--mint: #cdf2ee;
 $color--secondary--light-mint: #f2fafa;
-$color--text--dark-sacramento: #003945;
+$color: #003945;
 $color--text--spruce: #506175;
 $color--text--silver: #cecece;
 $color--disabled--1: #d8d8d8;
@@ -60,8 +60,8 @@ $color--disabled--1: #d8d8d8;
 .text--color--secondary--light-mint {
   $color--secondary--light-mint: #f2fafa;
 }
-.text--color--text--dark-sacramento {
-  $color--text--dark-sacramento: #003945;
+.text--color {
+  color: #003945;
 }
 .text--color--text--spruce {
   $color--text--spruce: #506175;
@@ -71,7 +71,7 @@ $color--disabled--1: #d8d8d8;
 }
 
 // SWITCH/CHECKBOX LABEL ======================================================
-$label--active--color: $color--text--dark-sacramento;
+$label--active--color:  var(--v-primaryText-base);
 $label--inactive--color: $color--disabled--1;
 
 // BUTTON PROPS ===============================================================

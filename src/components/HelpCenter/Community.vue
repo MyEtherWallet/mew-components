@@ -53,7 +53,7 @@ export default {
     text-decoration: none;
   }
   i {
-    color: $color--text--dark-sacramento;
+    color: var(--v-primaryText-base);
     font-size: 22px;
     margin-right: 13px;
   }

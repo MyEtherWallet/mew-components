@@ -1,12 +1,15 @@
 <template>
-  <v-btn
-    x-large
-    depressed
-    v-text="label"
-    :disabled="disabled"
-    :color="color"
-    :outlined="outlined"
-  ></v-btn>
+  <div>
+    <p>Hello</p>
+    <v-btn
+      x-large
+      depressed
+      v-text="label"
+      :disabled="disabled"
+      :color="color"
+      :outlined="outlined"
+    ></v-btn>
+  </div>
 </template>
 
 <script>
@@ -21,5 +24,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+p {
+  color: var(--v-example-base);
+}
 @import "@/global.scss";
 </style>
