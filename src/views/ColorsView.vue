@@ -91,7 +91,7 @@ export default {
       greyShades: [
         {
           type: "white",
-          hex: "fff"
+          hex: "#fff"
         },
         {
           type: "primary-silver",
