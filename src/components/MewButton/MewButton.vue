@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p>Hello</p>
     <v-btn
       x-large
       depressed
@@ -8,6 +7,7 @@
       :disabled="disabled"
       :color="color"
       :outlined="outlined"
+      :text="onlyText"
     ></v-btn>
   </div>
 </template>
@@ -18,14 +18,8 @@ export default {
     label: String,
     disabled: Boolean,
     color: String,
-    outlined: Boolean
+    outlined: Boolean,
+    onlyText: Boolean
   }
 };
 </script>
-
-<style lang="scss" scoped>
-p {
-  color: var(--v-example-base);
-}
-@import "@/global.scss";
-</style>

@@ -25,6 +25,7 @@ export default new Vuetify({
         independence: "#536d8b",
         spruce: "#506175",
         silver: "#cecece",
+        white: "fff",
         "dark-space": "#0b2840",
         "police-strobe": "#25b0e8",
         "dark-independence": "#334758",
