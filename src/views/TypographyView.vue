@@ -1,13 +1,14 @@
 <template>
   <v-container>
+    <div class="title">Typography</div>
     <v-row no-gutters class="justify-space-between">
-      <v-col cols="12" sm="6" md="4">
-        <h1>H1 Heading</h1>
-        <h2>H2 Heading</h2>
-        <h3>H3 Heading</h3>
-        <h4>H4 Heading</h4>
-        <h5>H5 Heading</h5>
-        <p>Body</p>
+      <v-col cols="12">
+        <h1>Roboto Regular h1 (42px)</h1>
+        <h2>Roboto Regular h2 (30px)</h2>
+        <h3>Roboto Regular h3 (24px)</h3>
+        <h4>Roboto Regular h4 (20px)</h4>
+        <h5>Roboto Regular h5 (16px)</h5>
+        <p>Roboto Regular p (14px)</p>
       </v-col>
     </v-row>
     <v-row>
@@ -16,11 +17,17 @@
           <div>ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
           <div>abcdefghijklmnopqrstuvwxyz</div>
           <div>0123456789!@#$%^&*()</div>
+          <p>
+            <code>{{ lightFontCode }}</code>
+          </p>
         </div>
         <div class="display-1 font-weight-bold">
           <div>ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
           <div>abcdefghijklmnopqrstuvwxyz</div>
           <div>0123456789!@#$%^&*()</div>
+          <p>
+            <code>{{ boldFontCode }}</code>
+          </p>
         </div>
       </v-col>
     </v-row>
@@ -29,6 +36,11 @@
 
 <script>
 export default {
-  data: () => ({})
+  data() {
+    return {
+      lightFontCode: "<div class='display-1 font-weight-light'></div>",
+      boldFontCode: "<div class='display-1 font-weight-bold'></div>"
+    };
+  }
 };
 </script>

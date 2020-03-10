@@ -2,22 +2,22 @@
   <v-container>
     <div class="title">Theme Colors</div>
     <h5 class="mt-2">Green</h5>
-    <card-color :colors="greenShades" />
+    <color-container :colors="greenShades" />
     <h5 class="mt-2">Blue</h5>
-    <card-color :colors="blueShades" />
+    <color-container :colors="blueShades" />
     <h5 class="mt-2">Grey/White</h5>
-    <card-color :colors="greyShades" />
+    <color-container :colors="greyShades" />
     <h5 class="mt-2">Red</h5>
-    <card-color :colors="redShades" />
+    <color-container :colors="redShades" />
     <h5 class="mt-2">Yellow/Orange</h5>
-    <card-color :colors="orangeShades" />
+    <color-container :colors="orangeShades" />
     <h5 class="mt-2">Purple</h5>
-    <card-color :colors="purpleShades" />
+    <color-container :colors="purpleShades" />
   </v-container>
 </template>
 
 <script>
-import CardColorComponent from "./components/CardColorComponent";
+import ColorContainer from "./containers/ColorContainer";
 
 export default {
   data() {
@@ -129,7 +129,7 @@ export default {
     };
   },
   components: {
-    "card-color": CardColorComponent
+    "color-container": ColorContainer
   }
 };
 </script>

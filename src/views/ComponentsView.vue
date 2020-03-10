@@ -1,6 +1,5 @@
 <template>
   <v-container class="py-12">
-    <!--================================================================================-->
     <v-snackbar
       v-model="snackbarOpen"
       color="success"
@@ -14,7 +13,6 @@
       </v-btn>
     </v-snackbar>
 
-    <!--================================================================================-->
     <v-divider></v-divider>
     <h2 class="mt-4 mb-2">Buttons</h2>
     <v-row>
@@ -312,7 +310,7 @@
 </template>
 
 <script>
-import cc from "@/views/components/ComponentContainer";
+import cc from "@/views/containers/ComponentContainer";
 
 import MewButton from "@/components/MewButton/MewButton";
 import SwitchToggle from "@/components/Switch/SwitchToggle";
