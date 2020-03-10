@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Header from "@/views/Header";
-import Footer from "@/views/Footer";
+import Header from "@/views/components/HeaderComponent";
+import Footer from "@/views/components/FooterComponent";
 
 export default {
   name: "App",
@@ -27,6 +27,12 @@ export default {
 
 * {
   color: var(--v-info-base);
+}
+
+.v-application {
+  code {
+    color: var(--v-cerise-base) !important;
+  }
 }
 
 p {
