@@ -3,7 +3,7 @@
     <v-row align="center" justify="space-between" no-gutters>
       <v-col>
         <v-row align="center" no-gutters>
-          <v-img src="@/assets/coins/eth.png" max-width="28" class="mr-2" />
+          <!-- <v-img src="@/assets/coins/eth.png" max-width="28" class="mr-2" /> -->
           <div>ETH</div>
         </v-row>
         <div class="caption font-weight-medium">1.00000</div>
@@ -13,7 +13,7 @@
       </v-col>
       <v-col>
         <v-row align="center" no-gutters>
-          <v-img src="@/assets/coins/btc.png" max-width="28" class="mr-2" />
+          <!-- <v-img src="@/assets/coins/btc.png" max-width="28" class="mr-2" /> -->
           <div>BTC</div>
         </v-row>
         <div class="caption font-weight-medium">1.000</div>

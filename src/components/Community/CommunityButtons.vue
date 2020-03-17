@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import Telegram from "@/assets/icons/Community/telegram.png";
-import Slack from "@/assets/icons/Community/slack.png";
-import Github from "@/assets/icons/Community/github.png";
-import Reddit from "@/assets/icons/Community/reddit.png";
+// import Telegram from "@/assets/icons/Community/telegram.png";
+// import Slack from "@/assets/icons/Community/slack.png";
+// import Github from "@/assets/icons/Community/github.png";
+// import Reddit from "@/assets/icons/Community/reddit.png";
 
 export default {
   props: {
