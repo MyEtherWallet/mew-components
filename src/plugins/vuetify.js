@@ -22,6 +22,7 @@ export default new Vuetify({
         independence: "#536d8b",
         spruce: "#506175",
         silver: "#cecece",
+        white: "fff",
         "dark-space": "#0b2840",
         "police-strobe": "#25b0e8",
         "dark-independence": "#334758",
@@ -33,7 +34,6 @@ export default new Vuetify({
         "grey-1": "#96a8b6",
         "yellow-1": "#ffe9c5"
       }
-      // dark:
     }
   }
 });

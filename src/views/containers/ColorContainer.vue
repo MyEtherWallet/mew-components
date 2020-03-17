@@ -10,7 +10,7 @@
         :key="idx"
       >
         <v-card :color="color.type" class="py-12"></v-card>
-        <p class="mt-2">{{ color.type }} : {{ color.hex }}</p>
+        <p class="mt-2">{{ color.type }}:{{ color.hex }}</p>
       </v-col>
     </v-row>
   </div>

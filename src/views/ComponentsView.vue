@@ -1,6 +1,5 @@
 <template>
   <v-container class="py-12">
-    <!--================================================================================-->
     <v-snackbar
       v-model="snackbarOpen"
       color="success"
@@ -14,14 +13,13 @@
       </v-btn>
     </v-snackbar>
 
-    <!--================================================================================-->
     <v-divider></v-divider>
     <h2 class="mt-4 mb-2">Buttons</h2>
     <v-row>
-      <cc title="Green">
+      <cc title="Primary">
         <mew-button
           class="white--text mr-1"
-          color="#05c0a5"
+          color="primary"
           @click.native="
             snackbarOpen = true;
             snackbarMsg = 'Clicked';
@@ -29,10 +27,10 @@
           label="Button"
         />
       </cc>
-      <cc title="Green Outline">
+      <cc title="Primary Outline">
         <mew-button
           label="Button"
-          color="#05c0a5"
+          color="primary"
           outlined
           @click.native="
             snackbarOpen = true;
@@ -41,10 +39,10 @@
           class="mr-1"
         />
       </cc>
-      <cc title="Blue">
+      <cc title="Secondary">
         <mew-button
           label="Button"
-          color="#5a78f0"
+          color="secondary"
           @click.native="
             snackbarOpen = true;
             snackbarMsg = 'Clicked';
@@ -52,10 +50,10 @@
           class="mr-1 white--text"
         />
       </cc>
-      <cc title="Blue Outline">
+      <cc title="Secondary Outline">
         <mew-button
           label="Button"
-          color="#5a78f0"
+          color="secondary"
           outlined
           @click.native="
             snackbarOpen = true;
@@ -67,7 +65,7 @@
       <cc title="Disabled">
         <mew-button
           label="Button"
-          color="#5a78f0"
+          color="secondary"
           disabled
           @click.native="
             snackbarOpen = true;
@@ -79,7 +77,7 @@
       <cc title="Outline Disabled">
         <mew-button
           label="Button"
-          color="#5a78f0"
+          color="secondary"
           outlined
           disabled
           @click.native="
@@ -312,7 +310,7 @@
 </template>
 
 <script>
-import cc from "@/views/components/ComponentContainer";
+import cc from "@/views/containers/ComponentContainer";
 
 import MewButton from "@/components/MewButton/MewButton";
 import SwitchToggle from "@/components/Switch/SwitchToggle";

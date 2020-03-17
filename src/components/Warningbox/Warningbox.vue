@@ -15,11 +15,11 @@ export default {
 <style lang="scss" scoped>
 @import "@/global.scss";
 .warning-box {
-  border: 2px solid $color--secondary--cardinal;
+  border: 2px solid var(--v-cardinal-base);
   padding: 15px;
   border-radius: 5px;
   text-align: center;
-  color: $color--secondary--cardinal;
+  color: var(--v-cardinal-base);
   background-color: #ffeef1;
 }
 </style>

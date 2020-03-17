@@ -5,7 +5,7 @@
         <h1 class="text-uppercase display-2 font-weight-bold white--text">
           Styles and Components
         </h1>
-        <div class="headline text--color--primary--emerald font-weight-bold">
+        <div class="headline primary--text font-weight-bold">
           MyEtherWallet V6
         </div>
         <v-sheet
@@ -57,10 +57,10 @@
 </template>
 
 <script>
-import Typography from "./Typography";
-import Colors from "./Colors";
-import Icons from "./Icons";
-import Components from "./Components";
+import Typography from "./TypographyView";
+import Colors from "./ColorsView";
+import Icons from "./IconsView";
+import Components from "./ComponentsView";
 
 export default {
   components: {
@@ -76,10 +76,6 @@ export default {
 @import "@/global.scss";
 
 .title-container {
-  background-color: $color--primary--dark-space;
-}
-
-.text--color--text--silver {
-  $color--text--silver: #cecece;
+  background-color: var(--v-dark-space-base);
 }
 </style>

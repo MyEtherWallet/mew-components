@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Header from "@/views/Header";
-import Footer from "@/views/Footer";
+import Header from "@/views/components/HeaderComponent";
+import Footer from "@/views/components/FooterComponent";
 
 export default {
   name: "App",
@@ -26,7 +26,13 @@ export default {
 @import "@/global.scss";
 
 * {
-  color: var(--v-primaryText-base);
+  color: var(--v-info-base);
+}
+
+.v-application {
+  code {
+    color: var(--v-cerise-base) !important;
+  }
 }
 
 p {
@@ -63,7 +69,7 @@ h5 {
 }
 
 .theme--light.v-application {
-  background: white !important;
+  background: var(--v-white-base) !important;
 }
 
 @media (min-width: 1904px) {
