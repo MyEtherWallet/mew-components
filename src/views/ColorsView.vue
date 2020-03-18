@@ -94,12 +94,12 @@ export default {
           hex: "#fff"
         },
         {
-          type: "primary-silver",
-          hex: "#f2f4fa"
+          type: "disabled",
+          hex: "#cecece"
         },
         {
-          type: "silver",
-          hex: "#cecece"
+          type: "primary-silver",
+          hex: "#f2f4fa"
         },
         {
           type: "disabled-1",
