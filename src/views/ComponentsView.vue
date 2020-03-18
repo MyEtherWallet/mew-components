@@ -275,7 +275,7 @@
           <v-icon>mdi-medium</v-icon>
         </v-btn>
       </cc>
-      <cc subtitle="Social" title="Flags">
+      <!-- <cc subtitle="Social" title="Flags">
         <v-btn height="50" width="50" icon class="mr-2" color="grey lighten-1">
           <img width="30" src="@/assets/icons/Flags/china.png" />
         </v-btn>
@@ -294,7 +294,7 @@
         <v-btn height="50" width="50" icon class="mr-2" color="grey lighten-1">
           <img width="30" src="@/assets/icons/Flags/germany.png" />
         </v-btn>
-      </cc>
+      </cc> -->
       <cc subtitle="News" title="News Box">
         <NewsBox />
       </cc>
@@ -331,10 +331,10 @@ import NewsBox from "@/components/News/NewsBox";
 import AdSlider from "@/components/Ad/AdSlider";
 import TxStatus from "@/components/Tx/TxStatus";
 
-import btc from "@/assets/coins/btc.png";
-import eth from "@/assets/coins/eth.png";
-import bch from "@/assets/coins/bch.png";
-import xrp from "@/assets/coins/xrp.png";
+// import btc from "@/assets/coins/btc.png";
+// import eth from "@/assets/coins/eth.png";
+// import bch from "@/assets/coins/bch.png";
+// import xrp from "@/assets/coins/xrp.png";
 
 export default {
   components: {

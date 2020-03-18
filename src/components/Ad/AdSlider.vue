@@ -19,17 +19,17 @@
               </div>
             </v-sheet>
           </div>
-          <img src="@/assets/slider/mewconnect.png" />
+          <!-- <img src="@/assets/slider/mewconnect.png" /> -->
         </v-sheet>
       </v-carousel-item>
       <v-carousel-item>
         <v-sheet tile color="grey lighten-4">
-          <img src="@/assets/slider/myetherwallet.jpg" />
+          <!-- <img src="@/assets/slider/myetherwallet.jpg" /> -->
         </v-sheet>
       </v-carousel-item>
       <v-carousel-item>
         <v-sheet tile color="grey lighten-4">
-          <img src="@/assets/slider/spaceman.jpg" />
+          <!-- <img src="@/assets/slider/spaceman.jpg" /> -->
         </v-sheet>
       </v-carousel-item>
     </v-carousel>

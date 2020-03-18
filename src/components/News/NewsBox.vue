@@ -1,6 +1,6 @@
 <template>
   <v-card max-width="280">
-    <v-img src="@/assets/news.jpg" height="194"></v-img>
+    <!-- <v-img src="@/assets/news.jpg" height="194"></v-img> -->
     <v-card-title>Cafe Badilico</v-card-title>
     <v-card-text>
       Visit ten places on our planet that are undergoing the biggest changes

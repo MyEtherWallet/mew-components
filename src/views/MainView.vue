@@ -32,10 +32,10 @@
 
               <v-row class="pa-0 ma-0">
                 <a href="https://vuejs.org/" target="_blank" class="mr-2">
-                  <img src="@/assets/vue.png" width="70" />
+                  <!-- <img src="@/assets/vue.png" width="70" /> -->
                 </a>
                 <a href="https://vuetifyjs.com/en/" target="_blank">
-                  <img src="@/assets/vuetify.png" width="70" />
+                  <!-- <img src="@/assets/vuetify.png" width="70" /> -->
                 </a>
               </v-row>
             </v-list-item-content>
@@ -43,7 +43,7 @@
         </v-card>
 
         <a href="https://www.myetherwallet.com/" target="_blank">
-          <v-img src="@/assets/logo.png" max-width="110" />
+          <!-- <v-img src="@/assets/logo.png" max-width="110" /> -->
         </a>
       </v-container>
     </div>
