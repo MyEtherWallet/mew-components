@@ -16,7 +16,30 @@
     <v-divider></v-divider>
     <h2 class="mt-4 mb-2">Buttons</h2>
     <v-row>
-      <cc title="Primary">
+      <cc title="Icon">
+        <mew-button
+          btnStyle="transparent"
+          :icon="helpIcon"
+          iconAlign="center"
+        />
+      </cc>
+    </v-row>
+    <v-row>
+      <cc title="Text + Icon">
+        <mew-button
+          btnStyle="transparent"
+          :icon="helpIcon"
+          iconAlign="center"
+        />
+      </cc>
+    </v-row>
+    <!-- <h4 class="mt-4 mb-2">Theme: MEW</h4> -->
+    <h4 class="mt-4 mb-2">Theme: MEW</h4>
+    <v-row>
+      <cc subtitle="Transparent">
+        <!-- <mew-button btnType="text" text="Just Text" />
+        <mew-button btnType="outline" text="Outline" />
+        <mew-button btnType="icon" text="Icon" />
         <mew-button
           class="white--text mr-1"
           color="primary"
@@ -25,71 +48,11 @@
             snackbarMsg = 'Clicked';
           "
           label="Button"
-        />
-      </cc>
-      <cc title="Primary Outline">
-        <mew-button
-          label="Button"
-          color="primary"
-          outlined
-          @click.native="
-            snackbarOpen = true;
-            snackbarMsg = 'Clicked';
-          "
-          class="mr-1"
-        />
-      </cc>
-      <cc title="Secondary">
-        <mew-button
-          label="Button"
-          color="secondary"
-          @click.native="
-            snackbarOpen = true;
-            snackbarMsg = 'Clicked';
-          "
-          class="mr-1 white--text"
-        />
-      </cc>
-      <cc title="Secondary Outline">
-        <mew-button
-          label="Button"
-          color="secondary"
-          outlined
-          @click.native="
-            snackbarOpen = true;
-            snackbarMsg = 'Clicked';
-          "
-          class="mr-1"
-        />
-      </cc>
-      <cc title="Disabled">
-        <mew-button
-          label="Button"
-          color="secondary"
-          disabled
-          @click.native="
-            snackbarOpen = true;
-            snackbarMsg = 'Clicked';
-          "
-          class="mr-1"
-        />
-      </cc>
-      <cc title="Outline Disabled">
-        <mew-button
-          label="Button"
-          color="secondary"
-          outlined
-          disabled
-          @click.native="
-            snackbarOpen = true;
-            snackbarMsg = 'Clicked';
-          "
-          class="mr-1"
-        />
+        /> -->
       </cc>
     </v-row>
     <v-divider></v-divider>
-    <v-row>
+    <!-- <v-row>
       <cc subtitle="Switch" title="Switch Toggle">
         <SwitchToggle
           v-model="modelSwitchToggle"
@@ -305,28 +268,28 @@
       <cc subtitle="TX" title="TX Status">
         <TxStatus />
       </cc>
-    </v-row>
+    </v-row> -->
   </v-container>
 </template>
 
 <script>
 import cc from "@/views/containers/ComponentContainer";
-
 import MewButton from "@/components/MewButton/MewButton";
-import SwitchToggle from "@/components/Switch/SwitchToggle";
-import Checkbox from "@/components/Checkbox/Checkbox";
-import Radio from "@/components/Radio/Radio";
-import Popover from "@/components/Popover/Popover";
-import Warningbox from "@/components/Warningbox/Warningbox";
-import InputNormal from "@/components/Input/InputNormal";
-import InputPassword from "@/components/Input/InputPassword";
-import InputSearch1 from "@/components/Input/InputSearch1";
-import InputSearch2 from "@/components/Input/InputSearch2";
-import InputSearch3 from "@/components/Input/InputSearch3";
-import Community from "@/components/HelpCenter/Community";
-import CustomerSupport from "@/components/HelpCenter/CustomerSupport";
-import CommunityButtons from "@/components/Community/CommunityButtons";
-import ReminderBox from "@/components/Reminder/ReminderBox";
+import helpIcon from "@/assets/images/icons/icon-help.png";
+// import SwitchToggle from "@/components/Switch/SwitchToggle";
+// import Checkbox from "@/components/Checkbox/Checkbox";
+// import Radio from "@/components/Radio/Radio";
+// import Popover from "@/components/Popover/Popover";
+// import Warningbox from "@/components/Warningbox/Warningbox";
+// import InputNormal from "@/components/Input/InputNormal";
+// import InputPassword from "@/components/Input/InputPassword";
+// import InputSearch1 from "@/components/Input/InputSearch1";
+// import InputSearch2 from "@/components/Input/InputSearch2";
+// import InputSearch3 from "@/components/Input/InputSearch3";
+// import Community from "@/components/HelpCenter/Community";
+// import CustomerSupport from "@/components/HelpCenter/CustomerSupport";
+// import CommunityButtons from "@/components/Community/CommunityButtons";
+// import ReminderBox from "@/components/Reminder/ReminderBox";
 import NewsBox from "@/components/News/NewsBox";
 import AdSlider from "@/components/Ad/AdSlider";
 import TxStatus from "@/components/Tx/TxStatus";
@@ -340,25 +303,12 @@ export default {
   components: {
     cc,
     "mew-button": MewButton,
-    SwitchToggle,
-    Checkbox,
-    Radio,
-    Popover,
-    Warningbox,
-    InputNormal,
-    InputPassword,
-    InputSearch1,
-    InputSearch2,
-    InputSearch3,
-    Community,
-    CustomerSupport,
-    CommunityButtons,
-    ReminderBox,
     NewsBox,
     AdSlider,
     TxStatus
   },
   data: () => ({
+    helpIcon: helpIcon,
     snackbarOpen: false,
     snackbarMsg: "",
     modelSwitchToggle: false,
@@ -375,11 +325,11 @@ export default {
     modelInputSearch1: "",
     searchItems1: [
       { header: "Major Cryptocurrency" },
-      { name: "Bitcoin", value: "btc", group: "Group 1", avatar: btc },
-      { name: "Ethereum", value: "eth", group: "Group 1", avatar: eth },
+      { name: "Bitcoin", value: "btc", group: "Group 1", avatar: '' },
+      { name: "Ethereum", value: "eth", group: "Group 1", avatar: '' },
       { header: "Miner Cryptocurrency" },
-      { name: "Bitcoin Cash", value: "bch", group: "Group 2", avatar: bch },
-      { name: "XRP", value: "xrp", group: "Group 2", avatar: xrp }
+      { name: "Bitcoin Cash", value: "bch", group: "Group 2", avatar: '' },
+      { name: "XRP", value: "xrp", group: "Group 2", avatar: '' }
     ],
     modelInputSearch2: "",
     searchItems2: [
