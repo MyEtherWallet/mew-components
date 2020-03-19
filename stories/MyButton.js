@@ -16,9 +16,9 @@ export default {
   },
 
   template: `
-    <button :style="buttonStyles" @click="onClick">
+    <v-btn depressed :style="buttonStyles" @click="onClick">
       <slot></slot>
-    </button>
+    </v-btn>
   `,
 
   methods: {
