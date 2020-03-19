@@ -1,7 +1,59 @@
 import Vue from "vue";
-import Vuetify from "vuetify/lib";
+import Vuetify, {
+  VApp,
+  VBtn,
+  VCard,
+  VCardText,
+  VCol,
+  VContainer,
+  VContent,
+  VDialog,
+  VDivider,
+  VIcon,
+  VImg,
+  VList,
+  VListItem,
+  VListItemAvatar,
+  VListItemContent,
+  VListItemIcon,
+  VListItemTitle,
+  VNavigationDrawer,
+  VRow,
+  VSheet,
+  VSnackbar,
+  VSparkline,
+  VToolbar,
+  VLayout
+} from "vuetify/lib";
 
-Vue.use(Vuetify);
+Vue.use(Vuetify, {
+  components: {
+    VApp,
+    VBtn,
+    VCard,
+    VCardText,
+    VCol,
+    VContainer,
+    VContent,
+    VDialog,
+    VDivider,
+    VIcon,
+    VImg,
+    VList,
+    VListItem,
+    VListItemAvatar,
+    VListItemContent,
+    VListItemIcon,
+    VListItemTitle,
+    VNavigationDrawer,
+    VRow,
+    VSheet,
+    VSnackbar,
+    VSparkline,
+    VToolbar,
+    VLayout
+  }
+});
 
 export default new Vuetify({
   theme: {
