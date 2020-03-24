@@ -1,22 +1,22 @@
 {
   "name": "@myetherwallet/mew-components",
-  "version": "0.1.1-beta",
+  "version": "0.1.2-beta",
   "description": "MEW Components",
-  "main": "dist/mewComponents.umd.js",
-  "module": "dist/mewComponents.esm.js",
-  "unpkg": "dist/mewComponents.min.js",
+  "main": "dist/mew-components.umd.js",
+  "module": "dist/mew-components.esm.js",
+  "unpkg": "dist/mew-components.min.js",
   "browser": {
-    "./sfc": "src/mewComponents.vue"
+    "./sfc": "src/mew-components.vue"
   },
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
     "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
-    "build-bundle": "vue-cli-service build --target lib --name mewComponents ./src/wrapper.js",
-    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/mewComponents.umd.js",
-    "build:es": "rollup --config build/rollup.config.js --format es --file dist/mewComponents.esm.js",
-    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/mewComponents.min.js",
+    "build-bundle": "vue-cli-service build --target lib --name mew-components ./src/wrapper.js",
+    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/mew-components.umd.js",
+    "build:es": "rollup --config build/rollup.config.js --format es --file dist/mew-components.esm.js",
+    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/mew-components.min.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
