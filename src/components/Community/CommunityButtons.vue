@@ -1,9 +1,9 @@
 <template>
   <div class="d-flex flex-no-wrap align-center">
-    <v-sheet class="text-center pr-10" v-for="(b, k) in buttons" :key="k">
+    <!-- <v-sheet class="text-center pr-10" v-for="(b, k) in buttons" :key="k">
       <img :src="b.icon" width="60" />
       <p>{{ b.title }}</p>
-    </v-sheet>
+    </v-sheet> -->
   </div>
 </template>
 
@@ -17,14 +17,14 @@ export default {
   props: {
     na: Array
   },
-  data: () => ({
-    buttons: [
-      { title: "Telegram", icon: Telegram },
-      { title: "Slack", icon: Slack },
-      { title: "Github", icon: Github },
-      { title: "Reddit", icon: Reddit }
-    ]
-  }),
+  // data: () => ({
+  //   buttons: [
+  //     { title: "Telegram", icon: Telegram },
+  //     { title: "Slack", icon: Slack },
+  //     { title: "Github", icon: Github },
+  //     { title: "Reddit", icon: Reddit }
+  //   ]
+  // }),
   watch: {}
 };
 </script>

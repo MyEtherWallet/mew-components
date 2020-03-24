@@ -238,7 +238,8 @@
           <v-icon>mdi-medium</v-icon>
         </v-btn>
       </cc>
-      <!-- <cc subtitle="Social" title="Flags">
+      // eslint-disable-next-line vue/no-parsing-error
+        cc subtitle="Social" title="Flags">
         <v-btn height="50" width="50" icon class="mr-2" color="grey lighten-1">
           <img width="30" src="@/assets/icons/Flags/china.png" />
         </v-btn>
@@ -258,7 +259,7 @@
           <img width="30" src="@/assets/icons/Flags/germany.png" />
         </v-btn>
       </cc> -->
-      <cc subtitle="News" title="News Box">
+    <!-- <cc subtitle="News" title="News Box">
         <NewsBox />
       </cc>
       <cc subtitle="Ad" title="Ad Slider">
@@ -268,7 +269,7 @@
       <cc subtitle="TX" title="TX Status">
         <TxStatus />
       </cc>
-    </v-row> -->
+    </v-row>  -->
   </v-container>
 </template>
 
@@ -290,9 +291,9 @@ import helpIcon from "@/assets/images/icons/icon-help.png";
 // import CustomerSupport from "@/components/HelpCenter/CustomerSupport";
 // import CommunityButtons from "@/components/Community/CommunityButtons";
 // import ReminderBox from "@/components/Reminder/ReminderBox";
-import NewsBox from "@/components/News/NewsBox";
-import AdSlider from "@/components/Ad/AdSlider";
-import TxStatus from "@/components/Tx/TxStatus";
+// import NewsBox from "@/components/News/NewsBox";
+// import AdSlider from "@/components/Ad/AdSlider";
+// import TxStatus from "@/components/Tx/TxStatus";
 
 // import btc from "@/assets/coins/btc.png";
 // import eth from "@/assets/coins/eth.png";
@@ -302,10 +303,7 @@ import TxStatus from "@/components/Tx/TxStatus";
 export default {
   components: {
     cc,
-    "mew-button": MewButton,
-    NewsBox,
-    AdSlider,
-    TxStatus
+    "mew-button": MewButton
   },
   data: () => ({
     helpIcon: helpIcon,
@@ -325,11 +323,11 @@ export default {
     modelInputSearch1: "",
     searchItems1: [
       { header: "Major Cryptocurrency" },
-      { name: "Bitcoin", value: "btc", group: "Group 1", avatar: '' },
-      { name: "Ethereum", value: "eth", group: "Group 1", avatar: '' },
+      { name: "Bitcoin", value: "btc", group: "Group 1", avatar: "" },
+      { name: "Ethereum", value: "eth", group: "Group 1", avatar: "" },
       { header: "Miner Cryptocurrency" },
-      { name: "Bitcoin Cash", value: "bch", group: "Group 2", avatar: '' },
-      { name: "XRP", value: "xrp", group: "Group 2", avatar: '' }
+      { name: "Bitcoin Cash", value: "bch", group: "Group 2", avatar: "" },
+      { name: "XRP", value: "xrp", group: "Group 2", avatar: "" }
     ],
     modelInputSearch2: "",
     searchItems2: [

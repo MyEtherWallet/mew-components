@@ -9,14 +9,13 @@
     >
       <!-- <v-icon>mdi-star</v-icon> -->
       <!-- <span v-if="!onlyIcon"> -->
-        <!-- <span v-if="iconLeft">{{ iconLeft }}</span> -->
-        <!-- <span>{{ text }}</span> -->
-        <!-- <span v-if="iconLeft">{{ iconRight }}</span> -->
+      <!-- <span v-if="iconLeft">{{ iconLeft }}</span> -->
+      <!-- <span>{{ text }}</span> -->
+      <!-- <span v-if="iconLeft">{{ iconRight }}</span> -->
       <!-- </span> -->
       <!-- <v-icon>mdi-heart</v-icon> -->
       <img @click="hello()" class="icon" :src="icon" alt="Icon" />
     </v-btn>
-
   </div>
 </template>
 
@@ -31,10 +30,6 @@ export default {
   },
   props: {
     text: String,
-    subText: {
-      type: String,
-      default: ""
-    },
     icon: String,
     iconAlign: {
       type: String,
@@ -58,12 +53,12 @@ export default {
       this.style === "transparent" && this.icon && this.iconAlign === "center";
     },
     hello() {
-      console.error('in here')
+      console.error("in here");
     },
     checkBtnType() {
       switch (this.btnType) {
         case "text":
-          console.error('btn', this.btnType)
+          console.error("btn", this.btnType);
           this.onlyText = true;
           break;
         case "outline":
