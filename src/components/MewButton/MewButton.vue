@@ -21,6 +21,7 @@
 
 <script>
 export default {
+  name: "MewButton",
   data() {
     return {
       onlyText: false,

@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import MewButton from "../MewButton.vue";
+import MewButton from "../MewButton";
 import { action } from '@storybook/addon-actions';
 
 export default {
