@@ -1,17 +1,17 @@
 <template>
   <div>
     <v-btn
-      :color="getColor()"
+      :class="getClasses()"
+      :color="colorTheme"
       depressed
-      :disabled="disabled"
-      :outlined="btnStyle === 'outline'"
-      :text="btnStyle === 'transparent'"
+      :outlined="btnStyle.toLowerCase() === btnStyles.outline"
+      :text="btnStyle.toLowerCase() === btnStyles.transparent"
     >
-      <span>{{ text }}</span>
+      <span>{{ title }}</span>
       <!-- <v-icon>mdi-star</v-icon> -->
       <!-- <span v-if="!onlyIcon"> -->
       <!-- <span v-if="iconLeft">{{ iconLeft }}</span> -->
-      <!-- <span>{{ text }}</span> -->
+      <!-- <span>{{ title }}</span> -->
       <!-- <span v-if="iconLeft">{{ iconRight }}</span> -->
       <!-- </span> -->
       <!-- <v-icon>mdi-heart</v-icon> -->
@@ -22,14 +22,14 @@
 
 <script>
 export default {
+  name: "MewButton",
   props: {
-    text: String,
+    title: String,
     icon: String,
     iconAlign: {
       type: String,
       default: "none"
     },
-    disabled: Boolean,
     colorTheme: {
       type: String,
       default: ""
@@ -39,16 +39,46 @@ export default {
       default: ""
     }
   },
-  mounted() {
-    console.error('this', this.colorTheme)
+  data() {
+    return {
+      btnStyles: {
+        background: "background",
+        transparent: "transparent",
+        outline: "outline"
+      },
+      colorThemes: {
+        white: "white",
+        disabled: "disabled"
+      }
+    };
   },
   methods: {
-    getColor() {
-      if (this.colorTheme === "mew") {
-        console.error('in here')
-        return "primary";
+    getClasses() {
+      const classes = [];
+
+      if (
+        this.btnStyle.toLowerCase() === this.btnStyles.background &&
+        this.colorTheme.toLowerCase() !== this.colorThemes.white
+      ) {
+        classes.push("white--text");
       }
+      if (
+        this.btnStyle.toLowerCase() === this.btnStyles.background &&
+        this.colorTheme.toLowerCase() === this.colorThemes.white
+      ) {
+        classes.push("primary--text");
+      }
+      if (this.colorTheme.toLowerCase() === this.colorThemes.disabled) {
+        classes.push("disabled-theme");
+      }
+      return classes;
     }
   }
 };
 </script>
+
+<style>
+.disabled-theme {
+  pointer-events: none;
+}
+</style>

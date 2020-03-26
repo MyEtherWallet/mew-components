@@ -1,43 +1,54 @@
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
+// import { action } from '@storybook/addon-actions';
+// import { linkTo } from '@storybook/addon-links';
 
-import MewButton from './MewButton';
-import MewTheme from './MewTheme';
-// import Simple from './SimpleTheme';
+// import MewButton from './MewButton';
+import Primary from "./Primary";
+import Basic from "./Basic";
+import Error from "./Error";
+import Secondary from "./Secondary";
+import White from "./White";
+import Disabled from "./Disabled";
 
 export default {
   title: "MewButton"
 };
 
-export const MEWTheme = () =>  ({
-  components: { "mew-button": MewButton },
-  template: `
-    <div>
-    <mew-button
-      btnStyle="transparent"
-      text="MEW Transparent"
-      colorTheme="mew"
-      @click="action"
-    />
-    <br/>
-    <mew-button
-      btnStyle="outline"
-      text="MEW Outline"
-      colorTheme="mew"
-      @click="action"
-    />
-    <br/>
-    <mew-button
-      btnStyle="background"
-      text="MEW Background"
-      colorTheme="mew"
-      @click="action"
-    />
-  </div>`
-});
+// export const MEWTheme = () =>  ({
+//   components: { "mew-button": MewButton },
+//   template: `
+//     <div>
+//     <mew-button
+//       btn-style="transparent"
+//       title="MEW Transparent"
+//       color-theme="mew"
+//       @click="action"
+//     />
+//     <br/>
+//     <mew-button
+//       btn-style="outline"
+//       title="MEW Outline"
+//       color-theme="mew"
+//       @click="action"
+//     />
+//     <br/>
+//     <mew-button
+//       btn-style="background"
+//       title="MEW Background"
+//       color-theme="mew"
+//       @click="action"
+//     />
+//     <mew-button
+//       btn-style="background"
+//       title="Basic Background"
+//       color-theme="error"
+//       @click="action"
+//     />
+//   </div>`
+// });
 
-export const MEWOutline = () => ({
-  components: { "mew-button": MewButton },
-  template:
-    '<mew-button btnStyle="outline" text="MEW Outline" colorTheme="mew"></mew-button>'
-});
+export const PrimaryTheme = () => Primary;
+export const BasicTheme = () => Basic;
+export const ErrorTheme = () => Error;
+export const SecondaryTheme = () => Secondary;
+export const WhiteTheme = () => White;
+export const DisabledTheme = () => Disabled;

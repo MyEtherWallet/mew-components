@@ -1,20 +1,18 @@
 <template>
   <div>
     <v-btn
-      :color="getColor()"
+      :class="getClasses()"
+      :color="colorTheme"
       depressed
-      :disabled="disabled"
-      :outlined="btnStyle === 'outline'"
-      :text="btnStyle === 'transparent'"
+      :disabled="colorTheme.toLowerCase() === btnStyles.disabled"
+      :outlined="btnStyle.toLowerCase() === btnStyles.outline"
+      :text="btnStyle.toLowerCase() === btnStyles.transparent"
     >
       <span>{{ text }}</span>
       <!-- <v-icon>mdi-star</v-icon> -->
-      <!-- <span v-if="!onlyIcon"> -->
       <!-- <span v-if="iconLeft">{{ iconLeft }}</span> -->
       <!-- <span>{{ text }}</span> -->
       <!-- <span v-if="iconLeft">{{ iconRight }}</span> -->
-      <!-- </span> -->
-      <!-- <v-icon>mdi-heart</v-icon> -->
       <!-- <img @click="hello()" class="icon" :src="icon" alt="Icon" /> -->
     </v-btn>
   </div>
@@ -30,7 +28,6 @@ export default {
       type: String,
       default: "none"
     },
-    disabled: Boolean,
     colorTheme: {
       type: String,
       default: ""
@@ -40,10 +37,31 @@ export default {
       default: ""
     }
   },
+  data() {
+    return {
+      btnStyles: {
+        background: "background",
+        transparent: "transparent",
+        outline: "outline"
+      },
+      colorThemes: {
+        white: "white"
+      }
+    };
+  },
   methods: {
-    getColor() {
-      if (this.colorTheme === "mew") {
-        return "primary";
+    getClasses() {
+      if (
+        this.btnStyle.toLowerCase() === this.btnStyles.background &&
+        this.colorTheme.toLowerCase() !== this.colorThemes.white
+      ) {
+        return "white--text";
+      }
+      if (
+        this.btnStyle.toLowerCase() === this.btnStyles.background &&
+        this.colorTheme.toLowerCase() === this.colorThemes.white
+      ) {
+        return "primary--text";
       }
     }
   }
