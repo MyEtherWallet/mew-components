@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="wrapper">
     <mew-button
       title="Title"
       subtitle="Subtitle"
       tag="#tag"
-      color-theme="disabled"
-      :right-icon="disabledTimer"
+      color-theme="outline"
+      note="Not Recommended"
       :titleIcon="iconChecked"
     />
     <br />
@@ -14,19 +14,24 @@
 
 <script>
 import MewSuperButton from "../MewSuperButton";
-import disabledTimer from "/Users/jessicapeng/mew-components/src/assets/images/icons/icon-timer-disable.png";
 import iconChecked from "/Users/jessicapeng/mew-components/src/assets/images/icons/icon-checked.png";
 
 export default {
-  title: "Green",
+  title: "Outline",
   components: {
     "mew-button": MewSuperButton
   },
   data() {
     return {
-      disabledTimer: disabledTimer,
       iconChecked: iconChecked
     };
   }
 };
 </script>
+
+<style scoped>
+.wrapper {
+  background-color: var(--v-dark-blue-base);
+  height: 100%;
+}
+</style>

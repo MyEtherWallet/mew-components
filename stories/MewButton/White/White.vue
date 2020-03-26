@@ -27,7 +27,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .wrapper {
   background-color: var(--v-primary-base);
   height: 100%;

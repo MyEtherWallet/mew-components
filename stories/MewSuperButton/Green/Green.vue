@@ -4,8 +4,9 @@
       title="Title"
       subtitle="Subtitle"
       tag="#tag"
-      color-theme="disabled"
-      :right-icon="disabledTimer"
+      color-theme="light-green"
+      label="new"
+      :right-icon="makerDao"
       :titleIcon="iconChecked"
     />
     <br />
@@ -14,7 +15,7 @@
 
 <script>
 import MewSuperButton from "../MewSuperButton";
-import disabledTimer from "/Users/jessicapeng/mew-components/src/assets/images/icons/icon-timer-disable.png";
+import makerDao from "/Users/jessicapeng/mew-components/src/assets/images/dapps/icon-makerdao.png";
 import iconChecked from "/Users/jessicapeng/mew-components/src/assets/images/icons/icon-checked.png";
 
 export default {
@@ -24,7 +25,7 @@ export default {
   },
   data() {
     return {
-      disabledTimer: disabledTimer,
+      makerDao: makerDao,
       iconChecked: iconChecked
     };
   }

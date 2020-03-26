@@ -4,19 +4,24 @@
       @click="onBtnClick()"
       :class="getClasses()"
       :color="getColor()"
+      :outlined="colorTheme.toLowerCase() === colorThemes.outline"
       :ripple="false"
       depressed
     >
-      <div class="btn-container">
+      <div class="btn-container" :class="rightIcon ? 'center-align' : ''">
         <div class="left-container">
           <div class="title-wrapper">
             <div class="title font-weight-bold">{{ title }}</div>
-            <div class="body-2" v-if="titleIcon"><img :src="titleIcon" alt="Icon" /></div>
+            <div class="body-2" v-if="titleIcon">
+              <img :src="titleIcon" alt="Icon" />
+            </div>
           </div>
           <div class="mt-2" v-if="subtitle">{{ subtitle }}</div>
           <div class="body-2 mt-1">{{ tag }}</div>
         </div>
         <div class="right-container">
+          <div v-if="label">{{ label }}</div>
+          <div class="text-uppercase caption mt-1 note">{{ note }}</div>
           <img v-if="rightIcon" class="icon" :src="rightIcon" alt="Icon" />
         </div>
       </div>
@@ -43,7 +48,9 @@ export default {
   data() {
     return {
       colorThemes: {
-        basic: "basic"
+        outline: "outline",
+        basic: "basic",
+        disabled: "disabled"
       },
       active: false
     };
@@ -57,19 +64,29 @@ export default {
       this.active = !this.active;
     },
     getColor() {
-      if (this.colorTheme.toLowerCase() === this.colorThemes.basic) {
+      if (
+        this.colorTheme.toLowerCase() === this.colorThemes.outline ||
+        this.colorTheme.toLowerCase() === this.colorThemes.basic ||
+        this.colorTheme.toLowerCase() === this.colorThemes.disabled
+      ) {
         return "white";
       }
+      return this.colorTheme;
     },
     getClasses() {
-      const classes = ['text-capitalize'];
+      const classes = ["text-capitalize"];
       if (this.colorTheme.toLowerCase() === this.colorThemes.basic) {
-        console.error("inhere");
         classes.push("basic--text");
       }
 
-      if (this.active) {
-        console.error("in hereeee");
+      if (this.colorTheme.toLowerCase() === this.colorThemes.disabled) {
+        classes.push("disabled");
+      }
+
+      if (
+        this.active &&
+        this.colorTheme.toLowerCase() !== this.colorThemes.disabled
+      ) {
         classes.push("green-border");
       }
 
@@ -84,6 +101,12 @@ export default {
   .v-btn {
     border-radius: 10px;
     height: 100% !important;
+    width: 100%;
+  }
+
+  .disabled {
+    color: var(--v-disabled-super-base) !important;
+    pointer-events: none;
   }
 
   .green-border {
@@ -91,29 +114,34 @@ export default {
   }
 
   .btn-container {
-    align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: 3px 10px;
+    padding: 5px 10px;
+    width: 100%;
+  }
+
+  .center-align {
+    align-items: center;
   }
 
   .left-container {
-    margin-right: 146px;
     text-align: left;
-
     .title-wrapper {
       align-items: center;
       display: flex;
       img {
-        height: 18px;
+        max-height: 20px;
         margin-left: 2px;
       }
     }
   }
 
   .right-container {
+    .note {
+      color: var(--v-yellow-1-base) !important;
+    }
     img {
-      height: 101px;
+      height: 80px;
     }
   }
 

@@ -74,8 +74,10 @@ export default new Vuetify({
         independence: "#536d8b",
         spruce: "#506175",
         disabled: "#cecece",
+        "disabled-super": "#C5C5C5",
         white: "#ffffff",
         basic: "#0b2840",
+        "light-green": "#F1FAFA",
         "police-strobe": "#25b0e8",
         "dark-independence": "#334758",
         "naples-yellow": "#fcb755",
@@ -84,7 +86,8 @@ export default new Vuetify({
         "disabled-1": "#d8d8d8",
         "disabled-2": "#999",
         "grey-1": "#96a8b6",
-        "yellow-1": "#ffe9c5"
+        "yellow-1": "#f5a623",
+        "dark-blue": "#184f90"
       }
     }
   }
