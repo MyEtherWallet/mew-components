@@ -4,7 +4,7 @@ import Outline from "./Outline";
 import Disabled from "./Disabled";
 
 export default {
-  title: "MewStoryButton"
+  title: "MewSuperButton"
 };
 
 export const BasicTheme = () => Basic;
