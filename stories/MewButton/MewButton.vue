@@ -77,8 +77,17 @@ export default {
 };
 </script>
 
-<style>
-.disabled-theme {
-  pointer-events: none;
+<style lang="scss" scoped>
+.v-application {
+  .v-btn {
+    border-radius: 6px !important;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .disabled-theme {
+    pointer-events: none;
+  }
 }
 </style>

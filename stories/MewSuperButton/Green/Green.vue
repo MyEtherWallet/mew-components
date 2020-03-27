@@ -5,7 +5,7 @@
       subtitle="Subtitle"
       tag="#tag"
       color-theme="light-green"
-      label="new"
+      :is-new="true"
       :right-icon="makerDao"
       :titleIcon="iconChecked"
     />

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Group 5</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ENS-manager_Prototype-A_light" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="dapps-center" transform="translate(-662.000000, -450.000000)">
+            <g id="Group-2" transform="translate(347.000000, 84.000000)">
+                <g id="Group-10" transform="translate(32.000000, 323.000000)">
+                    <g id="Group-8" transform="translate(0.000000, 43.000000)">
+                        <g id="Group-7">
+                            <g id="Group-5" transform="translate(283.000000, 0.000000)">
+                                <path d="M0,2.27373675e-13 L31.7581461,31.7581461 L31.7581461,17.5348133 L31.7581461,6 C31.7581461,2.6862915 29.0718546,2.26764957e-13 25.7581461,2.27373675e-13 L13.9539709,2.27373675e-13 L0,2.27373675e-13 Z" id="Path-2" fill="#FF445B"></path>
+                                <text id="NEW" transform="translate(21.136826, 11.085786) rotate(45.000000) translate(-21.136826, -11.085786) " font-family="SFProDisplay-Semibold, SF Pro Display" font-size="8" font-weight="500" fill="#FFFFFF">
+                                    <tspan x="12.1368258" y="14.0857864">NEW</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

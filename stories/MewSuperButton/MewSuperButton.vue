@@ -20,7 +20,7 @@
           <div class="body-2 mt-1">{{ tag }}</div>
         </div>
         <div class="right-container">
-          <div v-if="label">{{ label }}</div>
+          <img v-if="isNew" class="label" :src="newLabel" alt="label" />
           <div class="text-uppercase caption mt-1 note">{{ note }}</div>
           <img v-if="rightIcon" class="icon" :src="rightIcon" alt="Icon" />
         </div>
@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import newLabel from "/Users/jessicapeng/mew-components/src/assets/images/icons/new-label.svg";
+
 export default {
   name: "MewSuperButton",
   props: {
@@ -39,7 +41,7 @@ export default {
     titleIcon: String,
     rightIcon: String,
     note: String,
-    label: String,
+    isNew: Boolean,
     colorTheme: {
       type: String,
       default: ""
@@ -52,23 +54,17 @@ export default {
         basic: "basic",
         disabled: "disabled"
       },
-      active: false
+      active: false,
+      newLabel: newLabel
     };
-  },
-  mounted() {
-    console.error("sfdfs", this.rightIcon);
   },
   methods: {
     onBtnClick() {
-      console.error("in here");
       this.active = !this.active;
     },
     getColor() {
-      if (
-        this.colorTheme.toLowerCase() === this.colorThemes.outline ||
-        this.colorTheme.toLowerCase() === this.colorThemes.basic ||
-        this.colorTheme.toLowerCase() === this.colorThemes.disabled
-      ) {
+      const colorThemesWhite = ["outline", "basic", "disabled"];
+      if ( colorThemesWhite.indexOf(this.colorTheme) >= 0) {
         return "white";
       }
       return this.colorTheme;
@@ -99,7 +95,7 @@ export default {
 <style lang="scss" scoped>
 .v-application {
   .v-btn {
-    border-radius: 10px;
+    border-radius: 12px;
     height: 100% !important;
     width: 100%;
   }
@@ -116,7 +112,7 @@ export default {
   .btn-container {
     display: flex;
     justify-content: space-between;
-    padding: 5px 10px;
+    padding: 20px;
     width: 100%;
   }
 
@@ -137,6 +133,13 @@ export default {
   }
 
   .right-container {
+    .label {
+      position: absolute;
+      right: -16px;
+      height: 46px;
+      top: 0;
+    }
+
     .note {
       color: var(--v-yellow-1-base) !important;
     }

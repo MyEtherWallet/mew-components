@@ -67,3 +67,11 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.v-application {
+  .v-btn {
+    border-radius: 6px !important;
+  }
+}
+</style>
