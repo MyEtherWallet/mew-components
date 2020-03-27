@@ -29,7 +29,7 @@ export default {
 
 <style scoped>
 .wrapper {
-  background-color: var(--v-primary-base);
+  background-color: var(--v-primary-base) !important;
   height: 100%;
 }
 </style>

@@ -10,13 +10,7 @@ import White from "./White";
 import Disabled from "./Disabled";
 
 export default {
-  title: "MewButton",
-  parameters: {
-    backgrounds: [
-      { name: 'White', value: '#00aced', default: true },
-      // { name: 'facebook', value: '#3b5998' },
-    ]
-  },
+  title: "MewButton"
 };
 
 // export const MEWTheme = () =>  ({
@@ -61,6 +55,6 @@ export const DisabledTheme = () => Disabled;
 
 WhiteTheme.story = {
   parameters: {
-    backgrounds: [{ name: "red", value: "rgba(255, 0, 0)", default: true }]
+    backgrounds: [{ name: "dark background", value: "#FF0000", default: true }]
   }
 };

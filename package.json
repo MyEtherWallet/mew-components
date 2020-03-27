@@ -18,24 +18,28 @@
     "build:es": "rollup --config build/rollup.config.js --format es --file dist/mew-components.esm.js",
     "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/mew-components.min.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -c .storybook -o .out",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "dependencies": {
-    "@storybook/addon-backgrounds": "^5.3.17",
     "@storybook/addon-viewport": "^5.3.17",
     "@storybook/source-loader": "^5.3.17",
+    "all": "0.0.0",
     "core-js": "^2.6.5",
     "fibers": "^4.0.2",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vuetify": "^2.0.0",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "git-url-parse": "^11.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@storybook/addon-actions": "^5.3.17",
+    "@storybook/addon-backgrounds": "^5.3.17",
     "@storybook/addon-links": "^5.3.17",
     "@storybook/addons": "^5.3.17",
+    "@storybook/storybook-deployer": "^2.8.3",
     "@storybook/vue": "^5.3.17",
     "@vue/cli-plugin-babel": "^3.11.0",
     "@vue/cli-plugin-eslint": "^3.11.0",
