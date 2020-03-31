@@ -1,8 +1,10 @@
 // Import vue component
 import MewButton from "./components/MewButton/MewButton.vue";
+import MewSuperButton from "./components/MewSuperButton/MewSuperButton.vue";
 
 const Components = {
-  MewButton
+  MewButton,
+  MewSuperButton
 };
 
 // Declare install function executed by Vue.use()

@@ -3,17 +3,20 @@
     <mew-button
       title="Title"
       subtitle="Subtitle"
-      tag="#tag"
+      tag="tag"
       color-theme="outline"
       note="Not Recommended"
       :titleIcon="iconChecked"
     />
     <br />
+    <div class="code-wrapper">
+      <code>{{ outlineSuperBtn }}</code>
+    </div>
   </div>
 </template>
 
 <script>
-import MewSuperButton from "../MewSuperButton";
+import MewSuperButton from "/Users/jessicapeng/mew-components/src/components/MewSuperButton/MewSuperButton.vue";
 import iconChecked from "/Users/jessicapeng/mew-components/src/assets/images/icons/icon-checked.png";
 
 export default {
@@ -23,7 +26,9 @@ export default {
   },
   data() {
     return {
-      iconChecked: iconChecked
+      iconChecked: iconChecked,
+      outlineSuperBtn:
+        '<mew-button title="Title" subtitle="Subtitle" tag="tag" color-theme="outline" note="Not Recommended" :titleIcon="iconChecked"/>'
     };
   }
 };
@@ -31,7 +36,7 @@ export default {
 
 <style scoped>
 .wrapper {
-  background-color: var(--v-dark-blue-base);
+  /* background-color: var(--v-dark-blue-base); */
   height: 100%;
 }
 </style>

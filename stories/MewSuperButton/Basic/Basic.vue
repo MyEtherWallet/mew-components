@@ -3,17 +3,20 @@
     <mew-button
       title="Title"
       subtitle="Subtitle"
-      tag="#tag"
+      tag="tag"
       color-theme="basic"
       :right-icon="buyEthIcon"
       :titleIcon="iconChecked"
     />
     <br />
+    <div class="code-wrapper">
+      <code>{{ basicSuperBtn }}</code>
+    </div>
   </div>
 </template>
 
 <script>
-import MewSuperButton from "../MewSuperButton";
+import MewSuperButton from "/Users/jessicapeng/mew-components/src/components/MewSuperButton/MewSuperButton.vue";
 import buyEthIcon from "/Users/jessicapeng/mew-components/src/assets/images/icons/icon-buy-eth.png";
 import iconChecked from "/Users/jessicapeng/mew-components/src/assets/images/icons/icon-checked.png";
 
@@ -25,7 +28,9 @@ export default {
   data() {
     return {
       buyEthIcon: buyEthIcon,
-      iconChecked: iconChecked
+      iconChecked: iconChecked,
+      basicSuperBtn:
+        '<mew-button title="Title" subtitle="Subtitle" tag="tag" color-theme="basic" :right-icon="buyEthIcon" :titleIcon="iconChecked"/>'
     };
   }
 };

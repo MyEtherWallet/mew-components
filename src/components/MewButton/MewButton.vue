@@ -4,16 +4,22 @@
       :class="getClasses()"
       :color="colorTheme"
       depressed
-      :disabled="colorTheme.toLowerCase() === btnStyles.disabled"
       :outlined="btnStyle.toLowerCase() === btnStyles.outline"
       :text="btnStyle.toLowerCase() === btnStyles.transparent"
     >
-      <span>{{ text }}</span>
-      <!-- <v-icon>mdi-star</v-icon> -->
-      <!-- <span v-if="iconLeft">{{ iconLeft }}</span> -->
-      <!-- <span>{{ text }}</span> -->
-      <!-- <span v-if="iconLeft">{{ iconRight }}</span> -->
-      <!-- <img @click="hello()" class="icon" :src="icon" alt="Icon" /> -->
+      <img
+        v-if="iconAlign.toLowerCase() === iconAlignments.left"
+        class="icon mr-1"
+        :src="icon"
+        alt="icon"
+      />
+      <span>{{ title }}</span>
+      <img
+        v-if="iconAlign.toLowerCase() === iconAlignments.right"
+        class="icon ml-1"
+        :src="icon"
+        alt="icon"
+      />
     </v-btn>
   </div>
 </template>
@@ -22,7 +28,7 @@
 export default {
   name: "MewButton",
   props: {
-    text: String,
+    title: String,
     icon: String,
     iconAlign: {
       type: String,
@@ -45,24 +51,35 @@ export default {
         outline: "outline"
       },
       colorThemes: {
-        white: "white"
+        white: "white",
+        disabled: "disabled"
+      },
+      iconAlignments: {
+        left: "left",
+        right: "right"
       }
     };
   },
   methods: {
     getClasses() {
+      const classes = [];
+
       if (
         this.btnStyle.toLowerCase() === this.btnStyles.background &&
         this.colorTheme.toLowerCase() !== this.colorThemes.white
       ) {
-        return "white--text";
+        classes.push("white--text");
       }
       if (
         this.btnStyle.toLowerCase() === this.btnStyles.background &&
         this.colorTheme.toLowerCase() === this.colorThemes.white
       ) {
-        return "primary--text";
+        classes.push("primary--text");
       }
+      if (this.colorTheme.toLowerCase() === this.colorThemes.disabled) {
+        classes.push("disabled-theme");
+      }
+      return classes;
     }
   }
 };
@@ -72,6 +89,21 @@ export default {
 .v-application {
   .v-btn {
     border-radius: 6px !important;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+
+    .icon {
+      height: 27px;
+    }
+  }
+
+  .disabled-theme {
+    pointer-events: none;
+
+    .icon {
+      filter: grayscale(100%);
+    }
   }
 }
 </style>

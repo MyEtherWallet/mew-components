@@ -3,18 +3,21 @@
     <mew-button
       title="Title"
       subtitle="Subtitle"
-      tag="#tag"
+      tag="tag"
       color-theme="disabled"
-      :right-icon="disabledTimer"
+      :right-icon="timerIcon"
       :titleIcon="iconChecked"
     />
     <br />
+    <div class="code-wrapper">
+      <code>{{ disabledSuperBtn }}</code>
+    </div>
   </div>
 </template>
 
 <script>
-import MewSuperButton from "../MewSuperButton";
-import disabledTimer from "/Users/jessicapeng/mew-components/src/assets/images/icons/icon-timer-disable.png";
+import MewSuperButton from "/Users/jessicapeng/mew-components/src/components/MewSuperButton/MewSuperButton.vue";
+import timerIcon from "/Users/jessicapeng/mew-components/src/assets/images/icons/icon-timer-enable.png";
 import iconChecked from "/Users/jessicapeng/mew-components/src/assets/images/icons/icon-checked.png";
 
 export default {
@@ -24,8 +27,10 @@ export default {
   },
   data() {
     return {
-      disabledTimer: disabledTimer,
-      iconChecked: iconChecked
+      timerIcon: timerIcon,
+      iconChecked: iconChecked,
+      disabledSuperBtn:
+        '<mew-button title="Title" subtitle="Subtitle" tag="tag" color-theme="disabled" :right-icon="timerIcon" :titleIcon="iconChecked"/>'
     };
   }
 };

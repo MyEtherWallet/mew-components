@@ -13,16 +13,26 @@
           <div class="title-wrapper">
             <div class="title font-weight-bold">{{ title }}</div>
             <div class="body-2" v-if="titleIcon">
-              <img :src="titleIcon" alt="Icon" />
+              <img class="title-icon" :src="titleIcon" alt="Icon" />
             </div>
           </div>
           <div class="mt-2" v-if="subtitle">{{ subtitle }}</div>
-          <div class="body-2 mt-1">{{ tag }}</div>
+          <div class="body-2 mt-1">#{{ tag }}</div>
         </div>
         <div class="right-container">
           <img v-if="isNew" class="label" :src="newLabel" alt="label" />
-          <div class="text-uppercase caption mt-1 note">{{ note }}</div>
-          <img v-if="rightIcon" class="icon" :src="rightIcon" alt="Icon" />
+          <div
+            v-if="!rightIcon && note"
+            class="text-uppercase caption mt-1 note"
+          >
+            {{ note }}
+          </div>
+          <img
+            v-if="rightIcon"
+            class="right-icon"
+            :src="rightIcon"
+            alt="Icon"
+          />
         </div>
       </div>
     </v-btn>
@@ -64,7 +74,7 @@ export default {
     },
     getColor() {
       const colorThemesWhite = ["outline", "basic", "disabled"];
-      if ( colorThemesWhite.indexOf(this.colorTheme) >= 0) {
+      if (colorThemesWhite.indexOf(this.colorTheme) >= 0) {
         return "white";
       }
       return this.colorTheme;
@@ -103,6 +113,14 @@ export default {
   .disabled {
     color: var(--v-disabled-super-base) !important;
     pointer-events: none;
+
+    .right-icon {
+      filter: grayscale(100%);
+    }
+
+    .title-icon {
+      filter: grayscale(100%);
+    }
   }
 
   .green-border {
@@ -125,7 +143,7 @@ export default {
     .title-wrapper {
       align-items: center;
       display: flex;
-      img {
+      .title-icon {
         max-height: 20px;
         margin-left: 2px;
       }
@@ -143,8 +161,8 @@ export default {
     .note {
       color: var(--v-yellow-1-base) !important;
     }
-    img {
-      height: 80px;
+    .right-icon {
+      max-height: 80px;
     }
   }
 
