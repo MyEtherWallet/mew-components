@@ -11,9 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/setup-node@v1
-        with:
-          node-version: "10.x"
+      - name: setup env
+        run: |
+          docker build -t mew-build-container .
+          echo ::set-env name=NODE_VERSION::$(docker run --rm -v `pwd`:/home:rw mew-build-container /bin/bash -c "node --version")
+
       - name: Cache node modules
         uses: actions/cache@v1
         env:
@@ -25,10 +27,10 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-${{env.NODE_VERSION}}-
 
       - name: npm install
-        run: npm install
+        run: docker run --rm -v `pwd`:/home:rw --user "$(id -u):$(id -g)" mew-build-container /bin/bash -c "npm install"
 
       - name: build
-        run: rm -rf .out && npm run build-storybook
+        run: docker run --rm -v `pwd`:/home:rw mew-build-container /bin/bash -c "npm run build-storybook"
 
       - name: deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@releases/v3
