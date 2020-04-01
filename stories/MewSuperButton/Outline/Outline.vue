@@ -28,7 +28,7 @@ export default {
     return {
       iconChecked: iconChecked,
       outlineSuperBtn:
-        '<mew-button title="Title" subtitle="Subtitle" tag="tag" color-theme="outline" note="Not Recommended" :titleIcon="iconChecked"/>'
+        '<mew-super-button title="Title" subtitle="Subtitle" tag="tag" color-theme="outline" note="Not Recommended" :titleIcon="iconChecked"/>'
     };
   }
 };

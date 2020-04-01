@@ -30,7 +30,7 @@ export default {
       buyEthIcon: buyEthIcon,
       iconChecked: iconChecked,
       basicSuperBtn:
-        '<mew-button title="Title" subtitle="Subtitle" tag="tag" color-theme="basic" :right-icon="buyEthIcon" :titleIcon="iconChecked"/>'
+        '<mew-super-button title="Title" subtitle="Subtitle" tag="tag" color-theme="basic" :right-icon="buyEthIcon" :titleIcon="iconChecked"/>'
     };
   }
 };

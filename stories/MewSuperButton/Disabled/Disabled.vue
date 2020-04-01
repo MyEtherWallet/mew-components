@@ -30,7 +30,7 @@ export default {
       timerIcon: timerIcon,
       iconChecked: iconChecked,
       disabledSuperBtn:
-        '<mew-button title="Title" subtitle="Subtitle" tag="tag" color-theme="disabled" :right-icon="timerIcon" :titleIcon="iconChecked"/>'
+        '<mew-super-button title="Title" subtitle="Subtitle" tag="tag" color-theme="disabled" :right-icon="timerIcon" :titleIcon="iconChecked"/>'
     };
   }
 };

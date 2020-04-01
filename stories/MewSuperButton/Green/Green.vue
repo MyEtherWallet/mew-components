@@ -31,7 +31,7 @@ export default {
       makerDao: makerDao,
       iconChecked: iconChecked,
       greenSuperBtn:
-        '<mew-button title="Title" subtitle="Subtitle" tag="tag" color-theme="light-green" :is-new="true" :right-icon="makerDao" :titleIcon="iconChecked"/>'
+        '<mew-super-button title="Title" subtitle="Subtitle" tag="tag" color-theme="light-green" :is-new="true" :right-icon="makerDao" :titleIcon="iconChecked"/>'
     };
   }
 };
