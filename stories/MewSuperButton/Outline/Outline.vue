@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import MewSuperButton from "/Users/jessicapeng/mew-components/src/components/MewSuperButton/MewSuperButton.vue";
-import iconChecked from "/Users/jessicapeng/mew-components/src/assets/images/icons/icon-checked.png";
+import MewSuperButton from "@/components/MewSuperButton/MewSuperButton.vue";
+import iconChecked from "@/assets/images/icons/icon-checked.png";
 
 export default {
   title: "Outline",

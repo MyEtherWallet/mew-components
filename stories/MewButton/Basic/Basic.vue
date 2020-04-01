@@ -50,8 +50,8 @@
 </template>
 
 <script>
-import MewButton from "/Users/jessicapeng/mew-components/src/components/MewButton/MewButton.vue";
-import iconPrinter from "/Users/jessicapeng/mew-components/src/assets/images/icons/icon-printer.png";
+import MewButton from "@/components/MewButton/MewButton.vue";
+import iconPrinter from "@/assets/images/icons/icon-printer.png";
 
 export default {
   title: "Basic",

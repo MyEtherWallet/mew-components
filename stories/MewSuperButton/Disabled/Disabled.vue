@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import MewSuperButton from "/Users/jessicapeng/mew-components/src/components/MewSuperButton/MewSuperButton.vue";
-import timerIcon from "/Users/jessicapeng/mew-components/src/assets/images/icons/icon-timer-enable.png";
-import iconChecked from "/Users/jessicapeng/mew-components/src/assets/images/icons/icon-checked.png";
+import MewSuperButton from "@/components/MewSuperButton/MewSuperButton.vue";
+import timerIcon from "@/assets/images/icons/icon-timer-enable.png";
+import iconChecked from "@/assets/images/icons/icon-checked.png";
 
 export default {
   title: "Green",

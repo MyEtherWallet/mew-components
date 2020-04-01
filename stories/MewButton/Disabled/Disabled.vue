@@ -53,8 +53,8 @@
 </template>
 
 <script>
-import MewButton from "/Users/jessicapeng/mew-components/src/components/MewButton/MewButton.vue";
-import iconEdit from "/Users/jessicapeng/mew-components/src/assets/images/icons/icon-edit-green.png";
+import MewButton from "@/components/MewButton/MewButton.vue";
+import iconEdit from "@/assets/images/icons/icon-edit-green.png";
 
 export default {
   title: "Disabled",
