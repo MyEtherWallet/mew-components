@@ -28,5 +28,4 @@ if (GlobalVue) {
   GlobalVue.use(plugin);
 }
 
-// To allow use as module (npm/webpack/etc.) export component
-export default { MewButton, MewSuperButton };
+export const MewButton = MewButton, MewSuperButton = MewSuperButton;
