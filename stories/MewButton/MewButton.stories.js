@@ -54,8 +54,8 @@ export const WhiteTheme = () => White;
 export const DisabledTheme = () => Disabled;
 export const Test = () => White;
 
-WhiteTheme.story = {
-  parameters: {
-    backgrounds: [{ name: "dark background", value: "#FF0000", default: true }]
-  }
-};
+// WhiteTheme.story = {
+//   parameters: {
+//     backgrounds: [{ name: "dark background", value: "#FF0000", default: true }]
+//   }
+// };
