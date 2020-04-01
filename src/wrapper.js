@@ -1,14 +1,12 @@
-// Import vue component
-import Button from "./components/MewButton/MewButton.vue";
-import SuperButton from "./components/MewSuperButton/MewSuperButton.vue";
+import button from "./components/MewButton/MewButton.vue";
+import superButton from "./components/MewSuperButton/MewSuperButton.vue";
 
 // Declare install function executed by Vue.use()
-export function install() {
+export function install(Vue) {
   if (install.installed) return;
   install.installed = true;
-  // Object.keys(Components).forEach(name => {
-  //   Vue.component(name, Components[name]);
-  // });
+  Vue.component("MewButton", button);
+  Vue.component("MewSuperButton", superButton);
 }
 
 // Create module definition for Vue.use()
@@ -28,5 +26,5 @@ if (GlobalVue) {
   GlobalVue.use(plugin);
 }
 
-export const MewButton = Button,
-  MewSuperButton = SuperButton;
+export const MewButton = button,
+  MewSuperButton = superButton;
