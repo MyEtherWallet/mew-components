@@ -20,7 +20,7 @@
           <div class="body-2 mt-1">#{{ tag }}</div>
         </div>
         <div class="right-container">
-          <img v-if="isNew" class="label" :src="newLabel" alt="label" />
+          <div v-if="isNew" class="label" alt="label"><div>NEW</div></div>
           <div
             v-if="!rightIcon && note"
             class="text-uppercase caption mt-1 note"
@@ -40,8 +40,6 @@
 </template>
 
 <script>
-import newLabel from "/Users/jessicapeng/mew-components/src/assets/images/icons/new-label.svg";
-
 export default {
   name: "MewSuperButton",
   props: {
@@ -64,8 +62,7 @@ export default {
         basic: "basic",
         disabled: "disabled"
       },
-      active: false,
-      newLabel: newLabel
+      active: false
     };
   },
   methods: {
@@ -152,10 +149,26 @@ export default {
 
   .right-container {
     .label {
+      align-items: center;
+      border-right: 25px solid red;
+      border-top: 25px solid red;
+      border-left: 25px solid transparent;
+      border-bottom: 25px solid transparent;
+      border-radius: 0 12px 0 0;
+      display: flex;
+      height: 46px;
       position: absolute;
       right: -16px;
-      height: 46px;
       top: 0;
+      width: 0;
+
+      div {
+        color: #fff;
+        font-size: 12px;
+        margin-top: -15px;
+        margin-left: -8px;
+        transform: rotate(45deg);
+      }
     }
 
     .note {
