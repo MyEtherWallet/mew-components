@@ -51,7 +51,8 @@ export const BasicTheme = () => Basic;
 export const ErrorTheme = () => Error;
 export const SecondaryTheme = () => Secondary;
 export const WhiteTheme = () => White;
-// export const DisabledTheme = () => Disabled;
+export const DisabledTheme = () => Disabled;
+export const Test = () => White;
 
 WhiteTheme.story = {
   parameters: {
