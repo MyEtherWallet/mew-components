@@ -49,8 +49,8 @@
 </template>
 
 <script>
-import MewButton from "/Users/jessicapeng/mew-components/src/components/MewButton/MewButton.vue";
-import iconEdit from "/Users/jessicapeng/mew-components/src/assets/images/icons/icon-edit-green.png";
+import MewButton from "@/components/MewButton/MewButton.vue";
+import iconEdit from "@/assets/images/icons/icon-edit-green.png";
 
 export default {
   title: "White",
@@ -70,7 +70,7 @@ export default {
         '<mew-button :icon="iconEdit" icon-align="left" btn-style="background" title="White Background Left Icon" color-theme="white"/>',
       whiteOutlineRightIcon:
         '<mew-button :icon="iconEdit" icon-align="right" btn-style="outline" title="White Outline Right Icon" color-theme="white"/>'
-    }
+    };
   }
 };
 </script>
