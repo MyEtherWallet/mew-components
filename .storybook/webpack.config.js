@@ -5,7 +5,8 @@ module.exports = async ({ config, mode }) => {
   config.resolve = {
     extensions: [".wasm", ".mjs", ".js", ".json", ".vue"],
     alias: {
-      "@": path.resolve(__dirname, "../src")
+      "@": path.resolve(__dirname, "../src"),
+      vue: 'vue/dist/vue.esm.js'
     }
   };
   // `mode` has a value of 'DEVELOPMENT' or 'PRODUCTION'
