@@ -30,7 +30,7 @@ jobs:
         run: docker run --rm -v `pwd`:/home:rw --user "$(id -u):$(id -g)" mew-build-container /bin/bash -c "npm install"
 
       - name: build
-        run: docker run --rm -v `pwd`:/home:rw mew-build-container /bin/bash -c "npm run build-storybook"
+        run: docker run --rm -v `pwd`:/home:rw --user "$(id -u):$(id -g)" mew-build-container /bin/bash -c "npm run build-storybook"
 
       - name: deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@releases/v3
