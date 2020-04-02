@@ -52,12 +52,20 @@ configureViewport({
 
 addDecorator(() => ({
   vuetify: vuetifyConfig,
-  template: '<v-app><v-content><v-container><v-layout column><story/></v-layout></v-container></v-content></v-app>',
+  template: '<v-app :style="noBackground"><v-content><v-container><v-layout column><story/></v-layout></v-container></v-content></v-app>',
+  data() {
+    return {
+      noBackground: {
+        background: "none"
+      }
+    }
+  }
 }));
 
 addParameters({
   backgrounds: [
-    { name: "light", value: "#eeeeee" },
-    { name: "dark", value: "#222222" }
+    { name: "light", value: "#fff" },
+    { name: "dark-blue", value: "#184f90" },
+    { name: "primary", value: "#05c0a5"}
   ]
 });

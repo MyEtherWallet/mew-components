@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="no-background">
     <Header />
     <v-content>
       <router-view />
@@ -68,8 +68,8 @@ h5 {
   font-size: 14px !important;
 }
 
-.theme--light.v-application {
-  background: var(--v-white-base) !important;
+.no-background {
+  background: none !important;
 }
 
 @media (min-width: 1904px) {
