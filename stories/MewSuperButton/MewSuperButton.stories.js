@@ -63,6 +63,7 @@ export const MEWSuperButton = () => ({
   },
   template: `
     <div>
+    <br />
     <mew-super-button
       :title="title"
       :subtitle="subtitle"
