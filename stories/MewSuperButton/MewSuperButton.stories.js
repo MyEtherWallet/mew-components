@@ -44,7 +44,7 @@ export const MEWSuperButton = () => ({
       default: text("Note", "")
     },
     isNew: {
-      default: boolean("isNew", false)
+      default: boolean("IsNew", false)
     },
     colorTheme: {
       default: optionsKnob(
@@ -55,10 +55,10 @@ export const MEWSuperButton = () => ({
       )
     },
     titleIcon: {
-      default: files("titleIcon", ".png, .svg", "")
+      default: files("TitleIcon", ".png, .svg", "")
     },
     rightIcon: {
-      default: files("rightIcon", ".png, .svg", "")
+      default: files("RightIcon", ".png, .svg", "")
     }
   },
   template: `
