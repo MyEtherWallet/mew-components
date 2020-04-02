@@ -76,12 +76,6 @@ export default {
 </script>
 
 <style lang="scss">
-.theme--light.v-application {
-  .v-content__wrap {
-    background: #e9e9e9 !important;
-  }
-}
-
 .wrapper {
   height: 100%;
 }

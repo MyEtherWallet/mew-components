@@ -68,10 +68,6 @@ h5 {
   font-size: 14px !important;
 }
 
-.theme--light.v-application {
-  background: var(--v-white-base) !important;
-}
-
 @media (min-width: 1904px) {
   .container {
     max-width: 1264px;

@@ -53,8 +53,3 @@ export const SecondaryTheme = () => Secondary;
 export const WhiteTheme = () => White;
 export const DisabledTheme = () => Disabled;
 
-// WhiteTheme.story = {
-//   parameters: {
-//     backgrounds: [{ name: "dark background", value: "#FF0000", default: true }]
-//   }
-// };
