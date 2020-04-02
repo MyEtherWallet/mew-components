@@ -1,4 +1,4 @@
-import { configure, addDecorator } from '@storybook/vue';
+import { configure, addDecorator, addParameters } from '@storybook/vue';
 import Vue from 'vue';
 import vuetifyConfig from "../src/plugins/vuetify";
 import "vuetify/src/styles/main.sass";
@@ -49,15 +49,15 @@ configureViewport({
     ...INITIAL_VIEWPORTS
   }
 });
+
 addDecorator(() => ({
   vuetify: vuetifyConfig,
   template: '<v-app><v-content><v-container><v-layout column><story/></v-layout></v-container></v-content></v-app>',
 }));
 
-// automatically import all files ending in *.stories.js
-const req = require.context('../stories', true, /.stories.js$/);
-function loadStories() {
-  req.keys().forEach(filename => req(filename));
-}
-
-configure(loadStories, module);
+addParameters({
+  backgrounds: [
+    { name: "light", value: "#eeeeee" },
+    { name: "dark", value: "#222222" }
+  ]
+});
