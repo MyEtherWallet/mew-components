@@ -73,6 +73,7 @@ export const MEWButton = () => ({
   },
   template: `
     <div>
+    <br />
     <mew-button
       :icon-align="iconAlign"
       :disabled="disabled"
