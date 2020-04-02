@@ -1,9 +1,17 @@
-import { withKnobs, text, boolean, optionsKnob, files} from "@storybook/addon-knobs";
-
+import {
+  withKnobs,
+  text,
+  boolean,
+  optionsKnob,
+  files
+} from "@storybook/addon-knobs";
 import MewButton from "@/components/MewButton/MewButton.vue";
 
 export default {
   title: "MewButton",
+  parameters: {
+    component: MewButton
+  },
   decorators: [withKnobs]
 };
 
@@ -57,7 +65,7 @@ export const MEWButton = () => ({
       )
     },
     icon: {
-      default: files("Icon", ".png, .svg", [])
+      default: files("Icon", ".png, .svg", "")
     },
     iconAlign: {
       default: optionsKnob("IconAlign", iconAlignOptions, "none", optionsObj)

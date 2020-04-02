@@ -6,6 +6,7 @@
       :color="getColor()"
       :outlined="colorTheme.toLowerCase() === colorThemes.outline"
       :ripple="false"
+      :disabled="disabled"
       depressed
     >
       <div class="btn-container" :class="rightIcon ? 'center-align' : ''">
@@ -13,7 +14,12 @@
           <div class="title-wrapper">
             <div class="title font-weight-bold">{{ title }}</div>
             <div class="body-2" v-if="titleIcon">
-              <img class="title-icon" :src="titleIcon" alt="Icon" />
+              <img
+                v-if="titleIcon"
+                class="title-icon"
+                :src="titleIcon"
+                alt="Icon"
+              />
             </div>
           </div>
           <div class="mt-2" v-if="subtitle">{{ subtitle }}</div>
@@ -53,14 +59,17 @@ export default {
     colorTheme: {
       type: String,
       default: ""
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
       colorThemes: {
         outline: "outline",
-        basic: "basic",
-        disabled: "disabled"
+        basic: "basic"
       },
       active: false
     };
@@ -70,7 +79,7 @@ export default {
       this.active = !this.active;
     },
     getColor() {
-      const colorThemesWhite = ["outline", "basic", "disabled"];
+      const colorThemesWhite = ["outline", "basic"];
       if (colorThemesWhite.indexOf(this.colorTheme) >= 0) {
         return "white";
       }
@@ -82,14 +91,11 @@ export default {
         classes.push("basic--text");
       }
 
-      if (this.colorTheme.toLowerCase() === this.colorThemes.disabled) {
+      if (this.disabled) {
         classes.push("disabled");
       }
 
-      if (
-        this.active &&
-        this.colorTheme.toLowerCase() !== this.colorThemes.disabled
-      ) {
+      if (this.active && !this.disabled) {
         classes.push("green-border");
       }
 

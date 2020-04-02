@@ -33,7 +33,6 @@ export default {
     icon: String,
     iconAlign: {
       type: String,
-      description: "Hello",
       default: "none"
     },
     colorTheme: {
@@ -81,7 +80,7 @@ export default {
       ) {
         classes.push("primary--text");
       }
-      if (this.colorTheme.toLowerCase() === this.disabled) {
+      if (this.disabled) {
         classes.push("disabled-theme");
       }
       return classes;
