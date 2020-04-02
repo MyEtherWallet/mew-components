@@ -1,5 +1,5 @@
 <template>
-  <v-app class="no-background">
+  <v-app>
     <Header />
     <v-content>
       <router-view />
@@ -66,10 +66,6 @@ h5 {
 
 .v-label {
   font-size: 14px !important;
-}
-
-.no-background {
-  background: none !important;
 }
 
 @media (min-width: 1904px) {
