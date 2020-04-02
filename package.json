@@ -38,6 +38,8 @@
     "@storybook/addon-actions": "^5.3.17",
     "@storybook/addon-backgrounds": "^5.3.17",
     "@storybook/addon-links": "^5.3.17",
+    "@storybook/addon-docs": "^5.3.18",
+    "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addons": "^5.3.17",
     "@storybook/storybook-deployer": "^2.8.3",
     "@storybook/vue": "^5.3.17",

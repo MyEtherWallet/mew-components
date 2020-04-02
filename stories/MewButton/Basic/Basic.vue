@@ -46,6 +46,15 @@
       <code>{{ basicOutlineRightIcon }}</code>
     </div>
     <br />
+    <mew-button
+      btn-style="outline"
+      title="Basic Outline Disabled"
+      color-theme="basic"
+      disabled="true"
+    />
+    <div class="code-wrapper">
+      <code>{{ basicOutlineRightIcon }}</code>
+    </div>
   </div>
 </template>
 

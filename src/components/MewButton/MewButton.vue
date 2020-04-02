@@ -3,6 +3,7 @@
     <v-btn
       :class="getClasses()"
       :color="colorTheme"
+      :disabled="disabled"
       depressed
       :outlined="btnStyle.toLowerCase() === btnStyles.outline"
       :text="btnStyle.toLowerCase() === btnStyles.transparent"
@@ -32,6 +33,7 @@ export default {
     icon: String,
     iconAlign: {
       type: String,
+      description: "Hello",
       default: "none"
     },
     colorTheme: {
@@ -41,6 +43,10 @@ export default {
     btnStyle: {
       type: String,
       default: ""
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -51,8 +57,7 @@ export default {
         outline: "outline"
       },
       colorThemes: {
-        white: "white",
-        disabled: "disabled"
+        white: "white"
       },
       iconAlignments: {
         left: "left",
@@ -76,7 +81,7 @@ export default {
       ) {
         classes.push("primary--text");
       }
-      if (this.colorTheme.toLowerCase() === this.colorThemes.disabled) {
+      if (this.colorTheme.toLowerCase() === this.disabled) {
         classes.push("disabled-theme");
       }
       return classes;

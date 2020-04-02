@@ -1,55 +1,77 @@
-// import { action } from '@storybook/addon-actions';
-// import { linkTo } from '@storybook/addon-links';
+import { withKnobs, text, boolean, optionsKnob, files} from "@storybook/addon-knobs";
 
-// import MewButton from './MewButton';
-import Primary from "./Primary";
-import Basic from "./Basic";
-import Error from "./Error";
-import Secondary from "./Secondary";
-import White from "./White";
-import Disabled from "./Disabled";
+import MewButton from "@/components/MewButton/MewButton.vue";
 
 export default {
-  title: "MewButton"
+  title: "MewButton",
+  decorators: [withKnobs]
 };
 
-// export const MEWTheme = () =>  ({
-//   components: { "mew-button": MewButton },
-//   template: `
-//     <div>
-//     <mew-button
-//       btn-style="transparent"
-//       title="MEW Transparent"
-//       color-theme="mew"
-//       @click="action"
-//     />
-//     <br/>
-//     <mew-button
-//       btn-style="outline"
-//       title="MEW Outline"
-//       color-theme="mew"
-//       @click="action"
-//     />
-//     <br/>
-//     <mew-button
-//       btn-style="background"
-//       title="MEW Background"
-//       color-theme="mew"
-//       @click="action"
-//     />
-//     <mew-button
-//       btn-style="background"
-//       title="Basic Background"
-//       color-theme="error"
-//       @click="action"
-//     />
-//   </div>`
-// });
+const iconAlignOptions = {
+  left: "left",
+  right: "right",
+  none: "none"
+};
 
-export const PrimaryTheme = () => Primary;
-export const BasicTheme = () => Basic;
-export const ErrorTheme = () => Error;
-export const SecondaryTheme = () => Secondary;
-export const WhiteTheme = () => White;
-export const DisabledTheme = () => Disabled;
+const colorThemeOptions = {
+  primary: "primary",
+  basic: "basic",
+  error: "error",
+  secondary: "secondary",
+  white: "white"
+};
 
+const btnStyleOptions = {
+  outline: "outline",
+  background: "background",
+  transparent: "transparent"
+};
+
+const optionsObj = {
+  display: "inline-radio"
+};
+
+export const MEWButton = () => ({
+  components: { "mew-button": MewButton },
+  props: {
+    disabled: {
+      default: boolean("Disabled", false)
+    },
+    title: {
+      default: text("Title", "MEW Button")
+    },
+    colorTheme: {
+      default: optionsKnob(
+        "ColorTheme",
+        colorThemeOptions,
+        "primary",
+        optionsObj
+      )
+    },
+    btnStyle: {
+      default: optionsKnob(
+        "BtnStyle",
+        btnStyleOptions,
+        "background",
+        optionsObj
+      )
+    },
+    icon: {
+      default: files("Icon", ".png, .svg", [])
+    },
+    iconAlign: {
+      default: optionsKnob("IconAlign", iconAlignOptions, "none", optionsObj)
+    }
+  },
+  template: `
+    <div>
+    <mew-button
+      :icon-align="iconAlign"
+      :disabled="disabled"
+      :title="title"
+      :color-theme="colorTheme"
+      :btn-style="btnStyle"
+      :icon="icon"
+    />
+  </div>`
+});
