@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: "MewButton",
+  name: "MewsButton",
   props: {
     title: String,
     icon: String,
@@ -90,6 +90,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
 .v-application {
   .v-btn {
     border-radius: 6px !important;

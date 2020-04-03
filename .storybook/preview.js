@@ -64,8 +64,8 @@ addDecorator(() => ({
 
 addParameters({
   backgrounds: [
-    { name: "light", value: "#fff" },
+    { name: "white", value: "#fff" },
     { name: "dark-blue", value: "#184f90" },
-    { name: "primary", value: "#05c0a5"}
+    { name: "light-green", value: "#cdf4ee"}
   ]
 });

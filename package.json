@@ -17,13 +17,11 @@
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/mew-components.umd.js",
     "build:es": "rollup --config build/rollup.config.js --format es --file dist/mew-components.esm.js",
     "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/mew-components.min.js",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -c .storybook watch-css -s ./src",
     "build-storybook": "build-storybook -c .storybook -o .out",
     "deploy-storybook": "storybook-to-ghpages"
   },
   "dependencies": {
-    "@storybook/addon-viewport": "^5.3.17",
-    "@storybook/source-loader": "^5.3.17",
     "all": "0.0.0",
     "core-js": "^2.6.5",
     "fibers": "^4.0.2",
@@ -40,6 +38,8 @@
     "@storybook/addon-links": "^5.3.17",
     "@storybook/addon-docs": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
+    "@storybook/addon-viewport": "^5.3.17",
+    "@storybook/source-loader": "^5.3.17",
     "@storybook/addons": "^5.3.17",
     "@storybook/storybook-deployer": "^2.8.3",
     "@storybook/vue": "^5.3.17",
@@ -62,7 +62,8 @@
     "sass-loader": "^7.1.0",
     "vue-cli-plugin-vuetify": "^0.6.3",
     "vue-template-compiler": "^2.6.10",
-    "vuetify-loader": "^1.2.2"
+    "vuetify-loader": "^1.2.2",
+    "file-loader": "^6.0.0"
   },
   "files": [
     "dist/*",

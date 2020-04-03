@@ -24,9 +24,15 @@ export default {
 
 <style lang="scss">
 @import "@/global.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 * {
   color: var(--v-info-base);
+}
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
 }
 
 .v-application {
