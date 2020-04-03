@@ -31,7 +31,8 @@ export const All = () => ({
       },
       mewCaption: {
         fontSize: "12px",
-        fontWeight: 700
+        fontWeight: 700,
+        textTransform: "uppercase"
       },
       markupStyle: {
         color: "#cfcfcf",
@@ -77,6 +78,6 @@ export const All = () => ({
     <div :style="markupStyle">font-size: 14px; font-weight: 400</div>
     <br />
     <div :style="mewCaption">.mew-caption</div>
-    <div :style="markupStyle">font-size: 12px; font-weight: 700</div>
+    <div :style="markupStyle">font-size: 12px; font-weight: 700; text-transform: uppercase</div>
   </div>`
 });
