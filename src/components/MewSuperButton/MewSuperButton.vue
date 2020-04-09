@@ -49,17 +49,44 @@
 export default {
   name: "MewSuperButton",
   props: {
+    /**
+     * The text that will go in the button.
+     */
     title: String,
+    /**
+     * The text that will go under the button title.
+     */
     subtitle: String,
+    /**
+     * The text that will go under the button subtitle.
+     */
     tag: String,
+    /**
+     * The title-icon url. Inserts an icon next to the button title.
+     */
     titleIcon: String,
+    /**
+     * The right-icon url. Inserts an icon on the right container of the button.
+     */
     rightIcon: String,
+    /**
+     * The text that will go on the upper right corner. Will not display if right-icon is true.
+     */
     note: String,
+    /**
+     * Applies a new badge to the button.
+     */
     isNew: Boolean,
+    /**
+     * Applies the button color theme: basic, lightGreen, or outline.
+     */
     colorTheme: {
       type: String,
       default: ""
     },
+    /**
+     * Removes the ability to click or target the component.
+     */
     disabled: {
       type: Boolean,
       default: false

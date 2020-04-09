@@ -29,20 +29,39 @@
 export default {
   name: "MewsButton",
   props: {
+    /**
+     * The text that will go in the button.
+     */
     title: String,
+    /**
+     * The icon url. Inserts an icon next to the button title.
+     */
     icon: String,
+    /**
+     * Aligns the icon: left, right, or none.
+     */
     iconAlign: {
       type: String,
+      description: "Hello",
       default: "none"
     },
+    /**
+     * Applies the button color theme: basic, primary, error, white, or secondary.
+     */
     colorTheme: {
       type: String,
       default: ""
     },
+    /**
+     * Applies the button style: background, transparent, or outline.
+     */
     btnStyle: {
       type: String,
       default: ""
     },
+    /**
+     * Removes the ability to click or target the component.
+     */
     disabled: {
       type: Boolean,
       default: false

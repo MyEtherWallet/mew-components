@@ -43,14 +43,14 @@ export const MEWButton = () => ({
   components: { "mew-button": MewButton },
   props: {
     disabled: {
-      default: boolean("disabled", false)
+      default: boolean("Disabled", false),
     },
     title: {
-      default: text("title", "MEW Button")
+      default: text("Title", "MEW Button")
     },
     colorTheme: {
       default: optionsKnob(
-        "color-theme",
+        "ColorTheme",
         colorThemeOptions,
         "primary",
         optionsObj
@@ -58,17 +58,24 @@ export const MEWButton = () => ({
     },
     btnStyle: {
       default: optionsKnob(
-        "btn-style",
+        "BtnStyle",
         btnStyleOptions,
         "background",
         optionsObj
       )
     },
     icon: {
-      default: files("icon", ".png, .svg", "")
+      default: files("Icon", ".png, .svg", "")
     },
     iconAlign: {
-      default: optionsKnob("icon-align", iconAlignOptions, "none", optionsObj)
+      default: optionsKnob("IconAlign", iconAlignOptions, "none", optionsObj)
+    },
+    description: {
+      MewButton: {
+        props: {
+          disabled: 'DISABLED!'
+        }
+      }
     }
   },
   template: `
