@@ -49,7 +49,7 @@ export const All = () => ({
   template: `
     <div>
     <br/>
-    <h3 :style="{paddingBottom: '10px'}"><span :style="headerStyle">font-family:</span> <span :style="{ fontWeight: 400 }">Roboto</span></h3>
+    <h3 :style="{paddingBottom: '10px'}"><span :style="headerStyle">font-family: </span> <span :style="{ fontWeight: 400 }">Roboto</span></h3>
     <h3 :style="headerStyle">classes</h3>
     <div :style="mewBody, { fontWeight: 400 }">.font-weight-regular</div>
     <div :style="markupStyle">font-weight: 400</div>

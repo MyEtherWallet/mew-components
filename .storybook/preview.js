@@ -1,8 +1,8 @@
-import { configure, addDecorator, addParameters } from '@storybook/vue';
-import Vue from 'vue';
+import { addDecorator, addParameters } from '@storybook/vue';
 import vuetifyConfig from "../src/plugins/vuetify";
 import "vuetify/src/styles/main.sass";
 import { configureViewport, INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
+import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
 
 // From https://github.com/nidkil/vuetify-with-storybook
 const vuetifyViewports = {
@@ -67,5 +67,9 @@ addParameters({
     { name: "white", value: "#fff" },
     { name: "dark-blue", value: "#184f90" },
     { name: "light-green", value: "#cdf4ee"}
-  ]
+  ],
+  docs: {
+    container: DocsContainer,
+    page: DocsPage,
+  }
 });

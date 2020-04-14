@@ -9,14 +9,14 @@
       :text="btnStyle.toLowerCase() === btnStyles.transparent"
     >
       <img
-        v-if="iconAlign.toLowerCase() === iconAlignments.left"
+        v-if="icon && iconAlign.toLowerCase() === iconAlignments.left"
         class="icon mr-1"
         :src="icon"
         alt="icon"
       />
       <span>{{ title }}</span>
       <img
-        v-if="iconAlign.toLowerCase() === iconAlignments.right"
+        v-if="icon && iconAlign.toLowerCase() === iconAlignments.right"
         class="icon ml-1"
         :src="icon"
         alt="icon"
@@ -27,22 +27,41 @@
 
 <script>
 export default {
-  name: "MewsButton",
+  name: "MewButton",
   props: {
+    /**
+     * The text that will go in the button.
+     */
     title: String,
+    /**
+     * The icon url. Inserts an icon next to the button title.
+     */
     icon: String,
+    /**
+     * Aligns the icon: left, right, or none.
+     */
     iconAlign: {
       type: String,
+      description: "Hello",
       default: "none"
     },
+    /**
+     * Applies the button color theme: basic, primary, error, white, or secondary.
+     */
     colorTheme: {
       type: String,
       default: ""
     },
+    /**
+     * Applies the button style: background, transparent, or outline.
+     */
     btnStyle: {
       type: String,
       default: ""
     },
+    /**
+     * Removes the ability to click or target the component.
+     */
     disabled: {
       type: Boolean,
       default: false

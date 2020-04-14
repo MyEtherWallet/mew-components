@@ -29,36 +29,36 @@ export const MEWSuperButton = () => ({
   components: { "mew-super-button": MewSuperButton },
   props: {
     disabled: {
-      default: boolean("Disabled", false)
+      default: boolean("disabled", false)
     },
     title: {
-      default: text("Title", "MEW Super Button")
+      default: text("title", "MEW Super Button")
     },
     subtitle: {
-      default: text("Subtitle", "Subtitle")
+      default: text("subtitle", "Subtitle")
     },
     tag: {
-      default: text("Tag", "Tag")
+      default: text("tag", "Tag")
     },
     note: {
-      default: text("Note", "")
+      default: text("note", "")
     },
     isNew: {
-      default: boolean("IsNew", false)
+      default: boolean("is-new", false)
     },
     colorTheme: {
       default: optionsKnob(
-        "ColorTheme",
+        "color-theme",
         colorThemeOptions,
         "primary",
         optionsObj
       )
     },
     titleIcon: {
-      default: files("TitleIcon", ".png, .svg", "")
+      default: files("title-icon", ".png, .svg", "")
     },
     rightIcon: {
-      default: files("RightIcon", ".png, .svg", "")
+      default: files("right-icon", ".png, .svg", "")
     }
   },
   template: `
