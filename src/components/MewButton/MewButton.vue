@@ -125,7 +125,6 @@ export default {
         !this.disabled &&
         this.btnStyle.toLowerCase() === this.btnStyles.outline
       ) {
-        console.error('in here')
         classes.push("bg-white");
       }
 
