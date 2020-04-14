@@ -15,7 +15,7 @@ export const MEWInput = () => ({
   components: { "mew-input": MewInput },
   props: {
     disabled: {
-      default: boolean("Disabled", false)
+      default: boolean("disabled", false)
     },
     label: {
       default: text("label", "label")
@@ -40,12 +40,15 @@ export const MEWInput = () => ({
     },
     rules: {
       default: array("rules", ruleValue)
+    },
+    isSearch: {
+      default: boolean("is-search", false)
     }
   },
   template: `
     <div>
     <br />
-    <mew-input :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :hint="hint" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value"
+    <mew-input :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :hint="hint" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value"
     />
   </div>`
 });

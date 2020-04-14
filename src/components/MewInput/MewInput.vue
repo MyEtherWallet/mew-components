@@ -1,8 +1,9 @@
 <template>
   <div>
     <v-text-field
+      :class="getClasses()"
       :disabled="disabled"
-      :label="label"
+      :label="label === '' || isSearch ? '' : label"
       :placeholder="placeholder"
       outlined
       color="basic"
@@ -11,6 +12,7 @@
       :suffix="rightLabel"
       :clearable="hasClearBtn"
       :rules="rules"
+      :prepend-inner-icon="isSearch ? 'mdi-magnify' : ''"
     >
     </v-text-field>
   </div>
@@ -77,6 +79,13 @@ export default {
       default: function() {
         return [];
       }
+    },
+    /**
+     * Displays search input
+     */
+    isSearch: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -91,6 +100,16 @@ export default {
   },
   mounted() {
     this.inputValue = this.value;
+  },
+  methods: {
+    getClasses() {
+      const classes = [];
+
+      if (this.isSearch) {
+        classes.push("search-input");
+      }
+      return classes;
+    }
   }
 };
 </script>
@@ -115,6 +134,14 @@ export default {
 
     .v-text-field--outlined fieldset:before {
       border: 1px solid var(--v-form-base);
+    }
+  }
+
+  .search-input {
+    fieldset {
+      background-color: var(--v-primary-silver-base);
+      border: none;
+      z-index: -1;
     }
   }
 }
