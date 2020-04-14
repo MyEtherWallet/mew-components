@@ -9,27 +9,25 @@ export default {
   decorators: [withKnobs]
 };
 
-const itemsArray = ["Green", "Orange", "Blue"]
+const itemsArray = ["Green", "Orange", "Blue"];
+
 export const MEWSelect = () => ({
   components: { "mew-select": MewSelect },
   props: {
     disabled: {
       default: boolean("Disabled", false)
     },
-    selectLabel: {
+    label: {
       default: text("select-label", "label")
     },
     items: {
       default: array("items", itemsArray)
-    },
-    inputValue: {
-      default: text("input-value", "")
     }
   },
   template: `
     <div>
     <br />
-    <mew-select :select-label="selectLabel" :items="items"
+    <mew-select :label="label" :items="items" :disabled="disabled"
     />
   </div>`
 });
