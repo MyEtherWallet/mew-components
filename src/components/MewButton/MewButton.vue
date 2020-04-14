@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-btn
+      dark
       :class="getClasses()"
       :color="colorTheme"
       :disabled="disabled"
@@ -9,14 +10,14 @@
       :text="btnStyle.toLowerCase() === btnStyles.transparent"
     >
       <img
-        v-if="iconAlign.toLowerCase() === iconAlignments.left"
+        v-if="icon && iconAlign.toLowerCase() === iconAlignments.left"
         class="icon mr-1"
         :src="icon"
         alt="icon"
       />
       <span>{{ title }}</span>
       <img
-        v-if="iconAlign.toLowerCase() === iconAlignments.right"
+        v-if="icon && iconAlign.toLowerCase() === iconAlignments.right"
         class="icon ml-1"
         :src="icon"
         alt="icon"
@@ -27,7 +28,7 @@
 
 <script>
 export default {
-  name: "MewsButton",
+  name: "MewButton",
   props: {
     /**
      * The text that will go in the button.

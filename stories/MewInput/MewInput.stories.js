@@ -1,93 +1,51 @@
-import {
-  withKnobs,
-  text,
-  boolean,
-  optionsKnob,
-  files
-} from "@storybook/addon-knobs";
-import MewButton from "@/components/MewButton/MewButton.vue";
+import { withKnobs, text, boolean, array } from "@storybook/addon-knobs";
+import MewInput from "@/components/MewInput/MewInput.vue";
 
 export default {
-  title: "MewButton",
+  title: "MewInput",
   parameters: {
-    component: MewButton
+    component: MewInput
   },
   decorators: [withKnobs]
 };
 
-const iconAlignOptions = {
-  left: "left",
-  right: "right",
-  none: "none"
-};
+const ruleValue = [value => !!value || "Required."];
 
-const colorThemeOptions = {
-  primary: "primary",
-  basic: "basic",
-  error: "error",
-  secondary: "secondary",
-  white: "white"
-};
-
-const btnStyleOptions = {
-  outline: "outline",
-  background: "background",
-  transparent: "transparent"
-};
-
-const optionsObj = {
-  display: "inline-radio"
-};
-
-export const MEWButton = () => ({
-  components: { "mew-button": MewButton },
+export const MEWInput = () => ({
+  components: { "mew-input": MewInput },
   props: {
     disabled: {
-      default: boolean("Disabled", false),
+      default: boolean("Disabled", false)
     },
-    title: {
-      default: text("Title", "MEW Button")
+    label: {
+      default: text("label", "label")
     },
-    colorTheme: {
-      default: optionsKnob(
-        "ColorTheme",
-        colorThemeOptions,
-        "primary",
-        optionsObj
-      )
+    placeholder: {
+      default: text("placeholder", "placeholder")
     },
-    btnStyle: {
-      default: optionsKnob(
-        "BtnStyle",
-        btnStyleOptions,
-        "background",
-        optionsObj
-      )
+    value: {
+      default: text("value", "")
     },
-    icon: {
-      default: files("Icon", ".png, .svg", "")
+    hint: {
+      default: text("hint", "Hint")
     },
-    iconAlign: {
-      default: optionsKnob("IconAlign", iconAlignOptions, "none", optionsObj)
+    symbol: {
+      default: text("symbol", "")
     },
-    description: {
-      MewButton: {
-        props: {
-          disabled: 'DISABLED!'
-        }
-      }
+    rightLabel: {
+      default: text("right-label", "")
+    },
+    hasClearBtn: {
+      default: boolean("has-clear-btn", false)
+    },
+    rules: {
+      default: array("rules", ruleValue)
     }
   },
   template: `
     <div>
     <br />
-    <mew-button
-      :icon-align="iconAlign"
-      :disabled="disabled"
-      :title="title"
-      :color-theme="colorTheme"
-      :btn-style="btnStyle"
-      :icon="icon"
+    <mew-input :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :hint="hint" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value"
     />
   </div>`
 });

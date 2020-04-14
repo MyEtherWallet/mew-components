@@ -26,6 +26,7 @@
     "core-js": "^2.6.5",
     "fibers": "^4.0.2",
     "git-url-parse": "^11.1.2",
+    "material-design-icons-iconfont": "^5.0.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vuetify": "^2.0.0",
@@ -33,14 +34,15 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
+    "@mdi/font": "^5.0.45",
     "@storybook/addon-actions": "^5.3.17",
     "@storybook/addon-backgrounds": "^5.3.17",
-    "@storybook/addon-links": "^5.3.17",
     "@storybook/addon-docs": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
+    "@storybook/addon-links": "^5.3.17",
     "@storybook/addon-viewport": "^5.3.17",
-    "@storybook/source-loader": "^5.3.17",
     "@storybook/addons": "^5.3.17",
+    "@storybook/source-loader": "^5.3.17",
     "@storybook/storybook-deployer": "^2.8.3",
     "@storybook/vue": "^5.3.17",
     "@vue/cli-plugin-babel": "^3.11.0",
@@ -53,6 +55,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.0.0",
+    "file-loader": "^6.0.0",
     "prettier": "^1.18.2",
     "rollup": "^1.17.0",
     "rollup-plugin-buble": "^0.19.8",
@@ -62,8 +65,7 @@
     "sass-loader": "^7.1.0",
     "vue-cli-plugin-vuetify": "^0.6.3",
     "vue-template-compiler": "^2.6.10",
-    "vuetify-loader": "^1.2.2",
-    "file-loader": "^6.0.0"
+    "vuetify-loader": "^1.2.2"
   },
   "files": [
     "dist/*",
