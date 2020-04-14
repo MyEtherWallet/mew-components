@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-btn
+      @click="onBtnClick()"
       :class="getClasses()"
       :color="colorTheme"
       :disabled="disabled"
@@ -75,15 +76,20 @@ export default {
         outline: "outline"
       },
       colorThemes: {
-        white: "white"
+        white: "white",
+        primary: "primary"
       },
       iconAlignments: {
         left: "left",
         right: "right"
-      }
+      },
+      active: false
     };
   },
   methods: {
+    onBtnClick() {
+      this.active = !this.active;
+    },
     getClasses() {
       const classes = [];
 
@@ -93,15 +99,35 @@ export default {
       ) {
         classes.push("white--text");
       }
+
       if (
         this.btnStyle.toLowerCase() === this.btnStyles.background &&
         this.colorTheme.toLowerCase() === this.colorThemes.white
       ) {
         classes.push("primary--text");
       }
+
       if (this.disabled) {
         classes.push("disabled-theme");
       }
+
+      if (
+        this.active &&
+        !this.disabled &&
+        this.btnStyle.toLowerCase() === this.btnStyles.background &&
+        this.colorTheme.toLowerCase() === this.colorThemes.primary
+      ) {
+        classes.push("primary-active");
+      }
+
+      if (
+        this.active &&
+        !this.disabled &&
+        this.btnStyle.toLowerCase() === this.btnStyles.outline
+      ) {
+        classes.push("bg-white");
+      }
+
       return classes;
     }
   }
@@ -121,6 +147,18 @@ export default {
     .icon {
       height: 27px;
     }
+
+    &.primary:hover {
+      background-color: var(--v-primary-hover-base) !important;
+    }
+  }
+
+  .primary-active {
+    background-color: var(--v-primary-active-base) !important;
+  }
+
+  .bg-white {
+    background-color: var(--v-white-base) !important;
   }
 
   .disabled-theme {
@@ -129,6 +167,10 @@ export default {
     .icon {
       filter: grayscale(100%);
     }
+  }
+
+  .theme--light.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+    color: var(--v-white-base) !important;
   }
 }
 </style>

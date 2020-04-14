@@ -86,7 +86,7 @@ export default {
   },
   watch: {
     inputValue(newValue) {
-      this.$emit("input", newValue);
+      console.log("input value:", newValue);
     }
   },
   mounted() {

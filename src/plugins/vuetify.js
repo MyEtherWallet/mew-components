@@ -101,7 +101,9 @@ export default new Vuetify({
         "input-label": "#6d89a6",
         form: "#cecece",
         "input-placeholder": "#96a8b6",
-        "select-border": "#a3b7cf"
+        "select-border": "#a3b7cf",
+        "primary-hover": "#0BAA93",
+        "primary-active": "#0A8170"
       },
       dark: {
         primary: "#0b2840",

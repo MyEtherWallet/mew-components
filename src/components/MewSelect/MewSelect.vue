@@ -5,9 +5,18 @@
       append-icon="mdi-chevron-down"
       :disabled="disabled"
       :items="items"
-      :label="selectLabel"
+      item-text="name"
+      item-value="value"
+      :label="label"
+      v-model="selectModel"
       outlined
-    ></v-select>
+    >
+      <template slot="item" slot-scope="data">
+        <img class="item-img" v-if="data.item.img" :src="data.item.img" />{{
+          data.item.name ? data.item.name : data.item
+        }}
+      </template>
+    </v-select>
   </div>
 </template>
 
@@ -15,30 +24,50 @@
 export default {
   name: "MewSelect",
   props: {
+    /**
+     * Disables the select dropdown.
+     */
     disabled: {
       type: Boolean,
       default: false
     },
+    /**
+     * Can be an array of objects or array of strings. When using objects, will look for a text and value field.
+     * Can also add an img attribute to the object to append an img to the value.
+     * Example: { name: "Orange", value: "Orange", img: orangeImg }
+     */
     items: {
       type: Array,
       default: function() {
         return [];
       }
     },
-    selectLabel: String
+    /**
+     * Sets the select label
+     */
+    label: {
+      type: String,
+      default: ""
+    },
+    /**
+     * Sets the select value
+     */
+    value: {
+      type: [String, Object]
+    }
   },
   data() {
     return {
-      inputModel: ""
+      selectModel: ""
     };
   },
   watch: {
-    inputModel(newValue) {
-      this.$emit("input", newValue);
+    selectModel(newValue) {
+      console.log("select value:", newValue);
     }
   },
   mounted() {
-    this.inputModel = this.inputValue;
+    this.selectModel = this.value;
   }
 };
 </script>
@@ -59,6 +88,11 @@ export default {
 
   .v-text-field--outlined fieldset:before {
     border: 1px solid var(--v-form-base);
+  }
+
+  .item-img {
+    margin-right: 5px;
+    max-height: 25px;
   }
 }
 </style>
