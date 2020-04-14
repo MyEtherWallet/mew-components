@@ -1,7 +1,6 @@
 <template>
   <div>
     <v-btn
-      dark
       :class="getClasses()"
       :color="colorTheme"
       :disabled="disabled"
