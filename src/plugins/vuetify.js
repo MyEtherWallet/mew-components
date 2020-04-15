@@ -1,5 +1,6 @@
 import Vue from "vue";
 import "@mdi/font/css/materialdesignicons.css"; // Ensure you are using css-loader
+import "@/assets/styles/global.scss";
 
 import Vuetify, {
   VApp,
@@ -27,7 +28,8 @@ import Vuetify, {
   VToolbar,
   VTextField,
   VLayout,
-  VSelect
+  VSelect,
+  VCombobox
 } from "vuetify/lib";
 
 Vue.use(Vuetify, {
@@ -57,7 +59,8 @@ Vue.use(Vuetify, {
     VToolbar,
     VTextField,
     VLayout,
-    VSelect
+    VSelect,
+    VCombobox
   }
 });
 
@@ -99,7 +102,6 @@ export default new Vuetify({
         "dark-blue": "#184f90",
         "light-grey": "#e0e0e0",
         "input-label": "#6d89a6",
-        form: "#cecece",
         "input-placeholder": "#96a8b6",
         "select-border": "#a3b7cf",
         "primary-hover": "#0BAA93",

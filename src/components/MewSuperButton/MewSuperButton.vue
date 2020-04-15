@@ -16,7 +16,7 @@
             <div class="body-2" v-if="titleIcon">
               <img
                 v-if="titleIcon"
-                class="title-icon"
+                class="icon title-icon"
                 :src="titleIcon"
                 alt="Icon"
               />
@@ -35,7 +35,7 @@
           </div>
           <img
             v-if="rightIcon"
-            class="right-icon"
+            class="icon right-icon"
             :src="rightIcon"
             alt="Icon"
           />
@@ -119,7 +119,7 @@ export default {
       }
 
       if (this.disabled) {
-        classes.push("disabled");
+        classes.push("disabled-btn");
       }
 
       if (this.active && !this.disabled) {
@@ -136,21 +136,10 @@ export default {
 .v-application {
   .v-btn {
     border-radius: 12px;
-    height: 100% !important;
-    width: 100%;
   }
 
-  .disabled {
+  .disabled-btn {
     color: var(--v-disabled-super-base) !important;
-    pointer-events: none;
-
-    .right-icon {
-      filter: grayscale(100%);
-    }
-
-    .title-icon {
-      filter: grayscale(100%);
-    }
   }
 
   .green-border {

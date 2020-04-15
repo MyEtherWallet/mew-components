@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-select
+      class="mew-select"
       color="basic"
       append-icon="mdi-chevron-down"
       :disabled="disabled"
@@ -11,7 +12,7 @@
       v-model="selectModel"
       outlined
     >
-      <template slot="item" slot-scope="data">
+      <template v-slot:item="data">
         <img class="item-img" v-if="data.item.img" :src="data.item.img" />{{
           data.item.name ? data.item.name : data.item
         }}
@@ -72,27 +73,13 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-application {
-  .theme--light.v-label {
-    color: var(--v-input-label-base);
-    font-weight: 500;
-    text-transform: capitalize;
-  }
-
-  .v-input {
-    input::placeholder {
-      color: var(--v-input-placeholder-base);
+  .mew-select {
+    .item-img {
+      margin-right: 5px;
+      max-height: 25px;
     }
-  }
-
-  .v-text-field--outlined fieldset:before {
-    border: 1px solid var(--v-form-base);
-  }
-
-  .item-img {
-    margin-right: 5px;
-    max-height: 25px;
   }
 }
 </style>

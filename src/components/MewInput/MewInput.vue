@@ -114,29 +114,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.v-application,
-.v-application--is-ltr {
-  .theme--light.v-label {
-    color: var(--v-input-label-base);
-    font-weight: 500;
-    text-transform: capitalize;
-  }
-
-  .v-input {
-    input::placeholder {
-      color: var(--v-input-placeholder-base);
-    }
-
-    .v-text-field__suffix {
-      color: var(--v-input-placeholder-base) !important;
-    }
-
-    .v-text-field--outlined fieldset:before {
-      border: 1px solid var(--v-form-base);
-    }
-  }
-
+<style lang="scss" scoped>
+.v-application {
   .search-input {
     fieldset {
       background-color: var(--v-primary-silver-base);
