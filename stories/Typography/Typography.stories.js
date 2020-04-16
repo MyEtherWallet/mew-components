@@ -5,6 +5,9 @@ export default {
 export const All = () => ({
   data() {
     return {
+      mewAddress: {
+        fontFamily: "PT Mono"
+      },
       mewTitle: {
         fontSize: "50px",
         fontWeight: 700
@@ -49,8 +52,17 @@ export const All = () => ({
   template: `
     <div>
     <br/>
-    <h3 :style="{paddingBottom: '10px'}"><span :style="headerStyle">font-family: </span> <span :style="{ fontWeight: 400 }">Roboto</span></h3>
+    <h3 :style="headerStyle">font-family:</h3>
+    <div :style="{ fontWeight: 400, fontFamily: 'Roboto' }">Roboto</div>
+    <div :style="markupStyle">Primary</div>
+    <br />
+    <div :style="{ fontWeight: 400, fontFamily: 'PT Mono' }">PT Mono</div>
+    <div :style="markupStyle">Address & Coding</div>
+    <br />
     <h3 :style="headerStyle">classes</h3>
+    <div :style="mewAddress">.mew-address</div>
+    <div :style="markupStyle">font-family: "PT Mono"</div>
+    <br />
     <div :style="mewBody, { fontWeight: 400 }">.font-weight-regular</div>
     <div :style="markupStyle">font-weight: 400</div>
     <br />

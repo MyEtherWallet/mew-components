@@ -1,37 +1,47 @@
 .v-application,
 .v-application--is-ltr {
+  // address select input
   .address-select.v-select.v-text-field input {
     margin-top: 3px;
   }
 
+  // input border color
   .theme--light.v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state) > .v-input__control > .v-input__slot fieldset {
     color: var(--v-light-grey-base) !important;
   }
 
   .v-input {
+    // input
     input {
       color: var(--v-info-base) !important;
       font-size: 14px;
     }
+
+    // input label
     .v-label {
       color: var(--v-input-label-base);
       font-weight: 500;
       text-transform: capitalize;
     }
 
+    // input placeholder
     input::placeholder {
       color: var(--v-input-placeholder-base);
     }
+
+    // input suffix color
     .v-text-field__suffix {
       color: var(--v-input-placeholder-base) !important;
     }
 
+    // dropdown icon
     .mdi-chevron-down {
       color: var(--v-basic-base);
       cursor: pointer;
       font-size: 20px;
     }
 
+    // disable icon
     .disable-icon {
       filter: grayscale(100%);
       pointer-events: none;

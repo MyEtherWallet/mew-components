@@ -60,7 +60,7 @@
               width="25px"
               height="25px"
             />
-            <div class="address">{{ data.item.address }}</div>
+            <div class="mew-address address">{{ data.item.address }}</div>
           </div>
           <div class="nickname">{{ data.item.nickname }}</div>
         </div>
@@ -174,9 +174,6 @@ export default {
 
       .blockie {
         margin-right: 10px;
-      }
-      .address {
-        color: var(--v-basic-base);
       }
     }
 
