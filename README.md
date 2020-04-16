@@ -1,29 +1,26 @@
 # mew-components
+## Install
+### Install with npm
+```
+npm i @myetherwallet/mew-components
+```
 
 ## Project setup
 ```
-yarn install
+npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles and hot-reloads storybook
 ```
-yarn run serve
+npm run storybook
 ```
 
 ### Compiles and minifies for production
 ```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
+npm run build
 ```
 
 ### Lints and fixes files
 ```
-yarn run lint
+npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
