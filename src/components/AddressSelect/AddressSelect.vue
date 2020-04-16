@@ -16,7 +16,7 @@
       <template v-slot:prepend-inner>
         <div v-if="!isValidAddress" class="blockie-placeholder"></div>
         <div v-if="isValidAddress" class="blockie-container">
-          <slot name="blockie" />
+          <blockie :address="addressValue" width="30px" height="30px" />
         </div>
       </template>
 
@@ -42,6 +42,12 @@
       <template v-slot:item="data">
         <div class="item-container" @click="selectAddress(data.item)">
           <div class="address-container">
+            <blockie
+              class="blockie"
+              :address="data.item.address"
+              width="30px"
+              height="30px"
+            />
             <div class="address">{{ data.item.address }}</div>
           </div>
           <div class="nickname">{{ data.item.nickname }}</div>
@@ -50,7 +56,10 @@
     </v-combobox>
   </div>
 </template>
+
 <script>
+import Blockie from "@/components/Blockie/Blockie.vue";
+
 export default {
   name: "AddressSelector",
   props: {
@@ -91,6 +100,9 @@ export default {
       type: Function,
       default: function() {}
     }
+  },
+  components: {
+    blockie: Blockie
   },
   data() {
     return {
@@ -134,6 +146,13 @@ export default {
     width: 100%;
 
     .address-container {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+
+      .blockie {
+        margin-right: 5px;
+      }
       .address {
         color: var(--v-basic-base);
       }
@@ -158,6 +177,8 @@ export default {
     }
 
     .blockie-container {
+      margin-bottom: 17px;
+      margin-right: 5px;
       max-height: 25px;
     }
 
