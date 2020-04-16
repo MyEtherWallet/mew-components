@@ -1,9 +1,4 @@
-import {
-  withKnobs,
-  text,
-  array,
-  files
-} from "@storybook/addon-knobs";
+import { withKnobs, text, array } from "@storybook/addon-knobs";
 import mewAddressSelector from "@/components/AddressSelect/AddressSelect.vue";
 
 export default {
@@ -15,8 +10,13 @@ export default {
 };
 
 const addressesArray = [
-  "Hello"
-]
+  {
+    address: "123",
+    currency: "ETH",
+    nickname: "nickname",
+    resolverAddr: "123"
+  }
+];
 
 export const AddressSelector = () => ({
   components: { "address-selector": mewAddressSelector },

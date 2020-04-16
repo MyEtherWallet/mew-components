@@ -6,6 +6,9 @@
   }
 
   .v-input {
+    input {
+      color: var(--v-info-base) !important;
+    }
     .v-label {
       color: var(--v-input-label-base);
       font-weight: 500;

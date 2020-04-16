@@ -4,9 +4,11 @@
       class="address-select"
       v-model="addressValue"
       :items="items"
+      item-text="address"
+      item-value="address"
       :label="label"
       :placeholder="placeholder"
-      :menu-props="{ value: autoSelectMenu }"
+      :menu-props="{ value: autoSelectMenu, closeOnClick: true }"
       ref="addressInput"
       outlined
     >
@@ -34,6 +36,15 @@
         </div>
         <div class="border" />
         <v-icon @click="toggle">mdi-chevron-down</v-icon>
+      </template>
+
+      <template v-slot:item="data">
+        <div class="item-container" @click="selectAddress(data.item)">
+          <div class="address-container">
+            <div class="address">{{ data.item.address }}</div>
+          </div>
+          <div class="nickname">{{ data.item.nickname }}</div>
+        </div>
       </template>
     </v-combobox>
   </div>
@@ -103,6 +114,11 @@ export default {
       document.execCommand("copy");
       console.log("copied");
       // Toast.responseHandler(this.$t('common.copied'), Toast.INFO);
+    },
+    selectAddress(data) {
+      this.autoSelectMenu = false;
+      this.addressValue = data.address;
+      console.error('addr', this.addressValue)
     }
   }
 };
@@ -110,6 +126,26 @@ export default {
 
 <style lang="scss" scoped>
 .v-application {
+  .item-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .address-container {
+      .address {
+        color: var(--v-basic-base);
+      }
+    }
+
+    .nickname {
+      font-size: 10px;
+      font-weight: 700;
+      text-align: right;
+      color: var(--v-primary-base);
+    }
+  }
+
   .address-select {
     .blockie-placeholder {
       height: 30px;
@@ -136,6 +172,9 @@ export default {
 
       img {
         cursor: pointer;
+        &:hover {
+          opacity: 0.5;
+        }
       }
     }
 
