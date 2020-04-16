@@ -1,5 +1,8 @@
 .v-application,
 .v-application--is-ltr {
+  .address-select.v-select.v-text-field input {
+    margin-top: 3px;
+  }
 
   .theme--light.v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state) > .v-input__control > .v-input__slot fieldset {
     color: var(--v-light-grey-base) !important;
@@ -8,6 +11,7 @@
   .v-input {
     input {
       color: var(--v-info-base) !important;
+      font-size: 14px;
     }
     .v-label {
       color: var(--v-input-label-base);
@@ -26,6 +30,11 @@
       color: var(--v-basic-base);
       cursor: pointer;
       font-size: 20px;
+    }
+
+    .disable-icon {
+      filter: grayscale(100%);
+      pointer-events: none;
     }
   }
 }

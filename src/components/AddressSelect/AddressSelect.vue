@@ -14,26 +14,38 @@
       outlined
     >
       <template v-slot:prepend-inner>
-        <div v-if="!isValidAddress" class="blockie-placeholder"></div>
+        <div v-if="!isValidAddress" class="blockie-placeholder" />
         <div v-if="isValidAddress" class="blockie-container">
-          <blockie :address="addressValue" width="30px" height="30px" />
+          <blockie :address="addressValue.address" width="25px" height="25px" />
         </div>
       </template>
 
       <template v-slot:append>
         <div class="icon-container">
-          <img
-            @click="copyToClipboard"
-            class="copy-icon"
-            src="@/assets/images/icons/icon-copy-enable.png"
-            alt="copy"
-          />
-          <img
-            @click="saveAddress"
-            class="save-icon"
-            src="@/assets/images/icons/icon-saved-enable.png"
-            alt="save"
-          />
+          <v-tooltip color="primary" top>
+            <template v-slot:activator="{ on }">
+              <img
+                @click="copyToClipboard"
+                class="copy-icon"
+                v-on="on"
+                src="@/assets/images/icons/icon-copy-enable.png"
+                alt="copy"
+              />
+            </template>
+            <span>Copy</span>
+          </v-tooltip>
+          <v-tooltip color="primary" top>
+            <template v-slot:activator="{ on }">
+              <img
+                @click="saveAddress"
+                :class="['save-icon', getSaveBtnClasses()]"
+                src="@/assets/images/icons/icon-saved-enable.png"
+                v-on="on"
+                alt="save"
+              />
+            </template>
+            <span>Save Address</span>
+          </v-tooltip>
         </div>
         <div class="border" />
         <v-icon @click="toggle">mdi-chevron-down</v-icon>
@@ -45,8 +57,8 @@
             <blockie
               class="blockie"
               :address="data.item.address"
-              width="30px"
-              height="30px"
+              width="25px"
+              height="25px"
             />
             <div class="address">{{ data.item.address }}</div>
           </div>
@@ -63,6 +75,13 @@ import Blockie from "@/components/Blockie/Blockie.vue";
 export default {
   name: "AddressSelector",
   props: {
+    /**
+     * Enables save address button.
+     */
+    enableSaveAddress: {
+      type: Boolean,
+      default: false
+    },
     /**
      * Returns if the address is valid or not.
      */
@@ -111,12 +130,9 @@ export default {
     };
   },
   watch: {
-    inputValue(newValue) {
-      console.log("input value:", newValue);
+    addressValue(newValue) {
+      console.log("address value:", newValue);
     }
-  },
-  mounted() {
-    this.addressValue = this.value;
   },
   methods: {
     toggle() {
@@ -130,15 +146,21 @@ export default {
     },
     selectAddress(data) {
       this.autoSelectMenu = false;
-      this.addressValue = data;
+      this.addressValue = data.address;
       this.$emit("emitSelectedValue", data);
+    },
+    getSaveBtnClasses() {
+      if (!this.enableSaveAddress) {
+        return "disable-icon";
+      }
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.v-application {
+.v-application,
+.v-application--is-ltr {
   .item-container {
     align-items: center;
     display: flex;
@@ -151,7 +173,7 @@ export default {
       justify-content: space-between;
 
       .blockie {
-        margin-right: 5px;
+        margin-right: 10px;
       }
       .address {
         color: var(--v-basic-base);
@@ -168,16 +190,16 @@ export default {
 
   .address-select {
     .blockie-placeholder {
-      height: 30px;
-      width: 30px;
-      border-radius: 100px;
+      height: 25px;
+      width: 25px;
+      border-radius: 50%;
       background-color: var(--v-light-grey-base);
-      margin-bottom: 17px;
+      // margin-bottom: 17px;
       margin-right: 5px;
     }
 
     .blockie-container {
-      margin-bottom: 17px;
+      // margin-bottom: 19px;
       margin-right: 5px;
       max-height: 25px;
     }

@@ -6,22 +6,37 @@ import Blockies from "@/helpers/blockies.js";
 export default {
   name: "Blockie",
   props: {
+    /**
+     * Valid address
+     */
     address: {
       type: String,
       default: ""
     },
+    /**
+     * Blockie width
+     */
     width: {
       type: String,
       default: "64px"
     },
+    /**
+     * Blockie height
+     */
     height: {
       type: String,
       default: "64px"
     },
+    /**
+     * Blockie size
+     */
     size: {
       type: Number,
       default: 8
     },
+    /**
+     * Blockie scale
+     */
     scale: {
       type: Number,
       default: 16

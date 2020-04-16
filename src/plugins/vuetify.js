@@ -29,7 +29,8 @@ import Vuetify, {
   VTextField,
   VLayout,
   VSelect,
-  VCombobox
+  VCombobox,
+  VTooltip
 } from "vuetify/lib";
 
 Vue.use(Vuetify, {
@@ -60,7 +61,8 @@ Vue.use(Vuetify, {
     VTextField,
     VLayout,
     VSelect,
-    VCombobox
+    VCombobox,
+    VTooltip
   }
 });
 
