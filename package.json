@@ -28,6 +28,7 @@
     "git-url-parse": "^11.1.2",
     "material-design-icons-iconfont": "^5.0.1",
     "vue": "^2.6.10",
+    "vue-cli-plugin-style-resources-loader": "^0.1.4",
     "vue-router": "^3.0.3",
     "vuetify": "^2.0.0",
     "vuex": "^3.0.1"

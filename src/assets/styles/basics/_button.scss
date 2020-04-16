@@ -1,0 +1,14 @@
+.v-application {
+  .v-btn {
+    height: 100% !important;
+    width: 100%;
+  }
+
+  .disabled-btn {
+    pointer-events: none;
+
+    .icon {
+      filter: grayscale(100%);
+    }
+  }
+}

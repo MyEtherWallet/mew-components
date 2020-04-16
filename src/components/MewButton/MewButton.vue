@@ -108,7 +108,7 @@ export default {
       }
 
       if (this.disabled) {
-        classes.push("disabled-theme");
+        classes.push("disabled-btn");
       }
 
       if (
@@ -135,14 +135,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
-
 .v-application {
   .v-btn {
     border-radius: 6px !important;
     padding: 20px;
-    height: 100%;
-    width: 100%;
 
     .icon {
       height: 27px;
@@ -159,14 +155,6 @@ export default {
 
   .bg-white {
     background-color: var(--v-white-base) !important;
-  }
-
-  .disabled-theme {
-    pointer-events: none;
-
-    .icon {
-      filter: grayscale(100%);
-    }
   }
 
   .theme--light.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
