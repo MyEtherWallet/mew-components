@@ -36,5 +36,14 @@
       filter: grayscale(100%);
       pointer-events: none;
     }
+
+    // for search mew input
+    &.search-input {
+      fieldset {
+        background-color: var(--v-primary-silver-base) !important;
+        border: none !important;
+        z-index: -1 !important;
+      }
+    }
   }
 }

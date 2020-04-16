@@ -113,15 +113,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.v-application {
-  .search-input {
-    fieldset {
-      background-color: var(--v-primary-silver-base);
-      border: none;
-      z-index: -1;
-    }
-  }
-}
-</style>
