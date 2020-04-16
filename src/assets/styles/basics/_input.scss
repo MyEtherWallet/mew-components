@@ -2,6 +2,7 @@
 .v-application--is-ltr {
   // address select input
   .address-select.v-select.v-text-field input {
+    font-family: "PT Mono";
     margin-top: 3px;
   }
 
@@ -27,6 +28,7 @@
     // input placeholder
     input::placeholder {
       color: var(--v-input-placeholder-base);
+      font-family: "Roboto"
     }
 
     // input suffix color
