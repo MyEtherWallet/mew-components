@@ -14,14 +14,14 @@
         class="icon mr-1"
         :src="icon"
         alt="icon"
-      />
+      >
       <span>{{ title }}</span>
       <img
         v-if="icon && iconAlign.toLowerCase() === iconAlignments.right"
         class="icon ml-1"
         :src="icon"
         alt="icon"
-      />
+      >
     </v-btn>
   </div>
 </template>
@@ -33,17 +33,22 @@ export default {
     /**
      * The text that will go in the button.
      */
-    title: String,
+    title: {
+      type: String,
+      default: ''
+    },
     /**
      * The icon url. Inserts an icon next to the button title.
      */
-    icon: String,
+    icon: {
+      type: String,
+      default: ''
+    },
     /**
      * Aligns the icon: left, right, or none.
      */
     iconAlign: {
       type: String,
-      description: 'Hello',
       default: 'none'
     },
     /**
@@ -51,14 +56,14 @@ export default {
      */
     colorTheme: {
       type: String,
-      default: ''
+      default: 'primary'
     },
     /**
      * Applies the button style: background, transparent, or outline.
      */
     btnStyle: {
       type: String,
-      default: ''
+      default: 'background'
     },
     /**
      * Removes the ability to click or target the component.

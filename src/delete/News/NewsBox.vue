@@ -8,15 +8,22 @@
     </v-card-text>
 
     <v-card-actions>
-      <v-btn text color="teal lighten-2">
+      <v-btn
+        text
+        color="teal lighten-2"
+      >
         Read More...
       </v-btn>
-      <v-spacer></v-spacer>
+      <v-spacer />
       <v-btn icon>
-        <v-icon color="grey lighten-1">mdi-facebook</v-icon>
+        <v-icon color="grey lighten-1">
+          mdi-facebook
+        </v-icon>
       </v-btn>
       <v-btn icon>
-        <v-icon color="grey lighten-1">mdi-twitter</v-icon>
+        <v-icon color="grey lighten-1">
+          mdi-twitter
+        </v-icon>
       </v-btn>
     </v-card-actions>
   </v-card>

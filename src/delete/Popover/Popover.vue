@@ -1,7 +1,15 @@
 <template>
-  <v-tooltip top close-delay="200">
+  <v-tooltip
+    top
+    close-delay="200"
+  >
     <template v-slot:activator="{ on }">
-      <v-icon class="hover-icon" v-on="on">mdi-alert-circle</v-icon>
+      <v-icon
+        class="hover-icon"
+        v-on="on"
+      >
+        mdi-alert-circle
+      </v-icon>
     </template>
     <span>
       {{ text }}

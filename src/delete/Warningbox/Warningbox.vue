@@ -1,5 +1,7 @@
 <template>
-  <div class="warning-box">{{ text }}</div>
+  <div class="warning-box">
+    {{ text }}
+  </div>
 </template>
 
 <script>

@@ -4,11 +4,16 @@
     :max-width="maxwidth"
     flat
   >
-    <v-avatar size="75" tile>
+    <v-avatar
+      size="75"
+      tile
+    >
       <!-- <v-img src="@/assets/icons/Common/icon24.png"></v-img> -->
     </v-avatar>
     <div class="ml-6">
-      <h3 class="font-weight-medium">Customer Support</h3>
+      <h3 class="font-weight-medium">
+        Customer Support
+      </h3>
       <p class="">
         Can't find answer? Get in touch and we'll get back ASAP.
       </p>
@@ -16,7 +21,9 @@
         <p class="ma-0 mr-1 teal--text text--lighten-2 font-weight-regular">
           Email us
         </p>
-        <v-icon class="icon teal--text text--lighten-2">mdi-arrow-right</v-icon>
+        <v-icon class="icon teal--text text--lighten-2">
+          mdi-arrow-right
+        </v-icon>
       </div>
     </div>
   </v-card>

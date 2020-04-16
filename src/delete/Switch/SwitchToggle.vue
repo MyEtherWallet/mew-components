@@ -5,7 +5,7 @@
     v-model="switch1"
     :label="switch1 ? labelOn : labelOff"
     color="teal accent-4"
-  ></v-switch>
+  />
 </template>
 
 <script>

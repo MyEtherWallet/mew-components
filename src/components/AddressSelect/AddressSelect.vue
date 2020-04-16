@@ -14,15 +14,28 @@
       outlined
     >
       <template v-slot:prepend-inner>
-        <div v-if="!isValidAddress" class="blockie-placeholder" />
-        <div v-if="isValidAddress" class="blockie-container">
-          <blockie :address="addressValue.address" width="25px" height="25px" />
+        <div
+          v-if="!isValidAddress"
+          class="blockie-placeholder"
+        />
+        <div
+          v-if="isValidAddress"
+          class="blockie-container"
+        >
+          <blockie
+            :address="addressValue.address"
+            width="25px"
+            height="25px"
+          />
         </div>
       </template>
 
       <template v-slot:append>
         <div class="icon-container">
-          <v-tooltip color="primary" top>
+          <v-tooltip
+            color="primary"
+            top
+          >
             <template v-slot:activator="{ on }">
               <img
                 @click="copyToClipboard"
@@ -30,11 +43,14 @@
                 v-on="on"
                 src="@/assets/images/icons/icon-copy-enable.png"
                 alt="copy"
-              />
+              >
             </template>
             <span>Copy</span>
           </v-tooltip>
-          <v-tooltip color="primary" top>
+          <v-tooltip
+            color="primary"
+            top
+          >
             <template v-slot:activator="{ on }">
               <img
                 @click="saveAddress"
@@ -42,17 +58,22 @@
                 src="@/assets/images/icons/icon-saved-enable.png"
                 v-on="on"
                 alt="save"
-              />
+              >
             </template>
             <span>Save Address</span>
           </v-tooltip>
         </div>
         <div class="border" />
-        <v-icon @click="toggle">mdi-chevron-down</v-icon>
+        <v-icon @click="toggle">
+          mdi-chevron-down
+        </v-icon>
       </template>
 
       <template v-slot:item="data">
-        <div class="item-container" @click="selectAddress(data.item)">
+        <div
+          class="item-container"
+          @click="selectAddress(data.item)"
+        >
           <div class="address-container">
             <blockie
               class="blockie"
@@ -60,9 +81,13 @@
               width="25px"
               height="25px"
             />
-            <div class="mew-address address">{{ data.item.address }}</div>
+            <div class="mew-address address">
+              {{ data.item.address }}
+            </div>
           </div>
-          <div class="nickname">{{ data.item.nickname }}</div>
+          <div class="nickname">
+            {{ data.item.nickname }}
+          </div>
         </div>
       </template>
     </v-combobox>

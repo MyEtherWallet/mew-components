@@ -4,7 +4,7 @@
     :label="checkbox1 ? labelChecked : labelUnchecked"
     v-model="checkbox1"
     color="teal accent-4"
-  ></v-checkbox>
+  />
 </template>
 
 <script>

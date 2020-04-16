@@ -4,25 +4,42 @@
     :max-width="maxwidth"
     flat
   >
-    <v-avatar size="75" tile>
+    <v-avatar
+      size="75"
+      tile
+    >
       <!-- <v-img src="@/assets/icons/Common/icon25.png"></v-img> -->
     </v-avatar>
     <div class="ml-6">
-      <h3 class="font-weight-medium">Community</h3>
+      <h3 class="font-weight-medium">
+        Community
+      </h3>
       <p class="mb-1">
         Join our MEW community, and get more information from us.
       </p>
       <div class="social-icons">
-        <a href="#" target="_blank">
+        <a
+          href="#"
+          target="_blank"
+        >
           <v-icon>mdi-telegram</v-icon>
         </a>
-        <a href="#" target="_blank">
+        <a
+          href="#"
+          target="_blank"
+        >
           <v-icon>mdi-slack</v-icon>
         </a>
-        <a href="#" target="_blank">
+        <a
+          href="#"
+          target="_blank"
+        >
           <v-icon>mdi-reddit</v-icon>
         </a>
-        <a href="#" target="_blank">
+        <a
+          href="#"
+          target="_blank"
+        >
           <v-icon>mdi-github-face</v-icon>
         </a>
       </div>

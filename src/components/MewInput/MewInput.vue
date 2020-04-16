@@ -13,8 +13,7 @@
       :clearable="hasClearBtn"
       :rules="rules"
       :prepend-inner-icon="isSearch ? 'mdi-magnify' : ''"
-    >
-    </v-text-field>
+    />
   </div>
 </template>
 

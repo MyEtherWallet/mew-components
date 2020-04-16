@@ -9,24 +9,45 @@
       :disabled="disabled"
       depressed
     >
-      <div class="btn-container" :class="rightIcon ? 'center-align' : ''">
+      <div
+        class="btn-container"
+        :class="rightIcon ? 'center-align' : ''"
+      >
         <div class="left-container">
           <div class="title-wrapper">
-            <div class="title font-weight-bold">{{ title }}</div>
-            <div class="body-2" v-if="titleIcon">
+            <div class="title font-weight-bold">
+              {{ title }}
+            </div>
+            <div
+              class="body-2"
+              v-if="titleIcon"
+            >
               <img
                 v-if="titleIcon"
                 class="icon title-icon"
                 :src="titleIcon"
                 alt="Icon"
-              />
+              >
             </div>
           </div>
-          <div class="mt-2" v-if="subtitle">{{ subtitle }}</div>
-          <div class="body-2 mt-1">#{{ tag }}</div>
+          <div
+            class="mt-2"
+            v-if="subtitle"
+          >
+            {{ subtitle }}
+          </div>
+          <div class="body-2 mt-1">
+            #{{ tag }}
+          </div>
         </div>
         <div class="right-container">
-          <div v-if="isNew" class="label" alt="label"><div>NEW</div></div>
+          <div
+            v-if="isNew"
+            class="label"
+            alt="label"
+          >
+            <div>NEW</div>
+          </div>
           <div
             v-if="!rightIcon && note"
             class="text-uppercase caption mt-1 note"
@@ -38,7 +59,7 @@
             class="icon right-icon"
             :src="rightIcon"
             alt="Icon"
-          />
+          >
         </div>
       </div>
     </v-btn>
@@ -52,31 +73,52 @@ export default {
     /**
      * The text that will go in the button.
      */
-    title: String,
+    title: {
+      type: String,
+      default: ''
+    },
     /**
      * The text that will go under the button title.
      */
-    subtitle: String,
+    subtitle: {
+      type: String,
+      default: ''
+    },
     /**
      * The text that will go under the button subtitle.
      */
-    tag: String,
+    tag: {
+      type: String,
+      default: ''
+    },
     /**
      * The title-icon url. Inserts an icon next to the button title.
      */
-    titleIcon: String,
+    titleIcon: {
+      type: String,
+      default: ''
+    },
     /**
      * The right-icon url. Inserts an icon on the right container of the button.
      */
-    rightIcon: String,
+    rightIcon: {
+      type: String,
+      default: ''
+    },
     /**
      * The text that will go on the upper right corner. Will not display if right-icon is true.
      */
-    note: String,
+    note: {
+      type: String,
+      default: ''
+    },
     /**
      * Applies a new badge to the button.
      */
-    isNew: Boolean,
+    isNew: {
+      type: Boolean,
+      default: false
+    },
     /**
      * Applies the button color theme: basic, lightGreen, or outline.
      */

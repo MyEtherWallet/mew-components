@@ -13,7 +13,11 @@
       outlined
     >
       <template v-slot:item="data">
-        <img class="item-img" v-if="data.item.img" :src="data.item.img" />{{
+        <img
+          class="item-img"
+          v-if="data.item.img"
+          :src="data.item.img"
+        >{{
           data.item.name ? data.item.name : data.item
         }}
       </template>
@@ -54,7 +58,8 @@ export default {
      * Sets the select value
      */
     value: {
-      type: [String, Object]
+      type: [String, Object],
+      default: ''
     }
   },
   data() {

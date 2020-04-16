@@ -4,7 +4,9 @@
   >
     <!-- <img class="mr-6" width="70" src="@/assets/icons/Common/icon10.png" /> -->
     <div>
-      <h3 class="font-weight-medium">{{ title }}</h3>
+      <h3 class="font-weight-medium">
+        {{ title }}
+      </h3>
       <div>{{ text }}</div>
     </div>
   </div>
