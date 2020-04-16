@@ -1,5 +1,6 @@
-# mew-components
-https://myetherwallet.github.io/mew-components/?path=/story/mewbutton--white-theme
+# Mew Components 
+## Take a look
+https://myetherwallet.github.io/mew-components
 
 ## Install
 ### Install with npm
