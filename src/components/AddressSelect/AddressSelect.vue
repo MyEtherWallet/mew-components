@@ -118,7 +118,6 @@ export default {
     selectAddress(data) {
       this.autoSelectMenu = false;
       this.addressValue = data.address;
-      console.error('addr', this.addressValue)
     }
   }
 };
