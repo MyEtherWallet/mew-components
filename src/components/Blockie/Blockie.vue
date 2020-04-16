@@ -2,30 +2,30 @@
   <div ref="identicon" class="address-identicon" />
 </template>
 <script>
-import Blockies from "@/helpers/blockies.js";
+import Blockies from '@/helpers/blockies.js';
 export default {
-  name: "Blockie",
+  name: 'Blockie',
   props: {
     /**
      * Valid address
      */
     address: {
       type: String,
-      default: ""
+      default: ''
     },
     /**
      * Blockie width
      */
     width: {
       type: String,
-      default: "64px"
+      default: '64px'
     },
     /**
      * Blockie height
      */
     height: {
       type: String,
-      default: "64px"
+      default: '64px'
     },
     /**
      * Blockie size
@@ -69,7 +69,7 @@ export default {
     setBlockie() {
       console.error('this', this.address)
       const data = Blockies({
-        seed: this.address ? this.address.toLowerCase() : "",
+        seed: this.address ? this.address.toLowerCase() : '',
         size: this.size,
         scale: this.scale
       }).toDataURL();

@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: "MewSelect",
+  name: 'MewSelect',
   props: {
     /**
      * Disables the select dropdown.
@@ -48,7 +48,7 @@ export default {
      */
     label: {
       type: String,
-      default: ""
+      default: ''
     },
     /**
      * Sets the select value
@@ -59,12 +59,12 @@ export default {
   },
   data() {
     return {
-      selectModel: ""
+      selectModel: ''
     };
   },
   watch: {
     selectModel(newValue) {
-      console.log("select value:", newValue);
+      console.log('select value:', newValue);
     }
   },
   mounted() {

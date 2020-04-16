@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: "MewInput",
+  name: 'MewInput',
   props: {
     /**
      * Disables the input.
@@ -34,35 +34,35 @@ export default {
      */
     label: {
       type: String,
-      default: ""
+      default: ''
     },
     /**
      * The input placeholder.
      */
     placeholder: {
       type: String,
-      default: ""
+      default: ''
     },
     /**
      * The input value.
      */
     value: {
       type: String,
-      default: ""
+      default: ''
     },
     /**
      * Displays a label on the right side of the input.
      */
     rightLabel: {
       type: String,
-      default: ""
+      default: ''
     },
     /**
      * Displays a hint for the input value.
      */
     hint: {
       type: String,
-      default: ""
+      default: ''
     },
     /**
      * Enables input clear functionality. Clear symbol will be displayed on the right side.
@@ -90,12 +90,12 @@ export default {
   },
   data() {
     return {
-      inputValue: ""
+      inputValue: ''
     };
   },
   watch: {
     inputValue(newValue) {
-      console.log("input value:", newValue);
+      console.log('input value:', newValue);
     }
   },
   mounted() {
@@ -106,7 +106,7 @@ export default {
       const classes = [];
 
       if (this.isSearch) {
-        classes.push("search-input");
+        classes.push('search-input');
       }
       return classes;
     }

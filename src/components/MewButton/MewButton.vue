@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: "MewButton",
+  name: 'MewButton',
   props: {
     /**
      * The text that will go in the button.
@@ -43,22 +43,22 @@ export default {
      */
     iconAlign: {
       type: String,
-      description: "Hello",
-      default: "none"
+      description: 'Hello',
+      default: 'none'
     },
     /**
      * Applies the button color theme: basic, primary, error, white, or secondary.
      */
     colorTheme: {
       type: String,
-      default: ""
+      default: ''
     },
     /**
      * Applies the button style: background, transparent, or outline.
      */
     btnStyle: {
       type: String,
-      default: ""
+      default: ''
     },
     /**
      * Removes the ability to click or target the component.
@@ -71,17 +71,17 @@ export default {
   data() {
     return {
       btnStyles: {
-        background: "background",
-        transparent: "transparent",
-        outline: "outline"
+        background: 'background',
+        transparent: 'transparent',
+        outline: 'outline'
       },
       colorThemes: {
-        white: "white",
-        primary: "primary"
+        white: 'white',
+        primary: 'primary'
       },
       iconAlignments: {
-        left: "left",
-        right: "right"
+        left: 'left',
+        right: 'right'
       },
       active: false
     };
@@ -97,18 +97,18 @@ export default {
         this.btnStyle.toLowerCase() === this.btnStyles.background &&
         this.colorTheme.toLowerCase() !== this.colorThemes.white
       ) {
-        classes.push("white--text");
+        classes.push('white--text');
       }
 
       if (
         this.btnStyle.toLowerCase() === this.btnStyles.background &&
         this.colorTheme.toLowerCase() === this.colorThemes.white
       ) {
-        classes.push("primary--text");
+        classes.push('primary--text');
       }
 
       if (this.disabled) {
-        classes.push("disabled-btn");
+        classes.push('disabled-btn');
       }
 
       if (
@@ -117,7 +117,7 @@ export default {
         this.btnStyle.toLowerCase() === this.btnStyles.background &&
         this.colorTheme.toLowerCase() === this.colorThemes.primary
       ) {
-        classes.push("primary-active");
+        classes.push('primary-active');
       }
 
       if (
@@ -125,7 +125,7 @@ export default {
         !this.disabled &&
         this.btnStyle.toLowerCase() === this.btnStyles.outline
       ) {
-        classes.push("bg-white");
+        classes.push('bg-white');
       }
 
       return classes;

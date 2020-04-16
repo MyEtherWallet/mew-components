@@ -70,10 +70,10 @@
 </template>
 
 <script>
-import Blockie from "@/components/Blockie/Blockie.vue";
+import Blockie from '@/components/Blockie/Blockie.vue';
 
 export default {
-  name: "AddressSelector",
+  name: 'AddressSelector',
   props: {
     /**
      * Enables save address button.
@@ -94,7 +94,7 @@ export default {
      */
     label: {
       type: String,
-      default: "To Address"
+      default: 'To Address'
     },
     /**
      * The saved addresses in address book.
@@ -110,7 +110,7 @@ export default {
      */
     placeholder: {
       type: String,
-      default: "Please enter an address"
+      default: 'Please enter an address'
     },
     /**
      * The function applied to save the address.
@@ -125,13 +125,13 @@ export default {
   },
   data() {
     return {
-      addressValue: "",
+      addressValue: '',
       autoSelectMenu: false
     };
   },
   watch: {
     addressValue(newValue) {
-      console.log("address value:", newValue);
+      console.log('address value:', newValue);
     }
   },
   methods: {
@@ -139,19 +139,19 @@ export default {
       this.autoSelectMenu = !this.autoSelectMenu;
     },
     copyToClipboard() {
-      this.$refs.addressInput.$el.querySelector("input").select();
-      document.execCommand("copy");
-      console.log("copied");
+      this.$refs.addressInput.$el.querySelector('input').select();
+      document.execCommand('copy');
+      console.log('copied');
       // Toast.responseHandler(this.$t('common.copied'), Toast.INFO);
     },
     selectAddress(data) {
       this.autoSelectMenu = false;
       this.addressValue = data.address;
-      this.$emit("emitSelectedValue", data);
+      this.$emit('emitSelectedValue', data);
     },
     getSaveBtnClasses() {
       if (!this.enableSaveAddress) {
-        return "disable-icon";
+        return 'disable-icon';
       }
     }
   }

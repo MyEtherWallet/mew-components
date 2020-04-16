@@ -11,7 +11,7 @@
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "lint": "vue-cli-service lint",
+    "lint": "eslint --fix 'src/**/*.vue'",
     "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
     "build-bundle": "vue-cli-service build --target lib --name mew-components ./src/wrapper.js",
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/mew-components.umd.js",
@@ -19,11 +19,13 @@
     "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/mew-components.min.js",
     "storybook": "start-storybook -p 6006 -c .storybook watch-css -s ./src",
     "build-storybook": "build-storybook -c .storybook -o .out",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages",
+    "eslint": "eslint --ignore-path .gitignore ."
   },
   "dependencies": {
     "all": "0.0.0",
     "core-js": "^2.6.5",
+    "eslint-config-eslint": "^6.0.0",
     "fibers": "^4.0.2",
     "git-url-parse": "^11.1.2",
     "material-design-icons-iconfont": "^5.0.1",
@@ -55,7 +57,7 @@
     "babel-preset-vue": "^2.0.2",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint-plugin-vue": "^6.2.2",
     "file-loader": "^6.0.0",
     "prettier": "^1.18.2",
     "rollup": "^1.17.0",

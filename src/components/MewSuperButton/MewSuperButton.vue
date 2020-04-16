@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  name: "MewSuperButton",
+  name: 'MewSuperButton',
   props: {
     /**
      * The text that will go in the button.
@@ -82,7 +82,7 @@ export default {
      */
     colorTheme: {
       type: String,
-      default: ""
+      default: ''
     },
     /**
      * Removes the ability to click or target the component.
@@ -95,8 +95,8 @@ export default {
   data() {
     return {
       colorThemes: {
-        outline: "outline",
-        basic: "basic"
+        outline: 'outline',
+        basic: 'basic'
       },
       active: false
     };
@@ -106,24 +106,24 @@ export default {
       this.active = !this.active;
     },
     getColor() {
-      const colorThemesWhite = ["outline", "basic"];
+      const colorThemesWhite = ['outline', 'basic'];
       if (colorThemesWhite.indexOf(this.colorTheme) >= 0) {
-        return "white";
+        return 'white';
       }
       return this.colorTheme;
     },
     getClasses() {
-      const classes = ["text-capitalize"];
+      const classes = ['text-capitalize'];
       if (this.colorTheme.toLowerCase() === this.colorThemes.basic) {
-        classes.push("basic--text");
+        classes.push('basic--text');
       }
 
       if (this.disabled) {
-        classes.push("disabled-btn");
+        classes.push('disabled-btn');
       }
 
       if (this.active && !this.disabled) {
-        classes.push("green-border");
+        classes.push('green-border');
       }
 
       return classes;

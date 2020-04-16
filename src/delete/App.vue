@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import Header from "@/views/components/HeaderComponent";
-import Footer from "@/views/components/FooterComponent";
+import Header from '@/views/components/HeaderComponent';
+import Footer from '@/views/components/FooterComponent';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Header,
     Footer

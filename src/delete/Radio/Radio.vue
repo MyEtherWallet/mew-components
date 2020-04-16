@@ -23,7 +23,7 @@ export default {
   }),
   watch: {
     radio1(newValue) {
-      this.$emit("input", newValue);
+      this.$emit('input', newValue);
     }
   }
 };
