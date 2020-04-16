@@ -10,6 +10,7 @@
       :placeholder="placeholder"
       :menu-props="{ value: autoSelectMenu, closeOnClick: true }"
       ref="addressInput"
+      return-object
       outlined
     >
       <template v-slot:prepend-inner>
@@ -117,7 +118,8 @@ export default {
     },
     selectAddress(data) {
       this.autoSelectMenu = false;
-      this.addressValue = data.address;
+      this.addressValue = data;
+      this.$emit("emitSelectedValue", data);
     }
   }
 };

@@ -34,9 +34,14 @@ export const AddressSelector = () => ({
   template: `
     <div>
     <br />
-    <address-selector :label="label" :items="items">
+    <address-selector @emitSelectedValue="getSelectedValue" :label="label" :items="items">
       <template v-slot:blockie>
       </template>
     </address-selector>
-  </div>`
+  </div>`,
+  methods: {
+    getSelectedValue(value) {
+      console.log("selected value:", value);
+    }
+  }
 });
