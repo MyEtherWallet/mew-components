@@ -1,6 +1,7 @@
-# Mew Components 
-## Take a look
+# MEW Components 
+```
 https://myetherwallet.github.io/mew-components
+```
 
 ## Install
 ### Install with npm
