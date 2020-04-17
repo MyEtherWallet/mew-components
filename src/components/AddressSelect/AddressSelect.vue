@@ -33,7 +33,6 @@
       <template v-slot:append>
         <div class="icon-container">
           <v-tooltip
-            color="primary"
             top
           >
             <template v-slot:activator="{ on }">
@@ -48,7 +47,6 @@
             <span>Copy</span>
           </v-tooltip>
           <v-tooltip
-            color="primary"
             top
           >
             <template v-slot:activator="{ on }">

@@ -1,8 +1,8 @@
-import { withKnobs, text, boolean, object } from "@storybook/addon-knobs";
-import AddressSelector from "@/components/AddressSelect/AddressSelect.vue";
+import { withKnobs, text, boolean, object } from '@storybook/addon-knobs';
+import AddressSelector from '@/components/AddressSelect/AddressSelect.vue';
 
 export default {
-  title: "AddressSelector",
+  title: 'AddressSelector',
   parameters: {
     component: AddressSelector
   },
@@ -11,30 +11,30 @@ export default {
 
 const addressesArray = [
   {
-    address: "0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D",
-    currency: "ETH",
-    nickname: "My Address",
-    resolverAddr: "0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
+    address: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
+    currency: 'ETH',
+    nickname: 'My Address',
+    resolverAddr: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
   }
 ];
 
 export const addressSelector = () => ({
-  components: { "address-selector": AddressSelector },
+  components: { 'address-selector': AddressSelector },
   props: {
     label: {
-      default: text("label", "To Address")
+      default: text('label', 'To Address')
     },
     items: {
-      default: object("addresses", addressesArray)
+      default: object('addresses', addressesArray)
     },
     placeholder: {
-      default: text("placeholder", "Please enter an address")
+      default: text('placeholder', 'Please enter an address')
     },
     isValidAddress: {
-      default: boolean("is-valid-address", false)
+      default: boolean('is-valid-address', false)
     },
     enableSaveAddress: {
-      default: boolean("enable-save-address", false)
+      default: boolean('enable-save-address', false)
     }
   },
   template: `
@@ -47,7 +47,7 @@ export const addressSelector = () => ({
   </div>`,
   methods: {
     getSelectedValue(value) {
-      console.log("selected value:", value);
+      console.log('selected value:', value);
     }
   }
 });

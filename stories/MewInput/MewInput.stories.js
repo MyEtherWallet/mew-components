@@ -1,48 +1,48 @@
-import { withKnobs, text, boolean, array } from "@storybook/addon-knobs";
-import MewInput from "@/components/MewInput/MewInput.vue";
+import { withKnobs, text, boolean, array } from '@storybook/addon-knobs';
+import MewInput from '@/components/MewInput/MewInput.vue';
 
 export default {
-  title: "MewInput",
+  title: 'MewInput',
   parameters: {
     component: MewInput
   },
   decorators: [withKnobs]
 };
 
-const ruleValue = [value => !!value || "Required."];
+const ruleValue = [value => !!value || 'Required.'];
 
 export const MEWInput = () => ({
-  components: { "mew-input": MewInput },
+  components: { 'mew-input': MewInput },
   props: {
     disabled: {
-      default: boolean("disabled", false)
+      default: boolean('disabled', false)
     },
     label: {
-      default: text("label", "label")
+      default: text('label', 'label')
     },
     placeholder: {
-      default: text("placeholder", "placeholder")
+      default: text('placeholder', 'placeholder')
     },
     value: {
-      default: text("value", "")
+      default: text('value', '')
     },
     hint: {
-      default: text("hint", "Hint")
+      default: text('hint', 'Hint')
     },
     symbol: {
-      default: text("symbol", "")
+      default: text('symbol', '')
     },
     rightLabel: {
-      default: text("right-label", "")
+      default: text('right-label', '')
     },
     hasClearBtn: {
-      default: boolean("has-clear-btn", false)
+      default: boolean('has-clear-btn', false)
     },
     rules: {
-      default: array("rules", ruleValue)
+      default: array('rules', ruleValue)
     },
     isSearch: {
-      default: boolean("is-search", false)
+      default: boolean('is-search', false)
     }
   },
   template: `

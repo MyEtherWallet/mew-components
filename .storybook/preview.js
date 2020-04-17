@@ -1,6 +1,6 @@
 import { addDecorator, addParameters } from '@storybook/vue';
-import vuetifyConfig from "../src/plugins/vuetify";
-import "vuetify/src/styles/main.sass";
+import vuetifyConfig from '../src/plugins/vuetify';
+import 'vuetify/src/styles/main.sass';
 import { configureViewport, INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
 
@@ -56,7 +56,7 @@ addDecorator(() => ({
   data() {
     return {
       noBackground: {
-        background: "none"
+        background: 'none'
       }
     }
   }
@@ -64,9 +64,9 @@ addDecorator(() => ({
 
 addParameters({
   backgrounds: [
-    { name: "white", value: "#fff" },
-    { name: "dark-blue", value: "#184f90" },
-    { name: "light-green", value: "#cdf4ee"}
+    { name: 'white', value: '#fff' },
+    { name: 'dark-blue', value: '#184f90' },
+    { name: 'light-green', value: '#cdf4ee'}
   ],
   docs: {
     container: DocsContainer,

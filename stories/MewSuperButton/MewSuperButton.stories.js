@@ -4,11 +4,11 @@ import {
   boolean,
   optionsKnob,
   files
-} from "@storybook/addon-knobs";
-import MewSuperButton from "@/components/MewSuperButton/MewSuperButton.vue";
+} from '@storybook/addon-knobs';
+import MewSuperButton from '@/components/MewSuperButton/MewSuperButton.vue';
 
 export default {
-  title: "MewSuperButton",
+  title: 'MewSuperButton',
   decorators: [withKnobs],
   parameters: {
     component: MewSuperButton
@@ -16,49 +16,57 @@ export default {
 };
 
 const colorThemeOptions = {
-  basic: "basic",
-  lightGreen: "light-green",
-  outline: "outline"
+  basic: 'basic',
+  lightGreen: 'light-green',
+  outline: 'outline'
 };
 
 const optionsObj = {
-  display: "inline-radio"
+  display: 'inline-radio'
 };
 
 export const MEWSuperButton = () => ({
-  components: { "mew-super-button": MewSuperButton },
+  components: { 'mew-super-button': MewSuperButton },
   props: {
     disabled: {
-      default: boolean("disabled", false)
+      default: boolean('disabled', false)
     },
     title: {
-      default: text("title", "MEW Super Button")
+      default: text('title', 'MEW Super Button')
     },
     subtitle: {
-      default: text("subtitle", "Subtitle")
+      default: text('subtitle', 'Subtitle')
     },
     tag: {
-      default: text("tag", "Tag")
+      default: text('tag', 'Tag')
     },
     note: {
-      default: text("note", "")
+      default: text('note', '')
     },
     isNew: {
-      default: boolean("is-new", false)
+      default: boolean('is-new', false)
     },
     colorTheme: {
       default: optionsKnob(
-        "color-theme",
+        'color-theme',
         colorThemeOptions,
-        "primary",
+        'primary',
         optionsObj
       )
     },
     titleIcon: {
-      default: files("title-icon", ".png, .svg", "")
+      default: files('title-icon', '.png, .svg', '')
     },
     rightIcon: {
-      default: files("right-icon", ".png, .svg", "")
+      default: files('right-icon', '.png, .svg', '')
+    },
+    isDarkMode: {
+      default: boolean('dark mode ?', false)
+    }
+  },
+  watch: {
+    isDarkMode(newVal) {
+      this.$vuetify.theme.dark = newVal === 'true' ? true : false;
     }
   },
   template: `

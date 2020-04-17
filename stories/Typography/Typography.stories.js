@@ -1,51 +1,51 @@
 export default {
-  title: "Typography"
+  title: 'Typography'
 };
 
 export const All = () => ({
   data() {
     return {
       mewAddress: {
-        fontFamily: "PT Mono"
+        fontFamily: 'PT Mono'
       },
       mewTitle: {
-        fontSize: "50px",
+        fontSize: '50px',
         fontWeight: 700
       },
       mewSubtitle: {
-        fontSize: "30px",
+        fontSize: '30px',
         fontWeight: 700
       },
       mewHeading1: {
-        fontSize: "24px",
+        fontSize: '24px',
         fontWeight: 700
       },
       mewHeading2: {
-        fontSize: "22px",
+        fontSize: '22px',
         fontWeight: 700
       },
       mewHeading3: {
-        fontSize: "16px",
+        fontSize: '16px',
         fontWeight: 700
       },
       mewBody: {
-        fontSize: "14px",
+        fontSize: '14px',
         fontWeight: 400
       },
       mewCaption: {
-        fontSize: "12px",
+        fontSize: '12px',
         fontWeight: 700,
-        textTransform: "uppercase"
+        textTransform: 'uppercase'
       },
       markupStyle: {
-        color: "#cfcfcf",
-        fontSize: "12px",
+        color: '#cfcfcf',
+        fontSize: '12px',
         fontWeight: 700
       },
       headerStyle: {
-        color: "#05c0a5",
-        textTransform: "uppercase",
-        paddingBottom: "10px"
+        color: '#05c0a5',
+        textTransform: 'uppercase',
+        paddingBottom: '10px'
       }
     };
   },

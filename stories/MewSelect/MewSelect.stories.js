@@ -1,27 +1,27 @@
-import { withKnobs, text, boolean, array } from "@storybook/addon-knobs";
-import MewSelect from "@/components/MewSelect/MewSelect.vue";
+import { withKnobs, text, boolean, array } from '@storybook/addon-knobs';
+import MewSelect from '@/components/MewSelect/MewSelect.vue';
 
 export default {
-  title: "MewSelect",
+  title: 'MewSelect',
   parameters: {
     component: MewSelect
   },
   decorators: [withKnobs]
 };
 
-const itemsArray = ["Green", "Orange", "Blue"];
+const itemsArray = ['Green', 'Orange', 'Blue'];
 
 export const MEWSelect = () => ({
-  components: { "mew-select": MewSelect },
+  components: { 'mew-select': MewSelect },
   props: {
     disabled: {
-      default: boolean("Disabled", false)
+      default: boolean('Disabled', false)
     },
     label: {
-      default: text("select-label", "label")
+      default: text('select-label', 'label')
     },
     items: {
-      default: array("items", itemsArray)
+      default: array('items', itemsArray)
     }
   },
   template: `
