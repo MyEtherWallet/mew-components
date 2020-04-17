@@ -3,6 +3,13 @@
   .v-btn {
     height: 100% !important;
     width: 100%;
+
+    .v-btn__content {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      white-space: nowrap;
+    }
   }
 
   // disabled button 

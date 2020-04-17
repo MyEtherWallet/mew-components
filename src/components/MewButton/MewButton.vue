@@ -150,12 +150,12 @@ export default {
     }
 
     &.primary:hover {
-      background-color: var(--v-primary-hover-base) !important;
+      background-color: var(--v-primary-base) !important;
     }
   }
 
   .primary-active {
-    background-color: var(--v-primary-active-base) !important;
+    background-color: var(--v-primary-base) !important;
   }
 
   .bg-white {
