@@ -88,37 +88,41 @@ export default new Vuetify({
           darken3: '#1eb19b',
           darken4: '#0baa93',
         },
-        secondary: '#5a78f0',
-        accent: '#cdf2ee',
-        error: '#FF445B',
-        info: '#003945',
-        success: '#4CAF50',
-        warning: '#ff9800',
-        cerise: '#e96071',
-        violet: '#7070e3',
-        independence: '#536d8b',
-        spruce: '#506175',
-        disabled: '#cecece',
-        'disabled-super': '#C5C5C5',
-        white: '#ffffff',
-        basic: '#0b2840',
-        'light-green': '#F1FAFA',
-        'police-strobe': '#25b0e8',
-        'dark-independence': '#334758',
-        'naples-yellow': '#fcb755',
-        'primary-silver': '#f2f4fa',
-        'light-mint': '#f2fafa',
-        'disabled-1': '#d8d8d8',
-        'disabled-2': '#999',
-        'grey-1': '#96a8b6',
-        'yellow-1': '#f5a623',
-        'dark-blue': '#184f90',
-        'light-grey': '#e0e0e0',
-        'input-label': '#6d89a6',
-        'input-placeholder': '#96a8b6',
-        'select-border': '#a3b7cf',
-        'primary-hover': '#0BAA93',
-        'primary-active': '#0A8170'
+        secondary: {
+          base: '#5a78f0',
+          lighten1: '#7895f2',
+          lighten2: '#7fdefb',
+          lighten3: '#d6dffa',
+          lighten4: '#f9fafe',
+          darken1: '#184f90'
+        },
+        basic: {
+          base: '#0b1a40',
+          lighten1: '#667f9b',
+          lighten2: '#a9bcd2',
+          lighten4: '#f5f7f8',
+          lighten3: '#c5ccd3'
+        },
+        success: {
+          base: '#2cc479'
+        },
+        error: {
+          base: '#ff445b',
+          lighten1: '#ffd7dc',
+          lighten2: '#fff8f9'
+        },
+        warning: {
+          base: '#ff7700',
+          lighten1: '#f5a623',
+          lighten2: '#ffa'
+        },
+        disabled: {
+          base: '#cecece',
+          lighten5: 'fff',
+          lighten2: '#f2f4fa',
+          lighten1: '#e0e0e0',
+          darken1: '#999999'
+        }
       },
       dark: {
         primary: '#0b2840',

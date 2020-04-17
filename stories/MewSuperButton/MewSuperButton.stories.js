@@ -17,7 +17,7 @@ export default {
 
 const colorThemeOptions = {
   basic: 'basic',
-  lightGreen: 'light-green',
+  primary: 'primary',
   outline: 'outline'
 };
 

@@ -120,7 +120,7 @@ export default {
       default: false
     },
     /**
-     * Applies the button color theme: basic, lightGreen, or outline.
+     * Applies the button color theme: basic, primary, or outline.
      */
     colorTheme: {
       type: String,
@@ -138,7 +138,8 @@ export default {
     return {
       colorThemes: {
         outline: 'outline',
-        basic: 'basic'
+        basic: 'basic',
+        primary: 'primary'
       },
       active: false
     };
@@ -152,11 +153,16 @@ export default {
       if (colorThemesWhite.indexOf(this.colorTheme) >= 0) {
         return 'white';
       }
+      
+      if (this.colorTheme === this.colorThemes.primary) {
+        return 'primary lighten-4'
+      }
+
       return this.colorTheme;
     },
     getClasses() {
       const classes = ['text-capitalize'];
-      if (this.colorTheme.toLowerCase() === this.colorThemes.basic) {
+      if (this.colorTheme.toLowerCase() === this.colorThemes.basic || this.colorTheme.toLowerCase() === this.colorThemes.primary) {
         classes.push('basic--text');
       }
 

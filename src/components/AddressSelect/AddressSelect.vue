@@ -213,7 +213,7 @@ export default {
       height: 25px;
       width: 25px;
       border-radius: 50%;
-      background-color: var(--v-light-grey-base);
+      background-color: var(--v-disabled-lighten-2-base);
       // margin-bottom: 17px;
       margin-right: 5px;
     }
@@ -243,7 +243,7 @@ export default {
     }
 
     .border {
-      border-right: 1px solid var(--v-light-grey-base);
+      border-right: 1px solid var(--v-disabled-lighten-2-base);
       margin: 0 15px;
     }
 
