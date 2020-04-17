@@ -11,7 +11,7 @@
     >
       <div
         class="btn-container"
-        :class="rightIcon ? 'center-align' : ''"
+        :class="showIcon(rightIcon) ? 'center-align' : ''"
       >
         <div class="left-container">
           <div class="title-wrapper">
@@ -20,10 +20,10 @@
             </div>
             <div
               class="body-2"
-              v-if="titleIcon"
+              v-if="showIcon(titleIcon)"
             >
               <img
-                v-if="titleIcon"
+                v-if="showIcon(titleIcon)"
                 class="icon title-icon"
                 :src="titleIcon"
                 alt="Icon"
@@ -49,13 +49,13 @@
             <div>NEW</div>
           </div>
           <div
-            v-if="!rightIcon && note"
+            v-if="!showIcon(rightIcon) && note"
             class="text-uppercase caption mt-1 note"
           >
             {{ note }}
           </div>
           <img
-            v-if="rightIcon"
+            v-if="showIcon(rightIcon)"
             class="icon right-icon"
             :src="rightIcon"
             alt="Icon"
@@ -95,14 +95,14 @@ export default {
      * The title-icon url. Inserts an icon next to the button title.
      */
     titleIcon: {
-      type: String,
+      type: [String, Array],
       default: ''
     },
     /**
      * The right-icon url. Inserts an icon on the right container of the button.
      */
     rightIcon: {
-      type: String,
+      type:[String, Array],
       default: ''
     },
     /**
@@ -175,6 +175,12 @@ export default {
       }
 
       return classes;
+    },
+    showIcon(src) {
+      if (src === '' || src.length <= 0 ) {
+        return false;
+      }
+      return true;
     }
   }
 };

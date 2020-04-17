@@ -10,14 +10,14 @@
       :text="btnStyle.toLowerCase() === btnStyles.transparent"
     >
       <img
-        v-if="icon && iconAlign.toLowerCase() === iconAlignments.left"
+        v-if="showIcon(icon) && iconAlign.toLowerCase() === iconAlignments.left"
         class="icon mr-1"
         :src="icon"
         alt="icon"
       >
       <span>{{ title }}</span>
       <img
-        v-if="icon && iconAlign.toLowerCase() === iconAlignments.right"
+        v-if="showIcon(icon) && iconAlign.toLowerCase() === iconAlignments.right"
         class="icon ml-1"
         :src="icon"
         alt="icon"
@@ -41,7 +41,7 @@ export default {
      * The icon url. Inserts an icon next to the button title.
      */
     icon: {
-      type: String,
+      type: [ String, Array],
       default: ''
     },
     /**
@@ -134,6 +134,12 @@ export default {
       }
 
       return classes;
+    },
+    showIcon(src) {
+      if (src === '' || src.length <= 0 ) {
+        return false;
+      }
+      return true;
     }
   }
 };
