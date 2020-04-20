@@ -60,13 +60,13 @@ export const MEWSuperButton = () => ({
     rightIcon: {
       default: files('right-icon', '.png, .svg', '')
     },
-    isDarkMode: {
+    enableDarkMode: {
       default: boolean('dark mode ?', false)
     }
   },
   watch: {
-    isDarkMode(newVal) {
-      this.$vuetify.theme.dark = newVal === 'true' ? true : false;
+    enableDarkMode(newVal) {
+      this.$vuetify.theme.dark = newVal === true ? true : false;
     }
   },
   template: `

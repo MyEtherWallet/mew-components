@@ -1,10 +1,19 @@
-
+import {
+  withKnobs,
+  boolean
+} from '@storybook/addon-knobs';
 
 export default {
-  title: 'Colors'
+  title: 'Colors',
+  decorators: [withKnobs]
 };
 
 export const All = () => ({
+  props: {
+    enableDarkMode: {
+      default: boolean('dark mode ?', false)
+    }
+  },
   data() {
     return {
       primaryShades: [ 
@@ -31,10 +40,9 @@ export const All = () => ({
       ,
       basicShades: [
         {name: 'basic base', hex: '#0b1a40'},
-        {name: 'basic lighten-1', hex: '#667f9b'},
-        {name: 'basic lighten-2', hex: '#a9bcd2'},
-        {name: 'basic lighten-3', hex: '#c5ccd3'}
-        ,{name: 'basic lighten-4', hex: '#f5f7f8'}
+        {name: 'basic lighten-1', hex: '#a9bcd2'},
+        {name: 'basic lighten-2', hex: '#c5ccd3'}
+        ,{name: 'basic lighten-3', hex: '#f5f7f8'}
       ],
       warningShades: [
         {name: 'warning base', hex: '#ff7700'},
@@ -55,6 +63,12 @@ export const All = () => ({
       ]
     }
   },
+  watch: {
+    enableDarkMode(newVal) {
+      this.$vuetify.theme.dark = newVal === true ? true : false;
+      // console.error('sdfsdf', this.$vuetify.theme)
+    }
+  },
   template: `
     <div>
     <br />
@@ -71,6 +85,19 @@ export const All = () => ({
         <v-card-text>
           <div style="font-size: 12px">{{shade.name}}</div>
           <div style="font-size: 12px">{{shade.hex}}</div>
+        </v-card-text>
+      </v-card>
+
+      <v-card
+        color="success"
+        outlined
+        tile
+        width="100"
+        height="100"
+        > 
+        <v-card-text class="white--text">
+          <div style="font-size: 12px">success</div>
+          <div style="font-size: 12px">#2cc479</div>
         </v-card-text>
       </v-card>
     </v-row>
@@ -107,23 +134,33 @@ export const All = () => ({
           <div style="font-size: 12px">{{shade.hex}}</div>
         </v-card-text>
       </v-card>
-    </v-row>
 
-    <v-row>
       <v-card
-      color="success"
+      color="title"
       outlined
       tile
       width="100"
       height="100"
       > 
       <v-card-text class="white--text">
-        <div style="font-size: 12px">success base</div>
-        <div style="font-size: 12px">#2cc479</div>
+        <div style="font-size: 12px">title</div>
+        <div style="font-size: 12px">#0b2840</div>
+      </v-card-text>
+      </v-card>
+
+      <v-card
+      color="text"
+      outlined
+      tile
+      width="100"
+      height="100"
+      > 
+      <v-card-text>
+        <div style="font-size: 12px">text</div>
+        <div style="font-size: 12px">#667f9b</div>
       </v-card-text>
       </v-card>
     </v-row>
-
     <v-row align="center">
       <v-card
         v-for="shade in errorShades"

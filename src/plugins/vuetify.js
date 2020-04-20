@@ -89,6 +89,7 @@ export default new Vuetify({
           darken4: '#0baa93',
         },
         secondary: {
+          hover: '#fff',
           base: '#5a78f0',
           lighten1: '#7895f2',
           lighten2: '#7fdefb',
@@ -98,14 +99,11 @@ export default new Vuetify({
         },
         basic: {
           base: '#0b1a40',
-          lighten1: '#667f9b',
-          lighten2: '#a9bcd2',
-          lighten4: '#f5f7f8',
-          lighten3: '#c5ccd3'
+          lighten1: '#a9bcd2',
+          lighten3: '#f5f7f8',
+          lighten2: '#c5ccd3'
         },
-        success: {
-          base: '#2cc479'
-        },
+        success: '#2cc479',
         error: {
           base: '#ff445b',
           lighten1: '#ffd7dc',
@@ -122,35 +120,63 @@ export default new Vuetify({
           lighten2: '#f2f4fa',
           lighten1: '#e0e0e0',
           darken1: '#999999'
-        }
+        },
+        title: '#0b2840',
+        text: '#667f9b'
       },
       dark: {
-        primary: '#0b2840',
-        secondary: '#5a78f0',
-        accent: '#cdf2ee',
-        error: '#FF445B',
-        info: '#003945',
-        success: '#4CAF50',
-        warning: '#ff9800',
-        cerise: '#e96071',
-        violet: '#7070e3',
-        independence: '#536d8b',
-        spruce: '#506175',
-        disabled: '#cecece',
-        'disabled-super': '#C5C5C5',
-        white: '#ffffff',
-        basic: '#0b2840',
-        'light-green': '#F1FAFA',
-        'police-strobe': '#25b0e8',
-        'dark-independence': '#334758',
-        'naples-yellow': '#fcb755',
-        'primary-silver': '#f2f4fa',
-        'light-mint': '#f2fafa',
-        'disabled-1': '#d8d8d8',
-        'disabled-2': '#999',
-        'grey-1': '#96a8b6',
-        'yellow-1': '#f5a623',
-        'dark-blue': '#184f90'
+        primary: {
+          base: '#05c0a5',
+          lighten5: '#f5fdfb',
+          lighten4: '#f2fafa', 
+          lighten3: '#e4f1f1',
+          lighten2: '#dcfff9',
+          lighten1: '#baede6',
+          darken1: '#56c5b4',
+          darken2: '#00c0a5',
+          darken3: '#1eb19b',
+          darken4: '#0baa93',
+        },
+        secondary: {
+          base: '#5c79f0',
+          lighten1: '#7895f2',
+          lighten2: '#7fdefb',
+          lighten3: '#d6dffa',
+          lighten4: '#f9fafe',
+          darken1: '#184f90'
+        },
+        basic: {
+          base: '#151A29',
+          lighten1: '#a9bcd2',
+          lighten2: '#f5f7f8',
+          lighten3: '#c5ccd3',
+          darken1: '#0d111e'
+        },
+        success: {
+          base: '#2cc479'
+        },
+        error: {
+          base: '#ff445b',
+          lighten1: '#ffd7dc',
+          lighten2: '#fff8f9'
+        },
+        warning: {
+          base: '#ff7700',
+          lighten1: '#f5a623',
+          lighten2: '#ffa'
+        },
+        yellow: {
+          base: '#ffb100'
+        },
+        disabled: {
+          base: '#1f2b42',
+          lighten5: 'fff',
+          lighten2: '#f2f4fa',
+          lighten1: '#e0e0e0',
+          darken1: '#999999'
+        },
+        title: '#95aed8',
+        text: '#4e5a6e'
       }
     }
   }
