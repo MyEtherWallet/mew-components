@@ -97,7 +97,6 @@ export const All = () => ({
   watch: {
     enableDarkMode(newVal) {
       this.$vuetify.theme.dark = newVal === true ? true : false;
-      // console.error('sdfsdf', this.$vuetify.theme)
     }
   },
   methods: {

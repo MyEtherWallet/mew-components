@@ -6,7 +6,7 @@
       :label="label === '' || isSearch ? '' : label"
       :placeholder="placeholder"
       outlined
-      color="basic"
+      color="title"
       v-model="inputValue"
       :hint="hint"
       :suffix="rightLabel"

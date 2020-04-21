@@ -5,35 +5,45 @@
     font-family: "PT Mono";
     margin-top: 3px;
   }
+  
+  // input disable theme
+  .theme--light.v-text-field--outlined:not(.v-input--is-focused).v-input--is-disabled > .v-input__control > .v-input__slot fieldset, .theme--dark.v-text-field--outlined:not(.v-input--is-focused).v-input--is-disabled > .v-input__control > .v-input__slot fieldset { 
+    color: var(--v-inputDisable-base) !important;
+  }
+
 
   // input border color
-  .theme--light.v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state) > .v-input__control > .v-input__slot fieldset {
-    color: var(--v-disabled-lighten-2-base) !important;
+  .v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state) > .v-input__control > .v-input__slot fieldset {
+    color: var(--v-inputBorder-base) !important;
   }
+  // }
 
   .v-input {
     // input
     input {
-      color: var(--v-info-base) !important;
+      color: var(--v-text-base) !important;
       font-size: 14px;
     }
 
     // input label
     .v-label {
-      color: var(--v-basic-label-base);
+      color: var(--v-label-base);
       font-weight: 500;
       text-transform: capitalize;
+
+      &.v-label--is-disabled {
+        color: var(--v-inputDisable-base); 
+      }
     }
 
     // input placeholder
     input::placeholder {
       color: var(--v-disabled-base);
-      font-family: "Roboto"
     }
 
     // input suffix color
     .v-text-field__suffix {
-      color: var(--v-input-disabled-base) !important;
+      color: var(--v-disabled-base) !important;
     }
 
     // dropdown icon

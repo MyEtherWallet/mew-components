@@ -43,6 +43,14 @@ export const MEWInput = () => ({
     },
     isSearch: {
       default: boolean('is-search', false)
+    },
+    enableDarkMode: {
+      default: boolean('dark mode ?', false)
+    }
+  },
+  watch: {
+    enableDarkMode(newVal) {
+      this.$vuetify.theme.dark = newVal === true ? true : false;
     }
   },
   template: `
