@@ -85,8 +85,7 @@ export default new Vuetify({
         selectActive: '#dcfff9',
         selectHover: '#f0f0f0',
         superPrimary: '#f2fafa',
-        superPrimaryActive: '#e4f1f1',
-        superPrimaryHover: '#00c0a5',
+        superPrimaryHover: '#f5fdfb',
         inputBorder: '#e0e0e0',
         inputDisabled: '#cecece',
         dropdownBorder: '#05c0a5',
@@ -101,7 +100,7 @@ export default new Vuetify({
         searchText: '#96a8b6',
         titlePrimary: '#0b2840',
         textPrimary: '#667f9b',
-        white: '#fff',
+        white: '#ffffff',
         primary: {
           base: '#05c0a5',
           lighten5: '#f5fdfb',

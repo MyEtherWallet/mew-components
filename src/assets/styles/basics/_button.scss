@@ -12,6 +12,10 @@
     }
   }
 
+  .theme--light.v-btn.v-btn--disabled {
+    background-color: var(--v-white-base) !important;
+  }
+
   // disabled button 
   .theme--light.v-btn.v-btn--disabled,.theme--dark.v-btn.v-btn--disabled {
     color: var(--v-disabled-base) !important;

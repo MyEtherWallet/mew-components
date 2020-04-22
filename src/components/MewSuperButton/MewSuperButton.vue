@@ -7,6 +7,7 @@
       :outlined="colorTheme.toLowerCase() === colorThemes.outline"
       :ripple="false"
       :disabled="disabled"
+      :text="disabled" 
       depressed
     >
       <div
@@ -41,6 +42,7 @@
           </div>
         </div>
         <div class="right-container">
+          <slot name="swap-tokens" />
           <div
             v-if="isNew"
             class="label"
@@ -155,7 +157,7 @@ export default {
       }
       
       if (this.colorTheme === this.colorThemes.primary) {
-        return 'primary lighten-4'
+        return 'superPrimary'
       }
 
       return this.colorTheme;
@@ -171,7 +173,7 @@ export default {
       }
 
       if (this.active && !this.disabled) {
-        classes.push('green-border');
+        classes.push('active');
       }
 
       return classes;
@@ -196,8 +198,15 @@ export default {
     color: var(--v-disabled-super-base) !important;
   }
 
-  .green-border {
+  .basic--text.active {
+    background-color: var(--v-primaryOutlineActive-base) !important;
     border: 2px solid var(--v-primary-base) !important;
+  }
+
+  .v-btn.basic--text {
+    &:hover {
+      background-color: var(--v-superPrimaryHover-base) !important;
+    }
   }
 
   .btn-container {
