@@ -21,36 +21,32 @@ export const All = () => ({
           {name: 'primary base', hex: '#05c0a5'}, 
           {name: 'primaryHover', lightHex: '#1eb19b', darkHex: '#1eb19b'}, 
           {name: 'primaryActive', lightHex: '#56c5b4', darkHex: '#56c5b4'},
-          {name: 'primaryOutlineHover', lightHex: '#05c0a5', darkHex: '#03292c'},
           {name: 'primaryOutlineActive', lightHex: '#baede6', darkHex: '#15796a'}
         ]
       }, {
         shades: [
           {name: 'secondary base', hex: '#5a78f0', darkHex: '#5a78f0'},
-          {name: 'secondaryOutlineHover', lightHex: '#f9fafe', darkHex: '#182040'},
           {name: 'secondaryOutlineActive', lightHex: '#d6dffa', darkHex: '#2e3c75'}
         ]
       },
       {
         shades: [
           {name: 'error base', lightHex: '#ff7700', darkHex: '#ff445b'},
-          {name: 'errorOutlineHover', lightHex: '#fff8f9', darkHex: '#361317'},
           {name: 'errorOutlineActive', lightHex: '#ffd7dc', darkHex: '#651f28'},
         ]
       },
       {
         shades: [
           {name: 'basic base', lightHex: '#0b1a40', darkHex: '#151A29'},
-          {name: 'basicOutlineHover', lightHex: '#f5f7f8', darkHex: '#1e2a3e'},
           {name: 'basicOutlineActive', lightHex: '#c5ccd3', darkHex: '#3d4e6'}
         ]
       },
       {
         shades: [
-          {name: 'title', lightHex: '#0b2840', darkHex: '#95aed8'},
-          {name: 'text', lightHex: '#667f9b', darkHex: '#4e5a6e'},
-          {name: 'text2', lightHex: '#999999', darkHex: '#999999'},
-          {name: 'caption', lightHex: '#a9bcd2', darkHex: '#a9bcd2'}
+          {name: 'titlePrimary', lightHex: '#0b2840', darkHex: '#95aed8'},
+          {name: 'textPrimary', lightHex: '#667f9b', darkHex: '#4e5a6e'},
+          {name: 'textSecondary', lightHex: '#999999', darkHex: '#999999'},
+          {name: 'captionPrimary', lightHex: '#a9bcd2', darkHex: '#a9bcd2'}
         ]
       },
       {
@@ -84,11 +80,17 @@ export const All = () => ({
       {
         shades: [
           {name: 'disabled', lightHex: '#cecece', darkHex: '#1f2b42'},
+          {name: 'white', lightHex: '#fff', darkHex: '#fff'}
         ]
       },
       {
         shades: [
           {name: 'inputBorder', lightHex: '#e0e0e0', darkHex: '#4e5a6e'},
+          {name: 'inputDisabled', lightHex: '#cecece', darkHex: '#1f2b42'},
+          {name: 'inputLabel', lightHex: '#6d89a6', darkHex: '#4e5a6e'},
+          {name: 'searchInput', lightHex: '#f2f4fa', darkHex: '#f2f4fa'},
+          {name: 'searchText', lightHex: '#96a8b6', darkHex: '#96a8b6'},
+          {name: 'dropdownBorder', lightHex: '#05c0a5', darkHex: '#7e90a7'},
         ]
       }
     ]

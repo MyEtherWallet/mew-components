@@ -3,14 +3,15 @@
     <v-combobox
       class="address-select"
       v-model="addressValue"
+      color="titlePrimary"
       :items="items"
-      item-text="address"
-      item-value="address"
       :label="label"
+      item-value="address"
+      item-text="address"
       :placeholder="placeholder"
+      :disabled="disabled"
       :menu-props="{ value: autoSelectMenu, closeOnClick: true }"
       ref="addressInput"
-      return-object
       outlined
     >
       <template v-slot:prepend-inner>
@@ -67,24 +68,24 @@
         </v-icon>
       </template>
 
-      <template v-slot:item="data">
+      <template v-slot:item="{ item }">
         <div
           class="item-container"
-          @click="selectAddress(data.item)"
+          @click="selectAddress(item)"
         >
           <div class="address-container">
             <blockie
               class="blockie"
-              :address="data.item.address"
+              :address="item.address"
               width="25px"
               height="25px"
             />
             <div class="mew-address address">
-              {{ data.item.address }}
+              {{ item.address }}
             </div>
           </div>
           <div class="nickname">
-            {{ data.item.nickname }}
+            {{ item.nickname }}
           </div>
         </div>
       </template>
@@ -98,6 +99,13 @@ import Blockie from '@/components/Blockie/Blockie.vue';
 export default {
   name: 'AddressSelector',
   props: {
+    /**
+     * Disables the input.
+     */
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     /**
      * Enables save address button.
      */
@@ -157,6 +165,9 @@ export default {
       console.log('address value:', newValue);
     }
   },
+  mounted() {
+    console.error('hello', this.items)
+  },
   methods: {
     toggle() {
       this.autoSelectMenu = !this.autoSelectMenu;
@@ -188,6 +199,7 @@ export default {
     align-items: center;
     display: flex;
     justify-content: space-between;
+    padding: 15px 0;
     width: 100%;
 
     .address-container {
@@ -213,13 +225,11 @@ export default {
       height: 25px;
       width: 25px;
       border-radius: 50%;
-      background-color: var(--v-disabled-lighten-2-base);
-      // margin-bottom: 17px;
+      background-color: var(--v-selectHover-base);
       margin-right: 5px;
     }
 
     .blockie-container {
-      // margin-bottom: 19px;
       margin-right: 5px;
       max-height: 25px;
     }
@@ -243,7 +253,7 @@ export default {
     }
 
     .border {
-      border-right: 1px solid var(--v-disabled-lighten-2-base);
+      border-right: 1px solid var(--v-disabled-base);
       margin: 0 15px;
     }
 

@@ -1,16 +1,48 @@
 .v-application,
 .v-application--is-ltr {
   // address select input
-  .address-select.v-select.v-text-field input {
-    font-family: "PT Mono";
-    margin-top: 3px;
-  }
-  
-  // input disable theme
-  .theme--light.v-text-field--outlined:not(.v-input--is-focused).v-input--is-disabled > .v-input__control > .v-input__slot fieldset, .theme--dark.v-text-field--outlined:not(.v-input--is-focused).v-input--is-disabled > .v-input__control > .v-input__slot fieldset { 
-    color: var(--v-inputDisable-base) !important;
+  .address-select.v-text-field {
+    input {
+      font-family: "PT Mono";
+      margin-top: 4px;
+    }
   }
 
+  // address select dropdown 
+  .v-autocomplete__content.v-menu__content {
+      border-bottom: 1px solid var(--v-dropdownBorder-base);
+      border-left: 1px solid var(--v-dropdownBorder-base);
+      border-radius: 4px;
+      border-right: 1px solid var(--v-dropdownBorder-base);
+      box-shadow: none;
+    
+    // .theme--dark.v-list {
+    //   background-color: var(--v-dropdownBorder-base);
+    // }
+  }
+
+  // dropddown menu
+  .v-select-list {
+    padding: 0;
+  }
+
+  .v-list-item--link {
+    border-top: 1px solid var(--v-selectHover-base);
+
+    &:hover {
+      background-color: var(--v-selectHover-base) !important;
+    }
+  }
+
+  .v-menu__content {
+    border: 1px solid var(--v-dropdownBorder-base);
+    box-shadow: none;
+  }
+
+  // input disable theme
+  .theme--light.v-text-field--outlined:not(.v-input--is-focused).v-input--is-disabled > .v-input__control > .v-input__slot fieldset, .theme--dark.v-text-field--outlined:not(.v-input--is-focused).v-input--is-disabled > .v-input__control > .v-input__slot fieldset { 
+    color: var(--v-inputDisabled-base) !important;
+  }
 
   // input border color
   .v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state) > .v-input__control > .v-input__slot fieldset {
@@ -21,24 +53,25 @@
   .v-input {
     // input
     input {
-      color: var(--v-text-base) !important;
+      color: var(--v-textPrimary-base) !important;
       font-size: 14px;
     }
 
     // input label
     .v-label {
-      color: var(--v-label-base);
+      color: var(--v-inputLabel-base);
       font-weight: 500;
       text-transform: capitalize;
 
       &.v-label--is-disabled {
-        color: var(--v-inputDisable-base); 
+        color: var(--v-inputDisabled-base); 
       }
     }
 
     // input placeholder
     input::placeholder {
       color: var(--v-disabled-base);
+      font-family: Roboto;
     }
 
     // input suffix color
@@ -48,7 +81,7 @@
 
     // dropdown icon
     .mdi-chevron-down {
-      color: var(--v-basic-base);
+      color: var(--v-titlePrimary-base);
       cursor: pointer;
       font-size: 20px;
     }
@@ -62,9 +95,14 @@
     // for search mew input
     &.search-input {
       fieldset {
-        background-color: var(--v-disabled-lighten-1-base) !important;
+        background-color: var(--v-searchInput-base) !important;
         border: none !important;
         z-index: -1 !important;
+      }
+
+      input::placeholder {
+        color: var(--v-searchText-base);
+        font-family: Roboto;
       }
     }
   }

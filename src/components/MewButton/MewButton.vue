@@ -112,17 +112,11 @@ export default {
         classes.push('primary--text');
       }
 
-      if (this.disabled) {
-        classes.push('disabled-btn');
-      }
-
       if (
         this.active &&
-        !this.disabled &&
-        this.btnStyle.toLowerCase() === this.btnStyles.background &&
-        this.colorTheme.toLowerCase() === this.colorThemes.primary
+        !this.disabled
       ) {
-        classes.push('primary-active');
+        classes.push('active');
       }
 
       if (
@@ -155,20 +149,34 @@ export default {
       height: 27px;
     }
 
-    &.primary:hover {
-      background-color: var(--v-primary-base) !important;
+    &.primary.white--text.active {
+      background-color: var(--v-primaryActive-base) !important;
     }
+    
+    &.primary.white--text:hover {
+      background-color: var(--v-primaryHover-base) !important;
+    }
+
+    &.primary--text.v-btn--outlined.active {
+      background-color: var(--v-primaryOutlineActive-base) !important;
+    }
+
+    &.secondary--text.v-btn--outlined.active {
+      background-color: var(--v-secondaryOutlineActive-base) !important;
+    }
+
+    &.error--text.v-btn--outlined.active {
+      background-color: var(--v-errorOutlineActive-base) !important;
+    }
+
+    &.basic--text.v-btn--outlined.active {
+      background-color: var(--v-basicOutlineActive-base) !important;
+    }
+
   }
 
-  .primary-active {
-    background-color: var(--v-primary-base) !important;
-  }
-
-  .bg-white {
-    background-color: var(--v-white-base) !important;
-  }
-
-  .theme--light.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+  .theme--light.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined), .theme--dark.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+    background-color: var(--v-disabled-base) !important;
     color: var(--v-white-base) !important;
   }
 }

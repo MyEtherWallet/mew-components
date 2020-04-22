@@ -13,11 +13,13 @@
   }
 
   // disabled button 
-  .disabled-btn {
+  .theme--light.v-btn.v-btn--disabled,.theme--dark.v-btn.v-btn--disabled {
+    color: var(--v-disabled-base) !important;
     pointer-events: none;
 
     .icon {
       filter: grayscale(100%);
     }
   }
+
 }

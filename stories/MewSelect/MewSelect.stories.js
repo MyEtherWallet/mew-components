@@ -22,6 +22,14 @@ export const MEWSelect = () => ({
     },
     items: {
       default: array('items', itemsArray)
+    },
+    enableDarkMode: {
+      default: boolean('dark mode ?', false)
+    }
+  },
+  watch: {
+    enableDarkMode(newVal) {
+      this.$vuetify.theme.dark = newVal === true ? true : false;
     }
   },
   template: `

@@ -78,13 +78,9 @@ export default new Vuetify({
       light: {
         primaryHover: '#1eb19b',
         primaryActive: '#56c5b4',
-        primaryOutlineHover: '#05c0a5',
         primaryOutlineActive: '#baede6',
-        secondaryOutlineHover: '#f9fafe',
         secondaryOutlineActive: '#d6dffa',
-        errorOutlineHover: '#fff8f9',
         errorOutlineActive: '#ffd7dc',
-        basicOutlineHover: '#f5f7f8',
         basicOutlineActive: '#c5ccd3', 
         selectActive: '#dcfff9',
         selectHover: '#f0f0f0',
@@ -92,14 +88,20 @@ export default new Vuetify({
         superPrimaryActive: '#e4f1f1',
         superPrimaryHover: '#00c0a5',
         inputBorder: '#e0e0e0',
-        inputDisable: '#cecece',
+        inputDisabled: '#cecece',
+        dropdownBorder: '#05c0a5',
         txIn: '#7895f2',
         txOut: '#ffaf8f',
         swap: '#7fdefb',
         swapDisable: '#f8f8f8',
-        caption: '#a9bcd2',
-        text2: '#999999',
-        label: '#6d89a6',
+        captionPrimary: '#a9bcd2',
+        textSecondary: '#999999',
+        inputLabel: '#6d89a6',
+        searchInput: '#f2f4fa',
+        searchText: '#96a8b6',
+        titlePrimary: '#0b2840',
+        textPrimary: '#667f9b',
+        white: '#fff',
         primary: {
           base: '#05c0a5',
           lighten5: '#f5fdfb',
@@ -144,9 +146,7 @@ export default new Vuetify({
           lighten2: '#f2f4fa',
           lighten1: '#e0e0e0',
           darken1: '#999999'
-        },
-        title: '#0b2840',
-        text: '#667f9b'
+        }
       },
       dark: {
         primaryHover: '#1eb19b',
@@ -165,14 +165,18 @@ export default new Vuetify({
         superPrimaryActive: '#e4f1f1',
         superPrimaryHover: '#00c0a5',
         inputBorder: '#4e5a6e',
-        inputDisable: '#1f2b42',
+        inputDisabled: '#1f2b42',
+        dropdownBorder: '#7e90a7',
         txIn: '#7895f2',
         txOut: '#ffaf8f',
         swap: '#0f1320',
         swapDisable: '#f8f8f8',
-        caption: '#a9bcd2',
-        text2: '#999999',
-        label: '#4e5a6e',
+        captionPrimary: '#a9bcd2',
+        textSecondary: '#999999',
+        inputLabel: '#4e5a6e',
+        searchInput: '#f2f4fa',
+        searchText: '#96a8b6',
+        white: '#fff',
         primary: {
           base: '#05c0a5',
           lighten5: '#f5fdfb',
@@ -223,8 +227,8 @@ export default new Vuetify({
           lighten1: '#e0e0e0',
           darken1: '#999999'
         },
-        title: '#95aed8',
-        text: '#4e5a6e'
+        titlePrimary: '#95aed8',
+        textPrimary: '#4e5a6e'
       }
     }
   }

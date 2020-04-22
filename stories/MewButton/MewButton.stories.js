@@ -69,6 +69,14 @@ export const MEWButton = () => ({
     },
     iconAlign: {
       default: optionsKnob('icon-align', iconAlignOptions, 'none', optionsObj)
+    },
+    enableDarkMode: {
+      default: boolean('dark mode ?', false)
+    }
+  },
+  watch: {
+    enableDarkMode(newVal) {
+      this.$vuetify.theme.dark = newVal === true ? true : false;
     }
   },
   template: `

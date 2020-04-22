@@ -15,6 +15,12 @@ const addressesArray = [
     currency: 'ETH',
     nickname: 'My Address',
     resolverAddr: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
+  },
+  {
+    address: '0x43689531907482BEE7e650D18411E284A7337A66',
+    currency: 'ETH',
+    nickname: 'nickname',
+    resolverAddr: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
   }
 ];
 
@@ -25,7 +31,7 @@ export const addressSelector = () => ({
       default: text('label', 'To Address')
     },
     items: {
-      default: object('addresses', addressesArray)
+      default: object('items', addressesArray)
     },
     placeholder: {
       default: text('placeholder', 'Please enter an address')
@@ -35,12 +41,23 @@ export const addressSelector = () => ({
     },
     enableSaveAddress: {
       default: boolean('enable-save-address', false)
+    },
+    disabled: {
+      default: boolean('disabled', false)
+    },
+    enableDarkMode: {
+      default: boolean('dark mode ?', false)
+    }
+  },
+  watch: {
+    enableDarkMode(newVal) {
+      this.$vuetify.theme.dark = newVal === true ? true : false;
     }
   },
   template: `
     <div>
     <br />
-    <address-selector :enable-save-address="enableSaveAddress" @emitSelectedValue="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items">
+    <address-selector :disabled="disabled" :enable-save-address="enableSaveAddress" @emitSelectedValue="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items">
       <template v-slot:blockie>
       </template>
     </address-selector>
