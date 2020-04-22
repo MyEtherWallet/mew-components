@@ -84,7 +84,7 @@ export const All = () => ({
       },
       {
         shades: [
-          {name: 'inputBorder', lightHex: '#e0e0e0', darkHex: '#4e5a6e'},
+          {name: 'inputBorder', lightHex: '#e0e0e0', darkHex: '#6679fb'},
           {name: 'inputDisabled', lightHex: '#cecece', darkHex: '#1f2b42'},
           {name: 'inputLabel', lightHex: '#6d89a6', darkHex: '#4e5a6e'},
           {name: 'searchInput', lightHex: '#f2f4fa', darkHex: '#f2f4fa'},
