@@ -213,7 +213,7 @@ export default new Vuetify({
           lighten2: '#fff8f9'
         },
         warning: {
-          base: '#ff7700',
+          base: '#FFF2DC',
           lighten1: '#f5a623',
           lighten2: '#ffa'
         },

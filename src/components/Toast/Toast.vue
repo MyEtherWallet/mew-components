@@ -1,9 +1,10 @@
 <template>
   <div>
     <v-bottom-sheet
-      :value="showToast" 
+      :value="showsToast" 
       :color="toastType"
       :hide-overlay="true"
+      :persistent="persistent"
     >
       <v-sheet 
         class="text-center"
@@ -13,11 +14,17 @@
       >
         <v-container fill-height>
           <v-row
+            :class="['font-weight-medium', toastTypes.warning === toastType.toLowerCase() ? 'titlePrimary--text' : 'white--text']"  
             justify="center"
             align="center"
           >
-            <div :class="toastType === 'warning' ? 'titlePrimary--text' : 'white--text'">
+            <div>
               {{ text }}
+              <a
+                :class="toastTypes.warning === toastType.toLowerCase() ? 'primary--text' : 'white--text'"
+                :href="link"
+              >{{ linkText }}
+              </a>
             </div>
           </v-row>
         </v-container>
@@ -30,34 +37,80 @@
 export default {
   data() {
     return {
-      showsToast: false
+      showsToast: false,
+      toastTypes: {
+        warning: 'warning'
+      }
     }
   },
   props: {
+    /**
+     * Toast types: success, warning, error.
+     */
     toastType: {
       type: String,
       default: ''
     },
+    /**
+     * Shows the toast.
+     */
     showToast: {
       type: Boolean,
       default: false
     },
+    /**
+     * The duration of the toast. 0 is indefinite.
+     */
     duration: {
       type: Number,
       default: 0
     },
+    /**
+     * The toast text.
+     */
     text: {
       type: String,
       default: ''
+    },
+    /**
+     * The url 
+     */
+    link: {
+      type: String,
+      default: ''
+    },
+    /**
+     * The link text.
+     */
+    linkText: {
+      type: String,
+      default: ''
+    },
+    /**
+     * Clicking outside of the element will not deactivate it.
+     */
+    persistent: {
+      type: Boolean,
+      default: false
+    }
+  },
+  watch: {
+    showToast(newVal) {
+      this.showsToast = newVal;
+      this.setTimer();
     }
   },
   mounted() {
-    // this.showsToast = this.showToast;
-    if(this.duration > 0) {
-      setTimeout(function () {
-        // this.showsToast = false;
-        // console.error('in here', this.showsToast)
-      }, this.duration);
+    this.setTimer();
+  },
+  methods: {
+    setTimer() {
+      const _self = this;
+      if(this.duration > 0 && this.showToast === true) {
+        setTimeout(function () {
+          _self.showsToast = false;
+        }, this.duration);
+      }
     }
   }
 }

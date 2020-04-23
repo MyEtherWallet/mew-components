@@ -82,7 +82,7 @@ export default {
       },
       colorThemes: {
         white: 'white',
-        primary: 'primary'
+        primary: 'primary',
       },
       iconAlignments: {
         left: 'left',
