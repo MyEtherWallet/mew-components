@@ -2,7 +2,8 @@ import {
   withKnobs,
   boolean,
   text,
-  optionsKnob
+  optionsKnob,
+  number
 } from '@storybook/addon-knobs';
 import Toast from '@/components/Toast/Toast.vue';
 
@@ -20,17 +21,24 @@ const toastTypeOptions = {
   error: 'error'
 }
 
-export const MEWToast = () => ({
+const optionsObj = {
+  display: 'inline-radio'
+};
+
+export const toast = () => ({
   components: { 'toast': Toast },
   props: {
     showToast: {
       default: boolean('show-toast', false)
     },
     duration: {
-      default: text('duration', '30000')
+      default: number('duration', 10000)
     },
     toastType: {
-      default: optionsKnob('duration', toastTypeOptions, 'success')
+      default: optionsKnob('toast-type', toastTypeOptions, 'success', optionsObj)
+    },
+    text: {
+      default: text('text', 'I am a toast!')
     },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
@@ -45,7 +53,8 @@ export const MEWToast = () => ({
     <div>
     <br />
     <toast
-      :toastType="toastTYpe"
+      :text="text"
+      :toastType="toastType"
       :duration="duration"
       :showToast="showToast"
     />

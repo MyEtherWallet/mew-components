@@ -64,7 +64,7 @@ export const All = () => ({
       {
         shades: [
           {name: 'success', lightHex: '#2cc479', darkHex: '#2cc479'},
-          {name: 'warning', lightHex: '#ff7700'},
+          {name: 'warning', lightHex: '#FFF2DC', darkHex: '#FFF2DC' },
           {name: 'warning lighten-1', lightHex: '#f5a623'}
         ]
       },
@@ -73,7 +73,7 @@ export const All = () => ({
           {name: 'txIn', lightHex: '#7895f2', darkHex: '#7895f2'},
           {name: 'txOut', lightHex: '#ffaf8f', darkHex: '#ffaf8f'},
           {name: 'swap', lightHex: '#184f90', darkHex: '#0f1320'},
-          {name: 'swapDisable', lightHex: '#f8f8f8', darkHex: '#f8f8f8'}
+          {name: 'swapDisable', lightHex: '#f8f8f8', darkHex: '#0f1320'}
         ]
       },
       {
@@ -90,6 +90,7 @@ export const All = () => ({
           {name: 'searchInput', lightHex: '#f2f4fa', darkHex: '#f2f4fa'},
           {name: 'searchText', lightHex: '#96a8b6', darkHex: '#96a8b6'},
           {name: 'dropdownBorder', lightHex: '#05c0a5', darkHex: '#7e90a7'},
+          {name: 'dropdownBorder', lightHex: '#F3FAFA', darkHex: '#151A29'},
         ]
       }
     ]
@@ -107,7 +108,7 @@ export const All = () => ({
         return 'white--text';
       }
 
-      if ((shade.name === 'superPrimary' || shade.name === 'superPrimaryActive' || shade.name === 'swapDisable') && this.$vuetify.theme.dark) {
+      if ((shade.name === 'superPrimary' || shade.name === 'superPrimaryHover' || shade.name === 'white' || shade.name === 'searchInput') && this.$vuetify.theme.dark) {
         return 'black--text';
       }
 

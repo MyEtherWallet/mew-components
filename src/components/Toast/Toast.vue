@@ -1,18 +1,38 @@
 <template>
   <div>
-    <v-snackbar
-      bottom="true"
-      :timeout="duration" 
-      v-model="showToast" 
+    <v-bottom-sheet
+      :value="showToast" 
       :color="toastType"
+      :hide-overlay="true"
     >
-      {{ toast }}
-    </v-snackbar>
+      <v-sheet 
+        class="text-center"
+        :tile="true" 
+        height="80"
+        :color="toastType"
+      >
+        <v-container fill-height>
+          <v-row
+            justify="center"
+            align="center"
+          >
+            <div :class="toastType === 'warning' ? 'titlePrimary--text' : 'white--text'">
+              {{ text }}
+            </div>
+          </v-row>
+        </v-container>
+      </v-sheet>
+    </v-bottom-sheet>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      showsToast: false
+    }
+  },
   props: {
     toastType: {
       type: String,
@@ -20,11 +40,24 @@ export default {
     },
     showToast: {
       type: Boolean,
-      default: true
+      default: false
     },
     duration: {
+      type: Number,
+      default: 0
+    },
+    text: {
       type: String,
-      default: '0'
+      default: ''
+    }
+  },
+  mounted() {
+    // this.showsToast = this.showToast;
+    if(this.duration > 0) {
+      setTimeout(function () {
+        // this.showsToast = false;
+        // console.error('in here', this.showsToast)
+      }, this.duration);
     }
   }
 }
