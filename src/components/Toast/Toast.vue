@@ -19,6 +19,9 @@
             align="center"
           >
             <div>
+              <v-icon :color="toastTypes.warning === toastType.toLowerCase() ? 'warning darken-1' : 'white'">
+                {{ getIcon() }}
+              </v-icon>
               {{ text }}
               <a
                 :class="toastTypes.warning === toastType.toLowerCase() ? 'primary--text' : 'white--text'"
@@ -39,7 +42,9 @@ export default {
     return {
       showsToast: false,
       toastTypes: {
-        warning: 'warning'
+        warning: 'warning',
+        error: 'error',
+        success: 'success'
       }
     }
   },
@@ -104,6 +109,16 @@ export default {
     this.setTimer();
   },
   methods: {
+    getIcon() {
+      const toastType = this.toastType.toLowerCase();
+      if (toastType === this.toastTypes.warning ) {
+        return 'mdi-alert';
+      } else if (toastType === this.toastTypes.success ) {
+        return 'mdi-check-circle';
+      } else if (toastType === this.toastTypes.error) {
+        return 'mdi-close-circle'
+      }
+    },
     setTimer() {
       const _self = this;
       if(this.duration > 0 && this.showToast === true) {

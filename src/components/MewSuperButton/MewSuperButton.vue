@@ -257,7 +257,7 @@ export default {
     }
 
     .note {
-      color: var(--v-warning-lighten1) !important;
+      color: var(--v-warning-darken1) !important;
     }
     .right-icon {
       max-height: 80px;

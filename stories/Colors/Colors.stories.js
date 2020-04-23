@@ -65,7 +65,7 @@ export const All = () => ({
         shades: [
           {name: 'success', lightHex: '#2cc479', darkHex: '#2cc479'},
           {name: 'warning', lightHex: '#FFF2DC', darkHex: '#FFF2DC' },
-          {name: 'warning lighten-1', lightHex: '#f5a623'}
+          {name: 'warning darken-1', lightHex: '#f5a623', darkHex: '#f5a623'}
         ]
       },
       {

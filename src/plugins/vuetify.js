@@ -137,7 +137,7 @@ export default new Vuetify({
         },
         warning: {
           base: '#FFF2DC',
-          lighten1: '#f5a623',
+          darken1: '#f5a623',
           lighten2: '#ffa'
         },
         disabled: {
@@ -214,7 +214,7 @@ export default new Vuetify({
         },
         warning: {
           base: '#FFF2DC',
-          lighten1: '#f5a623',
+          darken1: '#f5a623',
           lighten2: '#ffa'
         },
         yellow: {
