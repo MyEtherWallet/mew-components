@@ -40,8 +40,8 @@ export const toast = () => ({
     text: {
       default: text('text', 'I am a toast!')
     },
-    url: {
-      default: text('url', '')
+    link: {
+      default: text('link', '')
     },
     linkText: {
       default: text('link-text', '')
