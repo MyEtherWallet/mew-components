@@ -57,10 +57,7 @@ export const addressSelector = () => ({
   template: `
     <div>
     <br />
-    <address-selector :disabled="disabled" :enable-save-address="enableSaveAddress" @emitSelectedValue="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items">
-      <template v-slot:blockie>
-      </template>
-    </address-selector>
+    <address-selector :disabled="disabled" :enable-save-address="enableSaveAddress" @emitSelectedValue="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
   </div>`,
   methods: {
     getSelectedValue(value) {

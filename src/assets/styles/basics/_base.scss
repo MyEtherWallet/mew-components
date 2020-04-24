@@ -11,3 +11,9 @@ body {
 .bg-white {
   background-color: var(--v-white-base) !important;
 }
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

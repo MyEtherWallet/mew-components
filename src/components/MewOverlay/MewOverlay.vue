@@ -2,8 +2,7 @@
   <div>
     <v-bottom-sheet
       :value="showsOverlay" 
-      fullscreen="true"
-      :persistent="persistent"
+      :fullscreen="true"
     >
       <v-sheet 
         height="100%" 
@@ -13,10 +12,23 @@
           <v-row
             align="center"
             class="pt-5"
-            justify="end"
+            :justify="hasBackBtn ? 'space-between' : 'end'"
           > 
             <div
-              class="close-container"
+              v-if="hasBackBtn"
+              class="close-container d-flex align-center"
+              @click="close()"
+            > 
+              <v-icon
+                color="titlePrimary"
+              >
+                mdi-arrow-left-circle-outline
+              </v-icon>
+              <!-- need to translate this -->
+              <span class="titlePrimary--text font-weight-medium ml-2">Back</span>
+            </div>
+            <div
+              class="close-container d-flex align-center"
               @click="close()"
             > 
               <v-icon
@@ -36,25 +48,23 @@
             <span
               color="titlePrimary--text"
               class="mew-subtitle"
-            >Title</span>
+            >{{ title }}</span>
           </v-row>
-          <v-row 
-            align="center"
-            justify="center"
-          >
+          <div class="body-container d-flex flex-column align-center justify-center">
             <slot name="mewComponent" />
-          </v-row>
-          <v-row
-            align="end"
-            justify="center"
-            v-if="btnText"
-          >
             <mew-button
+              class="mt-4"
+              v-if="btnText"
               color-theme="primary"
               btn-type="background"
               :title="btnText"
             />
-          </v-row>
+            <warning-sheet
+              v-if="warningTitle || warningDesc"
+              :title="warningTitle"
+              :description="warningDesc"
+            />
+          </div>
         </v-container>
       </v-sheet>
     </v-bottom-sheet>
@@ -63,15 +73,18 @@
 
 <script>
 import mewButton from '@/components/MewButton/MewButton.vue';
+import warningSheet from '@/components/WarningSheet/WarningSheet.vue';
 
 export default {
+  name: 'MewOverlay',
   data() {
     return {
       showsOverlay: false
     }
   },
   components: {
-    'mew-button': mewButton
+    'mew-button': mewButton,
+    'warning-sheet': warningSheet
   },
   props: {
     /**
@@ -89,12 +102,33 @@ export default {
       default: ''
     },
     /**
-     * Button text.
+     * Displays and shows the button text.
      */
     btnText: {
       type: String,
       default: ''
-    }
+    },
+    /**
+     * Displays the back button.
+     */
+    hasBackBtn: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Displays and shows the warning title.
+     */
+    warningTitle: {
+      type: String,
+      default: ''
+    },
+    /**
+     * Displays and shows the warning description.
+     */
+    warningDesc: {
+      type: String,
+      default: ''
+    },
   },
   watch: {
     showOverlay(newVal) {
@@ -111,8 +145,6 @@ export default {
 
 <style lang="scss" scoped>
 .close-container {
-  align-items: center;
   cursor: pointer;
-  display: flex;
 }
 </style>

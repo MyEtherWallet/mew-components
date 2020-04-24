@@ -6,10 +6,7 @@
     width: 100%;
 
     .v-btn__content {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      width: 100%;
-      white-space: nowrap;
+      max-width: 100%;
     }
   }
 

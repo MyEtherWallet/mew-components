@@ -10,12 +10,16 @@
       :text="disabled" 
       depressed
     >
-      <div
+      <v-row
         class="btn-container"
+        justify="space-between"
         :class="showIcon(rightIcon) ? 'center-align' : ''"
       >
-        <div class="left-container">
-          <div class="title-wrapper">
+        <v-col
+          class="left-container truncate"
+          cols="6"
+        >
+          <div class="title-wrapper d-flex align-center">
             <div class="title font-weight-bold">
               {{ title }}
             </div>
@@ -40,12 +44,15 @@
           <div class="body-2 mt-1">
             #{{ tag }}
           </div>
-        </div>
-        <div class="right-container">
-          <slot name="swap-tokens" />
+        </v-col>
+        <v-col
+          cols="6"
+          class="right-container"
+        >
+          <slot name="swapTokens" />
           <div
             v-if="isNew"
-            class="label"
+            class="label d-flex align-center"
             alt="label"
           >
             <div>NEW</div>
@@ -62,8 +69,8 @@
             :src="rightIcon"
             alt="Icon"
           >
-        </div>
-      </div>
+        </v-col>
+      </v-row>
     </v-btn>
   </div>
 </template>
@@ -210,8 +217,6 @@ export default {
   }
 
   .btn-container {
-    display: flex;
-    justify-content: space-between;
     padding: 20px;
     width: 100%;
   }
@@ -222,9 +227,8 @@ export default {
 
   .left-container {
     text-align: left;
+    width: 100%;
     .title-wrapper {
-      align-items: center;
-      display: flex;
       .title-icon {
         max-height: 20px;
         margin-left: 2px;
@@ -234,19 +238,16 @@ export default {
 
   .right-container {
     .label {
-      align-items: center;
       border-right: 25px solid red;
       border-top: 25px solid red;
       border-left: 25px solid transparent;
       border-bottom: 25px solid transparent;
       border-radius: 0 12px 0 0;
-      display: flex;
       height: 46px;
       position: absolute;
       right: -16px;
       top: 0;
       width: 0;
-
       div {
         color: #fff;
         font-size: 12px;

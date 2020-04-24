@@ -72,10 +72,10 @@
 
       <template v-slot:item="{ item }">
         <div
-          class="item-container"
+          class="item-container d-flex align-center justify-space-between"
           @click="selectAddress(item)"
         >
-          <div class="address-container">
+          <div class="address-container d-flex align-center justify-space-between">
             <blockie
               class="blockie"
               :address="item.address"
@@ -198,17 +198,10 @@ export default {
 .v-application,
 .v-application--is-ltr {
   .item-container {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
     padding: 15px 0;
     width: 100%;
 
     .address-container {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-
       .blockie {
         margin-right: 10px;
       }
