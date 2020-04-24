@@ -1,7 +1,9 @@
 import {
   withKnobs,
   boolean,
-  text
+  text,
+  files,
+  optionsKnob
 } from '@storybook/addon-knobs';
 import MewModule from '@/components/MewModule/MewModule.vue';
 
@@ -11,6 +13,16 @@ export default {
     component: MewModule
   },
   decorators: [withKnobs]
+};
+
+const iconAlignOptions = {
+  left: 'left',
+  right: 'right',
+  none: 'none'
+};
+
+const optionsObj = {
+  display: 'inline-radio'
 };
 
 export const MEWModule = () => ({
@@ -33,6 +45,15 @@ export const MEWModule = () => ({
     },
     caption: {
       default: text('caption', 'caption')
+    },
+    icon: {
+      default: files('icon', '.png, .svg', '')
+    },
+    iconAlign: {
+      default: optionsKnob('icon-align', iconAlignOptions, 'none', optionsObj)
+    },
+    hasIndicator: {
+      default: boolean('has-indicator', false)
     }
   },
   watch: {
@@ -49,6 +70,7 @@ export const MEWModule = () => ({
       :title-size="titleSize"
       :subtitle="subtitle"
       :caption="caption"
+      :has-indicator="hasIndicator"
     />
   </div>`
 });
