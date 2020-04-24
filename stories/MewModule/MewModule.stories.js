@@ -54,6 +54,9 @@ export const MEWModule = () => ({
     },
     hasIndicator: {
       default: boolean('has-indicator', false)
+    },
+    hasElevation: {
+      default: boolean('has-elevation', true)
     }
   },
   watch: {
@@ -71,6 +74,7 @@ export const MEWModule = () => ({
       :subtitle="subtitle"
       :caption="caption"
       :has-indicator="hasIndicator"
+      :has-elevation="hasElevation"
     />
   </div>`
 });

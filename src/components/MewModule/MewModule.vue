@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-sheet 
-      class="elevation-2"
+      :class="[ hasElevation ? 'elevation-2' : '']"
       :color="colorType"
       height="100%"
     >
@@ -110,6 +110,13 @@ export default {
      * Displays indicator.
      */
     hasIndicator: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Adds elevation to the module.
+     */
+    hasElevation: {
       type: Boolean,
       default: false
     }

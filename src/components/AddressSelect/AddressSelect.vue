@@ -167,9 +167,6 @@ export default {
       console.log('address value:', newValue);
     }
   },
-  mounted() {
-    console.error('hello', this.items)
-  },
   methods: {
     toggle() {
       this.autoSelectMenu = !this.autoSelectMenu;

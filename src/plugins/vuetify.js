@@ -30,7 +30,10 @@ import Vuetify, {
   VLayout,
   VSelect,
   VCombobox,
-  VTooltip
+  VTooltip,
+  VStepper,
+  VStepperHeader,
+  VStepperStep
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -62,7 +65,10 @@ Vue.use(Vuetify, {
     VLayout,
     VSelect,
     VCombobox,
-    VTooltip
+    VTooltip,
+    VStepper,
+    VStepperHeader,
+    VStepperStep
   }
 });
 
