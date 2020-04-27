@@ -33,7 +33,11 @@ import Vuetify, {
   VTooltip,
   VStepper,
   VStepperHeader,
-  VStepperStep
+  VStepperStep,
+  VExpansionPanels,
+  VExpansionPanel,
+  VExpansionPanelContent,
+  VExpansionPanelHeader
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -68,7 +72,11 @@ Vue.use(Vuetify, {
     VTooltip,
     VStepper,
     VStepperHeader,
-    VStepperStep
+    VStepperStep,
+    VExpansionPanels,
+    VExpansionPanel,
+    VExpansionPanelContent,
+    VExpansionPanelHeader
   }
 });
 
@@ -108,6 +116,7 @@ export default new Vuetify({
         titlePrimary: '#0b2840',
         textPrimary: '#667f9b',
         white: '#ffffff',
+        expandHeader: '#184f90',
         primary: {
           base: '#05c0a5',
           lighten5: '#f5fdfb',
@@ -183,6 +192,7 @@ export default new Vuetify({
         searchInput: '#f2f4fa',
         searchText: '#96a8b6',
         white: '#fff',
+        expandHeader: '#184f90',
         primary: {
           base: '#05c0a5',
           lighten5: '#f5fdfb',

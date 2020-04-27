@@ -18,14 +18,14 @@ export const All = () => ({
     return {
       mewColors: [ {
         shades: [ 
-          {name: 'primary base', hex: '#05c0a5'}, 
+          {name: 'primary base', lightHex: '#05c0a5'}, 
           {name: 'primaryHover', lightHex: '#1eb19b', darkHex: '#1eb19b'}, 
           {name: 'primaryActive', lightHex: '#56c5b4', darkHex: '#56c5b4'},
           {name: 'primaryOutlineActive', lightHex: '#baede6', darkHex: '#15796a'}
         ]
       }, {
         shades: [
-          {name: 'secondary base', hex: '#5a78f0', darkHex: '#5a78f0'},
+          {name: 'secondary base', lightHex: '#5a78f0', darkHex: '#5a78f0'},
           {name: 'secondaryOutlineActive', lightHex: '#d6dffa', darkHex: '#2e3c75'}
         ]
       },
@@ -58,7 +58,8 @@ export const All = () => ({
       {
         shades: [
           {name: 'selectActive', lightHex: '#dcfff9', darkHex: '#2e3c75'},
-          {name: 'selectHover', lightHex: '#f0f0f0', darkHex: '#2c3448'}
+          {name: 'selectHover', lightHex: '#f0f0f0', darkHex: '#2c3448'},
+          {name: 'expandHeader', lightHex: '#184f90', darkHex: '#184f90'}
         ]
       },
       {
@@ -104,7 +105,7 @@ export const All = () => ({
   methods: {
     getClasses(shade) {
       const classes = [];
-      if (shade.name === 'basic base' || shade.name === 'title') {
+      if (shade.name === 'expandHeader' || shade.name === 'basic base' || shade.name === 'titlePrimary') {
         return 'white--text';
       }
 

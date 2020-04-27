@@ -1,7 +1,9 @@
 <template>
-  <v-stepper :v-model="true">
+  <v-stepper :v-model="onStep ">
     <v-stepper-header>
-      <v-stepper-step step="1">Name of step</v-stepper-step>
+      <v-stepper-step :complete="onStep > 1" step="1">1</v-stepper-step>
+      <v-stepper-step :complete="onStep > 2" step="2">2</v-stepper-step>
+      <v-stepper-step :complete="onStep > 3" step="3">3</v-stepper-step>
     </v-stepper-header>
   </v-stepper>
 </template>
@@ -15,3 +17,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+</style>
+
