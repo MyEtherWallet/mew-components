@@ -37,7 +37,6 @@ export const MEWExpandPanel = () => ({
     <div>
     <br />
     <mew-expand-panel
-      :right-text="rightText"
       :panel-items="panelItems"
     />
   </div>`
