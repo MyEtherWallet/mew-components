@@ -1,6 +1,7 @@
 import {
   withKnobs,
-  boolean
+  boolean,
+  object
 } from '@storybook/addon-knobs';
 import MewStepper from '@/components/MewStepper/MewStepper.vue';
 
@@ -12,11 +13,20 @@ export default {
   decorators: [withKnobs]
 };
 
+const items = [
+  { step: 1, name: 'STEP 1. Create password' }, 
+  { step: 2 , name: 'STEP 2. Download keystore file'},
+  { step: 3, name: 'STEP 3. Well done'}
+]
+
 export const MEWStepper = () => ({
   components: { 'mew-stepper': MewStepper },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)
+    },
+    items: {
+      default: object('items', items)
     }
   },
   watch: {
@@ -28,6 +38,7 @@ export const MEWStepper = () => ({
     <div>
     <br />
     <mew-stepper
+      :items="items"
     />
   </div>`
 });

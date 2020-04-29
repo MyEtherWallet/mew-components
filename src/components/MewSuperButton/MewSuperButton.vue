@@ -16,11 +16,11 @@
         :class="showIcon(rightIcon) ? 'center-align' : ''"
       >
         <v-col
-          class="left-container truncate"
+          class="left-container"
           cols="6"
         >
           <div class="title-wrapper d-flex align-center">
-            <div class="title font-weight-bold">
+            <div class="title font-weight-bold truncate">
               {{ title }}
             </div>
             <div
@@ -36,7 +36,7 @@
             </div>
           </div>
           <div
-            class="mt-2"
+            class="mt-2 truncate"
             v-if="subtitle"
           >
             {{ subtitle }}
