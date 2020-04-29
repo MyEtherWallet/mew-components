@@ -16,7 +16,7 @@
           > 
             <div
               v-if="hasBackBtn"
-              class="close-container d-flex align-center ml-3"
+              class="close-container cursor-pointer d-flex align-center ml-3"
               @click="close()"
             > 
               <v-icon
@@ -28,7 +28,7 @@
               <span class="titlePrimary--text font-weight-medium ml-2">Back</span>
             </div>
             <div
-              class="close-container d-flex align-center mr-3"
+              class="close-container cursor-pointer d-flex align-center mr-3"
               @click="close()"
             > 
               <v-icon
@@ -142,9 +142,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.close-container {
-  cursor: pointer;
-}
-</style>

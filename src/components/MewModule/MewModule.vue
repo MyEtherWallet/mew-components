@@ -30,6 +30,7 @@
                 alt="right icon"
               >
             </div>
+            <slot name="leftHeaderContainer" />
           </div>
           <div class="right-wrapper pr-10 pt-2">
             <slot name="rightHeaderContainer" />
