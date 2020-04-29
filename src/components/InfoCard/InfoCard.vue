@@ -16,6 +16,7 @@
         class="mew-body"
         color="primary"
       >mdi-arrow-right</v-icon></a>
+      <slot name="buttonContainer" />
     </v-card-text>
     <slot name="cardImg" />
   </v-card>
