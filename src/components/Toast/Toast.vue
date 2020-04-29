@@ -2,7 +2,6 @@
   <div>
     <v-bottom-sheet
       :value="showsToast" 
-      :color="toastType"
       :hide-overlay="true"
       :persistent="persistent"
     >
@@ -10,25 +9,36 @@
         class="text-center"
         :tile="true" 
         height="80"
-        :color="toastType"
+        :color="toastType.toLowerCase() === toastTypes.info ? 'white' : toastType"
       >
         <v-container fill-height>
           <v-row
-            :class="['font-weight-medium', toastTypes.warning === toastType.toLowerCase() ? 'titlePrimary--text' : 'white--text']"  
+            :class="['font-weight-medium', getRowClasses()]"  
             justify="center"
             align="center"
           >
             <div>
-              <v-icon :color="toastTypes.warning === toastType.toLowerCase() ? 'warning darken-1' : 'white'">
+              <v-icon
+                v-if="toastTypes.info !== toastType.toLowerCase()"
+                :color="toastTypes.warning === toastType.toLowerCase() ? 'warning darken-1' : 'white'"
+              >
                 {{ getIcon() }}
               </v-icon>
               {{ text }}
               <a
-                :class="toastTypes.warning === toastType.toLowerCase() ? 'primary--text' : 'white--text'"
+                :class="getLinkClasses()"
                 :href="link"
               >{{ linkText }}
               </a>
+              <slot name="infoBtn" />
             </div>
+            <v-icon
+              color="titlePrimary"
+              v-if="canClose"
+              class="close"
+            >
+              mdi-close
+            </v-icon>
           </v-row>
         </v-container>
       </v-sheet>
@@ -45,7 +55,8 @@ export default {
       toastTypes: {
         warning: 'warning',
         error: 'error',
-        success: 'success'
+        success: 'success',
+        info: 'info'
       }
     }
   },
@@ -98,6 +109,13 @@ export default {
     persistent: {
       type: Boolean,
       default: false
+    },
+    /**
+     * Clicking outside of the element will not deactivate it.
+     */
+    canClose: {
+      type: Boolean,
+      default: false
     }
   },
   watch: {
@@ -110,6 +128,18 @@ export default {
     this.setTimer();
   },
   methods: {
+    getLinkClasses() {
+      if (this.toastTypes.warning === this.toastType.toLowerCase() || this.toastTypes.info === this.toastType.toLowerCase()) {
+        return 'primary--text';
+      }
+      return 'white--text';
+    },
+    getRowClasses() {
+      if (this.toastTypes.warning === this.toastType.toLowerCase() || this.toastTypes.info === this.toastType.toLowerCase()) {
+        return 'titlePrimary--text';
+      } 
+      return 'white--text';
+    },
     getIcon() {
       const toastType = this.toastType.toLowerCase();
       if (toastType === this.toastTypes.warning ) {
@@ -131,3 +161,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.close {
+  font-size: 20px;
+  position: absolute;
+  right: 20px;
+}
+</style>

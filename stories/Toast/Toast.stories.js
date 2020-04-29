@@ -18,7 +18,8 @@ export default {
 const toastTypeOptions = {
   success: 'success',
   warning: 'warning',
-  error: 'error'
+  error: 'error',
+  info: 'info'
 }
 
 const optionsObj = {
@@ -51,6 +52,9 @@ export const toast = () => ({
     },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
+    },
+    canClose: {
+      default: boolean('can-close', false)
     }
   },
   watch: {
@@ -62,6 +66,7 @@ export const toast = () => ({
     <div>
     <br />
     <toast
+      :can-close="canClose"
       :link="link"
       :link-text="linkText"
       :text="text"
