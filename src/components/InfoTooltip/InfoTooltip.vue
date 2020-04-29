@@ -22,6 +22,9 @@
 export default {
   name: 'InfoTooltip',
   props: {
+    /**
+     * The tooltip text.
+     */
     text: {
       type: String,
       default: ''
