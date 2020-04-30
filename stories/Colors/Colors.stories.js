@@ -91,7 +91,7 @@ export const All = () => ({
           {name: 'searchInput', lightHex: '#f2f4fa', darkHex: '#f2f4fa'},
           {name: 'searchText', lightHex: '#96a8b6', darkHex: '#96a8b6'},
           {name: 'dropdownBorder', lightHex: '#05c0a5', darkHex: '#7e90a7'},
-          {name: 'dropdownBorder', lightHex: '#F3FAFA', darkHex: '#151A29'},
+          {name: 'progressBar', lightHex: '#F3FAFA', darkHex: '#151A29'},
         ]
       }
     ]
@@ -119,7 +119,7 @@ export const All = () => ({
   template: `
     <div>
     <br />
-    <v-row align="center" v-for="( color, idx) in mewColors" key="color + idx">
+    <v-row align="center" v-for="( color, idx) in mewColors" :key="color + idx">
       <v-card
         v-for="shade in color.shades"
         :key="shade.name"
