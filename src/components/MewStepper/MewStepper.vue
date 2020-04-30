@@ -5,11 +5,10 @@
   >
     <v-stepper-header class="justify-center">
       <v-stepper-step
-        :class="[ onStep === item.step ? 'active' : '']"
+        :class="[ 'font-weight-medium' ,onStep === item.step ? 'active' : '', onStep > item.step ? 'complete' : '' ]"
         color="expandHeader"
         v-for="(item, i) in items"
         :key="i"
-        :complete="onStep > item.step"
         :step="item.name"
         @click="onClick()"
       />
@@ -19,25 +18,21 @@
 
 <script>
 export default {
-  data() {
-    return {
-      onStep: 1
-    }
-  },
   props: {
     items: {
       type: Array,
       default: function() {
         return [];
       }
+    },
+    onStep: {
+      type: Number,
+      default: 1
     }
-  },
-  mounted() {
-    console.error('step', this.onStep)
   },
   methods: {
     onClick() {
-      this.onStep += 1;
+      this.$emit('onNextStep');
     }
   }
 }
@@ -65,7 +60,7 @@ export default {
       content: "";  
       border-top: 20px solid transparent;
       border-bottom: 20px solid transparent;
-      border-left: 20px solid rgba(0, 0, 0, 0.38);
+      border-left: 20px solid var(--v-superPrimary-base);
       position: absolute; 
       right: -20px;
       top: 24px;
@@ -82,9 +77,30 @@ export default {
     }
   }
 
+  .v-stepper__step:not(.active):not(.complete):not(.v-stepper__step--error) .v-stepper__step__step {
+    background-color: var(--v-superPrimary-base) !important;
+    // border: 1px solid var(--v-disabled-base);
+    color: var(--v-textSecondary-base);
+  }
+
   .active {
+    cursor: auto;
     .v-stepper__step__step {
       background: var(--v-expandHeader-base) !important;
+    }
+    &:after {
+        border-left: 20px solid var(--v-expandHeader-base);
+    }
+  }
+
+  .complete {
+    cursor: auto;
+    .v-stepper__step__step {
+      background-color: var(--v-textSecondary-base) !important;
+    }
+
+    &:after {
+      border-left: 20px solid var(--v-textSecondary-base) !important;
     }
   }
 

@@ -1,7 +1,8 @@
 import {
   withKnobs,
   boolean,
-  object
+  object,
+  number
 } from '@storybook/addon-knobs';
 import MewStepper from '@/components/MewStepper/MewStepper.vue';
 
@@ -21,6 +22,11 @@ const items = [
 
 export const MEWStepper = () => ({
   components: { 'mew-stepper': MewStepper },
+  data() {
+    return {
+      onStep: 1
+    }
+  },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)
@@ -39,6 +45,13 @@ export const MEWStepper = () => ({
     <br />
     <mew-stepper
       :items="items"
+      :on-step="onStep"
+      @onNextStep="onNextStep"
     />
-  </div>`
+  </div>`,
+  methods: {
+    onNextStep() {
+      this.onStep += 1;
+    }
+  }
 });
