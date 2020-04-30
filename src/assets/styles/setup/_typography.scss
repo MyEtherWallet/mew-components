@@ -14,27 +14,35 @@
 }
 
 .mew-heading-1 {
-  font-size: 24px;
-  font-weight: 700
+  font-size: 24px !important;
+  font-weight: 700 !important;
 }
 
 .mew-heading-2 {
-  font-size: 22px;
-  font-weight: 700
+  font-size: 22px !important;
+  font-weight: 700 !important;
 }
 
 .mew-heading-3 {
   font-size: 16px;
-  font-weight: 700
+  font-weight: 700;
 }
 
 .mew-body {
   font-size: 14px;
-  font-weight: 400
+  font-weight: 400;
 }
 
 .mew-caption {
   font-size: 12px;
   font-weight: 700;
-  text-transform: uppercase
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize !important;
+}
+
+.no-decoration {
+  text-decoration: none !important;
 }

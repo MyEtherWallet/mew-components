@@ -37,6 +37,9 @@ export const All = () => ({
         fontWeight: 700,
         textTransform: 'uppercase'
       },
+      capitalize: {
+        textTransform: 'capitalize'
+      },
       markupStyle: {
         color: '#cfcfcf',
         fontSize: '12px',
@@ -91,5 +94,11 @@ export const All = () => ({
     <br />
     <div :style="mewCaption">.mew-caption</div>
     <div :style="markupStyle">font-size: 12px; font-weight: 700; text-transform: uppercase</div>
+    <br />
+    <div>.capitalize</div>
+    <div :style="markupStyle">text-transform: capitalize</div>
+    <br />
+    <div>.no-decoration</div>
+    <div :style="markupStyle">text-decoration: none</div>
   </div>`
 });

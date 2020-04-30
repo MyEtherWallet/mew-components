@@ -10,7 +10,7 @@
     </v-card-subtitle>
     <v-card-text v-if="link.url && link.title">
       <a
-        class="link font-weight-medium"
+        class="font-weight-medium no-decoration"
         :href="link.url"
       >{{ link.title }}<v-icon
         class="mew-body"
@@ -68,9 +68,7 @@ export default {
     max-width: 90%;
   }
 
-  .link {
-    text-decoration: none;
-
+  a {
     i {
       font-size: 20px;
     }

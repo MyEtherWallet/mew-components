@@ -41,7 +41,11 @@ import Vuetify, {
   VExpansionPanelContent,
   VExpansionPanelHeader,
   VSwitch,
-  VCheckbox
+  VCheckbox,
+  VTab,
+  VTabs,
+  VTabsItems,
+  VTabItem
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -84,7 +88,11 @@ Vue.use(Vuetify, {
     VExpansionPanelContent,
     VExpansionPanelHeader,
     VSwitch,
-    VCheckbox
+    VCheckbox,
+    VTab,
+    VTabs,
+    VTabsItems,
+    VTabItem
   }
 });
 
