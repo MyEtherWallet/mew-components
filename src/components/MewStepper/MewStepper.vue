@@ -1,5 +1,6 @@
 <template>
   <v-stepper
+    light
     class="mew-stepper"
     :v-model="onStep"
   >
