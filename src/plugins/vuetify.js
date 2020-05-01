@@ -45,7 +45,8 @@ import Vuetify, {
   VTab,
   VTabs,
   VTabsItems,
-  VTabItem
+  VTabItem,
+  VMenu
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -92,7 +93,8 @@ Vue.use(Vuetify, {
     VTab,
     VTabs,
     VTabsItems,
-    VTabItem
+    VTabItem,
+    VMenu
   }
 });
 
