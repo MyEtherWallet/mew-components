@@ -32,6 +32,11 @@ const popupTypeOptions = {
 
 export const MEWPopup = () => ({
   components: { 'mew-popup': MewPopup },
+  data() {
+    return {
+      isPopupOpen: true
+    }
+  },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)
@@ -64,19 +69,30 @@ export const MEWPopup = () => ({
   watch: {
     enableDarkMode(newVal) {
       this.$vuetify.theme.dark = newVal === true ? true : false;
+    },
+    isOpen(newVal) {
+      this.isPopupOpen = newVal;
     }
   },
   template: `
     <div>
     <br />
     <mew-popup
-      :is-open="isOpen"
+      :is-open="isPopupOpen"
       :title="title"
       :desc="desc"
       :button-right="buttonRight"
       :button-left="buttonLeft"
       :popup-type="popupType"
       :error-msg="errorMsg"
+      @onClick="onClick"
     />
-  </div>`
+  </div>`,
+  methods: {
+    onClick(btn) {
+      this.isPopupOpen = false;
+      // eslint-disable-next-line no-console
+      console.log('Clicked:', btn)
+    }
+  }
 });

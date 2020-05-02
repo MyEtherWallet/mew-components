@@ -29,12 +29,14 @@
           </v-card-text>
           <v-card-actions class="px-0 btn-container d-flex align-center justify-center pb-6">
             <mew-btn
+              @click.native="onClick(buttonLeft)"
               v-if="buttonLeft"
               :title="buttonLeft.name"
               :color-theme="buttonLeft.colorTheme"
               btn-style="outline"
             />
             <mew-btn 
+              @click.native="onClick(buttonRight)"
               v-if="buttonRight"
               :class="buttonLeft ? 'ml-3' : ''"
               :title="buttonRight.name"
@@ -151,10 +153,10 @@ export default {
   methods: {
     toggleErrMsg() {
       this.showsErr = !this.showsErr;
+    },
+    onClick(btn) {
+      this.$emit('onClick', btn);
     }
-  },
-  mounted() {
-    console.error('this', this.popupType)
   }
 }
 
