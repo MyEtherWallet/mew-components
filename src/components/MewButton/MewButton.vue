@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="btn-container">
     <v-btn
       @click="onBtnClick()"
       :class="getClasses()"
@@ -141,40 +141,42 @@ export default {
 
 <style lang="scss" scoped>
 .v-application {
-  .v-btn {
-    border-radius: 6px !important;
-    padding: 20px 50px;
+  .btn-container {
+    width: 100%;
 
-    .icon {
-      height: 27px;
-    }
+    .v-btn {
+      border-radius: 6px !important;
+      padding: 20px 50px;
 
-    &.primary.white--text.active {
-      background-color: var(--v-primaryActive-base) !important;
-    }
-    
-    &.primary.white--text:hover {
-      background-color: var(--v-primaryHover-base) !important;
-    }
+      .icon {
+        height: 27px;
+      }
 
-    &.primary--text.v-btn--outlined.active {
-      background-color: var(--v-primaryOutlineActive-base) !important;
-    }
+      &.primary.white--text.active {
+        background-color: var(--v-primaryActive-base) !important;
+      }
+      
+      &.primary.white--text:hover {
+        background-color: var(--v-primaryHover-base) !important;
+      }
 
-    &.secondary--text.v-btn--outlined.active {
-      background-color: var(--v-secondaryOutlineActive-base) !important;
-    }
+      &.primary--text.v-btn--outlined.active {
+        background-color: var(--v-primaryOutlineActive-base) !important;
+      }
 
-    &.error--text.v-btn--outlined.active {
-      background-color: var(--v-errorOutlineActive-base) !important;
-    }
+      &.secondary--text.v-btn--outlined.active {
+        background-color: var(--v-secondaryOutlineActive-base) !important;
+      }
 
-    &.basic--text.v-btn--outlined.active {
-      background-color: var(--v-basicOutlineActive-base) !important;
-    }
+      &.error--text.v-btn--outlined.active {
+        background-color: var(--v-errorOutlineActive-base) !important;
+      }
 
+      &.basic--text.v-btn--outlined.active {
+        background-color: var(--v-basicOutlineActive-base) !important;
+      }
+    }
   }
-
   .theme--light.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined), .theme--dark.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
     background-color: var(--v-disabled-base) !important;
     color: var(--v-white-base) !important;

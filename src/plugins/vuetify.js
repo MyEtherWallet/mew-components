@@ -9,6 +9,7 @@ import Vuetify, {
   VCardTitle,
   VCardSubtitle,
   VCardText,
+  VCardActions,
   VCol,
   VContainer,
   VContent,
@@ -46,7 +47,8 @@ import Vuetify, {
   VTabs,
   VTabsItems,
   VTabItem,
-  VMenu
+  VMenu,
+  VSpacer
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -57,6 +59,7 @@ Vue.use(Vuetify, {
     VCardText,
     VCardTitle,
     VCardSubtitle,
+    VCardActions,
     VCol,
     VContainer,
     VContent,
@@ -94,7 +97,8 @@ Vue.use(Vuetify, {
     VTabs,
     VTabsItems,
     VTabItem,
-    VMenu
+    VMenu,
+    VSpacer
   }
 });
 

@@ -44,12 +44,18 @@ export default {
     }
   },
   props: {
+    /**
+     * Menu content.
+     */
     listObj: {
       type: Object,
       default: function() {
         return {};
       }
     },
+    /**
+     * Text color. Accepts a class. 
+     */
     textColor: {
       type: String,
       default: 'basic--text'

@@ -36,16 +36,18 @@ export default {
     }
   },
   props: {
+    /**
+     * Tab content
+     */
     items: {
       type: Array,
       default: function() {
         return [];
       }
     },
-    onStep: {
-      type: Number,
-      default: 1
-    },
+    /**
+     * Shows the tab as a block. 
+     */
     isBlock: {
       type: Boolean,
       default: false
