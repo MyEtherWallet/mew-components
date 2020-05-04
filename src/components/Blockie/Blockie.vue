@@ -1,14 +1,29 @@
 <template lang="html">
-  <div
-    ref="identicon"
-    class="address-identicon"
-  />
+  <div>
+    <div
+      ref="identicon"
+      class="address-identicon"
+    />
+    <!-- will add currency icon after I get svg files -->
+    <!-- <img
+      alt="icon"
+      class="currency-icon"
+      src="@/assets/images/currency/eth.svg"
+    > -->
+  </div>
 </template>
 <script>
 import Blockies from '@/helpers/blockies.js';
 export default {
   name: 'Blockie',
   props: {
+    /**
+     * Currency type
+     */
+    currency: {
+      type: String,
+      default: ''
+    },
     /**
      * Valid address
      */
