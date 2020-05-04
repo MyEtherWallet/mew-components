@@ -54,7 +54,7 @@ export const MEWPopup = () => ({
       default: text('button-type', 'error')
     },
     popupType: {
-      default: optionsKnob('popup-type', popupTypeOptions, 'error', { display: 'inline-radio' })
+      default: optionsKnob('popup-type', popupTypeOptions, 'confirm', { display: 'inline-radio' })
     },
     buttonLeft: {
       default: object('button-left', buttonLeftObj)

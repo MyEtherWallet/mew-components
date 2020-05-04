@@ -45,7 +45,7 @@
             />
           </v-card-actions>
           <div
-            v-if="popupType.toLowerCase() === popupTypes.error"
+            v-if="popupType.toLowerCase() === popupTypes.error && errorMsg"
             class="footer-container pb-9"
           >
             <div class="text-center">
@@ -55,6 +55,7 @@
             <div
               class="d-flex justify-space-between mew-heading-3 pa-4 titlePrimary--text"
             >
+              <!-- need to translate -->
               <span>Error message</span>
               <v-icon
                 @click="toggleErrMsg()"
@@ -71,23 +72,50 @@
                 mdi-chevron-up
               </v-icon>
             </div>
+            <div
+              v-if="showsErr"
+              class="px-4 pb-4 mew-address error-container"
+            >
+              <textarea
+                ref="errContainer"
+                v-model="errorMsg"
+              />
+            </div>
             <v-divider />
+            <div
+              v-if="showsErr"
+              class="text-center font-weight-medium mt-6"
+            >
+              <span
+                class="cursor-pointer primary--text copy-text"
+                @click="copyToClipboard()"
+              >Copy the message</span>
+            </div>
           </div>
         </div>
       </v-card>
     </v-dialog>
+    <toast
+      :show-toast="showToast"
+      toast-type="success"
+      text="Success!"
+    />
   </div>
 </template>
 
 <script>
 import mewButton from '@/components/MewButton/MewButton.vue';
+import Toast from '@/components/Toast/Toast.vue';
 
 export default {
   components: {
-    'mew-btn': mewButton
+    'mew-btn': mewButton,
+    'toast': Toast
   },
   data() {
     return {
+      showToast: false,
+      toastType: '',
       showsErr: false,
       popupTypes: {
         error: 'error',
@@ -156,14 +184,36 @@ export default {
     },
     onClick(btn) {
       this.$emit('onClick', btn);
-    }
+    },
+    copyToClipboard() {
+      this.$refs.errContainer.select();
+      document.execCommand('copy');
+      this.toastType = 'success';
+      this.showToast = true;
+    },
   }
 }
 
 </script>
 
 <style lang="scss" scoped>
+
+.error-container {
+  height: 100px;
+  overflow: scroll;
+
+  textarea {
+    height: 100%;
+    pointer-events: none;
+    width: 100%;
+  }
+}
+
 .error-popup-title {
   position: absolute;
+}
+
+.copy-text {
+  text-decoration: underline;
 }
 </style>

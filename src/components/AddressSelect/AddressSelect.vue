@@ -92,11 +92,17 @@
         </div>
       </template>
     </v-combobox>
+    <toast
+      :show-toast="showToast"
+      toast-type="success"
+      text="Success!"
+    />
   </div>
 </template>
 
 <script>
 import Blockie from '@/components/Blockie/Blockie.vue';
+import Toast from '@/components/Toast/Toast.vue';
 
 export default {
   name: 'AddressSelector',
@@ -154,10 +160,12 @@ export default {
     }
   },
   components: {
-    blockie: Blockie
+    blockie: Blockie,
+    toast: Toast
   },
   data() {
     return {
+      showToast: false,
       addressValue: '',
       autoSelectMenu: false
     };
@@ -174,8 +182,8 @@ export default {
     copyToClipboard() {
       this.$refs.addressInput.$el.querySelector('input').select();
       document.execCommand('copy');
-      console.log('copied');
-      // Toast.responseHandler(this.$t('common.copied'), Toast.INFO);
+      this.toastType = 'success';
+      this.showToast = true;
     },
     selectAddress(data) {
       this.autoSelectMenu = false;

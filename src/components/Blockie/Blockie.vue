@@ -70,7 +70,6 @@ export default {
   },
   methods: {
     setBlockie() {
-      console.error('this', this.address)
       const data = Blockies({
         seed: this.address ? this.address.toLowerCase() : '',
         size: this.size,

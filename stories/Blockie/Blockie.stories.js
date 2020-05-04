@@ -34,7 +34,7 @@ export const Blockie = () => ({
   template: `
     <div>
     <br />
-    <blockie :address="address" :width="width" :height="height" :sizes="8" :scale="16"
+    <blockie :address="address" :width="width" :height="height" size=8 scale=16
     />
   </div>`
 });
