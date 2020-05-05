@@ -24,7 +24,7 @@ import Vuetify, {
   VNavigationDrawer,
   VRow,
   VSheet,
-  VBottomSheet
+  VBottomSheet,
   VToolbar,
   VTextField,
   VLayout,
