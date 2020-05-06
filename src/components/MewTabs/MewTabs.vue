@@ -75,7 +75,7 @@ export default {
     color: var(--v-white-base) !important;
   }
 
-  .mew-tab-block:first-child {
+  .mew-tab-block:first-of-type {
     border-radius: 12px 0px 0px 12px;
   }
 

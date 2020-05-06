@@ -120,12 +120,12 @@ export default {
   }
 
         
-  .v-stepper__step:first-child:before,
+  .v-stepper__step:first-of-type:before,
   .v-stepper__step:last-child:after {
     display: none; 
   }
     
-  .v-stepper__step:first-child .v-stepper__step__step{
+  .v-stepper__step:first-of-type .v-stepper__step__step{
     border-top-left-radius: 10px !important; 
     border-bottom-left-radius: 10px !important;
   }

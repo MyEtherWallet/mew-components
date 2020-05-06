@@ -6,11 +6,15 @@ import {
   files
 } from '@storybook/addon-knobs';
 import MewButton from '@/components/MewButton/MewButton.vue';
+import docs from './MewButtonDoc.mdx';
 
 export default {
   title: 'MewButton',
   parameters: {
-    component: MewButton
+    component: MewButton,
+    docs: {
+      page: docs
+    }
   },
   decorators: [withKnobs]
 };
@@ -92,3 +96,4 @@ export const MEWButton = () => ({
     />
   </div>`
 });
+
