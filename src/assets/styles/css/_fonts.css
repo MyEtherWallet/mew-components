@@ -3,8 +3,6 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 100;
-  src: url('/assets/fonts/Roboto/roboto-v20-latin-100.eot');
-  /* IE9 Compat Modes */
   src: local('Roboto Thin'), local('Roboto-Thin'),
     url('/assets/fonts/Roboto/roboto-v20-latin-100.eot?#iefix') format('embedded-opentype'),
     /* IE6-IE8 */
@@ -116,4 +114,18 @@
     /* Safari, Android, iOS */
     url('/assets/fonts/Roboto/roboto-v20-latin-900.svg#Roboto') format('svg');
   /* Legacy iOS */
+}
+
+/* pt-mono-regular - latin */
+@font-face {
+  font-family: 'PT Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/pt-mono-v7-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('PT Mono'), local('PTMono-Regular'),
+       url('/assets/fonts/pt-mono-v7-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/pt-mono-v7-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/assets/fonts/pt-mono-v7-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/pt-mono-v7-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/pt-mono-v7-latin-regular.svg#PTMono') format('svg'); /* Legacy iOS */
 }
