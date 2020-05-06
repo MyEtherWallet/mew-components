@@ -55,8 +55,7 @@
             <div
               class="d-flex justify-space-between mew-heading-3 pa-4 titlePrimary--text"
             >
-              <!-- need to translate -->
-              <span>Error message</span>
+              <span>{{ errorHeader }}</span>
               <v-icon
                 @click="toggleErrMsg()"
                 class="titlePrimary--text cursor-pointer"
@@ -89,7 +88,7 @@
               <span
                 class="cursor-pointer primary--text copy-text"
                 @click="copyToClipboard()"
-              >Copy the message</span>
+              >{{ copyMsg }}</span>
             </div>
           </div>
         </div>
@@ -98,7 +97,7 @@
     <toast
       :show-toast="showToast"
       toast-type="success"
-      text="Success!"
+      :text="successToast"
     />
   </div>
 </template>
@@ -174,6 +173,34 @@ export default {
      * Error message. 
      */
     errorMsg: {
+      type: String,
+      default: ''
+    },
+    /**
+     * Error message header. 
+     */
+    errorMsgTitle: {
+      type: String,
+      default: 'Error Message'
+    },
+    /**
+     * Error message header. 
+     */
+    errorHeader: {
+      type: String,
+      default: 'Error Message'
+    },
+    /**
+     * Copy message string. 
+     */
+    copyMsg: {
+      type: String,
+      default: 'Copy the message'
+    },
+    /**
+     * Text for toast success.
+     */
+    successToast: {
       type: String,
       default: ''
     }

@@ -45,6 +45,15 @@ export const addressSelector = () => ({
     disabled: {
       default: boolean('disabled', false)
     },
+    copyTooltip: {
+      default: text('copy-tooltip', 'Copy')
+    },
+    saveTooltip: {
+      default: text('save-tooltip', 'Save Address')
+    },
+    successToast: {
+      default: text('success-toast', 'Success!')
+    },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     }
@@ -57,7 +66,7 @@ export const addressSelector = () => ({
   template: `
     <div>
     <br />
-    <address-selector :disabled="disabled" :enable-save-address="enableSaveAddress" @emitSelectedValue="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
+    <address-selector :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @emitSelectedValue="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
   </div>`,
   methods: {
     getSelectedValue(value) {

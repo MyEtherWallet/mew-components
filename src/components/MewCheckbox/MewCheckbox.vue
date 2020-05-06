@@ -5,7 +5,7 @@
       v-model="isChecked"
     />
     <span
-      @click="onCheck()"
+      @click="onToggle()"
       class="titlePrimary--text mr-2 cursor-pointer"
     >{{ label }}
       <a

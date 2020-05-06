@@ -12,11 +12,11 @@
           <v-row
             align="center"
             class="pt-5"
-            :justify="hasBackBtn ? 'space-between' : 'end'"
+            :justify="rightBtnText ? 'space-between' : 'end'"
           > 
             <div
-              v-if="hasBackBtn"
-              class="close-container cursor-pointer d-flex align-center ml-3"
+              v-if="rightBtnText"
+              class="close-container cursor-pointer d-flex align-center ml-4"
               @click="close()"
             > 
               <v-icon
@@ -24,11 +24,11 @@
               >
                 mdi-arrow-left-circle-outline
               </v-icon>
-              <!-- need to translate this -->
-              <span class="titlePrimary--text font-weight-medium ml-2">Back</span>
+              <span class="titlePrimary--text font-weight-medium ml-2">{{ rightBtnText }}</span>
             </div>
             <div
-              class="close-container cursor-pointer d-flex align-center mr-3"
+              v-if="leftBtnText"
+              class="close-container cursor-pointer d-flex align-center mr-4"
               @click="close()"
             > 
               <v-icon
@@ -36,8 +36,7 @@
               >
                 mdi-close-circle-outline
               </v-icon>
-              <!-- need to translate this -->
-              <span class="error--text font-weight-medium ml-2">Cancel</span>
+              <span class="error--text font-weight-medium ml-2">{{ leftBtnText }}</span>
             </div>
           </v-row>
           <v-row 
@@ -109,13 +108,6 @@ export default {
       default: ''
     },
     /**
-     * Displays the back button.
-     */
-    hasBackBtn: {
-      type: Boolean,
-      default: false
-    },
-    /**
      * Displays and shows the warning title.
      */
     warningTitle: {
@@ -128,6 +120,20 @@ export default {
     warningDesc: {
       type: String,
       default: ''
+    },
+    /**
+     * Right button string.
+     */
+    rightBtnText: {
+      type: String,
+      default: 'Cancel'
+    },
+    /**
+     * Left button string.
+     */
+    leftBtnText: {
+      type: String,
+      default: 'Back'
     },
   },
   watch: {

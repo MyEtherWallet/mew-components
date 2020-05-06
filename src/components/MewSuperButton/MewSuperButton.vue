@@ -52,10 +52,10 @@
           <slot name="swapTokens" />
           <div
             v-if="isNew"
-            class="label d-flex align-center"
+            class="label d-flex align-center text-uppercase"
             alt="label"
           >
-            <div>NEW</div>
+            <div>{{ newLabel }}</div>
           </div>
           <div
             v-if="!showIcon(rightIcon) && note"
@@ -141,6 +141,13 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    /**
+     * Label for new badge.
+     */
+    newLabel: {
+      type: String,
+      default: 'new'
     }
   },
   data() {

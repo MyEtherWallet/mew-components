@@ -28,15 +28,18 @@ export const MEWOverlay = () => ({
     btnText: {
       default: text('btn-text', '')
     },
-    hasBackBtn: {
-      default: boolean('has-back-btn', false)
-    },
     warningTitle: {
       default: text('warning-title', '')
     },
     warningDesc: {
       default: text('warning-desc', '')
     },
+    rightBtnText: {
+      default: text('right-btn-text', 'Back')
+    },
+    leftBtnText: {
+      default: text('left-btn-text', 'Cancel')
+    }
   },
   watch: {
     enableDarkMode(newVal) {
@@ -49,10 +52,11 @@ export const MEWOverlay = () => ({
     <mew-overlay
       :show-overlay="showOverlay"
       :title="title"
-      :has-back-btn="hasBackBtn"
       :btn-text="btnText"
       :warning-title="warningTitle"
       :warning-desc="warningDesc"
+      :right-btn-text="rightBtnText"
+      :left-btn-text="leftBtnText"
     />
   </div>`
 });

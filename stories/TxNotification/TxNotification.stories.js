@@ -45,7 +45,13 @@ export const txNotification = () => ({
       default: text('amount', '0.004 ETH')
     },
     duration: {
-      default: text('duration', '1')
+      default: text('duration', '1 min ago')
+    },
+    fromStr: {
+      default: text('from-str', 'From')
+    },
+    amtStr: {
+      default: text('amt-str', 'Amount')
     }
   },
   watch: {
@@ -62,6 +68,8 @@ export const txNotification = () => ({
       :from-address="fromAddress"
       :amount="amount"
       :duration="duration"
+      :from-str="fromStr"
+      :amt-str="amtStr"
     />
   </div>`
 });

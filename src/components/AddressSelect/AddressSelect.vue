@@ -46,7 +46,7 @@
                 alt="copy"
               >
             </template>
-            <span>Copy</span>
+            <span>{{ copyTooltip }}</span>
           </v-tooltip>
           <v-tooltip
             color="white titlePrimary--text"
@@ -61,7 +61,7 @@
                 alt="save"
               >
             </template>
-            <span>Save Address</span>
+            <span>{{ saveTooltip }}</span>
           </v-tooltip>
         </div>
         <div class="border" />
@@ -93,9 +93,10 @@
       </template>
     </v-combobox>
     <toast
+      :duration="2000"
       :show-toast="showToast"
       toast-type="success"
-      text="Success!"
+      :text="successToast"
     />
   </div>
 </template>
@@ -157,6 +158,27 @@ export default {
     saveAddress: {
       type: Function,
       default: function() {}
+    },
+    /**
+     * Tooltip for copy.
+     */
+    copyTooltip: {
+      type: String,
+      default: ''
+    },
+    /**
+     * Tooltip for save address.
+     */
+    saveTooltip: {
+      type: String,
+      default: ''
+    },
+    /**
+     * Text for toast success.
+     */
+    successToast: {
+      type: String,
+      default: ''
     }
   },
   components: {

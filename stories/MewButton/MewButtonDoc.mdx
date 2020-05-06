@@ -1,11 +1,21 @@
 import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks'
 import MewButton from '@/components/MewButton/MewButton.vue';
 
-# MewButton Docs
+# MEW Button Docs
 
-Some MDX docs for the `MewButton` component.
+The mew-button component replaces Vuetify v-btn button with MEW theme options and additional props. This is a flex component with minimum width 64px, centered text and font Size: 14px, 
 
 <Props of={MewButton} />
+
+# Button Styles
+## I. Background
+
+This is a default button. It inherits background color from colorTheme prop with white text.
+
+Example: 
+<mew-button :title=”Default MEW Button” />
+… show component result …
+
 
 <Preview>
   <Story id="mewbutton--mew-button">

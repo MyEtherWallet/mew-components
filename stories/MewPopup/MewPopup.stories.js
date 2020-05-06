@@ -64,6 +64,15 @@ export const MEWPopup = () => ({
     },
     errorMsg: {
       default: text('error-msg', '')
+    },
+    errorHeader: {
+      default: text('error-header', 'Error Message')
+    },
+    copyMsg: {
+      default: text('copy-msg', 'Copy the message')
+    },
+    successToast: {
+      default: text('success-toast', 'Success!')
     }
   },
   watch: {
@@ -85,7 +94,10 @@ export const MEWPopup = () => ({
       :button-left="buttonLeft"
       :popup-type="popupType"
       :error-msg="errorMsg"
+      :error-header="errorHeader"
+      :copy-msg="copyMsg"
       @onClick="onClick"
+      :successToast="successToast"
     />
   </div>`,
   methods: {

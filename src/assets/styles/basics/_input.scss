@@ -71,7 +71,7 @@
     // input placeholder
     input::placeholder {
       color: var(--v-disabled-base);
-      font-family: Roboto;
+      font-family: 'Roboto';
     }
 
     // input suffix color
@@ -102,7 +102,7 @@
 
       input::placeholder {
         color: var(--v-searchText-base);
-        font-family: Roboto;
+        font-family: 'Roboto';
       }
     }
   }

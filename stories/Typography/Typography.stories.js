@@ -49,6 +49,10 @@ export const All = () => ({
         color: '#05c0a5',
         textTransform: 'uppercase',
         paddingBottom: '10px'
+      },
+      robotoStyle: {
+        fontWeight: 400,
+        fontFamily: 'Roboto'
       }
     };
   },
@@ -56,7 +60,7 @@ export const All = () => ({
     <div>
     <br/>
     <h3 :style="headerStyle">font-family:</h3>
-    <div :style="{ fontWeight: 400, fontFamily: 'Roboto' }">Roboto</div>
+    <div :style="robotoStyle">Roboto</div>
     <div :style="markupStyle">Primary</div>
     <br />
     <div :style="{ fontWeight: 400, fontFamily: 'PT Mono' }">PT Mono</div>

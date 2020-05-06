@@ -11,17 +11,17 @@
       <div class="ml-5 detail-container">
         <!-- need to translate -->
         <div class="caption titlePrimary--text truncate font-weight-medium">
-          From: <span class="mew-address font-weight-medium">{{ fromAddress }} </span>
+          {{ fromStr }}: <span class="mew-address font-weight-medium">{{ fromAddress }} </span>
         </div>
         <div class="caption titlePrimary--text font-weight-medium">
-          Amount: {{ amount }}
+          {{ amtStr }}: {{ amount }}
         </div>
       </div>
     </div>
     <div class="right-container">
       <tx-badge :badge-type="txType" />
       <div class="caption mt-1 textPrimary--text font-weight-medium">
-        {{ duration }} min ago
+        {{ duration }}
       </div>
     </div>
   </div>
@@ -85,7 +85,21 @@ export default {
     duration: {
       type: String,
       default: ''
-    }
+    },
+    /**
+     * From string.
+     */
+    fromStr: {
+      type: String,
+      default: 'From'
+    },
+    /**
+     * Amount string.
+     */
+    amtStr: {
+      type: String,
+      default: 'Amount'
+    },
   },
   methods: {
     getClasses() {
