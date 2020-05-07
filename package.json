@@ -1,6 +1,6 @@
 {
   "name": "@myetherwallet/mew-components",
-  "version": "0.2.14-beta",
+  "version": "0.2.15-beta",
   "description": "MEW Components",
   "main": "dist/mew-components.umd.js",
   "module": "dist/mew-components.esm.js",
@@ -29,6 +29,9 @@
     "fibers": "^5.0.0",
     "git-url-parse": "^11.1.2",
     "material-design-icons-iconfont": "^5.0.1",
+    "minimist": "^1.2.5",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-uglify-es": "0.0.1",
     "vue": "^2.6.10",
     "vue-cli-plugin-style-resources-loader": "^0.1.4",
     "vue-router": "^3.0.3",
