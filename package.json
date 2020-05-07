@@ -1,9 +1,8 @@
 {
   "name": "@myetherwallet/mew-components",
-  "version": "0.2.16-beta",
+  "version": "0.2.17-beta",
   "description": "MEW Components",
   "main": "dist/mew-components.umd.js",
-  "module": "dist/mew-components.esm.js",
   "unpkg": "dist/mew-components.min.js",
   "browser": {
     "./sfc": "src/mew-components.vue"
@@ -12,10 +11,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "lint": "eslint --fix 'src/**/*.vue'",
-    "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+    "build": "npm run build:umd & npm run build:unpkg",
     "build-bundle": "vue-cli-service build --target lib --name mew-components ./src/wrapper.js",
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/mew-components.umd.js",
-    "build:es": "rollup --config build/rollup.config.js --format es --file dist/mew-components.esm.js",
     "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/mew-components.min.js",
     "storybook": "start-storybook -p 6006 -c .storybook watch-css -s ./src",
     "build-storybook": "build-storybook -c .storybook -o .out",
