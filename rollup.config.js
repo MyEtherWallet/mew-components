@@ -1,5 +1,5 @@
 // rollup.config.js
-
+import image from '@rollup/plugin-image';
 import vue from 'rollup-plugin-vue';
 import buble from 'rollup-plugin-buble';
 import commonjs from 'rollup-plugin-commonjs';
@@ -9,13 +9,11 @@ import minimist from 'minimist';
 import alias from '@rollup/plugin-alias';
 import resolve from '@rollup/plugin-node-resolve';
 
-const projectRootDir = path.resolve(__dirname);
-
 // eslint-disable-next-line no-undef
 const argv = minimist(process.argv.slice(2));
 
 const config = {
-  input: 'src/wrapper.js',
+  input: './src/wrapper.js',
   output: {
     name: 'MEWComponent',
     exports: 'named'
@@ -23,13 +21,13 @@ const config = {
   // external: ['@/components/Blockie/Blockie.vue'],
   plugins: [
     alias({
+      resolve: ['.jsx', '.js', '.vue'],
       entries: [
         {
           find: '@',
-          replacement: path.resolve(projectRootDir, 'src')
-          // OR place `customResolver` here. See explanation below.
+          replacement: './src'
         }
-      ]
+      ],
     }),
     replace({
       'process.env.NODE_ENV': JSON.stringify('production')
@@ -43,7 +41,8 @@ const config = {
       }
     }),
     buble(),
-    resolve({ browser: true, jail: '@', preferBuiltins: false})
+    resolve(),
+    image()
   ],
 };
 

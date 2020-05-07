@@ -1,6 +1,6 @@
 {
   "name": "@myetherwallet/mew-components",
-  "version": "0.2.23-beta",
+  "version": "0.2.24-beta",
   "description": "MEW Components",
   "main": "dist/mew-components.umd.js",
   "module": "dist/mew-components.esm.js",
@@ -42,6 +42,7 @@
     "@babel/core": "^7.8.7",
     "@mdi/font": "^5.1.45",
     "@rollup/plugin-alias": "^3.1.0",
+    "@rollup/plugin-image": "^2.0.4",
     "@rollup/plugin-node-resolve": "^7.1.3",
     "@storybook/addon-actions": "^5.3.17",
     "@storybook/addon-backgrounds": "^5.3.17",
