@@ -2,12 +2,7 @@ import vue from 'rollup-plugin-vue';
 import buble from 'rollup-plugin-buble';
 import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
-import uglify from 'rollup-plugin-uglify-es';
-import minimist from 'minimist';
 import resolve from '@rollup/plugin-node-resolve';
-
-// eslint-disable-next-line no-undef
-const argv = minimist(process.argv.slice(2));
 
 const config = {
   input: 'src/wrapper.js', // Path relative to package.json
@@ -43,10 +38,5 @@ const config = {
   ],
   external: ['@/components/TxBadge/TxBadge.vue', '@/components/MewButton/MewButton.vue', '@/components/WarningSheet/WarningSheet.vue', '@/components/Toast/Toast.vue', '@/components/Blockie/Blockie.vue', '@/assets/images/icons/icon-edit.png', '@/helpers/blockies.js', '@/assets/images/icons/icon-copy-enable.png', '@/assets/images/icons/icon-saved-enable.png']
 };
-
-// Only minify browser (iife) version
-if (argv.format === 'iife') {
-  config.plugins.push(uglify());
-}
 
 export default config;
