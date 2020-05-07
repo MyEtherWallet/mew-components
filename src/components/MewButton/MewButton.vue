@@ -1,6 +1,10 @@
 <template>
   <div class="btn-container">
     <v-btn
+      :small="buttonSize.toLowerCase() === buttonSizes.small"
+      :large="buttonSize.toLowerCase() === buttonSizes.large"
+      :x-large="buttonSize.toLowerCase() === buttonSizes.xlarge"
+      :x-small="buttonSize.toLowerCase() === buttonSizes.xsmall"
       @click="onBtnClick()"
       :class="getClasses()"
       :color="colorTheme"
@@ -30,6 +34,13 @@
 export default {
   name: 'MewButton',
   props: {
+    /**
+     * Sets the button size: x-small, x-large, large, small.
+     */
+    buttonSize: {
+      type: String,
+      default: 'small'
+    },
     /**
      * The text that will go in the button.
      */
@@ -75,6 +86,12 @@ export default {
   },
   data() {
     return {
+      buttonSizes: {
+        small: 'small',
+        xsmall: 'xsmall',
+        large: 'large',
+        xlarge: 'xlarge'
+      },
       btnStyles: {
         background: 'background',
         transparent: 'transparent',

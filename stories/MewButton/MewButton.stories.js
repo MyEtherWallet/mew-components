@@ -43,6 +43,13 @@ const optionsObj = {
   display: 'inline-radio'
 };
 
+const buttonSizes = {
+  small: 'small',
+  xsmall: 'xsmall',
+  large: 'large',
+  xlarge: 'xlarge'
+}
+
 export const MEWButton = () => ({
   components: { 'mew-button': MewButton },
   props: {
@@ -74,6 +81,9 @@ export const MEWButton = () => ({
     iconAlign: {
       default: optionsKnob('icon-align', iconAlignOptions, 'none', optionsObj)
     },
+    buttonSize: {
+      default: optionsKnob('button-sizes', buttonSizes, buttonSizes.small, optionsObj)
+    },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     }
@@ -93,6 +103,7 @@ export const MEWButton = () => ({
       :color-theme="colorTheme"
       :btn-style="btnStyle"
       :icon="icon"
+      :button-size="buttonSize"
     />
   </div>`
 });
