@@ -42,7 +42,7 @@
                 @click="copyToClipboard"
                 class="copy-icon"
                 v-on="on"
-                src="@/assets/images/icons/icon-copy-enable.png"
+                :src="copyIcon"
                 alt="copy"
               >
             </template>
@@ -56,7 +56,7 @@
               <img
                 @click="saveAddress"
                 :class="['save-icon', getSaveBtnClasses()]"
-                src="@/assets/images/icons/icon-saved-enable.png"
+                :src="saveIcon"
                 v-on="on"
                 alt="save"
               >
@@ -104,6 +104,8 @@
 <script>
 import Blockie from '@/components/Blockie/Blockie.vue';
 import Toast from '@/components/Toast/Toast.vue';
+import copyIcon from '@/assets/images/icons/icon-copy-enable.png'; 
+import saveIcon from '@/assets/images/icons/icon-saved-enable.png';
 
 export default {
   name: 'AddressSelector',
@@ -189,7 +191,9 @@ export default {
     return {
       showToast: false,
       addressValue: '',
-      autoSelectMenu: false
+      autoSelectMenu: false,
+      saveIcon: saveIcon,
+      copyIcon: copyIcon
     };
   },
   watch: {
