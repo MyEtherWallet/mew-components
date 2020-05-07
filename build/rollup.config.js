@@ -10,15 +10,15 @@ const config = {
     name: 'MewComponent',
     exports: 'named',
     globals: {
-      '@/components/Blockie/Blockie.vue': 'Blockie',
-      '@/components/Toast/Toast.vue': 'Toast',
-      '@/assets/images/icons/icon-copy-enable.png': 'IconCopy',
-      '@/assets/images/icons/icon-saved-enable.png': 'IconSave',
-      '@/helpers/blockies.js': 'Blockies',
-      '@/assets/images/icons/icon-edit.png': 'IconEdit',
-      '@/components/MewButton/MewButton.vue': 'MewButton',
-      '@/components/WarningSheet/WarningSheet.vue': 'WarningSheet',
-      '@/components/TxBadge/TxBadge.vue': 'TxBadge'
+      '@/components/Blockie/Blockie.vue': '@/components/Blockie/Blockie.vue',
+      '@/components/Toast/Toast.vue': '@/components/Toast/Toast.vue',
+      '@/assets/images/icons/icon-copy-enable.png': '@/assets/images/icons/icon-copy-enable.png',
+      '@/assets/images/icons/icon-saved-enable.png': '@/assets/images/icons/icon-saved-enable.png',
+      '@/helpers/blockies.js': '@/helpers/blockies.js',
+      '@/assets/images/icons/icon-edit.png': '@/assets/images/icons/icon-edit.png',
+      '@/components/MewButton/MewButton.vue': '@/components/MewButton/MewButton.vue',
+      '@/components/WarningSheet/WarningSheet.vue': '@/components/WarningSheet/WarningSheet.vue',
+      '@/components/TxBadge/TxBadge.vue': '@/components/TxBadge/TxBadge.vue'
     }
   },
   plugins: [
