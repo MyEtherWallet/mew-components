@@ -8,6 +8,8 @@ const config = {
   input: 'src/wrapper.js', // Path relative to package.json
   output: {
     name: 'MewComponent',
+    file: 'dist/mew-components.umd.js',
+    format: 'umd',
     exports: 'named',
     globals: {
       '@/components/Blockie/Blockie.vue': '@/components/Blockie/Blockie.vue',
@@ -36,21 +38,7 @@ const config = {
     buble(),
     resolve()
   ],
-  external: ['@/components/TxBadge/TxBadge.vue', '@/components/MewButton/MewButton.vue', '@/components/WarningSheet/WarningSheet.vue', '@/components/Toast/Toast.vue', '@/components/Blockie/Blockie.vue', '@/assets/images/icons/icon-edit.png', '@/helpers/blockies.js', '@/assets/images/icons/icon-copy-enable.png', '@/assets/images/icons/icon-saved-enable.png'],
-  paths: {
-    '@/components/TxBadge/TxBadge.vue': '@/components/TxBadge/TxBadge.vue',
-    '@/components/MewButton/MewButton.vue': '@/components/MewButton/MewButton.vue',
-    '@/components/WarningSheet/WarningSheet.vue': '@/components/WarningSheet/WarningSheet.vue',
-    '@/components/Toast/Toast.vue': '@/components/Toast/Toast.vue',
-    '@/components/Blockie/Blockie.vue': '@/components/Blockie/Blockie.vue',
-    '@/assets/images/icons/icon-edit.png': '@/assets/images/icons/icon-edit.png',
-     '@/helpers/blockies.js': '@/helpers/blockies.js',
-     '@/assets/images/icons/icon-copy-enable.png' : '@/assets/images/icons/icon-copy-enable.png', 
-     '@/assets/images/icons/icon-saved-enable.png': '@/assets/images/icons/icon-saved-enable.png'
- 
-
-
-  }
+  external: ['@/components/TxBadge/TxBadge.vue', '@/components/MewButton/MewButton.vue', '@/components/WarningSheet/WarningSheet.vue', '@/components/Toast/Toast.vue', '@/components/Blockie/Blockie.vue', '@/assets/images/icons/icon-edit.png', '@/helpers/blockies.js', '@/assets/images/icons/icon-copy-enable.png', '@/assets/images/icons/icon-saved-enable.png']
 };
 
 export default config;
