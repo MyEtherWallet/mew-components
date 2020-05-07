@@ -3,6 +3,7 @@
   "version": "0.2.20-beta",
   "description": "MEW Components",
   "main": "dist/mew-components.umd.js",
+  "module": "dist/mew-components.esm.js",
   "unpkg": "dist/mew-components.min.js",
   "browser": {
     "./sfc": "src/mew-components.vue"
