@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import MewButton from './components/MewButton/MewButton.vue';
 import MewSuperButton from './components/MewSuperButton/MewSuperButton.vue';
 import AddressSelect from './components/AddressSelect/AddressSelect.vue';
@@ -45,14 +46,14 @@ const Components = {
 }
 
 // Declare install function executed by Vue.use()
-export function install(Vue) {
+export function install() {
   if (install.installed) return;
   install.installed = true;
-
-  Object.keys(Components).forEach(name => {
-    Vue.component(name, Components[name]);
-  })
 }
+
+Object.keys(Components).forEach(name => {
+  Vue.component(name, Components[name]);
+})
 
 // Create module definition for Vue.use()
 const plugin = {
