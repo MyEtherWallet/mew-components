@@ -46,6 +46,9 @@ const optionsObj = {
 export const MEWButton = () => ({
   components: { 'mew-button': MewButton },
   props: {
+    hasFullWidth: {
+      default: boolean('has-full-width', true)
+    },
     disabled: {
       default: boolean('disabled', false)
     },
@@ -93,6 +96,7 @@ export const MEWButton = () => ({
       :color-theme="colorTheme"
       :btn-style="btnStyle"
       :icon="icon"
+      :has-full-width="hasFullWidth"
     />
   </div>`
 });
