@@ -1,78 +1,76 @@
 <template>
-  <div>
-    <v-btn
-      @click="onBtnClick()"
-      :class="getClasses()"
-      :color="getColor()"
-      :outlined="colorTheme.toLowerCase() === colorThemes.outline"
-      :ripple="false"
-      :disabled="disabled"
-      :text="disabled" 
-      depressed
+  <v-btn
+    @click="onBtnClick()"
+    :class="getClasses()"
+    :color="getColor()"
+    :outlined="colorTheme.toLowerCase() === colorThemes.outline"
+    :ripple="false"
+    :disabled="disabled"
+    :text="disabled" 
+    depressed
+  >
+    <v-row
+      class="btn-container"
+      justify="space-between"
+      :class="showIcon(rightIcon) ? 'center-align' : ''"
     >
-      <v-row
-        class="btn-container"
-        justify="space-between"
-        :class="showIcon(rightIcon) ? 'center-align' : ''"
+      <v-col
+        class="left-container"
+        cols="6"
       >
-        <v-col
-          class="left-container"
-          cols="6"
-        >
-          <div class="title-wrapper d-flex align-center">
-            <div class="title font-weight-bold truncate">
-              {{ title }}
-            </div>
-            <div
-              class="body-2"
+        <div class="title-wrapper d-flex align-center">
+          <div class="title font-weight-bold truncate">
+            {{ title }}
+          </div>
+          <div
+            class="body-2"
+            v-if="showIcon(titleIcon)"
+          >
+            <img
               v-if="showIcon(titleIcon)"
+              class="icon title-icon"
+              :src="titleIcon"
+              alt="Icon"
             >
-              <img
-                v-if="showIcon(titleIcon)"
-                class="icon title-icon"
-                :src="titleIcon"
-                alt="Icon"
-              >
-            </div>
           </div>
-          <div
-            class="mt-2 truncate"
-            v-if="subtitle"
-          >
-            {{ subtitle }}
-          </div>
-          <div class="body-2 mt-1">
-            #{{ tag }}
-          </div>
-        </v-col>
-        <v-col
-          cols="6"
-          class="right-container"
+        </div>
+        <div
+          class="mt-2 truncate"
+          v-if="subtitle"
         >
-          <slot name="swapTokens" />
-          <div
-            v-if="isNew"
-            class="label d-flex align-center text-uppercase"
-            alt="label"
-          >
-            <div>{{ newLabel }}</div>
-          </div>
-          <div
-            v-if="!showIcon(rightIcon) && note"
-            class="text-uppercase caption mt-1 note"
-          >
-            {{ note }}
-          </div>
-          <img
-            v-if="showIcon(rightIcon)"
-            class="icon right-icon"
-            :src="rightIcon"
-            alt="Icon"
-          >
-        </v-col>
-      </v-row>
-    </v-btn>
-  </div>
+          {{ subtitle }}
+        </div>
+        <div class="body-2 mt-1">
+          #{{ tag }}
+        </div>
+      </v-col>
+      <v-col
+        cols="6"
+        class="right-container"
+      >
+        <slot name="swapTokens" />
+        <div
+          v-if="isNew"
+          class="label d-flex align-center text-uppercase"
+          alt="label"
+        >
+          <div>{{ newLabel }}</div>
+        </div>
+        <div
+          v-if="!showIcon(rightIcon) && note"
+          class="text-uppercase caption mt-1 note"
+        >
+          {{ note }}
+        </div>
+        <img
+          v-if="showIcon(rightIcon)"
+          class="icon right-icon"
+          :src="rightIcon"
+          alt="Icon"
+        >
+      </v-col>
+    </v-row>
+  </v-btn>
 </template>
 
 <script>
@@ -206,6 +204,7 @@ export default {
 .v-application {
   .v-btn {
     border-radius: 12px;
+    width: 100%;
   }
 
   .disabled-btn {

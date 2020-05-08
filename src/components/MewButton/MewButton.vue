@@ -1,33 +1,27 @@
 <template>
-  <div class="btn-container">
-    <v-btn
-      :small="buttonSize.toLowerCase() === buttonSizes.small"
-      :large="buttonSize.toLowerCase() === buttonSizes.large"
-      :x-large="buttonSize.toLowerCase() === buttonSizes.xlarge"
-      :x-small="buttonSize.toLowerCase() === buttonSizes.xsmall"
-      @click="onBtnClick()"
-      :class="getClasses()"
-      :color="colorTheme"
-      :disabled="disabled"
-      depressed
-      :outlined="btnStyle.toLowerCase() === btnStyles.outline"
-      :text="btnStyle.toLowerCase() === btnStyles.transparent"
+  <v-btn
+    @click="onBtnClick()"
+    :class="getClasses()"
+    :color="colorTheme"
+    :disabled="disabled"
+    depressed
+    :outlined="btnStyle.toLowerCase() === btnStyles.outline"
+    :text="btnStyle.toLowerCase() === btnStyles.transparent"
+  >
+    <img
+      v-if="showIcon(icon) && iconAlign.toLowerCase() === iconAlignments.left"
+      class="icon mr-1"
+      :src="icon"
+      alt="icon"
     >
-      <img
-        v-if="showIcon(icon) && iconAlign.toLowerCase() === iconAlignments.left"
-        class="icon mr-1"
-        :src="icon"
-        alt="icon"
-      >
-      <span>{{ title }}</span>
-      <img
-        v-if="showIcon(icon) && iconAlign.toLowerCase() === iconAlignments.right"
-        class="icon ml-1"
-        :src="icon"
-        alt="icon"
-      >
-    </v-btn>
-  </div>
+    <span>{{ title }}</span>
+    <img
+      v-if="showIcon(icon) && iconAlign.toLowerCase() === iconAlignments.right"
+      class="icon ml-1"
+      :src="icon"
+      alt="icon"
+    >
+  </v-btn>
 </template>
 
 <script>
@@ -35,11 +29,11 @@ export default {
   name: 'MewButton',
   props: {
     /**
-     * Sets the button size: x-small, x-large, large, small.
+     * Sets the button to have 100% width.
      */
-    buttonSize: {
-      type: String,
-      default: 'small'
+    hasFullWidth: {
+      type: Boolean,
+      default: true
     },
     /**
      * The text that will go in the button.
@@ -86,12 +80,6 @@ export default {
   },
   data() {
     return {
-      buttonSizes: {
-        small: 'small',
-        xsmall: 'xsmall',
-        large: 'large',
-        xlarge: 'xlarge'
-      },
       btnStyles: {
         background: 'background',
         transparent: 'transparent',
@@ -115,6 +103,10 @@ export default {
     getClasses() {
       const classes = [];
 
+      if (this.hasFullWidth === true ) {
+        classes.push('full-width');
+      }
+      
       if (
         this.btnStyle.toLowerCase() === this.btnStyles.background &&
         this.colorTheme.toLowerCase() !== this.colorThemes.white
@@ -158,42 +150,39 @@ export default {
 
 <style lang="scss" scoped>
 .v-application {
-  .btn-container {
-    width: 100%;
+  .v-btn {
+    border-radius: 6px !important;
+    padding: 20px 50px;
 
-    .v-btn {
-      border-radius: 6px !important;
-      padding: 20px 50px;
+    .icon {
+      height: 27px;
+    }
 
-      .icon {
-        height: 27px;
-      }
+    &.primary.white--text.active {
+      background-color: var(--v-primaryActive-base) !important;
+    }
+    
+    &.primary.white--text:hover {
+      background-color: var(--v-primaryHover-base) !important;
+    }
 
-      &.primary.white--text.active {
-        background-color: var(--v-primaryActive-base) !important;
-      }
-      
-      &.primary.white--text:hover {
-        background-color: var(--v-primaryHover-base) !important;
-      }
+    &.primary--text.v-btn--outlined.active {
+      background-color: var(--v-primaryOutlineActive-base) !important;
+    }
 
-      &.primary--text.v-btn--outlined.active {
-        background-color: var(--v-primaryOutlineActive-base) !important;
-      }
+    &.secondary--text.v-btn--outlined.active {
+      background-color: var(--v-secondaryOutlineActive-base) !important;
+    }
 
-      &.secondary--text.v-btn--outlined.active {
-        background-color: var(--v-secondaryOutlineActive-base) !important;
-      }
+    &.error--text.v-btn--outlined.active {
+      background-color: var(--v-errorOutlineActive-base) !important;
+    }
 
-      &.error--text.v-btn--outlined.active {
-        background-color: var(--v-errorOutlineActive-base) !important;
-      }
-
-      &.basic--text.v-btn--outlined.active {
-        background-color: var(--v-basicOutlineActive-base) !important;
-      }
+    &.basic--text.v-btn--outlined.active {
+      background-color: var(--v-basicOutlineActive-base) !important;
     }
   }
+
   .theme--light.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined), .theme--dark.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
     background-color: var(--v-disabled-base) !important;
     color: var(--v-white-base) !important;
