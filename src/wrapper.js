@@ -51,10 +51,6 @@ export function install() {
   install.installed = true;
 }
 
-Object.keys(Components).forEach(name => {
-  Vue.component(name, Components[name]);
-})
-
 // Create module definition for Vue.use()
 const plugin = {
   install
