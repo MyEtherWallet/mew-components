@@ -1,31 +1,57 @@
-import button from './components/MewButton/MewButton.vue';
-import superButton from './components/MewSuperButton/MewSuperButton.vue';
-import addressSelect from './components/AddressSelect/AddressSelect.vue';
-import blockie from './components/Blockie/Blockie.vue';
-import infoCard from './components/InfoCard/InfoCard.vue';
-import infoTooltip from './components/InfoTooltip/InfoTooltip.vue';
-import mewCheckbox from './components/MewCheckbox/MewCheckbox.vue';
-import mewExpandPanel from './components/MewExpandPanel/MewExpandPanel.vue';
-import mewInput from './components/MewInput/MewInput.vue';
-import mewMenu from './components/MewMenu/MewMenu.vue';
-import mewModule from './components/MewModule/MewModule.vue';
-import mewOverlay from './components/MewOverlay/MewOverlay.vue';
-import mewPopup from './components/MewPopup/MewPopup.vue';
-import mewSelect from './components/MewSelect/MewSelect.vue';
-import mewStepper from './components/MewStepper/MewStepper.vue';
-import mewSwitch from './components/MewSwitch/MewSwitch.vue';
-import mewTabs from './components/MewTabs/MewTabs.vue';
-import toast from './components/Toast/Toast.vue';
-import txBadge from './components/TxBadge/TxBadge.vue';
-import txNotification from './components/TxNotification/TxNotification.vue';
-import warningSheet from './components/WarningSheet/WarningSheet.vue';
+import MewButton from './components/MewButton/MewButton.vue';
+import MewSuperButton from './components/MewSuperButton/MewSuperButton.vue';
+import AddressSelect from './components/AddressSelect/AddressSelect.vue';
+import Blockie from './components/Blockie/Blockie.vue';
+import InfoCard from './components/InfoCard/InfoCard.vue';
+import InfoTooltip from './components/InfoTooltip/InfoTooltip.vue';
+import MewCheckbox from './components/MewCheckbox/MewCheckbox.vue';
+import MewExpandPanel from './components/MewExpandPanel/MewExpandPanel.vue';
+import MewInput from './components/MewInput/MewInput.vue';
+import MewMenu from './components/MewMenu/MewMenu.vue';
+import MewModule from './components/MewModule/MewModule.vue';
+import MewOverlay from './components/MewOverlay/MewOverlay.vue';
+import MewPopup from './components/MewPopup/MewPopup.vue';
+import MewSelect from './components/MewSelect/MewSelect.vue';
+import MewStepper from './components/MewStepper/MewStepper.vue';
+import MewSwitch from './components/MewSwitch/MewSwitch.vue';
+import MewTabs from './components/MewTabs/MewTabs.vue';
+import Toast from './components/Toast/Toast.vue';
+import TxBadge from './components/TxBadge/TxBadge.vue';
+import TxNotification from './components/TxNotification/TxNotification.vue';
+import WarningSheet from './components/WarningSheet/WarningSheet.vue';
+
+const Components = {
+  MewButton,
+  MewSuperButton,
+  Blockie,
+  InfoCard,
+  InfoTooltip,
+  MewCheckbox,
+  MewExpandPanel,
+  MewInput,
+  MewMenu,
+  MewModule,
+  MewOverlay,
+  MewPopup,
+  MewSelect,
+  MewStepper,
+  MewSwitch,
+  MewTabs,
+  Toast,
+  TxNotification,
+  WarningSheet,
+  AddressSelect,
+  TxBadge
+}
 
 // Declare install function executed by Vue.use()
 export function install(Vue) {
   if (install.installed) return;
   install.installed = true;
-  Vue.component('MewButton', button);
-  Vue.component('MewSuperButton', superButton);
+
+  Object.keys(Components).forEach(name => {
+    Vue.component(name, Components[name]);
+  })
 }
 
 // Create module definition for Vue.use()
@@ -46,24 +72,4 @@ if (GlobalVue) {
   GlobalVue.use(plugin);
 }
 
-export const MewButton = button,
-  MewSuperButton = superButton,
-  Blockie = blockie,
-  InfoCard = infoCard,
-  InfoTooltip = infoTooltip,
-  MewCheckbox = mewCheckbox,
-  MewExpandPanel = mewExpandPanel,
-  MewInput = mewInput,
-  MewMenu = mewMenu,
-  MewModule = mewModule,
-  MewOverlay = mewOverlay,
-  MewPopup = mewPopup,
-  MewSelect = mewSelect,
-  MewStepper = mewStepper,
-  MewSwitch = mewSwitch,
-  MewTabs = mewTabs,
-  Toast = toast,
-  TxBadge = txBadge,
-  TxNotification = txNotification,
-  WarningSheet = warningSheet,
-  AddressSelect = addressSelect;
+export default Components;
