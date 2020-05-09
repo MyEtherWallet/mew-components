@@ -152,7 +152,7 @@ export default {
 .v-application {
   .v-btn {
     border-radius: 6px !important;
-    // padding: 20px 50px;
+    padding: 20px 50px;
 
     .icon {
       height: 27px;
