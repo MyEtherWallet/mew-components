@@ -80,6 +80,9 @@ export const MEWButton = () => ({
     iconAlign: {
       default: optionsKnob('icon-align', iconAlignOptions, 'none', optionsObj)
     },
+    showsActiveState: {
+      default: boolean('shows-active-state', false)
+    },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     }
@@ -101,6 +104,7 @@ export const MEWButton = () => ({
       :btn-style="btnStyle"
       :icon="icon"
       :has-full-width="hasFullWidth"
+      :shows-active-state="showsActiveState"
     />
   </div>`
 });

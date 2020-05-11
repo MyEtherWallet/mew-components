@@ -84,6 +84,13 @@ export default {
     goTo: {
       type: String,
       default: ''
+    },
+    /**
+     * Displays the buttons' active state.
+     */
+    showsActiveState: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -131,13 +138,15 @@ export default {
 
       if (
         this.active &&
-        !this.disabled
+        !this.disabled &&
+        this.showsActiveState
       ) {
         classes.push('active');
       }
 
       if (
         this.active &&
+        this.showsActiveState && 
         !this.disabled &&
         this.btnStyle.toLowerCase() === this.btnStyles.outline
       ) {
