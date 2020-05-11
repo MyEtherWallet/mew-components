@@ -15,7 +15,6 @@
     >
       {{ item.name }}
     </v-tab>
-
     <v-tabs-items v-model="onTab">
       <v-tab-item
         v-for="(item, i) in items"
@@ -56,6 +55,11 @@ export default {
   methods: {
     onClick() {
       this.$emit('onNextStep');
+    }
+  },
+  watch: {
+    onTab(newVal) {
+      this.$emit('onTab', newVal)
     }
   }
 }

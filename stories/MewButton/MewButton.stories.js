@@ -52,8 +52,8 @@ export const MEWButton = () => ({
     disabled: {
       default: boolean('disabled', false)
     },
-    goTo: {
-      default: text('go-to', '')
+    btnLink: {
+      default: text('btn-link', '')
     },
     title: {
       default: text('title', 'MEW Button')
@@ -96,7 +96,7 @@ export const MEWButton = () => ({
     <div>
     <br />
     <mew-button
-      :go-to="goTo"
+      :btn-link="btnLink"
       :icon-align="iconAlign"
       :disabled="disabled"
       :title="title"

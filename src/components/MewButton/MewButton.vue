@@ -1,5 +1,7 @@
 <template>
   <v-btn
+    :target=" btnLink ? '_blank' : ''"
+    :href="btnLink"
     @click="onBtnClick()"
     :class="getClasses()"
     :color="colorTheme"
@@ -7,7 +9,6 @@
     depressed
     :outlined="btnStyle.toLowerCase() === btnStyles.outline"
     :text="btnStyle.toLowerCase() === btnStyles.transparent"
-    :to="goTo"
   >
     <img
       v-if="showIcon(icon) && iconAlign.toLowerCase() === iconAlignments.left"
@@ -79,9 +80,9 @@ export default {
       default: false
     },
     /**
-     * Denotes the target route of the link.
+     * Opens up a new page with the link. 
      */
-    goTo: {
+    btnLink: {
       type: String,
       default: ''
     },

@@ -42,6 +42,13 @@ export const MEWTabs = () => ({
     <mew-tabs
       :items="items"
       :is-block="isBlock"
+      @onTab="onTab"
     />
-  </div>`
+  </div>`,
+  methods: {
+    onTab(newVal) {
+      // eslint-disable-next-line no-console
+      console.log('on tab:', newVal)
+    }
+  }
 });
