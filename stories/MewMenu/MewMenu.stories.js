@@ -34,7 +34,7 @@ export const MEWMenu = () => ({
       default: text('style-classes', '')
     },
     textColor: {
-      default: text('text-color', 'white--text')
+      default: text('text-color', 'basic--text')
     }
   },
   watch: {
