@@ -7,6 +7,7 @@
     depressed
     :outlined="btnStyle.toLowerCase() === btnStyles.outline"
     :text="btnStyle.toLowerCase() === btnStyles.transparent"
+    :to="goTo"
   >
     <img
       v-if="showIcon(icon) && iconAlign.toLowerCase() === iconAlignments.left"
@@ -76,6 +77,13 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    /**
+     * Denotes the target route of the link.
+     */
+    goTo: {
+      type: String,
+      default: ''
     }
   },
   data() {

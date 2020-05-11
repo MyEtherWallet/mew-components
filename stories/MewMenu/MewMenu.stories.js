@@ -30,8 +30,11 @@ export const MEWMenu = () => ({
     listObj: {
       default: object('items', listObj)
     },
+    styleClasses: {
+      default: text('style-classes', '')
+    },
     textColor: {
-      default: text('text-color', 'basic--text')
+      default: text('text-color', 'white--text')
     }
   },
   watch: {
@@ -44,14 +47,9 @@ export const MEWMenu = () => ({
     <br />
     <mew-menu
       :list-obj="listObj"
+      :style-classes="styleClasses"
       :text-color="textColor"
       @goToPage="goToPage"
     />
-  </div>`,
-  methods: {
-    goToPage(item) {
-      // eslint-disable-next-line no-console
-      console.log('Go to:', item);
-    }
-  }
+  </div>`
 });
