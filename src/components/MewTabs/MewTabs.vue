@@ -1,29 +1,41 @@
 <template>
-  <v-tabs
-    :class="[isBlock ? 'mew-tabs-block elevation-2' : '']"
-    background-color="transparent"
-    color="titlePrimary"
-    slider-size="3"
-    v-model="onTab"
-    :hide-slider="isBlock"
-    :grow="isBlock"
-  >
-    <v-tab
-      :class="[isBlock ? 'mew-tab-block' : 'mew-heading-2', 'capitalize']"
-      v-for="(item, i) in items"
-      :key="item + i"
+  <div>
+    <v-tabs
+      :class="[isBlock ? 'mew-tabs-block elevation-2' : '']"
+      background-color="transparent"
+      color="titlePrimary"
+      slider-size="3"
+      v-model="onTab"
+      :hide-slider="isBlock"
+      :grow="isBlock"
     >
-      {{ item.name }}
-    </v-tab>
-    <v-tabs-items v-model="onTab">
-      <v-tab-item
+      <v-tab
+        :class="[isBlock ? 'mew-tab-block' : 'mew-heading-2', 'capitalize']"
         v-for="(item, i) in items"
         :key="item + i"
       >
-        <slot :name="'tabContent' + i" />
-      </v-tab-item>
-    </v-tabs-items>
-  </v-tabs>
+        {{ item.name }}
+      </v-tab>
+      <v-tabs-items v-model="onTab">
+        <v-tab-item
+          v-for="(item, i) in items"
+          :key="item + i"
+        >
+          <slot :name="'tabContent' + i" />
+        </v-tab-item>
+      </v-tabs-items>
+    </v-tabs>
+
+    <div
+      v-for="(item, i) in items"
+      :key="item + i"
+    >
+      <slot
+        v-if="onTab === i"
+        :name="'tabContent' + i"
+      />
+    </div>
+  </div>
 </template>
 
 <script>

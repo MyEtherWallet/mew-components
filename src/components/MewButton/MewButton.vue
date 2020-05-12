@@ -1,6 +1,6 @@
 <template>
   <v-btn
-    :target=" btnLink ? '_blank' : ''"
+    :target="btnLink ? '_blank' : ''"
     :href="btnLink"
     @click="onBtnClick()"
     :class="getClasses()"

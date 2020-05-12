@@ -7,7 +7,7 @@
   >
     <template v-slot:activator="{ on }">
       <span
-        :class="[textColor, styleClasses, 'cursor-pointer', 'font-weight-medium']"
+        :class="[textColor, styleClasses, 'cursor-pointer', isMenuOpen ? 'font-weight-medium' : '']"
         v-on="on"
       >
         {{ listObj.name }}
@@ -26,7 +26,7 @@
       :key="index"
     >
       <v-list-item
-        :to="item.to"
+        @click="goTo(item.to)"
         class="cursor-pointer"
       >
         <v-list-item-title>{{ item.title }} </v-list-item-title>
@@ -66,6 +66,11 @@ export default {
     styleClasses: {
       type: String,
       default: ''
+    }
+  },
+  methods: {
+    goTo(link) {
+      this.$emit('goToPage', link);
     }
   }
 }

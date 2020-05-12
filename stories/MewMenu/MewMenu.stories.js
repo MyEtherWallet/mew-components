@@ -51,5 +51,11 @@ export const MEWMenu = () => ({
       :text-color="textColor"
       @goToPage="goToPage"
     />
-  </div>`
+  </div>`,
+  methods: {
+    goToPage(link) {
+      // eslint-disable-next-line no-console
+      console.log('go to:', link)
+    }
+  }
 });
