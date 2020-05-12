@@ -34,6 +34,9 @@ export const infoCard = () => ({
     link: {
       default: object('link', linkObj)
     },
+    maxWidth: {
+      default: text('max-width', '')
+    },
   },
   watch: {
     enableDarkMode(newVal) {
@@ -47,6 +50,7 @@ export const infoCard = () => ({
       :title="title"
       :desc="desc"
       :link="link"
+      :max-width="maxWidth"
     />
   </div>`
 });

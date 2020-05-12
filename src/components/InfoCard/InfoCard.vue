@@ -1,11 +1,15 @@
 <template>
-  <v-card class="pa-10 info-card">
+  <v-card
+    :max-width="maxWidth"
+    class="pa-10 info-card"
+  >
     <img :src="icon">
     <v-card-title :class="[ 'font-weight-bold', 'mew-heading-2', 'titlePrimary--text', icon ? 'pt-0' : '' ]">
       {{ title }}
       <slot name="titleIconContainer" />
     </v-card-title>
-    <v-card-subtitle class="titlePrimary--text truncate subtitle">
+    <v-card-subtitle class="titlePrimary--text">
+      <slot name="desc" />
       {{ desc }}
     </v-card-subtitle>
     <v-card-text v-if="link.url && link.title">
@@ -58,16 +62,19 @@ export default {
         }
       }
     },
+    /**
+     * The max width of the info card. Default is 300px. 
+     */
+    maxWidth: {
+      type: String,
+      default: '300'
+    },
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .info-card {
-  .subtitle {
-    max-width: 90%;
-  }
-
   a {
     i {
       font-size: 20px;
