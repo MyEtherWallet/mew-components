@@ -21,7 +21,7 @@
           v-for="(item, i) in items"
           :key="item + i"
         >
-          <slot :name="'tabContent' + i" />
+          <slot :name="'tabItemContent' + i" />
         </v-tab-item>
       </v-tabs-items>
     </v-tabs>
