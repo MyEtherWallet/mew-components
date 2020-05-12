@@ -8,7 +8,7 @@
         <v-expansion-panel-header
           expand-icon="mdi-pencil-outline"
           class="white--text font-weight-medium"
-          :color="i % 2 !== 0 ? 'expandHeader' : 'basic'"
+          :color="item.color"
         >
           {{ item.name }}
 

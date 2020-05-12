@@ -14,8 +14,8 @@ export default {
 };
 
 const items = [
-  { name: 'Network', rightText: 'ETH - myetherapi.com' }, 
-  { name: 'Address to interact with' , rightText: ''}
+  { name: 'Network', rightText: 'ETH - myetherapi.com', color: 'basic' }, 
+  { name: 'Address to interact with' , rightText: '', color: 'expandHeader'}
 ]
 
 export const MEWExpandPanel = () => ({

@@ -33,6 +33,9 @@ export const MEWStepper = () => ({
     },
     items: {
       default: object('items', items)
+    },
+    onStep: {
+      default: number('on-step', 1)
     }
   },
   watch: {

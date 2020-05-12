@@ -11,7 +11,6 @@
         v-for="(item, i) in items"
         :key="i"
         :step="item.name"
-        @click="onClick()"
       />
     </v-stepper-header>
   </v-stepper>
@@ -30,11 +29,6 @@ export default {
       type: Number,
       default: 1
     }
-  },
-  methods: {
-    onClick() {
-      this.$emit('onNextStep');
-    }
   }
 }
 </script>
@@ -45,7 +39,6 @@ export default {
     height: 100%;
   }
   .v-stepper__step {
-    cursor: pointer;
     margin-left: -16px;
     padding-right: 0;
 

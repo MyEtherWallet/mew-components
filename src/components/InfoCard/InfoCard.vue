@@ -1,27 +1,31 @@
 <template>
   <v-card
     :max-width="maxWidth"
-    class="pa-10 info-card"
+    class="info-card"
   >
-    <img :src="icon">
-    <v-card-title :class="[ 'font-weight-bold', 'mew-heading-2', 'titlePrimary--text', icon ? 'pt-0' : '' ]">
-      {{ title }}
-      <slot name="titleIconContainer" />
-    </v-card-title>
-    <v-card-subtitle class="titlePrimary--text">
-      <slot name="desc" />
-      {{ desc }}
-    </v-card-subtitle>
-    <v-card-text v-if="link.url && link.title">
-      <a
-        class="font-weight-medium no-decoration"
-        :href="link.url"
-      >{{ link.title }}<v-icon
-        class="mew-body"
-        color="primary"
-      >mdi-arrow-right</v-icon></a>
-      <slot name="buttonContainer" />
-    </v-card-text>
+    <div class="pa-5">
+      <div class="text-center">
+        <img :src="icon">
+      </div>
+      <v-card-title :class="[ 'font-weight-bold', 'mew-heading-2', 'titlePrimary--text', 'pt-0' ]">
+        {{ title }}
+        <slot name="titleIconContainer" />
+      </v-card-title>
+      <v-card-subtitle class="titlePrimary--text mt-1">
+        <slot name="desc" />
+        {{ desc }}
+      </v-card-subtitle>
+      <v-card-text v-if="link.url && link.title">
+        <a
+          class="font-weight-medium no-decoration"
+          :href="link.url"
+        >{{ link.title }}<v-icon
+          class="mew-body"
+          color="primary"
+        >mdi-arrow-right</v-icon></a>
+        <slot name="buttonContainer" />
+      </v-card-text>
+    </div>
     <slot name="cardImg" />
   </v-card>
 </template>
@@ -75,6 +79,7 @@ export default {
 
 <style lang="scss" scoped>
 .info-card {
+  border: 1px solid var(--v-inputBorder-base);
   a {
     i {
       font-size: 20px;
