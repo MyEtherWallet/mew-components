@@ -13,6 +13,15 @@
         :step="item.name"
       />
     </v-stepper-header>
+
+    <v-stepper-items
+      v-for="(item, i) in items"
+      :key="i"
+    > 
+      <v-stepper-content step="onStep">
+        <slot :name="'stepperContent' + onStep" />
+      </v-stepper-content>
+    </v-stepper-items>
   </v-stepper>
 </template>
 

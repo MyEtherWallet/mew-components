@@ -54,6 +54,9 @@ export const addressSelector = () => ({
     successToast: {
       default: text('success-toast', 'Success!')
     },
+    errMsg: {
+      default: text('err-msg', '')
+    },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     }
@@ -66,7 +69,7 @@ export const addressSelector = () => ({
   template: `
     <div>
     <br />
-    <address-selector :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @emitSelectedValue="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
+    <address-selector :err-msg="errMsg" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @emitSelectedValue="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
   </div>`,
   methods: {
     getSelectedValue(value) {

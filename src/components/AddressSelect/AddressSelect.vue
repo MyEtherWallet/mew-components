@@ -10,6 +10,7 @@
       item-text="address"
       :placeholder="placeholder"
       :disabled="disabled"
+      :error-messages="errMsg"
       :menu-props="{ value: autoSelectMenu, closeOnClick: true }"
       ref="addressInput"
       outlined
@@ -24,7 +25,7 @@
           class="blockie-container"
         >
           <blockie
-            :address="addressValue.address"
+            :address="addressValue"
             width="25px"
             height="25px"
           />
@@ -181,6 +182,13 @@ export default {
     successToast: {
       type: String,
       default: ''
+    },
+    /**
+     * Text for toast success.
+     */
+    errMsg: {
+      type: String,
+      default: ''
     }
   },
   components: {
@@ -206,10 +214,13 @@ export default {
       this.autoSelectMenu = !this.autoSelectMenu;
     },
     copyToClipboard() {
+      this.showToast = false;
       this.$refs.addressInput.$el.querySelector('input').select();
       document.execCommand('copy');
-      this.toastType = 'success';
       this.showToast = true;
+      this.$nextTick(function () {
+        this.showToast = false;
+      })
     },
     selectAddress(data) {
       this.autoSelectMenu = false;

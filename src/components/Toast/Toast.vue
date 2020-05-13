@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-bottom-sheet
-      :value="showsToast" 
+      v-model="showsToast" 
       :hide-overlay="true"
       :persistent="persistent"
     >
@@ -51,7 +51,7 @@ export default {
   name: 'Toast',
   data() {
     return {
-      showsToast: false,
+      showsToast: this.showToast,
       toastTypes: {
         warning: 'warning',
         error: 'error',
@@ -119,9 +119,11 @@ export default {
     }
   },
   watch: {
-    showToast(newVal) {
-      this.showsToast = newVal;
-      this.setTimer();
+    showToast() {
+      if (this.showToast === true) {
+        this.showsToast = true;
+        this.setTimer();
+      }
     }
   },
   mounted() {
@@ -151,11 +153,8 @@ export default {
       }
     },
     setTimer() {
-      const _self = this;
-      if(this.duration > 0 && this.showToast === true) {
-        setTimeout(function () {
-          _self.showsToast = false;
-        }, this.duration);
+      if(this.duration > 0 && this.showsToast === true && !this.persistent) {
+        setTimeout(() => this.showsToast = false, this.duration);
       }
     }
   }
