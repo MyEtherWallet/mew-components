@@ -94,6 +94,7 @@
       </template>
     </v-combobox>
     <toast
+      ref="toast"
       :duration="2000"
       :show-toast="showToast"
       toast-type="success"
@@ -217,10 +218,7 @@ export default {
       this.showToast = false;
       this.$refs.addressInput.$el.querySelector('input').select();
       document.execCommand('copy');
-      this.showToast = true;
-      this.$nextTick(function () {
-        this.showToast = false;
-      })
+      this.$refs.toast.showToast();
     },
     selectAddress(data) {
       this.autoSelectMenu = false;

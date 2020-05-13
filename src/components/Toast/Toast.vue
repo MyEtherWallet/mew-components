@@ -51,7 +51,7 @@ export default {
   name: 'Toast',
   data() {
     return {
-      showsToast: this.showToast,
+      showsToast: false,
       toastTypes: {
         warning: 'warning',
         error: 'error',
@@ -67,13 +67,6 @@ export default {
     toastType: {
       type: String,
       default: ''
-    },
-    /**
-     * Shows the toast.
-     */
-    showToast: {
-      type: Boolean,
-      default: false
     },
     /**
      * The duration of the toast. 0 is indefinite.
@@ -118,18 +111,14 @@ export default {
       default: false
     }
   },
-  watch: {
-    showToast() {
-      if (this.showToast === true) {
-        this.showsToast = true;
-        this.setTimer();
-      }
-    }
-  },
   mounted() {
     this.setTimer();
   },
   methods: {
+    showToast() {
+      this.showsToast = true;
+      this.setTimer();
+    },  
     getLinkClasses() {
       if (this.toastTypes.warning === this.toastType.toLowerCase() || this.toastTypes.info === this.toastType.toLowerCase()) {
         return 'primary--text';

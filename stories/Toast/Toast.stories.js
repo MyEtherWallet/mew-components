@@ -6,6 +6,7 @@ import {
   number
 } from '@storybook/addon-knobs';
 import Toast from '@/components/Toast/Toast.vue';
+import MewButton from '@/components/MewButton/MewButton.vue';
 
 export default {
   title: 'Toast',
@@ -27,11 +28,8 @@ const optionsObj = {
 };
 
 export const toast = () => ({
-  components: { 'toast': Toast },
+  components: { 'toast': Toast, 'mew-button': MewButton },
   props: {
-    showToast: {
-      default: boolean('show-toast', false)
-    },
     duration: {
       default: number('duration', 1000)
     },
@@ -65,15 +63,21 @@ export const toast = () => ({
   template: `
     <div>
     <br />
+    <mew-button title="Show Toast" @click.native=onClick() />
     <toast
+      ref="toast" 
       :can-close="canClose"
       :link="link"
       :link-text="linkText"
       :text="text"
       :toastType="toastType"
       :duration="duration"
-      :showToast="showToast"
       :persistent="persistent"
     />
-  </div>`
+  </div>`,
+  methods: {
+    onClick() {
+      this.$refs.toast.showToast();
+    }
+  }
 });

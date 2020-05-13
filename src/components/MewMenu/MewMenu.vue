@@ -82,6 +82,7 @@ export default {
 
   .v-list {
     border-radius: 0;
+    padding: 0;
   }
   .v-list-item__title {
     color: var(--v-basic-base);

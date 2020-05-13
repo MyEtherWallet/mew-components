@@ -26,7 +26,9 @@
         <slot name="buttonContainer" />
       </v-card-text>
     </div>
-    <slot name="cardImg" />
+    <div class="text-center">
+      <slot name="cardImg" />
+    </div>
   </v-card>
 </template>
 
