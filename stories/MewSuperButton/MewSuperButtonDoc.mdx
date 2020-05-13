@@ -1,0 +1,35 @@
+import { Props } from '@storybook/addon-docs/blocks'
+import MewSuperButton from '@/components/MewSuperButton/MewSuperButton.vue';
+
+# MEW Super Button Docs
+
+The mew-super-button component allows you to create a custom button with several text and icons options. It also can take a slot (slot name) on the right side of the component instead of the icon. 
+*note 
+Commonly used to direct to a dapp./method of access
+
+## Usage
+Super MEW button layout accommodates 3 text options:  title, subtitle tag and note. A note will be placed on top of the icon container and will not be displayed if an icon is set. 
+
+There are two options to display icons: a small icon on the right side from the title (titleIcon prop) and an icon or an image on the right side of the component (rightIcon prop).
+
+You also have an option to include custom content with the (slot name)  slot. This content will be positioned to the right of the component instead of the icon container.
+
+*is-new prop is dedicated to display a label for a new feature. If you are including a pull request with new feature implementation set this to true.
+
+(include layout infographic here)
+
+
+<Props of={MewSuperButton} />
+
+## I. Icon
+
+Example: 
+(include  a basic example with a note) (will add after finalizing)
+
+## II. Note
+Example: 
+(include  an outline example with an icon) (will add after finalizing)
+
+## III. Slot
+Example: 
+(include  a light green example with a slot for several icons) (will add after finalizing)

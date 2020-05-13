@@ -6,12 +6,16 @@ import {
   files
 } from '@storybook/addon-knobs';
 import MewSuperButton from '@/components/MewSuperButton/MewSuperButton.vue';
+import MewSuperButtonDoc from './MewSuperButtonDoc.mdx';
 
 export default {
   title: 'MewSuperButton',
   decorators: [withKnobs],
   parameters: {
-    component: MewSuperButton
+    component: MewSuperButton,
+    docs: {
+      page: MewSuperButtonDoc
+    }
   }
 };
 
