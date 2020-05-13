@@ -23,6 +23,7 @@
     "eslint": "eslint --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@vue/babel-preset-app": "^4.3.1",
     "all": "0.0.0",
     "core-js": "^2.6.5",
     "eslint-config-eslint": "^6.0.0",
@@ -53,7 +54,7 @@
     "@storybook/addons": "^5.3.17",
     "@storybook/source-loader": "^5.3.17",
     "@storybook/storybook-deployer": "^2.8.5",
-    "@storybook/vue": "^5.3.0",
+    "@storybook/vue": "^5.3.18",
     "@vue/cli-plugin-babel": "^3.11.0",
     "@vue/cli-plugin-eslint": "^3.11.0",
     "@vue/cli-service": "^3.11.0",

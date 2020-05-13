@@ -21,7 +21,7 @@ const config = {
   // external: ['@/components/Blockie/Blockie.vue'],
   plugins: [
     alias({
-      resolve: ['.js', '.vue', '.css', '.scss'],
+      resolve: ['.js', '.vue', '.css', '.scss', 'mdx'],
       entries: [
         {
           find: '@',

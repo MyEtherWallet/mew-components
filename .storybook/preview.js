@@ -32,6 +32,7 @@ addParameters({
     { name: 'light-green', value: '#cdf4ee'}
   ],
   docs: {
+    inlineStories: true,
     container: DocsContainer,
     page: DocsPage,
   }

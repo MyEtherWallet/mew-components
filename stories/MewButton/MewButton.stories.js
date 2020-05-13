@@ -10,8 +10,8 @@ import docs from './MewButtonDoc.mdx';
 
 export default {
   title: 'MewButton',
+  component: MewButton,
   parameters: {
-    component: MewButton,
     docs: {
       page: docs
     }
