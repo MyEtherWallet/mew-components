@@ -5,6 +5,7 @@
       class="mew-body textPrimary--text mr-2 cursor-pointer"
     >{{ label }}</span>
     <v-switch
+      inset
       v-model="isSwitchOn"
     />
   </div>

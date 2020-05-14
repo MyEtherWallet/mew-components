@@ -21,7 +21,12 @@
           v-for="(item, i) in items"
           :key="item + i"
         >
-          <slot :name="'tabItemContent' + i" />
+          <v-slide-x-reverse-transition
+            :hide-on-leave="true"
+            mode="out-in"
+          >
+            <slot :name="'tabItemContent' + i" />
+          </v-slide-x-reverse-transition>
         </v-tab-item>
       </v-tabs-items>
     </v-tabs>

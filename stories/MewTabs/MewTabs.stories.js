@@ -43,7 +43,14 @@ export const MEWTabs = () => ({
       :items="items"
       :is-block="isBlock"
       @onTab="onTab"
-    />
+    >
+      <template v-slot:tabItemContent0>
+        <span> I am a placeholder tab </span>
+      </template>
+      <template v-slot:tabItemContent1>
+        <span> I am a placeholder tab </span>
+      </template>
+    </mew-tabs>
   </div>`,
   methods: {
     onTab(newVal) {
