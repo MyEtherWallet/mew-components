@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-text-field
-      :class="getClasses()"
+      :class="[getClasses(), 'mew-input']"
       :disabled="disabled"
       :label="label === '' || isSearch ? '' : label"
       :placeholder="placeholder"

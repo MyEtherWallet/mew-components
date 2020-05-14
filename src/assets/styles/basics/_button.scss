@@ -1,8 +1,6 @@
 .v-application {
   // v-btn
-  .v-btn {
-    min-height: 50px;
-    height: 100% !important;
+  .v-btn.mew-button {
     text-transform: capitalize;
 
     .v-btn__content {
@@ -10,12 +8,10 @@
     }
   }
 
-  .theme--light.v-btn.v-btn--disabled {
-    background-color: var(--v-white-base) !important;
-  }
-
   // disabled button 
-  .theme--light.v-btn.v-btn--disabled,.theme--dark.v-btn.v-btn--disabled {
+  .theme--light.v-btn.mew-button.v-btn--disabled,.theme--dark.v-btn.mew-button.v-btn--disabled {
+    background-color: var(--v-white-base) !important;
+    border: 1px solid var(--v-disabled-base);
     color: var(--v-disabled-base) !important;
     pointer-events: none;
 

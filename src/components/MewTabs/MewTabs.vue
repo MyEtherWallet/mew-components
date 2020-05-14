@@ -30,10 +30,15 @@
       v-for="(item, i) in items"
       :key="item + i"
     >
-      <slot
-        v-if="onTab === i"
-        :name="'tabContent' + i"
-      />
+      <v-slide-x-reverse-transition
+        :hide-on-leave="true"
+        mode="out-in"
+      >
+        <slot
+          v-if="onTab === i"
+          :name="'tabContent' + i"
+        />
+      </v-slide-x-reverse-transition>
     </div>
   </div>
 </template>

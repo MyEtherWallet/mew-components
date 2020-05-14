@@ -1,7 +1,9 @@
 <template>
   <div>
     <v-tooltip
-      color="white titlePrimary--text"
+      eager
+      content-class="tooltip-inner"
+      color="titlePrimary--text"
       top
     >
       <template v-slot:activator="{ on }"> 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-combobox
-      class="address-select"
+      class="address-select pa-0"
       v-model="addressValue"
       color="titlePrimary"
       :items="items"
@@ -33,9 +33,10 @@
       </template>
 
       <template v-slot:append>
-        <div class="icon-container">
+        <div class="icon-container d-flex align-center">
           <v-tooltip
-            color="white titlePrimary--text"
+            content-class="tooltip-inner"
+            color="titlePrimary--text"
             top
           >
             <template v-slot:activator="{ on }">
@@ -50,7 +51,8 @@
             <span>{{ copyTooltip }}</span>
           </v-tooltip>
           <v-tooltip
-            color="white titlePrimary--text"
+            content-class="tooltip-inner"
+            color="titlePrimary--text"
             top
           >
             <template v-slot:activator="{ on }">
@@ -65,10 +67,14 @@
             <span>{{ saveTooltip }}</span>
           </v-tooltip>
         </div>
-        <div class="border" />
-        <v-icon @click="toggle">
-          mdi-chevron-down
-        </v-icon>
+        <div
+          class="dropdown-icon-container d-flex align-center justify-center cursor-pointer"
+          @click="toggle"
+        >
+          <v-icon class="mew-heading-1">
+            mdi-chevron-down
+          </v-icon>
+        </div>
       </template>
 
       <template v-slot:item="{ item }">
@@ -234,9 +240,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.v-application,
-.v-application--is-ltr {
+<style lang="scss">
+.v-application  {
   .item-container {
     padding: 15px 0;
     width: 100%;
@@ -256,6 +261,18 @@ export default {
   }
 
   .address-select {
+    &.v-text-field {
+      input {
+        font-family: "PT Mono";
+        margin-top: 4px;
+      }
+    }
+
+    &.v-input--is-focused  {
+      .dropdown-icon-container {
+        border-left: 1px solid var(--v-titlePrimary-base) !important;
+      }
+    }
     .blockie-placeholder {
       height: 25px;
       width: 25px;
@@ -269,10 +286,15 @@ export default {
       max-height: 25px;
     }
 
+    .v-input__append-inner {
+      height: 100%;
+      margin-top: 0;
+    }
+
     .icon-container {
       .copy-icon {
         height: 23px;
-        margin-right: 5px;
+        margin-right: 10px;
       }
 
       .save-icon {
@@ -287,13 +309,15 @@ export default {
       }
     }
 
-    .border {
-      border-right: 1px solid var(--v-disabled-base);
-      margin: 0 15px;
-    }
-
-    .mdi-chevron-down {
-      margin-right: 5px;
+    .dropdown-icon-container {
+      border-left: 1px solid var(--v-disabled-base);
+      height:100%;
+      margin-left: 15px;
+      margin-right: -15px;
+      .mdi-chevron-down {
+        margin-left: 15px;
+        margin-right: 20px;
+      }
     }
   }
 }

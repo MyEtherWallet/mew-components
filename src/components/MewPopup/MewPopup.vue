@@ -29,7 +29,6 @@
           </v-card-text>
           <v-card-actions class="px-0 btn-container d-flex align-center justify-center pb-6">
             <mew-btn
-              :full-width="false"
               @click.native="onClick(buttonLeft)"
               v-if="buttonLeft"
               :title="buttonLeft.name"
@@ -37,7 +36,6 @@
               btn-style="outline"
             />
             <mew-btn 
-              :full-width="false"
               @click.native="onClick(buttonRight)"
               v-if="buttonRight"
               :class="buttonLeft ? 'ml-3' : ''"

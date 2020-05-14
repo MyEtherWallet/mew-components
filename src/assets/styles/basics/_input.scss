@@ -1,13 +1,4 @@
-.v-application,
-.v-application--is-ltr {
-  // address select input
-  .address-select.v-text-field {
-    input {
-      font-family: "PT Mono";
-      margin-top: 4px;
-    }
-  }
-
+.v-application {
   // address select dropdown 
   .v-autocomplete__content.v-menu__content {
       border-bottom: 1px solid var(--v-dropdownBorder-base);
@@ -15,13 +6,9 @@
       border-radius: 4px;
       border-right: 1px solid var(--v-dropdownBorder-base);
       box-shadow: none;
-    
-    // .theme--dark.v-list {
-    //   background-color: var(--v-dropdownBorder-base);
-    // }
   }
 
-  // dropddown menu
+  // dropdown, select menu
   .v-select-list {
     padding: 0;
   }

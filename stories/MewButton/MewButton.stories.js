@@ -43,6 +43,12 @@ const optionsObj = {
   display: 'inline-radio'
 };
 
+const btnHeightOptions = {
+  small: 'small',
+  medium: 'medium',
+  large: 'large'
+};
+
 export const MEWButton = () => ({
   components: { 'mew-button': MewButton },
   props: {
@@ -80,6 +86,9 @@ export const MEWButton = () => ({
     iconAlign: {
       default: optionsKnob('icon-align', iconAlignOptions, 'none', optionsObj)
     },
+    heightSize: {
+      default: optionsKnob('height-size', btnHeightOptions, btnHeightOptions.large , optionsObj)
+    },
     showsActiveState: {
       default: boolean('shows-active-state', false)
     },
@@ -96,7 +105,16 @@ export const MEWButton = () => ({
     <div>
     <br />
     <mew-button
-      title="Default MEW Button"
+      :btn-link="btnLink"
+      :icon-align="iconAlign"
+      :disabled="disabled"
+      :title="title"
+      :color-theme="colorTheme"
+      :btn-style="btnStyle"
+      :icon="icon"
+      :has-full-width="hasFullWidth"
+      :shows-active-state="showsActiveState"
+      :height-size="heightSize"
     />
   </div>`
 });

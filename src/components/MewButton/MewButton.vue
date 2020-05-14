@@ -1,9 +1,10 @@
 <template>
   <v-btn
+    :height="getHeight()"
     :target="btnLink ? '_blank' : ''"
     :href="btnLink"
     @click="onBtnClick()"
-    :class="getClasses()"
+    :class="[ getClasses(), 'mew-button' ]"
     :color="colorTheme"
     :disabled="disabled"
     depressed
@@ -30,6 +31,13 @@
 export default {
   name: 'MewButton',
   props: {
+    /**
+     * Height size: small, medium, large.
+     */
+    heightSize: {
+      type: String,
+      default: 'large'
+    },
     /**
      * Sets the button to have 100% width.
      */
@@ -113,6 +121,20 @@ export default {
     };
   },
   methods: {
+    getHeight() {
+      if (this.heightSize.toLowerCase() === 'small' ) {
+        return 60;
+      }
+
+      if (this.heightSize.toLowerCase() === 'medium' ) {
+        return 50;
+      }
+
+      if (this.heightSize.toLowerCase() === 'large' ) {
+        return 60;
+      }
+
+    },
     onBtnClick() {
       this.active = !this.active;
     },
@@ -168,9 +190,8 @@ export default {
 
 <style lang="scss" scoped>
 .v-application {
-  .v-btn {
+  .v-btn.mew-button {
     border-radius: 6px !important;
-    padding: 0 40px;
 
     .icon {
       height: 27px;
@@ -201,7 +222,7 @@ export default {
     }
   }
 
-  .theme--light.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined), .theme--dark.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+  .theme--light.mew-button.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined), .theme--dark.v-btn.mew-button.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
     background-color: var(--v-disabled-base) !important;
     color: var(--v-white-base) !important;
   }

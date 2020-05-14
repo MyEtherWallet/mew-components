@@ -25,3 +25,9 @@ body {
 .full-width {
   width: 100%;
 }
+
+.tooltip-inner {
+  background-color: var(--v-white-base) !important;
+  border: 1px solid var(--v-inputBorder-base) !important;
+  opacity: 1 !important;
+}

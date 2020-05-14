@@ -14,8 +14,8 @@ export default {
 };
 
 const items = [
-  { name: 'Network', rightText: 'ETH - myetherapi.com', color: 'basic' }, 
-  { name: 'Address to interact with' , rightText: '', color: 'expandHeader'}
+  { name: 'Network', subtext: 'ETH - myetherapi.com' }, 
+  { name: 'Address to interact with' , subtext: ''}
 ]
 
 export const MEWExpandPanel = () => ({
@@ -38,6 +38,10 @@ export const MEWExpandPanel = () => ({
     <br />
     <mew-expand-panel
       :panel-items="panelItems"
-    />
+    >
+      <template v-slot:panelBody0>
+        <span>Panel slot example</span>
+      </template>
+    </mew-expand-panel>
   </div>`
 });
