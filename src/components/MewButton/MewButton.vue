@@ -117,20 +117,25 @@ export default {
         left: 'left',
         right: 'right'
       },
+      heights: {
+        small: 'small',
+        medium: 'medium',
+        large: 'large'
+      },
       active: false
     };
   },
   methods: {
     getHeight() {
-      if (this.heightSize.toLowerCase() === 'small' ) {
+      if (this.heightSize.toLowerCase() === this.heights.small ) {
         return 60;
       }
 
-      if (this.heightSize.toLowerCase() === 'medium' ) {
+      if (this.heightSize.toLowerCase() === this.heights.medium ) {
         return 50;
       }
 
-      if (this.heightSize.toLowerCase() === 'large' ) {
+      if (this.heightSize.toLowerCase() === this.heights.large ) {
         return 60;
       }
 

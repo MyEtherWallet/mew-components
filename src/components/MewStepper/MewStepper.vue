@@ -2,7 +2,7 @@
   <v-stepper
     light
     class="mew-stepper"
-    :v-model="onStep"
+    v-model="onStep"
   >
     <v-stepper-header class="justify-center">
       <v-stepper-step
@@ -18,7 +18,7 @@
       v-for="(item, i) in items"
       :key="i"
     > 
-      <v-stepper-content step="onStep">
+      <v-stepper-content :step="onStep">
         <slot :name="'stepperContent' + onStep" />
       </v-stepper-content>
     </v-stepper-items>

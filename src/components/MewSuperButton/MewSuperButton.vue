@@ -204,6 +204,7 @@ export default {
 .v-application {
   .v-btn {
     border-radius: 12px;
+    height: 100%;
     width: 100%;
   }
 

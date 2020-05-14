@@ -1,6 +1,7 @@
 .v-application {
   // v-btn
   .v-btn.mew-button {
+    flex: auto;
     text-transform: capitalize;
 
     .v-btn__content {
