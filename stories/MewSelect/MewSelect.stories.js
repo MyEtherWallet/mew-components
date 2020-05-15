@@ -1,6 +1,6 @@
-import { withKnobs, text, boolean, array } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean, object } from '@storybook/addon-knobs';
 import MewSelect from '@/components/MewSelect/MewSelect.vue';
-
+import ethereumIcon from '@/assets/images/currency/icon-eth-dark-blue.png'
 export default {
   title: 'MewSelect',
   parameters: {
@@ -9,7 +9,7 @@ export default {
   decorators: [withKnobs]
 };
 
-const itemsArray = ['Green', 'Orange', 'Blue'];
+const itemsArray = [{ name: 'ETH', subtext: 'Ethereum',  value: 'Ethereum', img: ethereumIcon }];
 
 export const MEWSelect = () => ({
   components: { 'mew-select': MewSelect },
@@ -21,7 +21,7 @@ export const MEWSelect = () => ({
       default: text('select-label', 'label')
     },
     items: {
-      default: array('items', itemsArray)
+      default: object('items', itemsArray)
     },
     enableDarkMode: {
       default: boolean('dark mode ?', false)

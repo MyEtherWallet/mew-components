@@ -36,16 +36,32 @@
   background-color: var(--v-white-base) !important;
   border: 1px solid var(--v-inputBorder-base) !important;
   opacity: 1 !important;
-}
 
-.right-align {
-  text-align: right;
-}
+  &:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 1px;
+    z-index: 15;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--v-inputBorder-base);
+  }
 
-.left-align {
-  text-align: left;
-}
-
-.center-align {
-  align-items: center;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 1px;
+    z-index: 20;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid var(--v-white-base);
+  }
 }

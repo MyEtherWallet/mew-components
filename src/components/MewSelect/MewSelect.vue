@@ -10,16 +10,34 @@
       item-value="value"
       :label="label"
       v-model="selectModel"
+      return-object
       outlined
     >
+      <template
+        v-slot:selection="{ item }"
+      >
+        <div class="d-flex align-center justify-center">
+          <img
+            v-if="item.img"
+            class="item-img"
+            :src="item.img"
+          >
+          <span class="text-uppercase">{{ item.name ? item.name : item }} <span
+            v-if="item.value"
+            class="textSecondary--text text-capitalize"
+          >- {{ item.value }}</span></span>
+        </div>
+      </template>
       <template v-slot:item="data">
         <img
           class="item-img"
           v-if="data.item.img"
           :src="data.item.img"
-        >{{
-          data.item.name ? data.item.name : data.item
-        }}
+        >
+        <span class="text-uppercase">{{ data.item.name ? data.item.name : data.item }} <span
+          v-if="data.item.value"
+          class="textSecondary--text text-capitalize"
+        >- {{ data.item.value }}</span></span>
       </template>
     </v-select>
   </div>
@@ -64,7 +82,7 @@ export default {
   },
   data() {
     return {
-      selectModel: ''
+      selectModel: null
     };
   },
   watch: {
@@ -73,18 +91,14 @@ export default {
     }
   },
   mounted() {
-    this.selectModel = this.value;
+    this.selectModel = this.items[0];
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.v-application {
-  .mew-select {
-    .item-img {
-      margin-right: 5px;
-      max-height: 25px;
-    }
-  }
+.item-img {
+  margin-right: 5px;
+  max-height: 25px;
 }
 </style>

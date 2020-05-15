@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-tooltip
+      :value="true"
       eager
       content-class="tooltip-inner"
       color="titlePrimary--text"

@@ -53,7 +53,7 @@ export default {
      * The icon url. Inserts an icon on top.
      */
     icon: {
-      type: [ String, Array],
+      type: [ String, Array ],
       default: ''
     },
     /**

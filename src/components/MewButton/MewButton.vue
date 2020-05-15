@@ -128,7 +128,7 @@ export default {
   methods: {
     getHeight() {
       if (this.heightSize.toLowerCase() === this.heights.small ) {
-        return 60;
+        return 40;
       }
 
       if (this.heightSize.toLowerCase() === this.heights.medium ) {

@@ -12,10 +12,10 @@
     <v-row
       class="pa-5 full-width"
       justify="space-between"
-      :class="showIcon(rightIcon) ? 'center-align' : ''"
+      :class="showIcon(rightIcon) ? 'text-center' : ''"
     >
       <v-col
-        class="left-container left-align full-width"
+        class="left-container text-left full-width"
         cols="6"
       >
         <div class="title-wrapper d-flex align-center">
@@ -40,15 +40,15 @@
         >
           {{ subtitle }}
         </div>
-        <div class="body-2 mt-1">
-          #{{ tag }}
+        <div class="body-2 mt-1 inputLabel--text">
+          {{ tag }}
         </div>
       </v-col>
       <v-col
         cols="6"
-        class="right-container right-align"
+        class="right-container text-right"
       >
-        <slot name="swapTokens" />
+        <slot name="rightSlot" />
         <div
           v-if="isNew"
           class="label-container d-flex align-center text-uppercase"

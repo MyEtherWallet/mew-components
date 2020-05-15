@@ -2,11 +2,11 @@
   <v-stepper
     light
     class="mew-stepper"
-    v-model="onStep"
+    v-model="stepNumber"
   >
     <v-stepper-header class="justify-center full-height">
       <v-stepper-step
-        :class="['pr-0', 'font-weight-medium', 'ml-n4', onStep === item.step ? 'active' : '', onStep > item.step ? 'complete' : '' ]"
+        :class="['pr-0', 'font-weight-medium', 'ml-n4', stepNumber === item.step ? 'active' : '', stepNumber > item.step ? 'complete' : '' ]"
         color="expandHeader"
         v-for="(item, i) in items"
         :key="i"
@@ -15,8 +15,8 @@
     </v-stepper-header>
 
     <v-stepper-items> 
-      <v-stepper-content :step="onStep">
-        <slot :name="'stepperContent' + onStep" />
+      <v-stepper-content :step="stepNumber">
+        <slot :name="'stepperContent' + stepNumber" />
       </v-stepper-content>
     </v-stepper-items>
   </v-stepper>
@@ -24,6 +24,11 @@
 
 <script>
 export default {
+  data() {
+    return {  
+      stepNumber: this.onStep
+    }
+  },
   props: {
     items: {
       type: Array,
@@ -35,6 +40,11 @@ export default {
       type: Number,
       default: 1
     }
+  },
+  watch: {
+    onStep(newVal) {
+      this.stepNumber = ( newVal > this.items.length || newVal < 1 ) ? 1 : newVal;
+    }
   }
 }
 </script>
@@ -42,6 +52,7 @@ export default {
 <style lang="scss">
 .mew-stepper {
   .v-stepper__step {
+    min-width: 250px;
     .right-border-img {
       height: 100px;
       top: -12px;
@@ -60,6 +71,14 @@ export default {
       top: 24px;
       z-index: 1;
     }
+
+
+    &:before {
+        top: 10px;
+        border-color: transparent transparent transparent #fdd;
+        border-width: 10px;
+    }
+    
     &:before {
       content: "";  
       border-top: 20px solid transparent;
@@ -89,11 +108,11 @@ export default {
   .complete {
     cursor: auto;
     .v-stepper__step__step {
-      background-color: var(--v-textSecondary-base) !important;
+      background-color: var(--v-searchText-base) !important;
     }
 
     &:after {
-      border-left: 20px solid var(--v-textSecondary-base) !important;
+      border-left: 20px solid var(--v-searchText-base) !important;
     }
   }
 
@@ -115,6 +134,10 @@ export default {
   .v-stepper__step:first-of-type:before,
   .v-stepper__step:last-child:after {
     display: none; 
+  }
+
+  .v-stepper__step:last-child {
+    min-width: 270px;
   }
     
   .v-stepper__step:first-of-type .v-stepper__step__step {

@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-    <div class="right-align">
+    <div class="text-right">
       <tx-badge :badge-type="txType" />
       <div class="caption mt-1 textPrimary--text font-weight-medium">
         {{ duration }}
