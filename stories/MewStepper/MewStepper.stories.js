@@ -44,6 +44,10 @@ export const MEWStepper = () => ({
     <mew-stepper
       :items="items"
       :on-step="onStep"
-    />
+    >
+      <template v-slot:stepperContent1>
+        <span>This is a placeholder</span>
+      </template>
+    </mew-stepper>
   </div>`
 });

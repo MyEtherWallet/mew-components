@@ -58,7 +58,6 @@
     // input placeholder
     input::placeholder {
       color: var(--v-disabled-base);
-      font-family: "Roboto", sans-serif;
       font-weight: 400;
     }
 
@@ -100,6 +99,6 @@
   }
 
   .simple-input.v-text-field>.v-input__control>.v-input__slot:after {
-      border-style: none;
+    border-style: none;
   }
 }

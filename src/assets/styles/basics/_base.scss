@@ -1,11 +1,5 @@
 * {
-  // color: var(--v-info-base);
-}
-
-html,
-body {
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
+  color: var(--v-basic -base);
 }
 
 .bg-white {
@@ -18,6 +12,14 @@ body {
   text-overflow: ellipsis;
 }
 
+.no-pointer-events {
+  pointer-events: none;
+}
+
+.text-decoration-underline {
+  text-decoration: underline;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -26,8 +28,24 @@ body {
   width: 100%;
 }
 
+.full-height {
+  height: 100%;
+}
+
 .tooltip-inner {
   background-color: var(--v-white-base) !important;
   border: 1px solid var(--v-inputBorder-base) !important;
   opacity: 1 !important;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.left-align {
+  text-align: left;
+}
+
+.center-align {
+  align-items: center;
 }

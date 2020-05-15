@@ -5,3 +5,18 @@
 @import "basics/_button.scss";
 
 @import "fonts/_fonts.scss";
+
+
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+
+input::placeholder {
+  font-family: 'Roboto', sans-serif;
+}
+
+.mew-address {
+  font-family: 'PT Mono';
+}

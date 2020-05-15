@@ -76,6 +76,7 @@
               class="px-4 pb-4 mew-address error-container"
             >
               <textarea
+                class="full-height full-width no-pointer-events"
                 ref="errContainer"
                 v-model="errorMsg"
               />
@@ -86,7 +87,7 @@
               class="text-center font-weight-medium mt-6"
             >
               <span
-                class="cursor-pointer primary--text copy-text"
+                class="cursor-pointer primary--text text-decoration-underline"
                 @click="copyToClipboard()"
               >{{ copyMsg }}</span>
             </div>
@@ -224,23 +225,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .error-container {
   height: 100px;
-  overflow: scroll;
-
-  textarea {
-    height: 100%;
-    pointer-events: none;
-    width: 100%;
-  }
 }
 
 .error-popup-title {
   position: absolute;
-}
-
-.copy-text {
-  text-decoration: underline;
 }
 </style>

@@ -22,6 +22,7 @@
       </span>
     </template>
     <v-list
+      class="pa-0"
       v-for="(item, index) in listObj.items"
       :key="index"
     >
@@ -29,7 +30,9 @@
         @click="goTo(item.to)"
         class="cursor-pointer"
       >
-        <v-list-item-title>{{ item.title }} </v-list-item-title>
+        <v-list-item-title class="mew-body basic--text">
+          {{ item.title }}
+        </v-list-item-title>
       </v-list-item>
     </v-list>
   </v-menu>
@@ -82,11 +85,6 @@ export default {
 
   .v-list {
     border-radius: 0;
-    padding: 0;
-  }
-  .v-list-item__title {
-    color: var(--v-basic-base);
-    font-size: 14px;
   }
 
   .v-list-item--link {

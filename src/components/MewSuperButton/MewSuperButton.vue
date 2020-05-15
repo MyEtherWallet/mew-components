@@ -10,16 +10,16 @@
     depressed
   >
     <v-row
-      class="btn-container"
+      class="pa-5 full-width"
       justify="space-between"
       :class="showIcon(rightIcon) ? 'center-align' : ''"
     >
       <v-col
-        class="left-container"
+        class="left-container left-align full-width"
         cols="6"
       >
         <div class="title-wrapper d-flex align-center">
-          <div class="title font-weight-bold truncate">
+          <div class="mew-heading-2 font-weight-bold truncate">
             {{ title }}
           </div>
           <div
@@ -46,19 +46,20 @@
       </v-col>
       <v-col
         cols="6"
-        class="right-container"
+        class="right-container right-align"
       >
         <slot name="swapTokens" />
         <div
           v-if="isNew"
-          class="label d-flex align-center text-uppercase"
-          alt="label"
+          class="label-container d-flex align-center text-uppercase"
         >
-          <div>{{ newLabel }}</div>
+          <div class="label">
+            {{ newLabel }}
+          </div>
         </div>
         <div
           v-if="!showIcon(rightIcon) && note"
-          class="text-uppercase caption mt-1 note"
+          class="text-uppercase caption mt-1 warning--text text--darken-1"
         >
           {{ note }}
         </div>
@@ -223,18 +224,7 @@ export default {
     }
   }
 
-  .btn-container {
-    padding: 20px;
-    width: 100%;
-  }
-
-  .center-align {
-    align-items: center;
-  }
-
   .left-container {
-    text-align: left;
-    width: 100%;
     .title-wrapper {
       .title-icon {
         max-height: 20px;
@@ -244,7 +234,7 @@ export default {
   }
 
   .right-container {
-    .label {
+    .label-container {
       border-right: 25px solid red;
       border-top: 25px solid red;
       border-left: 25px solid transparent;
@@ -255,7 +245,7 @@ export default {
       right: -16px;
       top: 0;
       width: 0;
-      div {
+      .label {
         color: #fff;
         font-size: 12px;
         margin-top: -15px;
@@ -264,17 +254,8 @@ export default {
       }
     }
 
-    .note {
-      color: var(--v-warning-darken1) !important;
-    }
     .right-icon {
       max-height: 80px;
-    }
-  }
-
-  .title-wrapper {
-    .title {
-      font-size: 22px;
     }
   }
 }

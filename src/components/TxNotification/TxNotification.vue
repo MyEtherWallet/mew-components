@@ -8,7 +8,7 @@
         height="30px"
         address="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
       />
-      <div class="ml-5 detail-container">
+      <div class="ml-5 detail-container full-width">
         <!-- need to translate -->
         <div class="caption titlePrimary--text truncate font-weight-medium">
           {{ fromStr }}: <span class="mew-address font-weight-medium">{{ fromAddress }} </span>
@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-    <div class="right-container">
+    <div class="right-align">
       <tx-badge :badge-type="txType" />
       <div class="caption mt-1 textPrimary--text font-weight-medium">
         {{ duration }}
@@ -120,16 +120,13 @@ export default {
 
 <style lang="scss" scoped>
 .notification-container {
+  border-radius: 6px;
   overflow: auto;
 
   .detail-container {
     max-width: 250px;
-    width: 100%;
   }
 
-  .right-container {
-    text-align: right;
-  }
   .indicator {
     border-radius: 50%;
     display: inline-block;
@@ -142,18 +139,15 @@ export default {
 .success-type {
   background-color: var(--v-superPrimary-base);
   border: 1px solid var(--v-primary-base);  
-  border-radius: 6px;
 }
 
 .pending-type {
   background-color: var(--v-warning-base);
   border: 1px solid var(--v-warning-darken1);  
-  border-radius: 6px;
 }
 
 .error-type {
   background-color: var(--v-errorOutlineActive-base);
   border: 1px solid var(--v-error-base);  
-  border-radius: 6px;
 }
 </style>

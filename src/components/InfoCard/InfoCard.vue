@@ -20,7 +20,7 @@
           class="font-weight-medium no-decoration"
           :href="link.url"
         >{{ link.title }}<v-icon
-          class="mew-body"
+          class="subtitle-1 ml-1"
           color="primary"
         >mdi-arrow-right</v-icon></a>
         <slot name="buttonContainer" />
@@ -82,10 +82,5 @@ export default {
 <style lang="scss" scoped>
 .info-card {
   border: 1px solid var(--v-inputBorder-base);
-  a {
-    i {
-      font-size: 20px;
-    }
-  }
 }
 </style>

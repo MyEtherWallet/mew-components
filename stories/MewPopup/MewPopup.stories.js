@@ -50,9 +50,6 @@ export const MEWPopup = () => ({
     desc: {
       default: text('desc', '')
     },
-    buttonType: {
-      default: text('button-type', 'error')
-    },
     popupType: {
       default: optionsKnob('popup-type', popupTypeOptions, 'confirm', { display: 'inline-radio' })
     },

@@ -4,7 +4,7 @@
     :target="btnLink ? '_blank' : ''"
     :href="btnLink"
     @click="onBtnClick()"
-    :class="[ getClasses(), 'mew-button' ]"
+    :class="[ getClasses(), 'mew-button', 'px-10' ]"
     :color="colorTheme"
     :disabled="disabled"
     depressed
@@ -195,13 +195,14 @@ export default {
 
 <style lang="scss" scoped>
 .v-application {
-  .v-btn.mew-button {
+  .v-btn {
     border-radius: 6px !important;
 
     .icon {
       height: 27px;
     }
 
+    // button active states
     &.primary.white--text.active {
       background-color: var(--v-primaryActive-base) !important;
     }
@@ -225,11 +226,12 @@ export default {
     &.basic--text.v-btn--outlined.active {
       background-color: var(--v-basicOutlineActive-base) !important;
     }
-  }
 
-  .theme--light.mew-button.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined), .theme--dark.v-btn.mew-button.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+    // disabled btn
+    &.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
     background-color: var(--v-disabled-base) !important;
     color: var(--v-white-base) !important;
+    }
   }
 }
 </style>

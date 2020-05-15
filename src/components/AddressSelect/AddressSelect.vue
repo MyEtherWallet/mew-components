@@ -18,11 +18,11 @@
       <template v-slot:prepend-inner>
         <div
           v-if="!isValidAddress"
-          class="blockie-placeholder"
+          class="blockie-placeholder mr-1 selectHover"
         />
         <div
           v-if="isValidAddress"
-          class="blockie-container"
+          class="blockie-container mr-1"
         >
           <blockie
             :address="addressValue"
@@ -42,7 +42,7 @@
             <template v-slot:activator="{ on }">
               <img
                 @click="copyToClipboard"
-                class="copy-icon"
+                class="copy-icon mr-2"
                 v-on="on"
                 :src="copyIcon"
                 alt="copy"
@@ -68,10 +68,10 @@
           </v-tooltip>
         </div>
         <div
-          class="dropdown-icon-container d-flex align-center justify-center cursor-pointer"
+          class="dropdown-icon-container d-flex align-center justify-center cursor-pointer full-height"
           @click="toggle"
         >
-          <v-icon class="mew-heading-1">
+          <v-icon class="mew-heading-1 mx-5">
             mdi-chevron-down
           </v-icon>
         </div>
@@ -79,21 +79,21 @@
 
       <template v-slot:item="{ item }">
         <div
-          class="item-container d-flex align-center justify-space-between"
+          class="py-4 px-0 full-width d-flex align-center justify-space-between"
           @click="selectAddress(item)"
         >
-          <div class="address-container d-flex align-center justify-space-between">
+          <div class="d-flex align-center justify-space-between">
             <blockie
-              class="blockie"
+              class="mr-2"
               :address="item.address"
               width="25px"
               height="25px"
             />
-            <div class="mew-address address">
+            <div class="mew-address">
               {{ item.address }}
             </div>
           </div>
-          <div class="nickname">
+          <div class="overline primary--text font-weight-medium">
             {{ item.nickname }}
           </div>
         </div>
@@ -242,28 +242,11 @@ export default {
 
 <style lang="scss">
 .v-application  {
-  .item-container {
-    padding: 15px 0;
-    width: 100%;
-
-    .address-container {
-      .blockie {
-        margin-right: 10px;
-      }
-    }
-
-    .nickname {
-      font-size: 10px;
-      font-weight: 700;
-      text-align: right;
-      color: var(--v-primary-base);
-    }
-  }
-
+  // address select input
   .address-select {
     &.v-text-field {
       input {
-        font-family: "PT Mono";
+        font-family: 'PT Mono';
         margin-top: 4px;
       }
     }
@@ -273,19 +256,19 @@ export default {
         border-left: 1px solid var(--v-titlePrimary-base) !important;
       }
     }
+
+    // blockie
     .blockie-placeholder {
       height: 25px;
       width: 25px;
       border-radius: 50%;
-      background-color: var(--v-selectHover-base);
-      margin-right: 5px;
     }
 
     .blockie-container {
-      margin-right: 5px;
       max-height: 25px;
     }
 
+    // right icons
     .v-input__append-inner {
       height: 100%;
       margin-top: 0;
@@ -294,7 +277,6 @@ export default {
     .icon-container {
       .copy-icon {
         height: 23px;
-        margin-right: 10px;
       }
 
       .save-icon {
@@ -311,13 +293,8 @@ export default {
 
     .dropdown-icon-container {
       border-left: 1px solid var(--v-disabled-base);
-      height:100%;
       margin-left: 15px;
       margin-right: -15px;
-      .mdi-chevron-down {
-        margin-left: 15px;
-        margin-right: 20px;
-      }
     }
   }
 }
