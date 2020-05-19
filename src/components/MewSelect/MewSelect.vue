@@ -24,7 +24,7 @@
           >
           <span class="text-uppercase">{{ item.name ? item.name : item }} <span
             v-if="item.value"
-            class="textSecondary--text text-capitalize"
+            class="searchText--text text-capitalize"
           >- {{ item.value }}</span></span>
         </div>
       </template>
@@ -96,9 +96,20 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.item-img {
-  margin-right: 5px;
-  max-height: 25px;
+<style lang="scss">
+.mew-select {
+  &.v-text-field--enclosed .v-input__append-inner {
+    height: 100%;
+    margin-top: 0;
+
+    .v-input__icon {
+      height: 100%;
+    }
+  }
+
+  .item-img {
+    margin-right: 5px;
+    max-height: 25px;
+  }
 }
 </style>

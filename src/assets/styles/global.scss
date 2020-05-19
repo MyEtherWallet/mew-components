@@ -11,10 +11,14 @@ html,
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
 }
 
 input::placeholder {
   font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .mew-address {

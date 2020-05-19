@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import MewButton from './components/MewButton/MewButton.vue';
 import MewSuperButton from './components/MewSuperButton/MewSuperButton.vue';
 import AddressSelect from './components/AddressSelect/AddressSelect.vue';

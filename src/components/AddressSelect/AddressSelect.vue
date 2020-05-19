@@ -25,7 +25,7 @@
           class="blockie-container mr-1"
         >
           <blockie
-            :address="addressValue"
+            :address="addressValue.address ? addressValue.address : addressValue"
             width="25px"
             height="25px"
           />
@@ -116,7 +116,7 @@ import copyIcon from '@/assets/images/icons/icon-copy-enable.png';
 import saveIcon from '@/assets/images/icons/icon-saved-enable.png';
 
 export default {
-  name: 'AddressSelector',
+  name: 'AddressSelect',
   props: {
     /**
      * Disables the input.
@@ -247,7 +247,6 @@ export default {
     &.v-text-field {
       input {
         font-family: 'PT Mono';
-        margin-top: 4px;
       }
     }
 

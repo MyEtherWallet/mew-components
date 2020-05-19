@@ -1,10 +1,10 @@
 import { withKnobs, text, boolean, object } from '@storybook/addon-knobs';
-import AddressSelector from '@/components/AddressSelect/AddressSelect.vue';
+import AddressSelect from '@/components/AddressSelect/AddressSelect.vue';
 
 export default {
-  title: 'AddressSelector',
+  title: 'AddressSelect',
   parameters: {
-    component: AddressSelector
+    component: AddressSelect
   },
   decorators: [withKnobs]
 };
@@ -24,8 +24,8 @@ const addressesArray = [
   }
 ];
 
-export const addressSelector = () => ({
-  components: { 'address-selector': AddressSelector },
+export const addressSelect = () => ({
+  components: { 'address-select': AddressSelect },
   props: {
     label: {
       default: text('label', 'To Address')
@@ -69,7 +69,7 @@ export const addressSelector = () => ({
   template: `
     <div>
     <br />
-    <address-selector :err-msg="errMsg" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @emitSelectedValue="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
+    <address-select :err-msg="errMsg" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @emitSelectedValue="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
   </div>`,
   methods: {
     getSelectedValue(value) {

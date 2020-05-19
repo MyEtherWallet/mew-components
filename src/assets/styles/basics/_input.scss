@@ -40,8 +40,9 @@
   .v-input {
     // input
     input {
-      color: var(--v-textPrimary-base) !important;
+      color: var(--v-titlePrimary-base) !important;
       font-size: 14px;
+      min-height: 62px;
     }
 
     // input label
@@ -63,7 +64,7 @@
 
     // input suffix color
     .v-text-field__suffix {
-      color: var(--v-disabled-base) !important;
+      color: var(--v-searchText-base) !important;
     }
 
     // dropdown icon

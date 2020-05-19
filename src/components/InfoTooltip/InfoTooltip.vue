@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-tooltip
-      :value="true"
       eager
+      open-on-hover
       content-class="tooltip-inner"
       color="titlePrimary--text"
       top

@@ -4,7 +4,7 @@
     :target="btnLink ? '_blank' : ''"
     :href="btnLink"
     @click="onBtnClick()"
-    :class="[ getClasses(), 'mew-button', 'px-10' ]"
+    :class="[ getClasses(), 'mew-button' ]"
     :color="colorTheme"
     :disabled="disabled"
     depressed
