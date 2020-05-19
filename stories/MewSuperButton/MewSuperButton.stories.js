@@ -50,6 +50,9 @@ export const MEWSuperButton = () => ({
     isNew: {
       default: boolean('is-new', false)
     },
+    isColumn: {
+      default: boolean('is-column', false)
+    },
     colorTheme: {
       default: optionsKnob(
         'color-theme',
@@ -77,6 +80,7 @@ export const MEWSuperButton = () => ({
     <div>
     <br />
     <mew-super-button
+      :isColumn="isColumn"
       :title="title"
       :subtitle="subtitle"
       :tag="tag"

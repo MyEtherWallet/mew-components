@@ -1,7 +1,7 @@
 <template>
   <v-btn
     @click="onBtnClick()"
-    :class="[ getClasses() , 'mew-button']"
+    :class="[ getClasses() , 'mew-button', isColumn ? '' : 'full-width']"
     :color="getColor()"
     :outlined="colorTheme.toLowerCase() === colorThemes.outline"
     :ripple="false"
@@ -12,19 +12,19 @@
     <v-row
       class="pa-5 full-width"
       justify="space-between"
-      :class="showIcon(rightIcon) ? 'text-center' : ''"
+      :class="getRowClasses()"
     >
       <v-col
-        class="left-container text-left full-width"
-        cols="6"
+        :class="['left-container', 'full-width', isColumn ? 'text-center' : 'text-left']"
+        :cols="isColumn ? 12 : 6"
       >
-        <div class="title-wrapper d-flex align-center">
+        <div :class="['title-wrapper', 'd-flex', 'align-center', isColumn ? 'justify-center' : '' ]">
           <div class="mew-heading-2 font-weight-bold truncate">
             {{ title }}
           </div>
           <div
             class="body-2"
-            v-if="showIcon(titleIcon)"
+            v-if="showIcon(titleIcon) && !isColumn"
           >
             <img
               v-if="showIcon(titleIcon)"
@@ -45,8 +45,8 @@
         </div>
       </v-col>
       <v-col
-        cols="6"
-        class="right-container text-right"
+        :cols="isColumn ? 12 : 6"
+        :class="['right-container', isColumn ? 'text-center, pb-0' : 'text-right']"
       >
         <slot name="rightSlot" />
         <div
@@ -58,7 +58,7 @@
           </div>
         </div>
         <div
-          v-if="!showIcon(rightIcon) && note"
+          v-if="!showIcon(rightIcon) && note && !isColumn"
           class="text-uppercase caption mt-1 warning--text text--darken-1"
         >
           {{ note }}
@@ -78,6 +78,13 @@
 export default {
   name: 'MewSuperButton',
   props: {
+    /**
+     * The button content will be set as a column rather than row.
+     */
+    isColumn: {
+      type: Boolean,
+      default: false
+    },
     /**
      * The text that will go in the button.
      */
@@ -160,6 +167,18 @@ export default {
     };
   },
   methods: {
+    getRowClasses() {
+      const classes = [];
+      if (this.showIcon(this.rightIcon)) {
+        classes.push('text-center');
+      }
+
+      if (this.isColumn) {
+        classes.push('column-reverse');
+      }
+
+      return classes;
+    }, 
     onBtnClick() {
       this.active = !this.active;
     },
@@ -206,7 +225,6 @@ export default {
   .v-btn {
     border-radius: 12px;
     height: 100%;
-    width: 100%;
   }
 
   .disabled-btn {

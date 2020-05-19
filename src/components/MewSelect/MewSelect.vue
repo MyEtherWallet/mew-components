@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-select
+      height="62"
       class="mew-select"
       color="basic"
       append-icon="mdi-chevron-down"
