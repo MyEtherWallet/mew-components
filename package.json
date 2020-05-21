@@ -22,6 +22,7 @@
     "deploy-storybook": "storybook-to-ghpages",
     "eslint": "eslint --ignore-path .gitignore ."
   },
+  "homepage": "./",
   "dependencies": {
     "@vue/babel-preset-app": "^4.3.1",
     "all": "0.0.0",
