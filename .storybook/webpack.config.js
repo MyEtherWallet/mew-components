@@ -35,6 +35,16 @@ module.exports = async ({ config, mode }) => {
     ]
   });
 
+  config.module.rules.push({
+    test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+    loader: 'url-loader',
+    options: {
+      limit: 10000,
+      // workaround for vuejs-templates webpack issue 1266
+      publicPath: process.env.NODE_ENV === 'production' ? '../../' : '/'
+    }
+  })
+
   // Return the altered config
   return config;
 };
