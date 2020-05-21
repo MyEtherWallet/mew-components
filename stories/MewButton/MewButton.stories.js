@@ -88,7 +88,7 @@ export const MEWButton = () => ({
       default: optionsKnob('icon-align', iconAlignOptions, 'none', optionsObj)
     },
     buttonSize: {
-      default: optionsKnob('height-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
+      default: optionsKnob('button-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
     },
     showsActiveState: {
       default: boolean('shows-active-state', false)

@@ -31,7 +31,7 @@ export default {
   name: 'MewButton',
   props: {
     /**
-     * Height size: small, medium, large, xlarge.
+     * Button size: small, medium, large, xlarge.
      */
     buttonSize: {
       type: String,
