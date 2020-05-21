@@ -1,6 +1,5 @@
 <template>
   <v-btn
-    :height="getHeight()"
     :target="btnLink ? '_blank' : ''"
     :href="btnLink"
     @click="onBtnClick()"
@@ -32,9 +31,9 @@ export default {
   name: 'MewButton',
   props: {
     /**
-     * Height size: small, medium, large.
+     * Height size: small, medium, large, xlarge.
      */
-    heightSize: {
+    buttonSize: {
       type: String,
       default: 'large'
     },
@@ -117,34 +116,37 @@ export default {
         left: 'left',
         right: 'right'
       },
-      heights: {
+      btnSizes: {
         small: 'small',
         medium: 'medium',
-        large: 'large'
+        large: 'large',
+        xlarge: 'xlarge'
       },
       active: false
     };
   },
   methods: {
-    getHeight() {
-      if (this.heightSize.toLowerCase() === this.heights.small ) {
-        return 40;
-      }
-
-      if (this.heightSize.toLowerCase() === this.heights.medium ) {
-        return 50;
-      }
-
-      if (this.heightSize.toLowerCase() === this.heights.large ) {
-        return 60;
-      }
-
-    },
     onBtnClick() {
       this.active = !this.active;
     },
     getClasses() {
       const classes = [];
+
+      if (this.buttonSize.toLowerCase() === this.btnSizes.small) {
+        classes.push('small-btn', 'mew-caption');
+      }
+
+      if (this.buttonSize.toLowerCase() === this.btnSizes.medium) {
+        classes.push('med-btn');     
+      }
+
+      if (this.buttonSize.toLowerCase() === this.btnSizes.large) {
+        classes.push('large-btn');
+      }
+      
+      if (this.buttonSize.toLowerCase() === this.btnSizes.xlarge) {
+        classes.push('xlarge-btn');
+      }
 
       if (this.hasFullWidth === true ) {
         classes.push('full-width');
@@ -200,6 +202,26 @@ export default {
 
     .icon {
       height: 27px;
+    }
+    // button sizes
+    &.small-btn {
+      height: 28px;
+      padding: 7px 15px;
+    }
+
+    &.medium-btn {
+      height: 34x;
+      padding: 8px 20px;
+    }
+
+    &.large-btn {
+      height: 46px;
+      padding: 15px 32px;
+    }
+
+    &.xlarge-btn {
+      height: 62px;
+      padding: 23px 46px;
     }
 
     // button active states

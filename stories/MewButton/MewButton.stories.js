@@ -43,10 +43,11 @@ const optionsObj = {
   display: 'inline-radio'
 };
 
-const btnHeightOptions = {
+const btnButtonOptions = {
   small: 'small',
   medium: 'medium',
-  large: 'large'
+  large: 'large',
+  xlarge: 'xlarge'
 };
 
 export const MEWButton = () => ({
@@ -86,8 +87,8 @@ export const MEWButton = () => ({
     iconAlign: {
       default: optionsKnob('icon-align', iconAlignOptions, 'none', optionsObj)
     },
-    heightSize: {
-      default: optionsKnob('height-size', btnHeightOptions, btnHeightOptions.large , optionsObj)
+    buttonSize: {
+      default: optionsKnob('height-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
     },
     showsActiveState: {
       default: boolean('shows-active-state', false)
@@ -114,7 +115,7 @@ export const MEWButton = () => ({
       :icon="icon"
       :has-full-width="hasFullWidth"
       :shows-active-state="showsActiveState"
-      :height-size="heightSize"
+      :button-size="buttonSize"
     />
   </div>`
 });

@@ -48,7 +48,9 @@ import Vuetify, {
   VSpacer,
   VSlideXReverseTransition,
   VStepperItems,
-  VStepperContent
+  VStepperContent,
+  VCarousel,
+  VCarouselItem
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -98,7 +100,9 @@ Vue.use(Vuetify, {
     VSpacer,
     VSlideXReverseTransition,
     VStepperItems,
-    VStepperContent
+    VStepperContent,
+    VCarousel,
+    VCarouselItem
   }
 });
 
