@@ -10,7 +10,7 @@
     depressed
   >
     <v-row
-      class="pa-5 full-width"
+      class="pa-3 full-width"
       justify="space-between"
       :class="getRowClasses()"
     >
@@ -19,7 +19,7 @@
         :cols="isColumn ? 12 : 6"
       >
         <div :class="['title-wrapper', 'd-flex', 'align-center', isColumn ? 'justify-center' : '' ]">
-          <div class="mew-heading-2 font-weight-bold truncate">
+          <div class="mew-heading-2 font-weight-bold">
             {{ title }}
           </div>
           <div
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div
-          class="mt-2 truncate"
+          class="mt-2 break-word"
           v-if="subtitle"
         >
           {{ subtitle }}
@@ -139,7 +139,7 @@ export default {
      */
     colorTheme: {
       type: String,
-      default: ''
+      default: 'primary'
     },
     /**
      * Removes the ability to click or target the component.

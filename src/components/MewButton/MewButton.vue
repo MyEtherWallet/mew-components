@@ -137,7 +137,7 @@ export default {
       }
 
       if (this.buttonSize.toLowerCase() === this.btnSizes.medium) {
-        classes.push('med-btn');     
+        classes.push('medium-btn');     
       }
 
       if (this.buttonSize.toLowerCase() === this.btnSizes.large) {
@@ -201,27 +201,28 @@ export default {
     border-radius: 6px !important;
 
     .icon {
-      height: 27px;
+      height: 45px;
     }
+
     // button sizes
     &.small-btn {
-      height: 28px;
-      padding: 7px 15px;
+      min-height: 28px;
+      padding: 0 15px;
     }
 
     &.medium-btn {
-      height: 34x;
-      padding: 8px 20px;
+      min-height: 34x;
+      padding: 0 20px;
     }
 
     &.large-btn {
-      height: 46px;
-      padding: 15px 32px;
+      min-height: 46px;
+      padding: 0 32px;
     }
 
     &.xlarge-btn {
-      height: 62px;
-      padding: 23px 46px;
+      min-height: 62px;
+      padding: 0 46px;
     }
 
     // button active states

@@ -29,7 +29,7 @@ export const infoTooltip = () => ({
     }
   },
   template: `
-    <div>
+    <div class="text-center mt-10">
     <br />
     <info-tooltip
       :text="text"

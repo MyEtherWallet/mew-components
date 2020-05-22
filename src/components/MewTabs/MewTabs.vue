@@ -105,7 +105,7 @@ export default {
     border-radius: 12px 0px 0px 12px;
   }
 
-  .mew-tab-block:last-child {
+  .mew-tab-block:last-of-type {
     border-radius: 0px 12px 12px 0px;
   }
 }

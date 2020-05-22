@@ -1,7 +1,7 @@
 <template>
   <v-card
     :max-width="maxWidth"
-    class="info-card"
+    class="info-card elevation-3"
   >
     <div class="pa-5">
       <div class="text-center">
@@ -81,6 +81,6 @@ export default {
 
 <style lang="scss" scoped>
 .info-card {
-  border: 1px solid var(--v-inputBorder-base);
+  border: 1px solid var(--v-swapDisable-base);
 }
 </style>
