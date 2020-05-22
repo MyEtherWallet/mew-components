@@ -213,6 +213,7 @@ export default {
   },
   watch: {
     addressValue(newValue) {
+      // eslint-disable-next-line no-console
       console.log('address value:', newValue);
     }
   },

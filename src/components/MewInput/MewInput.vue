@@ -94,6 +94,7 @@ export default {
   },
   watch: {
     inputValue(newValue) {
+      // eslint-disable-next-line no-console
       console.log('input value:', newValue);
     }
   },

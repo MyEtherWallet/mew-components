@@ -88,6 +88,7 @@ export default {
   },
   watch: {
     selectModel(newValue) {
+      // eslint-disable-next-line no-console
       console.log('select value:', newValue);
     }
   },
