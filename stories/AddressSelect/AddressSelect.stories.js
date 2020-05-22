@@ -73,6 +73,7 @@ export const addressSelect = () => ({
   </div>`,
   methods: {
     getSelectedValue(value) {
+      // eslint-disable-next-line no-console
       console.log('selected value:', value);
     }
   }

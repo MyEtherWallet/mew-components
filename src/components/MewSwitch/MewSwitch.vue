@@ -2,9 +2,12 @@
   <div class="d-flex align-center"> 
     <span
       @click="onToggle()"
-      class="mew-body textPrimary--text mr-2 cursor-pointer"
+      class="mew-body textPrimary--text mr-4 cursor-pointer"
     >{{ label }}</span>
     <v-switch
+      :ripple="false"
+      color="white"
+      class="mew-switch"
       inset
       v-model="isSwitchOn"
     />
@@ -33,3 +36,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.mew-switch {
+  &.v-input--is-label-active {
+    .v-input--switch__track {
+      color: var(--v-primary-base) !important;
+      caret-color: var(--v-primary-base) !important;
+      opacity: 1;
+    }
+  }
+}
+</style>

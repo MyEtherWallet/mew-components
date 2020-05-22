@@ -26,6 +26,9 @@ export const MEWExpandPanel = () => ({
     },
     panelItems: {
       default: object('panel-items', items)
+    },
+    isToggle: {
+      default: boolean('is-toggle', false)
     }
   },
   watch: {
@@ -37,6 +40,7 @@ export const MEWExpandPanel = () => ({
     <div>
     <br />
     <mew-expand-panel
+      :is-toggle="isToggle"
       :panel-items="panelItems"
     >
       <template v-slot:panelBody0>
