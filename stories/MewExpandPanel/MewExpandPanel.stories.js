@@ -15,7 +15,7 @@ export default {
 
 const items = [
   { name: 'Network', subtext: 'ETH - myetherapi.com' }, 
-  { name: 'Address to interact with' , subtext: ''}
+  { name: 'Address to interact with' , subtext: '', tooltip: 'Tooltip'}
 ]
 
 export const MEWExpandPanel = () => ({

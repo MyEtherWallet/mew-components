@@ -27,8 +27,8 @@
               {{ text }}
               <a
                 :class="getLinkClasses()"
-                :href="link"
-              >{{ linkText }}
+                :href="linkObj.url"
+              >{{ linkObj.title }}
               </a>
               <slot name="infoBtn" />
             </div>
@@ -83,18 +83,13 @@ export default {
       default: ''
     },
     /**
-     * The url 
+     * Applies the link url to the end of the text. Takes title and url, i.e. {title: '', url: ''}
      */
-    link: {
-      type: String,
-      default: ''
-    },
-    /**
-     * The link text.
-     */
-    linkText: {
-      type: String,
-      default: ''
+    linkObj: {
+      type: Object,
+      default: function() {
+        return {};
+      }
     },
     /**
      * Clicking outside of the element will not deactivate it.

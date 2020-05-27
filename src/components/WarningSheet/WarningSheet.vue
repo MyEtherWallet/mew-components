@@ -22,7 +22,13 @@
           </v-icon>
           <div class="d-flex flex-column ml-2 titlePrimary--text">
             <span class="text-uppercase font-weight-bold">{{ title }}</span>
-            <span>{{ description }}</span>
+            <span>
+              {{ description }}
+              <a
+                :href="linkObj.url"
+              >{{ linkObj.title }}
+              </a>
+            </span>
           </div>
         </v-row>
       </v-sheet>
@@ -34,14 +40,29 @@
 
 export default {
   name: 'WarningSheet',
+  /**
+   * The title of the warning sheet.
+   */
   props: {
     title: {
       type: String,
       default: ''
     },
+    /**
+     * The description of the warning sheet.
+     */
     description: {
       type: String,
       default: ''
+    },
+    /**
+     * Applies the link url to the end of the text. Takes title and url, i.e. {title: '', url: ''}
+     */
+    linkObj: {
+      type: Object,
+      default: function() {
+        return {};
+      }
     }
   }
 }

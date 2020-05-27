@@ -14,9 +14,16 @@
         color="white"
       > 
         <div class="header-container">
-          <span> {{ item.name }} </span>
+          <span :class="item.tooltip? 'd-flex align-center' :''"> 
+            {{ item.name }}
+            <tooltip
+              class="ml-1"
+              :text="item.tooltip"
+              v-if="item.tooltip"
+            />
+          </span>
           <span
-            v-if="!isToggle"
+            v-if="!isToggle && !item.tooltip"
             class="inputLabel--text mew-body ml-2"
           >{{ item.subtext }}</span>
         </div>
@@ -51,11 +58,12 @@
 </template>
 <script>
 import MewSwitch from '@/components/MewSwitch/MewSwitch.vue';
-
+import Tooltip from '@/components/InfoTooltip/InfoTooltip.vue';
 
 export default {
   components: {
-    'mew-switch': MewSwitch
+    'mew-switch': MewSwitch,
+    'tooltip': Tooltip
   },
   data() {
     return {
@@ -72,7 +80,7 @@ export default {
     default: false
   },
   /**
-   * Accepts an array of panel objects, i.e [{ name: '', subtext: '' }]
+   * Accepts an array of panel objects, i.e [{ name: '', tooltip: '', subtext: '' }]
    */
     panelItems: {
       type: Array,

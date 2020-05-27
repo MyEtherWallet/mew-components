@@ -40,10 +40,19 @@ export const All = () => ({
       capitalize: {
         textTransform: 'capitalize'
       },
+      noDecoration: {
+        textDecoration: 'none'
+      },
       markupStyle: {
         color: '#cfcfcf',
         fontSize: '12px',
         fontWeight: 700
+      },
+      mewHeaderBlock: {
+        color: 'var(--v-titlePrimary-base)',
+        fontWeight: 'bold',
+        marginBottom: '15px',
+        paddingLeft: '10px'
       },
       headerStyle: {
         color: '#05c0a5',
@@ -95,10 +104,18 @@ export const All = () => ({
     <div :style="mewCaption">.mew-caption</div>
     <div :style="markupStyle">font-size: 12px; font-weight: 700; text-transform: uppercase</div>
     <br />
-    <div>.capitalize</div>
+    <div :style="capitalize">.capitalize</div>
     <div :style="markupStyle">text-transform: capitalize</div>
     <br />
-    <div>.no-decoration</div>
+    <div :style="noDecoration">.no-decoration</div>
     <div :style="markupStyle">text-decoration: none</div>
+    <br />
+    <div :style="mewHeaderBlock">.mew-header-block</div>
+    <div :style="markupStyle">
+      color: var(--v-titlePrimary-base);
+      font-weight: bold;
+      margin-bottom: 15px;
+      padding-left: 10px;
+    </div>
   </div>`
 });

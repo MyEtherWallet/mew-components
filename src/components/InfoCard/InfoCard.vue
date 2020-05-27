@@ -17,7 +17,7 @@
       </v-card-subtitle>
       <v-card-text v-if="link.url && link.title">
         <a
-          class="font-weight-medium no-decoration"
+          class="font-weight-medium"
           :href="link.url"
         >{{ link.title }}<v-icon
           class="subtitle-1 ml-1"

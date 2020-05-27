@@ -3,7 +3,8 @@ import {
   boolean,
   text,
   optionsKnob,
-  number
+  number,
+  object
 } from '@storybook/addon-knobs';
 import Toast from '@/components/Toast/Toast.vue';
 import MewButton from '@/components/MewButton/MewButton.vue';
@@ -27,6 +28,11 @@ const optionsObj = {
   display: 'inline-radio'
 };
 
+const linkObj = {
+  title: '',
+  url: ''
+}
+
 export const toast = () => ({
   components: { 'toast': Toast, 'mew-button': MewButton },
   props: {
@@ -39,11 +45,8 @@ export const toast = () => ({
     text: {
       default: text('text', 'I am a toast!')
     },
-    link: {
-      default: text('link', '')
-    },
-    linkText: {
-      default: text('link-text', '')
+    linkObj: {
+      default: object('link-obj', linkObj)
     },
     persistent: {
       default: boolean('persistent', false)
@@ -67,8 +70,7 @@ export const toast = () => ({
     <toast
       ref="toast" 
       :can-close="canClose"
-      :link="link"
-      :link-text="linkText"
+      :link-obj="linkObj"
       :text="text"
       :toastType="toastType"
       :duration="duration"

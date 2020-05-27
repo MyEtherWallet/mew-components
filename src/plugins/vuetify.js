@@ -50,7 +50,8 @@ import Vuetify, {
   VStepperItems,
   VStepperContent,
   VCarousel,
-  VCarouselItem
+  VCarouselItem,
+  VBtnToggle
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -102,7 +103,8 @@ Vue.use(Vuetify, {
     VStepperItems,
     VStepperContent,
     VCarousel,
-    VCarouselItem
+    VCarouselItem,
+    VBtnToggle
   }
 });
 

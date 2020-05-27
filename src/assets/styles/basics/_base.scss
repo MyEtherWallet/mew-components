@@ -2,6 +2,10 @@
   color: var(--v-basic -base);
 }
 
+a {
+  text-decoration: none;
+}
+
 .bg-white {
   background-color: var(--v-white-base) !important;
 }

@@ -1,7 +1,8 @@
 import {
   withKnobs,
   boolean,
-  optionsKnob
+  optionsKnob,
+  text
 } from '@storybook/addon-knobs';
 import TxBadge from '@/components/TxBadge/TxBadge.vue';
 
@@ -28,6 +29,9 @@ export const txBadge = () => ({
     },
     badgeType: {
       default: optionsKnob('badge-type', badgeOptions, badgeOptions.in , { display: 'inline-radio' })
+    },
+    badgeTitle: {
+      default: text('badge-title', 'In')
     }
   },
   watch: {
@@ -40,6 +44,7 @@ export const txBadge = () => ({
     <br />
     <badge
       :badge-type="badgeType"
+      :badge-title="badgeTitle"
     />
   </div>`
 });
