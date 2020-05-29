@@ -102,7 +102,6 @@
     <toast
       ref="toast"
       :duration="2000"
-      :show-toast="showToast"
       toast-type="success"
       :text="successToast"
     />
@@ -204,7 +203,6 @@ export default {
   },
   data() {
     return {
-      showToast: false,
       addressValue: '',
       autoSelectMenu: false,
       saveIcon: saveIcon,
@@ -222,7 +220,6 @@ export default {
       this.autoSelectMenu = !this.autoSelectMenu;
     },
     copyToClipboard() {
-      this.showToast = false;
       this.$refs.addressInput.$el.querySelector('input').select();
       document.execCommand('copy');
       this.$refs.toast.showToast();
@@ -288,6 +285,12 @@ export default {
         &:hover {
           opacity: 0.5;
         }
+      }
+    }
+
+    &.v-select.v-input--is-focused {
+      .mdi-chevron-down {
+        color: var(--v-titlePrimary-base);
       }
     }
 

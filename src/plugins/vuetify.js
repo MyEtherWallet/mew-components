@@ -51,7 +51,9 @@ import Vuetify, {
   VStepperContent,
   VCarousel,
   VCarouselItem,
-  VBtnToggle
+  VBtnToggle,
+  VDataTable,
+  VSimpleCheckbox
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -104,7 +106,9 @@ Vue.use(Vuetify, {
     VStepperContent,
     VCarousel,
     VCarouselItem,
-    VBtnToggle
+    VBtnToggle,
+    VDataTable,
+    VSimpleCheckbox
   }
 });
 

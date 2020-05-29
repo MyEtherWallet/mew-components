@@ -114,8 +114,6 @@ export default {
   },
   data() {
     return {
-      showToast: false,
-      toastType: '',
       showsErr: false,
       popupTypes: {
         error: 'error',
@@ -216,8 +214,6 @@ export default {
     copyToClipboard() {
       this.$refs.errContainer.select();
       document.execCommand('copy');
-      this.toastType = 'success';
-      this.showToast = true;
     },
   }
 }

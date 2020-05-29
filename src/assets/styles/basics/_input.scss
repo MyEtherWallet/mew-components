@@ -68,12 +68,14 @@
     }
 
     // dropdown icon
-    .mdi-chevron-down {
-      color: var(--v-titlePrimary-base);
-      cursor: pointer;
-      font-size: 20px;
+    &.mew-select {
+      .mdi-chevron-down {
+        color: var(--v-titlePrimary-base);
+        cursor: pointer;
+        font-size: 20px;
+      }
     }
-
+    
     // disable icon
     .disable-icon {
       filter: grayscale(100%);
