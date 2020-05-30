@@ -4,10 +4,29 @@ import 'vuetify/src/styles/main.sass';
 import { configureViewport, INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
 
+
+const newViewports = {
+  kindleFire2: {
+    name: 'Kindle Fire 2',
+    styles: {
+      width: '600px',
+      height: '900px',
+    },
+  },
+  kindleFireHD: {
+    name: 'Kindle Fire HD',
+    styles: {
+      width: '533px',
+      height: '700px',
+    },
+  },
+};
+
 configureViewport({
   defaultViewport: 'VuetifyMd',
   viewports: {
-    ...INITIAL_VIEWPORTS
+    ...INITIAL_VIEWPORTS,
+    ...newViewports
   }
 });
 

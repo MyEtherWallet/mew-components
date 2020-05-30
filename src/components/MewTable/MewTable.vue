@@ -36,8 +36,16 @@
               v-on="on"
               :href="'https://etherscan.io/tx/' + item.txHash"
               target="_blank"
-              class="font-weight-medium mew-address"
-            >{{ getEllipsis(item.txHash) }}
+              class="font-weight-medium mew-address d-flex"
+            >
+              <span
+                class="d-flex"
+              >
+                <span>
+                  {{ getFirstPart(item.txHash) }}</span>
+                <span class="hash-mid-section truncate">{{ getMiddlePart(item.txHash) }}</span>
+                <span>{{ getLastPart(item.txHash) }}</span>
+              </span>
               <v-icon
                 class="arrow-top-right"
                 color="primary"
@@ -48,7 +56,7 @@
         </v-tooltip>
       </template>
       <template v-slot:item.address="{ item }">
-        <div class="d-flex align-end">
+        <div class="d-flex align-center">
           <blockie
             class="mr-2"
             :address="item.address"
@@ -65,27 +73,36 @@
             <template v-slot:activator="{ on }">
               <div
                 v-on="on"
-                class="address-container font-weight-medium mew-address d-flex align-end"
+                class="font-weight-medium mew-address d-flex"
               >
-                {{ item.address }}
-                <v-icon
-                  class="content-copy ml-2 cursor-pointer"
+                <span
+                  class="d-flex"
+                >
+                  <span>
+                    {{ getFirstPart(item.address) }}</span>
+                  <span class="addr-mid-section truncate">{{ getMiddlePart(item.address) }}</span>
+                  <span>{{ getLastPart(item.address) }}</span>
+                </span>
+                <v-icon 
+                  @click="copyToClipboard('mew-table-address')"
+                  class="content-copy cursor-pointer ml-1"
                 >
                   mdi-content-copy
                 </v-icon>
                 <a
+                  class="address-link"
                   :href="'https://etherscan.io/address/' + item.address"
                   target="_blank"
                 >
                   <v-icon
-                    class="call-made ml-1"
+                    class="call-made"
                   >
                     mdi-call-made
                   </v-icon>
                 </a>
               </div>
             </template>
-            <span id="MewTableAddress">{{ item.address }}</span>
+            <span id="mew-table-address">{{ item.address }}</span>
           </v-tooltip>
         </div>
       </template>
@@ -102,10 +119,12 @@
 <script>
 import CopyToClipboard from '@/helpers/copy.js';
 import Blockie from '@/components/Blockie/Blockie.vue';
+import Toast from '@/components/Toast/Toast.vue';
 
 export default {
   components: {
-    'blockie': Blockie
+    'blockie': Blockie,
+    'toast': Toast
   },
   props: {
     tableHeaders: {
@@ -133,6 +152,17 @@ export default {
     }
   },
   methods: {
+    getFirstPart(addr) {
+      return addr.slice(0, 7);
+    },
+    getMiddlePart(addr) {
+      const n = addr.length;
+      return addr.slice(7, n - 7);
+    },
+    getLastPart(addr) {
+      const n = addr.length;
+      return addr.slice(n - 7, n);
+    },
     getEllipsis(str) {
       return str.substr(0, 6) + '...' + str.substr(str.length-7, str.length);
     },
@@ -141,8 +171,8 @@ export default {
         this.$emit('selectedRow', item)
       }
     },
-    copyToClipboard() {
-      CopyToClipboard('MewTableAddress');
+    copyToClipboard(id) {
+      CopyToClipboard(id);
       this.$refs.toast.showToast();
     }
   }
@@ -150,6 +180,7 @@ export default {
 </script>
 
 <style lang="scss">
+// mew-table
 .mew-table {
   table {
     border: 1px solid var(--v-selectHover-base);
@@ -169,28 +200,29 @@ export default {
       }
     }
   }
-  .v-data-footer {
-    border-top: none;
-  }
-
-  .v-simple-checkbox {
-    i {
-      color: var(--v-searchText-base);
-    }
-  }
-
-  .address-container {
-    a {
-      color: inherit;
-    }
-  }
 
   .v-icon {
     color: inherit;
     font-size: 18px;
   }
 
+  // for table footer
+  .v-data-footer {
+    border-top: none;
+  }
+
   // selected table
+  .v-simple-checkbox {
+    i {
+      color: var(--v-searchText-base);
+    }
+  }
+
+  .address-link {
+    color: inherit;
+  }
+
+  
   &.mew-select-table {
     tbody {
       tr:nth-of-type(odd) {
@@ -199,12 +231,8 @@ export default {
       td {
         color: var(--v-searchText-base) !important;
       }
-      .v-icon.content-copy {
-        margin-bottom: 5px;
-      }
       .v-icon.call-made {
         font-size: 21px;
-        margin-bottom: 2px;
       }
     }
     .v-data-table__selected {
@@ -213,6 +241,51 @@ export default {
         color: var(--v-basic-base) !important;
       }
     }
+  }
+}
+
+// for mobile
+.v-data-table__mobile-row__cell {
+  width: 100%;
+
+  div, a {
+    justify-content: flex-end;
+  }
+}
+
+.v-data-table-header-mobile {
+  tr > th {
+    width: 100%;
+  }
+}
+
+.hash-mid-section {
+  max-width: 120px;
+}
+
+// to truncate the hash
+@media only screen and (max-width: 900px) {
+  .hash-mid-section {
+    max-width: 80px;   
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .hash-mid-section {
+    max-width: 45px;   
+  }
+}
+
+// to truncate the address
+@media only screen and (max-width: 900px) {
+  .addr-mid-section {
+    max-width: 120px;   
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .addr-mid-section {
+    max-width: 20px;   
   }
 }
 </style>

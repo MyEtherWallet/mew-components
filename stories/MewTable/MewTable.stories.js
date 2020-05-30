@@ -27,7 +27,7 @@ const tableHeaders = [
     value: 'date',
     sortable: false,
     filterable: false,
-    width: '100%'
+    width: '60%'
   },
   {
     text: 'Tx Hash',
@@ -110,7 +110,7 @@ export const mewTable = () => ({
       default: object('table-data', tableData)
     },
     hasSelect: {
-      default: boolean('has-select', true)
+      default: boolean('has-select', false)
     },
     successToast: {
       default: text('success-toast', 'Success!')
