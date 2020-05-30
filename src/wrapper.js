@@ -20,6 +20,13 @@ import TxBadge from './components/TxBadge/TxBadge.vue';
 import TxNotification from './components/TxNotification/TxNotification.vue';
 import WarningSheet from './components/WarningSheet/WarningSheet.vue';
 
+// import Vue from 'vue';
+// import wrap from '@vue/web-component-wrapper';
+
+// const CustomElement = wrap(Vue, MewButton);
+
+// window.customElements.define('mew-button', CustomElement);
+
 const Components = {
   MewButton,
   MewSuperButton,
