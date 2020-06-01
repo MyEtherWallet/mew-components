@@ -49,6 +49,11 @@ const tableData = [
     activity: 'Generated 30.0000 new Dai from Vault',
     date: '01/02/2020, 1:25:53 PM',
     txHash: '0xAECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
+  },
+  {
+    activity: 'Generated 2.0 new Dai from Vault',
+    date: '01/05/2020, 1:25:53 PM',
+    txHash: '0xAECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
   }
 ]
 
@@ -74,6 +79,13 @@ const tableSelectHeaders = [
     filterable: false,
     containsLink: true,
     width: '30%'
+  },
+  {
+    text: '',
+    value: 'edit',
+    sortable: false,
+    filterable: false,
+    width: '40%'
   }
 ]
 
@@ -88,6 +100,12 @@ const tableSelectData = [
     ethBalance: '2.23 ETH',
     token: '10',
     address: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
+  },
+  {
+    ethBalance: '0.23 ETH',
+    token: '8',
+    address: '0xAECFF9CD2367cdbb726E904cD6397eDFcAe6068D',
+    edit: 'Edit'
   }
 ]
 
@@ -112,6 +130,9 @@ export const mewTable = () => ({
     hasSelect: {
       default: boolean('has-select', false)
     },
+    hasColor: {
+      default: boolean('has-color', true)
+    },
     successToast: {
       default: text('success-toast', 'Success!')
     }
@@ -125,18 +146,24 @@ export const mewTable = () => ({
     <div>
     <br />
     <mew-table
+      :has-color="hasColor"
       :success-toast="successToast"
       :has-select="hasSelect"
       :table-data="hasSelect ? tableSelectData : tableData"
       :table-headers="hasSelect ? tableSelectHeaders : tableHeaders"
       @selectedRow="onSelect"
+      @editRow="editRow"
     />
     
   </div>`,
   methods: {
     onSelect(newVal) {
       // eslint-disable-next-line no-console
-      console.log('selected:', newVal)
+      console.log('selected:', newVal);
+    },
+    editRow(newVal) {
+      // eslint-disable-next-line no-console
+      console.log('edit row:', newVal);
     }
   }
 });

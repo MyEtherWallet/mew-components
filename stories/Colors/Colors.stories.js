@@ -51,7 +51,8 @@ export const All = () => ({
       },
       {
         shades: [
-          {name: 'superPrimary', lightHex: '#f2fafa', darkHex: '#f2fafa'},
+          {name: 'superPrimary base', lightHex: '#f2fafa', darkHex: '#f2fafa'},
+          {name: 'superPrimary darken1', lightHex: '#e3f2f2', darkHex: '#e3f2f2'},
           {name: 'superPrimaryHover', lightHex: '#f5fdfb', darkHex: '#00c0a5'},
         ]
       },

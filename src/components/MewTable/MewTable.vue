@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-data-table
-      :class="['mew-table', hasSelect ? 'mew-select-table' : '']"
+      :class="['mew-table', hasSelect ? 'mew-select-table' : '', hasColor ? 'mew-super-primary-table' : '']"
       :items="tableData"
       :item-key="tableHeaders[0].value"
       :headers="tableHeaders"
@@ -19,6 +19,13 @@
           on-icon="mdi-circle-slice-8"
           off-icon="mdi-circle-outline"
           :ripple="false"
+        /> 
+      </template>
+      <template v-slot:item.edit="{ item }">
+        <mew-btn
+          @click.native="editRow(item)"
+          :title="item.edit"
+          btn-style="transparent"
         />
       </template>
       <template
@@ -120,26 +127,44 @@
 import CopyToClipboard from '@/helpers/copy.js';
 import Blockie from '@/components/Blockie/Blockie.vue';
 import Toast from '@/components/Toast/Toast.vue';
+import MewButton from '@/components/MewButton/MewButton.vue';
 
 export default {
   components: {
     'blockie': Blockie,
-    'toast': Toast
+    'toast': Toast,
+    'mew-btn': MewButton
   },
   props: {
+    /**
+     * The table headers.
+     */
     tableHeaders: {
       type: Array,
       default: function() {
         return [];
       }
     },
+    /**
+     * The table data.
+     */
     tableData: {
       type: Array,
       default: function() {
         return [];
       }
     },
+    /**
+     * Applies select button to each row. 
+     */
     hasSelect: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Applies superPrimary color to table.
+     */
+    hasColor: {
       type: Boolean,
       default: false
     },
@@ -174,6 +199,9 @@ export default {
     copyToClipboard(id) {
       CopyToClipboard(id);
       this.$refs.toast.showToast();
+    },
+    editRow(item) {
+      this.$emit('editRow', item);
     }
   }
 }
@@ -242,6 +270,23 @@ export default {
       }
     }
   }
+
+  // super primary table
+  &.mew-super-primary-table {
+    thead {
+      tr {
+        background-color: var(--v-superPrimary-darken1);
+      }
+    }
+    tbody {
+      tr {
+        background-color: var(--v-superPrimary-base);
+        &:hover {
+          background-color: var(--v-primaryOutlineActive-base) !important;
+        }
+      }
+    }
+  }
 }
 
 // for mobile
@@ -277,7 +322,7 @@ export default {
 }
 
 // to truncate the address
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1100px) {
   .addr-mid-section {
     max-width: 120px;   
   }

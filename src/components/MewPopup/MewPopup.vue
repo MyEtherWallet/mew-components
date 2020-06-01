@@ -96,7 +96,8 @@
       </v-card>
     </v-dialog>
     <toast
-      :show-toast="showToast"
+      ref="toast"
+      :duration="2000"
       toast-type="success"
       :text="successToast"
     />
@@ -214,6 +215,7 @@ export default {
     copyToClipboard() {
       this.$refs.errContainer.select();
       document.execCommand('copy');
+      this.$refs.toast.showToast();
     },
   }
 }
