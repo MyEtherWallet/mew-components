@@ -1,3 +1,7 @@
+
+import Vue from 'vue';
+import wrap from '@vue/web-component-wrapper';
+// components
 import MewButton from './components/MewButton/MewButton.vue';
 import MewSuperButton from './components/MewSuperButton/MewSuperButton.vue';
 import AddressSelect from './components/AddressSelect/AddressSelect.vue';
@@ -25,13 +29,6 @@ import TokenContainer from './components/TokenContainer/TokenContainer.vue';
 import TxBadge from './components/TxBadge/TxBadge.vue';
 import TxNotification from './components/TxNotification/TxNotification.vue';
 import WarningSheet from './components/WarningSheet/WarningSheet.vue';
-
-// import Vue from 'vue';
-// import wrap from '@vue/web-component-wrapper';
-
-// const CustomElement = wrap(Vue, MewButton);
-
-// window.customElements.define('mew-button', CustomElement);
 
 const Components = {
   MewButton,
@@ -63,28 +60,33 @@ const Components = {
   TokenContainer
 }
 
-// Declare install function executed by Vue.use()
-export function install() {
-  if (install.installed) return;
-  install.installed = true;
-}
+const CustomElement = wrap(Vue, MewButton);
 
-// Create module definition for Vue.use()
-const plugin = {
-  install
-};
+window.customElements.define('mew-button', CustomElement);
 
-// Auto-install when vue is found (eg. in browser via <script> tag)
-let GlobalVue = null;
 
-if (typeof window !== 'undefined') {
-  GlobalVue = window.Vue;
-} else if (typeof global !== 'undefined') {
-  // eslint-disable-next-line no-undef
-  GlobalVue = global.Vue;
-}
-if (GlobalVue) {
-  GlobalVue.use(plugin);
-}
+// // Declare install function executed by Vue.use()
+// export function install() {
+//   if (install.installed) return;
+//   install.installed = true;
+// }
 
-export default Components;
+// // Create module definition for Vue.use()
+// const plugin = {
+//   install
+// };
+
+// // Auto-install when vue is found (eg. in browser via <script> tag)
+// let GlobalVue = null;
+
+// if (typeof window !== 'undefined') {
+//   GlobalVue = window.Vue;
+// } else if (typeof global !== 'undefined') {
+//   // eslint-disable-next-line no-undef
+//   GlobalVue = global.Vue;
+// }
+// if (GlobalVue) {
+//   GlobalVue.use(plugin);
+// }
+
+// export default Components;
