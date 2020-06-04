@@ -27,8 +27,12 @@
 </template>
 
 <script>
+import { VBtn } from 'vuetify/lib'
 export default {
   name: 'MewButton',
+  components: {
+    VBtn
+  },
   props: {
     /**
      * Button size: small, medium, large, xlarge.
@@ -49,7 +53,7 @@ export default {
      */
     title: {
       type: String,
-      default: ''
+      default: 'rwerwer'
     },
     /**
      * The icon url. Inserts an icon next to the button title.
