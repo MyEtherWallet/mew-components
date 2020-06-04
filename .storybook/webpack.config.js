@@ -1,7 +1,12 @@
 const path = require('path');
+// Try the environment variable, otherwise use root
+const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 // Export a function. Accept the base config as the only param.
 module.exports = async ({ config, mode }) => {
+  config.output.push({
+    publicPath: ASSET_PATH,
+  })
   // storybookBaseConfig.output.publicPath = 'http://localhost:6006/'
   config.resolve.extensions.push('.vue');
   config.resolve.alias['@'] = path.resolve(__dirname, '../src');

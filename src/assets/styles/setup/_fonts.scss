@@ -129,3 +129,16 @@
        url('/assets/fonts/pt-mono-v7-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
        url('/assets/fonts/pt-mono-v7-latin-regular.svg#PTMono') format('svg'); /* Legacy iOS */
 }
+
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/Material-Icons/MaterialIcons-Regular.eot'); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url('/assets/fonts/Material-Icons/MaterialIcons-Regular.woff2') format('woff2'),
+    url('/assets/fonts/Material-Icons/MaterialIcons-Regular.woff') format('woff'),
+    url('/assets/fonts/Material-Icons/MaterialIcons-Regular.ttf') format('truetype');
+}

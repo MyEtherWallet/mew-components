@@ -10,6 +10,7 @@
     :outlined="btnStyle.toLowerCase() === btnStyles.outline"
     :text="btnStyle.toLowerCase() === btnStyles.transparent"
   >
+    <i class="material-icons">face</i>
     <img
       v-if="showIcon(icon) && iconAlign.toLowerCase() === iconAlignments.left"
       class="icon mr-1"
