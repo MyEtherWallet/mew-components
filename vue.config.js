@@ -1,20 +1,20 @@
 module.exports = {
   assetsDir: 'assets/',
-  publicPath: '/mew-components', // Base directory for dev
+  publicPath: '/', // Base directory for dev
   css: {
     sourceMap: true,
     loaderOptions: {
       sass: {
-        data: `@import "@/assets/styles/global.scss";`
+        data: '@import "@/assets/styles/global.scss";'
       }
     }
   },
   chainWebpack: config => {
     config.module
-      .rule("fonts")
+      .rule('fonts')
       .test(/\.(ttf|otf|eot|woff|woff2)$/)
-      .use("file-loader")
-        .loader("file-loader")
+      .use('file-loader')
+        .loader('file-loader')
         .tap(options => {
           options = {
             // limit: 10000,
