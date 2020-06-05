@@ -4,7 +4,7 @@
   font-style: normal;
   font-weight: 100;
   src: local('Roboto Thin'), local('Roboto-Thin'),
-    url('/assets/fonts/Roboto/roboto-v20-latin-100.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/Roboto/roboto-v20-latin-100.eot?#iefi') format('embedded-opentype'),
     /* IE6-IE8 */
     url('/assets/fonts/Roboto/roboto-v20-latin-100.woff2') format('woff2'),
     /* Super Modern Browsers */
@@ -48,7 +48,7 @@
     /* IE6-IE8 */
     url('/assets/fonts/Roboto/roboto-v20-latin-regular.woff2') format('woff2'),
     /* Super Modern Browsers */
-    url('/assets/fonts/Roboto/roboto-v20-latin-regular.woff') format('woff'),
+    url('/assets/roboto-v20-latin-regular.woff') format('woff'),
     /* Modern Browsers */
     url('/assets/fonts/Roboto/roboto-v20-latin-regular.ttf') format('truetype'),
     /* Safari, Android, iOS */
@@ -123,11 +123,11 @@
   font-weight: 400;
   src: url('/assets/fonts/pt-mono-v7-latin-regular.eot'); /* IE9 Compat Modes */
   src: local('PT Mono'), local('PTMono-Regular'),
-       url('/assets/fonts/pt-mono-v7-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/assets/fonts/pt-mono-v7-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('/assets/fonts/pt-mono-v7-latin-regular.woff') format('woff'), /* Modern Browsers */
-       url('/assets/fonts/pt-mono-v7-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('/assets/fonts/pt-mono-v7-latin-regular.svg#PTMono') format('svg'); /* Legacy iOS */
+       url('/assets/fonts/PT-Mono/pt-mono-v7-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/PT-Mono/pt-mono-v7-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/assets/fonts/PT-Mono/pt-mono-v7-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/PT-Mono/pt-mono-v7-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/PT-Mono/pt-mono-v7-latin-regular.svg#PTMono') format('svg'); /* Legacy iOS */
 }
 
 
@@ -135,7 +135,7 @@
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url('/assets/fonts/Material-Icons/MaterialIcons-Regular.eot'); /* For IE6-8 */
+  src: url('/assets/fonts/MaterialIcons-Regular.eot'); /* For IE6-8 */
   src: local('Material Icons'),
     local('MaterialIcons-Regular'),
     url('/assets/fonts/Material-Icons/MaterialIcons-Regular.woff2') format('woff2'),
