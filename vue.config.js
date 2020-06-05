@@ -1,6 +1,6 @@
 module.exports = {
-  assetsDir: 'assets/',
-  publicPath: '/', // Base directory for dev
+  assetsDir: '/mew-components',
+  publicPath: '', // Base directory for dev
   css: {
     sourceMap: true,
     loaderOptions: {
