@@ -2,7 +2,7 @@ const path = require('path');
 
 // Export a function. Accept the base config as the only param.
 module.exports = async ({ config, mode }) => {
-  config.output.publicPath = 'http://localhost:6006/'
+  // config.output.publicPath = 'http://localhost:6006/'
   config.resolve.extensions.push('.vue');
   config.resolve.alias['@'] = path.resolve(__dirname, '../src');
   // `mode` has a value of 'DEVELOPMENT' or 'PRODUCTION'
