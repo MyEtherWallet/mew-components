@@ -8,7 +8,7 @@ module.exports = async ({ config, mode }) => {
   // You can change the configuration based on that.
   // 'PRODUCTION' is used when building the static version of storybook.
   if (mode === 'PRODUCTION') {
-    config.output.publicPath = '/mew-components'
+    config.output.publicPath = '/mew-components/'
   }
   config.module.rules.push({
     test: /\.stories\.js?$/,
