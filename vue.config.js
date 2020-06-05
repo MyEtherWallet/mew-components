@@ -1,5 +1,5 @@
 module.exports = {
-  assetsDir: '/mew-components',
+  assetsDir: '/mew-components/',
   publicPath: '', // Base directory for dev
   css: {
     sourceMap: true,
