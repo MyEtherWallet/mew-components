@@ -145,6 +145,7 @@ export default new Vuetify({
         swapDisable: '#f8f8f8',
         captionPrimary: '#a9bcd2',
         textSecondary: '#999999',
+        tagLabel: '#6d89a6',
         inputLabel: '#6d89a6',
         searchInput: '#f2f4fa',
         searchText: '#96a8b6',
@@ -159,7 +160,8 @@ export default new Vuetify({
         error:'#ff445b',
         warning: {
           base: '#FFF2DC',
-          darken1: '#f5a623'
+          darken1: '#f5a623',
+          darken2: '#ff7700'
         },
         disabled:'#cecece'
       },
@@ -177,7 +179,7 @@ export default new Vuetify({
         selectActive: '#2e3c75',
         selectHover: '#2c3448',
         superPrimary: {
-          base: '#f2fafa',
+          base: '#242c48',
           darken1: '#e3f2f2'
         },
         superPrimaryHover: '#f5fdfb',
@@ -192,6 +194,7 @@ export default new Vuetify({
         captionPrimary: '#a9bcd2',
         textSecondary: '#999999',
         inputLabel: '#4e5a6e',
+        tagLabel: '#95aed8',
         searchInput: '#f2f4fa',
         searchText: '#96a8b6',
         white: '#fff',

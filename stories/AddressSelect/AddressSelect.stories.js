@@ -69,12 +69,16 @@ export const addressSelect = () => ({
   template: `
     <div>
     <br />
-    <address-select :err-msg="errMsg" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @emitSelectedValue="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
+    <address-select @saveAddress="onSaveAddress" :err-msg="errMsg" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @emitSelectedValue="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
   </div>`,
   methods: {
     getSelectedValue(value) {
       // eslint-disable-next-line no-console
       console.log('selected value:', value);
+    },
+    onSaveAddress() {
+      // eslint-disable-next-line no-console
+      console.log('saveAddress: clicked')
     }
   }
 });

@@ -32,6 +32,9 @@ export const txNotification = () => ({
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     },
+    txTitle: {
+      default: text('tx-title', 'in')
+    },
     txType: {
       default: optionsKnob('badge-type', txTypeOptions, txTypeOptions.in , { display: 'inline-radio' })
     },
@@ -63,6 +66,7 @@ export const txNotification = () => ({
     <div>
     <br />
     <tx-notif
+      :tx-title="txTitle"
       :tx-type="txType"
       :tx-status="txStatus"
       :from-address="fromAddress"

@@ -14,13 +14,15 @@
           align="start"
           justify="start"
         >
-          <v-icon
-            class="title"
-            color="warning darken-1"
-          >
-            mdi-alert
-          </v-icon>
-          <div class="d-flex flex-column ml-2 titlePrimary--text">
+          <v-col cols="auto">
+            <v-icon
+              class="title"
+              color="warning darken-2"
+            >
+              mdi-alert
+            </v-icon>
+          </v-col>
+          <v-col class="d-flex flex-column titlePrimary--text">
             <span class="text-uppercase font-weight-bold">{{ title }}</span>
             <span>
               {{ description }}
@@ -29,7 +31,7 @@
               >{{ linkObj.title }}
               </a>
             </span>
-          </div>
+          </v-col>
         </v-row>
       </v-sheet>
     </v-row>

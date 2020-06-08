@@ -1,11 +1,11 @@
 <template>
   <div
-    class="mew-banner full-width font-weight-medium"
+    class="mew-banner full-width font-weight-medium d-flex flex-column align-center justify-center"
     :style="{backgroundImage: `url(${banner})` }"
   >
     <div
       @click="closeBanner"
-      class="cursor-pointer pr-8 pt-5 align-center d-flex justify-end error--text exit-container"
+      class="cursor-pointer error--text exit-container"
     >
       <v-icon
         class="mr-2"
@@ -15,9 +15,9 @@
       </v-icon>
       <span>{{ textObj.exit }}</span>
     </div>
-    <div class="pt-4 d-flex text-center align-center justify-center white--text flex-column">
+    <div class="d-flex text-center align-center justify-center white--text flex-column">
       <span class="mew-subtitle">{{ textObj.title }}</span>
-      <span class="mew-body mew-banner-subtext">{{ textObj.subtext }} </span>
+      <span class="mew-body">{{ textObj.subtext }} </span>
     </div>
   </div>
 </template>
@@ -59,12 +59,15 @@ export default {
 
 <style lang="scss" scoped>
 .mew-banner {
+  background-size: contain;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   min-height: 190px;
 
-  .mew-banner-subtext {
-    width: 50%;
+  .exit-container {
+    position: absolute;
+    right: 80px;
+    top: 60px;
   }
 }
 </style>

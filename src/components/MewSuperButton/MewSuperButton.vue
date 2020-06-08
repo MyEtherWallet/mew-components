@@ -16,10 +16,10 @@
     >
       <v-col
         :class="['left-container', 'full-width', isColumn ? 'text-center' : 'text-left']"
-        :cols="isColumn ? 12 : 6"
+        :cols="isColumn ? 12 : 9"
       >
         <div :class="['title-wrapper', 'd-flex', 'align-center', isColumn ? 'justify-center' : '' ]">
-          <div class="mew-heading-2 font-weight-bold">
+          <div class="mew-heading-3 font-weight-bold">
             {{ title }}
           </div>
           <div
@@ -40,13 +40,13 @@
         >
           {{ subtitle }}
         </div>
-        <div class="body-2 mt-1 inputLabel--text">
+        <div class="body-2 mt-1 tagLabel--text">
           {{ tag }}
         </div>
       </v-col>
       <v-col
-        :cols="isColumn ? 12 : 6"
-        :class="['right-container', isColumn ? 'text-center, pb-0' : 'text-right']"
+        :cols="isColumn ? 12 : 3"
+        :class="['right-container', isColumn ? 'text-center, pb-0' : 'd-flex align-center justify-center text-right']"
       >
         <slot name="rightSlot" />
         <div
@@ -59,7 +59,7 @@
         </div>
         <div
           v-if="!showIcon(rightIcon) && note && !isColumn"
-          class="text-uppercase caption mt-1 warning--text text--darken-1"
+          class="note truncate text-uppercase caption warning--text text--darken-1"
         >
           {{ note }}
         </div>
@@ -195,9 +195,9 @@ export default {
       return this.colorTheme;
     },
     getClasses() {
-      const classes = ['text-capitalize'];
+      const classes = [];
       if (this.colorTheme.toLowerCase() === this.colorThemes.basic || this.colorTheme.toLowerCase() === this.colorThemes.primary) {
-        classes.push('basic--text');
+        classes.push('titlePrimary--text');
       }
 
       if (this.disabled) {
@@ -225,6 +225,11 @@ export default {
   .v-btn {
     border-radius: 12px;
     height: 100%;
+    text-transform: none;
+
+    .v-btn__content {
+      min-height: 150px;
+    }
   }
 
   .disabled-btn {
@@ -252,6 +257,11 @@ export default {
   }
 
   .right-container {
+    .note {
+      position: absolute;
+      top: 13px;
+      right: 0;
+    }
     .label-container {
       border-right: 25px solid red;
       border-top: 25px solid red;

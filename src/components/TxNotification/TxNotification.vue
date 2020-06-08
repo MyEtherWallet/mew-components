@@ -19,7 +19,10 @@
       </div>
     </div>
     <div class="text-right">
-      <tx-badge :badge-type="txType" />
+      <tx-badge
+        :badge-title="txTitle"
+        :badge-type="txType"
+      />
       <div class="caption mt-1 textPrimary--text font-weight-medium">
         {{ duration }}
       </div>
@@ -52,14 +55,21 @@ export default {
   },
   props: {
     /**
-     * Badge types: 'txIn', 'txOut', 'swap'
+     * Badge type: 'txIn', 'txOut', 'swap'
      */
     txType: {
       type: String,
       default: ''
     },
     /**
-     * Badge types: 'success', 'pending', 'error', 
+     * Badge title 
+     */
+    txTitle: {
+      type: String,
+      default: ''
+    },
+    /**
+     * Tx status: 'success', 'pending', 'error', 
      */
     txStatus: {
       type: String,

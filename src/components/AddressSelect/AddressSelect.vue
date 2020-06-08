@@ -40,13 +40,13 @@
             top
           >
             <template v-slot:activator="{ on }">
-              <img
-                @click="copyToClipboard"
-                class="copy-icon mr-2"
+              <v-icon
+                class="copy-icon mr-3 basic--text"
                 v-on="on"
-                :src="copyIcon"
-                alt="copy"
+                @click="copyToClipboard"
               >
+                mdi-content-copy
+              </v-icon> 
             </template>
             <span>{{ copyTooltip }}</span>
           </v-tooltip>
@@ -56,13 +56,13 @@
             top
           >
             <template v-slot:activator="{ on }">
-              <img
-                @click="saveAddress"
-                :class="['save-icon', getSaveBtnClasses()]"
-                :src="saveIcon"
+              <v-icon
+                :class="['save-icon', enableSaveAddress ? 'basic--text' : 'disabled--text, no-pointer-events']"
                 v-on="on"
-                alt="save"
+                @click="saveAddress"
               >
+                mdi-bookmark-outline
+              </v-icon>
             </template>
             <span>{{ saveTooltip }}</span>
           </v-tooltip>
@@ -162,13 +162,6 @@ export default {
       default: 'Please enter an address'
     },
     /**
-     * The function applied to save the address.
-     */
-    saveAddress: {
-      type: Function,
-      default: function() {}
-    },
-    /**
      * Tooltip for copy.
      */
     copyTooltip: {
@@ -216,6 +209,9 @@ export default {
     }
   },
   methods: {
+    saveAddress() {
+      this.$emit('saveAddress');
+    },
     toggle() {
       this.autoSelectMenu = !this.autoSelectMenu;
     },
@@ -228,11 +224,6 @@ export default {
       this.autoSelectMenu = false;
       this.addressValue = data.address;
       this.$emit('emitSelectedValue', data);
-    },
-    getSaveBtnClasses() {
-      if (!this.enableSaveAddress) {
-        return 'disable-icon';
-      }
     }
   }
 };
@@ -272,18 +263,19 @@ export default {
     }
 
     .icon-container {
+      
       .copy-icon {
-        height: 23px;
+        font-size: 20px;
       }
 
       .save-icon {
-        height: 25px;
+        font-size: 22px;
+        margin-top: 3px;
       }
 
-      img {
-        cursor: pointer;
+      .v-icon {
         &:hover {
-          opacity: 0.5;
+          color: var(--v-primary-base) !important;
         }
       }
     }
