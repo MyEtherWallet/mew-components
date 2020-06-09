@@ -1,7 +1,7 @@
 <template>
   <v-btn
     @click="onBtnClick()"
-    :class="[ getClasses() , 'mew-button', isColumn ? '' : 'full-width']"
+    :class="[ getClasses() , 'mew-super-button','mew-button', isColumn ? '' : 'full-width']"
     :color="getColor()"
     :outlined="colorTheme.toLowerCase() === colorThemes.outline"
     :ripple="false"
@@ -220,9 +220,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .v-application {
-  .v-btn {
+  .v-btn.mew-super-button {
     border-radius: 12px;
     height: 100%;
     text-transform: none;
