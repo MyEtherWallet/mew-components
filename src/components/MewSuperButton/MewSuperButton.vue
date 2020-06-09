@@ -19,7 +19,7 @@
         :cols="isColumn ? 12 : 9"
       >
         <div :class="['title-wrapper', 'd-flex', 'align-center', isColumn ? 'justify-center' : '' ]">
-          <div class="mew-heading-3 font-weight-bold">
+          <div class="mew-heading-3 font-weight-bold truncate">
             {{ title }}
           </div>
           <div
@@ -228,7 +228,7 @@ export default {
     text-transform: none;
 
     .v-btn__content {
-      min-height: 150px;
+      height: 160px;
     }
   }
 
