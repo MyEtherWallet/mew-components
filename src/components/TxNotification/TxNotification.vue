@@ -157,7 +157,7 @@ export default {
 }
 
 .error-type {
-  background-color: var(--v-errorOutlineActive-base);
+  background-color: var(--v-error-lighten1);
   border: 1px solid var(--v-error-base);  
 }
 </style>

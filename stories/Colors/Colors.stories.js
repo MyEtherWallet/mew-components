@@ -32,6 +32,7 @@ export const All = () => ({
       {
         shades: [
           {name: 'error base', lightHex: '#ff445b', darkHex: '#ff445b'},
+          {name: 'error lighten1', lightHex: 'ffd7dc', darkHex: 'ffd7dc'},
           {name: 'errorOutlineActive', lightHex: '#ffd7dc', darkHex: '#651f28'},
         ]
       },

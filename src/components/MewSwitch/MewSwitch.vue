@@ -39,6 +39,9 @@ export default {
 
 <style lang="scss">
 .mew-switch {
+  input {
+    pointer-events: all;
+  }
   &.v-input--is-label-active {
     .v-input--switch__track {
       color: var(--v-primary-base) !important;

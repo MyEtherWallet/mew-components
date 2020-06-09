@@ -2,19 +2,20 @@
   <v-expansion-panels
     v-model="expandIdxArr"
     multiple
-    class="mew-expand-panel"
+    :class="[isToggle ? 'no-pointer-events' : '', 'mew-expand-panel']"
     :flat="true"
   >
     <v-expansion-panel
       v-for="(item,i) in panelItems"
       :key="i"  
     >
+      <v-divider v-if="hasDividers" />
       <v-expansion-panel-header
-        class="basic--text mew-heading-3 pa-8"
-        color="white"
+        :class="['titlePrimary--text', 'mew-heading-3', isToggle ? 'pa-3' : 'pa-5']"
+        :color="colorTheme"
       > 
         <div class="header-container">
-          <span :class="item.tooltip? 'd-flex align-center' :''"> 
+          <span :class="['ml-2', item.tooltip? 'd-flex align-center' :'']"> 
             {{ item.name }}
             <tooltip
               class="ml-1"
@@ -23,18 +24,21 @@
             />
           </span>
           <span
-            v-if="!isToggle && !item.tooltip"
-            class="inputLabel--text mew-body ml-2"
-          >{{ item.subtext }}</span>
+            v-if="!item.tooltip"
+            :class="[warningBadge.color, 'ml-2', 'text-center', 'white--text', 'px-2', 'py-1', 'badge-type', 'mew-caption']"
+          >{{ warningBadge.text }}</span>
         </div>
 
         <div
           slot="actions"
           class="d-flex align-center justify-centers"
         >
+          <span
+            class="inputLabel--text mew-body mr-2"
+          >{{ item.subtext }}</span>
+          <slot name="mewExpandPanelActions" />
           <mew-switch
             v-if="isToggle"
-            :label="item.subtext"
           />
           <span v-if="!isToggle">
             <img
@@ -53,6 +57,7 @@
       <v-expansion-panel-content color="white">
         <slot :name="'panelBody' + i" />
       </v-expansion-panel-content>
+      <v-divider v-if="hasDividers" />
     </v-expansion-panel>
   </v-expansion-panels>
 </template>
@@ -72,6 +77,29 @@ export default {
   },   
 
   props: {
+  /**
+   * Applies a warning badge next to the header.
+   */
+  warningBadge: {
+    type: Object,
+    default: function() {
+      return {color: '' , text: ''}
+    }
+  },
+  /**
+   * Applies a background color.
+   */
+  colorTheme: {
+    type: String,
+    default: 'white'
+  },
+  /**
+   * Applies dividers to the expand panel.
+   */
+  hasDividers: {
+    type: Boolean,
+    default: false
+  },
   /**
    * Turns the panel actions to a toggle btn. The subtext attribute in panelItems becomes the switch label.
    */
@@ -108,6 +136,10 @@ export default {
   }
   .v-expansion-panel-header,  .v-expansion-panel-content {
     border-radius: 12px;
+  }
+  .badge-type {
+    border-radius: 4px;
+    font-size: 11px !important;
   }
 }
 </style>

@@ -1,7 +1,8 @@
 import {
   withKnobs,
   boolean,
-  object
+  object,
+  optionsKnob
 } from '@storybook/addon-knobs';
 import MewExpandPanel from '@/components/MewExpandPanel/MewExpandPanel.vue';
 
@@ -18,6 +19,16 @@ const items = [
   { name: 'Address to interact with' , subtext: '', tooltip: 'Tooltip'}
 ]
 
+const warningBage = {
+  color: 'warning darken-2',
+  text: 'Expire soon'
+}
+
+const colorThemeOptions = 
+  { white: 'white',
+    superPrimary: 'superPrimary',
+    errorOutlineActive: 'errorOutlineActive'};
+
 export const MEWExpandPanel = () => ({
   components: { 'mew-expand-panel': MewExpandPanel },
   props: {
@@ -29,6 +40,15 @@ export const MEWExpandPanel = () => ({
     },
     isToggle: {
       default: boolean('is-toggle', false)
+    },
+    hasDividers: {
+      default: boolean('has-dividers', false)
+    },
+    colorTheme: {
+      default: optionsKnob('color-theme', colorThemeOptions, colorThemeOptions.white, { display: 'inline-radio' })
+    },
+    warningBadge: {
+      default: object('warning-badge', warningBage)
     }
   },
   watch: {
@@ -40,8 +60,11 @@ export const MEWExpandPanel = () => ({
     <div>
     <br />
     <mew-expand-panel
+      :warning-badge="warningBadge"
+      :color-theme="colorTheme"
+      :has-dividers="hasDividers" 
       :is-toggle="isToggle"
-      :panel-items="panelItems"
+      :panel-items="isToggle ? [panelItems[0]] : panelItems"
     >
       <template v-slot:panelBody0>
         <span>Panel slot example</span>

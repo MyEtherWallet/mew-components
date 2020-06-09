@@ -157,7 +157,10 @@ export default new Vuetify({
         secondary:'#5a78f0',
         basic:'#0b1a40',
         success: '#2cc479',
-        error:'#ff445b',
+        error: {
+          base: '#ff445b',
+          lighten1: '#ffd7dc'
+        },
         warning: {
           base: '#FFF2DC',
           darken1: '#f5a623',
@@ -205,7 +208,10 @@ export default new Vuetify({
         secondary: '#5c79f0',
         basic:'#151A29',
         success:'#2cc479',
-        error:'#ff445b',
+        error: {
+          base: '#ff445b',
+          lighten1: '#ffd7dc'
+        },
         warning: {
           base: '#FFF2DC',
           darken1: '#f5a623'
