@@ -1,29 +1,32 @@
 <template>
-  <div class="mew-progress-bar full-width d-flex">
+  <div :title="'Remaining:' + remainingAmt" class="mew-progress-bar full-width d-flex cursor-pointer">
     <div
       :class="[
+        data.color,
         idx === 0 ? 'left-border-radius' : '',
-        idk === progressData.length - 1 && hasRightBorderRadius ? 'right-border-radius' : ''
+        idx === balanceObj.data.length - 1 && hasRightBorderRadius ? 'right-border-radius' : ''
       ]"
-      v-for="(data, idx) in progressData"
+      v-for="(data, idx) in balanceObj.data"
       :key="data + idx"
-      :style="{ height: '10px', width: data.percentage + '%', background: data.color}"
+      :style="{ height: '10px', width: data.percentage + '%'}"
+      :title="data.tooltip ? data.tooltip : ''"
     />
   </div>
 </template>
 
-
 <script>
+import BigNumber from 'bignumber.js';
+
 export default {
   data() {
     return {
-       progressData: [],
-       hasRightBorderRadius: false
+       hasRightBorderRadius: false,
+       remainingAmt: null
     }
   },
   props: {
     /**
-     * Balance object contains send, fee and total amount, i.e. { send: '', fee: '', total: ''}
+     * Balance object, i.e, {total:10  , data: [ title: '', amount: 1, color: '' ]}
      */
     balanceObj: {
       type: Object,
@@ -32,27 +35,25 @@ export default {
       }
     }
   },
-  mounted() {
-    let percentageOfSend, percentageOfFee;
-    if (this.balanceObj.send < this.balanceObj.total) {
-      percentageOfSend = ((this.balanceObj.send) / (this.balanceObj.total)) * 100;
-      this.progressData.push({
-        name: 'send',
-        percentage: percentageOfSend,
-        color: '#0b2840'
-      })
+  beforeMount() {
+    let total = 0;
+
+    this.balanceObj.data.forEach((data, idx) => {
+      if (this.balanceObj.total < data.amount) {
+        return;
+      }
+      
+      const percentage = new BigNumber(data.amount).div(this.balanceObj.total).times(100).toFixed(2);
+
+      total = new BigNumber(total).plus(data.amount).toFixed();
+      this.balanceObj.data[idx].percentage = percentage;
+    })
+
+    if (total < this.balanceObj.total) {
+      this.remainingAmt = new BigNumber(this.balanceObj.total).minus(total).toFixed();
     }
 
-    if (this.balanceObj.fee < this.balanceObj.total) {
-      percentageOfFee = ((this.balanceObj.fee) / (this.balanceObj.total)) * 100;
-      this.progressData.push({
-        name: 'fee',
-        percentage: percentageOfFee,
-        color: '#f5a623'
-      })
-    }
-
-    if ((percentageOfSend + percentageOfFee) === 100) {
+    if (total >= this.balanceObj.total ) {
       this.hasRightBorderRadius = true;
     }
   }
@@ -71,8 +72,8 @@ export default {
   }
 
   .right-border-radius {
-    border-top-right-radius: 6.5px;
-    border-bottom-right-radius: 6.5px;
+    border-top-right-radius: 8.5px;
+    border-bottom-right-radius: 8.5px;
   }
 }
 </style>

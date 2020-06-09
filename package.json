@@ -1,6 +1,6 @@
 {
   "name": "@myetherwallet/mew-components",
-  "version": "0.3.2-beta",
+  "version": "0.3.5-beta",
   "description": "MEW Components",
   "main": "dist/mew-components.umd.js",
   "module": "dist/mew-components.esm.js",
@@ -25,6 +25,7 @@
   "dependencies": {
     "@vue/babel-preset-app": "^4.3.1",
     "all": "0.0.0",
+    "bignumber.js": "^9.0.0",
     "core-js": "3.6.5",
     "eslint-config-eslint": "^6.0.0",
     "fibers": "^5.0.0",

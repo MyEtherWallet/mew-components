@@ -14,9 +14,11 @@ export default {
 };
 
 const balanceObj = {
-  send: 0.5,
-  total: 2.00,
-  fee: 0.01
+  total: 20.32,
+  data: [
+    { title: 'sendBal', color: 'titlePrimary', amount: 5.3, tooltip: 'Send: 5.3'},
+    { title: 'feeBal', color: 'warning darken-1', amount: 3.2, tooltip: 'Fee: 3.2'}
+  ]
 }
 
 export const mewProgressBar = () => ({
