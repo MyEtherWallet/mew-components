@@ -111,8 +111,6 @@
 <script>
 import Blockie from '@/components/Blockie/Blockie.vue';
 import Toast from '@/components/Toast/Toast.vue';
-import copyIcon from '@/assets/images/icons/icon-copy-enable.png'; 
-import saveIcon from '@/assets/images/icons/icon-saved-enable.png';
 
 export default {
   name: 'AddressSelect',
@@ -197,9 +195,7 @@ export default {
   data() {
     return {
       addressValue: '',
-      autoSelectMenu: false,
-      saveIcon: saveIcon,
-      copyIcon: copyIcon
+      autoSelectMenu: false
     };
   },
   watch: {

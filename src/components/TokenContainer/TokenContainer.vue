@@ -9,7 +9,7 @@
 
 
 <script>
-import placeholder from '@/assets/images/currency/icon-dai.png';
+import placeholder from '@/assets/images/icons/footer/eth.png';
 
 export default {
   data() {

@@ -8,7 +8,7 @@
     <!-- <img
       alt="icon"
       class="currency-icon"
-      src="@/assets/images/currency/eth.svg"
+      src="@/assets/images/icons/footer/eth.png"
     > -->
   </div>
 </template>

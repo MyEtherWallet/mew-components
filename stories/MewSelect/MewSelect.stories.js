@@ -1,6 +1,6 @@
 import { withKnobs, text, boolean, object } from '@storybook/addon-knobs';
 import MewSelect from '@/components/MewSelect/MewSelect.vue';
-import ethereumIcon from '@/assets/images/currency/icon-eth-dark-blue.png'
+import ethereumIcon from '@/assets/images/icons/footer/eth.png'
 export default {
   title: 'MewSelect',
   parameters: {

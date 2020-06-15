@@ -45,9 +45,8 @@
               v-if="!isExpand(i)"
               height="30"
               class="edit-icon"
-              src="@/assets/images/icons/icon-edit-green.png"
+              src="@/assets/images/icons/edit.svg"
             >
-            <!-- need to change icon once jack provides it -->
             <v-icon v-if="isExpand(i)">
               mdi-chevron-down
             </v-icon>
