@@ -33,7 +33,7 @@ export const MEWIcon = () => ({
   template: `
     <div>
     <br />
-    <span class="mew-heading-1">Regular Icons</span>
+    <span class="mew-heading-1">SVG Icons</span>
     <br />
     <v-row align="center"> 
       <v-col cols="2" v-for="(icon, idx) in icons" :key="icon + idx">
@@ -44,7 +44,7 @@ export const MEWIcon = () => ({
       </v-col>
     </v-row>
     <br />
-    <span class="mew-heading-1">Footer Icons</span>
+    <span class="mew-heading-1">PNG Icons</span>
     <br />
     <v-row align="center"> 
     <v-col cols="2" v-for="(icon, idx) in footerIcons" :key="icon + idx">
