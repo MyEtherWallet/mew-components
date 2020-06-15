@@ -25,6 +25,7 @@ import TokenContainer from './components/TokenContainer/TokenContainer.vue';
 import TxBadge from './components/TxBadge/TxBadge.vue';
 import TxNotification from './components/TxNotification/TxNotification.vue';
 import WarningSheet from './components/WarningSheet/WarningSheet.vue';
+import MewIcon from './components/MewIcon/MewIcon.vue';
 
 // import Vue from 'vue';
 // import wrap from '@vue/web-component-wrapper';
@@ -60,7 +61,8 @@ const Components = {
   MewProgressBar,
   MewTable,
   MewToggleButton,
-  TokenContainer
+  TokenContainer,
+  MewIcon
 }
 
 // Declare install function executed by Vue.use()
