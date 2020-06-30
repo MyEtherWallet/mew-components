@@ -2,27 +2,24 @@
   <v-btn
     :target="btnLink ? '_blank' : ''"
     :href="btnLink"
-    @click="onBtnClick()"
-    :class="[ getClasses(), 'mew-button' ]"
+    :class="[getClasses(), 'mew-button']"
     :color="colorTheme"
     :disabled="disabled"
     depressed
     :outlined="btnStyle.toLowerCase() === btnStyles.outline"
     :text="btnStyle.toLowerCase() === btnStyles.transparent"
+    @click="onBtnClick()"
   >
-    <img
-      v-if="showIcon(icon) && iconAlign.toLowerCase() === iconAlignments.left"
-      class="icon mr-1"
-      :src="icon"
-      alt="icon"
-    >
+    <img v-if="leftIcon" class="icon mr-1" :src="leftIcon" alt="icon" />
+    <v-icon v-if="leftMdIcon" class="mr-2">{{ leftMdIcon }}</v-icon>
     <span>{{ title }}</span>
     <img
-      v-if="showIcon(icon) && iconAlign.toLowerCase() === iconAlignments.right"
+      v-if="rightIcon && icon"
       class="icon ml-1"
-      :src="icon"
+      :src="rightIcon"
       alt="icon"
-    >
+    />
+    <v-icon v-if="rightMdIcon" class="ml-2">{{ rightMdIcon }}</v-icon>
   </v-btn>
 </template>
 
@@ -54,16 +51,24 @@ export default {
     /**
      * The icon url. Inserts an icon next to the button title.
      */
-    icon: {
-      type: [ String, Array],
+    leftIcon: {
+      type: [String, Array],
+      default: ''
+    },
+    rightIcon: {
+      type: [String, Array],
       default: ''
     },
     /**
-     * Aligns the icon: left, right, or none.
+     * The Material Design icon. Inserts an icon next to the button title.
      */
-    iconAlign: {
+    leftMdIcon: {
       type: String,
-      default: 'none'
+      default: ''
+    },
+    rightMdIcon: {
+      type: String,
+      default: ''
     },
     /**
      * Applies the button color theme: basic, primary, error, white, or secondary.
@@ -87,7 +92,7 @@ export default {
       default: false
     },
     /**
-     * Opens up a new page with the link. 
+     * Opens up a new page with the link.
      */
     btnLink: {
       type: String,
@@ -110,7 +115,7 @@ export default {
       },
       colorThemes: {
         white: 'white',
-        primary: 'primary',
+        primary: 'primary'
       },
       iconAlignments: {
         left: 'left',
@@ -137,21 +142,21 @@ export default {
       }
 
       if (this.buttonSize.toLowerCase() === this.btnSizes.medium) {
-        classes.push('medium-btn');     
+        classes.push('medium-btn');
       }
 
       if (this.buttonSize.toLowerCase() === this.btnSizes.large) {
         classes.push('large-btn');
       }
-      
+
       if (this.buttonSize.toLowerCase() === this.btnSizes.xlarge) {
         classes.push('xlarge-btn');
       }
 
-      if (this.hasFullWidth === true ) {
+      if (this.hasFullWidth === true) {
         classes.push('full-width');
       }
-      
+
       if (
         this.btnStyle.toLowerCase() === this.btnStyles.background &&
         this.colorTheme.toLowerCase() !== this.colorThemes.white
@@ -166,17 +171,13 @@ export default {
         classes.push('primary--text');
       }
 
-      if (
-        this.active &&
-        !this.disabled &&
-        this.showsActiveState
-      ) {
+      if (this.active && !this.disabled && this.showsActiveState) {
         classes.push('active');
       }
 
       if (
         this.active &&
-        this.showsActiveState && 
+        this.showsActiveState &&
         !this.disabled &&
         this.btnStyle.toLowerCase() === this.btnStyles.outline
       ) {
@@ -186,7 +187,7 @@ export default {
       return classes;
     },
     showIcon(src) {
-      if (src === '' || src.length <= 0 ) {
+      if (src === '' || src.length <= 0) {
         return false;
       }
       return true;
@@ -206,30 +207,33 @@ export default {
 
     // button sizes
     &.small-btn {
-      min-height: 28px;
+      min-height: 24px;
       padding: 0 15px;
     }
 
     &.medium-btn {
-      min-height: 34x;
+      min-height: 34px;
       padding: 0 20px;
     }
 
     &.large-btn {
       min-height: 46px;
-      padding: 0 32px;
+      padding: 0 20px;
+      .icon {
+        height: 30px;
+      }
     }
 
     &.xlarge-btn {
       min-height: 62px;
-      padding: 0 46px;
+      padding: 0 35px;
     }
 
     // button active states
     &.primary.white--text.active {
       background-color: var(--v-primaryActive-base) !important;
     }
-    
+
     &.primary.white--text:hover {
       background-color: var(--v-primaryHover-base) !important;
     }
@@ -252,8 +256,8 @@ export default {
 
     // disabled btn
     &.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
-    background-color: var(--v-disabled-base) !important;
-    color: var(--v-white-base) !important;
+      background-color: var(--v-disabled-base) !important;
+      color: var(--v-white-base) !important;
     }
   }
 }
