@@ -1,11 +1,24 @@
-import { Props } from '@storybook/addon-docs/blocks'
+import { Props, Story, Preview } from '@storybook/addon-docs/blocks'
 import MewButton from '@/components/MewButton/MewButton.vue';
-import defaultBtn from './screenshots/default-btn.png';
+import backgroundBtn from './screenshots/background-btn.png';
+import transparentBtn from './screenshots/transparent-btn.png';
+import outlineBtn from './screenshots/outline-btn.png';
+import iconBtn from './screenshots/icon.png';
+import iconTextBtn from './screenshots/icon-text-btn.png';
+import './../GlobalStorybook.scss'
 
 # MEW Button 
 
-The mew-button component replaces Vuetify v-btn button with MEW theme options and additional props. This is a flex component with minimum width 64px, centered text and font Size: 14px.
+## Overview
 
+The mew-button component replaces the Vuetify v-btn button with acceptable MEW theme options. This is a flex component with a minimum width of 64px, centered text, and a font size of 14px. 
+MEW theme options include: primary, basic, error, secondary and white. 
+Please refer to the *Button Themes* section.
+
+*Infographic*
+
+
+## Props
 <Props of={MewButton} />
 
 # Button Styles
@@ -14,46 +27,40 @@ The mew-button component replaces Vuetify v-btn button with MEW theme options an
 
 ## I. Background
 
-This is a default button. It inherits background color from colorTheme prop with white text.
+btn-style=”background”
 
-Example: 
-<mew-button title=”Default MEW Button” />
-<img src={defaultBtn} />
+This is a default button with a default primary colorTheme. It inherits the background color from the colorTheme prop with white text.
+<img src={backgroundBtn} />
+<Preview><Story id="mewbutton--background-button" /></Preview>
 
-OR
-
-<mew-button title=”Secondary MEW Button” btnStyle=”background” colorTheme=”secondary” />
-
-… show component result ...(will add after we finalize everything)
 
 ## II. Outline
 
-Outlined buttons inherit their borders and text color from the colorTheme prop with transparent background.
+btn-style=”outline”
 
-Note: outlined colorTheme=white button, should be used within a component that has non white color.
+Outlined buttons inherit their borders and text color from the colorTheme prop with a transparent background. Outlined buttons with the white colorTheme should be used within a component that has a non-white color.
 
-Example: 
-<mew-button :title=”Outlined Button” :btnStyle=”background” :colorTheme=”secondary”  />
+<img src={outlineBtn} />
 
 ## III. Transparent
-Transparent Buttons only have text and no box shadow and no background. Button’s container will be shown only on hover. Text Color is inherited from colorTheme prop
+btn-style=”transparent”
 
-Example: 
-<mew-button :title=”Transparent Button” :btnStyle=”transparent” :colorTheme=”basic” />
+Transparent Buttons only have text, no box shadow, and no background color. The button’s container will be shown only when hovered. The text Color is inherited from the colorTheme prop.
+
+<img src={transparentBtn} />
 
 ## IV. Icons
 
-Icon prop allows to include icon content within the button component. Please use icons from our library  link. You can position icon left or right to the text with the prop iconAlign.
-If you want an icon to be the primary content for the button, set btnBackground = transparent and set the mew-button component wrapper to width=Xpx.
+Icon prop allows the inclusion of icon content within the button component. Please use icons from our <a href="https://myetherwallet.github.io/mew-components/?path=/story/mewicon--mew-icon">Library</a> or from Material icon designs.  Material icon colors will be inherited from the colorTheme prop. Please specify the iconType by passing 'mew' (our Library icons) or 'mdi' (Material Design Icons) to display text and icons, you have to specify iconAlign to either the ‘left’ or the ‘right’.
+To display an icon as the primary content for the button, set the btn-style as ‘transparent’.
 
-*If you are adding custom icons and including a pull request in Github, in the PR description add: “NEW ICON added”
+*If you are adding custom icons and including a pull request in Github, in the PR description include: “NEW ICON added”*
 
-Example: 
-<mew-button :title=”Button with and Icon” :colorTheme=”error”  :icon=”some-icon”  iconAlign=”right”/>
+<img src={iconBtn} />
 
-(mew button example with just icon)
+<img src={iconTextBtn} />
 
-### Theme Colors
+## Button Themes
 Please refer to the style guide (link to the style guide for buttons)
 
 

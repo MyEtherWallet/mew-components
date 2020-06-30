@@ -11,24 +11,53 @@
     :text="btnStyle.toLowerCase() === btnStyles.transparent"
   >
     <img
-      v-if="showIcon(icon) && iconAlign.toLowerCase() === iconAlignments.left"
+      v-if="showImgIcon() && showIconAlignLeft()"
       class="icon mr-1"
       :src="icon"
       alt="icon"
     >
+    <v-icon
+      class="icon mr-1"
+      v-if="showMdiIcon() && showIconAlignLeft()"
+    >
+      {{ icon }}
+    </v-icon>
+    <mew-icon
+      :img-height="30"
+      class="icon mr-1"
+      v-if="showMewIcon() && showIconAlignLeft()"
+      :icon-name="icon"
+    />
     <span>{{ title }}</span>
     <img
-      v-if="showIcon(icon) && iconAlign.toLowerCase() === iconAlignments.right"
+      v-if="showImgIcon() && showIconAlignRight()"
       class="icon ml-1"
       :src="icon"
       alt="icon"
     >
+    <mew-icon
+      :img-height="30"
+      class="icon mr-1"
+      v-if="showMewIcon() && showIconAlignRight()"
+      :icon-name="icon"
+    />
+    <v-icon
+      class="icon mr-1"
+      v-if="showMdiIcon() && showIconAlignRight()"
+    >
+      {{ icon }}
+    </v-icon>
   </v-btn>
 </template>
 
 <script>
+import MewIcon from '@/components/MewIcon/MewIcon.vue';
+
 export default {
   name: 'MewButton',
+  components: {
+    'mew-icon': MewIcon
+  },
   props: {
     /**
      * Button size: small, medium, large, xlarge.
@@ -42,7 +71,7 @@ export default {
      */
     hasFullWidth: {
       type: Boolean,
-      default: true
+      default: false
     },
     /**
      * The text that will go in the button.
@@ -64,6 +93,13 @@ export default {
     iconAlign: {
       type: String,
       default: 'none'
+    },
+    /**
+     * The type of icon: mew, mdi, or img
+     */
+    iconType: {
+      type: String,
+      default: 'mew'
     },
     /**
      * Applies the button color theme: basic, primary, error, white, or secondary.
@@ -122,10 +158,31 @@ export default {
         large: 'large',
         xlarge: 'xlarge'
       },
+      iconTypes: {
+        mew: 'mew',
+        mdi: 'mdi',
+        img: 'img'
+      },
       active: false
     };
   },
   methods: {
+    showIconAlignRight() {
+      return this.iconAlign.toLowerCase() === this.iconAlignments.right
+    },
+    showIconAlignLeft() {
+      return this.iconAlign.toLowerCase() === this.iconAlignments.left
+    },
+    showMewIcon() {
+      console.error('asdfasdf', this.icon , this.iconType)
+      return this.iconType.toLowerCase() === this.iconTypes.mew && this.showIcon(this.icon)
+    },
+    showMdiIcon() {
+      return this.iconType.toLowerCase() === this.iconTypes.mdi && this.showIcon(this.icon)
+    },
+    showImgIcon() {
+      return this.iconType.toLowerCase() === this.iconTypes.img && this.showIcon(this.icon)
+    },
     onBtnClick() {
       this.active = !this.active;
     },
@@ -201,6 +258,9 @@ export default {
     border-radius: 6px !important;
 
     .icon {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
       height: 45px;
     }
 
