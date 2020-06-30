@@ -15,14 +15,14 @@
       class="icon mr-1"
       :src="icon"
       alt="icon"
-    />
+    >
     <span>{{ title }}</span>
     <img
       v-if="showIcon(icon) && iconAlign.toLowerCase() === iconAlignments.right"
       class="icon ml-1"
       :src="icon"
       alt="icon"
-    />
+    >
   </v-btn>
 </template>
 
