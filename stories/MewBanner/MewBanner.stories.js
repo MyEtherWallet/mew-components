@@ -5,11 +5,15 @@ import {
   files
 } from '@storybook/addon-knobs';
 import MewBanner from '@/components/MewBanner/MewBanner.vue';
+import MewBannerDoc from './MewBannerDoc.mdx';
 
 export default {
   title: 'MewBanner',
   parameters: {
-    component: MewBanner
+    component: MewBanner,
+    docs: {
+      page: MewBannerDoc
+    }
   },
   decorators: [withKnobs]
 };

@@ -1,25 +1,31 @@
 <template>
-  <div
-    class="mew-banner full-width font-weight-medium d-flex flex-column align-center justify-center"
+  <v-container
+    class="mew-banner full-width font-weight-medium"
     :style="{backgroundImage: `url(${banner})` }"
   >
-    <div
+    <v-row
       @click="closeBanner"
-      class="cursor-pointer error--text exit-container"
+      class="cursor-pointer error--text exit-container mr-3"
     >
-      <v-icon
-        class="mr-2"
-        color="error"
-      >
-        mdi-close-circle-outline
-      </v-icon>
-      <span>{{ textObj.exit }}</span>
-    </div>
-    <div class="d-flex text-center align-center justify-center white--text flex-column">
-      <span class="mew-subtitle">{{ textObj.title }}</span>
-      <span class="mew-body">{{ textObj.subtext }} </span>
-    </div>
-  </div>
+      <v-col offset-md="6">
+        <v-icon
+          class="mr-2"
+          color="error"
+        >
+          mdi-close-circle-outline
+        </v-icon>
+        <span>{{ textObj.exit }}</span>
+      </v-col>
+    </v-row>
+    <v-row class="banner-content d-flex text-center align-center justify-center white--text flex-column">
+      <v-col class="pa-0">
+        <span class="mew-subtitle">{{ textObj.title }}</span>
+      </v-col>
+      <v-col class="pa-0">
+        <span class="mew-body">{{ textObj.subtext }} </span>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -59,15 +65,13 @@ export default {
 
 <style lang="scss" scoped>
 .mew-banner {
-  background-size: contain;
+  background-size: cover;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   min-height: 190px;
 
   .exit-container {
-    position: absolute;
-    right: 80px;
-    top: 60px;
+    text-align: right;
   }
 }
 </style>
