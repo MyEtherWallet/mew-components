@@ -174,7 +174,6 @@ export default {
       return this.iconAlign.toLowerCase() === this.iconAlignments.left
     },
     showMewIcon() {
-      console.error('asdfasdf', this.icon , this.iconType)
       return this.iconType.toLowerCase() === this.iconTypes.mew && this.showIcon(this.icon)
     },
     showMdiIcon() {

@@ -13,7 +13,8 @@ export default {
   parameters: {
     component: MewButton,
     docs: {
-      page: MewButtonDoc
+      page: MewButtonDoc,
+      inlineStories: true
     }
   },
   decorators: [withKnobs]
@@ -158,28 +159,6 @@ export const BackgroundButton = () => ({
         optionsObj
       )
     },
-    btnStyle: {
-      default: optionsKnob(
-        'btn-style',
-        btnStyleOptions,
-        'background',
-        optionsObj
-      )
-    },
-    iconType: {
-      default: optionsKnob(
-        'icon-type',
-        iconTypes,
-        '',
-        optionsObj
-      )
-    },
-    icon: {
-      default: text('icon', '')
-    },
-    iconAlign: {
-      default: optionsKnob('icon-align', iconAlignOptions, 'none', optionsObj)
-    },
     buttonSize: {
       default: optionsKnob('button-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
     },
@@ -200,13 +179,10 @@ export const BackgroundButton = () => ({
     <br />
     <mew-button
       :btn-link="btnLink"
-      :icon-align="iconAlign"
       :disabled="disabled"
       :title="title"
       :color-theme="colorTheme"
-      :btn-style="btnStyle"
-      :icon="icon"
-      :icon-type="iconType"
+      btn-style="background"
       :has-full-width="hasFullWidth"
       :shows-active-state="showsActiveState"
       :button-size="buttonSize"
@@ -238,28 +214,6 @@ export const OutlineButton = () => ({
         optionsObj
       )
     },
-    btnStyle: {
-      default: optionsKnob(
-        'btn-style',
-        btnStyleOptions,
-        'outline',
-        optionsObj
-      )
-    },
-    iconType: {
-      default: optionsKnob(
-        'icon-type',
-        iconTypes,
-        '',
-        optionsObj
-      )
-    },
-    icon: {
-      default: text('icon', '')
-    },
-    iconAlign: {
-      default: optionsKnob('icon-align', iconAlignOptions, 'none', optionsObj)
-    },
     buttonSize: {
       default: optionsKnob('button-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
     },
@@ -280,13 +234,10 @@ export const OutlineButton = () => ({
     <br />
     <mew-button
       :btn-link="btnLink"
-      :icon-align="iconAlign"
       :disabled="disabled"
       :title="title"
       :color-theme="colorTheme"
-      :btn-style="btnStyle"
-      :icon="icon"
-      :icon-type="iconType"
+      btn-style="outline"
       :has-full-width="hasFullWidth"
       :shows-active-state="showsActiveState"
       :button-size="buttonSize"
@@ -318,28 +269,6 @@ export const TransparentButton = () => ({
         optionsObj
       )
     },
-    btnStyle: {
-      default: optionsKnob(
-        'btn-style',
-        btnStyleOptions,
-        'transparent',
-        optionsObj
-      )
-    },
-    icon: {
-      default: text('icon', '')
-    },
-    iconAlign: {
-      default: optionsKnob('icon-align', iconAlignOptions, 'none', optionsObj)
-    },
-    iconType: {
-      default: optionsKnob(
-        'icon-type',
-        iconTypes,
-        '',
-        optionsObj
-      )
-    },
     buttonSize: {
       default: optionsKnob('button-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
     },
@@ -360,13 +289,10 @@ export const TransparentButton = () => ({
     <br />
     <mew-button
       :btn-link="btnLink"
-      :icon-align="iconAlign"
       :disabled="disabled"
       :title="title"
       :color-theme="colorTheme"
-      :btn-style="btnStyle"
-      :icon="icon"
-      :icon-type="iconType"
+      btn-style="transparent"
       :has-full-width="hasFullWidth"
       :shows-active-state="showsActiveState"
       :button-size="buttonSize"
@@ -387,22 +313,11 @@ export const IconButton = () => ({
     btnLink: {
       default: text('btn-link', '')
     },
-    title: {
-      default: text('title', null)
-    },
     colorTheme: {
       default: optionsKnob(
         'color-theme',
         colorThemeOptions,
         'primary',
-        optionsObj
-      )
-    },
-    btnStyle: {
-      default: optionsKnob(
-        'btn-style',
-        btnStyleOptions,
-        'transparent',
         optionsObj
       )
     },
@@ -440,13 +355,86 @@ export const IconButton = () => ({
     <br />
     <mew-button
       :btn-link="btnLink"
-      :icon-align="iconAlign"
+      icon-align="left"
+      :disabled="disabled"
+      title=""
+      :color-theme="colorTheme"
+      btn-style="transparent"
+      icon="quickHelp"
+      icon-type="mew"
+      :has-full-width="hasFullWidth"
+      :shows-active-state="showsActiveState"
+      :button-size="buttonSize"
+    />
+  </div>`
+});
+
+
+
+export const IconTitleButton = () => ({
+  components: { 'mew-button': MewButton },
+  props: {
+    hasFullWidth: {
+      default: boolean('has-full-width', false)
+    },
+    disabled: {
+      default: boolean('disabled', false)
+    },
+    btnLink: {
+      default: text('btn-link', '')
+    },
+    title: {
+      default: text('title', 'Mew Button')
+    },
+    colorTheme: {
+      default: optionsKnob(
+        'color-theme',
+        colorThemeOptions,
+        'primary',
+        optionsObj
+      )
+    },
+    iconName: {
+      default: text('icon', 'quickHelp')
+    },
+    iconTitleAlign: {
+      default: optionsKnob('icon-align', iconAlignOptions, iconAlignOptions.left , optionsObj)
+    },
+    iconTitleType: {
+      default: optionsKnob(
+        'icon-type',
+        iconTypes,
+        iconTypes.mew,
+        optionsObj
+      )
+    },
+    buttonSize: {
+      default: optionsKnob('button-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
+    },
+    showsActiveState: {
+      default: boolean('shows-active-state', false)
+    },
+    enableDarkMode: {
+      default: boolean('dark mode ?', false)
+    }
+  },
+  watch: {
+    enableDarkMode(newVal) {
+      this.$vuetify.theme.dark = newVal === true ? true : false;
+    }
+  },
+  template: `
+    <div>
+    <br />
+    <mew-button
+      :btn-link="btnLink"
+      :icon-align="iconTitleAlign"
       :disabled="disabled"
       :title="title"
       :color-theme="colorTheme"
-      :btn-style="btnStyle"
-      :icon="icon"
-      :icon-type="iconType"
+      btn-style="transparent"
+      :icon="iconName"
+      :icon-type="iconTitleType"
       :has-full-width="hasFullWidth"
       :shows-active-state="showsActiveState"
       :button-size="buttonSize"
