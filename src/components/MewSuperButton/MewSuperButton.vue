@@ -16,10 +16,10 @@
     >
       <v-col
         :class="['left-container', 'full-width', isColumn ? 'text-center' : 'text-left']"
-        :cols="isColumn ? 12 : 9"
+        :cols="isColumn ? 12 : colsNum"
       >
         <div :class="['title-wrapper', 'd-flex', 'align-center', isColumn ? 'justify-center' : '' ]">
-          <div class="mew-heading-3 font-weight-bold truncate">
+          <div :class="[fontClass, 'font-weight-bold', 'truncate']">
             {{ title }}
           </div>
           <div
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div
-          class="mt-2 break-word"
+          class="mt-2 break-word font-weight-medium"
           v-if="subtitle"
         >
           {{ subtitle }}
@@ -78,6 +78,14 @@
 export default {
   name: 'MewSuperButton',
   props: {
+    colsNum: {
+      type: Number,
+      default: 9
+    },
+    fontClass: {
+      type: String,
+      default: 'mew-heading-3'
+    },
     /**
      * The button content will be set as a column rather than row.
      */

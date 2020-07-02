@@ -45,9 +45,15 @@ export const MEWStepper = () => ({
       :items="items"
       :on-step="onStep"
     >
-      <template v-slot:stepperContent1>
-        <span>This is a placeholder</span>
+      <template v-if="onStep === 1" v-slot:outsideStepContent1>
+        <span>1.This is a placeholder outside</span>
       </template>
+      <template v-if="onStep === 2" v-slot:outsideStepContent2>
+        <span>2.This is a placeholder outside</span>
+      </template>
+      <template v-if="onStep === 3" v-slot:outsideStepContent3>
+      <span>3.This is a placeholder outside</span>
+    </template>
     </mew-stepper>
   </div>`
 });

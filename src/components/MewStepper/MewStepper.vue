@@ -1,25 +1,27 @@
 <template>
-  <v-stepper
-    light
-    class="mew-stepper"
-    v-model="stepNumber"
-  >
-    <v-stepper-header class="justify-center full-height">
-      <v-stepper-step
-        :class="['pr-0', 'font-weight-medium', 'ml-n4', stepNumber === item.step ? 'active' : '', stepNumber > item.step ? 'complete' : '' ]"
-        color="expandHeader"
-        v-for="(item, i) in items"
-        :key="i"
-        :step="item.name"
-      />
-    </v-stepper-header>
-
-    <v-stepper-items> 
-      <v-stepper-content :step="stepNumber">
-        <slot :name="'stepperContent' + stepNumber" />
-      </v-stepper-content>
-    </v-stepper-items>
-  </v-stepper>
+  <div>
+    <v-stepper
+      color="primary"
+      class="mew-stepper"
+      v-model="stepNumber"
+    >
+      <v-stepper-header class="justify-center full-height">
+        <v-stepper-step
+          :class="['pr-0', 'font-weight-medium', 'ml-n4', stepNumber === item.step ? 'active' : '', stepNumber > item.step ? 'complete' : '' ]"
+          color="expandHeader"
+          v-for="(item, i) in items"
+          :key="i"
+          :step="item.name"
+        />
+      </v-stepper-header>
+    </v-stepper>
+    <div
+      v-for="(step, i) in stepNumber"
+      :key="step + i"
+    >
+      <slot :name="'outsideStepContent' + step" />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -51,6 +53,9 @@ export default {
 
 <style lang="scss">
 .mew-stepper {
+  &.v-stepper {
+    box-shadow: none;
+  }
   .v-stepper__step {
     min-width: 250px;
     .right-border-img {

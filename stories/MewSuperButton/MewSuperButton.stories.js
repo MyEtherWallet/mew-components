@@ -3,7 +3,8 @@ import {
   text,
   boolean,
   optionsKnob,
-  files
+  files,
+  number
 } from '@storybook/addon-knobs';
 import MewSuperButton from '@/components/MewSuperButton/MewSuperButton.vue';
 import MewSuperButtonDoc from './MewSuperButtonDoc.mdx';
@@ -69,6 +70,12 @@ export const MEWSuperButton = () => ({
     },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
+    },
+    colsNum: {
+      default: number('cols-num', 9)
+    },
+    fontClass: {
+      default: text('font-class', 'mew-heading-3')
     }
   },
   watch: {
@@ -80,6 +87,8 @@ export const MEWSuperButton = () => ({
     <div>
     <br />
     <mew-super-button
+      :cols-num="colsNum"
+      :font-class="fontClass"
       :isColumn="isColumn"
       :title="title"
       :subtitle="subtitle"

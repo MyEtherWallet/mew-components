@@ -15,7 +15,7 @@
         :color="colorTheme"
       > 
         <div class="header-container">
-          <span :class="['ml-2', item.tooltip? 'd-flex align-center' :'']"> 
+          <span :class="['ml-2','mew-heading-3', item.tooltip? 'd-flex align-center' :'']"> 
             {{ item.name }}
             <tooltip
               class="ml-1"
