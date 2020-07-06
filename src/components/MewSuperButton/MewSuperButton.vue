@@ -232,6 +232,7 @@ export default {
 .v-application {
   .v-btn.mew-super-button {
     border-radius: 12px;
+    flex: auto;
     height: 100%;
     text-transform: none;
 
