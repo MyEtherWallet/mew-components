@@ -5,11 +5,16 @@ import {
   object
 } from '@storybook/addon-knobs';
 import WarningSheet from '@/components/WarningSheet/WarningSheet.vue';
+import WarningSheetDoc from './WarningSheet.mdx';
 
 export default {
   title: 'WarningSheet',
   parameters: {
-    component: WarningSheet
+    component: WarningSheet,
+    docs: {
+      page: WarningSheetDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs]
 };

@@ -44,24 +44,14 @@ export default {
     height: {
       type: String,
       default: '64px'
-    },
-    /**
-     * Blockie size
-     */
-    size: {
-      type: Number,
-      default: 8
-    },
-    /**
-     * Blockie scale
-     */
-    scale: {
-      type: Number,
-      default: 16
     }
   },
   data() {
-    return {};
+    return {
+      scale: 16,
+      size: 8
+
+    };
   },
   watch: {
     address() {

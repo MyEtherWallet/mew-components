@@ -3,7 +3,6 @@ import {
   text,
   boolean,
   optionsKnob,
-  files,
   number
 } from '@storybook/addon-knobs';
 import MewSuperButton from '@/components/MewSuperButton/MewSuperButton.vue';
@@ -29,6 +28,11 @@ const colorThemeOptions = {
 const optionsObj = {
   display: 'inline-radio'
 };
+
+const iconTypes = {
+  mdi: 'mdi',
+  mew: 'mew'
+}
 
 export const MEWSuperButton = () => ({
   components: { 'mew-super-button': MewSuperButton },
@@ -63,10 +67,18 @@ export const MEWSuperButton = () => ({
       )
     },
     titleIcon: {
-      default: files('title-icon', '.png, .svg', '')
+      default: text('title-icon', '')
     },
     rightIcon: {
-      default: files('right-icon', '.png, .svg', '')
+      default: text('right-icon', '')
+    },
+    iconType: {
+      default: optionsKnob(
+        'icon-type',
+        iconTypes,
+        '',
+        optionsObj
+      )
     },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
@@ -87,6 +99,7 @@ export const MEWSuperButton = () => ({
     <div>
     <br />
     <mew-super-button
+      :icon-type="iconType"
       :cols-num="colsNum"
       :font-class="fontClass"
       :isColumn="isColumn"

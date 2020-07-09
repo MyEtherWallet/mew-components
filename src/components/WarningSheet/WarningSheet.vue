@@ -26,6 +26,8 @@
             <span class="text-uppercase font-weight-bold">{{ title }}</span>
             <span>
               {{ description }}
+            </span>
+            <span>
               <a
                 :href="linkObj.url"
               >{{ linkObj.title }}

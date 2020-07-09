@@ -27,11 +27,23 @@
             v-if="showIcon(titleIcon) && !isColumn"
           >
             <img
-              v-if="showIcon(titleIcon)"
+              v-if="showImgIcon(titleIcon)"
               class="icon title-icon"
               :src="titleIcon"
               alt="Icon"
             >
+            <mew-icon
+              :img-height="20"
+              class="icon title-icon"
+              v-if="showMewIcon(titleIcon)"
+              :icon-name="titleIcon"
+            />
+            <v-icon
+              class="icon title-icon"
+              v-if="showMdiIcon(titleIcon)"
+            >
+              {{ titleIcon }}
+            </v-icon>
           </div>
         </div>
         <div
@@ -64,24 +76,47 @@
           {{ note }}
         </div>
         <img
-          v-if="showIcon(rightIcon)"
+          v-if="showImgIcon(rightIcon)"
           class="icon right-icon"
           :src="rightIcon"
           alt="Icon"
         >
+        <mew-icon
+          :img-height="100"
+          class="icon right-icon"
+          v-if="showMewIcon(rightIcon)"
+          :icon-name="rightIcon"
+        />
+        <v-icon
+          class="icon right-icon"
+          v-if="showMdiIcon(rightIcon)"
+        >
+          {{ rightIcon }}
+        </v-icon>
       </v-col>
     </v-row>
   </v-btn>
 </template>
 
 <script>
+import MewIcon from '@/components/MewIcon/MewIcon.vue';
+
 export default {
   name: 'MewSuperButton',
+    components: {
+    'mew-icon': MewIcon
+  },
   props: {
+    /**
+     * The number of cols for the left side to take up.
+     */
     colsNum: {
       type: Number,
       default: 9
     },
+    /**
+     * The font size class that is added to the mew super button title.
+     */
     fontClass: {
       type: String,
       default: 'mew-heading-3'
@@ -129,6 +164,13 @@ export default {
       default: ''
     },
     /**
+     * The type of icon: mew, mdi, or img
+     */
+    iconType: {
+      type: String,
+      default: 'mew'
+    },
+    /**
      * The text that will go on the upper right corner. Will not display if right-icon is true.
      */
     note: {
@@ -171,10 +213,24 @@ export default {
         basic: 'basic',
         primary: 'primary'
       },
-      active: false
+      active: false,
+      iconTypes: {
+        mew: 'mew',
+        mdi: 'mdi',
+        img: 'img'
+      }
     };
   },
   methods: {
+    showMewIcon(icon) {
+      return this.iconType.toLowerCase() === this.iconTypes.mew && this.showIcon(icon)
+    },
+    showMdiIcon(icon) {
+      return this.iconType.toLowerCase() === this.iconTypes.mdi && this.showIcon(icon)
+    },
+    showImgIcon(icon) {
+      return this.iconType.toLowerCase() === this.iconTypes.img && this.showIcon(icon)
+    },
     getRowClasses() {
       const classes = [];
       if (this.showIcon(this.rightIcon)) {
@@ -259,6 +315,7 @@ export default {
   .left-container {
     .title-wrapper {
       .title-icon {
+        font-size: 18px;
         max-height: 20px;
         margin-left: 2px;
       }
@@ -292,6 +349,7 @@ export default {
     }
 
     .right-icon {
+      font-size: 100px;
       max-height: 80px;
     }
   }
