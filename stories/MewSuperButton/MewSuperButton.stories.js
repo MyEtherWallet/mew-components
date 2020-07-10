@@ -54,6 +54,9 @@ export const MEWSuperButton = () => ({
     },
     isNew: {
       default: boolean('is-new', false)
+    }, 
+    newLabel: {
+      default: text('new-label', '')
     },
     isColumn: {
       default: boolean('is-column', false)
@@ -99,6 +102,7 @@ export const MEWSuperButton = () => ({
     <div>
     <br />
     <mew-super-button
+      :new-label="newLabel"
       :icon-type="iconType"
       :cols-num="colsNum"
       :font-class="fontClass"
