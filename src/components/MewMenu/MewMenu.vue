@@ -128,11 +128,11 @@ export default {
   }
 
   .v-list:first-of-type > .v-list-item--link {
-    padding-top: 15px;
+    padding-top: 10px;
   }
 
  .v-list:last-of-type > .v-list-item--link {
-    padding-bottom: 15px;
+    padding-bottom: 5px;
   }
 
 }

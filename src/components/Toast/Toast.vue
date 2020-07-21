@@ -26,8 +26,8 @@
               </v-icon>
               {{ text }}
               <a
+                @click="onClick"
                 :class="getLinkClasses()"
-                :href="linkObj.url"
               >{{ linkObj.title }}
               </a>
               <slot name="infoBtn" />
@@ -110,6 +110,9 @@ export default {
     this.setTimer();
   },
   methods: {
+    onClick() {
+      this.linkObj.url !== '' ? window.open(this.linkObj.url) : this.$emit('onClick')
+    },
     showToast() {
       this.showsToast = true;
       this.setTimer();

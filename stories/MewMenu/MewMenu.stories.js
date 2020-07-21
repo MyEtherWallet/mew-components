@@ -28,7 +28,7 @@ export const MEWMenu = () => ({
       default: boolean('dark mode ?', false)
     },
     listObj: {
-      default: object('items', listObj)
+      default: object('list-obj', listObj)
     },
     styleClasses: {
       default: text('style-classes', '')

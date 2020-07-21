@@ -82,5 +82,6 @@ export default {
 <style lang="scss" scoped>
 .info-card {
   border: 1px solid var(--v-swapDisable-base);
+  border-radius: 10px;
 }
 </style>

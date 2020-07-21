@@ -24,10 +24,10 @@
           </div>
           <div
             class="body-2"
-            v-if="showIcon(titleIcon) && !isColumn"
+            v-if="hasSrc(titleIcon) && !isColumn"
           >
             <img
-              v-if="showImgIcon(titleIcon)"
+              v-if="showTitleIcon(titleIcon, 'img')"
               class="icon title-icon"
               :src="titleIcon"
               alt="Icon"
@@ -35,12 +35,12 @@
             <mew-icon
               :img-height="20"
               class="icon title-icon"
-              v-if="showMewIcon(titleIcon)"
+              v-if="showTitleIcon(titleIcon, 'mew')"
               :icon-name="titleIcon"
             />
             <v-icon
-              class="icon title-icon"
-              v-if="showMdiIcon(titleIcon)"
+              :class="['icon', 'title-icon', titleIconClass]"
+              v-if="showTitleIcon(titleIcon, 'mdi')"
             >
               {{ titleIcon }}
             </v-icon>
@@ -70,13 +70,13 @@
           </div>
         </div>
         <div
-          v-if="!showIcon(rightIcon) && note && !isColumn"
+          v-if="!hasSrc(rightIcon) && note && !isColumn"
           class="note truncate text-uppercase caption warning--text text--darken-1"
         >
           {{ note }}
         </div>
         <img
-          v-if="showImgIcon(rightIcon)"
+          v-if="showRightIcon(rightIcon, 'img')"
           class="icon right-icon"
           :src="rightIcon"
           alt="Icon"
@@ -84,12 +84,12 @@
         <mew-icon
           :img-height="100"
           class="icon right-icon"
-          v-if="showMewIcon(rightIcon)"
+          v-if="showRightIcon(rightIcon, 'mew')"
           :icon-name="rightIcon"
         />
         <v-icon
           class="icon right-icon"
-          v-if="showMdiIcon(rightIcon)"
+          v-if="showRightIcon(rightIcon, 'mdi')"
         >
           {{ rightIcon }}
         </v-icon>
@@ -166,7 +166,21 @@ export default {
     /**
      * The type of icon: mew, mdi, or img
      */
-    iconType: {
+    titleIconType: {
+      type: String,
+      default: 'mew'
+    },
+    /**
+     * Adds the color class to the title icon.
+     */
+    titleIconClass: {
+      type: String,
+      default: ''
+    },
+    /**
+     * The type of icon: mew, mdi, or img
+     */
+    rightIconType: {
       type: String,
       default: 'mew'
     },
@@ -222,18 +236,15 @@ export default {
     };
   },
   methods: {
-    showMewIcon(icon) {
-      return this.iconType.toLowerCase() === this.iconTypes.mew && this.showIcon(icon)
+    showTitleIcon(icon, type) {
+      return this.titleIconType.toLowerCase() === this.iconTypes[type]
     },
-    showMdiIcon(icon) {
-      return this.iconType.toLowerCase() === this.iconTypes.mdi && this.showIcon(icon)
-    },
-    showImgIcon(icon) {
-      return this.iconType.toLowerCase() === this.iconTypes.img && this.showIcon(icon)
+    showRightIcon(icon, type) {
+      return this.rightIconType.toLowerCase() === this.iconTypes[type] && this.hasSrc(icon)
     },
     getRowClasses() {
       const classes = [];
-      if (this.showIcon(this.rightIcon)) {
+      if (this.hasSrc(this.rightIcon)) {
         classes.push('text-center');
       }
 
@@ -274,7 +285,7 @@ export default {
 
       return classes;
     },
-    showIcon(src) {
+    hasSrc(src) {
       if (src === '' || src.length <= 0 ) {
         return false;
       }

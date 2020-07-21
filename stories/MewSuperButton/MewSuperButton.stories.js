@@ -69,15 +69,26 @@ export const MEWSuperButton = () => ({
         optionsObj
       )
     },
+    titleIconClass: {
+      default: text('title-icon-class', '')
+    },
     titleIcon: {
       default: text('title-icon', '')
     },
     rightIcon: {
       default: text('right-icon', '')
     },
-    iconType: {
+    titleIconType: {
       default: optionsKnob(
-        'icon-type',
+        'title-icon-type',
+        iconTypes,
+        '',
+        optionsObj
+      )
+    },
+    rightIconType: {
+      default: optionsKnob(
+        'right-icon-type',
         iconTypes,
         '',
         optionsObj
@@ -103,7 +114,8 @@ export const MEWSuperButton = () => ({
     <br />
     <mew-super-button
       :new-label="newLabel"
-      :icon-type="iconType"
+      :title-icon-type="titleIconType"
+      :right-icon-type="rightIconType"
       :cols-num="colsNum"
       :font-class="fontClass"
       :isColumn="isColumn"
@@ -116,6 +128,7 @@ export const MEWSuperButton = () => ({
       :isNew="isNew"
       :colorTheme="colorTheme"
       :disabled="disabled"
+      :title-icon-class="titleIconClass"
     />
   </div>`
 });

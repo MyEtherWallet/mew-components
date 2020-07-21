@@ -66,9 +66,10 @@ export const toast = () => ({
   template: `
     <div>
     <br />
-    <mew-button title="Show Toast" @click.native=onClick() />
+    <mew-button title="Show Toast" @click.native=onBtnClick() />
     <toast
       ref="toast" 
+      @onClick="onClick"
       :can-close="canClose"
       :link-obj="linkObj"
       :text="text"
@@ -78,8 +79,12 @@ export const toast = () => ({
     />
   </div>`,
   methods: {
-    onClick() {
+    onBtnClick() {
       this.$refs.toast.showToast();
+    },
+    onClick() {
+      // eslint-disable-next-line no-console
+      console.log('Button is clicked')
     }
   }
 });
