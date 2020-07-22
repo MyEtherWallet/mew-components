@@ -10,7 +10,7 @@
     depressed
   >
     <v-row
-      class="pa-3 full-width"
+      class="pa-3 full-width align-center"
       justify="space-between"
       :class="getRowClasses()"
     >
@@ -52,7 +52,10 @@
         >
           {{ subtitle }}
         </div>
-        <div class="body-2 mt-1 tagLabel--text">
+        <div
+          v-if="tag"
+          class="body-2 mt-1 tagLabel--text"
+        >
           {{ tag }}
         </div>
       </v-col>

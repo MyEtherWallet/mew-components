@@ -111,7 +111,7 @@ export default {
   },
   methods: {
     onClick() {
-      this.linkObj.url !== '' ? window.open(this.linkObj.url) : this.$emit('onClick')
+      this.linkObj.url !== '' && this.linkObj.url ? window.open(this.linkObj.url) : this.$emit('onClick')
     },
     showToast() {
       this.showsToast = true;

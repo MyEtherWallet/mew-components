@@ -21,10 +21,34 @@
           :ripple="false"
         /> 
       </template>
-      <template v-slot:item.edit="{ item }">
+      <template v-slot:item.token="{item}">
+        <div class="d-flex align-center">
+          <img
+            height="20"
+            v-if="item.tokenImg"
+            :src="item.tokenImg"
+            :alt="item.token"
+          >
+          <span>{{ item.token }}</span>
+        </div>
+      </template>
+      <template v-slot:item.change="{ item }">
+        <div class="d-flex align-center">
+          <mew-chart
+            v-if="item.changeData"
+            :data="item.changeData"
+            :color="item.status === '+' ? '#05c0a5' : '#ff445b'"
+          />
+          <span :class="[item.status === '+' ? 'primary--text' : 'error--text', 'pl-3', 'd-flex']">{{ item.change }}
+            <v-icon class="primary--text" v-if="item.status === '+'">mdi-arrow-up-thick</v-icon>
+            <v-icon class="error--text" v-if="item.status === '-'">mdi-arrow-down-thick</v-icon>
+          </span>
+        </div>
+      </template>
+      <template v-slot:item.callToAction="{ item }">
         <mew-btn
-          @click.native="editRow(item)"
-          :title="item.edit"
+          @click.native="onClick(item)"
+          :title="item.callToAction"
           btn-style="transparent"
         />
       </template>
@@ -128,12 +152,14 @@ import CopyToClipboard from '@/helpers/copy.js';
 import Blockie from '@/components/Blockie/Blockie.vue';
 import Toast from '@/components/Toast/Toast.vue';
 import MewButton from '@/components/MewButton/MewButton.vue';
+import MewChart from '@/components/MewChart/MewChart.vue';
 
 export default {
   components: {
     'blockie': Blockie,
     'toast': Toast,
-    'mew-btn': MewButton
+    'mew-btn': MewButton,
+    'mew-chart': MewChart
   },
   props: {
     /**
@@ -200,8 +226,8 @@ export default {
       CopyToClipboard(id);
       this.$refs.toast.showToast();
     },
-    editRow(item) {
-      this.$emit('editRow', item);
+    onClick(item) {
+      this.$emit('onClick', item);
     }
   }
 }
@@ -215,7 +241,7 @@ export default {
     border-radius: 4px;
     table-layout: fixed;
     .v-data-table-header {
-      background-color: var(--v-selectHover-base);
+      background-color: var(--v-tableHeader-base);
       th {
         border-bottom: none !important;
         font-size: 11px;

@@ -65,13 +65,13 @@ const tableSelectHeaders = [
     filterable: false,
     width: '100%'
   },
-  {
-    text: 'Eth Balance',
-    value: 'ethBalance',
-    sortable: false,
-    filterable: false,
-    width: '40%'
-  },
+  // {
+  //   text: 'Eth Balance',
+  //   value: 'ethBalance',
+  //   sortable: false,
+  //   filterable: false,
+  //   width: '30%'
+  // },
   {
     text: '#Token',
     value: 'token',
@@ -81,11 +81,18 @@ const tableSelectHeaders = [
     width: '30%'
   },
   {
-    text: '',
-    value: 'edit',
+    text: '24H Changes',
+    value: 'change',
     sortable: false,
     filterable: false,
-    width: '40%'
+    width: '30%'
+  },
+  {
+    text: '',
+    value: 'callToAction',
+    sortable: false,
+    filterable: false,
+    width: '30%'
   }
 ]
 
@@ -94,18 +101,25 @@ const tableSelectData = [
   {
     ethBalance: '0.0001 ETH',
     token: '21',
+    tokenImg: 'https://cdn4.iconfinder.com/data/icons/cryptocoins/227/ETH-512.png',
     address: '0xAECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
   },
   {
     ethBalance: '2.23 ETH',
     token: '10',
-    address: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
+    address: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
+    change: '0.23%',
+    status: '+',
+    changeData: {
+      x: [1, 4, 10, 4],
+      y: [5, 1, 34, 43]
+    }
   },
   {
     ethBalance: '0.23 ETH',
     token: '8',
     address: '0xAECFF9CD2367cdbb726E904cD6397eDFcAe6068D',
-    edit: 'Edit'
+    callToAction: 'Edit'
   }
 ]
 
@@ -152,7 +166,7 @@ export const mewTable = () => ({
       :table-data="hasSelect ? tableSelectData : tableData"
       :table-headers="hasSelect ? tableSelectHeaders : tableHeaders"
       @selectedRow="onSelect"
-      @editRow="editRow"
+      @onClick="onClick"
     />
     
   </div>`,
@@ -161,9 +175,9 @@ export const mewTable = () => ({
       // eslint-disable-next-line no-console
       console.log('selected:', newVal);
     },
-    editRow(newVal) {
+    onClick(newVal) {
       // eslint-disable-next-line no-console
-      console.log('edit row:', newVal);
+      console.log('on click, row:', newVal);
     }
   }
 });

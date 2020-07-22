@@ -4,6 +4,7 @@
     active-class="active-carousel-item"
     :cycle="true"
     :show-arrows-on-hover="true"
+    :height="carouselHeight"
   >
     <v-carousel-item
       :ripple="true"
@@ -28,6 +29,13 @@ export default {
     totalSlides: {
       type: [ Number, Array ],
       default: 0
+    },
+    /**
+     * The height of the carousel
+     */
+    carouselHeight: {
+      type: String,
+      default: '200'
     }
   }
 
