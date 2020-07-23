@@ -53,7 +53,9 @@ import Vuetify, {
   VCarouselItem,
   VBtnToggle,
   VDataTable,
-  VSimpleCheckbox
+  VSimpleCheckbox,
+  VListGroup,
+  VListGroupItem
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -108,7 +110,9 @@ Vue.use(Vuetify, {
     VCarouselItem,
     VBtnToggle,
     VDataTable,
-    VSimpleCheckbox
+    VSimpleCheckbox,
+    VListGroup,
+    VListGroupItem
   }
 });
 

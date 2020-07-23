@@ -7,30 +7,30 @@
     :color="colorTheme"
     :disabled="disabled"
     depressed
-    :outlined="btnStyle.toLowerCase() === btnStyles.outline"
-    :text="btnStyle.toLowerCase() === btnStyles.transparent"
+    :outlined="isOutline"
+    :text="isTransparent"
   >
     <img
-      v-if="showImgIcon() && showIconAlignLeft()"
+      v-if="showIcon('img') && !showIconAlignRight"
       class="icon mr-1"
       :src="icon"
       alt="icon"
     >
     <v-icon
       class="icon mr-1"
-      v-if="showMdiIcon() && showIconAlignLeft()"
+      v-if="showIcon('mdi') && !showIconAlignRight"
     >
       {{ icon }}
     </v-icon>
     <mew-icon
       :img-height="30"
       class="icon mr-1"
-      v-if="showMewIcon() && showIconAlignLeft()"
+      v-if="showIcon('mew') && !showIconAlignRight"
       :icon-name="icon"
     />
     <span>{{ title }}</span>
     <img
-      v-if="showImgIcon() && showIconAlignRight()"
+      v-if="showIcon('img') && showIconAlignRight"
       class="icon ml-1"
       :src="icon"
       alt="icon"
@@ -38,12 +38,12 @@
     <mew-icon
       :img-height="30"
       class="icon mr-1"
-      v-if="showMewIcon() && showIconAlignRight()"
+      v-if="showIcon('mew') && showIconAlignRight"
       :icon-name="icon"
     />
     <v-icon
       class="icon mr-1"
-      v-if="showMdiIcon() && showIconAlignRight()"
+      v-if="showIcon('mdi') && showIconAlignRight"
     >
       {{ icon }}
     </v-icon>
@@ -166,21 +166,27 @@ export default {
       active: false
     };
   },
-  methods: {
+  computed: {
+    isTransparent() {
+      return this.btnStyle.toLowerCase() === this.btnStyles.transparent
+    },
+    isOutline() {
+      return this.btnStyle.toLowerCase() === this.btnStyles.outline
+    },
+    isBackground() {
+      return this.btnStyle.toLowerCase() === this.btnStyles.background
+    },
+    isPlain() {
+      return this.colorTheme.toLowerCase() === this.colorThemes.white
+    },
     showIconAlignRight() {
       return this.iconAlign.toLowerCase() === this.iconAlignments.right
-    },
-    showIconAlignLeft() {
-      return this.iconAlign.toLowerCase() === this.iconAlignments.left
-    },
-    showMewIcon() {
-      return this.iconType.toLowerCase() === this.iconTypes.mew && this.showIcon(this.icon)
-    },
-    showMdiIcon() {
-      return this.iconType.toLowerCase() === this.iconTypes.mdi && this.showIcon(this.icon)
-    },
-    showImgIcon() {
-      return this.iconType.toLowerCase() === this.iconTypes.img && this.showIcon(this.icon)
+    }
+    
+  },
+  methods: {
+    showIcon(val) {
+      return this.iconType.toLowerCase() === this.iconTypes[val] && this.hasSrc(this.icon)
     },
     onBtnClick() {
       this.active = !this.active;
@@ -188,20 +194,8 @@ export default {
     getClasses() {
       const classes = [];
 
-      if (this.buttonSize.toLowerCase() === this.btnSizes.small) {
-        classes.push('small-btn', 'mew-caption');
-      }
-
-      if (this.buttonSize.toLowerCase() === this.btnSizes.medium) {
-        classes.push('medium-btn');     
-      }
-
-      if (this.buttonSize.toLowerCase() === this.btnSizes.large) {
-        classes.push('large-btn');
-      }
-      
-      if (this.buttonSize.toLowerCase() === this.btnSizes.xlarge) {
-        classes.push('xlarge-btn');
+      if (this.buttonSize.toLowerCase()) {
+        classes.push(this.buttonSize.toLowerCase() + '-btn', 'mew-caption');
       }
 
       if (this.hasFullWidth === true ) {
@@ -209,15 +203,15 @@ export default {
       }
       
       if (
-        this.btnStyle.toLowerCase() === this.btnStyles.background &&
-        this.colorTheme.toLowerCase() !== this.colorThemes.white
+        this.isBackground &&
+        !this.isPlain
       ) {
         classes.push('white--text');
       }
 
       if (
-        this.btnStyle.toLowerCase() === this.btnStyles.background &&
-        this.colorTheme.toLowerCase() === this.colorThemes.white
+        this.isBackground &&
+        this.isPlain
       ) {
         classes.push('primary--text');
       }
@@ -234,14 +228,14 @@ export default {
         this.active &&
         this.showsActiveState && 
         !this.disabled &&
-        this.btnStyle.toLowerCase() === this.btnStyles.outline
+        this.isOutline
       ) {
         classes.push('bg-white');
       }
 
       return classes;
     },
-    showIcon(src) {
+    hasSrc(src) {
       if (src === '' || src.length <= 0 ) {
         return false;
       }

@@ -42,7 +42,7 @@
           </v-row>
           <v-row 
             align="center"
-            class="pt-5"
+            class="pt-5 mb-6"
             justify="center"
           >
             <span

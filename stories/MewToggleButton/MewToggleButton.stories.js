@@ -25,7 +25,7 @@ const buttonTypes = {
 }
 
 export const mewToggleButton = () => ({
-  components: { 'mew-toggle-btn': MewToggleButton },
+  components: { 'mew-toggle-button': MewToggleButton },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)
@@ -48,16 +48,16 @@ export const mewToggleButton = () => ({
   template: `
     <div>
     <br />
-    <mew-toggle-btn
+    <mew-toggle-button
       :button-group="this.buttonType === 'default' ? buttonDefaultGroup : buttonPercentageGroup"
       :button-type="buttonType"
       @onBtnClick="onBtnClick"
     >
-      <template v-slot:btn0>
+      <template v-slot:btn1>
         <span v-if="buttonType === 'custom'">Btn1</span>
       </template>
 
-    </mew-toggle-btn>
+    </mew-toggle-button>
     
   </div>`,
   methods: {

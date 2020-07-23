@@ -4,8 +4,8 @@
       class="text-center"
       max-width="400"
       height="100%"
-      :persistent="true"
-      v-model="isOpen"
+      :persistent="false"
+      v-model="open"
     >
       <v-card>
         <v-card-title
@@ -115,10 +115,21 @@ export default {
   },
   data() {
     return {
+      open: false,
       showsErr: false,
       popupTypes: {
         error: 'error',
         confirm: 'confirm'
+      }
+    }
+  },
+  mounted() {
+    this.open = this.isOpen
+  },
+  watch: {
+    isOpen(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.open = newVal
       }
     }
   },

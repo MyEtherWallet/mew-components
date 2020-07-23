@@ -1,23 +1,34 @@
 <template>
-  <v-btn-toggle
-    :mandatory="buttonType.toLowerCase() === buttonTypes.default ? true : false"
-    :borderless="true"
-    class="mew-toggle-btn"
-  >
-    <v-btn
-      :class="getClasses()"
-      color="mewBg"
-      @click="onBtnClick(btn)"
-      v-for="(btn, i) in buttonGroup"
-      :key="btn + i"
+  <div>
+    <v-list-group v-if="isCustom">
+      <v-list-item-group
+        v-for="(btn, i) in buttonGroup"
+        :key="btn + i"
+      >
+        <slot :name="'btn' + (i + 1)" />
+      </v-list-item-group>
+    </v-list-group>
+    <v-btn-toggle
+      :mandatory="buttonType.toLowerCase() === buttonTypes.default ? true : false"
+      :borderless="true"
+      class="mew-toggle-btn"
+      v-if="!isCustom"
     >
-      {{ buttonType.toLowerCase() === buttonTypes.custom ? '' : btn }}
-      <slot :name="'btn' + (i + 1)" />
-    </v-btn>
-  </v-btn-toggle>
+      <v-btn
+        :class="getClasses()"
+        color="mewBg"
+        @click="onBtnClick(btn)"
+        v-for="(btn, i) in buttonGroup"
+        :key="btn + i"
+      >
+        {{ btn }}
+      </v-btn>
+    </v-btn-toggle>
+  </div>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -34,7 +45,7 @@ export default {
      * Accepts an array of button names. 
      */
     buttonGroup: {
-      type: Array,
+      type: [String, Array],
       default: function() {
         return [];
       }
@@ -63,6 +74,14 @@ export default {
       }
 
       return classes;
+    }
+  },
+  computed: {
+    isDefault() {
+      return this.buttonType.toLowerCase() === this.buttonTypes.default
+    },
+    isCustom()  {
+      return this.buttonType.toLowerCase() === this.buttonTypes.custom
     }
   }
 }
