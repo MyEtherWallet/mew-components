@@ -6,7 +6,7 @@
   >
     <v-btn
       :class="getClasses()"
-      color="white"
+      color="mewBg"
       @click="onBtnClick(btn)"
       v-for="(btn, i) in buttonGroup"
       :key="btn + i"

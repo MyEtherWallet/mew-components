@@ -32,7 +32,7 @@ export const MEWModule = () => ({
       default: boolean('dark mode ?', false)
     },
     colorType: {
-      default: text('color-type', 'white')
+      default: text('color-type', 'mewBg')
     },
     title: {
       default: text('title', 'Title')

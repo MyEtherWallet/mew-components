@@ -6,7 +6,8 @@
     >
       <v-sheet 
         height="100%" 
-        color="superPrimaryHover"
+        color="overlayBg"
+        class="mew-overlay-container"
       >
         <v-container>
           <v-row
@@ -45,12 +46,11 @@
             justify="center"
           >
             <span
-              color="titlePrimary--text"
-              class="mew-subtitle"
+              class="mew-subtitle titlePrimary--text"
             >{{ title }}</span>
           </v-row>
           <div class="body-container d-flex flex-column align-center justify-center">
-            <slot name="mewComponent" />
+            <slot name="mewOverlayBody" />
             <mew-button
               class="mt-4"
               v-if="btnText"
@@ -148,3 +148,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.mew-overlay-container {
+  overflow: auto;
+}
+</style>

@@ -21,7 +21,8 @@ export const All = () => ({
           {name: 'primary base', lightHex: '#05c0a5'}, 
           {name: 'primaryHover', lightHex: '#1eb19b', darkHex: '#1eb19b'}, 
           {name: 'primaryActive', lightHex: '#56c5b4', darkHex: '#56c5b4'},
-          {name: 'primaryOutlineActive', lightHex: '#baede6', darkHex: '#15796a'}
+          {name: 'primaryOutlineActive', lightHex: '#baede6', darkHex: '#15796a'},
+          {name: 'overlayBg', lightHex: '#f5fdfb', darkHex: '#151a29'}
         ]
       }, {
         shades: [
@@ -47,6 +48,8 @@ export const All = () => ({
           {name: 'titlePrimary', lightHex: '#0b2840', darkHex: '#95aed8'},
           {name: 'textPrimary', lightHex: '#667f9b', darkHex: '#4e5a6e'},
           {name: 'textSecondary', lightHex: '#999999', darkHex: '#999999'},
+          {name: 'textPrimaryModule', lightHex: '#667f9b', darkHex: '#95aed8'},
+          {name: 'textSecondaryModule', lightHex: '#999999', darkHex: '#95aed8'},
           {name: 'captionPrimary', lightHex: '#a9bcd2', darkHex: '#a9bcd2'}
         ]
       },
@@ -79,13 +82,15 @@ export const All = () => ({
           {name: 'txOut', lightHex: '#ffaf8f', darkHex: '#ffaf8f'},
           {name: 'swap', lightHex: '#184f90', darkHex: '#0f1320'},
           {name: 'swapDisable', lightHex: '#f8f8f8', darkHex: '#0f1320'},
-          {name: 'tableHeader', lightHex: '#f9f9f9', darkHex: '#f9f9f9'}
+          {name: 'tableHeader', lightHex: '#f9f9f9', darkHex: '#0f1320'}
         ]
       },
       {
         shades: [
           {name: 'disabled', lightHex: '#cecece', darkHex: '#1f2b42'},
-          {name: 'white', lightHex: '#fff', darkHex: '#fff'}
+          {name: 'white', lightHex: '#fff', darkHex: '#fff'},
+          {name: 'mewBg', lightHex: '#fff', darkHex: '#151a29'},
+          {name: 'boxShadow', lightHex: '#ececec', darkHex: '#3c3c3c'}
         ]
       },
       {

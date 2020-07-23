@@ -1,6 +1,6 @@
 <template>
   <v-sheet 
-    :class="[ hasElevation ? 'elevation-2' : '']"
+    :class="[ hasElevation ? 'elevation-2' : '', 'full-width', 'module-container']"
     :color="colorType"
     height="100%"
   >
@@ -18,9 +18,9 @@
             >
           </div>
           <div class="d-flex flex-column">
-            <span class="mew-heading-3 textPrimary--text text-uppercase">{{ subtitle }}</span>
+            <span class="mew-heading-3 textPrimaryModule--text text-uppercase">{{ subtitle }}</span>
             <span :class="['titlePrimary--text', titleSize]">{{ title }}</span>
-            <span class="mew-body textSecondary--text font-weight-bold">{{ caption }}</span>
+            <span class="mew-body textSecondaryModule--text font-weight-bold">{{ caption }}</span>
           </div>
           <div class="right-icon">
             <img
@@ -132,7 +132,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.indicator {
-  border-left: 4px solid var(--v-primary-base);
+.module-container {
+  border-radius: 10px;
+  box-shadow: 0 0 15px var(--v-box-shadow-base);
+  .indicator {
+    border-left: 4px solid var(--v-primary-base);
+  }
 }
 </style>

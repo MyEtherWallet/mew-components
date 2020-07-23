@@ -33,15 +33,21 @@
         </div>
       </template>
       <template v-slot:item.change="{ item }">
-        <div class="d-flex align-center">
+        <div class="chart-container d-flex align-center">
           <mew-chart
             v-if="item.changeData"
             :data="item.changeData"
             :color="item.status === '+' ? '#05c0a5' : '#ff445b'"
           />
           <span :class="[item.status === '+' ? 'primary--text' : 'error--text', 'pl-3', 'd-flex']">{{ item.change }}
-            <v-icon class="primary--text" v-if="item.status === '+'">mdi-arrow-up-thick</v-icon>
-            <v-icon class="error--text" v-if="item.status === '-'">mdi-arrow-down-thick</v-icon>
+            <v-icon
+              class="primary--text"
+              v-if="item.status === '+'"
+            >mdi-arrow-up-thick</v-icon>
+            <v-icon
+              class="error--text"
+              v-if="item.status === '-'"
+            >mdi-arrow-down-thick</v-icon>
           </span>
         </div>
       </template>
@@ -236,6 +242,9 @@ export default {
 <style lang="scss">
 // mew-table
 .mew-table {
+  &.v-data-table {
+    background-color: var(--v-mewBg-base);
+  }
   table {
     border: 1px solid var(--v-selectHover-base);
     border-radius: 4px;
@@ -253,6 +262,9 @@ export default {
         }
       }
     }
+  }
+  .chart-container {
+    justify-content: flex-end;
   }
 
   .v-icon {
