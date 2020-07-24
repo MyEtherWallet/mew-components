@@ -63,7 +63,7 @@
         :cols="isColumn ? 12 : 3"
         :class="['right-container', isColumn ? 'text-center, pb-0' : 'd-flex align-center justify-center text-right']"
       >
-        <slot name="rightSlot" />
+        <slot name="contentSlot" />
         <div
           v-if="isNew"
           class="label-container d-flex align-center text-uppercase"
@@ -91,7 +91,7 @@
           :icon-name="rightIcon"
         />
         <v-icon
-          class="icon right-icon"
+          class="icon right-icon primary--text"
           v-if="showRightIcon(rightIcon, 'mdi')"
         >
           {{ rightIcon }}

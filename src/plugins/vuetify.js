@@ -12,7 +12,7 @@ import Vuetify, {
   VCardActions,
   VCol,
   VContainer,
-  VContent,
+  VMain,
   VDialog,
   VDivider,
   VIcon,
@@ -55,7 +55,7 @@ import Vuetify, {
   VDataTable,
   VSimpleCheckbox,
   VListGroup,
-  VListGroupItem
+  VListItemGroup
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -69,7 +69,7 @@ Vue.use(Vuetify, {
     VCardActions,
     VCol,
     VContainer,
-    VContent,
+    VMain,
     VDialog,
     VDivider,
     VIcon,
@@ -112,7 +112,7 @@ Vue.use(Vuetify, {
     VDataTable,
     VSimpleCheckbox,
     VListGroup,
-    VListGroupItem
+    VListItemGroup
   }
 });
 

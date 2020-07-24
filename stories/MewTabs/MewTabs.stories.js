@@ -29,6 +29,12 @@ export const MEWTabs = () => ({
     },
     isBlock: {
       default: boolean('is-block', false)
+    },
+    isVertical: {
+      default: boolean('is-vertical', false)
+    },
+    hasUnderline: {
+      default: boolean('has-underline', false)
     }
   },
   watch: {
@@ -40,14 +46,16 @@ export const MEWTabs = () => ({
     <div>
     <br />
     <mew-tabs
+      :is-vertical="isVertical"
+      :has-underline="hasUnderline"
       :items="items"
       :is-block="isBlock"
       @onTab="onTab"
     >
-      <template v-slot:tabItemContent0>
+      <template v-slot:tabItemContent1>
         <span v-if="!isBlock"> I am a placeholder tab </span>
       </template>
-      <template v-slot:tabContent0>
+      <template v-slot:tabContent2>
         <span v-if="isBlock"> I am a placeholder tab </span>
       </template>
     </mew-tabs>

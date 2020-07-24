@@ -1,13 +1,21 @@
 <template>
   <div>
-    <v-list-group v-if="isCustom">
-      <v-list-item-group
+    <v-btn-toggle
+      :mandatory="true"
+      :borderless="true"
+      class="mew-toggle-btn"
+      v-if="isCustom"
+    >
+      <div
+        :class="getClasses()"
+        color="mewBg"
+        @click="onBtnClick(btn)"
         v-for="(btn, i) in buttonGroup"
         :key="btn + i"
       >
         <slot :name="'btn' + (i + 1)" />
-      </v-list-item-group>
-    </v-list-group>
+      </div>
+    </v-btn-toggle>
     <v-btn-toggle
       :mandatory="buttonType.toLowerCase() === buttonTypes.default ? true : false"
       :borderless="true"

@@ -1,13 +1,15 @@
 <template>
   <div>
     <v-tabs
-      :class="[isBlock ? 'mew-tabs-block elevation-2' : '']"
+      :class="[hasUnderline ? 'mew-tabs-underline' : '', isBlock ? 'mew-tabs-block elevation-2' : '']"
       background-color="transparent"
       color="titlePrimary"
       slider-size="3"
       v-model="onTab"
-      :hide-slider="isBlock"
+      :hide-slider="isBlock || isVertical"
       :grow="isBlock"
+      :vertical="isVertical"
+      :align-with-title="!isBlock && !isVertical"
     >
       <v-tab
         :class="[isBlock ? 'mew-tab-block' : 'mew-heading-2', 'capitalize']"
@@ -25,7 +27,7 @@
             :hide-on-leave="true"
             mode="out-in"
           >
-            <slot :name="'tabItemContent' + i" />
+            <slot :name="'tabItemContent' + (i + 1)" />
           </v-slide-x-reverse-transition>
         </v-tab-item>
       </v-tabs-items>
@@ -41,7 +43,7 @@
       >
         <slot
           v-if="onTab === i"
-          :name="'tabContent' + i"
+          :name="'tabContent' + (i + 1)"
         />
       </v-slide-x-reverse-transition>
     </div>
@@ -57,6 +59,20 @@ export default {
     }
   },
   props: {
+    /**
+     * Sets the tabs as vertical.
+     */
+    hasUnderline: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Sets the tabs as vertical.
+     */
+    isVertical: {
+      type: Boolean,
+      default: false
+    },
     /**
      * Tab content
      */
@@ -87,7 +103,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+.mew-tabs-underline {
+  .v-slide-group__content {
+    border-bottom: 1px solid var(--v-inputBorder-base);
+  }
+}
 .mew-tabs-block {
   border-radius: 12px !important;
 

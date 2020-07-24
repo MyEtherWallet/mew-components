@@ -54,7 +54,10 @@ export const mewToggleButton = () => ({
       @onBtnClick="onBtnClick"
     >
       <template v-slot:btn1>
-        <span v-if="buttonType === 'custom'">Btn1</span>
+        <v-btn>Button 1</v-btn>
+      </template>
+      <template v-slot:btn2>
+        <v-btn>Button 2</v-btn>
       </template>
 
     </mew-toggle-button>

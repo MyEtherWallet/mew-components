@@ -32,7 +32,7 @@ configureViewport({
 
 addDecorator(() => ({
   vuetify: vuetifyConfig,
-  template: '<v-app :style="noBackground"><v-content><v-container><v-layout column><story/></v-layout></v-container></v-content></v-app>',
+  template: '<v-app :style="noBackground"><v-main><v-container><v-layout column><story/></v-layout></v-container></v-main></v-app>',
   data() {
     return {
       noBackground: {

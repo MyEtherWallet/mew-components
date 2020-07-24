@@ -54,7 +54,7 @@
         </div>
       </v-expansion-panel-header>
       <v-expansion-panel-content color="white">
-        <slot :name="'panelBody' + i" />
+        <slot :name="'panelBody' + (i + 1)" />
       </v-expansion-panel-content>
       <v-divider v-if="hasDividers" />
     </v-expansion-panel>

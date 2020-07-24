@@ -45,7 +45,7 @@ export const mewBanner = () => ({
   template: `
     <div>
     <br />
-    <mew-banner @closeBanner="closeBanner" :bannerImg="bannerImg" :textObj="textObj" />
+    <mew-banner @close-banner="closeBanner" :banner-img="bannerImg" :text-obj="textObj" />
   </div>`,
   methods: {
     closeBanner() {

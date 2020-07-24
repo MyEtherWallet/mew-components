@@ -66,7 +66,7 @@ export const MEWExpandPanel = () => ({
       :is-toggle="isToggle"
       :panel-items="isToggle ? [panelItems[0]] : panelItems"
     >
-      <template v-slot:panelBody0>
+      <template v-slot:panelBody1>
         <span>Panel slot example</span>
       </template>
     </mew-expand-panel>
