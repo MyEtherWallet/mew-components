@@ -75,14 +75,7 @@
               target="_blank"
               class="font-weight-medium mew-address d-flex"
             >
-              <span
-                class="d-flex"
-              >
-                <span>
-                  {{ getFirstPart(item.txHash) }}</span>
-                <span class="hash-mid-section truncate">{{ getMiddlePart(item.txHash) }}</span>
-                <span>{{ getLastPart(item.txHash) }}</span>
-              </span>
+              <transform-hash :hash="item.txHash" />
               <v-icon
                 class="arrow-top-right"
                 color="primary"
@@ -112,14 +105,7 @@
                 v-on="on"
                 class="font-weight-medium mew-address d-flex"
               >
-                <span
-                  class="d-flex"
-                >
-                  <span>
-                    {{ getFirstPart(item.address) }}</span>
-                  <span class="addr-mid-section truncate">{{ getMiddlePart(item.address) }}</span>
-                  <span>{{ getLastPart(item.address) }}</span>
-                </span>
+                <transform-hash :hash="item.address" />
                 <v-icon 
                   @click="copyToClipboard('mew-table-address')"
                   class="content-copy cursor-pointer ml-1"
@@ -154,18 +140,20 @@
 </template>
 
 <script>
-import CopyToClipboard from '@/helpers/copy.js';
+import copy from '@/helpers/copy.js';
 import Blockie from '@/components/Blockie/Blockie.vue';
 import Toast from '@/components/Toast/Toast.vue';
 import MewButton from '@/components/MewButton/MewButton.vue';
 import MewChart from '@/components/MewChart/MewChart.vue';
+import TransformHash from '@/components/TransformHash/TransformHash.vue';
 
 export default {
   components: {
     'blockie': Blockie,
     'toast': Toast,
     'mew-btn': MewButton,
-    'mew-chart': MewChart
+    'mew-chart': MewChart,
+    'transform-hash': TransformHash
   },
   props: {
     /**
@@ -209,27 +197,13 @@ export default {
     }
   },
   methods: {
-    getFirstPart(addr) {
-      return addr.slice(0, 7);
-    },
-    getMiddlePart(addr) {
-      const n = addr.length;
-      return addr.slice(7, n - 7);
-    },
-    getLastPart(addr) {
-      const n = addr.length;
-      return addr.slice(n - 7, n);
-    },
-    getEllipsis(str) {
-      return str.substr(0, 6) + '...' + str.substr(str.length-7, str.length);
-    },
     onSelect(item) {
       if (item.value === true) {
         this.$emit('selectedRow', item)
       }
     },
     copyToClipboard(id) {
-      CopyToClipboard(id);
+      copy(id);
       this.$refs.toast.showToast();
     },
     onClick(item) {
@@ -339,36 +313,6 @@ export default {
 .v-data-table-header-mobile {
   tr > th {
     width: 100%;
-  }
-}
-
-.hash-mid-section {
-  max-width: 120px;
-}
-
-// to truncate the hash
-@media only screen and (max-width: 900px) {
-  .hash-mid-section {
-    max-width: 80px;   
-  }
-}
-
-@media only screen and (max-width: 700px) {
-  .hash-mid-section {
-    max-width: 45px;   
-  }
-}
-
-// to truncate the address
-@media only screen and (max-width: 1100px) {
-  .addr-mid-section {
-    max-width: 120px;   
-  }
-}
-
-@media only screen and (max-width: 700px) {
-  .addr-mid-section {
-    max-width: 20px;   
   }
 }
 </style>

@@ -35,10 +35,10 @@ export const MEWOverlay = () => ({
       default: text('warning-desc', '')
     },
     rightBtnText: {
-      default: text('right-btn-text', 'Back')
+      default: text('right-btn-text', 'Cancel')
     },
     leftBtnText: {
-      default: text('left-btn-text', 'Cancel')
+      default: text('left-btn-text', 'Back')
     }
   },
   watch: {

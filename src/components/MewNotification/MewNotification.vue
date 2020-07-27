@@ -10,8 +10,8 @@
       />
       <div class="ml-5 detail-container full-width">
         <!-- need to translate -->
-        <div class="caption titlePrimary--text truncate font-weight-medium">
-          {{ fromStr }}: <span class="mew-address font-weight-medium">{{ fromAddress }} </span>
+        <div class="caption titlePrimary--text font-weight-medium">
+          {{ fromStr }}: <span class="mew-address font-weight-medium"><transform-hash :hash="fromAddress" /> </span>
         </div>
         <div class="caption titlePrimary--text font-weight-medium">
           {{ amtStr }}: {{ amount }}
@@ -33,11 +33,14 @@
 <script>
 import TxBadge from '@/components/TxBadge/TxBadge.vue';
 import Blockie from '@/components/Blockie/Blockie.vue';
+import TransformHash from '@/components/TransformHash/TransformHash.vue';
 
 export default {
+  name: 'MewNotification',
   components: {
     'tx-badge': TxBadge,
-    'blockie': Blockie
+    'blockie': Blockie,
+    'transform-hash': TransformHash
   },
   data() {
     return {

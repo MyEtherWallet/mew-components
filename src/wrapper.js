@@ -23,7 +23,7 @@ import MewToggleButton from './components/MewToggleButton/MewToggleButton.vue';
 import Toast from './components/Toast/Toast.vue';
 import TokenContainer from './components/TokenContainer/TokenContainer.vue';
 import TxBadge from './components/TxBadge/TxBadge.vue';
-import TxNotification from './components/TxNotification/TxNotification.vue';
+import MewNotification from './components/MewNotification/MewNotification.vue';
 import WarningSheet from './components/WarningSheet/WarningSheet.vue';
 import MewIcon from './components/MewIcon/MewIcon.vue';
 import MewChart from './components/MewChart/MewChart.vue';
@@ -53,7 +53,7 @@ const Components = {
   MewSwitch,
   MewTabs,
   Toast,
-  TxNotification,
+  MewNotification,
   WarningSheet,
   AddressSelect,
   TxBadge,

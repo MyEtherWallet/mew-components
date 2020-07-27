@@ -4,12 +4,12 @@ import {
   optionsKnob,
   text
 } from '@storybook/addon-knobs';
-import TxNotification from '@/components/TxNotification/TxNotification.vue';
+import MewNotification from '@/components/MewNotification/MewNotification.vue';
 
 export default {
-  title: 'TxNotification',
+  title: 'MewNotification',
   parameters: {
-    component: TxNotification
+    component: MewNotification
   },
   decorators: [withKnobs]
 };
@@ -26,8 +26,8 @@ const txStatusOptions = {
   error: 'error'
 }
 
-export const txNotification = () => ({
-  components: { 'tx-notif': TxNotification },
+export const MEWNotification = () => ({
+  components: { 'mew-notification': MewNotification },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)
@@ -65,7 +65,7 @@ export const txNotification = () => ({
   template: `
     <div>
     <br />
-    <tx-notif
+    <mew-notification
       :tx-title="txTitle"
       :tx-type="txType"
       :tx-status="txStatus"

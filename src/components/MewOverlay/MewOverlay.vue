@@ -13,10 +13,10 @@
           <v-row
             align="center"
             class="pt-5"
-            :justify="rightBtnText ? 'space-between' : 'end'"
+            :justify="leftBtnText ? 'space-between' : 'end'"
           > 
             <div
-              v-if="rightBtnText"
+              v-if="leftBtnText"
               class="close-container cursor-pointer d-flex align-center ml-4"
               @click="close()"
             > 
@@ -25,10 +25,10 @@
               >
                 mdi-arrow-left-circle-outline
               </v-icon>
-              <span class="titlePrimary--text font-weight-medium ml-2">{{ rightBtnText }}</span>
+              <span class="titlePrimary--text font-weight-medium ml-2">{{ leftBtnText }}</span>
             </div>
             <div
-              v-if="leftBtnText"
+              v-if="rightBtnText"
               class="close-container cursor-pointer d-flex align-center mr-4"
               @click="close()"
             > 
@@ -37,7 +37,7 @@
               >
                 mdi-close-circle-outline
               </v-icon>
-              <span class="error--text font-weight-medium ml-2">{{ leftBtnText }}</span>
+              <span class="error--text font-weight-medium ml-2">{{ rightBtnText }}</span>
             </div>
           </v-row>
           <v-row 
