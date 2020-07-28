@@ -1,53 +1,90 @@
 <template>
   <div
     @click="onToggle"
-    :class="[active ? 'activated' : '', notification.status.value + '-type', 'notification-container']"
+    :class="[active ? 'activated' : '', notification.status.value + '-type', 'notification-container', 'px-3', 'titlePrimary--text']"
   >
-    <div class="d-flex justify-space-between align-center pa-4  ">
-      <div class="d-flex align-center">
-        <div :class="[ getClasses(notification.status.value.toLowerCase()), 'indicator']" />
-        <blockie
-          v-if="notification.type.string.toLowerCase() !== txTypes.swap"
-          width="30px"
-          height="30px"
-          address="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
-        />
-        <div class="ml-5 detail-container full-width">
-          <!-- need to translate -->
-          <div class="caption titlePrimary--text font-weight-medium d-flex">
-            {{ notification.from.string }}: <span class="mew-address font-weight-medium ml-1"><transform-hash :hash="notification.from.value" /> </span>
+    <v-container>
+      <v-row>
+        <v-col
+          cols="6"
+        >
+          <div class="d-flex align-center">
+            <div :class="[ getClasses(notification.status.value.toLowerCase()), 'indicator', 'd-none', 'd-sm-flex']" />
+            <blockie
+              class="d-none d-sm-flex"
+              v-if="notification.type.string.toLowerCase() !== txTypes.swap"
+              width="30px"
+              height="30px"
+              address="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
+            />
+            <div class="ml-5 detail-container full-width">
+              <!-- need to translate -->
+              <div class="caption font-weight-medium d-flex">
+                {{ notification.from.string }}: <span class="mew-address font-weight-medium ml-1 full-width"><transform-hash :hash="notification.from.value" /> </span>
+              </div>
+              <div class="caption font-weight-medium d-flex">
+                {{ notification.amount.string }}: {{ notification.amount.value }}
+              </div>
+            </div>
           </div>
-          <div class="caption titlePrimary--text font-weight-medium d-flex">
-            {{ notification.amount.string }}: {{ notification.amount.value }}
+        </v-col>
+        <v-col
+          cols="6"
+          class="text-right"
+        >
+          <tx-badge
+            :badge-title="notification.type.string"
+            :badge-type="getBadgeType"
+          />
+          <div class="caption mt-1 textPrimary--text font-weight-medium">
+            {{ notification.timestamp.value }}
           </div>
-        </div>
-      </div>
-      <div class="text-right">
-        <tx-badge
-          :badge-title="notification.type.string"
-          :badge-type="getBadgeType"
-        />
-        <div class="caption mt-1 textPrimary--text font-weight-medium">
-          {{ notification.timestamp.string }}
-        </div>
-      </div>
-    </div>
+        </v-col>
+      </v-row>
+    </v-container>
     <div
-      class="px-8 activated-container"
+      class="activated-container capitalize"
       v-if="active"
     >
-      <hr>
-      <!-- <v-container>
-        <v-row>
-          <v-col>
-            {{ string.txHash }}: 
+      <v-container>
+        <v-row
+          v-for="(detail, idx) in getDetails"
+          :key="idx"
+        >
+          <v-col cols="6">
+            {{ detail.string }}: 
           </v-col>
-          <v-row>
-          <v-col>
-            {{ string.txHash }}: 
+          <v-col
+            cols="6"
+            :class="[getClasses(detail.value) + '--text', 'text-right']"
+            v-if="!isHash(detail.string)"
+          >
+            {{ detail.value }}
+          </v-col>
+          <v-col
+            cols="6"
+            class="text-right"
+            v-if="isHash(detail.string)"
+          >
+            <v-tooltip
+              eager
+              open-on-hover
+              content-class="tooltip-inner"
+              color="titlePrimary--text"
+              top
+            >
+              <template v-slot:activator="{ on }">
+                <a
+                  v-on="on"
+                  :href="'https://etherscan.io/tx/' + detail.value"
+                  target="_blank"
+                > <transform-hash :hash="detail.value" /> </a>
+              </template>
+              <span>{{ detail.value }}</span>
+            </v-tooltip>
           </v-col>
         </v-row>
-      </v-container> -->
+      </v-container>
     </div>
   </div>
 </template>
@@ -83,10 +120,16 @@ export default {
     getBadgeType() {
       const type = this.notification.type.string.toLowerCase()
       return this.txTypes[type]
+    },
+    getDetails() {
+      const details = [], detailTypes = ['txHash', 'gasPrice', 'gasLimit', 'total', 'timestamp', 'status']
+      for (var key of Object.keys(this.notification)) {
+        if (detailTypes.indexOf(key) >= 0) {
+          details.push(this.notification[key])
+        }
+      }
+      return details;
     }
-  },
-  mounted() {
-    console.error('this', this.notification)
   },
   props: {
     /**
@@ -141,12 +184,15 @@ export default {
     }
   },
   methods: {
+    isHash(type) {
+      return type === 'Transaction Hash'
+    },
     getClasses(status) {
       if (status === this.txStatusOptions.success) {
         return 'primary';
       }
       if (status === this.txStatusOptions.pending) {
-        return 'warning darken-1';
+        return 'text--darken-1 darken-1 warning';
       }
       if (status === this.txStatusOptions.error) {
         return 'error';
@@ -174,15 +220,15 @@ export default {
 
   .indicator {
     border-radius: 50%;
-    display: inline-block;
+    display: table;
     height: 6px;
     margin-right: 10px;
     width: 6px;
   }
 
   .activated-container {
-    hr {
-      border: 1px solid var(--v-inputBorder-base);
+    .container {
+      border-top: 1px solid var(--v-inputBorder-base);
     }
 
   }

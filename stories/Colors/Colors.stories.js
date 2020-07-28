@@ -55,7 +55,7 @@ export const All = () => ({
       },
       {
         shades: [
-          {name: 'superPrimary base', lightHex: '#f2fafa', darkHex: '#f2fafa'},
+          {name: 'superPrimary base', lightHex: '#f2fafa', darkHex: '#242c48'},
           {name: 'superPrimary darken1', lightHex: '#e3f2f2', darkHex: '#e3f2f2'},
           {name: 'superPrimaryHover', lightHex: '#f5fdfb', darkHex: '#00c0a5'},
           {name: 'tagLabel', lightHex: '#6d89a6', darkHex: '#95aed8'}
@@ -71,7 +71,7 @@ export const All = () => ({
       {
         shades: [
           {name: 'success', lightHex: '#2cc479', darkHex: '#2cc479'},
-          {name: 'warning', lightHex: '#FFF2DC', darkHex: '#FFF2DC' },
+          {name: 'warning', lightHex: '#FFF2DC', darkHex: '#0f1320' },
           {name: 'warning darken-1', lightHex: '#f5a623', darkHex: '#f5a623'},
           {name: 'warning darken-2', lightHex: '#ff7700', darkHex: '#ff7700'}
         ]

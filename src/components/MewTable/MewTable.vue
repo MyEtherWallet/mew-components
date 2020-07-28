@@ -61,34 +61,36 @@
       <template
         v-slot:item.txHash="{ item }"
       >
-        <v-tooltip
-          eager
-          open-on-hover
-          content-class="tooltip-inner"
-          color="titlePrimary--text"
-          top
-        >
-          <template v-slot:activator="{ on }">
-            <a
-              v-on="on"
-              :href="'https://etherscan.io/tx/' + item.txHash"
-              target="_blank"
-              class="font-weight-medium mew-address d-flex"
-            >
-              <transform-hash :hash="item.txHash" />
-              <v-icon
-                class="arrow-top-right"
-                color="primary"
-              >mdi-arrow-top-right</v-icon>
-            </a>
-          </template>
-          <span>{{ item.txHash }}</span>
-        </v-tooltip>
+        <div :class="[!$vuetify.breakpoint.xs ? 'pr-3' : '']">
+          <v-tooltip
+            eager
+            open-on-hover
+            content-class="tooltip-inner"
+            color="titlePrimary--text"
+            top
+          >
+            <template v-slot:activator="{ on }">
+              <a
+                v-on="on"
+                :href="'https://etherscan.io/tx/' + item.txHash"
+                target="_blank"
+                class="font-weight-medium mew-address d-flex full-width"
+              >
+                <transform-hash :hash="item.txHash" />
+                <v-icon
+                  class="arrow-top-right"
+                  color="primary"
+                >mdi-arrow-top-right</v-icon>
+              </a>
+            </template>
+            <span>{{ item.txHash }}</span>
+          </v-tooltip>
+        </div>
       </template>
       <template v-slot:item.address="{ item }">
         <div class="d-flex align-center">
           <blockie
-            class="mr-2"
+            class="mr-2 d-none d-sm-flex"
             :address="item.address"
             width="25px"
             height="25px"
@@ -103,7 +105,7 @@
             <template v-slot:activator="{ on }">
               <div
                 v-on="on"
-                class="font-weight-medium mew-address d-flex"
+                class="address-container font-weight-medium mew-address d-flex"
               >
                 <transform-hash :hash="item.address" />
                 <v-icon 
@@ -236,6 +238,9 @@ export default {
         }
       }
     }
+    .address-container {
+      width: 80%;
+    }
   }
   .chart-container {
     justify-content: flex-end;
@@ -303,7 +308,7 @@ export default {
 
 // for mobile
 .v-data-table__mobile-row__cell {
-  width: 100%;
+  width: 60%;
 
   div, a {
     justify-content: flex-end;

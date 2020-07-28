@@ -92,7 +92,7 @@ const tableSelectHeaders = [
     value: 'callToAction',
     sortable: false,
     filterable: false,
-    width: '30%'
+    width: '20%'
   }
 ]
 

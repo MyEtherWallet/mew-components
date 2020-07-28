@@ -22,18 +22,18 @@ export default {
   },
   methods: {
     getFirstPart(addr) {
-      return addr.slice(0, 7);
+      return addr.slice(0, 6);
     },
     getMiddlePart(addr) {
       const n = addr.length;
-      return addr.slice(7, n - 7);
+      return addr.slice(6, n - 6);
     },
     getLastPart(addr) {
       const n = addr.length;
-      return addr.slice(n - 7, n);
+      return addr.slice(n - 6, n);
     },
     getEllipsis(str) {
-      return str.substr(0, 6) + '...' + str.substr(str.length-7, str.length);
+      return str.substr(0, 6) + '...' + str.substr(str.length-6, str.length);
     }
   }
 }
@@ -41,6 +41,6 @@ export default {
 
 <style lang="scss">
 .hash-container {
-  max-width: 90%;
+  max-width: 100%;
 }
 </style>

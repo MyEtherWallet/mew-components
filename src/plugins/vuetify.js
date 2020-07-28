@@ -228,7 +228,7 @@ export default new Vuetify({
           lighten1: '#ffd7dc'
         },
         warning: {
-          base: '#FFF2DC',
+          base: '#0f1320',
           darken1: '#f5a623'
         },
         disabled: '#1f2b42',
