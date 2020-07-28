@@ -27,6 +27,7 @@ import MewNotification from './components/MewNotification/MewNotification.vue';
 import WarningSheet from './components/WarningSheet/WarningSheet.vue';
 import MewIcon from './components/MewIcon/MewIcon.vue';
 import MewChart from './components/MewChart/MewChart.vue';
+import TransformHash from './components/TransformHash/TransformHash.vue';
 
 // import Vue from 'vue';
 // import wrap from '@vue/web-component-wrapper';
@@ -64,7 +65,8 @@ const Components = {
   MewToggleButton,
   TokenContainer,
   MewIcon,
-  MewChart
+  MewChart,
+  TransformHash
 }
 
 // Declare install function executed by Vue.use()

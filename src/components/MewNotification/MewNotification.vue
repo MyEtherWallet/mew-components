@@ -1,31 +1,53 @@
 <template>
-  <div :class="[ txStatus + '-type', 'd-flex', 'justify-space-between', 'align-center', 'pa-4', 'notification-container']">
-    <div class="left-container d-flex align-center">
-      <div :class="[ getClasses(), 'indicator']" />
-      <blockie
-        v-if="txType.toLowerCase() !== txTypes.swap"
-        width="30px"
-        height="30px"
-        address="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
-      />
-      <div class="ml-5 detail-container full-width">
-        <!-- need to translate -->
-        <div class="caption titlePrimary--text font-weight-medium">
-          {{ fromStr }}: <span class="mew-address font-weight-medium"><transform-hash :hash="fromAddress" /> </span>
+  <div
+    @click="onToggle"
+    :class="[active ? 'activated' : '', notification.status.value + '-type', 'notification-container']"
+  >
+    <div class="d-flex justify-space-between align-center pa-4  ">
+      <div class="d-flex align-center">
+        <div :class="[ getClasses(notification.status.value.toLowerCase()), 'indicator']" />
+        <blockie
+          v-if="notification.type.string.toLowerCase() !== txTypes.swap"
+          width="30px"
+          height="30px"
+          address="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
+        />
+        <div class="ml-5 detail-container full-width">
+          <!-- need to translate -->
+          <div class="caption titlePrimary--text font-weight-medium d-flex">
+            {{ notification.from.string }}: <span class="mew-address font-weight-medium ml-1"><transform-hash :hash="notification.from.value" /> </span>
+          </div>
+          <div class="caption titlePrimary--text font-weight-medium d-flex">
+            {{ notification.amount.string }}: {{ notification.amount.value }}
+          </div>
         </div>
-        <div class="caption titlePrimary--text font-weight-medium">
-          {{ amtStr }}: {{ amount }}
+      </div>
+      <div class="text-right">
+        <tx-badge
+          :badge-title="notification.type.string"
+          :badge-type="getBadgeType"
+        />
+        <div class="caption mt-1 textPrimary--text font-weight-medium">
+          {{ notification.timestamp.string }}
         </div>
       </div>
     </div>
-    <div class="text-right">
-      <tx-badge
-        :badge-title="txTitle"
-        :badge-type="txType"
-      />
-      <div class="caption mt-1 textPrimary--text font-weight-medium">
-        {{ duration }}
-      </div>
+    <div
+      class="px-8 activated-container"
+      v-if="active"
+    >
+      <hr>
+      <!-- <v-container>
+        <v-row>
+          <v-col>
+            {{ string.txHash }}: 
+          </v-col>
+          <v-row>
+          <v-col>
+            {{ string.txHash }}: 
+          </v-col>
+        </v-row>
+      </v-container> -->
     </div>
   </div>
 </template>
@@ -44,6 +66,7 @@ export default {
   },
   data() {
     return {
+      active: false,
       txTypes: {
         in: 'txIn',
         out: 'txOut',
@@ -56,75 +79,81 @@ export default {
       }
     }
   },
+  computed: {
+    getBadgeType() {
+      const type = this.notification.type.string.toLowerCase()
+      return this.txTypes[type]
+    }
+  },
+  mounted() {
+    console.error('this', this.notification)
+  },
   props: {
     /**
-     * Badge type: 'txIn', 'txOut', 'swap'
+     * Notification data (Badge type: 'txIn', 'txOut', 'swap'; status: 'success', 'pending', 'error')
+     * 
      */
-    txType: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Badge title 
-     */
-    txTitle: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Tx status: 'success', 'pending', 'error', 
-     */
-    txStatus: {
-      type: String,
-      default: ''
-    },
-    /**
-     * From address.
-     */
-    fromAddress: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Amount of tx.
-     */
-    amount: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Duration of tx.
-     */
-    duration: {
-      type: String,
-      default: ''
-    },
-    /**
-     * From string.
-     */
-    fromStr: {
-      type: String,
-      default: 'From'
-    },
-    /**
-     * Amount string.
-     */
-    amtStr: {
-      type: String,
-      default: 'Amount'
-    },
+    notification: {
+      type: Object,
+      default: function() {
+        return {
+          amount: {
+            value: '',
+            string: ''
+          },
+          timestamp: {
+            value: '',
+            string: ''
+          },
+          from: {
+            value: '',
+            string: ''
+          },
+          to: {
+            value: '',
+            string: ''
+          },
+          status: {
+            value: '',
+            string: ''
+          },
+          txHash: {
+            value: '',
+            string: ''
+          },
+          type: {
+            string: ''
+          }, 
+          gasPrice: {
+            value: '',
+            string: ''
+          },
+          gasLimit: {
+            value: '',
+            string: ''
+          },
+          total: {
+            value: '',
+            string: ''
+          }
+        };
+      }
+    }
   },
   methods: {
-    getClasses() {
-      if (this.txStatus.toLowerCase() === this.txStatusOptions.success) {
+    getClasses(status) {
+      if (status === this.txStatusOptions.success) {
         return 'primary';
       }
-      if (this.txStatus.toLowerCase() === this.txStatusOptions.pending) {
+      if (status === this.txStatusOptions.pending) {
         return 'warning darken-1';
       }
-      if (this.txStatus.toLowerCase() === this.txStatusOptions.error) {
+      if (status === this.txStatusOptions.error) {
         return 'error';
       }
+    },
+    onToggle() {
+      this.active = !this.active;
     }
   }
 }
@@ -133,6 +162,9 @@ export default {
 
 <style lang="scss" scoped>
 .notification-container {
+  &.activated {
+    border: none;
+  }
   border-radius: 6px;
   overflow: auto;
 
@@ -146,6 +178,13 @@ export default {
     height: 6px;
     margin-right: 10px;
     width: 6px;
+  }
+
+  .activated-container {
+    hr {
+      border: 1px solid var(--v-inputBorder-base);
+    }
+
   }
 }
 

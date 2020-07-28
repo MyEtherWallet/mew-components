@@ -1,8 +1,7 @@
 import {
   withKnobs,
   boolean,
-  optionsKnob,
-  text
+  object
 } from '@storybook/addon-knobs';
 import MewNotification from '@/components/MewNotification/MewNotification.vue';
 
@@ -14,16 +13,27 @@ export default {
   decorators: [withKnobs]
 };
 
-const txTypeOptions = {
-  in: 'txIn',
-  out: 'txOut',
-  swap: 'swap'
-}
-
-const txStatusOptions = {
-  success: 'success',
-  pending: 'pending',
-  error: 'error'
+const notifObj = {
+  from: {
+    value: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
+    string: 'From'
+  },
+  amount: {
+    value: '0.004 ETH',
+    string: 'Amount'
+  },
+  timestamp: {
+    value: 'o',
+    string: '1 min ago'
+  },
+  status: {
+    value: 'pending',
+    string: 'Status'
+  },
+  type: {
+    value: 'in',
+    string: 'in'
+  }
 }
 
 export const MEWNotification = () => ({
@@ -32,29 +42,8 @@ export const MEWNotification = () => ({
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     },
-    txTitle: {
-      default: text('tx-title', 'in')
-    },
-    txType: {
-      default: optionsKnob('badge-type', txTypeOptions, txTypeOptions.in , { display: 'inline-radio' })
-    },
-    txStatus: {
-      default: optionsKnob('tx-status', txStatusOptions, txStatusOptions.success, { display: 'inline-radio' } )
-    },
-    fromAddress: {
-      default: text('from-address', '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D')
-    },
-    amount: {
-      default: text('amount', '0.004 ETH')
-    },
-    duration: {
-      default: text('duration', '1 min ago')
-    },
-    fromStr: {
-      default: text('from-str', 'From')
-    },
-    amtStr: {
-      default: text('amt-str', 'Amount')
+    notification: {
+      default: object('notification', notifObj)
     }
   },
   watch: {
@@ -66,14 +55,7 @@ export const MEWNotification = () => ({
     <div>
     <br />
     <mew-notification
-      :tx-title="txTitle"
-      :tx-type="txType"
-      :tx-status="txStatus"
-      :from-address="fromAddress"
-      :amount="amount"
-      :duration="duration"
-      :from-str="fromStr"
-      :amt-str="amtStr"
+      :notification="notification"
     />
   </div>`
 });
