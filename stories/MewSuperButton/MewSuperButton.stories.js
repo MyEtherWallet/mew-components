@@ -14,7 +14,8 @@ export default {
   parameters: {
     component: MewSuperButton,
     docs: {
-      page: MewSuperButtonDoc
+      page: MewSuperButtonDoc,
+      inlineStories: true
     }
   }
 };
@@ -55,9 +56,6 @@ export const MEWSuperButton = () => ({
     isNew: {
       default: boolean('is-new', false)
     }, 
-    newLabel: {
-      default: text('new-label', '')
-    },
     isColumn: {
       default: boolean('is-column', false)
     },
@@ -76,7 +74,7 @@ export const MEWSuperButton = () => ({
       default: text('title-icon', '')
     },
     rightIcon: {
-      default: text('right-icon', '')
+      default: text('right-icon', 'ensManager')
     },
     titleIconType: {
       default: optionsKnob(
@@ -90,7 +88,7 @@ export const MEWSuperButton = () => ({
       default: optionsKnob(
         'right-icon-type',
         iconTypes,
-        '',
+        iconTypes.mew,
         optionsObj
       )
     },
@@ -113,7 +111,6 @@ export const MEWSuperButton = () => ({
     <div>
     <br />
     <mew-super-button
-      :new-label="newLabel"
       :title-icon-type="titleIconType"
       :right-icon-type="rightIconType"
       :cols-num="colsNum"
@@ -130,5 +127,279 @@ export const MEWSuperButton = () => ({
       :disabled="disabled"
       :title-icon-class="titleIconClass"
     />
+  </div>`
+});
+
+
+
+export const ColumnButton = () => ({
+  components: { 'mew-super-button': MewSuperButton },
+  props: {
+    disabled: {
+      default: boolean('disabled', false)
+    },
+    title: {
+      default: text('title', 'MEW Super Button')
+    },
+    subtitle: {
+      default: text('subtitle', 'Subtitle')
+    },
+    tag: {
+      default: text('tag', 'Tag')
+    },
+    note: {
+      default: text('note', '')
+    },
+    isNew: {
+      default: boolean('is-new', false)
+    }, 
+    colorTheme: {
+      default: optionsKnob(
+        'color-theme',
+        colorThemeOptions,
+        'primary',
+        optionsObj
+      )
+    },
+    titleIconClass: {
+      default: text('title-icon-class', '')
+    },
+    titleIcon: {
+      default: text('title-icon', '')
+    },
+    titleIconType: {
+      default: optionsKnob(
+        'title-icon-type',
+        iconTypes,
+        '',
+        optionsObj
+      )
+    },
+    rightIconType: {
+      default: optionsKnob(
+        'right-icon-type',
+        iconTypes,
+        iconTypes.mew,
+        optionsObj
+      )
+    },
+    enableDarkMode: {
+      default: boolean('dark mode ?', false)
+    },
+    colsNum: {
+      default: number('cols-num', 9)
+    },
+    fontClass: {
+      default: text('font-class', 'mew-heading-3')
+    }
+  },
+  watch: {
+    enableDarkMode(newVal) {
+      this.$vuetify.theme.dark = newVal === true ? true : false;
+    }
+  },
+  template: `
+    <div>
+    <br />
+    <mew-super-button
+      :title-icon-type="titleIconType"
+      :right-icon-type="rightIconType"
+      :cols-num="colsNum"
+      :font-class="fontClass"
+      :isColumn="true"
+      :title="title"
+      :subtitle="subtitle"
+      :tag="tag"
+      :titleIcon="titleIcon"
+      rightIcon="bicycle"
+      :note="note"
+      :isNew="isNew"
+      :colorTheme="colorTheme"
+      :disabled="disabled"
+      :title-icon-class="titleIconClass"
+    />
+  </div>`
+});
+
+
+export const IconButton = () => ({
+  components: { 'mew-super-button': MewSuperButton },
+  props: {
+    disabled: {
+      default: boolean('disabled', false)
+    },
+    title: {
+      default: text('title', 'MEW Super Button')
+    },
+    subtitle: {
+      default: text('subtitle', 'Subtitle')
+    },
+    tag: {
+      default: text('tag', 'Tag')
+    },
+    note: {
+      default: text('note', '')
+    },
+    isNew: {
+      default: boolean('is-new', false)
+    }, 
+    colorTheme: {
+      default: optionsKnob(
+        'color-theme',
+        colorThemeOptions,
+        'primary',
+        optionsObj
+      )
+    },
+    titleIconClass: {
+      default: text('title-icon-class', '')
+    },
+    titleIcon: {
+      default: text('title-icon', '')
+    },
+    titleIconType: {
+      default: optionsKnob(
+        'title-icon-type',
+        iconTypes,
+        '',
+        optionsObj
+      )
+    },
+    rightIconType: {
+      default: optionsKnob(
+        'right-icon-type',
+        iconTypes,
+        iconTypes.mew,
+        optionsObj
+      )
+    },
+    enableDarkMode: {
+      default: boolean('dark mode ?', false)
+    },
+    colsNum: {
+      default: number('cols-num', 9)
+    },
+    fontClass: {
+      default: text('font-class', 'mew-heading-3')
+    }
+  },
+  watch: {
+    enableDarkMode(newVal) {
+      this.$vuetify.theme.dark = newVal === true ? true : false;
+    }
+  },
+  template: `
+    <div>
+    <br />
+    <mew-super-button
+      title-icon-type="mew"
+      right-icon-type="mdi"
+      :cols-num="colsNum"
+      :font-class="fontClass"
+      :isColumn="false"
+      :title="title"
+      :subtitle="subtitle"
+      :tag="tag"
+      titleIcon="message"
+      rightIcon="mdi-abugida-thai"
+      :note="note"
+      :isNew="isNew"
+      :colorTheme="colorTheme"
+      :disabled="disabled"
+      :title-icon-class="titleIconClass"
+    />
+  </div>`
+});
+
+export const ContentSlotButton = () => ({
+  components: { 'mew-super-button': MewSuperButton },
+  props: {
+    disabled: {
+      default: boolean('disabled', false)
+    },
+    title: {
+      default: text('title', 'MEW Super Button')
+    },
+    subtitle: {
+      default: text('subtitle', 'Subtitle')
+    },
+    tag: {
+      default: text('tag', 'Tag')
+    },
+    note: {
+      default: text('note', '')
+    },
+    isNew: {
+      default: boolean('is-new', false)
+    }, 
+    colorTheme: {
+      default: optionsKnob(
+        'color-theme',
+        colorThemeOptions,
+        'primary',
+        optionsObj
+      )
+    },
+    titleIconClass: {
+      default: text('title-icon-class', '')
+    },
+    titleIcon: {
+      default: text('title-icon', '')
+    },
+    titleIconType: {
+      default: optionsKnob(
+        'title-icon-type',
+        iconTypes,
+        '',
+        optionsObj
+      )
+    },
+    rightIconType: {
+      default: optionsKnob(
+        'right-icon-type',
+        iconTypes,
+        iconTypes.mew,
+        optionsObj
+      )
+    },
+    enableDarkMode: {
+      default: boolean('dark mode ?', false)
+    },
+    colsNum: {
+      default: number('cols-num', 9)
+    },
+    fontClass: {
+      default: text('font-class', 'mew-heading-3')
+    },
+    isColumn: {
+      default: boolean('is-column', false)
+    }
+  },
+  watch: {
+    enableDarkMode(newVal) {
+      this.$vuetify.theme.dark = newVal === true ? true : false;
+    }
+  },
+  template: `
+    <div>
+    <br />
+    <mew-super-button
+      :is-column="isColumn"
+      :cols-num="colsNum"
+      :font-class="fontClass"
+      :title="title"
+      :subtitle="subtitle"
+      :tag="tag"
+      :note="note"
+      :isNew="isNew"
+      :colorTheme="colorTheme"
+      :disabled="disabled"
+      :title-icon-class="titleIconClass"
+    >
+      <template v-slot:contentSlot>
+        <span>This is the content slot</span>
+        <v-icon>mdi-chevron-down</v-icon>
+      </template>
+    </mew-super-button>
   </div>`
 });

@@ -19,7 +19,7 @@
     "build:unpkg": "rollup --config rollup.config.js --format iife --file dist/mew-components.min.js",
     "storybook": "start-storybook -p 6006 -c .storybook watch-css -s ./src",
     "build-storybook": "build-storybook -c .storybook -o .out",
-    "deploy-storybook": "storybook-to-ghpages",
+    "deploy-storybook": "storybook-to-ghpag es",
     "eslint": "eslint --ignore-path .gitignore ."
   },
   "dependencies": {

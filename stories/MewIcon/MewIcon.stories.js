@@ -38,7 +38,7 @@ export const MEWIcon = () => ({
       <v-col cols="2" v-for="(icon, idx) in icons" :key="icon + idx">
         <div class="d-flex justify-center flex-column">
           <mew-icon :icon-name="icon"/>
-          <span class="mew-caption">{{icon}}</span>
+          <span class="mew-body font-weight-bold">{{icon}}</span>
         </div>
       </v-col>
     </v-row>

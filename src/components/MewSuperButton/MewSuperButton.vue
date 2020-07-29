@@ -1,7 +1,7 @@
 <template>
   <v-btn
     @click="onBtnClick()"
-    :class="[ getClasses() , 'mew-super-button','mew-button', isColumn ? '' : 'full-width']"
+    :class="[ getClasses() , 'mew-super-button','mew-button', isColumn ? '' : 'full-width mew-super-btn-row']"
     :color="getColor()"
     :outlined="colorTheme.toLowerCase() === colorThemes.outline"
     :ripple="false"
@@ -68,8 +68,8 @@
           v-if="isNew"
           class="label-container d-flex align-center text-uppercase"
         >
-          <div class="label">
-            {{ newLabel }}
+          <div class="label text-uppercase">
+            new 
           </div>
         </div>
         <div
@@ -86,7 +86,7 @@
         >
         <mew-icon
           :img-height="100"
-          class="icon right-icon"
+          :class="['icon', 'right-icon', !isColumn ? 'd-flex align-center' : '']"
           v-if="showRightIcon(rightIcon, 'mew')"
           :icon-name="rightIcon"
         />
@@ -214,13 +214,6 @@ export default {
     disabled: {
       type: Boolean,
       default: false
-    },
-    /**
-     * Label for new badge.
-     */
-    newLabel: {
-      type: String,
-      default: 'new'
     }
   },
   data() {
@@ -306,8 +299,10 @@ export default {
     height: 100%;
     text-transform: none;
 
-    .v-btn__content {
-      height: 160px;
+    &.mew-super-btn-row {
+      .v-btn__content {
+        height: 160px;
+      }
     }
   }
 

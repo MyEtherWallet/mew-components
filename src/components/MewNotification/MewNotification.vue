@@ -123,7 +123,7 @@ export default {
     },
     getDetails() {
       const details = [], detailTypes = ['txHash', 'gasPrice', 'gasLimit', 'total', 'timestamp', 'status']
-      for (var key of Object.keys(this.notification)) {
+      for (const key in this.notification) {
         if (detailTypes.indexOf(key) >= 0) {
           details.push(this.notification[key])
         }

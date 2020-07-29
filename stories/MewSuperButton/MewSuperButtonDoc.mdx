@@ -1,35 +1,48 @@
-import { Props } from '@storybook/addon-docs/blocks'
+import { Props, Story, Preview } from '@storybook/addon-docs/blocks'
 import MewSuperButton from '@/components/MewSuperButton/MewSuperButton.vue';
+import './../GlobalStorybook.scss'
 
 # MEW Super Button Docs
 
-The mew-super-button component allows you to create a custom button with several text and icons options. It also can take a slot (slot name) on the right side of the component instead of the icon. 
-*note 
-Commonly used to direct to a dapp./method of access
+## Overview
+
+The mew-super-button component is a flex action component that allows you to create a custom button with several text and icon options. There are 2 layout options, row (default) and column. 
+There is a minimum content height of 160px, but you can adjust the height according to the enclosing container height. The width of the component is dependent on the layout option. In the row layout, the width is 100% to the enclosing container, while in the column layout, the width will be determined by the content inside.
+
+Currently in MEW V6 you can find examples of the mew-super-button on access/create wallet, the dapp center pages, and in the wallet settings module.
+
 
 ## Usage
-Super MEW button layout accommodates 3 text options:  title, subtitle tag and note. A note will be placed on top of the icon container and will not be displayed if an icon is set. 
+(include Infographic)
 
-There are two options to display icons: a small icon on the right side from the title (titleIcon prop) and an icon or an image on the right side of the component (rightIcon prop).
+The MEW super button layout accommodates 4 text options:  title, subtitle, tag, and note. A note will be placed on top of the icon container, and will not be displayed if a right-icon is set. Note that prop is only present in the default layout (row layout), and should only be used for warning purposes. There are 2 icons that you can include for the button: title-icon and right-icon. Please see the example below.
 
-You also have an option to include custom content with the (slot name)  slot. This content will be positioned to the right of the component instead of the icon container.
+You also have an option to include custom content with the contentSlot to the right of the button text. Please see the example below.
 
-*is-new prop is dedicated to display a label for a new feature. If you are including a pull request with new feature implementation set this to true.
+MEW theme options include: primary, basic, and outline. Outline has a white border color and a transparent background, basic has a white background color, and primary has a light green background. Please refer to the <a href="https://docs.google.com/spreadsheets/d/1FWdmGr9pmy0_WKTqPmOBF5ls2WBxa1mS6bKTegloTQA/edit#gid=916690112">Button Themes</a> section.
 
-(include layout infographic here)
+<i>The is-new prop is dedicated to display a label for a new feature. If you are including a pull request with a new Dapp implementation and included a dapp button to the dapps center, set this to true.</i>
 
-
+## Props
 <Props of={MewSuperButton} />
 
-## I. Icon
+## Row layout
+<p><i>Default</i></p>
+This is the default layout.  Text options will be positioned to the left of the container, while icon and content slot will be positioned to the left.
+<Preview><Story id="mewsuperbutton--mew-super-button" /></Preview>
 
-Example: 
-(include  a basic example with a note) (will add after finalizing)
+## Column Layout
+<p><i>isColumn = ‘true’</i></p>
+This layout will position all content vertically.
+<Preview><Story id="mewsuperbutton--column-button" /></Preview>
 
-## II. Note
-Example: 
-(include  an outline example with an icon) (will add after finalizing)
+## Icons
+There are two options to display icons: a small icon on the right side from the title (title-icon prop) and an icon or an image on the right side of the component (right-icon prop). You have to select icon type when you include either icons. If you are adding icons from <a href="https://myetherwallet.github.io/mew-components/?path=/story/mewicon--mew-icon">mew-icon component</a>, include icon name as a string and select type mew. Ie: ‘acctValue‘ and Type: mew. For material design icons select type mdi. You can view included  material icons <a href="https://materialdesignicons.com/">here</a>. To include icons please use mdi prefix. For example, ‘abugida-thai’ icon will be ‘mdi-abugida-thai’.
 
-## III. Slot
-Example: 
-(include  a light green example with a slot for several icons) (will add after finalizing)
+<Preview><Story id="mewsuperbutton--icon-button"/></Preview>
+
+## Content Slot
+<i>contentSlot</i>
+
+ In Default layout (row Layout) slot content will be positioned to the right of the component instead of the right-icon. In Column layout the slot content will be positioned on the top, above any text.
+<Preview><Story id="mewsuperbutton--content-slot-button" /></Preview>

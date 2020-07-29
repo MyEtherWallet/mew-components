@@ -9,7 +9,7 @@ import MewButtonDoc from './MewButtonDoc.mdx';
 
 export default {
   title: 'MewButton',
-  component: MewButton,
+  decorators: [withKnobs],
   parameters: {
     component: MewButton,
     docs: {
@@ -17,7 +17,6 @@ export default {
       inlineStories: true
     }
   },
-  decorators: [withKnobs]
 };
 
 const iconAlignOptions = {
