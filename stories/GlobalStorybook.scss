@@ -1,17 +1,31 @@
+#story--infotooltip--info-tooltip {
+  .v-application {
+    height: 250px;
+  }
+}
+
 #story--mewsuperbutton--mew-super-button {
-  height: 250px;
+  .v-application {
+    height: 250px;
+  }
 }
 
 #story--mewsuperbutton--column-button {
-  height: 250px;
+  .v-application {
+    height: 250px;
+  }
 }
 
 #story--mewsuperbutton--icon-button {
-  height: 250px;
+  .v-application { 
+   height: 250px;
+  }
 }
 
 #story--mewsuperbutton--content-slot-button {
-  height: 250px;
+  .v-application { 
+    height: 250px;
+  }
 }
 
 

@@ -4,11 +4,15 @@ import {
   text
 } from '@storybook/addon-knobs';
 import InfoTooltip from '@/components/InfoTooltip/InfoTooltip.vue';
+import InfoTooltipDoc from './InfoTooltipDoc.mdx';
 
 export default {
   title: 'InfoTooltip',
   parameters: {
-    component: InfoTooltip
+    component: InfoTooltip,
+    docs: {
+      page: InfoTooltipDoc
+    }
   },
   decorators: [withKnobs]
 };
