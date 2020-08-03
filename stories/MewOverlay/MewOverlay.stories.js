@@ -14,6 +14,11 @@ export default {
 };
 
 export const MEWOverlay = () => ({
+  data() {
+    return {
+      showsOverlay: false
+    }
+  },
   components: { 'mew-overlay': MewOverlay },
   props: {
     showOverlay: {
@@ -44,13 +49,29 @@ export const MEWOverlay = () => ({
   watch: {
     enableDarkMode(newVal) {
       this.$vuetify.theme.dark = newVal === true ? true : false;
+    },
+    showOverlay(newVal) {
+      this.showsOverlay = newVal;
+    }
+  },
+  methods: {
+    close() {
+      // eslint-disable-next-line no-console
+      console.log('close overlay');
+      this.showsOverlay = false;
+    },
+    back() {
+      // eslint-disable-next-line no-console
+      this.showsOverlay = false;
     }
   },
   template: `
     <div>
     <br />
     <mew-overlay
-      :show-overlay="showOverlay"
+      :back="back"
+      :close="close"
+      :show-overlay="showsOverlay"
       :title="title"
       :btn-text="btnText"
       :warning-title="warningTitle"

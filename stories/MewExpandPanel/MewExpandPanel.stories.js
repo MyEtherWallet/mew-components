@@ -1,8 +1,7 @@
 import {
   withKnobs,
   boolean,
-  object,
-  optionsKnob
+  object
 } from '@storybook/addon-knobs';
 import MewExpandPanel from '@/components/MewExpandPanel/MewExpandPanel.vue';
 
@@ -15,19 +14,12 @@ export default {
 };
 
 const items = [
-  { name: 'Network', subtext: 'ETH - myetherapi.com' }, 
-  { name: 'Address to interact with' , subtext: '', tooltip: 'Tooltip'}
+  { name: 'Network', subtext: 'ETH - myetherapi.com', colorTheme: 'superPrimary', warningBadge: {
+    color: 'warning darken-2',
+    text: 'Expire soon'
+  } }, 
+  { name: 'Address to interact with' , subtext: '', tooltip: 'Tooltip', colorTheme: 'errorOutlineActive'}
 ]
-
-const warningBage = {
-  color: 'warning darken-2',
-  text: 'Expire soon'
-}
-
-const colorThemeOptions = 
-  { white: 'white',
-    superPrimary: 'superPrimary',
-    errorOutlineActive: 'errorOutlineActive'};
 
 export const MEWExpandPanel = () => ({
   components: { 'mew-expand-panel': MewExpandPanel },
@@ -43,12 +35,6 @@ export const MEWExpandPanel = () => ({
     },
     hasDividers: {
       default: boolean('has-dividers', false)
-    },
-    colorTheme: {
-      default: optionsKnob('color-theme', colorThemeOptions, colorThemeOptions.white, { display: 'inline-radio' })
-    },
-    warningBadge: {
-      default: object('warning-badge', warningBage)
     }
   },
   watch: {
@@ -60,8 +46,6 @@ export const MEWExpandPanel = () => ({
     <div>
     <br />
     <mew-expand-panel
-      :warning-badge="warningBadge"
-      :color-theme="colorTheme"
       :has-dividers="hasDividers" 
       :is-toggle="isToggle"
       :panel-items="isToggle ? [panelItems[0]] : panelItems"

@@ -12,7 +12,7 @@
       <v-divider v-if="hasDividers" />
       <v-expansion-panel-header
         :class="['titlePrimary--text', 'mew-heading-3', isToggle ? 'pa-3' : 'pa-5']"
-        :color="colorTheme"
+        :color="item.colorTheme"
       > 
         <div class="header-container">
           <span :class="['ml-2','mew-heading-3', item.tooltip? 'd-flex align-center' :'']"> 
@@ -24,9 +24,9 @@
             />
           </span>
           <span
-            v-if="!item.tooltip"
-            :class="[warningBadge.color, 'ml-2', 'text-center', 'white--text', 'px-2', 'py-1', 'badge-type', 'mew-caption']"
-          >{{ warningBadge.text }}</span>
+            v-if="!item.tooltip && item.warningBadge"
+            :class="[item.warningBadge.color, 'ml-2', 'text-center', 'white--text', 'px-2', 'py-1', 'badge-type', 'mew-caption']"
+          >{{ item.warningBadge.text }}</span>
         </div>
 
         <div
@@ -76,22 +76,6 @@ export default {
   },   
 
   props: {
-  /**
-   * Applies a warning badge next to the header.
-   */
-  warningBadge: {
-    type: Object,
-    default: function() {
-      return {color: '' , text: ''}
-    }
-  },
-  /**
-   * Applies a background color.
-   */
-  colorTheme: {
-    type: String,
-    default: 'white'
-  },
   /**
    * Applies dividers to the expand panel.
    */

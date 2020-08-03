@@ -18,7 +18,7 @@
             <div
               v-if="leftBtnText"
               class="close-container cursor-pointer d-flex align-center ml-4"
-              @click="close()"
+              @click="goBack()"
             > 
               <v-icon
                 color="titlePrimary"
@@ -30,7 +30,7 @@
             <div
               v-if="rightBtnText"
               class="close-container cursor-pointer d-flex align-center mr-4"
-              @click="close()"
+              @click="closeOverlay()"
             > 
               <v-icon
                 color="error"
@@ -135,6 +135,24 @@ export default {
       type: String,
       default: 'Back'
     },
+    /**
+     * Close overlay.
+     */
+    close: {
+      type: Function,
+      default: function () {
+        return {};
+      }
+    },
+    /**
+     * Back overlay.
+     */
+    back: {
+      type: Function,
+      default: function () {
+        return {};
+      }
+    }
   },
   watch: {
     showOverlay(newVal) {
@@ -142,8 +160,13 @@ export default {
     }
   },
   methods: {
-    close() {
-      this.showsOverlay = false;
+    closeOverlay() {
+      this.$emit('closeOverlay')
+      this.close();
+    },
+    goBack() {
+      this.$emit('back')
+      this.back();
     }
   }
 }
