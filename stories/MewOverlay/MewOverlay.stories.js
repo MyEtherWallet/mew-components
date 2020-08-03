@@ -57,6 +57,10 @@ export const MEWOverlay = () => ({
       :warning-desc="warningDesc"
       :right-btn-text="rightBtnText"
       :left-btn-text="leftBtnText"
-    />
+    >
+      <template v-slot:mewOverlayBody>
+        <span>Mew overlay body</span>
+      </template>
+    </mew-overlay>
   </div>`
 });

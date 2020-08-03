@@ -34,22 +34,11 @@
 
       <template v-slot:append>
         <div class="icon-container d-flex align-center">
-          <v-tooltip
-            content-class="tooltip-inner"
-            color="titlePrimary--text"
-            top
-          >
-            <template v-slot:activator="{ on }">
-              <v-icon
-                class="copy-icon mr-3 basic--text"
-                v-on="on"
-                @click="copyToClipboard"
-              >
-                mdi-content-copy
-              </v-icon> 
-            </template>
-            <span>{{ copyTooltip }}</span>
-          </v-tooltip>
+          <copy
+            :tooltip="copyTooltip"
+            :copy-id="getRef()"
+            :is-ref="true"
+          />
           <v-tooltip
             content-class="tooltip-inner"
             color="titlePrimary--text"
@@ -111,6 +100,8 @@
 <script>
 import Blockie from '@/components/Blockie/Blockie.vue';
 import Toast from '@/components/Toast/Toast.vue';
+import CopyIcon from '@/components/Copy/Copy.vue';
+import copy from '@/helpers/copy.js';
 
 export default {
   name: 'AddressSelect',
@@ -190,7 +181,8 @@ export default {
   },
   components: {
     blockie: Blockie,
-    toast: Toast
+    toast: Toast,
+    copy: CopyIcon
   },
   data() {
     return {
@@ -205,16 +197,16 @@ export default {
     }
   },
   methods: {
+    getRef() {
+      if (this.$refs.addressInput) {
+        return this.$refs.addressInput.$el.querySelector('input')
+      }
+    },
     saveAddress() {
       this.$emit('saveAddress');
     },
     toggle() {
       this.autoSelectMenu = !this.autoSelectMenu;
-    },
-    copyToClipboard() {
-      this.$refs.addressInput.$el.querySelector('input').select();
-      document.execCommand('copy');
-      this.$refs.toast.showToast();
     },
     selectAddress(data) {
       this.autoSelectMenu = false;

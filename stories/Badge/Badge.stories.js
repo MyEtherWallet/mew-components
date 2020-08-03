@@ -4,12 +4,12 @@ import {
   optionsKnob,
   text
 } from '@storybook/addon-knobs';
-import TxBadge from '@/components/TxBadge/TxBadge.vue';
+import Badge from '@/components/Badge/Badge.vue';
 
 export default {
-  title: 'TxBadge',
+  title: 'Badge',
   parameters: {
-    component: TxBadge
+    component: Badge
   },
   decorators: [withKnobs]
 };
@@ -18,11 +18,12 @@ const badgeOptions = {
   in: 'txIn',
   out: 'txOut',
   swap: 'swap',
-  error: 'error'
+  error: 'error',
+  warning: 'warning'
 }
 
-export const txBadge = () => ({
-  components: { 'badge': TxBadge },
+export const badge = () => ({
+  components: { 'badge': Badge },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)

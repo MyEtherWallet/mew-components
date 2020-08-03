@@ -68,7 +68,8 @@ export default {
   background-size: cover;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  min-height: 190px;
+  min-height: 150px;
+  height: 100%;
 
   .exit-container {
     text-align: right;

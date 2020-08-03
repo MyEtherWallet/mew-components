@@ -22,12 +22,13 @@ import MewTable from './components/MewTable/MewTable.vue';
 import MewToggleButton from './components/MewToggleButton/MewToggleButton.vue';
 import Toast from './components/Toast/Toast.vue';
 import TokenContainer from './components/TokenContainer/TokenContainer.vue';
-import TxBadge from './components/TxBadge/TxBadge.vue';
+import Badge from './components/Badge/Badge.vue';
 import MewNotification from './components/MewNotification/MewNotification.vue';
 import WarningSheet from './components/WarningSheet/WarningSheet.vue';
 import MewIcon from './components/MewIcon/MewIcon.vue';
 import MewChart from './components/MewChart/MewChart.vue';
 import TransformHash from './components/TransformHash/TransformHash.vue';
+import Copy from './components/Copy/Copy.vue';
 
 // import Vue from 'vue';
 // import wrap from '@vue/web-component-wrapper';
@@ -57,7 +58,7 @@ const Components = {
   MewNotification,
   WarningSheet,
   AddressSelect,
-  TxBadge,
+  Badge,
   MewBanner,
   MewCarousel,
   MewProgressBar,
@@ -66,7 +67,8 @@ const Components = {
   TokenContainer,
   MewIcon,
   MewChart,
-  TransformHash
+  TransformHash,
+  Copy
 }
 
 // Declare install function executed by Vue.use()

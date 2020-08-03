@@ -205,7 +205,7 @@ export default {
       }
     },
     copyToClipboard(id) {
-      copy(id);
+      copy(id, false);
       this.$refs.toast.showToast();
     },
     onClick(item) {

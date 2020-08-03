@@ -5,7 +5,8 @@
       :disabled="disabled"
       :label="label === '' || isSearch ? '' : label"
       :placeholder="placeholder"
-      outlined
+      :outlined="!hasNoBorder"
+      :solo="hasNoBorder"
       color="titlePrimary"
       v-model="inputValue"
       :hint="hint"
@@ -21,6 +22,13 @@
 export default {
   name: 'MewInput',
   props: {
+    /**
+     * Disables the input.
+     */
+    hasNoBorder: {
+      type: Boolean,
+      default: false
+    },
     /**
      * Disables the input.
      */

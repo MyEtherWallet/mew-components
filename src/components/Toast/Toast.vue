@@ -1,49 +1,49 @@
 <template>
-  <div>
-    <v-bottom-sheet
-      v-model="showsToast" 
-      :hide-overlay="true"
-      :persistent="persistent"
+  <v-bottom-sheet
+    class="hello"
+    v-model="showsToast" 
+    :hide-overlay="true"
+    :persistent="persistent"
+  >
+    <v-sheet 
+      class="text-center"
+      :tile="true" 
+      height="80"
+      :color="toastType.toLowerCase() === toastTypes.info ? 'white' : toastType"
     >
-      <v-sheet 
-        class="text-center"
-        :tile="true" 
-        height="80"
-        :color="toastType.toLowerCase() === toastTypes.info ? 'white' : toastType"
-      >
-        <v-container fill-height>
-          <v-row
-            :class="['font-weight-medium', getRowClasses()]"  
-            justify="center"
-            align="center"
-          >
-            <div>
-              <v-icon
-                v-if="toastTypes.info !== toastType.toLowerCase()"
-                :color="toastTypes.warning === toastType.toLowerCase() ? 'warning darken-1' : 'white'"
-              >
-                {{ getIcon() }}
-              </v-icon>
-              {{ text }}
-              <a
-                @click="onClick"
-                :class="getLinkClasses()"
-              >{{ linkObj.title }}
-              </a>
-              <slot name="infoBtn" />
-            </div>
+      <v-container fill-height>
+        <v-row
+          :class="['font-weight-medium', getRowClasses()]"  
+          justify="center"
+          align="center"
+        >
+          <div>
             <v-icon
-              color="titlePrimary"
-              v-if="canClose"
-              class="close"
+              v-if="toastTypes.info !== toastType.toLowerCase()"
+              :color="toastTypes.warning === toastType.toLowerCase() ? 'warning darken-1' : 'white'"
             >
-              mdi-close
+              {{ getIcon() }}
             </v-icon>
-          </v-row>
-        </v-container>
-      </v-sheet>
-    </v-bottom-sheet>
-  </div>
+            {{ text }}
+            <a
+              @click="onClick"
+              :class="getLinkClasses()"
+            >{{ linkObj.title }}
+            </a>
+            <slot name="infoBtn" />
+          </div>
+          <v-icon
+            @click="close"
+            color="titlePrimary"
+            v-if="canClose"
+            class="close cursor-pointer"
+          >
+            mdi-close
+          </v-icon>
+        </v-row>
+      </v-container>
+    </v-sheet>
+  </v-bottom-sheet>
 </template>
 
 <script>
@@ -99,7 +99,7 @@ export default {
       default: false
     },
     /**
-     * Clicking outside of the element will not deactivate it.
+     * Clicking outside of the element will deactivate it.
      */
     canClose: {
       type: Boolean,
@@ -110,6 +110,9 @@ export default {
     this.setTimer();
   },
   methods: {
+    close() {
+      this.showsToast = false;
+    },
     onClick() {
       this.linkObj.url !== '' && this.linkObj.url ? window.open(this.linkObj.url) : this.$emit('onClick')
     },

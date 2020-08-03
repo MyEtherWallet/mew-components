@@ -88,7 +88,7 @@
             >
               <span
                 class="cursor-pointer primary--text text-decoration-underline"
-                @click="copyToClipboard()"
+                @click="copyToClipboard"
               >{{ copyMsg }}</span>
             </div>
           </div>
@@ -107,6 +107,7 @@
 <script>
 import mewButton from '@/components/MewButton/MewButton.vue';
 import Toast from '@/components/Toast/Toast.vue';
+import copy from '@/helpers/copy.js';
 
 export default {
   components: {
@@ -224,8 +225,7 @@ export default {
       this.$emit('onClick', btn);
     },
     copyToClipboard() {
-      this.$refs.errContainer.select();
-      document.execCommand('copy');
+      copy(this.$refs.errContainer, true);
       this.$refs.toast.showToast();
     },
   }

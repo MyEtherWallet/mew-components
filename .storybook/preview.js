@@ -48,7 +48,7 @@ addParameters({
     { name: 'white', value: '#fff' },
     { name: 'dark-blue', value: '#184f90' },
     { name: 'dark mode', value: '#151a29'},
-    { name: 'light-green', value: '#cdf4ee'}
+    { name: 'light-green', value: '#f5fdfb'}
   ],
   docs: {
     inlineStories: true,

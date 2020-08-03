@@ -1,7 +1,7 @@
 <template>
   <v-btn
     @click="onBtnClick()"
-    :class="[ getClasses() , 'mew-super-button','mew-button', isColumn ? '' : 'full-width mew-super-btn-row']"
+    :class="[ getClasses() , 'mew-super-button','mew-button', isColumn ? 'full-height' : 'full-width mew-super-btn-row']"
     :color="getColor()"
     :outlined="colorTheme.toLowerCase() === colorThemes.outline"
     :ripple="false"

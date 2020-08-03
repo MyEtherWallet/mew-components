@@ -17,6 +17,9 @@ export const MEWInput = () => ({
     disabled: {
       default: boolean('disabled', false)
     },
+    hasNoBorder: {
+      default: boolean('has-no-border', false)
+    },
     label: {
       default: text('label', 'label')
     },
@@ -56,7 +59,7 @@ export const MEWInput = () => ({
   template: `
     <div>
     <br />
-    <mew-input :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :hint="hint" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value"
+    <mew-input :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :hint="hint" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value"
     />
   </div>`
 });

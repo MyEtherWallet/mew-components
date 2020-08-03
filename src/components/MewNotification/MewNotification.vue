@@ -90,14 +90,14 @@
 </template>
 
 <script>
-import TxBadge from '@/components/TxBadge/TxBadge.vue';
+import Badge from '@/components/Badge/Badge.vue';
 import Blockie from '@/components/Blockie/Blockie.vue';
 import TransformHash from '@/components/TransformHash/TransformHash.vue';
 
 export default {
   name: 'MewNotification',
   components: {
-    'tx-badge': TxBadge,
+    'tx-badge': Badge,
     'blockie': Blockie,
     'transform-hash': TransformHash
   },
