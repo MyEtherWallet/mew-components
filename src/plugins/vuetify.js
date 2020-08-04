@@ -131,7 +131,7 @@ export default new Vuetify({
         primaryOutlineActive: '#baede6',
         secondaryOutlineActive: '#d6dffa',
         errorOutlineActive: '#ffd7dc',
-        basicOutlineActive: '#c5ccd3', 
+        basicOutlineActive: '#c5ccd3',
         selectActive: '#dcfff9',
         selectHover: '#f0f0f0',
         superPrimary: {
@@ -159,23 +159,26 @@ export default new Vuetify({
         textPrimary: '#667f9b',
         textPrimaryModule: '#667f9b',
         white: '#fff',
+        black: '#000',
         mewBg: '#fff',
+        walletBg: '#f2f4fa',
         boxShadow: '#ececec',
         expandHeader: '#184f90',
-        primary:'#05c0a5',
-        secondary:'#5a78f0',
-        basic:'#0b1a40',
+        primary: '#05c0a5',
+        secondary: '#5a78f0',
+        basic: '#0b1a40',
         success: '#2cc479',
         error: {
           base: '#ff445b',
-          lighten1: '#ffd7dc'
+          lighten1: '#ffd7dc',
+          lighten2: '#e96071'
         },
         warning: {
           base: '#FFF2DC',
           darken1: '#f5a623',
           darken2: '#ff7700'
         },
-        disabled:'#cecece',
+        disabled: '#cecece',
         tableHeader: '#f9f9f9'
       },
       dark: {
@@ -213,6 +216,8 @@ export default new Vuetify({
         searchText: '#96a8b6',
         white: '#fff',
         mewBg: '#151a29',
+        walletBg: '#151a29',
+        black: '#000',
         boxShadow: '#3c3c3c',
         expandHeader: '#184f90',
         titlePrimary: '#95aed8',
@@ -221,11 +226,12 @@ export default new Vuetify({
         textSecondaryModule: '#95aed8',
         primary: '#05c0a5',
         secondary: '#5c79f0',
-        basic:'#151A29',
-        success:'#2cc479',
+        basic: '#151A29',
+        success: '#2cc479',
         error: {
           base: '#ff445b',
-          lighten1: '#ffd7dc'
+          lighten1: '#ffd7dc',
+          lighten2: '#e96071'
         },
         warning: {
           base: '#0f1320',

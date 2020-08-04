@@ -34,6 +34,7 @@ export const All = () => ({
         shades: [
           {name: 'error base', lightHex: '#ff445b', darkHex: '#ff445b'},
           {name: 'error lighten1', lightHex: 'ffd7dc', darkHex: 'ffd7dc'},
+          {name: 'error lighten2', lightHex: 'e96071', darkHex: 'e96071'},
           {name: 'errorOutlineActive', lightHex: '#ffd7dc', darkHex: '#651f28'},
         ]
       },
@@ -89,7 +90,9 @@ export const All = () => ({
         shades: [
           {name: 'disabled', lightHex: '#cecece', darkHex: '#1f2b42'},
           {name: 'white', lightHex: '#fff', darkHex: '#fff'},
+          {name: 'black', lightHex: '#000', darkHex: '#000'},
           {name: 'mewBg', lightHex: '#fff', darkHex: '#151a29'},
+          {name: 'walletBg', lightHex: '#f2f4fa', darkHex: '#151a29'},
           {name: 'boxShadow', lightHex: '#ececec', darkHex: '#3c3c3c'}
         ]
       },

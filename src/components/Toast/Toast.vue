@@ -1,8 +1,10 @@
 <template>
   <v-bottom-sheet
+    ref="toast"
     class="hello"
     v-model="showsToast" 
     :hide-overlay="true"
+    :retain-focus="false"
     :persistent="persistent"
   >
     <v-sheet 
@@ -108,6 +110,13 @@ export default {
   },
   mounted() {
     this.setTimer();
+  },
+  watch: {
+    showsToast() {
+      this.$nextTick(() => {
+        this.$refs.toast.showScroll();
+      })
+    }
   },
   methods: {
     close() {
