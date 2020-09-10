@@ -47,6 +47,9 @@ export const MEWInput = () => ({
     isSearch: {
       default: boolean('is-search', false)
     },
+    type: {
+      default: text('type', 'text')
+    },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     }
@@ -59,7 +62,7 @@ export const MEWInput = () => ({
   template: `
     <div>
     <br />
-    <mew-input :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :hint="hint" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value"
+    <mew-input :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :hint="hint" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
     />
   </div>`
 });
