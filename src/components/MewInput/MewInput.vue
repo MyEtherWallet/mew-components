@@ -100,18 +100,19 @@ export default {
       default: 'text'
     }
   },
-  data() {
-    return {
-      inputValue: ''
-    };
-  },
-  watch: {
-    value(newVal) {
-      this.inputValue = newVal;
+  computed: {
+    inputValue: {
+      get() {
+        return this.value;
+      }, set(val) {
+        this.$emit('input', val)
+      }
     }
   },
-  mounted() {
-    this.inputValue = this.value;
+  watch: {
+    value(newval) {
+      console.log(newval)
+    }
   },
   methods: {
     getClasses() {
