@@ -21,6 +21,9 @@ export const MEWSwitch = () => ({
     },
     label: {
       default: text('label', 'Label')
+    },
+    isSwitchOn: {
+      default: boolean('switch position', false)
     }
   },
   watch: {
@@ -33,6 +36,7 @@ export const MEWSwitch = () => ({
     <br />
     <mew-switch
       :label="label"
+      :switch-status="isSwitchOn"
     />
   </div>`
 });

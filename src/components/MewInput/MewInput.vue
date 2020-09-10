@@ -14,6 +14,7 @@
       :clearable="hasClearBtn"
       :rules="rules"
       :prepend-inner-icon="isSearch ? 'mdi-magnify' : ''"
+      :type="type"
     />
   </div>
 </template>
@@ -93,6 +94,10 @@ export default {
     isSearch: {
       type: Boolean,
       default: false
+    },
+    type: {
+      type: String,
+      default: 'text'
     }
   },
   data() {
@@ -101,9 +106,8 @@ export default {
     };
   },
   watch: {
-    inputValue(newValue) {
-      // eslint-disable-next-line no-console
-      console.log('input value:', newValue);
+    value(newVal) {
+      this.inputValue = newVal;
     }
   },
   mounted() {
