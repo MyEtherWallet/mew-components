@@ -62,7 +62,7 @@ export const MEWInput = () => ({
   template: `
     <div>
     <br />
-    <mew-input :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :hint="hint" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
+    <mew-input :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :hint="hint" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type" v-model="value"
     />
   </div>`
 });
