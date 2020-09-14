@@ -2,6 +2,7 @@ import {
   withKnobs,
   boolean,
   text,
+  button
 } from '@storybook/addon-knobs';
 import MewSwitch from '@/components/MewSwitch/MewSwitch.vue';
 
@@ -22,9 +23,14 @@ export const MEWSwitch = () => ({
     label: {
       default: text('label', 'Label')
     },
-    isSwitchOn: {
-      default: boolean('switch position', false)
+    value: {
+      default: boolean('is switch on?', false)
+    },
+    switchToggle: {
+      default: button('Toggle switch', () => {console.log('clicked'); return false})
     }
+
+
   },
   watch: {
     enableDarkMode(newVal) {
@@ -36,7 +42,8 @@ export const MEWSwitch = () => ({
     <br />
     <mew-switch
       :label="label"
-      :switch-status="isSwitchOn"
+      :value="value"
+      :switch-toggle="switchToggle"
     />
   </div>`
 });

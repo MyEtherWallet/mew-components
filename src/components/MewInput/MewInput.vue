@@ -95,6 +95,9 @@ export default {
       type: Boolean,
       default: false
     },
+    /**
+     * Sets input type
+     */
     type: {
       type: String,
       default: 'text'
@@ -107,11 +110,6 @@ export default {
       }, set(val) {
         this.$emit('input', val)
       }
-    }
-  },
-  watch: {
-    value(newval) {
-      console.log(newval)
     }
   },
   methods: {
