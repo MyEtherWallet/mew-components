@@ -5,7 +5,6 @@
       v-model="isChecked"
     />
     <span
-      @click="onToggle()"
       class="titlePrimary--text mr-2 cursor-pointer"
     >{{ label }}
       <a
@@ -20,11 +19,6 @@
 
 export default {
   name: 'MewCheckbox',
-  data() {
-    return {
-      isChecked: false
-    }
-  },
   props: {
     label: {
       type: String,
@@ -35,11 +29,20 @@ export default {
       default: function() {
         return { title: '', url: ''};
       }
+    },
+    value: {
+      type: Boolean,
+      default: false
     }
   },
-  methods: {
-    onToggle() {
-      this.isChecked = !this.isChecked;
+  computed: {
+    isChecked: {
+      get() {
+        return this.value;
+      },
+      set(val) {
+        this.$emit('input', val)
+      }
     }
   }
 }
