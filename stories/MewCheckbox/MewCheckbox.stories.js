@@ -30,6 +30,15 @@ export const MEWCheckbox = () => ({
     },
     link: {
       default: object('link', linkObj)
+    },
+    value: {
+      default: boolean('value', false)
+    },
+    checkboxToggle: {
+      default: button('checkbox-toggle', function() {
+        console.log('clicked');
+        return false;
+      })
     }
   },
   watch: {
@@ -43,6 +52,7 @@ export const MEWCheckbox = () => ({
     <mew-checkbox
       :label="label"
       :link="link"
+      :checkbox-toggle="checkboxToggle"
     />
   </div>`
 });

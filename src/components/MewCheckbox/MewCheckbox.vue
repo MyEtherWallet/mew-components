@@ -3,10 +3,11 @@
     <v-checkbox
       class="titlePrimary--text"
       v-model="isChecked"
+      @click="checkboxToggle"
     />
     <span
-      @click="onToggle()"
       class="titlePrimary--text mr-2 cursor-pointer"
+      @click="checkboxToggle"
     >{{ label }}
       <a
         v-if="link.url && link.title"
@@ -20,11 +21,6 @@
 
 export default {
   name: 'MewCheckbox',
-  data() {
-    return {
-      isChecked: false
-    }
-  },
   props: {
     label: {
       type: String,
@@ -35,11 +31,24 @@ export default {
       default: function() {
         return { title: '', url: ''};
       }
+    },
+    value: {
+      type: Boolean,
+      default: false
+    },
+    checkboxToggle: {
+      type: Function,
+      default: () => {}
     }
   },
-  methods: {
-    onToggle() {
-      this.isChecked = !this.isChecked;
+  computed: {
+    isChecked: {
+      get() {
+        return this.value;
+      },
+      set(val) {
+        this.$emit('input', val)
+      }
     }
   }
 }
