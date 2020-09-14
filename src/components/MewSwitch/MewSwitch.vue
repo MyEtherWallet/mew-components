@@ -2,13 +2,15 @@
   <div class="d-flex align-center"> 
     <span
       class="mew-body textPrimary--text mr-4 cursor-pointer"
+      @click="switchToggle"
     >{{ label }}</span>
     <v-switch
       :ripple="false"
       color="white"
       class="mew-switch"
       inset
-      v-model="switchStatus"
+      v-model="inputValue"
+      @click="switchToggle"
     />
   </div>
 </template>
@@ -18,13 +20,35 @@
 export default {
   name: 'MewSwitch',
   props: {
+    /**
+     * The switch label.
+     */
     label: {
       type: String,
       default: ''
     },
-    switchStatus: {
+    /**
+     * The switch status.
+     */
+    value: {
       type: Boolean,
       default: false
+    },
+    /**
+     * The switch toggle for the span.
+     */
+    switchToggle: {
+      type: Function,
+      default: () => {}
+    }
+  },
+  computed: {
+    inputValue: {
+      get() {
+        return this.value;
+      }, set(val) {
+        this.$emit('input', val)
+      }
     }
   }
 }
