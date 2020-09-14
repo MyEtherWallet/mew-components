@@ -176,12 +176,12 @@
 </template>
 
 <script>
-//import MewIcon from '@/components/MewIcon/MewIcon.vue';
+import MewIcon from '@/components/MewIcon/MewIcon.vue';
 
 export default {
   name: 'MewSuperButton',
   components: {
-    //'mew-icon': MewIcon
+    'mew-icon': MewIcon
   },
   props: {
     /**
