@@ -30,6 +30,9 @@ export const MEWCheckbox = () => ({
     },
     link: {
       default: object('link', linkObj)
+    },
+    isChecked: {
+      default: boolean('checked?', false)
     }
   },
   watch: {
@@ -43,6 +46,7 @@ export const MEWCheckbox = () => ({
     <mew-checkbox
       :label="label"
       :link="link"
+      v-model="isChecked"
     />
   </div>`
 });
