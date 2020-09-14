@@ -1,15 +1,16 @@
 <template>
   <div class="d-flex align-center"> 
     <span
-      @click="onToggle()"
       class="mew-body textPrimary--text mr-4 cursor-pointer"
+      @click="switchToggle"
     >{{ label }}</span>
     <v-switch
       :ripple="false"
       color="white"
       class="mew-switch"
       inset
-      v-model="isSwitchOn"
+      :value="inputValue"
+      @click="switchToggle"
     />
   </div>
 </template>
@@ -18,20 +19,36 @@
 
 export default {
   name: 'MewSwitch',
-  data() {
-    return {
-      isSwitchOn: false
-    }
-  },
   props: {
+    /**
+     * The switch label.
+     */
     label: {
       type: String,
       default: ''
+    },
+    /**
+     * The switch status.
+     */
+    value: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * The switch toggle for the span.
+     */
+    switchToggle: {
+      type: Function,
+      default: () => {}
     }
   },
-  methods: {
-    onToggle() {
-      this.isSwitchOn = !this.isSwitchOn;
+  computed: {
+    inputValue: {
+      get() {
+        return this.value;
+      }, set(val) {
+        this.$emit('input', val)
+      }
     }
   }
 }

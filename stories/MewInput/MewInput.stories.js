@@ -1,4 +1,4 @@
-import { withKnobs, text, boolean, array } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean, array, optionsKnob } from '@storybook/addon-knobs';
 import MewInput from '@/components/MewInput/MewInput.vue';
 
 export default {
@@ -11,6 +11,23 @@ export default {
 
 const ruleValue = [value => !!value || 'Required.'];
 
+const textInputTypes = {
+  tel: 'tel',
+  text: 'text',
+  time: 'time',
+  url: 'url',
+  week: 'week',
+  search: 'search',
+  month: 'month',
+  number: 'number',
+  password: 'password',
+  datetime: 'datetime-local',
+  email: 'email'
+}
+
+const optionsObj = {
+  display: 'inline-radio'
+};
 export const MEWInput = () => ({
   components: { 'mew-input': MewInput },
   props: {
@@ -47,6 +64,9 @@ export const MEWInput = () => ({
     isSearch: {
       default: boolean('is-search', false)
     },
+    type: {
+      default: optionsKnob('type', textInputTypes, 'text', optionsObj)
+    },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     }
@@ -59,7 +79,7 @@ export const MEWInput = () => ({
   template: `
     <div>
     <br />
-    <mew-input :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :hint="hint" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value"
+    <mew-input :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :hint="hint" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
     />
   </div>`
 });

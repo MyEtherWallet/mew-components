@@ -1,5 +1,8 @@
 <template>
-  <div :title="'Remaining:' + remainingAmt" class="mew-progress-bar full-width d-flex cursor-pointer">
+  <div
+    :title="'Remaining:' + remainingAmt"
+    class="mew-progress-bar full-width d-flex cursor-pointer"
+  >
     <div
       :class="[
         data.color,

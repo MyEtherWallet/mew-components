@@ -14,6 +14,7 @@
       :clearable="hasClearBtn"
       :rules="rules"
       :prepend-inner-icon="isSearch ? 'mdi-magnify' : ''"
+      :type="type"
     />
   </div>
 </template>
@@ -93,21 +94,23 @@ export default {
     isSearch: {
       type: Boolean,
       default: false
+    },
+    /**
+     * Sets input type
+     */
+    type: {
+      type: String,
+      default: 'text'
     }
   },
-  data() {
-    return {
-      inputValue: ''
-    };
-  },
-  watch: {
-    inputValue(newValue) {
-      // eslint-disable-next-line no-console
-      console.log('input value:', newValue);
+  computed: {
+    inputValue: {
+      get() {
+        return this.value;
+      }, set(val) {
+        this.$emit('input', val)
+      }
     }
-  },
-  mounted() {
-    this.inputValue = this.value;
   },
   methods: {
     getClasses() {
