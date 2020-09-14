@@ -136,7 +136,7 @@ export default {
       default: 'Back'
     },
     /**
-     * Close overlay.
+     * Close button.
      */
     close: {
       type: Function,
@@ -145,7 +145,7 @@ export default {
       }
     },
     /**
-     * Back overlay.
+     * Back button.
      */
     back: {
       type: Function,
