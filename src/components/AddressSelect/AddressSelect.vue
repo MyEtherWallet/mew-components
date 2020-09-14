@@ -101,7 +101,7 @@
 import Blockie from '@/components/Blockie/Blockie.vue';
 import Toast from '@/components/Toast/Toast.vue';
 import CopyIcon from '@/components/Copy/Copy.vue';
-import copy from '@/helpers/copy.js';
+// import copy from '@/helpers/copy.js';
 
 export default {
   name: 'AddressSelect',
