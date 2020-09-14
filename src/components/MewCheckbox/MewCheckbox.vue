@@ -3,7 +3,6 @@
     <v-checkbox
       class="titlePrimary--text"
       v-model="isChecked"
-      @click="checkboxToggle"
     />
     <span
       class="titlePrimary--text mr-2 cursor-pointer"
