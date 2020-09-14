@@ -9,7 +9,7 @@
       color="white"
       class="mew-switch"
       inset
-      v-model="inputValue"
+      :value="inputValue"
       @click="switchToggle"
     />
   </div>

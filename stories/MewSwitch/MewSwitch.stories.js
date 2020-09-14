@@ -27,7 +27,7 @@ export const MEWSwitch = () => ({
       default: boolean('is switch on?', false)
     },
     switchToggle: {
-      default: button('Toggle switch', () => {console.log('clicked'); return false})
+      default: button('switch-toggle', () => {console.log('clicked'); return false})
     }
 
 
