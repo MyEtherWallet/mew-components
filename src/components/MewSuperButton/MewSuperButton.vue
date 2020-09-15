@@ -1,200 +1,114 @@
 <template>
-  <div class="global--mew-component--mew-super-button">
-    <div
-      v-if="btnMode === 'large-right-image'"
-      class="btn--b large-right-image"
-      :class="[colorTheme === 'basic' ? 'white titlePrimary--text' : '']"
+  <v-btn
+    @click="onBtnClick()"
+    :class="[ getClasses() , 'mew-super-button','mew-button', isColumn ? 'full-height' : 'full-width mew-super-btn-row']"
+    :color="getColor()"
+    :outlined="colorTheme.toLowerCase() === colorThemes.outline"
+    :ripple="false"
+    :disabled="disabled"
+    :text="disabled" 
+    depressed
+  >
+    <v-row
+      class="pa-3 full-width align-center"
+      justify="space-between"
+      :class="getRowClasses()"
     >
-      <div class="d-flex align-end justify-space-between">
-        <div class="pa-9">
-          <div class="d-flex align-center mb-2">
-            <div class="mew-heading-2 font-weight-bold">
-              {{ title }}
-            </div>
-            <v-icon
-              v-if="titleMdiIcon"
-              class="ml-2"
-              :class="titleIconClass"
-              size="21"
-            >
-              {{ titleMdiIcon }}
-            </v-icon>
-          </div>
-          <div>{{ subtitle }}</div>
-          <slot name="contentBelowTitle" />
-        </div>
-
-        <div
-          class="d-none d-sm-block mr-8"
-          style="line-height: 0"
-        >
-          <slot name="contentRight" />
-        </div>
-      </div>
-      <div class="d-sm-none d-flex justify-center">
-        <slot name="contentRight" />
-      </div>
-    </div>
-
-    <div
-      v-if="btnMode === 'standard'"
-      class="btn--a"
-    >
-      <v-btn
-        :class="[
-          getClasses(),
-          'mew-super-button',
-          'mew-button',
-          isColumn ? 'full-height' : 'full-width mew-super-btn-row'
-        ]"
-        :color="getColor()"
-        :outlined="colorTheme.toLowerCase() === colorThemes.outline"
-        :ripple="false"
-        :disabled="disabled"
-        :text="disabled"
-        depressed
-        @click="onBtnClick()"
+      <v-col
+        :class="['left-container', 'full-width', isColumn ? 'text-center' : 'text-left']"
+        :cols="isColumn ? 12 : colsNum"
       >
-        <v-row
-          class="pa-3 full-width align-center"
-          justify="space-between"
-          :class="getRowClasses()"
-        >
-          <v-col
-            :class="[
-              'left-container',
-              'full-width',
-              isColumn ? 'text-center' : 'text-left'
-            ]"
-            :cols="isColumn ? 12 : colsNum"
+        <div :class="['title-wrapper', 'd-flex', 'align-center', isColumn ? 'justify-center' : '' ]">
+          <div :class="[fontClass, 'font-weight-bold', 'truncate']">
+            {{ title }}
+          </div>
+          <div
+            class="body-2"
+            v-if="hasSrc(titleIcon) && !isColumn"
           >
-            <div
-              class="mb-2"
-              :class="[
-                'title-wrapper',
-                'd-flex',
-                'align-center',
-                isColumn ? 'justify-center' : ''
-              ]"
-            >
-              <div
-                class="mew-heading-2"
-                :class="[fontClass, 'font-weight-bold', 'truncate']"
-              >
-                {{ title }}
-              </div>
-              <div
-                v-if="hasSrc(titleIcon) && !isColumn"
-                class="body-2"
-              >
-                <img
-                  v-if="showTitleIcon(titleIcon, 'img')"
-                  class="icon title-icon"
-                  :src="titleIcon"
-                  alt="Icon"
-                >
-                <mew-icon
-                  v-if="showTitleIcon(titleIcon, 'mew')"
-                  :img-height="20"
-                  class="icon title-icon"
-                  :icon-name="titleIcon"
-                />
-                <v-icon
-                  v-if="showTitleIcon(titleIcon, 'mdi')"
-                  :class="['icon', 'title-icon', titleIconClass]"
-                  class="ml-2"
-                  size="21"
-                >
-                  {{ titleIcon }}
-                </v-icon>
-              </div>
-            </div>
-            <div
-              v-if="subtitle"
-              class="mt-2 break-word"
-            >
-              {{ subtitle }}
-            </div>
-            <div
-              v-if="tag"
-              class="body-2 mt-1 tagLabel--text"
-            >
-              {{ tag }}
-            </div>
-          </v-col>
-          <v-col
-            :cols="isColumn ? 12 : 3"
-            :class="[
-              'right-container',
-              isColumn
-                ? 'text-center, pb-0'
-                : 'd-flex align-center justify-center text-right'
-            ]"
-          >
-            <slot name="contentSlot" />
-            <div
-              v-if="isNew"
-              class="label-container d-flex align-center text-uppercase"
-            >
-              <div class="label text-uppercase">
-                new
-              </div>
-            </div>
-            <div
-              v-if="!hasSrc(rightIcon) && note && !isColumn"
-              class="note truncate text-uppercase caption warning--text text--darken-1"
-            >
-              {{ note }}
-            </div>
             <img
-              v-if="showRightIcon(rightIcon, 'img')"
-              class="icon right-icon"
-              :src="rightIcon"
+              v-if="showTitleIcon(titleIcon, 'img')"
+              class="icon title-icon"
+              :src="titleIcon"
               alt="Icon"
             >
             <mew-icon
-              v-if="showRightIcon(rightIcon, 'mew')"
-              :img-height="100"
-              :class="[
-                'icon',
-                'right-icon',
-                !isColumn ? 'd-flex align-center' : ''
-              ]"
-              :icon-name="rightIcon"
+              :img-height="20"
+              class="icon title-icon"
+              v-if="showTitleIcon(titleIcon, 'mew')"
+              :icon-name="titleIcon"
             />
             <v-icon
-              v-if="showRightIcon(rightIcon, 'mdi')"
-              class="icon right-icon primary--text"
+              :class="['icon', 'title-icon', titleIconClass]"
+              v-if="showTitleIcon(titleIcon, 'mdi')"
             >
-              {{ rightIcon }}
+              {{ titleIcon }}
             </v-icon>
-          </v-col>
-        </v-row>
-      </v-btn>
-    </div>
-  </div>
+          </div>
+        </div>
+        <div
+          class="mt-2 break-word font-weight-medium"
+          v-if="subtitle"
+        >
+          {{ subtitle }}
+        </div>
+        <div
+          v-if="tag"
+          class="body-2 mt-1 tagLabel--text"
+        >
+          {{ tag }}
+        </div>
+      </v-col>
+      <v-col
+        :cols="isColumn ? 12 : 3"
+        :class="['right-container', isColumn ? 'text-center, pb-0' : 'd-flex align-center justify-center text-right']"
+      >
+        <slot name="contentSlot" />
+        <div
+          v-if="isNew"
+          class="label-container d-flex align-center text-uppercase"
+        >
+          <div class="label text-uppercase">
+            new 
+          </div>
+        </div>
+        <div
+          v-if="!hasSrc(rightIcon) && note && !isColumn"
+          class="note truncate text-uppercase caption warning--text text--darken-1"
+        >
+          {{ note }}
+        </div>
+        <img
+          v-if="showRightIcon(rightIcon, 'img')"
+          class="icon right-icon"
+          :src="rightIcon"
+          alt="Icon"
+        >
+        <mew-icon
+          :img-height="100"
+          :class="['icon', 'right-icon', !isColumn ? 'd-flex align-center' : '']"
+          v-if="showRightIcon(rightIcon, 'mew')"
+          :icon-name="rightIcon"
+        />
+        <v-icon
+          class="icon right-icon primary--text"
+          v-if="showRightIcon(rightIcon, 'mdi')"
+        >
+          {{ rightIcon }}
+        </v-icon>
+      </v-col>
+    </v-row>
+  </v-btn>
 </template>
 
 <script>
 import MewIcon from '@/components/MewIcon/MewIcon.vue';
-
 export default {
   name: 'MewSuperButton',
-  components: {
+    components: {
     'mew-icon': MewIcon
   },
   props: {
-    /**
-     * standard, large-right-image
-     */
-    btnMode: {
-      type: String,
-      default: 'standard'
-    },
-    titleMdiIcon: {
-      type: String,
-      default: ''
-    },
     /**
      * The number of cols for the left side to take up.
      */
@@ -207,7 +121,7 @@ export default {
      */
     fontClass: {
       type: String,
-      default: 'mew-heading-2'
+      default: 'mew-heading-3'
     },
     /**
      * The button content will be set as a column rather than row.
@@ -248,7 +162,7 @@ export default {
      * The right-icon url. Inserts an icon on the right container of the button.
      */
     rightIcon: {
-      type: [String, Array],
+      type:[String, Array],
       default: ''
     },
     /**
@@ -318,26 +232,21 @@ export default {
   },
   methods: {
     showTitleIcon(icon, type) {
-      return this.titleIconType.toLowerCase() === this.iconTypes[type];
+      return this.titleIconType.toLowerCase() === this.iconTypes[type]
     },
     showRightIcon(icon, type) {
-      return (
-        this.rightIconType.toLowerCase() === this.iconTypes[type] &&
-        this.hasSrc(icon)
-      );
+      return this.rightIconType.toLowerCase() === this.iconTypes[type] && this.hasSrc(icon)
     },
     getRowClasses() {
       const classes = [];
       if (this.hasSrc(this.rightIcon)) {
         classes.push('text-center');
       }
-
       if (this.isColumn) {
         classes.push('column-reverse');
       }
-
       return classes;
-    },
+    }, 
     onBtnClick() {
       this.active = !this.active;
     },
@@ -346,34 +255,27 @@ export default {
       if (colorThemesWhite.indexOf(this.colorTheme) >= 0) {
         return 'white';
       }
-
+      
       if (this.colorTheme === this.colorThemes.primary) {
-        return 'superPrimary';
+        return 'superPrimary'
       }
-
       return this.colorTheme;
     },
     getClasses() {
       const classes = [];
-      if (
-        this.colorTheme.toLowerCase() === this.colorThemes.basic ||
-        this.colorTheme.toLowerCase() === this.colorThemes.primary
-      ) {
+      if (this.colorTheme.toLowerCase() === this.colorThemes.basic || this.colorTheme.toLowerCase() === this.colorThemes.primary) {
         classes.push('titlePrimary--text');
       }
-
       if (this.disabled) {
         classes.push('disabled-btn');
       }
-
       if (this.active && !this.disabled) {
         classes.push('active');
       }
-
       return classes;
     },
     hasSrc(src) {
-      if (src === '' || src.length <= 0) {
+      if (src === '' || src.length <= 0 ) {
         return false;
       }
       return true;
@@ -382,47 +284,31 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.btn--b {
-  border-radius: 10px;
-}
-.large-right-image {
-}
-</style>
-
 <style lang="scss">
-.global--mew-component--mew-super-button .btn--a {
-  .v-btn {
-    letter-spacing: 0 !important;
-  }
+.v-application {
   .v-btn.mew-super-button {
-    border-radius: 12px !important;
+    border-radius: 12px;
     flex: auto;
     height: 100%;
     text-transform: none;
-
     &.mew-super-btn-row {
       .v-btn__content {
         height: 160px;
       }
     }
   }
-
   .disabled-btn {
     color: var(--v-disabled-super-base) !important;
   }
-
   .basic--text.active {
     background-color: var(--v-primaryOutlineActive-base) !important;
     border: 2px solid var(--v-primary-base) !important;
   }
-
   .v-btn.basic--text {
     &:hover {
       background-color: var(--v-superPrimaryHover-base) !important;
     }
   }
-
   .left-container {
     .title-wrapper {
       .title-icon {
@@ -432,7 +318,6 @@ export default {
       }
     }
   }
-
   .right-container {
     .note {
       position: absolute;
@@ -458,7 +343,6 @@ export default {
         transform: rotate(45deg);
       }
     }
-
     .right-icon {
       font-size: 100px;
       max-height: 80px;
