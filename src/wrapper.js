@@ -16,6 +16,7 @@ import MewPopup from './components/MewPopup/MewPopup.vue';
 import MewProgressBar from './components/MewProgressBar/MewProgressBar.vue';
 import MewSelect from './components/MewSelect/MewSelect.vue';
 import MewStepper from './components/MewStepper/MewStepper.vue';
+import MewStepperHeader from './components/MewStepper/MewStepperHeader.vue';
 import MewSwitch from './components/MewSwitch/MewSwitch.vue';
 import MewTabs from './components/MewTabs/MewTabs.vue';
 import MewTable from './components/MewTable/MewTable.vue';
@@ -52,6 +53,7 @@ const Components = {
   MewPopup,
   MewSelect,
   MewStepper,
+  MewStepperHeader,
   MewSwitch,
   MewTabs,
   Toast,
