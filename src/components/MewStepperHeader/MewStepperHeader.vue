@@ -5,9 +5,9 @@
         v-for="(s, key) in tabs"
         ref="tab"
         :key="key"
-        class="tab position--relative pa-3"
+        class="tab position--relative"
       >
-        <div class="desktop-content d-none d-md-block">
+        <div class="desktop-content d-none d-md-block py-3">
           <div class="d-flex align-center justify-center">
             <div>STEP {{ key + 1 }}.</div>
             <div>{{ s.label }}</div>
@@ -19,7 +19,7 @@
         </div>
         <div class="mobile-content d-block d-md-none">
           <div
-            class="d-flex flex-column align-center justify-center text-center px-2"
+            class="d-flex flex-column align-center justify-center text-center py-2 px-4"
           >
             <div>STEP {{ key + 1 }}.</div>
             <div>{{ s.label }}</div>
