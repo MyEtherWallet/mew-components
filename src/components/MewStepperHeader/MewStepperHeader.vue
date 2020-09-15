@@ -19,7 +19,7 @@
         </div>
         <div class="mobile-content d-block d-md-none">
           <div
-            class="d-flex flex-column align-center justify-center text-center"
+            class="d-flex flex-column align-center justify-center text-center px-2"
           >
             <div>STEP {{ key + 1 }}.</div>
             <div>{{ s.label }}</div>
