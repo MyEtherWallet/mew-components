@@ -2,8 +2,7 @@ import {
   withKnobs,
   boolean,
   text,
-  object,
-  button
+  object
 } from '@storybook/addon-knobs';
 import MewCheckbox from '@/components/MewCheckbox/MewCheckbox.vue';
 
@@ -34,12 +33,6 @@ export const MEWCheckbox = () => ({
     },
     value: {
       default: boolean('value', false)
-    },
-    checkboxToggle: {
-      default: button('checkbox-toggle', function() {
-        console.log('clicked');
-        return false;
-      })
     }
   },
   watch: {
@@ -53,7 +46,6 @@ export const MEWCheckbox = () => ({
     <mew-checkbox
       :label="label"
       :link="link"
-      :checkbox-toggle="checkboxToggle"
     />
   </div>`
 });

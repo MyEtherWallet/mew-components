@@ -9,8 +9,7 @@
       color="white"
       class="mew-switch"
       inset
-      :value="inputValue"
-      @click="switchToggle"
+      v-model="inputValue"
     />
   </div>
 </template>
@@ -33,13 +32,6 @@ export default {
     value: {
       type: Boolean,
       default: false
-    },
-    /**
-     * The switch toggle for the span.
-     */
-    switchToggle: {
-      type: Function,
-      default: () => {}
     }
   },
   computed: {
@@ -49,6 +41,11 @@ export default {
       }, set(val) {
         this.$emit('input', val)
       }
+    }
+  },
+  methods: {
+    switchToggle() {
+      this.$emit('input', !this.value);
     }
   }
 }
