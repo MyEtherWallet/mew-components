@@ -6,7 +6,7 @@
     />
     <span
       class="titlePrimary--text mr-2 cursor-pointer"
-      @click="checkboxToggle"
+      @click="toggleCheckbox"
     >{{ label }}
       <a
         v-if="link.url && link.title"
@@ -34,10 +34,6 @@ export default {
     value: {
       type: Boolean,
       default: false
-    },
-    checkboxToggle: {
-      type: Function,
-      default: () => {}
     }
   },
   computed: {
@@ -48,6 +44,11 @@ export default {
       set(val) {
         this.$emit('input', val)
       }
+    }
+  },
+  methods: {
+    toggleCheckbox() {
+      this.$emit('input', !this.value);
     }
   }
 }

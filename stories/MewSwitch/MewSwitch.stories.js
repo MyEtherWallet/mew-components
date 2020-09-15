@@ -1,8 +1,7 @@
 import {
   withKnobs,
   boolean,
-  text,
-  button
+  text
 } from '@storybook/addon-knobs';
 import MewSwitch from '@/components/MewSwitch/MewSwitch.vue';
 
@@ -25,9 +24,6 @@ export const MEWSwitch = () => ({
     },
     value: {
       default: boolean('is switch on?', false)
-    },
-    switchToggle: {
-      default: button('switch-toggle', () => {console.log('clicked'); return false})
     }
 
 
@@ -43,7 +39,6 @@ export const MEWSwitch = () => ({
     <mew-switch
       :label="label"
       :value="value"
-      :switch-toggle="switchToggle"
     />
   </div>`
 });
