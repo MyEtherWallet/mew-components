@@ -2,7 +2,8 @@ import {
   withKnobs,
   boolean,
   text,
-  object
+  object,
+  button
 } from '@storybook/addon-knobs';
 import MewCheckbox from '@/components/MewCheckbox/MewCheckbox.vue';
 
