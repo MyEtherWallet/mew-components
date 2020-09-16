@@ -23,7 +23,7 @@
             class="item-img"
             :src="item.img"
           >
-          <span class="text-uppercase">{{ item.name ? item.name : item }} <span
+          <span class="text-capitalize">{{ item.name ? item.name : item }} <span
             v-if="item.value"
             class="searchText--text text-capitalize"
           >- {{ item.value }}</span></span>
@@ -35,7 +35,7 @@
           v-if="data.item.img"
           :src="data.item.img"
         >
-        <span class="text-uppercase">{{ data.item.name ? data.item.name : data.item }} <span
+        <span class="text-capitalize">{{ data.item.name ? data.item.name : data.item }} <span
           v-if="data.item.value"
           class="textSecondary--text text-capitalize"
         >- {{ data.item.value }}</span></span>
@@ -72,13 +72,6 @@ export default {
     label: {
       type: String,
       default: ''
-    },
-    /**
-     * Sets the select value
-     */
-    value: {
-      type: [String, Object],
-      default: ''
     }
   },
   data() {
@@ -88,8 +81,7 @@ export default {
   },
   watch: {
     selectModel(newValue) {
-      // eslint-disable-next-line no-console
-      console.log('select value:', newValue);
+      this.$emit('value', newValue);
     }
   },
   mounted() {
