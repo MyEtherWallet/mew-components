@@ -2,7 +2,7 @@
   <v-expansion-panels
     v-model="expandIdxArr"
     multiple
-    :class="[isToggle ? 'no-pointer-events' : '', 'mew-expand-panel']"
+    :class="[interactiveContent ? 'no-pointer-events' : '', 'mew-expand-panel']"
     :flat="true"
   >
     <v-expansion-panel
@@ -87,6 +87,13 @@ export default {
    * Turns the panel actions to a toggle btn. The subtext attribute in panelItems becomes the switch label.
    */
   isToggle: {
+    type: Boolean,
+    default: false
+  },
+  /**
+   * Allow items within to expansion panels to be interacted with
+   */
+  interactiveContent: {
     type: Boolean,
     default: false
   },

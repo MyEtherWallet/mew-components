@@ -33,6 +33,9 @@ export const MEWExpandPanel = () => ({
     isToggle: {
       default: boolean('is-toggle', false)
     },
+    interactiveContent: {
+      default: boolean('interactive-content', false)
+    },
     hasDividers: {
       default: boolean('has-dividers', false)
     }
@@ -48,10 +51,14 @@ export const MEWExpandPanel = () => ({
     <mew-expand-panel
       :has-dividers="hasDividers" 
       :is-toggle="isToggle"
+      :interactive-content=""
       :panel-items="isToggle ? [panelItems[0]] : panelItems"
     >
       <template v-slot:panelBody1>
         <span>Panel slot example</span>
+        <button>
+        {{ interactiveContent ? 'Click me':'You cant click me' }}
+        </button>
       </template>
     </mew-expand-panel>
   </div>`
