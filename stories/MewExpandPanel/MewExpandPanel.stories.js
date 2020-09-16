@@ -51,7 +51,7 @@ export const MEWExpandPanel = () => ({
     <mew-expand-panel
       :has-dividers="hasDividers" 
       :is-toggle="isToggle"
-      :interactive-content=""
+      :interactive-content="interactiveContent"
       :panel-items="isToggle ? [panelItems[0]] : panelItems"
     >
       <template v-slot:panelBody1>
