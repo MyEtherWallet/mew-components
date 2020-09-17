@@ -81,7 +81,7 @@ export default {
   },
   watch: {
     selectModel(newValue) {
-      this.$emit('value', newValue);
+      this.$emit('input', newValue);
     }
   },
   mounted() {

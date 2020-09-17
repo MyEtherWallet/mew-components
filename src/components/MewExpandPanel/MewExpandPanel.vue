@@ -2,7 +2,7 @@
   <v-expansion-panels
     v-model="expandIdxArr"
     multiple
-    :class="[interactiveContent ? 'no-pointer-events' : '', 'mew-expand-panel']"
+    :class="[interactiveContent ? '' : 'no-pointer-events', 'mew-expand-panel']"
     :flat="true"
   >
     <v-expansion-panel
