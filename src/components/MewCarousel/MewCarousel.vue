@@ -2,12 +2,14 @@
   <v-carousel
     class="mew-carousel"
     active-class="active-carousel-item"
-    :cycle="true"
-    :show-arrows-on-hover="true"
+    :cycle="cycle"
+    :show-arrows-on-hover="showArrows"
+    :show-arrows="showArrows"
     :height="carouselHeight"
+    v-model="currentSlide"
   >
     <v-carousel-item
-      :ripple="true"
+      :ripple="ripple"
       eager
       v-for="(slide, idx) in totalSlides"
       :link="typeof slide === 'string'"
@@ -36,6 +38,44 @@ export default {
     carouselHeight: {
       type: String,
       default: '200'
+    },
+    /**
+     * Whether the carousel ripples on click
+     */
+    ripple: {
+      type: Boolean,
+      default: true
+    },
+    /**
+     * Whether show the arrows on hover
+     */
+    showArrows: {
+      type: Boolean,
+      default: true
+    },
+    /**
+     * Whether carousel cycles automatically
+     */
+    cycle: {
+      type: Boolean,
+      default: true
+    },
+    /**
+     * Indicates current cycle
+     */
+    value: {
+      type: Number,
+      default: 0
+    }
+  },
+  computed: {
+    currentSlide:{
+      set(newVal) {
+        this.$emit('input', newVal)
+      },
+      get() {
+        return this.value;
+      }
     }
   }
 
