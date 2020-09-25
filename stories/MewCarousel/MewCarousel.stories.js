@@ -25,7 +25,19 @@ export const MEWCarousel = () => ({
     },
     carouselHeight: {
       default: text('carousel-height', '200')
-    }
+    },
+    value: {
+      default: number('value', 0) // currently wont work as props cant be adjusted by v-model
+    },
+    ripple: {
+      default: boolean('ripple?', true)
+    },
+    showArrows: {
+      default: boolean('show-arrows', true)
+    },
+    cycle: {
+      default: boolean('cycle?', true)
+    },
   },
   watch: {
     enableDarkMode(newVal) {
@@ -38,6 +50,10 @@ export const MEWCarousel = () => ({
     <mew-carousel
       :carousel-height="carouselHeight"
       :total-slides="totalSlides"
+      :value="value"
+      :cycle="cycle"
+      :show-arrows="showArrows"
+      :ripple="ripple"
     >
       <template v-slot:slide1>
         <div class="text-center black--text">SLIDE 1</div>
