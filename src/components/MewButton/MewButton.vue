@@ -62,7 +62,7 @@ export default {
     /**
      * Button size: small, medium, large, xlarge.
      */
-    buttonSize: {
+    btnSize: {
       type: String,
       default: 'large'
     },
@@ -194,8 +194,8 @@ export default {
     getClasses() {
       const classes = [];
 
-      if (this.buttonSize.toLowerCase()) {
-        classes.push(this.buttonSize.toLowerCase() + '-btn', 'mew-caption');
+      if (this.btnSize.toLowerCase()) {
+        classes.push(this.btnSize.toLowerCase() + '-btn', 'mew-caption');
       }
 
       if (this.hasFullWidth === true ) {

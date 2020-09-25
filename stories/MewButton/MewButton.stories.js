@@ -101,7 +101,7 @@ export const MEWButton = () => ({
       default: optionsKnob('icon-align', iconAlignOptions, 'none', optionsObj)
     },
     buttonSize: {
-      default: optionsKnob('button-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
+      default: optionsKnob('btn-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
     },
     showsActiveState: {
       default: boolean('shows-active-state', false)
@@ -129,7 +129,7 @@ export const MEWButton = () => ({
       :icon-type="iconType"
       :has-full-width="hasFullWidth"
       :shows-active-state="showsActiveState"
-      :button-size="buttonSize"
+      :btn-size="buttonSize"
     />
   </div>`
 });
@@ -159,7 +159,7 @@ export const BackgroundButton = () => ({
       )
     },
     buttonSize: {
-      default: optionsKnob('button-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
+      default: optionsKnob('btn-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
     },
     showsActiveState: {
       default: boolean('shows-active-state', false)
@@ -184,7 +184,7 @@ export const BackgroundButton = () => ({
       btn-style="background"
       :has-full-width="hasFullWidth"
       :shows-active-state="showsActiveState"
-      :button-size="buttonSize"
+      :btn-size="buttonSize"
     />
   </div>`
 });
@@ -214,7 +214,7 @@ export const OutlineButton = () => ({
       )
     },
     buttonSize: {
-      default: optionsKnob('button-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
+      default: optionsKnob('btn-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
     },
     showsActiveState: {
       default: boolean('shows-active-state', false)
@@ -239,7 +239,7 @@ export const OutlineButton = () => ({
       btn-style="outline"
       :has-full-width="hasFullWidth"
       :shows-active-state="showsActiveState"
-      :button-size="buttonSize"
+      :btn-size="buttonSize"
     />
   </div>`
 });
@@ -269,7 +269,7 @@ export const TransparentButton = () => ({
       )
     },
     buttonSize: {
-      default: optionsKnob('button-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
+      default: optionsKnob('btn-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
     },
     showsActiveState: {
       default: boolean('shows-active-state', false)
@@ -294,7 +294,7 @@ export const TransparentButton = () => ({
       btn-style="transparent"
       :has-full-width="hasFullWidth"
       :shows-active-state="showsActiveState"
-      :button-size="buttonSize"
+      :btn-size="buttonSize"
     />
   </div>`
 });
@@ -335,7 +335,7 @@ export const IconButton = () => ({
       )
     },
     buttonSize: {
-      default: optionsKnob('button-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
+      default: optionsKnob('btn-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
     },
     showsActiveState: {
       default: boolean('shows-active-state', false)
@@ -363,7 +363,7 @@ export const IconButton = () => ({
       icon-type="mew"
       :has-full-width="hasFullWidth"
       :shows-active-state="showsActiveState"
-      :button-size="buttonSize"
+      :btn-size="buttonSize"
     />
   </div>`
 });
@@ -408,7 +408,7 @@ export const IconTitleButton = () => ({
       )
     },
     buttonSize: {
-      default: optionsKnob('button-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
+      default: optionsKnob('btn-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
     },
     showsActiveState: {
       default: boolean('shows-active-state', false)
@@ -436,7 +436,7 @@ export const IconTitleButton = () => ({
       :icon-type="iconTitleType"
       :has-full-width="hasFullWidth"
       :shows-active-state="showsActiveState"
-      :button-size="buttonSize"
+      :btn-size="buttonSize"
     />
   </div>`
 });
