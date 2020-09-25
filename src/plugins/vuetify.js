@@ -55,7 +55,8 @@ import Vuetify, {
   VDataTable,
   VSimpleCheckbox,
   VListGroup,
-  VListItemGroup
+  VListItemGroup,
+  VImg
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -112,7 +113,8 @@ Vue.use(Vuetify, {
     VDataTable,
     VSimpleCheckbox,
     VListGroup,
-    VListItemGroup
+    VListItemGroup,
+    VImg
   }
 });
 

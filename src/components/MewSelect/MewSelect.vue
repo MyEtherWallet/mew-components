@@ -18,27 +18,37 @@
         v-slot:selection="{ item }"
       >
         <div class="d-flex align-center justify-center">
-          <img
+          <v-img
             v-if="item.img"
             class="item-img"
             :src="item.img"
-          >
-          <span class="text-uppercase">{{ item.name ? item.name : item }} <span
+            :alt="item.name ? item.name : item"
+            :contain="true"
+            max-width="25"
+            max-height="25"
+          />
+          <span class="text-uppercase mt-1">{{ item.name ? item.name : item }} <span
             v-if="item.value"
             class="searchText--text text-capitalize"
           >- {{ item.value }}</span></span>
         </div>
       </template>
       <template v-slot:item="data">
-        <img
-          class="item-img"
-          v-if="data.item.img"
-          :src="data.item.img"
-        >
-        <span class="text-uppercase">{{ data.item.name ? data.item.name : data.item }} <span
-          v-if="data.item.value"
-          class="textSecondary--text text-capitalize"
-        >- {{ data.item.value }}</span></span>
+        <div class="d-flex align-center justify-center">
+          <v-img
+            class="item-img"
+            v-if="data.item.img"
+            :src="data.item.img"
+            :alt="data.item.img"
+            :contain="true"
+            max-width="25"
+            max-height="25"
+          />
+          <span class="text-uppercase pl-1 mt-1">{{ data.item.name ? data.item.name : data.item }} <span
+            v-if="data.item.value"
+            class="textSecondary--text text-capitalize"
+          >- {{ data.item.value }}</span></span>
+        </div>
       </template>
     </v-select>
   </div>
