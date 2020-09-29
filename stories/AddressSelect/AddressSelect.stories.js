@@ -69,7 +69,7 @@ export const addressSelect = () => ({
   template: `
     <div>
     <br />
-    <address-select @saveAddress="onSaveAddress" :err-msg="errMsg" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @emitSelectedValue="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
+    <address-select @saveAddress="onSaveAddress" :err-msg="errMsg" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @input="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
   </div>`,
   methods: {
     getSelectedValue(value) {
