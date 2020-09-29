@@ -191,8 +191,7 @@ export default {
   },
   watch: {
     addressValue(newValue) {
-      // eslint-disable-next-line no-console
-      console.log('address value:', newValue);
+      this.$emit('input', newValue);
     }
   },
   methods: {
@@ -210,7 +209,6 @@ export default {
     selectAddress(data) {
       this.autoSelectMenu = false;
       this.addressValue = data.address;
-      this.$emit('emitSelectedValue', data);
     }
   }
 };
