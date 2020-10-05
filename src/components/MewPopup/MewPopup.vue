@@ -95,7 +95,7 @@
         </div>
       </v-card>
     </v-dialog>
-    <toast
+    <mew-toast
       ref="toast"
       :duration="2000"
       toast-type="success"
@@ -105,14 +105,15 @@
 </template>
 
 <script>
-import mewButton from '@/components/MewButton/MewButton.vue';
-import Toast from '@/components/Toast/Toast.vue';
+import MewButton from '@/components/MewButton/MewButton.vue';
+import MewToast from '@/components/MewToast/MewToast.vue';
 import copy from '@/helpers/copy.js';
 
 export default {
+  name: 'MewPopup',
   components: {
-    'mew-btn': mewButton,
-    'toast': Toast
+    MewButton,
+    MewToast
   },
   data() {
     return {

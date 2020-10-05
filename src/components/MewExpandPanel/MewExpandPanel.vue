@@ -17,7 +17,7 @@
         <div class="header-container">
           <span :class="['ml-2','mew-heading-3', item.tooltip? 'd-flex align-center' :'']"> 
             {{ item.name }}
-            <tooltip
+            <mew-tooltip
               class="ml-1"
               :text="item.tooltip"
               v-if="item.tooltip"
@@ -39,6 +39,7 @@
           <slot name="mewExpandPanelActions" />
           <mew-switch
             v-if="isToggle"
+            :value="isExpanded"
           />
           <span v-if="!isToggle">
             <img
@@ -62,20 +63,27 @@
 </template>
 <script>
 import MewSwitch from '@/components/MewSwitch/MewSwitch.vue';
-import Tooltip from '@/components/InfoTooltip/InfoTooltip.vue';
+import MewTooltip from '@/components/MewTooltip/MewTooltip.vue';
 
 export default {
+  name: 'MewExpandPanel',
   components: {
-    'mew-switch': MewSwitch,
-    'tooltip': Tooltip
+    MewSwitch,
+    MewTooltip
   },
   data() {
     return {
       expandIdxArr: []
     }
   },   
-
   props: {
+  /**
+   * Controls if the expand panel is open.
+   */
+  isExpanded: {
+    type: Boolean,
+    default: false
+  },
   /**
    * Applies dividers to the expand panel.
    */

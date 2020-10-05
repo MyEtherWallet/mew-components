@@ -24,6 +24,7 @@
 
 <script>
 export default {
+  name: 'MewCarousel',
   props: {
     /**
      * Pass the total number of slides if there are no links or else pass in an array of links, i.e ['https://www.google.com/', 'https://www.myetherwallet.com/']

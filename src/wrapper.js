@@ -1,9 +1,9 @@
 import MewButton from './components/MewButton/MewButton.vue';
 import MewSuperButton from './components/MewSuperButton/MewSuperButton.vue';
-import AddressSelect from './components/AddressSelect/AddressSelect.vue';
-import Blockie from './components/Blockie/Blockie.vue';
-import InfoCard from './components/InfoCard/InfoCard.vue';
-import InfoTooltip from './components/InfoTooltip/InfoTooltip.vue';
+import MewAddressSelect from './components/MewAddressSelect/MewAddressSelect.vue';
+import MewBlockie from './components/MewBlockie/MewBlockie.vue';
+import MewInfoCard from './components/MewInfoCard/MewInfoCard.vue';
+import MewTooltip from './components/MewTooltip/MewTooltip.vue';
 import MewBanner from './components/MewBanner/MewBanner.vue';
 import MewCarousel from './components/MewCarousel/MewCarousel.vue';
 import MewCheckbox from './components/MewCheckbox/MewCheckbox.vue';
@@ -20,15 +20,15 @@ import MewSwitch from './components/MewSwitch/MewSwitch.vue';
 import MewTabs from './components/MewTabs/MewTabs.vue';
 import MewTable from './components/MewTable/MewTable.vue';
 import MewToggleButton from './components/MewToggleButton/MewToggleButton.vue';
-import Toast from './components/Toast/Toast.vue';
-import TokenContainer from './components/TokenContainer/TokenContainer.vue';
-import Badge from './components/Badge/Badge.vue';
+import MewToast from './components/MewToast/MewToast.vue';
+import MewTokenContainer from './components/MewTokenContainer/MewTokenContainer.vue';
+import MewBadge from './components/MewBadge/MewBadge.vue';
 import MewNotification from './components/MewNotification/MewNotification.vue';
-import WarningSheet from './components/WarningSheet/WarningSheet.vue';
+import MewWarningSheet from './components/MewWarningSheet/MewWarningSheet.vue';
 import MewIcon from './components/MewIcon/MewIcon.vue';
 import MewChart from './components/MewChart/MewChart.vue';
-import TransformHash from './components/TransformHash/TransformHash.vue';
-import Copy from './components/Copy/Copy.vue';
+import MewTransformHash from './components/MewTransformHash/MewTransformHash.vue';
+import MewCopy from './components/MewCopy/MewCopy.vue';
 
 // import Vue from 'vue';
 // import wrap from '@vue/web-component-wrapper';
@@ -40,9 +40,9 @@ import Copy from './components/Copy/Copy.vue';
 const Components = {
   MewButton,
   MewSuperButton,
-  Blockie,
-  InfoCard,
-  InfoTooltip,
+  MewBlockie,
+  MewInfoCard,
+  MewTooltip,
   MewCheckbox,
   MewExpandPanel,
   MewInput,
@@ -54,21 +54,21 @@ const Components = {
   MewStepper,
   MewSwitch,
   MewTabs,
-  Toast,
+  MewToast,
   MewNotification,
-  WarningSheet,
-  AddressSelect,
-  Badge,
+  MewWarningSheet,
+  MewAddressSelect,
+  MewBadge,
   MewBanner,
   MewCarousel,
   MewProgressBar,
   MewTable,
   MewToggleButton,
-  TokenContainer,
+  MewTokenContainer,
   MewIcon,
   MewChart,
-  TransformHash,
-  Copy
+  MewTransformHash,
+  MewCopy
 }
 
 // Declare install function executed by Vue.use()

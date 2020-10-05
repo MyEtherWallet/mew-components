@@ -32,6 +32,7 @@
 import placeholder from '@/assets/images/bg.png'
 
 export default {
+  name: 'MewBanner',
   data() {
     return  {
       banner: this.bannerImg ? this.bannerImg : placeholder

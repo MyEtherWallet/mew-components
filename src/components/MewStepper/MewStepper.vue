@@ -26,6 +26,7 @@
 
 <script>
 export default {
+  name: 'MewStepper',
   data() {
     return {  
       stepNumber: this.onStep

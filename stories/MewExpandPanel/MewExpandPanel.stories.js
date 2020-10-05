@@ -33,6 +33,9 @@ export const MEWExpandPanel = () => ({
     isToggle: {
       default: boolean('is-toggle', false)
     },
+    isExpanded: {
+      default: boolean('is-expanded', false)
+    },
     interactiveContent: {
       default: boolean('interactive-content', false)
     },
@@ -49,6 +52,7 @@ export const MEWExpandPanel = () => ({
     <div>
     <br />
     <mew-expand-panel
+      :is-expanded="isExpanded"
       :has-dividers="hasDividers" 
       :is-toggle="isToggle"
       :interactive-content="interactiveContent"

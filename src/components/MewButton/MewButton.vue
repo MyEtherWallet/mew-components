@@ -56,7 +56,7 @@ import MewIcon from '@/components/MewIcon/MewIcon.vue';
 export default {
   name: 'MewButton',
   components: {
-    'mew-icon': MewIcon
+    MewIcon
   },
   props: {
     /**

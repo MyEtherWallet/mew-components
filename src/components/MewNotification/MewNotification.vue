@@ -10,7 +10,7 @@
         >
           <div class="d-flex align-center">
             <div :class="[ getClasses(notification.status.value.toLowerCase()), 'indicator', 'd-none', 'd-sm-flex']" />
-            <blockie
+            <mew-blockie
               class="d-none d-sm-flex"
               v-if="notification.type.string.toLowerCase() !== txTypes.swap"
               width="30px"
@@ -20,7 +20,7 @@
             <div class="ml-5 detail-container full-width">
               <!-- need to translate -->
               <div class="caption font-weight-medium d-flex">
-                {{ notification.from.string }}: <span class="mew-address font-weight-medium ml-1 full-width"><transform-hash :hash="notification.from.value" /> </span>
+                {{ notification.from.string }}: <span class="mew-address font-weight-medium ml-1 full-width"><mew-transform-hash :hash="notification.from.value" /> </span>
               </div>
               <div class="caption font-weight-medium d-flex">
                 {{ notification.amount.string }}: {{ notification.amount.value }}
@@ -32,7 +32,7 @@
           cols="6"
           class="text-right"
         >
-          <tx-badge
+          <mew-badge
             :badge-title="notification.type.string"
             :badge-type="getBadgeType"
           />
@@ -78,7 +78,7 @@
                   v-on="on"
                   :href="'https://etherscan.io/tx/' + detail.value"
                   target="_blank"
-                > <transform-hash :hash="detail.value" /> </a>
+                > <mew-transform-hash :hash="detail.value" /> </a>
               </template>
               <span>{{ detail.value }}</span>
             </v-tooltip>
@@ -90,16 +90,16 @@
 </template>
 
 <script>
-import Badge from '@/components/Badge/Badge.vue';
-import Blockie from '@/components/Blockie/Blockie.vue';
-import TransformHash from '@/components/TransformHash/TransformHash.vue';
+import MewBadge from '@/components/MewBadge/MewBadge.vue';
+import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
+import MewTransformHash from '@/components/MewTransformHash/MewTransformHash.vue';
 
 export default {
   name: 'MewNotification',
   components: {
-    'tx-badge': Badge,
-    'blockie': Blockie,
-    'transform-hash': TransformHash
+    MewBadge,
+    MewBlockie,
+    MewTransformHash
   },
   data() {
     return {

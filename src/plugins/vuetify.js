@@ -56,7 +56,8 @@ import Vuetify, {
   VSimpleCheckbox,
   VListGroup,
   VListItemGroup,
-  VImg
+  VImg,
+  VInput
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -114,7 +115,8 @@ Vue.use(Vuetify, {
     VSimpleCheckbox,
     VListGroup,
     VListItemGroup,
-    VImg
+    VImg,
+    VInput
   }
 });
 

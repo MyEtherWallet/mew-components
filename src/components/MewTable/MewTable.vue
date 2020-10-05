@@ -11,7 +11,7 @@
       hide-default-footer
       @item-selected="onSelect"
     > 
-      <template v-slot:item.data-table-select="{ select, isSelected }">
+      <template v-slot:[`item.data-table-select`]="{ select, isSelected }">
         <v-simple-checkbox
           :value="isSelected"
           @input="select($event)"
@@ -21,7 +21,7 @@
           :ripple="false"
         /> 
       </template>
-      <template v-slot:item.token="{item}">
+      <template v-slot:[`item.token`]="{item}">
         <div class="d-flex align-center">
           <img
             height="20"
@@ -32,7 +32,7 @@
           <span>{{ item.token }}</span>
         </div>
       </template>
-      <template v-slot:item.change="{ item }">
+      <template v-slot:[`item.change`]="{ item }">
         <div class="chart-container d-flex align-center">
           <mew-chart
             v-if="item.changeData"
@@ -51,7 +51,7 @@
           </span>
         </div>
       </template>
-      <template v-slot:item.callToAction="{ item }">
+      <template v-slot:[`item.callToAction`]="{ item }">
         <mew-btn
           @click.native="onClick(item)"
           :title="item.callToAction"
@@ -59,7 +59,7 @@
         />
       </template>
       <template
-        v-slot:item.txHash="{ item }"
+        v-slot:[`item.txHash`]="{ item }"
       >
         <div :class="[!$vuetify.breakpoint.xs ? 'pr-3' : '']">
           <v-tooltip
@@ -69,14 +69,14 @@
             color="titlePrimary--text"
             top
           >
-            <template v-slot:activator="{ on }">
+            <template v-slot:[`activator`]="{ on }">
               <a
                 v-on="on"
                 :href="'https://etherscan.io/tx/' + item.txHash"
                 target="_blank"
                 class="font-weight-medium mew-address d-flex full-width"
               >
-                <transform-hash :hash="item.txHash" />
+                <mew-transform-hash :hash="item.txHash" />
                 <v-icon
                   class="arrow-top-right"
                   color="primary"
@@ -87,9 +87,9 @@
           </v-tooltip>
         </div>
       </template>
-      <template v-slot:item.address="{ item }">
+      <template v-slot:[`item.address`]="{ item }">
         <div class="d-flex align-center">
-          <blockie
+          <mew-blockie
             class="mr-2 d-none d-sm-flex"
             :address="item.address"
             width="25px"
@@ -107,7 +107,7 @@
                 v-on="on"
                 class="address-container font-weight-medium mew-address d-flex"
               >
-                <transform-hash :hash="item.address" />
+                <mew-transform-hash :hash="item.address" />
                 <v-icon 
                   @click="copyToClipboard('mew-table-address')"
                   class="content-copy cursor-pointer ml-1"
@@ -132,7 +132,7 @@
         </div>
       </template>
     </v-data-table>
-    <toast
+    <mew-toast
       ref="toast"
       :duration="2000"
       toast-type="success"
@@ -143,19 +143,20 @@
 
 <script>
 import copy from '@/helpers/copy.js';
-import Blockie from '@/components/Blockie/Blockie.vue';
-import Toast from '@/components/Toast/Toast.vue';
+import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
+import MewToast from '@/components/MewToast/MewToast.vue';
 import MewButton from '@/components/MewButton/MewButton.vue';
 import MewChart from '@/components/MewChart/MewChart.vue';
-import TransformHash from '@/components/TransformHash/TransformHash.vue';
+import MewTransformHash from '@/components/MewTransformHash/MewTransformHash.vue';
 
 export default {
+  name: 'MewTable',
   components: {
-    'blockie': Blockie,
-    'toast': Toast,
-    'mew-btn': MewButton,
-    'mew-chart': MewChart,
-    'transform-hash': TransformHash
+    MewBlockie,
+    MewToast,
+    MewButton,
+    MewChart,
+    MewTransformHash
   },
   props: {
     /**
