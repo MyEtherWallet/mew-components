@@ -68,6 +68,7 @@ import youtube from '@/assets/images/icons/footer/youtube.png'
 
 
 export default {
+  name: 'MewIcon',
   data() {
     return {
       aave: aave,

@@ -58,7 +58,7 @@
               btn-type="background"
               :title="btnText"
             />
-            <warning-sheet
+            <mew-warning-sheet
               v-if="warningTitle || warningDesc"
               :title="warningTitle"
               :description="warningDesc"
@@ -71,8 +71,8 @@
 </template>
 
 <script>
-import mewButton from '@/components/MewButton/MewButton.vue';
-import warningSheet from '@/components/WarningSheet/WarningSheet.vue';
+import MewButton from '@/components/MewButton/MewButton.vue';
+import MewWarningSheet from '@/components/MewWarningSheet/MewWarningSheet.vue';
 
 export default {
   name: 'MewOverlay',
@@ -82,8 +82,8 @@ export default {
     }
   },
   components: {
-    'mew-button': mewButton,
-    'warning-sheet': warningSheet
+    MewButton,
+    MewWarningSheet
   },
   props: {
     /**

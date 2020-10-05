@@ -21,6 +21,7 @@
 import BigNumber from 'bignumber.js';
 
 export default {
+  name: 'MewProgressBar',
   data() {
     return {
        hasRightBorderRadius: false,
