@@ -19,7 +19,7 @@ export const MEWOverlay = () => ({
       showsOverlay: false
     }
   },
-  components: { 'mew-overlay': MewOverlay },
+  components: { MewOverlay },
   props: {
     showOverlay: {
       default: boolean('show-overlay', false)

@@ -56,7 +56,7 @@ const iconTypes = {
 }
 
 export const MEWButton = () => ({
-  components: { 'mew-button': MewButton },
+  components: { MewButton },
   props: {
     hasFullWidth: {
       default: boolean('has-full-width', false)

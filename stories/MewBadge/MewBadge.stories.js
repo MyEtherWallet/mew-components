@@ -23,7 +23,7 @@ const badgeOptions = {
 }
 
 export const mewBadge = () => ({
-  components: { 'mew-badge': MewBadge },
+  components: { MewBadge },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)

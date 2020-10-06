@@ -38,24 +38,25 @@
           >{{ item.subtext }}</span>
           <slot name="mewExpandPanelActions" />
           <mew-switch
+            ref="switch"
+            @input="getInput"
             v-if="isToggle"
-            :value="isExpanded"
           />
           <span v-if="!isToggle">
             <img
-              v-if="!isExpand(i)"
+              v-if="!isExpanded(i)"
               height="30"
               class="edit-icon"
               src="@/assets/images/icons/edit.svg"
             >
-            <v-icon v-if="isExpand(i)">
+            <v-icon v-if="isExpanded(i)">
               mdi-chevron-down
             </v-icon>
           </span>
         </div>
       </v-expansion-panel-header>
       <v-expansion-panel-content color="white">
-        <slot :name="'panelBody' + (i + 1)" />
+        <slot v-if="showExpanded" :name="'panelBody' + (i + 1)" />
       </v-expansion-panel-content>
       <v-divider v-if="hasDividers" />
     </v-expansion-panel>
@@ -73,54 +74,62 @@ export default {
   },
   data() {
     return {
-      expandIdxArr: []
+      expandIdxArr: [],
+      showExpanded: false    
     }
   },   
   props: {
-  /**
-   * Controls if the expand panel is open.
-   */
-  isExpanded: {
-    type: Boolean,
-    default: false
-  },
-  /**
-   * Applies dividers to the expand panel.
-   */
-  hasDividers: {
-    type: Boolean,
-    default: false
-  },
-  /**
-   * Turns the panel actions to a toggle btn. The subtext attribute in panelItems becomes the switch label.
-   */
-  isToggle: {
-    type: Boolean,
-    default: false
-  },
-  /**
-   * Allow items within to expansion panels to be interacted with
-   */
-  interactiveContent: {
-    type: Boolean,
-    default: false
-  },
-  /**
-   * Accepts an array of panel objects, i.e [{ name: '', tooltip: '', subtext: '' }]
-   */
+    /**
+     * Applies dividers to the expand panel.
+     */
+    hasDividers: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Turns the panel actions to a toggle btn. The subtext attribute in panelItems becomes the switch label.
+     */
+    isToggle: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Allow items within to expansion panels to be interacted with
+     */
+    interactiveContent: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Accepts an array of panel objects, i.e [{ name: '', tooltip: '', subtext: '' }]
+     */
     panelItems: {
       type: Array,
-      default: function() {
+      default: () => {
         return [];
       }
-    }
+    },
   },
   methods: {
-    isExpand(idx) {
+    setToggle(val) {
+      this.$refs.switch[0].setToggle(val);
+    },
+    isExpanded(idx) {
       if (this.expandIdxArr.includes(idx)) {
         return true;
       }
       return false;
+    },
+    getInput(val) {
+      if (this.isToggle) {
+        this.showExpanded = val;
+        if (val === true) {
+          // hardcoding 0 because there should only be one id in isToggle
+          if (!this.expandIdxArr.includes(0)) {
+            this.expandIdxArr.push(0)
+          }
+        }
+      }
     }
   }
 }

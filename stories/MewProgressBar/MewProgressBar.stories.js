@@ -22,7 +22,7 @@ const balanceObj = {
 }
 
 export const mewProgressBar = () => ({
-  components: { 'mew-progress-bar': MewProgressBar },
+  components: { MewProgressBar },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)

@@ -10,7 +10,7 @@
       item-text="address"
       :placeholder="placeholder"
       :disabled="disabled"
-      :error-messages="errMsg"
+      :error-messages="errorMsg"
       :menu-props="{ value: autoSelectMenu, closeOnClick: true }"
       ref="addressInput"
       outlined
@@ -106,6 +106,15 @@ export default {
   name: 'MewAddressSelect',
   props: {
     /**
+     * Address select input value.
+     */
+    value: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    },
+    /**
      * Disables the input.
      */
     disabled: {
@@ -138,7 +147,7 @@ export default {
      */
     items: {
       type: Array,
-      default: function() {
+      default: () => {
         return [];
       }
     },
@@ -171,9 +180,9 @@ export default {
       default: ''
     },
     /**
-     * Text for toast success.
+     * Error message.
      */
-    errMsg: {
+    errorMsg: {
       type: String,
       default: ''
     }
@@ -189,12 +198,20 @@ export default {
       autoSelectMenu: false
     };
   },
-  watch: {
-    addressValue(newValue) {
-      this.$emit('input', newValue);
+  computed: {
+    addressValue: {
+      get() {
+        return this.value;
+      },
+      set(val) {
+        this.$emit('input', val)
+      }
     }
   },
   methods: {
+    clear() {
+      this.addressValue = null
+    },
     getRef() {
       if (this.$refs.addressInput) {
         return this.$refs.addressInput.$el.querySelector('input')

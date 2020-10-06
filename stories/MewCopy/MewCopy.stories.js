@@ -19,7 +19,7 @@ export const mewCopy = () => ({
       inputValue: 'Copied value'
     }
   },
-  components: { 'mew-copy': MewCopy },
+  components: { MewCopy },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)

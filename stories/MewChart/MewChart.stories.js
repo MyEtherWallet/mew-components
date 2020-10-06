@@ -19,7 +19,7 @@ const exampleData = {
 }
 
 export const MEWChart = () => ({
-  components: { 'mew-chart': MewChart },
+  components: { MewChart },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)

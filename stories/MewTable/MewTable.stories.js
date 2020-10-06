@@ -124,7 +124,7 @@ const tableSelectData = [
 ]
 
 export const mewTable = () => ({
-  components: { 'mew-table': MewTable },
+  components: { MewTable },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)

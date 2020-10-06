@@ -21,7 +21,7 @@ const items = [
 ]
 
 export const MEWStepper = () => ({
-  components: { 'mew-stepper': MewStepper },
+  components: { MewStepper },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)

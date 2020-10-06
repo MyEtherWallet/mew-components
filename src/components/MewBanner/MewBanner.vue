@@ -44,7 +44,7 @@ export default {
      */
     textObj: {
       type: Object,
-      default: function() {
+      default: () => {
         return {title: '', subtext: '', exit: ''};
       }
     },

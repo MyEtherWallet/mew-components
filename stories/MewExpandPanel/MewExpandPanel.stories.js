@@ -4,6 +4,7 @@ import {
   object
 } from '@storybook/addon-knobs';
 import MewExpandPanel from '@/components/MewExpandPanel/MewExpandPanel.vue';
+import MewButton from '@/components/MewButton/MewButton.vue';
 
 export default {
   title: 'MewExpandPanel',
@@ -22,7 +23,7 @@ const items = [
 ]
 
 export const MEWExpandPanel = () => ({
-  components: { 'mew-expand-panel': MewExpandPanel },
+  components: { MewExpandPanel, MewButton },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)
@@ -32,9 +33,6 @@ export const MEWExpandPanel = () => ({
     },
     isToggle: {
       default: boolean('is-toggle', false)
-    },
-    isExpanded: {
-      default: boolean('is-expanded', false)
     },
     interactiveContent: {
       default: boolean('interactive-content', false)
@@ -52,7 +50,6 @@ export const MEWExpandPanel = () => ({
     <div>
     <br />
     <mew-expand-panel
-      :is-expanded="isExpanded"
       :has-dividers="hasDividers" 
       :is-toggle="isToggle"
       :interactive-content="interactiveContent"
@@ -60,9 +57,7 @@ export const MEWExpandPanel = () => ({
     >
       <template v-slot:panelBody1>
         <span>Panel slot example</span>
-        <button>
-        {{ interactiveContent ? 'Click me':'You cant click me' }}
-        </button>
+        <mew-button :title="interactiveContent ? 'Click me':'You cant click me'"/>
       </template>
     </mew-expand-panel>
   </div>`

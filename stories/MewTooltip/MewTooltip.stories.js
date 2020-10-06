@@ -18,7 +18,7 @@ export default {
 };
 
 export const mewTooltip = () => ({
-  components: { 'mew-tooltip': MewTooltip },
+  components: { MewTooltip },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)

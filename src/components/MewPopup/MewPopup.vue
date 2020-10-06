@@ -57,14 +57,14 @@
             >
               <span>{{ errorHeader }}</span>
               <v-icon
-                @click="toggleErrMsg()"
+                @click="toggleErrMsg"
                 class="titlePrimary--text cursor-pointer"
                 v-if="!showsErr"
               >
                 mdi-chevron-down
               </v-icon>
               <v-icon
-                @click="toggleErrMsg()" 
+                @click="toggleErrMsg" 
                 class="titlePrimary--text cursor-pointer"
                 v-if="showsErr"
               >
@@ -169,7 +169,7 @@ export default {
      */
     buttonLeft: {
       type: Object,
-      default: function() {
+      default: () => {
         return {name: '', color: ''};
       }
     },
@@ -178,7 +178,7 @@ export default {
      */
     buttonRight: {
       type: Object,
-      default: function() {
+      default: () => {
         return {name: '', color: ''};
       }
     },

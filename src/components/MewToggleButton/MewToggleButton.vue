@@ -55,7 +55,7 @@ export default {
      */
     buttonGroup: {
       type: [String, Array],
-      default: function() {
+      default: () => {
         return [];
       }
     },

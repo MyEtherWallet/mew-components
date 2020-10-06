@@ -24,7 +24,7 @@ export default {
   name: 'MewInput',
   props: {
     /**
-     * Disables the input.
+     * Removes the border.
      */
     hasNoBorder: {
       type: Boolean,
@@ -84,7 +84,7 @@ export default {
      */
     rules: {
       type: Array,
-      default: function() {
+      default: () => {
         return [];
       }
     },
@@ -120,6 +120,9 @@ export default {
         classes.push('search-input');
       }
       return classes;
+    },
+    clear() {
+      this.inputValue = null;
     }
   }
 };

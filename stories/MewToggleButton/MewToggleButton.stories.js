@@ -25,7 +25,7 @@ const buttonTypes = {
 }
 
 export const mewToggleButton = () => ({
-  components: { 'mew-toggle-button': MewToggleButton },
+  components: { MewToggleButton },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)

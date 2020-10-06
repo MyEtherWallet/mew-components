@@ -164,7 +164,7 @@ export default {
      */
     tableHeaders: {
       type: Array,
-      default: function() {
+      default: () => {
         return [];
       }
     },
@@ -173,7 +173,7 @@ export default {
      */
     tableData: {
       type: Array,
-      default: function() {
+      default: () => {
         return [];
       }
     },

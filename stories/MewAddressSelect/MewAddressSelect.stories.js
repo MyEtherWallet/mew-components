@@ -25,8 +25,11 @@ const addressesArray = [
 ];
 
 export const mewAddressSelect = () => ({
-  components: { 'mew-address-select': MewAddressSelect },
+  components: { MewAddressSelect },
   props: {
+    value: {
+      default: text('value', {})
+    },
     label: {
       default: text('label', 'To Address')
     },
@@ -54,8 +57,8 @@ export const mewAddressSelect = () => ({
     successToast: {
       default: text('success-toast', 'Success!')
     },
-    errMsg: {
-      default: text('err-msg', '')
+    errorMsg: {
+      default: text('error-msg', '')
     },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
@@ -69,7 +72,7 @@ export const mewAddressSelect = () => ({
   template: `
     <div>
     <br />
-    <mew-address-select @saveAddress="onSaveAddress" :err-msg="errMsg" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @input="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
+    <mew-address-select ref="address" :value="value" @saveAddress="onSaveAddress" :error-msg="errorMsg" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @input="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
   </div>`,
   methods: {
     getSelectedValue(value) {

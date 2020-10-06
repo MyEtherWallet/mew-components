@@ -2,7 +2,7 @@
   <v-btn
     :target="btnLink ? '_blank' : ''"
     :href="btnLink"
-    @click="onBtnClick()"
+    @click="onBtnClick"
     :class="[ getClasses(), 'mew-button' ]"
     :color="colorTheme"
     :disabled="disabled"

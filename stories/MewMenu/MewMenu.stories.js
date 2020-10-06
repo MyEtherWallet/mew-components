@@ -22,7 +22,7 @@ const listObj = {
 };
 
 export const MEWMenu = () => ({
-  components: { 'mew-menu': MewMenu },
+  components: { MewMenu },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)
