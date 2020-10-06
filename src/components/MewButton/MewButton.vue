@@ -2,6 +2,7 @@
   <v-btn
     :target="btnLink ? '_blank' : ''"
     :href="btnLink"
+    :ripple="!isTransparent"
     @click="onBtnClick"
     :class="[ getClasses(), 'mew-button' ]"
     :color="colorTheme"
@@ -233,6 +234,10 @@ export default {
         classes.push('bg-white');
       }
 
+      if (this.isTransparent) {
+        classes.push('mew-transparent')
+      }
+
       return classes;
     },
     hasSrc(src) {
@@ -305,8 +310,14 @@ export default {
 
     // disabled btn
     &.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
-    background-color: var(--v-disabled-base) !important;
-    color: var(--v-white-base) !important;
+      background-color: var(--v-disabled-base) !important;
+      color: var(--v-white-base) !important;
+    }
+
+    &.mew-transparent {
+      &:hover {
+        color: var(--v-selectHover-base) !important;
+      }
     }
   }
 }

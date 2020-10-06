@@ -77,8 +77,14 @@ export const MEWInput = () => ({
       this.$vuetify.theme.dark = newVal === true ? true : false;
     }
   },
+  methods: {
+    clear() {
+      this.$refs.input.clear('0')
+    }
+  },
   template: `
     <div>
+    <button @click="clear('0')"> Hello </button>
     <br />
     <mew-input ref="input" :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :hint="hint" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
     />

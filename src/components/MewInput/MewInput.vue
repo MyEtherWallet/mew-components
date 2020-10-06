@@ -103,13 +103,19 @@ export default {
       default: 'text'
     }
   },
-  computed: {
-    inputValue: {
-      get() {
-        return this.value;
-      }, set(val) {
-        this.$emit('input', val)
+  data() {
+    return {
+      inputValue: ''
+    }
+  },
+  watch: {
+    inputValue(newVal, oldVal) {
+      if (newVal !== oldVal) {
+         this.$emit('input', newVal) 
       }
+    },
+    value(newVal) {
+      this.inputValue = newVal; 
     }
   },
   methods: {
@@ -121,8 +127,8 @@ export default {
       }
       return classes;
     },
-    clear() {
-      this.inputValue = null;
+    clear(val) {
+      this.inputValue = val;
     }
   }
 };

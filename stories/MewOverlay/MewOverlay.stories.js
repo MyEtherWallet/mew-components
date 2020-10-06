@@ -80,7 +80,7 @@ export const MEWOverlay = () => ({
       :left-btn-text="leftBtnText"
     >
       <template v-slot:mewOverlayBody>
-        <span>Mew overlay body</span>
+        <span>MEW overlay body</span>
       </template>
     </mew-overlay>
   </div>`
