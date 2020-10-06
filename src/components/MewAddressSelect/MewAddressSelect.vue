@@ -10,7 +10,7 @@
       item-text="address"
       :placeholder="placeholder"
       :disabled="disabled"
-      :error-messages="errMsg"
+      :error-messages="errorMsg"
       :menu-props="{ value: autoSelectMenu, closeOnClick: true }"
       ref="addressInput"
       outlined
@@ -171,9 +171,9 @@ export default {
       default: ''
     },
     /**
-     * Text for toast success.
+     * Error message.
      */
-    errMsg: {
+    errorMsg: {
       type: String,
       default: ''
     }
@@ -195,6 +195,9 @@ export default {
     }
   },
   methods: {
+    clear() {
+      this.addressValue = null
+    },
     getRef() {
       if (this.$refs.addressInput) {
         return this.$refs.addressInput.$el.querySelector('input')

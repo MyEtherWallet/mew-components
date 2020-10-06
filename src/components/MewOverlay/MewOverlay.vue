@@ -18,7 +18,7 @@
             <div
               v-if="leftBtnText"
               class="close-container cursor-pointer d-flex align-center ml-4"
-              @click="goBack()"
+              @click="goBack"
             > 
               <v-icon
                 color="titlePrimary"
@@ -30,7 +30,7 @@
             <div
               v-if="rightBtnText"
               class="close-container cursor-pointer d-flex align-center mr-4"
-              @click="closeOverlay()"
+              @click="closeOverlay"
             > 
               <v-icon
                 color="error"

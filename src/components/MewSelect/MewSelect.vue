@@ -96,6 +96,11 @@ export default {
   },
   mounted() {
     this.selectModel = this.items[0];
+  },
+  methods: {
+    clear() {
+      this.selectModel = this.items[0];
+    }
   }
 };
 </script>

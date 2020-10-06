@@ -9,7 +9,7 @@
       color="white"
       class="mew-switch"
       inset
-      v-model="inputValue"
+      v-model="value"
     />
   </div>
 </template>
@@ -18,6 +18,11 @@
 
 export default {
   name: 'MewSwitch',
+  data() {
+    return {
+      value: false
+    }
+  },
   props: {
     /**
      * The switch label.
@@ -25,27 +30,22 @@ export default {
     label: {
       type: String,
       default: ''
-    },
-    /**
-     * The switch status.
-     */
-    value: {
-      type: Boolean,
-      default: false
     }
   },
-  computed: {
-    inputValue: {
-      get() {
-        return this.value;
-      }, set(val) {
-        this.$emit('input', val)
+  watch: {
+    value(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.$emit('input', newVal)
       }
     }
   },
   methods: {
+    setToggle(val) {
+      this.value = val
+    },
     switchToggle() {
-      this.$emit('input', !this.value);
+      this.value = !this.value;
+      this.$emit('input', this.value);
     }
   }
 }
