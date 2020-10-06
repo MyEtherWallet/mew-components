@@ -115,8 +115,13 @@ export default {
       }
     },
     value(newVal) {
-      this.inputValue = newVal; 
+      if (newVal !== oldVal) {
+        this.inputValue = newVal;
+      }
     }
+  },
+  mounted() {
+    this.inputValue = this.value;
   },
   methods: {
     getClasses() {

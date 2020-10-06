@@ -39,7 +39,7 @@
           <slot name="mewExpandPanelActions" />
           <mew-switch
             ref="switch"
-            @input="getInput"
+            @switch="getSwitchVal"
             v-if="isToggle"
           />
           <span v-if="!isToggle">
@@ -56,7 +56,7 @@
         </div>
       </v-expansion-panel-header>
       <v-expansion-panel-content color="white">
-        <slot v-if="showExpanded" :name="'panelBody' + (i + 1)" />
+        <slot :name="'panelBody' + (i + 1)" />
       </v-expansion-panel-content>
       <v-divider v-if="hasDividers" />
     </v-expansion-panel>
@@ -120,16 +120,8 @@ export default {
       }
       return false;
     },
-    getInput(val) {
-      if (this.isToggle) {
-        this.showExpanded = val;
-        if (val === true) {
-          // hardcoding 0 because there should only be one id in isToggle
-          if (!this.expandIdxArr.includes(0)) {
-            this.expandIdxArr.push(0)
-          }
-        }
-      }
+    getSwitchVal(val) {
+      this.$emit('expand', val)
     }
   }
 }
