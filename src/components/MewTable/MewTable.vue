@@ -52,7 +52,7 @@
         </div>
       </template>
       <template v-slot:[`item.callToAction`]="{ item }">
-        <mew-btn
+        <mew-button
           @click.native="onClick(item)"
           :title="item.callToAction"
           btn-style="transparent"

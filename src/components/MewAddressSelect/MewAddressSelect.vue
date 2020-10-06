@@ -198,6 +198,9 @@ export default {
       autoSelectMenu: false
     };
   },
+  mounted() {
+    this.addressValue = value;
+  },
   watch: {
     addressValue(newVal, oldVal) {
       if (newVal !== oldVal) {
@@ -205,7 +208,9 @@ export default {
       }
     },
     value(newVal) {
-      this.addressValue = newVal;
+      if (newVal !== oldVal) {
+        this.addressValue = newVal;
+      }
     }
   },
   methods: {

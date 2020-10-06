@@ -28,14 +28,14 @@
             {{ desc }}
           </v-card-text>
           <v-card-actions class="px-0 btn-container d-flex align-center justify-center pb-6">
-            <mew-btn
+            <mew-button
               @click.native="onClick(buttonLeft)"
               v-if="buttonLeft"
               :title="buttonLeft.name"
               :color-theme="buttonLeft.colorTheme"
               btn-style="outline"
             />
-            <mew-btn 
+            <mew-button 
               @click.native="onClick(buttonRight)"
               v-if="buttonRight"
               :class="buttonLeft ? 'ml-3' : ''"
