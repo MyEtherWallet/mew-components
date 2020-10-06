@@ -35,7 +35,7 @@ export default {
   watch: {
     value(newVal, oldVal) {
       if (newVal !== oldVal) {
-        this.$emit('input', newVal)
+        this.$emit('switch', newVal)
       }
     }
   },
@@ -45,7 +45,7 @@ export default {
     },
     switchToggle() {
       this.value = !this.value;
-      this.$emit('input', this.value);
+      this.$emit('switch', this.value);
     }
   }
 }

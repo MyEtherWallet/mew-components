@@ -199,7 +199,7 @@ export default {
     };
   },
   mounted() {
-    this.addressValue = value;
+    this.addressValue = this.value;
   },
   watch: {
     addressValue(newVal, oldVal) {
