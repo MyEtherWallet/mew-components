@@ -27,6 +27,9 @@ const addressesArray = [
 export const mewAddressSelect = () => ({
   components: { MewAddressSelect },
   props: {
+    value: {
+      default: text('value', {})
+    },
     label: {
       default: text('label', 'To Address')
     },
@@ -69,7 +72,7 @@ export const mewAddressSelect = () => ({
   template: `
     <div>
     <br />
-    <mew-address-select ref="address" @saveAddress="onSaveAddress" :error-msg="errorMsg" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @input="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
+    <mew-address-select ref="address" :value="value" @saveAddress="onSaveAddress" :error-msg="errorMsg" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @input="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
   </div>`,
   methods: {
     getSelectedValue(value) {

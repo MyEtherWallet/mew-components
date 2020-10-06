@@ -106,6 +106,15 @@ export default {
   name: 'MewAddressSelect',
   props: {
     /**
+     * Address select input value.
+     */
+    value: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    },
+    /**
      * Disables the input.
      */
     disabled: {
@@ -189,9 +198,14 @@ export default {
       autoSelectMenu: false
     };
   },
-  watch: {
-    addressValue(newValue) {
-      this.$emit('input', newValue);
+  computed: {
+    addressValue: {
+      get() {
+        return this.value;
+      },
+      set(val) {
+        this.$emit('input', val)
+      }
     }
   },
   methods: {
