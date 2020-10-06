@@ -78,7 +78,7 @@ export default {
      */
     items: {
       type: Array,
-      default: function() {
+      default: () => {
         return [];
       }
     },

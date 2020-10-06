@@ -15,7 +15,7 @@ export default {
 };
 
 export const MEWCarousel = () => ({
-  components: { 'mew-carousel': MewCarousel },
+  components: { MewCarousel },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)

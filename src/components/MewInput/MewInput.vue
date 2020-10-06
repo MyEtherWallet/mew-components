@@ -84,7 +84,7 @@ export default {
      */
     rules: {
       type: Array,
-      default: function() {
+      default: () => {
         return [];
       }
     },

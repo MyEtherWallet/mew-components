@@ -28,6 +28,7 @@ const textInputTypes = {
 const optionsObj = {
   display: 'inline-radio'
 };
+
 export const MEWInput = () => ({
   components: { MewInput },
   props: {

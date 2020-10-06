@@ -13,7 +13,7 @@ export default {
 };
 
 export const MEWIcon = () => ({
-  components: { 'mew-icon': MewIcon },
+  components: { MewIcon },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)

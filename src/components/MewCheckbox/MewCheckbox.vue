@@ -27,7 +27,7 @@ export default {
     },
     link: {
       type: Object,
-      default: function() {
+      default: () => {
         return { title: '', url: ''};
       }
     },

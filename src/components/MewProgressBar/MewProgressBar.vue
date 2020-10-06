@@ -34,7 +34,7 @@ export default {
      */
     balanceObj: {
       type: Object,
-      default: function() {
+      default: () => {
         return {}
       }
     }

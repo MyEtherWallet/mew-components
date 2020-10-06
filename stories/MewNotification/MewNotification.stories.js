@@ -53,7 +53,7 @@ const notifObj = {
 }
 
 export const MEWNotification = () => ({
-  components: { 'mew-notification': MewNotification },
+  components: { MewNotification },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)

@@ -20,7 +20,7 @@ const linkObj = {
 }
 
 export const MEWCheckbox = () => ({
-  components: { 'mew-checkbox': MewCheckbox },
+  components: { MewCheckbox },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)

@@ -31,7 +31,7 @@ const popupTypeOptions = {
 }
 
 export const MEWPopup = () => ({
-  components: { 'mew-popup': MewPopup },
+  components: { MewPopup },
   data() {
     return {
       isPopupOpen: true

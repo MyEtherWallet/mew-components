@@ -18,7 +18,7 @@ export default {
 };
 
 export const mewBlockie = () => ({
-  components: { 'mew-blockie': MewBlockie },
+  components: { MewBlockie },
   props: {
     address: {
       default: text('address', '')

@@ -14,7 +14,7 @@ export default {
 };
 
 export const MEWSwitch = () => ({
-  components: { 'mew-switch': MewSwitch },
+  components: { MewSwitch },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)

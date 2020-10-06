@@ -138,7 +138,7 @@ export default {
      */
     notification: {
       type: Object,
-      default: function() {
+      default: () => {
         return {
           amount: {
             value: '',

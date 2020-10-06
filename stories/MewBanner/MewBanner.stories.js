@@ -25,7 +25,7 @@ const textObj = {
 }
 
 export const mewBanner = () => ({
-  components: { 'mew-banner': MewBanner },
+  components: { MewBanner },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)

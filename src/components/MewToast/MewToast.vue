@@ -89,7 +89,7 @@ export default {
      */
     linkObj: {
       type: Object,
-      default: function() {
+      default: () => {
         return {};
       }
     },

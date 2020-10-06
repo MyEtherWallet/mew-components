@@ -36,7 +36,7 @@ const iconTypes = {
 }
 
 export const MEWSuperButton = () => ({
-  components: { 'mew-super-button': MewSuperButton },
+  components: { MewSuperButton },
   props: {
     disabled: {
       default: boolean('disabled', false)

@@ -12,7 +12,7 @@ export default {
 const itemsArray = [{ name: 'ETH', subtext: 'Ethereum',  value: 'Ethereum', img: ethereumIcon }];
 
 export const MEWSelect = () => ({
-  components: { 'mew-select': MewSelect },
+  components: { MewSelect },
   props: {
     disabled: {
       default: boolean('Disabled', false)

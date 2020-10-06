@@ -59,7 +59,7 @@ export default {
      */
     listObj: {
       type: Object,
-      default: function() {
+      default: () => {
         return {};
       }
     },

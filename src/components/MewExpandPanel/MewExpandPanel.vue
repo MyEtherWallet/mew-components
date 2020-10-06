@@ -105,7 +105,7 @@ export default {
      */
     panelItems: {
       type: Array,
-      default: function() {
+      default: () => {
         return [];
       }
     },

@@ -169,7 +169,7 @@ export default {
      */
     buttonLeft: {
       type: Object,
-      default: function() {
+      default: () => {
         return {name: '', color: ''};
       }
     },
@@ -178,7 +178,7 @@ export default {
      */
     buttonRight: {
       type: Object,
-      default: function() {
+      default: () => {
         return {name: '', color: ''};
       }
     },

@@ -20,7 +20,7 @@ const linkObj = {
 }
 
 export const mewInfoCard = () => ({
-  components: { 'mew-info-card': MewInfoCard },
+  components: { MewInfoCard },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)

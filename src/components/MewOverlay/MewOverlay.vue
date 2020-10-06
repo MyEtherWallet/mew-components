@@ -140,7 +140,7 @@ export default {
      */
     close: {
       type: Function,
-      default: function () {
+      default: () => {
         return {};
       }
     },
@@ -149,7 +149,7 @@ export default {
      */
     back: {
       type: Function,
-      default: function () {
+      default: () => {
         return {};
       }
     }

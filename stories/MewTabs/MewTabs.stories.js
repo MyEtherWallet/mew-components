@@ -19,7 +19,7 @@ const itemsObj = [
 ];
 
 export const MEWTabs = () => ({
-  components: { 'mew-tabs': MewTabs },
+  components: { MewTabs },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)
