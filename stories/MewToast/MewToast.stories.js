@@ -8,11 +8,16 @@ import {
 } from '@storybook/addon-knobs';
 import MewToast from '@/components/MewToast/MewToast.vue';
 import MewButton from '@/components/MewButton/MewButton.vue';
+import MewToastDoc from './MewToast.mdx';
 
 export default {
   title: 'MewToast',
   parameters: {
-    component: MewToast
+    component: MewToast,
+    docs: {
+      page: MewToastDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs]
 };

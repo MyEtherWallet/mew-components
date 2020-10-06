@@ -5,11 +5,16 @@ import {
   files
 } from '@storybook/addon-knobs';
 import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
+import MewTokenContainerDoc from './MewTokenContainer.mdx';
 
 export default {
   title: 'MewTokenContainer',
   parameters: {
-    component: MewTokenContainer
+    component: MewTokenContainer,
+    docs: {
+      page: MewTokenContainerDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs]
 };

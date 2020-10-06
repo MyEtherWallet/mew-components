@@ -5,7 +5,7 @@ import {
   optionsKnob
 } from '@storybook/addon-knobs';
 import MewButton from '@/components/MewButton/MewButton.vue';
-import MewButtonDoc from './MewButtonDoc.mdx';
+import MewButtonDoc from './MewButton.mdx';
 
 export default {
   title: 'MewButton',
@@ -383,7 +383,7 @@ export const IconTitleButton = () => ({
       default: text('btn-link', '')
     },
     title: {
-      default: text('title', 'Mew Button')
+      default: text('title', 'MEW Button')
     },
     colorTheme: {
       default: optionsKnob(

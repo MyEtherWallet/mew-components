@@ -198,14 +198,14 @@ export default {
       autoSelectMenu: false
     };
   },
-  computed: {
-    addressValue: {
-      get() {
-        return this.value;
-      },
-      set(val) {
-        this.$emit('input', val)
+  watch: {
+    addressValue(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.$emit('input', newVal)
       }
+    },
+    value(newVal) {
+      this.addressValue = newVal;
     }
   },
   methods: {

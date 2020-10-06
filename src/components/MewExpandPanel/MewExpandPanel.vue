@@ -75,7 +75,7 @@ export default {
   data() {
     return {
       expandIdxArr: [],
-      showExpanded: false    
+      showExpanded: true    
     }
   },   
   props: {
