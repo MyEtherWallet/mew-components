@@ -59,6 +59,15 @@ export default {
   name: 'MewSelect',
   props: {
     /**
+     * MEW select value
+     */
+    value: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    },
+    /**
      * Disables the select dropdown.
      */
     disabled: {
@@ -90,16 +99,21 @@ export default {
     };
   },
   watch: {
-    selectModel(newValue) {
-      this.$emit('input', newValue);
+    selectModel(newVal) {
+      this.$emit('input', newVal);
+    },
+    value(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.selectModal = this.value;
+      }
     }
   },
   mounted() {
-    this.selectModel = this.items[0];
+    this.selectModel = this.items[0] || this.value;
   },
   methods: {
-    clear() {
-      this.selectModel = this.items[0];
+    clear(val) {
+      this.selectModel = val ? val : this.items[0];
     }
   }
 };
