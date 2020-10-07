@@ -122,6 +122,12 @@ export default {
     },
     getSwitchVal(val) {
       this.$emit('expand', val)
+      if (val === true && this.isToggle) {
+        // hardcoding 0 because there should only be one id in isToggle
+        if (!this.expandIdxArr.includes(0)) {
+          this.expandIdxArr.push(0)
+        }
+      }
     }
   }
 }

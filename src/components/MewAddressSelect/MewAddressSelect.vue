@@ -109,10 +109,8 @@ export default {
      * Address select input value.
      */
     value: {
-      type: Object,
-      default: () => {
-        return {}
-      }
+      type: String,
+      default: ''
     },
     /**
      * Disables the input.

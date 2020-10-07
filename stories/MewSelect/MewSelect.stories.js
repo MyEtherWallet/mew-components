@@ -23,6 +23,9 @@ export const MEWSelect = () => ({
     items: {
       default: object('items', itemsArray)
     },
+    value: {
+      default: object('value', {})
+    },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     }
@@ -35,7 +38,7 @@ export const MEWSelect = () => ({
   template: `
     <div>
     <br />
-    <mew-select :label="label" :items="items" :disabled="disabled"
+    <mew-select :label="label" :items="items" :disabled="disabled" :value="value"
     />
   </div>`
 });

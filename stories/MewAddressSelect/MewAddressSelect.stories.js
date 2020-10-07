@@ -57,6 +57,9 @@ export const mewAddressSelect = () => ({
     errorMsg: {
       default: text('error-msg', '')
     },
+    value: {
+      default: text('value', '')
+    },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     }
@@ -68,9 +71,8 @@ export const mewAddressSelect = () => ({
   },
   template: `
     <div>
-    <button @click="clear()"> Hello </button>
     <br />
-    <mew-address-select ref="address" @saveAddress="onSaveAddress" :error-msg="errorMsg" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @input="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
+    <mew-address-select ref="address" @saveAddress="onSaveAddress" :value="value" :error-msg="errorMsg" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @input="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
   </div>`,
   methods: {
     getSelectedValue(value) {
