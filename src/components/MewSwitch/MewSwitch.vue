@@ -32,13 +32,6 @@ export default {
       default: ''
     }
   },
-  watch: {
-    value(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        this.$emit('switch', newVal)
-      }
-    }
-  },
   methods: {
     setToggle(val) {
       this.value = val
