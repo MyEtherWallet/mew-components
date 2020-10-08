@@ -1,8 +1,8 @@
 <template>
   <v-expansion-panels
     v-model="expandIdxArr"
-    multiple
-    :class="[interactiveContent ? '' : 'no-pointer-events', 'mew-expand-panel']"
+    :multiple="isToggle"
+    class="mew-expand-panel"
     :flat="true"
   >
     <v-expansion-panel
@@ -11,7 +11,7 @@
     >
       <v-divider v-if="hasDividers" />
       <v-expansion-panel-header
-        :class="['titlePrimary--text', 'mew-heading-3', isToggle ? 'pa-3' : 'pa-5']"
+        :class="['titlePrimary--text', 'mew-heading-3', isToggle ? 'pa-3 no-pointer-events' : 'pa-5']"
         :color="item.colorTheme"
       > 
         <div class="header-container">
@@ -56,7 +56,7 @@
         </div>
       </v-expansion-panel-header>
       <v-expansion-panel-content color="white">
-        <slot v-if="showExpanded" :name="'panelBody' + (i + 1)" />
+        <slot :name="'panelBody' + (i + 1)" />
       </v-expansion-panel-content>
       <v-divider v-if="hasDividers" />
     </v-expansion-panel>
@@ -74,8 +74,7 @@ export default {
   },
   data() {
     return {
-      expandIdxArr: [],
-      showExpanded: true    
+      expandIdxArr: []
     }
   },   
   props: {
@@ -90,13 +89,6 @@ export default {
      * Turns the panel actions to a toggle btn. The subtext attribute in panelItems becomes the switch label.
      */
     isToggle: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Allow items within to expansion panels to be interacted with
-     */
-    interactiveContent: {
       type: Boolean,
       default: false
     },
@@ -121,14 +113,12 @@ export default {
       return false;
     },
     getSwitchVal(val) {
-      this.$emit('expand', val)
       if (this.isToggle) {
-        this.showExpanded =  val;
-        if (val === true) {
-          // hardcoding 0 because there should only be one id in isToggle
-          if (!this.expandIdxArr.includes(0)) {
-            this.expandIdxArr.push(0)
-          }
+        if (val === true && !this.expandIdxArr.includes(0)) {
+          this.expandIdxArr.push(0)
+        }
+        if (val === false && this.expandIdxArr.includes(0)) {
+          this.expandIdxArr.pop();
         }
       }
     }
