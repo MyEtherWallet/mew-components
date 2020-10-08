@@ -16,7 +16,7 @@
             v-if="popupType.toLowerCase() === popupTypes.error"
             height="100%"
             width="100%"
-            src="assets/images/popup-img.png"
+            :src="errorImg"
           >
           <span :class="popupType.toLowerCase() === popupTypes.error ? 'error-popup-title' : ''">{{ title }}</span>
         </v-card-title>
@@ -31,7 +31,7 @@
             <mew-button
               @click.native="onClick(buttonLeft)"
               v-if="buttonLeft"
-              :title="buttonLeft.name"
+              :title="buttonLeft.title"
               :color-theme="buttonLeft.colorTheme"
               btn-style="outline"
             />
@@ -39,7 +39,7 @@
               @click.native="onClick(buttonRight)"
               v-if="buttonRight"
               :class="buttonLeft ? 'ml-3' : ''"
-              :title="buttonRight.name"
+              :title="buttonRight.title"
               :color-theme="buttonRight.colorTheme"
               btn-style="background"
             />
@@ -108,6 +108,7 @@
 import MewButton from '@/components/MewButton/MewButton.vue';
 import MewToast from '@/components/MewToast/MewToast.vue';
 import copy from '@/helpers/copy.js';
+import errorImg from '@/assets/images/popup-img.png';
 
 export default {
   name: 'MewPopup',
@@ -117,6 +118,7 @@ export default {
   },
   data() {
     return {
+      errorImg: errorImg,
       open: false,
       showsErr: false,
       popupTypes: {
@@ -170,7 +172,7 @@ export default {
     buttonLeft: {
       type: Object,
       default: () => {
-        return {name: '', color: ''};
+        return {title: '', color: ''};
       }
     },
     /**
@@ -179,7 +181,7 @@ export default {
     buttonRight: {
       type: Object,
       default: () => {
-        return {name: '', color: ''};
+        return {title: '', color: ''};
       }
     },
     /**

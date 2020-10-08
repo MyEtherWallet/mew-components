@@ -75,6 +75,8 @@ export const MEWModule = () => ({
       :caption="caption"
       :has-indicator="hasIndicator"
       :has-elevation="hasElevation"
+      :icon="icon"
+      :icon-align="iconAlign"
     />
   </div>`
 });

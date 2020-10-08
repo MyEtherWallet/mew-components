@@ -16,12 +16,12 @@ export default {
 };
 
 const buttonLeftObj = {
-  name: 'Cancel',
+  title: 'Cancel',
   colorTheme: 'basic'
 }
 
 const buttonRightObj = {
-  name: 'Log out',
+  title: 'Log out',
   colorTheme: 'error'
 }
 

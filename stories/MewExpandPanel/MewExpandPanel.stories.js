@@ -46,10 +46,17 @@ export const MEWExpandPanel = () => ({
       this.$vuetify.theme.dark = newVal === true ? true : false;
     }
   },
+  methods: {
+    clear() {
+      this.$refs.expandPanel.setToggle(false);
+    }
+  },
   template: `
     <div>
+    <button @click="clear()">Hello</button>
     <br />
     <mew-expand-panel
+      ref="expandPanel"
       :has-dividers="hasDividers" 
       :is-toggle="isToggle"
       :interactive-content="interactiveContent"
