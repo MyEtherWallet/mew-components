@@ -39,7 +39,6 @@
           <slot name="mewExpandPanelActions" />
           <mew-switch
             ref="switch"
-            @switch="getSwitchVal"
             v-if="isToggle"
           />
           <span v-if="!isToggle">
@@ -104,6 +103,13 @@ export default {
   },
   methods: {
     setToggle(val) {
+      if (val === true && !this.expandIdxArr.includes(0)) {
+        this.expandIdxArr.push(0)
+      }
+      if (val === false && this.expandIdxArr.includes(0)) {
+        this.expandIdxArr.pop();
+      }
+      console.log('expand', this.expandIdxArr)
       this.$refs.switch[0].setToggle(val);
     },
     isExpanded(idx) {
@@ -111,16 +117,6 @@ export default {
         return true;
       }
       return false;
-    },
-    getSwitchVal(val) {
-      if (this.isToggle) {
-        if (val === true && !this.expandIdxArr.includes(0)) {
-          this.expandIdxArr.push(0)
-        }
-        if (val === false && this.expandIdxArr.includes(0)) {
-          this.expandIdxArr.pop();
-        }
-      }
     }
   }
 }
