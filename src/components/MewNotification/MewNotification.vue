@@ -18,7 +18,6 @@
               address="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
             />
             <div class="ml-5 detail-container full-width">
-              <!-- need to translate -->
               <div class="caption font-weight-medium d-flex">
                 {{ notification.from.string }}: <span class="mew-address font-weight-medium ml-1 full-width"><mew-transform-hash :hash="notification.from.value" /> </span>
               </div>

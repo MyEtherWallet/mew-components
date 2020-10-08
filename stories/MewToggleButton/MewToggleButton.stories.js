@@ -30,11 +30,8 @@ export const mewToggleButton = () => ({
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     },
-    buttonDefaultGroup: {
-      default: object('button-default-group', buttonDefaultGroup)
-    },
-    buttonPercentageGroup: {
-      default: object('button-percentage-group', buttonPercentageGroup)
+    buttonGroup: {
+      default: object('button-group', buttonDefaultGroup)
     },
     buttonType: {
       default: optionsKnob('button-type', buttonTypes, buttonTypes.default, { display: 'inline-radio'})
@@ -49,7 +46,7 @@ export const mewToggleButton = () => ({
     <div>
     <br />
     <mew-toggle-button
-      :button-group="this.buttonType === 'default' ? buttonDefaultGroup : buttonPercentageGroup"
+      :button-group="buttonGroup"
       :button-type="buttonType"
       @onBtnClick="onBtnClick"
     >

@@ -1,6 +1,6 @@
 <template>
   <span
-    class="d-flex hash-container"
+    class="d-flex justify-end hash-container"
   >
     <span>
       {{ getFirstPart(hash) }}</span>

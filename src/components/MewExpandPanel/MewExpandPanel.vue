@@ -56,7 +56,7 @@
         </div>
       </v-expansion-panel-header>
       <v-expansion-panel-content color="white">
-        <slot :name="'panelBody' + (i + 1)" />
+        <slot v-if="showExpanded" :name="'panelBody' + (i + 1)" />
       </v-expansion-panel-content>
       <v-divider v-if="hasDividers" />
     </v-expansion-panel>
@@ -122,10 +122,13 @@ export default {
     },
     getSwitchVal(val) {
       this.$emit('expand', val)
-      if (val === true && this.isToggle) {
-        // hardcoding 0 because there should only be one id in isToggle
-        if (!this.expandIdxArr.includes(0)) {
-          this.expandIdxArr.push(0)
+      if (this.isToggle) {
+        this.showExpanded =  val;
+        if (val === true) {
+          // hardcoding 0 because there should only be one id in isToggle
+          if (!this.expandIdxArr.includes(0)) {
+            this.expandIdxArr.push(0)
+          }
         }
       }
     }
