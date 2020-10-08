@@ -1,6 +1,6 @@
 {
   "name": "@myetherwallet/mew-components",
-  "version": "0.5.16-beta",
+  "version": "0.5.17-beta",
   "description": "MEW Components",
   "main": "dist/mew-components.umd.js",
   "module": "dist/mew-components.esm.js",
