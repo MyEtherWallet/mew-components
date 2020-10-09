@@ -4,11 +4,15 @@ import {
   object
 } from '@storybook/addon-knobs';
 import MewNotification from '@/components/MewNotification/MewNotification.vue';
+import MewNotificationDoc from './MewNotification.mdx';
 
 export default {
   title: 'MewNotification',
   parameters: {
-    component: MewNotification
+    component: MewNotification,
+    docs: {
+      page: MewNotificationDoc
+    }
   },
   decorators: [withKnobs]
 };

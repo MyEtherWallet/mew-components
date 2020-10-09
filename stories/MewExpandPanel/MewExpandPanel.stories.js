@@ -43,11 +43,6 @@ export const MEWExpandPanel = () => ({
       this.$vuetify.theme.dark = newVal === true ? true : false;
     }
   },
-  methods: {
-    clear() {
-      this.$refs.expandPanel.setToggle(false);
-    }
-  },
   template: `
     <div>
     <br />

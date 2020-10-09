@@ -6,11 +6,15 @@ import {
   optionsKnob
 } from '@storybook/addon-knobs';
 import MewModule from '@/components/MewModule/MewModule.vue';
+import MewModuleDoc from './MewModule.mdx';
 
 export default {
   title: 'MewModule',
   parameters: {
-    component: MewModule
+    component: MewModule,
+    docs: {
+      page: MewModuleDoc
+    } 
   },
   decorators: [withKnobs]
 };

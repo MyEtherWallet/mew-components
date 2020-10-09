@@ -19,7 +19,7 @@ import MewStepper from './components/MewStepper/MewStepper.vue';
 import MewSwitch from './components/MewSwitch/MewSwitch.vue';
 import MewTabs from './components/MewTabs/MewTabs.vue';
 import MewTable from './components/MewTable/MewTable.vue';
-import MewToggleButton from './components/MewToggleButton/MewToggleButton.vue';
+import MewToggle from './components/MewToggle/MewToggle.vue';
 import MewToast from './components/MewToast/MewToast.vue';
 import MewTokenContainer from './components/MewTokenContainer/MewTokenContainer.vue';
 import MewBadge from './components/MewBadge/MewBadge.vue';
@@ -63,7 +63,7 @@ const Components = {
   MewCarousel,
   MewProgressBar,
   MewTable,
-  MewToggleButton,
+  MewToggle,
   MewTokenContainer,
   MewIcon,
   MewChart,

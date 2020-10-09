@@ -109,7 +109,6 @@ export default {
       if (val === false && this.expandIdxArr.includes(0)) {
         this.expandIdxArr.pop();
       }
-      console.log('expand', this.expandIdxArr)
       this.$refs.switch[0].setToggle(val);
     },
     isExpanded(idx) {

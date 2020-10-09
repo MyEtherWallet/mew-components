@@ -1,0 +1,16 @@
+
+import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import MewPopup from '@/components/MewPopup/MewPopup.vue';
+import './../GlobalStorybook.scss'
+
+# MEW Popup
+`<mew-popup />`
+
+## Overview
+The popup component is used to confirm an action or display an error. This is distinguished by passing error or confirm to the **popup-type** prop. The component is triggered open by setting the prop**is-open** to true. The component takes a **title** string prop, which is displayed as the header, and a **desc** string prop, which can be used to describe the popup in detail. There are two buttons that are shown at the bottom of the popup, and the user has to pass the color and title of each button to be displayed. The props for this are **button-left** and **button-right**, and it takes an object with title and colorTheme (example: {title: ‘Button’, colorTheme: ‘primary’}). If the **popup-type** is error, then the user will have to pass the actual error as a string to the prop **error-msg** as well as a header to **error-header**. This will also take a **copy-msg** prop which simply notifies the client to copy the message, and it will also require the user to pass a success message to the **success-toast** prop that will notify the clients that they have successfully copied the message.
+
+
+## Props
+<Props of={MewPopup} />
+<Preview><Story id="mewpopup--mew-popup" /></Preview>
+

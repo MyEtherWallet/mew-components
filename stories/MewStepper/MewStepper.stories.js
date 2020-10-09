@@ -5,11 +5,15 @@ import {
   number
 } from '@storybook/addon-knobs';
 import MewStepper from '@/components/MewStepper/MewStepper.vue';
+import MewStepperDoc from './MewStepper.mdx';
 
 export default {
   title: 'MewStepper',
   parameters: {
-    component: MewStepper
+    component: MewStepper,
+    docs: {
+      page: MewStepperDoc
+    }
   },
   decorators: [withKnobs]
 };
