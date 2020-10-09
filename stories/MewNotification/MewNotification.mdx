@@ -1,0 +1,15 @@
+
+import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import MewNotification from '@/components/MewNotification/MewNotification.vue';
+import './../GlobalStorybook.scss'
+
+# MEW Notification
+`<mew-notification />`
+
+## Overview
+The MEW notification component is used to display transaction details to the user. This component takes one object prop, **notification**, to display all of the essential information, which includes: txHash (transaction hash), gasPrice, gasLimit, total (total transaction fee), from, amount (the amount being sent/received), timestamp, status (success, pending, error) , type (in, out, swap). You must pass each object a **value** (the value of each type) and a **string**, which is just the title that will be displayed to describe the value, i.e. notification: { “status”: {“value”: “pending”, “string”: “Status”}}. 
+
+## Props
+<Props of={MewNotification} />
+<Preview><Story id="mewnotification--mew-notification" /></Preview>
+

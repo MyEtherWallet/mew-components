@@ -4,12 +4,16 @@ import {
   object,
   optionsKnob
 } from '@storybook/addon-knobs';
-import MewToggleButton from '@/components/MewToggleButton/MewToggleButton.vue';
+import MewToggle from '@/components/MewToggle/MewToggle.vue';
+import MewToggleDoc from './MewToggle.mdx';
 
 export default {
-  title: 'MewToggleButton',
+  title: 'MewToggle',
   parameters: {
-    component: MewToggleButton
+    component: MewToggle,
+    docs: {
+      page: MewToggleDoc
+    }
   },
   decorators: [withKnobs]
 };
@@ -24,8 +28,8 @@ const buttonTypes = {
   percentage: 'percentage'
 }
 
-export const mewToggleButton = () => ({
-  components: { MewToggleButton },
+export const mewToggle = () => ({
+  components: { MewToggle },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)
@@ -45,7 +49,7 @@ export const mewToggleButton = () => ({
   template: `
     <div>
     <br />
-    <mew-toggle-button
+    <mew-toggle
       :button-group="buttonGroup"
       :button-type="buttonType"
       @onBtnClick="onBtnClick"
@@ -57,7 +61,7 @@ export const mewToggleButton = () => ({
         <v-btn>Button 2</v-btn>
       </template>
 
-    </mew-toggle-button>
+    </mew-toggle>
     
   </div>`,
   methods: {

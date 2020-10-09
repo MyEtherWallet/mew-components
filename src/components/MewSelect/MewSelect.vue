@@ -12,6 +12,7 @@
       :label="label"
       v-model="selectModel"
       return-object
+      :menu-props="{ bottom: true, offsetY: true}"
       outlined
     >
       <template

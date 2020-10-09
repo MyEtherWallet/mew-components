@@ -3,7 +3,7 @@
     <v-btn-toggle
       :mandatory="true"
       :borderless="true"
-      class="mew-toggle-btn"
+      class="mew-toggle"
       v-if="isCustom"
     >
       <div
@@ -19,7 +19,7 @@
     <v-btn-toggle
       :mandatory="buttonType.toLowerCase() === buttonTypes.default ? true : false"
       :borderless="true"
-      class="mew-toggle-btn"
+      class="mew-toggle"
       v-if="!isCustom"
     >
       <v-btn
@@ -38,7 +38,7 @@
 <script>
 
 export default {
-  name: 'MewToggleButton',
+  name: 'MewToggle',
   data() {
     return {
       buttonTypes: {
@@ -97,11 +97,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.mew-toggle-btn {
+.mew-toggle {
   border-radius: 6px;
   .v-btn {
     border-radius: 6px;
     opacity: 1;
+    padding: 0;
     // default btn group
     &.default-btn {
       color: var(--v-textPrimary-base);
