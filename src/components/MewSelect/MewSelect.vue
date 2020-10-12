@@ -62,12 +62,15 @@
 export default {
   name: 'MewSelect',
   props: {
+    /**
+     * Adds filter to select items
+     */
     hasFilter: {
       type: Boolean,
       default: true //  change to false
     },
     /**
-     * MEW select value
+     * Filter placeholder
      */
     filterPlaceholder: {
       type: String,
