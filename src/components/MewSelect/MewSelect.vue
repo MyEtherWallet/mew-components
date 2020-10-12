@@ -6,8 +6,8 @@
       color="basic"
       append-icon="mdi-chevron-down"
       :disabled="disabled"
-      :items="items"
-      item-text="name"
+      :items="selectItems"
+      item-text="symbol"
       item-value="value"
       :label="label"
       v-model="selectModel"
@@ -15,13 +15,16 @@
       :menu-props="{ bottom: true, offsetY: true}"
       outlined
     >
+      <template v-slot:prepend-item>
+        <v-text-field height="35" class="px-2 mew-select-search d-flex align-center" color="disabled" :placeholder="searchPlaceholder" v-model="search" flat solo dense hide-details prepend-inner-icon="mdi-magnify"/>
+      </template>
       <template
         v-slot:selection="{ item }"
       >
         <div class="d-flex align-center justify-center">
           <v-img
             v-if="item.img"
-            class="item-img"
+            class="item-img selected-img"
             :src="item.img"
             :alt="item.name ? item.name : item"
             :contain="true"
@@ -59,6 +62,17 @@
 export default {
   name: 'MewSelect',
   props: {
+    hasSearch: {
+      type: Boolean,
+      default: true //  change to false
+    },
+    /**
+     * MEW select value
+     */
+    searchPlaceholder: {
+      type: String,
+      default: 'Search token name'
+    },
     /**
      * MEW select value
      */
@@ -96,25 +110,44 @@ export default {
   },
   data() {
     return {
-      selectModel: null
+      selectModel: null,
+      selectItems: [],
+      search: ''
     };
   },
   watch: {
+    search(newVal) {
+      if (newVal === '') {
+        this.selectItems = this.items;
+      } else {
+        const valLowerCase = newVal.toLowerCase();
+        const foundItems = this.items.filter(item => item.name.toLowerCase().includes(valLowerCase) || item.value.toLowerCase().includes(valLowerCase));
+        this.selectItems = foundItems;
+      }
+    },
     selectModel(newVal) {
+      setTimeout(() => {
+        this.search = '';
+        this.selectItems = this.items;
+      }, 1000)
       this.$emit('input', newVal);
     },
-    value(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        this.selectModal = this.value;
+    value(newVal) {
+      if (newVal) {
+        this.selectModel = newVal;
       }
+    },
+    items(newVal) {
+      this.selectItems = newVal;
     }
   },
   mounted() {
+    this.selectItems = this.items;
     this.selectModel = this.items[0] || this.value;
   },
   methods: {
     clear(val) {
-      this.selectModel = val ? val : this.items[0];
+      this.selectModel = val ? val : this.item[0];
     }
   }
 };
@@ -134,6 +167,16 @@ export default {
   .item-img {
     margin-right: 5px;
     max-height: 25px;
+  }
+
+  .selected-img {
+    margin-left: 6px;
+  }
+}
+.mew-select-search {
+  border-bottom: 1px solid var(--v-dropdownBorder-base);
+  .v-icon {
+    font-size: 18px;
   }
 }
 </style>
