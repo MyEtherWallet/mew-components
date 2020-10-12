@@ -7,7 +7,7 @@
       append-icon="mdi-chevron-down"
       :disabled="disabled"
       :items="selectItems"
-      item-text="symbol"
+      item-text="name"
       item-value="value"
       :label="label"
       v-model="selectModel"
@@ -16,7 +16,7 @@
       outlined
     >
       <template v-slot:prepend-item>
-        <v-text-field height="35" class="px-2 mew-select-search d-flex align-center" color="disabled" :placeholder="searchPlaceholder" v-model="search" flat solo dense hide-details prepend-inner-icon="mdi-magnify"/>
+        <v-text-field v-if="hasFilter" height="35" class="px-2 mew-select-search d-flex align-center" color="disabled" :placeholder="filterPlaceholder" v-model="search" flat solo dense hide-details prepend-inner-icon="mdi-magnify"/>
       </template>
       <template
         v-slot:selection="{ item }"
@@ -62,14 +62,14 @@
 export default {
   name: 'MewSelect',
   props: {
-    hasSearch: {
+    hasFilter: {
       type: Boolean,
       default: true //  change to false
     },
     /**
      * MEW select value
      */
-    searchPlaceholder: {
+    filterPlaceholder: {
       type: String,
       default: 'Search token name'
     },

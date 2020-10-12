@@ -28,6 +28,12 @@ export const MEWSelect = () => ({
     },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
+    },
+    hasFilter: {
+      default: boolean('has-filter', false)
+    },
+    filterPlaceholder: {
+      default: text('filter-placeholder', 'Search token name')
     }
   },
   watch: {
@@ -38,7 +44,7 @@ export const MEWSelect = () => ({
   template: `
     <div>
     <br />
-    <mew-select :label="label" :items="items" :disabled="disabled" :value="value"
+    <mew-select :filter-placeholder="filterPlaceholder" :has-filter="hasFilter" :label="label" :items="items" :disabled="disabled" :value="value"
     />
   </div>`
 });
