@@ -17,8 +17,8 @@ export default {
 const listObj = {
   name: 'Links',
   items: [
-  { title: 'Link 1' },
-  { title: 'Link 2' } ]
+  { title: '1st Links', items: [{ title: 'Link 1'}, {title: 'Link 2'}] },
+  { title: '2nd Links', items: [{ title: 'Link 3'}, {title: 'Link4'}]} ]
 };
 
 export const MEWMenu = () => ({
