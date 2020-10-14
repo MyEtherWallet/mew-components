@@ -23,7 +23,7 @@ export const MEWSwitch = () => ({
       default: text('label', 'Label')
     },
     value: {
-      default: boolean('is switch on?', false)
+      default: boolean('value', false)
     }
 
 
