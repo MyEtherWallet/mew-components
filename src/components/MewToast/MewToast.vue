@@ -112,10 +112,14 @@ export default {
     this.setTimer();
   },
   watch: {
-    showsToast() {
+    showsToast(newVal) {
       this.$nextTick(() => {
         this.$refs.toast.showScroll();
       })
+
+      if(!newVal) {
+        this.$emit('closed');
+      }
     }
   },
   methods: {
