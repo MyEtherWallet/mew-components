@@ -81,6 +81,7 @@ export const mewToast = () => ({
       :toastType="toastType"
       :duration="duration"
       :persistent="persistent"
+      @closed="onClose"
     />
   </div>`,
   methods: {
@@ -90,6 +91,10 @@ export const mewToast = () => ({
     onClick() {
       // eslint-disable-next-line no-console
       console.log('Button is clicked')
+    },
+    onClose() {
+      // eslint-disable-next-line no-console
+      console.log('Toast closed')
     }
   }
 });
