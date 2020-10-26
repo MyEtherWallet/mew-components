@@ -205,7 +205,7 @@ export default {
         this.$emit('input', newVal)
       }
     },
-    value(newVal) {
+    value(newVal, oldVal) {
       if (newVal !== oldVal) {
         this.addressValue = newVal;
       }
