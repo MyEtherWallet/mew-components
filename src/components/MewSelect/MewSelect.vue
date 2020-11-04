@@ -155,6 +155,7 @@ export default {
     items: {
       handler: function(newVal) {
         this.selectItems = newVal;
+        this.selectModel = newVal[0] || this.value;
       },
       deep: true
     }
