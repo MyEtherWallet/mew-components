@@ -16,7 +16,19 @@
       outlined
     >
       <template v-slot:prepend-item>
-        <v-text-field v-if="hasFilter" height="35" class="px-2 mew-select-search d-flex align-center" color="disabled" :placeholder="filterPlaceholder" v-model="search" flat solo dense hide-details prepend-inner-icon="mdi-magnify"/>
+        <v-text-field
+          v-if="hasFilter"
+          height="35"
+          class="px-2 mew-select-search d-flex align-center"
+          color="disabled"
+          :placeholder="filterPlaceholder"
+          v-model="search"
+          flat
+          solo
+          dense
+          hide-details
+          prepend-inner-icon="mdi-magnify"
+        />
       </template>
       <template
         v-slot:selection="{ item }"
@@ -140,8 +152,11 @@ export default {
         this.selectModel = newVal;
       }
     },
-    items(newVal) {
-      this.selectItems = newVal;
+    items: {
+      handler: function(newVal) {
+        this.selectItems = newVal;
+      },
+      deep: true
     }
   },
   mounted() {
