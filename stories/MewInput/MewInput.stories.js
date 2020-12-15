@@ -68,6 +68,9 @@ export const MEWInput = () => ({
     type: {
       default: optionsKnob('type', textInputTypes, 'text', optionsObj)
     },
+    showBlockie: {
+      default: boolean('show-blockie', false)
+    },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     }
@@ -80,7 +83,7 @@ export const MEWInput = () => ({
   template: `
     <div>
     <br />
-    <mew-input ref="input" :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :hint="hint" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
+    <mew-input ref="input" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :hint="hint" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
     />
   </div>`
 });

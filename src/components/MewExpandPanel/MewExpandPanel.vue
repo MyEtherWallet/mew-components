@@ -80,6 +80,13 @@ export default {
     /**
      * Applies dividers to the expand panel.
      */
+    idxToExpand: {
+      type: Number,
+      default: 0
+    },
+    /**
+     * Applies dividers to the expand panel.
+     */
     hasDividers: {
       type: Boolean,
       default: false
@@ -101,6 +108,9 @@ export default {
       }
     },
   },
+  mounted() {
+    this.expandIdxArr = this.idxToExpand;
+  },
   methods: {
     setToggle(val) {
       if (val === true && !this.expandIdxArr.includes(0)) {
@@ -112,7 +122,8 @@ export default {
       this.$refs.switch[0].setToggle(val);
     },
     isExpanded(idx) {
-      if (this.expandIdxArr.includes(idx)) {
+      console.error('this', this.expandIdxArr)
+      if (typeof this.expandIdxArr === 'array' && this.expandIdxArr.includes(idx)) {
         return true;
       }
       return false;

@@ -7,7 +7,7 @@
     >
       <template v-slot:activator="{ on }">
         <v-icon
-          class="copy-icon mr-3 basic--text"
+          class="copy-icon cursor-pointer mr-3 basic--text"
           v-on="on"
           @click="copyToClipboard"
         >
@@ -22,6 +22,7 @@
       toast-type="success"
       :text="successToast"
     />
+    <input v-if="copyValue" ref="copy" class="no-display" type="text" :value="copyValue" />
   </div>
 </template>
 
@@ -35,6 +36,13 @@ export default {
     MewToast
   },
   props: {
+    /**
+     * Pass the value you would like to copy
+     */
+    copyValue: {
+      type: String,
+      default: ''
+    },
     /**
      * Pass true if you are using $ref to select the element
      */
@@ -66,7 +74,12 @@ export default {
   },
   methods: {
    copyToClipboard() {
-      copy(this.copyId, this.isRef)
+     let copyId = this.copyId;
+      if (this.copyValue) {
+        console.error('this', this.$refs.copy.select())
+        copyId = this.$refs.copy
+      }
+      copy(copyId, this.isRef)
       this.$refs.toast.showToast();
     }
   }

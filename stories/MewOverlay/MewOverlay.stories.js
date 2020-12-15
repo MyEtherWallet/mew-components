@@ -57,7 +57,6 @@ export const MEWOverlay = () => ({
   methods: {
     close() {
       // eslint-disable-next-line no-console
-      console.log('close overlay');
       this.showsOverlay = false;
     },
     back() {

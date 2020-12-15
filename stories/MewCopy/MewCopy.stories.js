@@ -32,6 +32,9 @@ export const mewCopy = () => ({
     },
     copyId: {
       default: text('copy-id', 'mew-id')
+    },
+    copyValue: {
+      default: text('copyValue', 'Copied value')
     }
   },
   watch: {
@@ -46,6 +49,7 @@ export const mewCopy = () => ({
       :is-ref="isRef"
       :copy-id="copyId"
       :tooltip="tooltip"
+      :copy-value="copyValue"
     />
     <br />
     <span id="mew-id">Copy me!</span>

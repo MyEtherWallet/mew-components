@@ -1,28 +1,42 @@
-<template>
-  <div>
-    <v-text-field
-      :class="[getClasses(), 'mew-input']"
-      :disabled="disabled"
-      :label="label === '' || isSearch ? '' : label"
-      :placeholder="placeholder"
-      :outlined="!hasNoBorder"
-      :solo="hasNoBorder"
-      color="titlePrimary"
-      v-model="inputValue"
-      :hint="hint"
-      :suffix="rightLabel"
-      :clearable="hasClearBtn"
-      :rules="rules"
-      :prepend-inner-icon="isSearch ? 'mdi-magnify' : ''"
-      :type="type"
-    />
-  </div>
+<template>  
+  <v-text-field
+    :class="[getClasses(), 'mew-input']"
+    :disabled="disabled"
+    :label="label === '' || isSearch ? '' : label"
+    :placeholder="placeholder"
+    :outlined="!hasNoBorder"
+    :solo="hasNoBorder"
+    color="titlePrimary"
+    v-model="inputValue"
+    :hint="hint"
+    :suffix="rightLabel"
+    :clearable="hasClearBtn"
+    :rules="rules"
+    :prepend-inner-icon="isSearch ? 'mdi-magnify' : ''"
+    :type="type"
+  >
+    <template v-slot:prepend-inner>
+      <mew-blockie v-if="showBlockie && value" :address="value" width="25px" height="25px" />
+    </template>
+  </v-text-field>
 </template>
 
 <script>
+import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
+
 export default {
   name: 'MewInput',
+  components: {
+    MewBlockie
+  },
   props: {
+    /**
+     * Show the blockie.
+     */
+    showBlockie: {
+      type: Boolean,
+      default: false
+    },
     /**
      * Removes the border.
      */

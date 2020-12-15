@@ -1,7 +1,8 @@
 import {
   withKnobs,
   boolean,
-  object
+  object,
+  number
 } from '@storybook/addon-knobs';
 import MewExpandPanel from '@/components/MewExpandPanel/MewExpandPanel.vue';
 import MewButton from '@/components/MewButton/MewButton.vue';
@@ -36,6 +37,9 @@ export const MEWExpandPanel = () => ({
     },
     hasDividers: {
       default: boolean('has-dividers', false)
+    },
+    idxToExpand: {
+      default: number('idx-to-expand', 1)
     }
   },
   watch: {
@@ -50,10 +54,14 @@ export const MEWExpandPanel = () => ({
       ref="expandPanel"
       :has-dividers="hasDividers" 
       :is-toggle="isToggle"
+      :idx-to-expand="idxToExpand"
       :panel-items="isToggle ? [panelItems[0]] : panelItems"
     >
       <template v-slot:panelBody1>
         <span>Panel slot example</span>
+      </template>
+      <template v-slot:panelBody2>
+        <span>Panel slot example 2</span>
       </template>
     </mew-expand-panel>
   </div>`

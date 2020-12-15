@@ -1,4 +1,5 @@
 function copyToClipboard(ref, isRef) {
+  console.error('ref', ref)
   isRef ? (ref.select(), document.execCommand('Copy')) : createTextarea(ref);
 }
 
