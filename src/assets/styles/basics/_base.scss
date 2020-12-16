@@ -13,7 +13,9 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
+.no-display {
+  display: none;
+}
 .no-pointer-events {
   pointer-events: none;
 }

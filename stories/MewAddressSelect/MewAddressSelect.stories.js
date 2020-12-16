@@ -1,4 +1,4 @@
-import { withKnobs, text, boolean, object } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean, object, array } from '@storybook/addon-knobs';
 import MewAddressSelect from '@/components/MewAddressSelect/MewAddressSelect.vue';
 
 export default {
@@ -8,6 +8,8 @@ export default {
   },
   decorators: [withKnobs]
 };
+
+const ruleValue = [value => !!value || 'Required.'];
 
 const addressesArray = [
   {
@@ -60,8 +62,14 @@ export const mewAddressSelect = () => ({
     value: {
       default: text('value', '')
     },
+    resolvedAddr: {
+      default: text('resolved-addr', '')
+    },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
+    },
+    rules: {
+      default: array('rules', ruleValue)
     }
   },
   watch: {
@@ -72,7 +80,7 @@ export const mewAddressSelect = () => ({
   template: `
     <div>
     <br />
-    <mew-address-select ref="address" @saveAddress="onSaveAddress" :value="value" :error-msg="errorMsg" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @input="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
+    <mew-address-select ref="address" @saveAddress="onSaveAddress" :rules="rules" :resolved-addr="resolvedAddr" :value="value" :error-msg="errorMsg" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @input="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
   </div>`,
   methods: {
     getSelectedValue(value) {

@@ -7,7 +7,7 @@
     >
       <template v-slot:activator="{ on }">
         <v-icon
-          class="copy-icon mr-3 basic--text"
+          class="copy-icon cursor-pointer basic--text"
           v-on="on"
           @click="copyToClipboard"
         >
@@ -36,6 +36,13 @@ export default {
   },
   props: {
     /**
+     * Pass the value you would like to copy
+     */
+    copyValue: {
+      type: String,
+      default: ''
+    },
+    /**
      * Pass true if you are using $ref to select the element
      */
     isRef: {
@@ -43,9 +50,9 @@ export default {
       default: false
     },
     /**
-     * The ref or id of the element to copy
+     * The ref of the element to copy
      */
-    copyId: {
+    copyRef: {
       type: [String, HTMLInputElement],
       default: ''
     },
@@ -66,7 +73,8 @@ export default {
   },
   methods: {
    copyToClipboard() {
-      copy(this.copyId, this.isRef)
+      const value = this.copyRef ? this.copyRef : this.copyValue;
+      copy(value, this.isRef)
       this.$refs.toast.showToast();
     }
   }

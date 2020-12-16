@@ -269,7 +269,7 @@ export default {
       if (this.disabled) {
         classes.push('disabled-btn');
       }
-      if (this.active && !this.disabled) {
+      if (this.active && !this.disabled && this.colorTheme.toLowerCase() === this.colorThemes.basic) {
         classes.push('active');
       }
       return classes;
@@ -300,8 +300,8 @@ export default {
   .disabled-btn {
     color: var(--v-disabled-super-base) !important;
   }
-  .basic--text.active {
-    background-color: var(--v-primaryOutlineActive-base) !important;
+  .white.active {
+    // background-color: var(--v-primaryOutlineActive-base) !important;
     border: 2px solid var(--v-primary-base) !important;
   }
   .v-btn.basic--text {

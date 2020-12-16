@@ -108,15 +108,10 @@
                 class="address-container font-weight-medium mew-address d-flex"
               >
                 <mew-transform-hash :hash="item.address" />
-                <v-icon 
-                  @click="copyToClipboard('mew-table-address')"
-                  class="content-copy cursor-pointer ml-1"
-                >
-                  mdi-content-copy
-                </v-icon>
+                <mew-copy class="ml-3" :copy-value="item.address" :is-ref="false" />
                 <a
                   class="address-link"
-                  :href="'https://etherscan.io/address/' + item.address"
+                  :href="'https://www.ethvm.com/address/' + item.address"
                   target="_blank"
                 >
                   <v-icon
@@ -142,12 +137,12 @@
 </template>
 
 <script>
-import copy from '@/helpers/copy.js';
 import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
 import MewToast from '@/components/MewToast/MewToast.vue';
 import MewButton from '@/components/MewButton/MewButton.vue';
 import MewChart from '@/components/MewChart/MewChart.vue';
 import MewTransformHash from '@/components/MewTransformHash/MewTransformHash.vue';
+import MewCopy from '@/components/MewCopy/MewCopy.vue';
 
 export default {
   name: 'MewTable',
@@ -156,7 +151,8 @@ export default {
     MewToast,
     MewButton,
     MewChart,
-    MewTransformHash
+    MewTransformHash,
+    MewCopy
   },
   props: {
     /**
@@ -164,18 +160,14 @@ export default {
      */
     tableHeaders: {
       type: Array,
-      default: () => {
-        return [];
-      }
+      default: () => []
     },
     /**
      * The table data.
      */
     tableData: {
       type: Array,
-      default: () => {
-        return [];
-      }
+      default: () => []
     },
     /**
      * Applies select button to each row. 
@@ -204,10 +196,6 @@ export default {
       if (item.value === true) {
         this.$emit('selectedRow', item)
       }
-    },
-    copyToClipboard(id) {
-      copy(id, false);
-      this.$refs.toast.showToast();
     },
     onClick(item) {
       this.$emit('onClick', item);

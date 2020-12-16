@@ -94,6 +94,12 @@
         color: var(--v-searchText-base);
       }
     }
+    .v-messages.error--text {
+      font-family: 'Roboto', sans-serif !important;
+    }
+    .v-messages {
+      font-family: 'PT Mono' !important;
+    }
   }
 
   // simple menu select 

@@ -126,14 +126,14 @@ export default {
      */
     rightBtnText: {
       type: String,
-      default: 'Cancel'
+      default: ''
     },
     /**
      * Left button string.
      */
     leftBtnText: {
       type: String,
-      default: 'Back'
+      default: ''
     },
     /**
      * Close button.
