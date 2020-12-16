@@ -108,7 +108,7 @@
                 class="address-container font-weight-medium mew-address d-flex"
               >
                 <mew-transform-hash :hash="item.address" />
-                <mew-copy :copy-value="item.address" :is-ref="true" />
+                <mew-copy class="ml-3" :copy-value="item.address" :is-ref="false" />
                 <a
                   class="address-link"
                   :href="'https://www.ethvm.com/address/' + item.address"
@@ -137,7 +137,6 @@
 </template>
 
 <script>
-import copy from '@/helpers/copy.js';
 import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
 import MewToast from '@/components/MewToast/MewToast.vue';
 import MewButton from '@/components/MewButton/MewButton.vue';
@@ -197,10 +196,6 @@ export default {
       if (item.value === true) {
         this.$emit('selectedRow', item)
       }
-    },
-    copyToClipboard(id) {
-      copy(id, false);
-      this.$refs.toast.showToast();
     },
     onClick(item) {
       this.$emit('onClick', item);

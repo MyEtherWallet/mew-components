@@ -35,8 +35,9 @@
       <template v-slot:append>
         <div class="icon-container d-flex align-center">
           <mew-copy
+            class="mr-3"
             :tooltip="copyTooltip"
-            :copy-id="getRef()"
+            :copy-ref="getRef()"
             :is-ref="true"
           />
           <v-tooltip
