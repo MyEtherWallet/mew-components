@@ -17,7 +17,11 @@
     :type="type"
   >
     <template v-slot:prepend-inner>
-      <mew-blockie v-if="showBlockie && value" :address="value" width="25px" height="25px" />
+      <div
+        v-if="showBlockie && !value"
+        class="blockie-placeholder mr-1 selectHover"
+      />
+      <mew-blockie v-if="showBlockie && value" :address="resolvedAddr ? resolvedAddr : value" width="25px" height="25px" />
     </template>
   </v-text-field>
 </template>

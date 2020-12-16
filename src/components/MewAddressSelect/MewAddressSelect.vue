@@ -28,7 +28,7 @@
           class="blockie-container mr-1"
         >
           <mew-blockie
-            :address="addressValue.address ? addressValue.address : addressValue"
+            :address="blockieAddr"
             width="25px"
             height="25px"
           />
@@ -219,6 +219,11 @@ export default {
   mounted() {
     this.addressValue = this.value;
   },
+  computed: {
+    blockieAddr() {
+      return this.resolvedAddr.length > 0 ? this.resolvedAddr : this.addressValue.address ? this.addressValue.address : this.addressValue;
+    }
+  },
   watch: {
     addressValue(newVal, oldVal) {
       if (newVal !== oldVal) {
@@ -268,13 +273,6 @@ export default {
       .dropdown-icon-container {
         border-left: 1px solid var(--v-titlePrimary-base) !important;
       }
-    }
-
-    // blockie
-    .blockie-placeholder {
-      height: 25px;
-      width: 25px;
-      border-radius: 50%;
     }
 
     .blockie-container {

@@ -75,8 +75,17 @@ export default {
    copyToClipboard() {
       const value = this.copyRef ? this.copyRef : this.copyValue;
       copy(value, this.isRef)
+      document.activeElement.blur()
       this.$refs.toast.showToast();
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .v-icon.copy-icon {
+    &:hover {
+      color: var(--v-primary-base) !important;
+    }
+  }
+</style>

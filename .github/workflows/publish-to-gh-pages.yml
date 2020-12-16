@@ -17,7 +17,7 @@ jobs:
 
       - name: setup env
         run: |
-          echo ::set-env name=NODE_VERSION::$(node --version)
+          echo "NODE_VERSION=$(node --version)" >> $GITHUB_ENV
 
       - name: Cache node modules
         uses: actions/cache@v1
