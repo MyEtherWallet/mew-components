@@ -10,6 +10,9 @@
       item-text="address"
       :placeholder="placeholder"
       :disabled="disabled"
+      :hint="resolvedAddr ? resolvedAddr : ''"
+      :persistent-hint="resolvedAddr.length > 0"
+      :rules="rules"
       :error-messages="errorMsg"
       :menu-props="{ value: autoSelectMenu, closeOnClick: true }"
       ref="addressInput"
@@ -106,6 +109,22 @@ import MewCopy from '@/components/MewCopy/MewCopy.vue';
 export default {
   name: 'MewAddressSelect',
   props: {
+    /**
+     * For validating your input - accepts an array of functions that take an input value as an argument and return either true / false or a string with an error message.
+     */
+    rules: {
+      type: Array,
+      default: () => {
+        return [];
+      }
+    },
+    /**
+     * Resolved address
+     */
+    resolvedAddr: {
+      type: String,
+      default: ''
+    },
     /**
      * Address select input value.
      */

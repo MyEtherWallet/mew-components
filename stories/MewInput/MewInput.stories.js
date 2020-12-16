@@ -47,9 +47,6 @@ export const MEWInput = () => ({
     value: {
       default: text('value', '')
     },
-    hint: {
-      default: text('hint', 'Hint')
-    },
     symbol: {
       default: text('symbol', '')
     },
@@ -73,6 +70,9 @@ export const MEWInput = () => ({
     },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
+    },
+    resolvedAddr: {
+      default: text('resolved-addr', '')
     }
   },
   watch: {
@@ -83,7 +83,7 @@ export const MEWInput = () => ({
   template: `
     <div>
     <br />
-    <mew-input ref="input" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :hint="hint" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
+    <mew-input ref="input" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
     />
   </div>`
 });

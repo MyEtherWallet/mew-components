@@ -8,7 +8,8 @@
     :solo="hasNoBorder"
     color="titlePrimary"
     v-model="inputValue"
-    :hint="hint"
+    :hint="resolvedAddr ? resolvedAddr : ''"
+    :persistent-hint="resolvedAddr.length > 0"
     :suffix="rightLabel"
     :clearable="hasClearBtn"
     :rules="rules"
@@ -80,13 +81,6 @@ export default {
       default: ''
     },
     /**
-     * Displays a hint for the input value.
-     */
-    hint: {
-      type: String,
-      default: ''
-    },
-    /**
      * Enables input clear functionality. Clear symbol will be displayed on the right side.
      */
     hasClearBtn: {
@@ -101,6 +95,13 @@ export default {
       default: () => {
         return [];
       }
+    },
+    /**
+     * Resolved address
+     */
+    resolvedAddr: {
+      type: String,
+      default: ''
     },
     /**
      * Displays search input
