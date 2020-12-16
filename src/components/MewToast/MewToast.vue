@@ -1,7 +1,6 @@
 <template>
   <v-bottom-sheet
     ref="toast"
-    class="hello"
     v-model="showsToast" 
     :hide-overlay="true"
     :retain-focus="false"

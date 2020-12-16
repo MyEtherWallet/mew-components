@@ -110,4 +110,11 @@
   .simple-input.v-text-field>.v-input__control>.v-input__slot:after {
     border-style: none;
   }
+
+  // blockie-placeholder
+  .blockie-placeholder {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+  }
 }
