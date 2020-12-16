@@ -249,7 +249,6 @@ export default {
     }, 
     onBtnClick() {
       this.active = !this.active;
-      console.error("this", this.active)
     },
     getColor() {
       const colorThemesWhite = ['outline', 'basic'];

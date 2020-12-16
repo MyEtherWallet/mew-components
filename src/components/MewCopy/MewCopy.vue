@@ -73,7 +73,7 @@ export default {
   },
   methods: {
    copyToClipboard() {
-     const value = this.copyRef ? this.copyRef : this.copyValue;
+      const value = this.copyRef ? this.copyRef : this.copyValue;
       copy(value, this.isRef)
       this.$refs.toast.showToast();
     }

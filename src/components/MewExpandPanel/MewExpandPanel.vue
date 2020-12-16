@@ -122,7 +122,6 @@ export default {
       this.$refs.switch[0].setToggle(val);
     },
     isExpanded(idx) {
-      console.error('this', this.expandIdxArr)
       if (typeof this.expandIdxArr === 'array' && this.expandIdxArr.includes(idx)) {
         return true;
       }
