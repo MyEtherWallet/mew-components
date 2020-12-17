@@ -108,6 +108,13 @@ export default {
       }
     },
   },
+  watch: {
+    idxToExpand(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.expandIdxArr = newVal;
+      }
+    }
+  },
   mounted() {
     this.expandIdxArr = this.idxToExpand;
   },

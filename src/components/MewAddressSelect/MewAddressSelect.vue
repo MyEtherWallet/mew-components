@@ -78,7 +78,7 @@
           <div class="d-flex align-center justify-space-between">
             <mew-blockie
               class="mr-2"
-              :address="item.address"
+              :address="item.resolvedAddr ? item.resolvedAddr : item.address"
               width="25px"
               height="25px"
             />
