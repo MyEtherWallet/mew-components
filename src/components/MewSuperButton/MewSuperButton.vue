@@ -16,7 +16,7 @@
     >
       <v-col
         :class="['left-container', 'full-width', isColumn ? 'text-center' : 'text-left']"
-        :cols="isColumn ? 12 : colsNum"
+        :cols="isColumn ? 12 : leftColsNum"
       >
         <div :class="['title-wrapper', 'd-flex', 'align-center', isColumn ? 'justify-center' : '' ]">
           <div :class="[fontClass, 'font-weight-bold', 'truncate']">
@@ -60,7 +60,7 @@
         </div>
       </v-col>
       <v-col
-        :cols="isColumn ? 12 : 3"
+        :cols="isColumn ? 12 : rightColsNum"
         :class="['right-container', isColumn ? 'text-center, pb-0' : 'd-flex align-center justify-center text-right']"
       >
         <slot name="contentSlot" />
@@ -112,9 +112,16 @@ export default {
     /**
      * The number of cols for the left side to take up.
      */
-    colsNum: {
+    leftColsNum: {
       type: Number,
       default: 9
+    },
+    /**
+     * The number of cols for the left side to take up.
+     */
+    rightColsNum: {
+      type: Number,
+      default: 3
     },
     /**
      * The font size class that is added to the mew super button title.

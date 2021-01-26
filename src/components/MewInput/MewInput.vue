@@ -15,6 +15,7 @@
     :rules="rules"
     :prepend-inner-icon="isSearch ? 'mdi-magnify' : ''"
     :type="type"
+    height="62"
   >
     <template v-slot:prepend-inner>
       <div
@@ -78,6 +79,13 @@ export default {
       default: ''
     },
     /**
+     * The input value.
+     */
+    id: {
+      type: Number,
+      default: null
+    },
+    /**
      * Displays a label on the right side of the input.
      */
     rightLabel: {
@@ -130,7 +138,7 @@ export default {
   watch: {
     inputValue(newVal, oldVal) {
       if (newVal !== oldVal) {
-         this.$emit('input', newVal) 
+         this.$emit('input', newVal, this.id) 
       }
     },
     value(newVal, oldVal) {
