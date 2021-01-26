@@ -40,9 +40,9 @@
           <slot name="mewExpandPanelActions" />
           <mew-switch
             ref="switch"
-            v-if="isToggle && !disabled"
+            v-if="isToggle && !item.disabled"
           />
-          <span v-if="!isToggle && !disabled">
+          <span v-if="!isToggle && !item.disabled">
             <img
               v-if="!isExpanded(i)"
               height="30"
