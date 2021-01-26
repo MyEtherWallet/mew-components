@@ -1,4 +1,4 @@
-import { withKnobs, text, boolean, array, optionsKnob } from '@storybook/addon-knobs';
+import { withKnobs, number, text, boolean, array, optionsKnob } from '@storybook/addon-knobs';
 import MewInput from '@/components/MewInput/MewInput.vue';
 
 export default {
@@ -73,6 +73,9 @@ export const MEWInput = () => ({
     },
     resolvedAddr: {
       default: text('resolved-addr', '')
+    },
+    id: {
+      default: number('id', null)
     }
   },
   watch: {
@@ -83,7 +86,7 @@ export const MEWInput = () => ({
   template: `
     <div>
     <br />
-    <mew-input ref="input" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
+    <mew-input ref="input" :id="id" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
     />
   </div>`
 });

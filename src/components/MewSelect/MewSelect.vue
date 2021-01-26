@@ -44,9 +44,9 @@
             max-height="25"
           />
           <span class="text-capitalize mt-1">{{ item.name ? item.name : item }} <span
-            v-if="item.value"
+            v-if="item.subtext"
             class="searchText--text text-capitalize"
-          >- {{ item.value }}</span></span>
+          >- {{ item.subtext }}</span></span>
         </div>
       </template>
       <template v-slot:item="data">
@@ -61,9 +61,9 @@
             max-height="25"
           />
           <span class="text-capitalize pl-1 mt-1">{{ data.item.name ? data.item.name : data.item }} <span
-            v-if="data.item.value"
+            v-if="data.item.subtext"
             class="textSecondary--text text-capitalize"
-          >- {{ data.item.value }}</span></span>
+          >- {{ data.item.subtext }}</span></span>
         </div>
       </template>
     </v-select>
@@ -107,7 +107,7 @@ export default {
     /**
      * Can be an array of objects or array of strings. When using objects, will look for a text and value field.
      * Can also add an img attribute to the object to append an img to the value.
-     * Example: { name: "Orange", value: "Orange", img: orangeImg }
+     * Example: { name: "Eth", subtext: "Ethereum", value: "Ethereum", img: ethIcon }
      */
     items: {
       type: Array,
@@ -136,7 +136,7 @@ export default {
         this.selectItems = this.items;
       } else {
         const valLowerCase = newVal.toLowerCase();
-        const foundItems = this.items.filter(item => item.name.toLowerCase().includes(valLowerCase) || item.value.toLowerCase().includes(valLowerCase));
+        const foundItems = this.items.filter(item => item.name.toLowerCase().includes(valLowerCase) || item.subtext.toLowerCase().includes(valLowerCase) || item.value.toLowerCase().includes(valLowerCase));
         this.selectItems = foundItems;
       }
     },

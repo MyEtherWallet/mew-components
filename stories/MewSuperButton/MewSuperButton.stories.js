@@ -95,8 +95,11 @@ export const MEWSuperButton = () => ({
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     },
-    colsNum: {
-      default: number('cols-num', 9)
+    rightColsNum: {
+      default: number('right-cols-num', 3)
+    },
+    leftColsNum: {
+      default: number('left-cols-num', 9)
     },
     fontClass: {
       default: text('font-class', 'mew-heading-3')
@@ -111,9 +114,10 @@ export const MEWSuperButton = () => ({
     <div>
     <br />
     <mew-super-button
+      :right-cols-num="rightColsNum"
+      :left-cols-num="leftColsNum"
       :title-icon-type="titleIconType"
       :right-icon-type="rightIconType"
-      :cols-num="colsNum"
       :font-class="fontClass"
       :isColumn="isColumn"
       :title="title"
@@ -186,8 +190,11 @@ export const ColumnButton = () => ({
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     },
-    colsNum: {
-      default: number('cols-num', 9)
+    rightColsNum: {
+      default: number('right-cols-num', 3)
+    },
+    leftColsNum: {
+      default: number('left-cols-num', 9)
     },
     fontClass: {
       default: text('font-class', 'mew-heading-3')
@@ -202,9 +209,10 @@ export const ColumnButton = () => ({
     <div>
     <br />
     <mew-super-button
+      :right-cols-num="rightColsNum"
+      :left-cols-num="leftColsNum"
       :title-icon-type="titleIconType"
       :right-icon-type="rightIconType"
-      :cols-num="colsNum"
       :font-class="fontClass"
       :isColumn="true"
       :title="title"
@@ -276,8 +284,11 @@ export const IconButton = () => ({
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     },
-    colsNum: {
-      default: number('cols-num', 9)
+    rightColsNum: {
+      default: number('right-cols-num', 3)
+    },
+    leftColsNum: {
+      default: number('left-cols-num', 9)
     },
     fontClass: {
       default: text('font-class', 'mew-heading-3')
@@ -292,9 +303,10 @@ export const IconButton = () => ({
     <div>
     <br />
     <mew-super-button
+      :right-cols-num="rightColsNum"
+      :left-cols-num="leftColsNum"
       title-icon-type="mew"
       right-icon-type="mdi"
-      :cols-num="colsNum"
       :font-class="fontClass"
       :isColumn="false"
       :title="title"
@@ -365,8 +377,11 @@ export const ContentSlotButton = () => ({
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     },
-    colsNum: {
-      default: number('cols-num', 9)
+    rightColsNum: {
+      default: number('right-cols-num', 3)
+    },
+    leftColsNum: {
+      default: number('left-cols-num', 9)
     },
     fontClass: {
       default: text('font-class', 'mew-heading-3')
@@ -384,8 +399,9 @@ export const ContentSlotButton = () => ({
     <div>
     <br />
     <mew-super-button
+      :right-cols-num="rightColsNum"
+      :left-cols-num="leftColsNum"
       :is-column="isColumn"
-      :cols-num="colsNum"
       :font-class="fontClass"
       :title="title"
       :subtitle="subtitle"

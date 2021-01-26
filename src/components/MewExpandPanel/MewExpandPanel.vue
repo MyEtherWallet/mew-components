@@ -6,6 +6,7 @@
     :flat="true"
   >
     <v-expansion-panel
+      :disabled="item.disabled"
       v-for="(item,i) in panelItems"
       :key="i"  
     >
@@ -39,9 +40,9 @@
           <slot name="mewExpandPanelActions" />
           <mew-switch
             ref="switch"
-            v-if="isToggle"
+            v-if="isToggle && !item.disabled"
           />
-          <span v-if="!isToggle">
+          <span v-if="!isToggle && !item.disabled">
             <img
               v-if="!isExpanded(i)"
               height="30"
@@ -99,7 +100,7 @@ export default {
       default: false
     },
     /**
-     * Accepts an array of panel objects, i.e [{ name: '', tooltip: '', subtext: '' }]
+     * Accepts an array of panel objects, i.e [{ name: '', tooltip: '', subtext: '', link: '', disabled: false }]
      */
     panelItems: {
       type: Array,

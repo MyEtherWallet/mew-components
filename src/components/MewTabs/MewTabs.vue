@@ -4,12 +4,13 @@
       :class="[hasUnderline ? 'mew-tabs-underline' : '', isBlock ? 'mew-tabs-block elevation-2' : '']"
       background-color="transparent"
       color="titlePrimary"
+      :centered="isCentered"
       slider-size="3"
       v-model="onTab"
       :hide-slider="isBlock || isVertical"
       :grow="isBlock"
       :vertical="isVertical"
-      :align-with-title="!isBlock && !isVertical"
+      :align-with-title="!isBlock && !isVertical && !isCentered"
     >
       <v-tab
         :class="[isBlock ? 'mew-tab-block' : 'mew-heading-2', 'capitalize']"
@@ -70,6 +71,13 @@ export default {
      * Sets the tabs as vertical.
      */
     isVertical: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Sets the tabs to the center of the page.
+     */
+    isCentered: {
       type: Boolean,
       default: false
     },

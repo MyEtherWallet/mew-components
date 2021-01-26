@@ -35,6 +35,9 @@ export const MEWTabs = () => ({
     },
     hasUnderline: {
       default: boolean('has-underline', false)
+    },
+    isCentered: {
+      default: boolean('is-centered', false)
     }
   },
   watch: {
@@ -50,6 +53,7 @@ export const MEWTabs = () => ({
       :has-underline="hasUnderline"
       :items="items"
       :is-block="isBlock"
+      :is-centered="isCentered"
       @onTab="onTab"
     >
       <template v-slot:tabItemContent1>

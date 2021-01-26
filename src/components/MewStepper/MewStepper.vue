@@ -58,6 +58,7 @@ export default {
 
 <style lang="scss">
 .mew-stepper {
+  background-color: transparent;
   &.v-stepper {
     box-shadow: none;
     .v-stepper__label {
