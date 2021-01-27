@@ -7,6 +7,7 @@
     >
       <template v-slot:activator="{ on }">
         <v-icon
+          :small="isSmall"
           class="copy-icon cursor-pointer basic--text"
           v-on="on"
           @click="copyToClipboard"
@@ -35,6 +36,13 @@ export default {
     MewToast
   },
   props: {
+    /**
+     * Pass true if you want icon to be small
+     */
+    isSmall: {
+      type: Boolean,
+      default: false
+    },
     /**
      * Pass the value you would like to copy
      */

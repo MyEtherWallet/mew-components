@@ -61,6 +61,13 @@ export default {
   },
   props: {
     /**
+     * Sets the active tab.
+     */
+    activeTab: {
+      type: Number,
+      default: 0
+    },
+    /**
      * Sets the tabs as vertical.
      */
     hasUnderline: {
@@ -103,7 +110,13 @@ export default {
       this.$emit('onNextStep');
     }
   },
+  mounted() {
+    this.onTab = this.activeTab;
+  },
   watch: {
+    activeTab(newVal) {
+      this.onTab = newVal;
+    },
     onTab(newVal) {
       this.$emit('onTab', newVal)
     }

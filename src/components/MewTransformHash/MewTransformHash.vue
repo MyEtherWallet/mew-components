@@ -1,6 +1,6 @@
 <template>
   <span
-    class="d-flex justify-end hash-container"
+    class="d-flex justify-end hash-container mew-address"
   >
     <span>
       {{ getFirstPart(hash) }}</span>

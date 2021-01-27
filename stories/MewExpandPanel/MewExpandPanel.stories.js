@@ -2,7 +2,8 @@ import {
   withKnobs,
   boolean,
   object,
-  number
+  number,
+  text
 } from '@storybook/addon-knobs';
 import MewExpandPanel from '@/components/MewExpandPanel/MewExpandPanel.vue';
 import MewButton from '@/components/MewButton/MewButton.vue';
@@ -16,11 +17,11 @@ export default {
 };
 
 const items = [
-  { name: 'Network', subtext: 'ETH - myetherapi.com', colorTheme: 'superPrimary', warningBadge: {
+  { name: 'Network', hasActiveBorder: true, subtext: 'ETH - myetherapi.com', colorTheme: 'superPrimary', warningBadge: {
     color: 'warning darken-2',
     text: 'Expire soon'
   } }, 
-  { name: 'Address to interact with' , subtext: '', tooltip: 'Tooltip', colorTheme: 'errorOutlineActive'}
+  { name: 'Address to interact with' ,  subtext: '', tooltip: 'Tooltip', colorTheme: 'errorOutlineActive'}
 ]
 
 export const MEWExpandPanel = () => ({
@@ -40,6 +41,9 @@ export const MEWExpandPanel = () => ({
     },
     idxToExpand: {
       default: number('idx-to-expand', 1)
+    },
+    rightActionText: {
+      default: text('right-action-text', 'Buy Domain')
     }
   },
   watch: {
@@ -52,6 +56,7 @@ export const MEWExpandPanel = () => ({
     <br />
     <mew-expand-panel
       ref="expandPanel"
+      :right-action-text="rightActionText"
       :has-dividers="hasDividers" 
       :is-toggle="isToggle"
       :idx-to-expand="idxToExpand"
