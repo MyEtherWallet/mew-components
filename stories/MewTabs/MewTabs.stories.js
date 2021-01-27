@@ -1,7 +1,8 @@
 import {
   withKnobs,
   boolean,
-  object
+  object,
+  number
 } from '@storybook/addon-knobs';
 import MewTabs from '@/components/MewTabs/MewTabs.vue';
 
@@ -38,6 +39,9 @@ export const MEWTabs = () => ({
     },
     isCentered: {
       default: boolean('is-centered', false)
+    },
+    activeTab: {
+      default: number('active-tab', 0)
     }
   },
   watch: {
@@ -54,6 +58,7 @@ export const MEWTabs = () => ({
       :items="items"
       :is-block="isBlock"
       :is-centered="isCentered"
+      :active-tab="activeTab"
       @onTab="onTab"
     >
       <template v-slot:tabItemContent1>

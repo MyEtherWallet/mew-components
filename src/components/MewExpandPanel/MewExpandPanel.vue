@@ -8,6 +8,7 @@
     <v-expansion-panel
       :disabled="item.disabled"
       v-for="(item,i) in panelItems"
+      :class="item.hasActiveBorder ? 'active-border' : '' "
       :key="i"  
     >
       <v-divider v-if="hasDividers" />
@@ -29,7 +30,15 @@
             :class="[item.warningBadge.color, 'ml-2', 'text-center', 'white--text', 'px-2', 'py-1', 'badge-type', 'mew-caption']"
           >{{ item.warningBadge.text }}</span>
         </div>
-
+        <div v-if="item.disabled" class="text-right">
+          <mew-button
+              btn-style="transparent"
+              btn-size="xlarge"
+              color-theme="primary"
+              :title="rightActionText"
+              @click.native="onActionClick"
+            />
+        </div>
         <div
           slot="actions"
           class="d-flex align-center justify-centers"
@@ -65,11 +74,13 @@
 <script>
 import MewSwitch from '@/components/MewSwitch/MewSwitch.vue';
 import MewTooltip from '@/components/MewTooltip/MewTooltip.vue';
+import MewButton from '@/components/MewButton/MewButton.vue';
 
 export default {
   name: 'MewExpandPanel',
   components: {
     MewSwitch,
+    MewButton,
     MewTooltip
   },
   data() {
@@ -78,6 +89,13 @@ export default {
     }
   },   
   props: {
+    /**
+     * Applies text to the right action button when panel is disabled.
+     */
+    rightActionText: {
+      type: String,
+      default: 'Buy Domain'
+    },
     /**
      * Applies dividers to the expand panel.
      */
@@ -130,10 +148,13 @@ export default {
       this.$refs.switch[0].setToggle(val);
     },
     isExpanded(idx) {
-      if (typeof this.expandIdxArr === 'array' && this.expandIdxArr.includes(idx)) {
+      if ((typeof this.expandIdxArr === 'array' && this.expandIdxArr.includes(idx)) || this.expandIdxArr === idx){
         return true;
-      }
+      } 
       return false;
+    },
+    onActionClick() {
+      this.$emit('onActionClick')
     }
   }
 }
@@ -151,6 +172,9 @@ export default {
   .badge-type {
     border-radius: 4px;
     font-size: 11px !important;
+  }
+  .v-item--active.active-border {
+    border: 1px solid var(--v-primary-base);
   }
 }
 </style>
