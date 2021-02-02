@@ -1,6 +1,7 @@
 <template>
   <div class="mt-4">
     <v-row
+      class="mx-0"
       align="end"
       justify="center"
     >

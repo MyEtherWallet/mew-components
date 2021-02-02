@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-bottom-sheet
-      :value="showsOverlay" 
+      :value="isOverlayOn" 
       :fullscreen="true"
     >
       <v-sheet 
@@ -78,7 +78,7 @@ export default {
   name: 'MewOverlay',
   data() {
     return {
-      showsOverlay: false
+      isOverlayOn: false
     }
   },
   components: {
@@ -156,8 +156,11 @@ export default {
   },
   watch: {
     showOverlay(newVal) {
-      this.showsOverlay = newVal;
+      this.isOverlayOn = newVal;
     }
+  },
+  mounted() {
+    this.isOverlayOn = this.showOverlay;
   },
   methods: {
     closeOverlay() {

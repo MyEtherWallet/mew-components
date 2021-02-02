@@ -47,14 +47,11 @@ export const MEWInput = () => ({
     value: {
       default: text('value', '')
     },
-    symbol: {
-      default: text('symbol', '')
-    },
     rightLabel: {
       default: text('right-label', '')
     },
-    hasClearBtn: {
-      default: boolean('has-clear-btn', false)
+    hideClearBtn: {
+      default: boolean('hide-clear-btn', false)
     },
     rules: {
       default: array('rules', ruleValue)
@@ -74,6 +71,9 @@ export const MEWInput = () => ({
     resolvedAddr: {
       default: text('resolved-addr', '')
     },
+    hint: {
+      default: text('hint', '')
+    },
     id: {
       default: number('id', null)
     }
@@ -86,7 +86,7 @@ export const MEWInput = () => ({
   template: `
     <div>
     <br />
-    <mew-input ref="input" :id="id" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :has-clear-btn="hasClearBtn" :symbol="symbol" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
+    <mew-input ref="input" :id="id" :hint="hint" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :hide-clear-btn="hideClearBtn" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
     />
   </div>`
 });
