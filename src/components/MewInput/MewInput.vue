@@ -8,10 +8,10 @@
     :solo="hasNoBorder"
     color="titlePrimary"
     v-model="inputValue"
-    :hint="resolvedAddr ? resolvedAddr : ''"
+    :hint="resolvedAddr ? resolvedAddr : hint"
     :persistent-hint="resolvedAddr.length > 0"
     :suffix="rightLabel"
-    :clearable="hasClearBtn"
+    :clearable="!hideClearBtn"
     :rules="rules"
     :prepend-inner-icon="isSearch ? 'mdi-magnify' : ''"
     :type="type"
@@ -95,7 +95,7 @@ export default {
     /**
      * Enables input clear functionality. Clear symbol will be displayed on the right side.
      */
-    hasClearBtn: {
+    hideClearBtn: {
       type: Boolean,
       default: false
     },
@@ -112,6 +112,13 @@ export default {
      * Resolved address
      */
     resolvedAddr: {
+      type: String,
+      default: ''
+    },
+    /**
+     * Resolved address
+     */
+    hint: {
       type: String,
       default: ''
     },
