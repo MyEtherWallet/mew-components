@@ -1,73 +1,71 @@
 <template>
-  <div>
-    <v-select
-      height="62"
-      class="mew-select"
-      color="basic"
-      append-icon="mdi-chevron-down"
-      :disabled="disabled"
-      :items="selectItems"
-      item-text="name"
-      item-value="value"
-      :label="label"
-      v-model="selectModel"
-      return-object
-      :menu-props="{ bottom: true, offsetY: true}"
-      outlined
+  <v-select
+    height="62"
+    class="mew-select"
+    color="basic"
+    append-icon="mdi-chevron-down"
+    :disabled="disabled"
+    :items="selectItems"
+    item-text="name"
+    item-value="value"
+    :label="label"
+    v-model="selectModel"
+    return-object
+    :menu-props="{ bottom: true, offsetY: true}"
+    outlined
+  >
+    <template v-slot:prepend-item>
+      <v-text-field
+        v-if="hasFilter"
+        height="35"
+        class="px-2 mew-select-search d-flex align-center"
+        color="disabled"
+        :placeholder="filterPlaceholder"
+        v-model="search"
+        flat
+        solo
+        dense
+        hide-details
+        prepend-inner-icon="mdi-magnify"
+      />
+    </template>
+    <template
+      v-slot:selection="{ item }"
     >
-      <template v-slot:prepend-item>
-        <v-text-field
-          v-if="hasFilter"
-          height="35"
-          class="px-2 mew-select-search d-flex align-center"
-          color="disabled"
-          :placeholder="filterPlaceholder"
-          v-model="search"
-          flat
-          solo
-          dense
-          hide-details
-          prepend-inner-icon="mdi-magnify"
+      <div class="d-flex align-center justify-center">
+        <v-img
+          v-if="item.img"
+          class="item-img selected-img"
+          :src="item.img"
+          :alt="item.name ? item.name : item"
+          :contain="true"
+          max-width="25"
+          max-height="25"
         />
-      </template>
-      <template
-        v-slot:selection="{ item }"
-      >
-        <div class="d-flex align-center justify-center">
-          <v-img
-            v-if="item.img"
-            class="item-img selected-img"
-            :src="item.img"
-            :alt="item.name ? item.name : item"
-            :contain="true"
-            max-width="25"
-            max-height="25"
-          />
-          <span class="text-capitalize mt-1">{{ item.name ? item.name : item }} <span
-            v-if="item.subtext"
-            class="searchText--text text-capitalize"
-          >- {{ item.subtext }}</span></span>
-        </div>
-      </template>
-      <template v-slot:item="data">
-        <div class="d-flex align-center justify-center">
-          <v-img
-            class="item-img"
-            v-if="data.item.img"
-            :src="data.item.img"
-            :alt="data.item.img"
-            :contain="true"
-            max-width="25"
-            max-height="25"
-          />
-          <span class="text-capitalize pl-1 mt-1">{{ data.item.name ? data.item.name : data.item }} <span
-            v-if="data.item.subtext"
-            class="textSecondary--text text-capitalize"
-          >- {{ data.item.subtext }}</span></span>
-        </div>
-      </template>
-    </v-select>
-  </div>
+        <span class="text-capitalize mt-1">{{ item.name ? item.name : item }} <span
+          v-if="item.subtext"
+          class="searchText--text text-capitalize"
+        >- {{ item.subtext }}</span></span>
+      </div>
+    </template>
+    <template v-slot:item="data">
+      <div class="d-flex align-center justify-center">
+        <v-img
+          class="item-img"
+          v-if="data.item.img"
+          :src="data.item.img"
+          :alt="data.item.img"
+          :contain="true"
+          max-width="25"
+          max-height="25"
+        />
+        <span class="text-capitalize pl-1 mt-1">{{ data.item.name ? data.item.name : data.item }} <span
+          v-if="data.item.subtext"
+          class="textSecondary--text text-capitalize"
+        >- {{ data.item.subtext }}</span></span>
+      </div>
+    </template>
+  </v-select>
 </template>
 
 <script>
