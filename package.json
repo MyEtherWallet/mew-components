@@ -1,6 +1,6 @@
 {
   "name": "@myetherwallet/mew-components",
-  "version": "0.5.30-beta",
+  "version": "0.5.31-beta",
   "description": "MEW Components",
   "main": "dist/mew-components.umd.js",
   "module": "dist/mew-components.esm.js",
@@ -54,7 +54,7 @@
     "@rollup/plugin-url": "6.0.0",
     "@rollup/plugin-buble": "0.21.3",
     "@rollup/plugin-commonjs": "17.1.0",
-    "rollup": "^1.17.0",
+    "rollup": "^2.3.0",
     "rollup-plugin-vue": "^5.0.1",
     "@storybook/addon-actions": "^5.3.17",
     "@storybook/addon-backgrounds": "^5.3.17",
