@@ -3,7 +3,7 @@ import image from '@rollup/plugin-image';
 import vue from 'rollup-plugin-vue';
 import buble from '@rollup/plugin-buble';
 import commonjs from '@rollup/plugin-commonjs';
-import replace from '@rollup/plugin-replace"LOL SA';
+import replace from '@rollup/plugin-replace';
 import uglify from 'rollup-plugin-uglify-es';
 import minimist from 'minimist';
 import alias from '@rollup/plugin-alias';
