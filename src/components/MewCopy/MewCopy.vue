@@ -31,7 +31,7 @@ import copy from '@/helpers/copy.js';
 import MewToast from '@/components/MewToast/MewToast.vue';
 
 export default {
-  name: "MewCopy",
+  name: 'MewCopy',
   components: {
     MewToast
   },

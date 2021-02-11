@@ -17,7 +17,10 @@
           >
             {{ item.name }}
           </v-stepper-step>
-          <v-divider :key="i" v-if="i < items.length - 1"/>
+          <v-divider
+            :key="i"
+            v-if="i < items.length - 1"
+          />
         </template>
       </v-stepper-header>
     </v-stepper>

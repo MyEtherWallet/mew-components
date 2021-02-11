@@ -108,7 +108,11 @@
                 class="address-container font-weight-medium mew-address d-flex"
               >
                 <mew-transform-hash :hash="item.address" />
-                <mew-copy class="ml-3" :copy-value="item.address" :is-ref="false" />
+                <mew-copy
+                  class="ml-3"
+                  :copy-value="item.address"
+                  :is-ref="false"
+                />
                 <a
                   class="address-link"
                   :href="'https://www.ethvm.com/address/' + (item.resolvedAddr ? item.resolvedAddr : item.address)"

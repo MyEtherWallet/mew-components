@@ -22,7 +22,12 @@
         v-if="showBlockie && !value"
         class="blockie-placeholder mr-1 selectHover"
       />
-      <mew-blockie v-if="showBlockie && value" :address="resolvedAddr ? resolvedAddr : value" width="25px" height="25px" />
+      <mew-blockie
+        v-if="showBlockie && value"
+        :address="resolvedAddr ? resolvedAddr : value"
+        width="25px"
+        height="25px"
+      />
     </template>
   </v-text-field>
 </template>
