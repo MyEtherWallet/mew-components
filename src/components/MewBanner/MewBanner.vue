@@ -7,7 +7,10 @@
       @click="closeBanner"
       class="cursor-pointer error--text exit-container mr-3"
     >
-      <v-col class="d-flex justify-end align-center" offset-md="6">
+      <v-col
+        class="d-flex justify-end align-center"
+        offset-md="6"
+      >
         <v-icon
           class="mr-2"
           color="error"

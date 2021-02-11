@@ -7,7 +7,12 @@
   >
     <template v-slot:activator="{ on }">
       <span
-        :class="[textColor, styleClasses, 'cursor-pointer', isMenuOpen ? 'font-weight-medium' : '']"
+        :class="[
+          textColor,
+          styleClasses,
+          'cursor-pointer',
+          isMenuOpen ? 'font-weight-medium' : '',
+        ]"
         v-on="on"
       >
         {{ listObj.name }}
@@ -27,11 +32,13 @@
       :key="index"
     >
       <v-list-item>
-        <v-list-item-title class="basic--text mew-heading-3">{{item.title}}</v-list-item-title>
+        <v-list-item-title class="basic--text mew-heading-3">
+          {{ item.title }}
+        </v-list-item-title>
       </v-list-item>
       <v-list-item
-        v-for="(subItem, index) in item.items"
-        :key="subItem + index"
+        v-for="(subItem, idx) in item.items"
+        :key="subItem + idx"
         @click="goTo(subItem.to)"
         class="cursor-pointer"
       >
@@ -48,8 +55,8 @@ export default {
   name: 'MewMenu',
   data() {
     return {
-      isMenuOpen: false
-    }
+      isMenuOpen: false,
+    };
   },
   props: {
     /**
@@ -66,33 +73,33 @@ export default {
       type: Object,
       default: () => {
         return {};
-      }
+      },
     },
     /**
-     * Text color. Accepts a class. 
+     * Text color. Accepts a class.
      */
     textColor: {
       type: String,
-      default: 'basic--text'
+      default: 'basic--text',
     },
     /**
      * Classes to style the content
      */
     styleClasses: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   methods: {
     getContentClasses() {
-      let classes = 'mew-menu-content elevation-2 '
+      let classes = 'mew-menu-content elevation-2 ';
       return classes;
     },
     goTo(link) {
       this.$emit('goToPage', link);
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -116,9 +123,8 @@ export default {
     padding-top: 10px;
   }
 
- .v-list:last-of-type > .v-list-item--link {
+  .v-list:last-of-type > .v-list-item--link {
     padding-bottom: 5px;
   }
-
 }
 </style>

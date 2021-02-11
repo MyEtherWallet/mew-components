@@ -11,7 +11,7 @@
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "lint": "eslint --fix 'src/**/*.vue'",
+    "lint": "vue-cli-service lint && eslint --fix 'src/**/*.vue'",
     "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
     "build-bundle": "vue-cli-service build --target lib --name mew-components ./src/wrapper.js",
     "build:umd": "rollup --config rollup.config.js --format umd --file dist/mew-components.umd.js",

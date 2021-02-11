@@ -7,17 +7,27 @@
   >
     <v-expansion-panel
       :disabled="item.disabled"
-      v-for="(item,i) in panelItems"
-      :class="item.hasActiveBorder ? 'active-border' : '' "
-      :key="i"  
+      v-for="(item, i) in panelItems"
+      :class="item.hasActiveBorder ? 'active-border' : ''"
+      :key="i"
     >
       <v-divider v-if="hasDividers" />
       <v-expansion-panel-header
-        :class="['titlePrimary--text', 'mew-heading-3', isToggle ? 'pa-3 no-pointer-events' : 'pa-5']"
+        :class="[
+          'titlePrimary--text',
+          'mew-heading-3',
+          isToggle ? 'pa-3 no-pointer-events' : 'pa-5',
+        ]"
         :color="item.colorTheme"
-      > 
+      >
         <div class="header-container">
-          <span :class="['ml-2','mew-heading-3', item.tooltip? 'd-flex align-center' :'']"> 
+          <span
+            :class="[
+              'ml-2',
+              'mew-heading-3',
+              item.tooltip ? 'd-flex align-center' : '',
+            ]"
+          >
             {{ item.name }}
             <mew-tooltip
               class="ml-1"
@@ -27,25 +37,35 @@
           </span>
           <span
             v-if="!item.tooltip && item.warningBadge"
-            :class="[item.warningBadge.color, 'ml-2', 'text-center', 'white--text', 'px-2', 'py-1', 'badge-type', 'mew-caption']"
+            :class="[
+              item.warningBadge.color,
+              'ml-2',
+              'text-center',
+              'white--text',
+              'px-2',
+              'py-1',
+              'badge-type',
+              'mew-caption',
+            ]"
           >{{ item.warningBadge.text }}</span>
         </div>
-        <div v-if="item.disabled" class="text-right">
+        <div
+          v-if="item.disabled"
+          class="text-right"
+        >
           <mew-button
-              btn-style="transparent"
-              btn-size="xlarge"
-              color-theme="primary"
-              :title="rightActionText"
-              @click.native="onActionClick"
-            />
+            btn-style="transparent"
+            btn-size="xlarge"
+            color-theme="primary"
+            :title="rightActionText"
+            @click.native="onActionClick"
+          />
         </div>
         <div
           slot="actions"
           class="d-flex align-center justify-centers"
         >
-          <span
-            class="inputLabel--text mew-body mr-2"
-          >{{ item.subtext }}</span>
+          <span class="inputLabel--text mew-body mr-2">{{ item.subtext }}</span>
           <slot name="mewExpandPanelActions" />
           <mew-switch
             ref="switch"
@@ -81,41 +101,41 @@ export default {
   components: {
     MewSwitch,
     MewButton,
-    MewTooltip
+    MewTooltip,
   },
   data() {
     return {
-      expandIdxArr: []
-    }
-  },   
+      expandIdxArr: [],
+    };
+  },
   props: {
     /**
      * Applies text to the right action button when panel is disabled.
      */
     rightActionText: {
       type: String,
-      default: 'Buy Domain'
+      default: 'Buy Domain',
     },
     /**
      * Applies dividers to the expand panel.
      */
     idxToExpand: {
       type: Number,
-      default: 0
+      default: 0,
     },
     /**
      * Applies dividers to the expand panel.
      */
     hasDividers: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Turns the panel actions to a toggle btn. The subtext attribute in panelItems becomes the switch label.
      */
     isToggle: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Accepts an array of panel objects, i.e [{ name: '', tooltip: '', subtext: '', link: '', disabled: false }]
@@ -124,7 +144,7 @@ export default {
       type: Array,
       default: () => {
         return [];
-      }
+      },
     },
   },
   watch: {
@@ -132,7 +152,7 @@ export default {
       if (newVal !== oldVal) {
         this.expandIdxArr = newVal;
       }
-    }
+    },
   },
   mounted() {
     this.expandIdxArr = this.idxToExpand;
@@ -140,7 +160,7 @@ export default {
   methods: {
     setToggle(val) {
       if (val === true && !this.expandIdxArr.includes(0)) {
-        this.expandIdxArr.push(0)
+        this.expandIdxArr.push(0);
       }
       if (val === false && this.expandIdxArr.includes(0)) {
         this.expandIdxArr.pop();
@@ -148,25 +168,29 @@ export default {
       this.$refs.switch[0].setToggle(val);
     },
     isExpanded(idx) {
-      if ((typeof this.expandIdxArr === 'array' && this.expandIdxArr.includes(idx)) || this.expandIdxArr === idx){
+      if (
+        (Array.isArray(this.expandIdxArr) && this.expandIdxArr.includes(idx)) ||
+        this.expandIdxArr === idx
+      ) {
         return true;
-      } 
+      }
       return false;
     },
     onActionClick() {
-      this.$emit('onActionClick')
-    }
-  }
-}
+      this.$emit('onActionClick');
+    },
+  },
+};
 </script>
 
 <style lang="scss">
 .mew-expand-panel {
-  .v-expansion-panel  {
+  .v-expansion-panel {
     border-radius: 12px;
     margin-bottom: 10px;
   }
-  .v-expansion-panel-header,  .v-expansion-panel-content {
+  .v-expansion-panel-header,
+  .v-expansion-panel-content {
     border-radius: 12px;
   }
   .badge-type {
