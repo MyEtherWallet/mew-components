@@ -38,6 +38,10 @@ const notifObj = {
     value: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
     string: 'From'
   },
+  to: {
+    value: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
+    string: 'To'
+  },
   amount: {
     value: '0.004 ETH',
     string: 'Amount'
@@ -56,6 +60,19 @@ const notifObj = {
   }
 }
 
+const fromObj = {
+  'currency': 'ETH',
+  'amount': '.0001',
+  'icon': ''
+}
+
+const toObj = {
+  'currency': 'BTC',
+  'amount': '.0001',
+  'icon': '',
+  'to': '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
+}
+
 export const MEWNotification = () => ({
   components: { MewNotification },
   props: {
@@ -64,6 +81,15 @@ export const MEWNotification = () => ({
     },
     notification: {
       default: object('notification', notifObj)
+    },
+    read: {
+      default: boolean('read', false)
+    },
+    fromObj: {
+      default: object('fromObj', fromObj)
+    },
+    toObj: {
+      default: object('toObj', toObj)
     }
   },
   watch: {
@@ -76,6 +102,9 @@ export const MEWNotification = () => ({
     <br />
     <mew-notification
       :notification="notification"
+      :read="read"
+      :from-obj="fromObj"
+      :to-obj="toObj"
     />
   </div>`
 });
