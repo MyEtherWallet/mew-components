@@ -61,15 +61,15 @@ const notifObj = {
 }
 
 const fromObj = {
-  'currency': 'ETH',
+  'currency': 'KNC',
   'amount': '.0001',
-  'icon': ''
+  'icon': 'https://raw.githubusercontent.com/MyEtherWallet/ethereum-lists/master/src/icons/KNC-0xdd974d5c2e2928dea5f71b9825b8b646686bd200.png'
 }
 
 const toObj = {
-  'currency': 'BTC',
+  'currency': 'MKR',
   'amount': '.0001',
-  'icon': '',
+  'icon': 'https://raw.githubusercontent.com/MyEtherWallet/ethereum-lists/master/src/icons/MKR-0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2.png',
   'to': '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
 }
 
