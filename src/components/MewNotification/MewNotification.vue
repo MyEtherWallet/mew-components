@@ -25,12 +25,12 @@
               class="d-none d-sm-flex flex-column currency-symbol"
             >
               <img
-                :src="fromObj.icon"
+                :src="notification.fromObj.icon"
                 width="30px"
                 height="30px"
               >
               <img
-                :src="toObj.icon"
+                :src="notification.toObj.icon"
                 width="30px"
                 height="30px"
                 class="overlap"
@@ -47,7 +47,7 @@
                 class="caption font-weight-medium d-flex"
                 v-if="notification.type.value.toLowerCase() === txTypes.swap"
               >
-                {{ notification.to.string }}: <span class="mew-address font-weight-medium ml-1 full-width"><mew-transform-hash :hash="toObj.to" /> </span>
+                {{ notification.to.string }}: <span class="mew-address font-weight-medium ml-1 full-width"><mew-transform-hash :hash="notification.toObj.to" /> </span>
               </div>
               <div
                 class="caption font-weight-medium d-flex"
@@ -59,13 +59,13 @@
                 class="caption mew-heading-2 d-flex"
                 v-if="notification.type.value.toLowerCase() === txTypes.swap"
               >
-                {{ fromObj.amount }} {{ fromObj.currency }}
+                {{ notification.fromObj.amount }} {{ notification.fromObj.currency }}
                 <v-icon
                   class="subtitle-1 ml-1"
                 >
                   mdi-arrow-right
                 </v-icon>
-                {{ toObj.amount }} {{ toObj.currency }}
+                {{ notification.toObj.amount }} {{ notification.toObj.currency }}
               </div>
             </div>
           </div>
@@ -219,36 +219,10 @@ export default {
       type: Object,
       default: () => {
         return {
-          amount: {
-            value: '',
-            string: ''
-          },
-          timestamp: {
-            value: '',
-            string: ''
-          },
-          from: {
-            value: '',
-            string: '',
-            link: ''
-          },
-          to: {
-            value: '',
-            string: '',
-            link: ''
-          },
-          status: {
-            value: '',
-            string: ''
-          },
           txHash: {
             value: '',
-            string: '',
-            link: ''
-          },
-          type: {
             string: ''
-          }, 
+          },
           gasPrice: {
             value: '',
             string: ''
@@ -260,8 +234,44 @@ export default {
           total: {
             value: '',
             string: ''
-          }
-        };
+          },
+          from: {
+            value: '',
+            string: ''
+          },
+          to: {
+            value: '',
+            string: ''
+          },
+          amount: {
+            value: '',
+            string: ''
+          },
+          timestamp: {
+            value: '',
+            string: ''
+          },
+          status: {
+            value: '',
+            string: ''
+          },
+          type: {
+            value: '',
+            string: ''
+          },
+          fromObj: {
+            'currency': '',
+            'amount': '',
+            'icon': ''
+          },
+          toObj: {
+            'currency': '',
+            'amount': '',
+            'icon': '',
+            'to': ''
+          },
+          read: false
+        }
       }
     }
   },
@@ -353,6 +363,9 @@ export default {
   position: relative;
   width: 35px;
 
+  img {
+    border-radius: 50%;
+  }
   .overlap {
       position: absolute;
       left: 14px;

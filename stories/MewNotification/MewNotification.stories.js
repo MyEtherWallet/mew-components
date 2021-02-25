@@ -57,20 +57,19 @@ const notifObj = {
   type: {
     value: 'in',
     string: 'in'
-  }
-}
-
-const fromObj = {
-  'currency': 'KNC',
-  'amount': '.0001',
-  'icon': 'https://raw.githubusercontent.com/MyEtherWallet/ethereum-lists/master/src/icons/KNC-0xdd974d5c2e2928dea5f71b9825b8b646686bd200.png'
-}
-
-const toObj = {
-  'currency': 'MKR',
-  'amount': '.0001',
-  'icon': 'https://raw.githubusercontent.com/MyEtherWallet/ethereum-lists/master/src/icons/MKR-0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2.png',
-  'to': '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
+  },
+  fromObj: {
+    'currency': 'KNC',
+    'amount': '.0001',
+    'icon': 'https://raw.githubusercontent.com/MyEtherWallet/ethereum-lists/master/src/icons/KNC-0xdd974d5c2e2928dea5f71b9825b8b646686bd200.png'
+  },
+  toObj: {
+    'currency': 'MKR',
+    'amount': '.0001',
+    'icon': 'https://raw.githubusercontent.com/MyEtherWallet/ethereum-lists/master/src/icons/MKR-0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2.png',
+    'to': '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
+  },
+  read: false
 }
 
 export const MEWNotification = () => ({
@@ -81,15 +80,6 @@ export const MEWNotification = () => ({
     },
     notification: {
       default: object('notification', notifObj)
-    },
-    read: {
-      default: boolean('read', false)
-    },
-    fromObj: {
-      default: object('fromObj', fromObj)
-    },
-    toObj: {
-      default: object('toObj', toObj)
     }
   },
   watch: {
@@ -102,9 +92,6 @@ export const MEWNotification = () => ({
     <br />
     <mew-notification
       :notification="notification"
-      :read="read"
-      :from-obj="fromObj"
-      :to-obj="toObj"
     />
   </div>`
 });
