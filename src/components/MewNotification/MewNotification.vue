@@ -25,12 +25,14 @@
               class="d-none d-sm-flex flex-column currency-symbol"
             >
               <img
-                src="@/assets/images/icons/footer/btc.png"
+                :src="fromObj.icon"
                 width="30px"
+                height="30px"
               >
               <img
-                src="@/assets/images/icons/footer/eth.png"
+                :src="toObj.icon"
                 width="30px"
+                height="30px"
                 class="overlap"
               >
             </div>
