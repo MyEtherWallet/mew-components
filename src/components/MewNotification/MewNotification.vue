@@ -1,7 +1,7 @@
 <template>
   <div
     @click="onToggle"
-    :class="[active ? 'activated' : '', notification.status.value + '-type', 'notification-container', 'px-3', 'titlePrimary--text', read ? 'read' : '']"
+    :class="[active ? 'activated' : '', notification.status.value + '-type', 'notification-container', 'px-3', 'titlePrimary--text', notification.read ? 'read' : '']"
   >
     <v-container>
       <v-row>
@@ -11,7 +11,7 @@
           <div class="d-flex align-center">
             <div
               :class="[ getClasses(notification.status.value.toLowerCase()), 'indicator', 'd-none', 'd-sm-flex']"
-              v-if="!read"
+              v-if="!notification.read"
             />
             <mew-blockie
               class="d-none d-sm-flex"
@@ -177,47 +177,6 @@ export default {
     }
   },
   props: {
-    /**
-     * Read (boolean)
-     * 
-     */
-    read: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Object passed by notification from v6
-     * 
-     */
-    fromObj: {
-      type: Object,
-      default: () => {
-        return {
-          currency: '',
-          amount: '',
-          icon: ''
-        }
-      }
-    },
-    /**
-     * Object passed by notification from v6
-     * 
-     */
-    toObj: {
-      type: Object,
-      default: () => {
-        return {
-          currency: '',
-          amount: '',
-          icon: '',
-          to: ''
-        }
-      }
-    },
-    /**
-     * Notification data (Badge type: 'in', 'out', 'swap'; status: 'success', 'pending', 'error')
-     * 
-     */
     notification: {
       type: Object,
       default: () => {
