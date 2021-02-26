@@ -154,7 +154,7 @@ export default {
       txStatusOptions: {
         success: 'success',
         pending: 'pending',
-        error: 'error'
+        failed: 'failed'
       }
     }
   },
@@ -248,8 +248,8 @@ export default {
       if (status === this.txStatusOptions.pending) {
         return 'text--darken-1 darken-1 warning';
       }
-      if (status === this.txStatusOptions.error) {
-        return 'error';
+      if (status === this.txStatusOptions.failed) {
+        return 'failed';
       }
     },
     onToggle() {
@@ -309,7 +309,7 @@ export default {
   }
 }
 
-.error-type {
+.failed-type {
   background-color: var(--v-error-lighten1);
   border: 1px solid var(--v-error-base); 
   &.activated {
