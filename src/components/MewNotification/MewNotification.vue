@@ -15,7 +15,7 @@
             />
             <mew-blockie
               class="d-none d-sm-flex"
-              v-if="notification.type.value.toLowerCase() !== txTypes.swap"
+              v-if="!isSwap"
               width="30px"
               height="30px"
               :address="notification.from.value"
@@ -39,25 +39,25 @@
             <div class="ml-5 detail-container full-width">
               <div
                 class="caption font-weight-medium d-flex"
-                v-if="notification.type.value.toLowerCase() !== txTypes.swap"
+                v-if="!isSwap"
               >
                 {{ notification.from.string }}: <span class="mew-address font-weight-medium ml-1 full-width"><mew-transform-hash :hash="notification.from.value" /> </span>
               </div>
               <div
                 class="caption font-weight-medium d-flex"
-                v-if="notification.type.value.toLowerCase() === txTypes.swap"
+                v-else
               >
                 {{ notification.to.string }}: <span class="mew-address font-weight-medium ml-1 full-width"><mew-transform-hash :hash="notification.toObj.to" /> </span>
               </div>
               <div
                 class="caption font-weight-medium d-flex"
-                v-if="notification.type.value.toLowerCase() !== txTypes.swap"
+                v-if="!isSwap"
               >
                 {{ notification.amount.string }}: {{ notification.amount.value }}
               </div>
               <div
                 class="caption mew-heading-2 d-flex"
-                v-if="notification.type.value.toLowerCase() === txTypes.swap"
+                v-else
               >
                 {{ notification.fromObj.amount }} {{ notification.fromObj.currency }}
                 <v-icon
@@ -171,6 +171,9 @@ export default {
         }
       }
       return details;
+    },
+    isSwap() {
+      return this.notification.type.value.toLowerCase() === this.txTypes.swap;
     }
   },
   props: {
