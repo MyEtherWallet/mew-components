@@ -1,7 +1,7 @@
 <template>
   <div
     @click="onToggle"
-    :class="[active ? 'activated' : '', notification.status.value + '-type', 'notification-container', 'px-3', 'titlePrimary--text']"
+    :class="[active ? 'activated' : '', notification.status.value + '-type', 'notification-container', 'px-3', 'titlePrimary--text', read ? 'read' : '']"
   >
     <v-container>
       <v-row>
@@ -9,20 +9,63 @@
           cols="6"
         >
           <div class="d-flex align-center">
-            <div :class="[ getClasses(notification.status.value.toLowerCase()), 'indicator', 'd-none', 'd-sm-flex']" />
+            <div
+              :class="[ getClasses(notification.status.value.toLowerCase()), 'indicator', 'd-none', 'd-sm-flex']"
+              v-if="!read"
+            />
             <mew-blockie
               class="d-none d-sm-flex"
-              v-if="notification.type.string.toLowerCase() !== txTypes.swap"
+              v-if="!isSwap"
               width="30px"
               height="30px"
-              address="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
+              :address="notification.from.value"
             />
+            <div
+              v-else
+              class="d-none d-sm-flex flex-column currency-symbol"
+            >
+              <img
+                :src="notification.fromObj.icon"
+                width="30px"
+                height="30px"
+              >
+              <img
+                :src="notification.toObj.icon"
+                width="30px"
+                height="30px"
+                class="overlap"
+              >
+            </div>
             <div class="ml-5 detail-container full-width">
-              <div class="caption font-weight-medium d-flex">
+              <div
+                class="caption font-weight-medium d-flex"
+                v-if="!isSwap"
+              >
                 {{ notification.from.string }}: <span class="mew-address font-weight-medium ml-1 full-width"><mew-transform-hash :hash="notification.from.value" /> </span>
               </div>
-              <div class="caption font-weight-medium d-flex">
+              <div
+                class="caption font-weight-medium d-flex"
+                v-else
+              >
+                {{ notification.to.string }}: <span class="mew-address font-weight-medium ml-1 full-width"><mew-transform-hash :hash="notification.toObj.to" /> </span>
+              </div>
+              <div
+                class="caption font-weight-medium d-flex"
+                v-if="!isSwap"
+              >
                 {{ notification.amount.string }}: {{ notification.amount.value }}
+              </div>
+              <div
+                class="caption mew-heading-2 d-flex"
+                v-else
+              >
+                {{ notification.fromObj.amount }} {{ notification.fromObj.currency }}
+                <v-icon
+                  class="subtitle-1 ml-1"
+                >
+                  mdi-arrow-right
+                </v-icon>
+                {{ notification.toObj.amount }} {{ notification.toObj.currency }}
               </div>
             </div>
           </div>
@@ -75,7 +118,7 @@
               <template v-slot:activator="{ on }">
                 <a
                   v-on="on"
-                  :href="'https://etherscan.io/tx/' + detail.value"
+                  :href="detail.link"
                   target="_blank"
                 > <mew-transform-hash :hash="detail.value" /> </a>
               </template>
@@ -117,7 +160,7 @@ export default {
   },
   computed: {
     getBadgeType() {
-      const type = this.notification.type.string.toLowerCase()
+      const type = this.notification.type.value.toLowerCase()
       return this.txTypes[type]
     },
     getDetails() {
@@ -128,44 +171,61 @@ export default {
         }
       }
       return details;
+    },
+    isSwap() {
+      return this.notification.type.value.toLowerCase() === this.txTypes.swap;
     }
   },
   props: {
     /**
-     * Notification data (Badge type: 'txIn', 'txOut', 'swap'; status: 'success', 'pending', 'error')
+     * Read (boolean)
+     * 
+     */
+    read: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Object passed by notification from v6
+     * 
+     */
+    fromObj: {
+      type: Object,
+      default: () => {
+        return {
+          currency: '',
+          amount: '',
+          icon: ''
+        }
+      }
+    },
+    /**
+     * Object passed by notification from v6
+     * 
+     */
+    toObj: {
+      type: Object,
+      default: () => {
+        return {
+          currency: '',
+          amount: '',
+          icon: '',
+          to: ''
+        }
+      }
+    },
+    /**
+     * Notification data (Badge type: 'in', 'out', 'swap'; status: 'success', 'pending', 'error')
      * 
      */
     notification: {
       type: Object,
       default: () => {
         return {
-          amount: {
-            value: '',
-            string: ''
-          },
-          timestamp: {
-            value: '',
-            string: ''
-          },
-          from: {
-            value: '',
-            string: ''
-          },
-          to: {
-            value: '',
-            string: ''
-          },
-          status: {
-            value: '',
-            string: ''
-          },
           txHash: {
             value: '',
             string: ''
           },
-          type: {
-            string: ''
-          }, 
           gasPrice: {
             value: '',
             string: ''
@@ -177,8 +237,44 @@ export default {
           total: {
             value: '',
             string: ''
-          }
-        };
+          },
+          from: {
+            value: '',
+            string: ''
+          },
+          to: {
+            value: '',
+            string: ''
+          },
+          amount: {
+            value: '',
+            string: ''
+          },
+          timestamp: {
+            value: '',
+            string: ''
+          },
+          status: {
+            value: '',
+            string: ''
+          },
+          type: {
+            value: '',
+            string: ''
+          },
+          fromObj: {
+            'currency': '',
+            'amount': '',
+            'icon': ''
+          },
+          toObj: {
+            'currency': '',
+            'amount': '',
+            'icon': '',
+            'to': ''
+          },
+          read: false
+        }
       }
     }
   },
@@ -207,9 +303,6 @@ export default {
 
 <style lang="scss" scoped>
 .notification-container {
-  &.activated {
-    border: none;
-  }
   border-radius: 6px;
   overflow: auto;
 
@@ -236,15 +329,49 @@ export default {
 .success-type {
   background-color: var(--v-superPrimary-base);
   border: 1px solid var(--v-primary-base);  
+  &.activated {
+    border: 1px solid var(--v-superPrimary-base);
+  }
+
+  &.read {
+    border: 1px solid var(--v-superPrimary-base);
+  }
 }
 
 .pending-type {
   background-color: var(--v-warning-base);
   border: 1px solid var(--v-warning-darken1);  
+  &.activated {
+    border: 1px solid var(--v-warning-base);
+  }
+
+  &.read {
+    border: 1px solid var(--v-warning-base);
+  }
 }
 
 .error-type {
   background-color: var(--v-error-lighten1);
-  border: 1px solid var(--v-error-base);  
+  border: 1px solid var(--v-error-base); 
+  &.activated {
+    border: 1px solid var(--v-error-lighten1);
+  }
+
+  &.read {
+    border: 1px solid var(--v-error-lighten1);
+  } 
+}
+
+.currency-symbol {
+  position: relative;
+  width: 35px;
+
+  img {
+    border-radius: 50%;
+  }
+  .overlap {
+      position: absolute;
+      left: 14px;
+  }
 }
 </style>

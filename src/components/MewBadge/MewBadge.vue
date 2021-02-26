@@ -16,7 +16,7 @@ export default {
   },
   props: {
     /**
-     * Badge types: 'txIn', 'txOut', 'swap, 'error', 'warning'
+     * Badge types: 'in', 'out', 'swap, 'error', 'warning'
      */
     badgeType: {
       type: String,
