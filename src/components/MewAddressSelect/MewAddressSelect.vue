@@ -19,6 +19,7 @@
       :persistent-hint="resolvedAddr.length > 0"
       :rules="rules"
       :menu-props="{ value: dropdown, closeOnClick: true }"
+      @update:search-input="onChange"
       ref="mewAddressSelect"
       outlined
     >
@@ -270,14 +271,14 @@ export default {
      */
     getRefValue() {
       if (this.$refs.mewAddressSelect) {
-        return this.$refs.mewAddressSelect.$el.querySelector('input')
+        return this.$refs.mewAddressSelect.$el.querySelector('input');
       }
     },
     /**
      * Clears the v-model value.
      */
     clear() {
-      this.addressValue = null
+      this.addressValue = null;
     },
     /**
      * Emits 'saveAddress' when triggered by save address button.
@@ -297,6 +298,12 @@ export default {
     selectAddress(data) {
       this.dropdown = false;
       this.addressValue = data.address;
+    },
+    /**
+     * Emits 'input' when there is a v-model value change (happens as the user types).
+     */
+    onChange(value) {
+      this.$emit('input', newVal)
     }
   }
 };
