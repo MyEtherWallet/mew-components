@@ -303,7 +303,7 @@ export default {
      * Emits 'input' when there is a v-model value change (happens as the user types).
      */
     onChange(value) {
-      this.$emit('input', newVal)
+      this.$emit('input', value)
     }
   }
 };
