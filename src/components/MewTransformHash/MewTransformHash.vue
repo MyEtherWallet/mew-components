@@ -1,12 +1,13 @@
 <template>
-  <span
-    class="d-flex justify-end hash-container mew-address"
-  >
-    <span>
-      {{ getFirstPart(hash) }}</span>
-    <span class="truncate">{{ getMiddlePart(hash) }}</span>
-    <span>{{ getLastPart(hash) }}</span>
-  </span>
+    <!--
+  =====================================================================================
+    Mew Transform Hash 
+  =====================================================================================
+  -->
+  <div class="d-flex justify-end hash-container mew-address">
+      <span class="firstPart">{{ start }}</span
+      ><span class="lastPart">{{ end }}</span>
+  </div>
 </template>
 
 <script>
@@ -14,34 +15,54 @@ export default {
   name: 'MewTransformHash',
   props: {
     /**
-     * Hash
+     * Hash to truncate.
      */
     hash: {
       type: String,
       default: ''
     }
   },
-  methods: {
-    getFirstPart(addr) {
-      return addr.slice(0, 6);
+  computed: {
+    start() {
+      const n = this.hash.length;
+      return this.hash.slice(0, n - 4);
     },
-    getMiddlePart(addr) {
-      const n = addr.length;
-      return addr.slice(6, n - 6);
-    },
-    getLastPart(addr) {
-      const n = addr.length;
-      return addr.slice(n - 6, n);
-    },
-    getEllipsis(str) {
-      return str.substr(0, 6) + '...' + str.substr(str.length-6, str.length);
+    end() {
+      const n = this.hash.length;
+      return this.hash.slice(n - 4, n);
     }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+// Variables to control the truncation behaviour
+$startFixedChars: 4; // Number of chars before ellipsis - have priority over end chars
+$endFixedChars: 5; // Number of chars after ellipsis  - lower priority than start chars
+$fontFaceScaleFactor: 0.47; // Magic number dependent on font face - set by trial and error
+
+// Derived from the 3 variables above
+$startWidth: 1em * $fontFaceScaleFactor * ($startFixedChars + 3);
+$endWidth: 1em * $fontFaceScaleFactor * $endFixedChars;
+
+.firstPart,
+.lastPart {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.firstPart {
+    max-width: calc(100% - #{$endWidth});
+    min-width: $startWidth;
+    text-overflow: ellipsis;
+}
+.lastPart {
+    max-width: calc(100% - #{$startWidth});
+    direction: rtl;
+}
 .hash-container {
-  max-width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 </style>

@@ -56,9 +56,6 @@ export const mewAddressSelect = () => ({
     successToast: {
       default: text('success-toast', 'Success!')
     },
-    errorMsg: {
-      default: text('error-msg', '')
-    },
     value: {
       default: text('value', '')
     },
@@ -80,7 +77,7 @@ export const mewAddressSelect = () => ({
   template: `
     <div>
     <br />
-    <mew-address-select ref="address" @saveAddress="onSaveAddress" :rules="rules" :resolved-addr="resolvedAddr" :value="value" :error-msg="errorMsg" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" @input="getSelectedValue" :is-valid-address="isValidAddress" :label="label" :items="items" />
+    <mew-address-select ref="address" :rules="rules" :resolved-addr="resolvedAddr" :value="value" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" :is-valid-address="isValidAddress" :label="label" :items="items" @saveAddress="onSaveAddress" @input="getSelectedValue"/>
   </div>`,
   methods: {
     getSelectedValue(value) {
@@ -90,9 +87,6 @@ export const mewAddressSelect = () => ({
     onSaveAddress() {
       // eslint-disable-next-line no-console
       console.log('saveAddress: clicked')
-    },
-    clear() {
-      this.$refs.address.clear()
     }
   }
 });
