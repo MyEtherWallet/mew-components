@@ -1,19 +1,19 @@
 <template>
-  <div>
-    <span :class="[getBadgeType(), 'text-center', 'white--text', 'px-3', 'py-1', 'badge-type', 'mew-caption']">{{ badgeTitle }}</span>
-  </div>
+    <!--
+  =====================================================================================
+    Mew Badge - currently used in mew-notifications.
+  =====================================================================================
+  -->
+  <span :class="[getBadgeType(), 'text-center', 'white--text', 'px-3', 'py-1', 'rounded', 'mew-caption']">{{ badgeTitle }}</span>
 </template>
 
 <script>
+const badgeTypes = {
+  warning: 'warning'
+}
+
 export default {
   name: 'MewBadge',
-  data() {
-    return {
-      badgeTypes: {
-        warning: 'warning'
-      }
-    }
-  },
   props: {
     /**
      * Badge types: 'in', 'out', 'swap, 'error', 'warning'
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     getBadgeType() {
-      if (this.badgeType.toLowerCase() === this.badgeTypes.warning ) {
+      if (this.badgeType.toLowerCase() === badgeTypes.warning ) {
         return 'warning darken-2';
       }
       return this.badgeType;
@@ -40,10 +40,3 @@ export default {
   }
 }
 </script>
-
-
-<style lang="scss" scoped>
-.badge-type {
-  border-radius: 4px;
-}
-</style>

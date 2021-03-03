@@ -1,4 +1,9 @@
 <template>
+    <!--
+  =====================================================================================
+    Mew Info Card - mainly used on MEW's landing page.
+  =====================================================================================
+  -->
   <v-card
     :max-width="maxWidth"
     class="info-card elevation-3"
@@ -7,14 +12,29 @@
       <div class="text-center">
         <img :src="icon">
       </div>
+            <!--
+  =====================================================================================
+    Mew Info Card Title, has slot: titleIconContainer (used to place a custom icon next to the title).
+  =====================================================================================
+  -->
       <v-card-title :class="[ 'font-weight-bold', 'mew-heading-2', 'titlePrimary--text', 'pt-0' ]">
         {{ title }}
         <slot name="titleIconContainer" />
       </v-card-title>
+            <!--
+  =====================================================================================
+    Mew Info Card Subtitle, has slot: desc (used to place custom desc).
+  =====================================================================================
+  -->
       <v-card-subtitle class="titlePrimary--text mt-1">
         <slot name="desc" />
         {{ desc }}
       </v-card-subtitle>
+              <!--
+  =====================================================================================
+    Mew Info Card Text, has slot: buttonContainer (used to place custom buttons).
+  =====================================================================================
+  -->
       <v-card-text v-if="link.url && link.title">
         <a
           class="font-weight-medium"
@@ -26,6 +46,11 @@
         <slot name="buttonContainer" />
       </v-card-text>
     </div>
+        <!--
+  =====================================================================================
+    Slot: cardImg -  used to place a custom image at the bottom of the card.
+  =====================================================================================
+  -->
     <div class="text-center">
       <slot name="cardImg" />
     </div>
@@ -37,7 +62,7 @@ export default {
   name: 'MewInfoCard',
   props: {
     /**
-     * Title of card
+     * Title of the card.
      */
     title: {
       type: String,
@@ -58,7 +83,7 @@ export default {
       default: ''
     },
     /**
-     * The link object. Takes the link title and the url.
+     * The link object. Takes a link title and the url, i.e. {title: '', url: ''}.
      */
     link: {
       type: Object,

@@ -1,4 +1,9 @@
 <template>
+    <!--
+  =====================================================================================
+    Mew Expand Panel
+  =====================================================================================
+  -->
   <v-expansion-panels
     v-model="expandIdxArr"
     :multiple="isToggle"
@@ -12,6 +17,11 @@
       :key="i"
     >
       <v-divider v-if="hasDividers" />
+    <!--
+    =====================================================================================
+      Panel Header 
+    =====================================================================================
+    -->
       <v-expansion-panel-header
         :class="[
           'titlePrimary--text',
@@ -20,7 +30,12 @@
         ]"
         :color="item.colorTheme"
       >
-        <div class="header-container">
+      <!--
+    =====================================================================================
+      Panel Header - Left 
+    =====================================================================================
+    -->
+        <div>
           <span
             :class="[
               'ml-2',
@@ -49,6 +64,11 @@
             ]"
           >{{ item.warningBadge.text }}</span>
         </div>
+    <!--
+    =====================================================================================
+      Panel Header - Right
+    =====================================================================================
+    -->
         <div
           v-if="item.disabled"
           class="text-right"
@@ -63,9 +83,14 @@
         </div>
         <div
           slot="actions"
-          class="d-flex align-center justify-centers"
+          class="d-flex align-center justify-center"
         >
           <span class="inputLabel--text mew-body mr-2">{{ item.subtext }}</span>
+    <!--
+  =====================================================================================
+    Slot: mewExpandPanelActions (used to place custom ui on the right side of the expand panel header)
+  =====================================================================================
+  -->
           <slot name="mewExpandPanelActions" />
           <mew-switch
             ref="switch"
@@ -75,7 +100,6 @@
             <img
               v-if="!isExpanded(i)"
               height="30"
-              class="edit-icon"
               src="@/assets/images/icons/edit.svg"
             >
             <v-icon v-if="isExpanded(i)">
@@ -84,6 +108,11 @@
           </span>
         </div>
       </v-expansion-panel-header>
+    <!--
+  =====================================================================================
+    Panel Content, has slot: 'panelBody' + the number of the panel (used to place content in the panel body)
+  =====================================================================================
+  -->
       <v-expansion-panel-content color="white">
         <slot :name="'panelBody' + (i + 1)" />
       </v-expansion-panel-content>
@@ -114,7 +143,7 @@ export default {
      */
     rightActionText: {
       type: String,
-      default: 'Buy Domain',
+      default: '',
     },
     /**
      * Applies dividers to the expand panel.

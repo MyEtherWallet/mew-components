@@ -1,14 +1,26 @@
 <template>
+    <!--
+  =====================================================================================
+    Mew Banner
+  =====================================================================================
+  -->
   <v-container
-    class="mew-banner full-width font-weight-medium"
+    fluid
+    class="mew-banner full-width font-weight-medium pa-6"
     :style="{backgroundImage: `url(${banner})` }"
   >
+    <!--
+  =====================================================================================
+    Exit Button
+  =====================================================================================
+  -->
     <v-row
+      v-if="textObj.exit"
       @click="closeBanner"
       class="cursor-pointer error--text exit-container mr-3"
     >
       <v-col
-        class="d-flex justify-end align-center"
+        class="d-flex justify-end align-center pa-0"
         offset-md="6"
       >
         <v-icon
@@ -20,7 +32,12 @@
         <span>{{ textObj.exit }}</span>
       </v-col>
     </v-row>
-    <v-row class="banner-content d-flex text-center align-center justify-center white--text flex-column">
+    <!--
+  =====================================================================================
+    Banner Title and Subtext
+  =====================================================================================
+  -->
+    <v-row class="d-flex text-center align-center justify-center white--text flex-column pa-4">
       <v-col class="pa-0">
         <span class="mew-subtitle">{{ textObj.title }}</span>
       </v-col>
@@ -70,6 +87,7 @@ export default {
 <style lang="scss" scoped>
 .mew-banner {
   background-size: cover;
+  background-position: center center;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   min-height: 150px;

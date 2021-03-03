@@ -27,9 +27,6 @@ export const mewCopy = () => ({
     tooltip: {
       default: text('tooltip', 'Copy')
     },
-    isRef: {
-      default: boolean('is-ref', false)
-    },
     isSmall: {
       default: boolean('is-small', false)
     },
@@ -38,6 +35,9 @@ export const mewCopy = () => ({
     },
     copyValue: {
       default: text('copyValue', 'Copied value')
+    },
+    color: {
+      default: text('color', 'basic--text')
     }
   },
   watch: {
@@ -50,10 +50,10 @@ export const mewCopy = () => ({
     <br />
     <mew-copy
       :is-small="isSmall"
-      :is-ref="isRef"
       :copy-ref="copyId"
       :tooltip="tooltip"
       :copy-value="copyValue"
+      :color="color"
     />
     <br />
     <span id="mew-id">Copy me!</span>

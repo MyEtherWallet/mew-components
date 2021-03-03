@@ -1,4 +1,9 @@
 <template>
+    <!--
+  =====================================================================================
+    Mew Carousel
+  =====================================================================================
+  -->
   <v-carousel
     class="mew-carousel"
     active-class="active-carousel-item"
@@ -16,6 +21,11 @@
       :href="typeof slide === 'string' ? slide : null"
       :key="idx"
     >
+    <!--
+  =====================================================================================
+    Slot: 'slide + number of slide' (used to place custom ui on a specific slide)
+  =====================================================================================
+  -->
       <slot :name="'slide' + (idx + 1)" />
     </v-carousel-item>
   </v-carousel>
@@ -41,21 +51,21 @@ export default {
       default: '200'
     },
     /**
-     * Whether the carousel ripples on click
+     * Ripples carousel on click
      */
     ripple: {
       type: Boolean,
       default: true
     },
     /**
-     * Whether show the arrows on hover
+     * Show the arrows on hover
      */
     showArrows: {
       type: Boolean,
       default: true
     },
     /**
-     * Whether carousel cycles automatically
+     * Allows the carousel to cycle automatically
      */
     cycle: {
       type: Boolean,

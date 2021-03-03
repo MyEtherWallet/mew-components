@@ -1,4 +1,9 @@
 <template>
+    <!--
+  =====================================================================================
+    Mew Copy
+  =====================================================================================
+  -->
   <div>
     <v-tooltip
       content-class="tooltip-inner"
@@ -8,7 +13,7 @@
       <template v-slot:activator="{ on }">
         <v-icon
           :small="isSmall"
-          class="copy-icon cursor-pointer basic--text"
+          :class="['copy-icon cursor-pointer', color]"
           v-on="on"
           @click="copyToClipboard"
         >
@@ -17,6 +22,11 @@
       </template>
       <span>{{ tooltip }}</span>
     </v-tooltip>
+    <!--
+  =====================================================================================
+    Success toast
+  =====================================================================================
+  -->
     <mew-toast
       ref="toast"
       :duration="2000"
@@ -37,28 +47,28 @@ export default {
   },
   props: {
     /**
-     * Pass true if you want icon to be small
+     * Assigns the color of the icon. Accepts a text class color from mew-color. 
+     */
+    color: {
+      type: String,
+      default: 'basic--text'
+    },
+    /**
+     * Makes the icon small.
      */
     isSmall: {
       type: Boolean,
       default: false
     },
     /**
-     * Pass the value you would like to copy
+     * Pass the value you would like to copy.
      */
     copyValue: {
       type: String,
       default: ''
     },
     /**
-     * Pass true if you are using $ref to select the element
-     */
-    isRef: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * The ref of the element to copy
+     * The ref of the element to copy.
      */
     copyRef: {
       type: [String, HTMLInputElement],
@@ -82,7 +92,7 @@ export default {
   methods: {
    copyToClipboard() {
       const value = this.copyRef ? this.copyRef : this.copyValue;
-      copy(value, this.isRef)
+      copy(value, this.copyRef ? true : false)
       document.activeElement.blur()
       this.$refs.toast.showToast();
     }

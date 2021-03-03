@@ -18,7 +18,7 @@
           justify="center"
           align="center"
         >
-          <div>
+          <div class="d-flex align-center">
             <v-icon
               v-if="toastTypes.info !== toastType.toLowerCase()"
               :color="toastTypes.warning === toastType.toLowerCase() ? 'warning darken-1' : 'white'"

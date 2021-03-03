@@ -53,7 +53,6 @@
             class="mr-3"
             :tooltip="copyTooltip"
             :copy-ref="getRefValue()"
-            :is-ref="true"
           />
           <v-tooltip
             content-class="tooltip-inner"
