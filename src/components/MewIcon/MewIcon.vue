@@ -4,12 +4,10 @@
     Mew Icon
   =====================================================================================
   -->
-  <div>
-    <img
-      :height="imgHeight"
-      :src="getIcon()"
-    >
-  </div>
+  <img
+    :height="imgHeight"
+    :src="getIcon()"  
+  >
 </template>
 <script>
 import aave from '@/assets/images/icons/aave.svg'

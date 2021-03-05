@@ -1,44 +1,76 @@
 <template>
+    <!--
+  =====================================================================================
+    Mew Module
+  =====================================================================================
+  -->
   <v-sheet 
-    :class="[ hasElevation ? 'elevation-2' : '', 'full-width', 'module-container']"
+    :class="[ hasElevation ? 'elevation-3' : '', 'full-width', 'module-container']"
     :color="colorType"
-    height="100%"
+    :height="hasfullHeight ? '100%' : 'auto'"
   >
-    <v-container class="header-wrapper">
+    <!--
+  =====================================================================================
+    Module header
+  =====================================================================================
+  -->
+    <v-container fluid>
       <v-row
         align="center"
         justify="space-between"
       >
-        <div :class="['left-wrapper', 'pl-10', 'd-flex', 'flex-row', 'justify-center', 'align-center', hasIndicator ? 'indicator' : '']">
-          <div class="left-icon mr-2">
+        <div :class="['left-wrapper pl-8 py-4 d-flex flex-row justify-center align-center', hasIndicator ? 'indicator' : '']">
+          <div class="left-icon mr-2" v-if="showIcon(icon)">
             <img
-              v-if="showIcon(icon) && iconAlign.toLowerCase() === iconAlignments.left"
+              v-if="iconAlign.toLowerCase() === iconAlignments.left"
               :src="icon"
+              height="50"
               alt="left icon"
             >
           </div>
           <div class="d-flex flex-column">
-            <span class="mew-heading-3 textPrimaryModule--text text-uppercase">{{ subtitle }}</span>
-            <span :class="['titlePrimary--text', titleSize]">{{ title }}</span>
-            <span class="mew-body textSecondaryModule--text font-weight-bold">{{ caption }}</span>
+            <span v-if="subtitle" class="mew-heading-3 textPrimaryModule--text text-uppercase">{{ subtitle }}</span>
+            <span v-if="title" :class="['titlePrimary--text', titleSize]">{{ title }}</span>
+            <span v-if="caption" class="mew-body textSecondaryModule--text font-weight-bold">{{ caption }}</span>
           </div>
-          <div class="right-icon">
+          <div class="right-icon" v-if="showIcon(icon)">
             <img
-              v-if="showIcon(icon) && iconAlign.toLowerCase() === iconAlignments.right"
+              v-if="iconAlign.toLowerCase() === iconAlignments.right"
               :src="icon"
+              height="50"
               alt="right icon"
             >
           </div>
+    <!--
+  =====================================================================================
+    Slot: leftHeaderContainer (used to place custom ui on the left)
+  =====================================================================================
+  -->
           <slot name="leftHeaderContainer" />
         </div>
         <div class="right-wrapper pr-10 pt-2">
+      <!--
+  =====================================================================================
+    Slot: rightHeaderContainer (used to place custom ui on the right)
+  =====================================================================================
+  -->
           <slot name="rightHeaderContainer" />
         </div>
       </v-row>  
+      <!--
+  =====================================================================================
+    Module Body
+  =====================================================================================
+  -->
       <v-row
         align="center"
         justify="center"
       >
+      <!--
+  =====================================================================================
+    Slot: moduleBody (used to place custom ui on the body content)
+  =====================================================================================
+  -->
         <slot name="moduleBody" />
       </v-row> 
     </v-container>
@@ -104,7 +136,7 @@ export default {
      */
     titleSize: {
       type: String,
-      default: 'mew-heading-1'
+      default: 'mew-heading-2'
     },
     /**
      * Displays indicator.
@@ -117,6 +149,13 @@ export default {
      * Adds elevation to the module.
      */
     hasElevation: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Adjusts the module to 100% height.
+     */
+    hasFullHeight: {
       type: Boolean,
       default: false
     }
@@ -134,10 +173,11 @@ export default {
 
 <style lang="scss" scoped>
 .module-container {
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 0 15px var(--v-box-shadow-base);
   .indicator {
     border-left: 4px solid var(--v-primary-base);
+    min-height: 30px;
   }
 }
 </style>

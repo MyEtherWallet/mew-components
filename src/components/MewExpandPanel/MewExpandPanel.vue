@@ -7,7 +7,7 @@
   <v-expansion-panels
     v-model="expandIdxArr"
     :multiple="isToggle"
-    class="mew-expand-panel"
+    class="mew-expand-panel rounded"
     :flat="true"
   >
     <v-expansion-panel
@@ -24,6 +24,7 @@
     -->
       <v-expansion-panel-header
         :class="[
+          'rounded',
           'titlePrimary--text',
           'mew-heading-3',
           isToggle ? 'pa-3 no-pointer-events' : 'pa-5',
@@ -35,10 +36,9 @@
       Panel Header - Left 
     =====================================================================================
     -->
-        <div>
+        <div class="d-flex align-center">
           <span
             :class="[
-              'ml-2',
               'mew-heading-3',
               item.tooltip ? 'd-flex align-center' : '',
             ]"
@@ -59,7 +59,7 @@
               'white--text',
               'px-2',
               'py-1',
-              'badge-type',
+              'rounded',
               'mew-caption',
             ]"
           >{{ item.warningBadge.text }}</span>
@@ -85,7 +85,7 @@
           slot="actions"
           class="d-flex align-center justify-center"
         >
-          <span class="inputLabel--text mew-body mr-2">{{ item.subtext }}</span>
+          <span class="inputLabel--text mew-body mx-2 text-right">{{ item.subtext }}</span>
     <!--
   =====================================================================================
     Slot: mewExpandPanelActions (used to place custom ui on the right side of the expand panel header)
@@ -94,6 +94,7 @@
           <slot name="mewExpandPanelActions" />
           <mew-switch
             ref="switch"
+            @click.native="onSwitch"
             v-if="isToggle && !item.disabled"
           />
           <span v-if="!isToggle && !item.disabled">
@@ -208,6 +209,9 @@ export default {
     onActionClick() {
       this.$emit('onActionClick');
     },
+    onSwitch() {
+      this.$emit('toggled');
+    }
   },
 };
 </script>
@@ -215,19 +219,17 @@ export default {
 <style lang="scss">
 .mew-expand-panel {
   .v-expansion-panel {
-    border-radius: 12px;
     margin-bottom: 10px;
-  }
-  .v-expansion-panel-header,
-  .v-expansion-panel-content {
-    border-radius: 12px;
-  }
-  .badge-type {
-    border-radius: 4px;
-    font-size: 11px !important;
+    .v-expansion-panel-content__wrap {
+      padding: 0;
+    }
   }
   .v-item--active.active-border {
     border: 1px solid var(--v-primary-base);
+    .v-expansion-panel-header {
+      border-bottom: 1px solid var(--v-primary-base) !important;
+      border-radius: 4px 4px 0 0 !important;
+    }
   }
 }
 </style>

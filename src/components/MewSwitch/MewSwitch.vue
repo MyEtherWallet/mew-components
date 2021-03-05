@@ -38,6 +38,7 @@ export default {
     },
     switchToggle() {
       this.value = !this.value;
+      console.error('in here')
       this.$emit('switch', this.value);
     }
   }

@@ -1,15 +1,20 @@
 <template>
+    <!--
+  =====================================================================================
+    Mew Menu
+  =====================================================================================
+  -->
   <v-menu
     v-model="isMenuOpen"
     open-on-hover
-    :content-class="getContentClasses()"
+    min-width="200"
+    :content-class="contentClasses"
     offset-y
   >
     <template v-slot:activator="{ on }">
       <span
         :class="[
           textColor,
-          styleClasses,
           'cursor-pointer',
           isMenuOpen ? 'font-weight-medium' : '',
         ]"
@@ -26,13 +31,17 @@
         >mdi-chevron-up</v-icon>
       </span>
     </template>
+    <!--
+  =====================================================================================
+    Menu List Content
+  =====================================================================================
+  -->
     <v-list
-      class="pa-0"
       v-for="(item, index) in listObj.items"
       :key="index"
     >
       <v-list-item>
-        <v-list-item-title class="basic--text mew-heading-3">
+        <v-list-item-title class="basic--text mew-heading-3 titleItem">
           {{ item.title }}
         </v-list-item-title>
       </v-list-item>
@@ -42,7 +51,7 @@
         @click="goTo(subItem.to)"
         class="cursor-pointer"
       >
-        <v-list-item-title class="mew-body basic--text">
+        <v-list-item-title class="mew-body basic--text subItem">
           {{ subItem.title }}
         </v-list-item-title>
       </v-list-item>
@@ -60,14 +69,7 @@ export default {
   },
   props: {
     /**
-     * Applies a white top arrow, Only works with a colored background.
-     */
-    // hasTopArrow: {
-    //   type: Boolean,
-    //   default: false
-    // },
-    /**
-     * Menu content.
+     * Menu content. Accepts an object, i.e, { name: '', items: [{ title: '', items: [{ title: ''}]}]}
      */
     listObj: {
       type: Object,
@@ -81,20 +83,14 @@ export default {
     textColor: {
       type: String,
       default: 'basic--text',
-    },
-    /**
-     * Classes to style the content
-     */
-    styleClasses: {
-      type: String,
-      default: '',
-    },
+    }
+  },
+  computed: {
+    contentClasses() {
+      return 'mew-menu-content elevation-2 '
+    }
   },
   methods: {
-    getContentClasses() {
-      let classes = 'mew-menu-content elevation-2 ';
-      return classes;
-    },
     goTo(link) {
       this.$emit('goToPage', link);
     },
@@ -108,23 +104,26 @@ export default {
 
   .v-list {
     border-radius: 0;
-  }
+    
+    .v-list-item {
+      min-height: 30px;
+    }
+    .v-list-item--link {
+      border-top: none;
 
-  .v-list-item--link {
-    border-top: none;
-    min-height: 35px;
-
-    &:hover {
-      background-color: var(--v-primary-base);
+      &:hover {
+        background-color: var(--v-primary-base);
+      }
     }
   }
+    .v-list:first-of-type > .v-list-item:first-of-type {
+      padding-top: 10px;
+    }
 
-  .v-list:first-of-type > .v-list-item--link {
-    padding-top: 10px;
-  }
+    .v-list:last-of-type > .v-list-item:last-of-type {
+      padding-bottom: 10px;
+    }
 
-  .v-list:last-of-type > .v-list-item--link {
-    padding-bottom: 5px;
-  }
+
 }
 </style>

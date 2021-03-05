@@ -39,7 +39,7 @@ export default {
 // Variables to control the truncation behaviour
 $startFixedChars: 4; // Number of chars before ellipsis - have priority over end chars
 $endFixedChars: 5; // Number of chars after ellipsis  - lower priority than start chars
-$fontFaceScaleFactor: 0.47; // Magic number dependent on font face - set by trial and error
+$fontFaceScaleFactor: 0.50; // Magic number dependent on font face - set by trial and error
 
 // Derived from the 3 variables above
 $startWidth: 1em * $fontFaceScaleFactor * ($startFixedChars + 3);

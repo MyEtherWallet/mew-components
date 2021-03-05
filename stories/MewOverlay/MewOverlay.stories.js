@@ -44,6 +44,9 @@ export const MEWOverlay = () => ({
     },
     leftBtnText: {
       default: text('left-btn-text', 'Back')
+    },
+    description: {
+      default: text('description', '')
     }
   },
   watch: {
@@ -77,6 +80,7 @@ export const MEWOverlay = () => ({
       :warning-desc="warningDesc"
       :right-btn-text="rightBtnText"
       :left-btn-text="leftBtnText"
+      :description="description"
     >
       <template v-slot:mewOverlayBody>
         <span>MEW overlay body</span>
