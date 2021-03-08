@@ -6,7 +6,7 @@
   -->
   <v-container
     fluid
-    class="mew-banner full-width font-weight-medium pa-6"
+    :class="['mew-banner full-width font-weight-medium pa-6', !textObj.exit ? 'd-flex align-center' : '']"
     :style="{backgroundImage: `url(${banner})` }"
   >
     <!--

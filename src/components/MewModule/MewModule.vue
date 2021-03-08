@@ -7,7 +7,7 @@
   <v-sheet 
     :class="[ hasElevation ? 'module-box-shadow' : '', 'full-width', 'module-container']"
     :color="colorType"
-    :height="hasfullHeight ? '100%' : 'auto'"
+    :height="hasFullHeight ? '100%' : 'auto'"
   >
     <!--
   =====================================================================================
@@ -71,7 +71,9 @@
     Slot: moduleBody (used to place custom ui on the body content)
   =====================================================================================
   -->
-        <slot name="moduleBody" />
+        <v-container class="pa-3 pa-md-10" fluid> 
+          <slot name="moduleBody" />
+        </v-container>
       </v-row> 
     </v-container>
   </v-sheet>
