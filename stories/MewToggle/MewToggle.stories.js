@@ -2,7 +2,8 @@ import {
   withKnobs,
   boolean,
   object,
-  optionsKnob
+  optionsKnob,
+  number
 } from '@storybook/addon-knobs';
 import MewToggle from '@/components/MewToggle/MewToggle.vue';
 import MewToggleDoc from './MewToggle.mdx';
@@ -39,6 +40,9 @@ export const mewToggle = () => ({
     },
     buttonType: {
       default: optionsKnob('button-type', buttonTypes, buttonTypes.default, { display: 'inline-radio'})
+    },
+    onToggleBtnIdx: {
+      default: number('on-toggle-btn-idx', 1)
     }
   },
   watch: {
@@ -50,6 +54,7 @@ export const mewToggle = () => ({
     <div>
     <br />
     <mew-toggle
+      :on-toggle-btn-idx="onToggleBtnIdx"
       :button-group="buttonGroup"
       :button-type="buttonType"
       @onBtnClick="onBtnClick"

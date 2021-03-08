@@ -8,6 +8,10 @@ a {
   background-color: var(--v-white-base) !important;
 }
 
+.break-word {
+  word-break: break-word;
+}
+
 .truncate {
   white-space: nowrap;
   overflow: hidden;
@@ -30,6 +34,10 @@ a {
 
 .full-width {
   width: 100%;
+}
+
+.full-max-width {
+  max-width: 100%;
 }
 
 .full-height {

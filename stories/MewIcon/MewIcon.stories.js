@@ -39,11 +39,10 @@ export const MEWIcon = () => ({
   template: `
     <div>
     <br />
-    <span class="mew-heading-1">Icons</span>
-    <br />
-    <v-row align="center"> 
-      <v-col cols="2" v-for="(icon, idx) in icons" :key="icon + idx">
-        <div class="d-flex justify-center flex-column">
+    <span class="mew-heading-1 mb-3">Icons</span>
+    <v-row class="mt-3" align="center"> 
+      <v-col cols="6" sm="4" lg="2" xl="2" v-for="(icon, idx) in icons" :key="icon + idx">
+        <div class="d-flex justify-center flex-column align-baseline">
           <mew-icon :icon-name="icon"/>
           <span class="mew-body font-weight-bold">{{icon}}</span>
         </div>

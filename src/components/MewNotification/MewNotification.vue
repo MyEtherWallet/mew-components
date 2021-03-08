@@ -1,63 +1,87 @@
 <template>
+    <!--
+  =====================================================================================
+    Mew Notifications
+  =====================================================================================
+  -->
   <div
     @click="onToggle"
     :class="[active ? 'activated' : '', notification.status.value + '-type', 'notification-container', 'px-3', 'titlePrimary--text', notification.read ? 'read' : '']"
   >
-    <v-container>
+    <v-container fluid>
       <v-row>
         <v-col
+          class="d-flex align-center"
           cols="6"
         >
-          <div class="d-flex align-center">
-            <div
-              :class="[ getClasses(notification.status.value.toLowerCase()), 'indicator', 'd-none', 'd-sm-flex']"
-              v-if="!notification.read"
-            />
-            <mew-blockie
-              class="d-none d-sm-flex"
-              v-if="!isSwap"
+    <!--
+  =====================================================================================
+    Displays indicator if notification not read
+  =====================================================================================
+  -->
+          <div
+            :class="[ getClasses(notification.status.value.toLowerCase()), 'indicator', 'd-none', 'd-sm-flex']"
+            v-if="!notification.read"
+          />
+    <!--
+  =====================================================================================
+   Displays blockie if it is not a swap notification 
+  =====================================================================================
+  -->
+          <mew-blockie
+            class="d-flex"
+            v-if="!isSwap"
+            width="30px"
+            height="30px"
+            :address="notification.from.value"
+          />
+    <!--
+  =====================================================================================
+   Displays swap icons if it is a swap notification 
+  =====================================================================================
+  -->
+          <div
+            v-else
+            class="d-flex flex-column currency-symbol"
+          >
+            <img
+              :src="notification.fromObj.icon"
               width="30px"
               height="30px"
-              :address="notification.from.value"
-            />
-            <div
-              v-else
-              class="d-none d-sm-flex flex-column currency-symbol"
             >
-              <img
-                :src="notification.fromObj.icon"
-                width="30px"
-                height="30px"
-              >
-              <img
-                :src="notification.toObj.icon"
-                width="30px"
-                height="30px"
-                class="overlap"
-              >
-            </div>
-            <div class="ml-5 detail-container full-width">
+            <img
+              :src="notification.toObj.icon"
+              width="30px"
+              height="30px"
+              class="overlap"
+            >
+          </div>
+    <!--
+  =====================================================================================
+   Displays different notification info based on notification type
+  =====================================================================================
+  -->
+          <div class="ml-5 detail-container full-width">
+            <div v-if="!isSwap">
               <div
                 class="caption font-weight-medium d-flex"
-                v-if="!isSwap"
               >
-                {{ notification.from.string }}: <span class="mew-address font-weight-medium ml-1 full-width"><mew-transform-hash :hash="notification.from.value" /> </span>
+                {{ notification.from.string }}: <mew-transform-hash :hash="notification.from.value" /> 
               </div>
               <div
                 class="caption font-weight-medium d-flex"
-                v-else
-              >
-                {{ notification.to.string }}: <span class="mew-address font-weight-medium ml-1 full-width"><mew-transform-hash :hash="notification.toObj.to" /> </span>
-              </div>
-              <div
-                class="caption font-weight-medium d-flex"
-                v-if="!isSwap"
               >
                 {{ notification.amount.string }}: {{ notification.amount.value }}
               </div>
+            </div>
+            <div v-else>
+              <div
+                class="caption font-weight-medium d-flex"
+              >
+                {{ notification.to.string }}: <mew-transform-hash :hash="notification.toObj.to" /> 
+              </div>
               <div
                 class="caption mew-heading-2 d-flex"
-                v-else
               >
                 {{ notification.fromObj.amount }} {{ notification.fromObj.currency }}
                 <v-icon
@@ -84,6 +108,11 @@
         </v-col>
       </v-row>
     </v-container>
+      <!--
+  =====================================================================================
+   Displays more info if the notification is expanded
+  =====================================================================================
+  -->
     <div
       class="activated-container capitalize"
       v-if="active"
@@ -155,7 +184,8 @@ export default {
         success: 'success',
         pending: 'pending',
         failed: 'failed'
-      }
+      },
+      hashType: 'Transaction Hash'
     }
   },
   computed: {
@@ -177,6 +207,16 @@ export default {
     }
   },
   props: {
+    /**
+     * Takes an object of notification information
+     * i.e. { txHash: { value: '', string: '' },
+     *        gasPrice: { value: '', string: '' }, gasLimit: { value: '', string: '' }, 
+     *        total: { value: '', string: '' }, from: { value: '', string: '' },
+     *        to: { value: '', string: '' }, amount: { value: '', string: '' },
+     *        timestamp: { value: '', string: '' }, status: { value: '', string: '' },
+     *        type: { value: '', string: '' }, fromObj: { currency: '', amount: '', icon: ''},
+     *        toObj: { currency: '', amount: '', icon: ''}, read: boolean }
+     */
     notification: {
       type: Object,
       default: () => {
@@ -239,7 +279,7 @@ export default {
   },
   methods: {
     isHash(type) {
-      return type === 'Transaction Hash'
+      return type === this.hashType;
     },
     getClasses(status) {
       if (status === this.txStatusOptions.success) {

@@ -1,5 +1,10 @@
 <template>
   <div>
+    <!--
+  =====================================================================================
+    Mew Popup
+  =====================================================================================
+  -->
     <v-dialog
       class="text-center"
       max-width="400"
@@ -8,17 +13,22 @@
       v-model="open"
     >
       <v-card>
+    <!--
+  =====================================================================================
+    Mew Popup Title
+  =====================================================================================
+  -->
         <v-card-title
           v-if="title"
-          :class="[popupType.toLowerCase() === popupTypes.confirm ? 'pt-6 titlePrimary--text' : 'pa-0 white--text','text-center' , 'justify-center', 'font-weight-bold']"
+          :class="[!isPopupTypeError ? 'pt-6 titlePrimary--text' : 'pa-0 white--text','text-center' , 'justify-center', 'font-weight-bold', 'break-word']"
         >
           <img
-            v-if="popupType.toLowerCase() === popupTypes.error"
+            v-if="isPopupTypeError"
             height="100%"
             width="100%"
             :src="errorImg"
           >
-          <span :class="popupType.toLowerCase() === popupTypes.error ? 'error-popup-title' : ''">{{ title }}</span>
+          <span :class="isPopupTypeError ? 'error-popup-title' : ''">{{ title }}</span>
         </v-card-title>
         <div class="px-8">
           <v-card-text
@@ -44,10 +54,20 @@
               btn-style="background"
             />
           </v-card-actions>
+              <!--
+  =====================================================================================
+    Mew Popup Error Type
+  =====================================================================================
+  -->
           <div
-            v-if="popupType.toLowerCase() === popupTypes.error && errorMsg"
+            v-if="isPopupTypeError && error"
             class="footer-container pb-9"
           >
+                <!--
+  =====================================================================================
+    Slot: footerText (used to place custom ui on the footer)
+  =====================================================================================
+  -->
             <div class="text-center">
               <slot name="footerText" />
             </div>
@@ -55,35 +75,28 @@
             <div
               class="d-flex justify-space-between mew-heading-3 pa-4 titlePrimary--text"
             >
-              <span>{{ errorHeader }}</span>
+              <span>{{ error.title }}</span>
               <v-icon
                 @click="toggleErrMsg"
                 class="titlePrimary--text cursor-pointer"
-                v-if="!showsErr"
+                v-if="!toggleErrContainer"
               >
-                mdi-chevron-down
-              </v-icon>
-              <v-icon
-                @click="toggleErrMsg" 
-                class="titlePrimary--text cursor-pointer"
-                v-if="showsErr"
-              >
-                mdi-chevron-up
+                {{ toggleErrContainer ? 'mdi-chevron-up' : 'mdi-chevron-down' }}
               </v-icon>
             </div>
             <div
-              v-if="showsErr"
+              v-if="toggleErrContainer"
               class="px-4 pb-4 mew-address error-container"
             >
               <textarea
                 class="full-height full-width no-pointer-events"
                 ref="errContainer"
-                v-model="errorMsg"
+                v-model="error.msg"
               />
             </div>
             <v-divider />
             <div
-              v-if="showsErr"
+              v-if="toggleErrContainer"
               class="text-center font-weight-medium mt-6"
             >
               <span
@@ -120,7 +133,7 @@ export default {
     return {
       errorImg: errorImg,
       open: false,
-      showsErr: false,
+      toggleErrContainer: false,
       popupTypes: {
         error: 'error',
         confirm: 'confirm'
@@ -185,25 +198,13 @@ export default {
       }
     },
     /**
-     * Error message. 
+     * Error message. Takes a title and msg attribute.
      */
-    errorMsg: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Error message header. 
-     */
-    errorMsgTitle: {
-      type: String,
-      default: 'Error Message'
-    },
-    /**
-     * Error message header. 
-     */
-    errorHeader: {
-      type: String,
-      default: 'Error Message'
+    error: {
+      type: Object,
+      default: () => {
+        return {title: '', msg: ''};
+      }
     },
     /**
      * Copy message string. 
@@ -220,9 +221,14 @@ export default {
       default: ''
     }
   },
+  computed: {
+    isPopupTypeError() {
+      return this.popupType.toLowerCase() === this.popupTypes.error
+    }
+  },
   methods: {
     toggleErrMsg() {
-      this.showsErr = !this.showsErr;
+      this.toggleErrContainer = !this.toggleErrContainer;
     },
     onClick(btn) {
       this.$emit('onClick', btn);
@@ -238,7 +244,7 @@ export default {
 
 <style lang="scss" scoped>
 .error-container {
-  height: 100px;
+  min-height: 100px;
 }
 
 .error-popup-title {

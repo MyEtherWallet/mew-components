@@ -1,4 +1,9 @@
 <template>
+    <!--
+  =====================================================================================
+    Mew Stepper 
+  =====================================================================================
+  -->
   <div>
     <v-stepper
       alt-labels
@@ -28,6 +33,12 @@
       v-for="(step, i) in items"
       :key="step + i"
     >
+    <!--
+  =====================================================================================
+    Slot: 'stepperContent' + number of stepper content (used to place custom ui into
+    the stepper)
+  =====================================================================================
+  -->
       <slot :name="'stepperContent' + (i + 1)" />
     </div>
   </div>
@@ -42,10 +53,16 @@ export default {
     }
   },
   props: {
+    /**
+     * Takes an array of stepper item objects i.e, [{step: 0, name: ''}].
+     */
     items: {
       type: Array,
       default: () => []
     },
+    /**
+     * Controls which step is active.
+     */
     onStep: {
       type: Number,
       default: 1

@@ -1,4 +1,9 @@
 <template>
+    <!--
+  =====================================================================================
+    Mew Progress Bar
+  =====================================================================================
+  -->
   <div
     :title="'Remaining:' + remainingAmt"
     class="mew-progress-bar full-width d-flex cursor-pointer"

@@ -47,7 +47,7 @@
           </div>
         </div>
         <div
-          class="mt-2 break-word font-weight-medium"
+          class="mt-2 break-word font-weight-regular"
           v-if="subtitle"
         >
           {{ subtitle }}

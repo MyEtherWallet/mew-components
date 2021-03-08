@@ -1,3 +1,8 @@
+    <!--
+  =====================================================================================
+    Mew Chart
+  =====================================================================================
+  -->
 <script>
 import { Line } from 'vue-chartjs';
 
@@ -5,61 +10,77 @@ export default {
 name: 'MewChart',
 extends: Line,
   props: {
+    /**
+     * Chart Data - takes in x and y attribute, i.e, { x: [], y: []}
+     */
     data: {
       type: Object,
       default: () => {
         return {};
       }
     },
+    /**
+     * Chart color. Takes a hex number.
+     */
     color: {
       type: String,
       default: '#05c0a5'
     }
   },
+  watch: {
+    color() {
+      this.getChart();
+    }
+  },
   mounted() {
-    this.renderChart(
-      {
-        labels: this.data.x,
-        datasets: [
-          {
-            align: 'center',
-            borderColor: this.color,
-            fill: false,
-            data: this.data.y
-          }
-        ]
-      },
-      {
-        elements: {
-            point:{
-                radius: 0
+    this.getChart();
+  },
+  methods: {
+    getChart() {
+      this.renderChart(
+        {
+          labels: this.data.x,
+          datasets: [
+            {
+              align: 'center',
+              borderColor: this.color,
+              fill: false,
+              data: this.data.y
             }
+          ]
         },
-        scales: {
-          xAxes: [{
-              gridLines: {
-                  display:false
-              },
-              ticks: {
-                display: false
+        {
+          elements: {
+              point:{
+                  radius: 0
               }
-          }],
-          yAxes: [{
-              gridLines: {
-                  display:false
-              },
-              ticks: {
-                display: false
-              }   
-          }]
-        },
-        legend: {
-          display: false
-        },
-        responsive: true,
-        maintainAspectRatio: false
-      }
-    );
+          },
+          scales: {
+            xAxes: [{
+                gridLines: {
+                    display:false
+                },
+                ticks: {
+                  display: false
+                }
+            }],
+            yAxes: [{
+                gridLines: {
+                    display:false
+                },
+                ticks: {
+                  display: false
+                }   
+            }]
+          },
+          legend: {
+            display: false
+          },
+          responsive: true,
+          maintainAspectRatio: false
+        }
+      );
+    }
   }
 };
 </script>

@@ -1,4 +1,9 @@
 <template>
+  <!--
+=====================================================================================
+  Mew Toast 
+=====================================================================================
+-->
   <v-bottom-sheet
     ref="toast"
     v-model="showsToast" 
@@ -18,7 +23,7 @@
           justify="center"
           align="center"
         >
-          <div>
+          <div class="d-flex align-center">
             <v-icon
               v-if="toastTypes.info !== toastType.toLowerCase()"
               :color="toastTypes.warning === toastType.toLowerCase() ? 'warning darken-1' : 'white'"
@@ -31,6 +36,11 @@
               :class="getLinkClasses()"
             >{{ linkObj.title }}
             </a>
+    <!--
+=====================================================================================
+  Slot: infoBtn (used to place custom ui in the toast body)
+=====================================================================================
+-->
             <slot name="infoBtn" />
           </div>
           <v-icon

@@ -1,7 +1,13 @@
 <template>
+  <!--
+=====================================================================================
+  Mew Toggle 
+=====================================================================================
+-->
   <div>
     <v-btn-toggle
       :mandatory="true"
+      v-model="onBtn"
       :borderless="true"
       class="mew-toggle"
       v-if="isCustom"
@@ -13,11 +19,17 @@
         v-for="(btn, i) in buttonGroup"
         :key="btn + i"
       >
+  <!--
+=====================================================================================
+  Slot: 'btn' + number of btn (used to place custom ui in a specific toggle button)
+=====================================================================================
+-->
         <slot :name="'btn' + (i + 1)" />
       </div>
     </v-btn-toggle>
     <v-btn-toggle
-      :mandatory="buttonType.toLowerCase() === buttonTypes.default ? true : false"
+      :mandatory="isDefault"
+      v-model="onBtn"
       :borderless="true"
       class="mew-toggle"
       v-if="!isCustom"
@@ -46,15 +58,22 @@ export default {
         default: 'default',
         percentage: 'percentage'
       },
-      onBtn: this.buttonGroup[0]
+      onBtn: null
     }
   },
   props: {
     /**
+     * Controls which toggle button index is active.
+     */
+    onToggleBtnIdx: {
+      type: Number,
+      default: 0
+    },
+    /**
      * Accepts an array of button names. 
      */
     buttonGroup: {
-      type: [String, Array],
+      type: Array,
       default: () => {
         return [];
       }
@@ -67,22 +86,26 @@ export default {
       default: 'default'
     }
   },
+  mounted() {
+    this.onBtn = this.onToggleBtnIdx;
+  },
+  watch: {
+    onToggleBtnIdx() {
+       this.onBtn = this.onToggleBtnIdx;
+    }
+  },
   methods: {
     onBtnClick(btn) {
       this.$emit('onBtnClick', btn);
     },
     getClasses() {
-      const classes = [];
-
       if (this.buttonType.toLowerCase() === this.buttonTypes.default) {
-        classes.push('mew-caption default-btn')
+        return 'mew-caption default-btn';
       }
 
       if (this.buttonType.toLowerCase() === this.buttonTypes.percentage) {
-        classes.push('percentage-btn')
+        return 'percentage-btn';
       }
-
-      return classes;
     }
   },
   computed: {
@@ -109,6 +132,7 @@ export default {
       font-weight: normal !important;
       height: 25px !important;
       min-width: 31px !important;
+      margin-right: 5px;
       &.v-btn--active {
         background-color: var(--v-secondary-base) !important;
         color: var(--v-white-base);

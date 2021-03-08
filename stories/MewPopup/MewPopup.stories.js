@@ -63,11 +63,8 @@ export const MEWPopup = () => ({
     buttonRight: {
       default: object('button-right', buttonRightObj)
     },
-    errorMsg: {
-      default: text('error-msg', '')
-    },
-    errorHeader: {
-      default: text('error-header', 'Error Message')
+    error: {
+      default: object('error', {title: '', msg: ''})
     },
     copyMsg: {
       default: text('copy-msg', 'Copy the message')
@@ -94,8 +91,7 @@ export const MEWPopup = () => ({
       :button-right="buttonRight"
       :button-left="buttonLeft"
       :popup-type="popupType"
-      :error-msg="errorMsg"
-      :error-header="errorHeader"
+      :error="error"
       :copy-msg="copyMsg"
       @onClick="onClick"
       :successToast="successToast"

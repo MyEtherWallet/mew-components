@@ -1,7 +1,8 @@
 import {
   withKnobs,
   boolean,
-  object
+  object, 
+  text
 } from '@storybook/addon-knobs';
 import MewChart from '@/components/MewChart/MewChart.vue';
 
@@ -26,6 +27,9 @@ export const MEWChart = () => ({
     },
     data: {
       default: object('data', exampleData)
+    },
+    color: {
+      default: text('color', '#05c0a5')
     }
   },
   watch: {
@@ -36,6 +40,6 @@ export const MEWChart = () => ({
   template: `
     <div>
     <br />
-    <mew-chart :data="data" />
+    <mew-chart :data="data" :color="color"/>
   </div>`
 });

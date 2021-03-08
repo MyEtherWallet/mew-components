@@ -18,7 +18,7 @@ const listObj = {
   name: 'Links',
   items: [
   { title: '1st Links', items: [{ title: 'Link 1'}, {title: 'Link 2'}] },
-  { title: '2nd Links', items: [{ title: 'Link 3'}, {title: 'Link4'}]} ]
+  { title: '2nd Links', items: [{ title: 'Link 3'}, {title: 'Link 4'}]} ]
 };
 
 export const MEWMenu = () => ({
@@ -29,9 +29,6 @@ export const MEWMenu = () => ({
     },
     listObj: {
       default: object('list-obj', listObj)
-    },
-    styleClasses: {
-      default: text('style-classes', '')
     },
     textColor: {
       default: text('text-color', 'basic--text')
@@ -47,7 +44,6 @@ export const MEWMenu = () => ({
     <br />
     <mew-menu
       :list-obj="listObj"
-      :style-classes="styleClasses"
       :text-color="textColor"
       @goToPage="goToPage"
     />

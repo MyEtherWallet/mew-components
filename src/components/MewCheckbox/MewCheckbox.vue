@@ -1,4 +1,9 @@
 <template>
+    <!--
+  =====================================================================================
+    Mew Checkbox
+  =====================================================================================
+  -->
   <div class="d-flex align-center"> 
     <v-checkbox
       class="titlePrimary--text"
@@ -21,16 +26,25 @@
 export default {
   name: 'MewCheckbox',
   props: {
+    /**
+     * Checkbox label
+     */
     label: {
       type: String,
       default: ''
     },
+    /**
+     * Adds a link to the checkbox label.
+     */
     link: {
       type: Object,
       default: () => {
         return { title: '', url: ''};
       }
     },
+    /**
+     * Controls the value of the checkbox (checked or not)
+     */
     value: {
       type: Boolean,
       default: false

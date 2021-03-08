@@ -146,9 +146,6 @@ export const mewTable = () => ({
     },
     hasColor: {
       default: boolean('has-color', true)
-    },
-    successToast: {
-      default: text('success-toast', 'Success!')
     }
   },
   watch: {
@@ -161,7 +158,6 @@ export const mewTable = () => ({
     <br />
     <mew-table
       :has-color="hasColor"
-      :success-toast="successToast"
       :has-select="hasSelect"
       :table-data="hasSelect ? tableSelectData : tableData"
       :table-headers="hasSelect ? tableSelectHeaders : tableHeaders"

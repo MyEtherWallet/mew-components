@@ -61,6 +61,9 @@ export const MEWModule = () => ({
     },
     hasElevation: {
       default: boolean('has-elevation', true)
+    },
+    hasFullHeight: {
+      default: boolean('has-full-height', false)
     }
   },
   watch: {
@@ -72,6 +75,7 @@ export const MEWModule = () => ({
     <div>
     <br />
     <mew-module
+      :has-full-height="hasFullHeight"
       :color-type="colorType"
       :title="title"
       :title-size="titleSize"

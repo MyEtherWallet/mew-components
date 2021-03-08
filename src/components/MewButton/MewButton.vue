@@ -2,7 +2,7 @@
   <v-btn
     :target="btnLink ? '_blank' : ''"
     :href="btnLink"
-    :ripple="!isTransparent"
+    :ripple="true"
     @click="onBtnClick"
     :class="[ getClasses(), 'mew-button' ]"
     :color="colorTheme"
@@ -314,11 +314,11 @@ export default {
       color: var(--v-white-base) !important;
     }
 
-    &.mew-transparent {
-      &:hover {
-        color: var(--v-selectHover-base) !important;
-      }
-    }
+    // &.mew-transparent {
+    //   &:hover {
+    //     color: var(--v-selectHover-base) !important;
+    //   }
+    // }
   }
 }
 </style>

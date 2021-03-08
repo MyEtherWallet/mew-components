@@ -17,11 +17,12 @@ export default {
 };
 
 const items = [
-  { name: 'Network', hasActiveBorder: true, subtext: 'ETH - myetherapi.com', colorTheme: 'superPrimary', warningBadge: {
+  { name: 'Network', subtext: 'ETH - myetherapi.com', colorTheme: 'superPrimary' }, 
+  { name: 'Address to interact with' ,  subtext: '', tooltip: 'Tooltip', colorTheme: 'errorOutlineActive'},
+  { name: 'crypto.eth', hasActiveBorder: true, colorTheme: 'superPrimary', warningBadge: {
     color: 'warning darken-2',
     text: 'Expire soon'
   } }, 
-  { name: 'Address to interact with' ,  subtext: '', tooltip: 'Tooltip', colorTheme: 'errorOutlineActive'}
 ]
 
 export const MEWExpandPanel = () => ({
