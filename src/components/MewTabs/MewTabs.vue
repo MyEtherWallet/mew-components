@@ -1,7 +1,12 @@
 <template>
+  <!--
+=====================================================================================
+  Mew Tabs 
+=====================================================================================
+-->
   <div>
     <v-tabs
-      :class="[hasUnderline ? 'mew-tabs-underline' : '', isBlock ? 'mew-tabs-block elevation-2' : '']"
+      :class="[hasUnderline ? 'mew-tabs-underline' : '', isBlock ? 'mew-tabs-block elevation-3' : '']"
       background-color="transparent"
       color="titlePrimary"
       :centered="isCentered"
@@ -28,6 +33,12 @@
             :hide-on-leave="true"
             mode="out-in"
           >
+  <!--
+=====================================================================================
+  Slot: 'tabItemContent' + number of tab content (used to place custom tab content inside of the 
+  tab container)
+=====================================================================================
+-->
             <slot :name="'tabItemContent' + (i + 1)" />
           </v-slide-x-reverse-transition>
         </v-tab-item>
@@ -42,6 +53,12 @@
         :hide-on-leave="true"
         mode="out-in"
       >
+  <!--
+=====================================================================================
+  Slot: 'tabContent' + number of tab content (used to place custom tab content outside of the 
+  tab container)
+=====================================================================================
+-->
         <slot
           v-if="onTab === i"
           :name="'tabContent' + (i + 1)"

@@ -1,8 +1,6 @@
 import {
   withKnobs,
-  boolean,
-  object,
-  number
+  boolean
 } from '@storybook/addon-knobs';
 import MewSheet from '@/components/MewSheet/MewSheet.vue';
 
@@ -34,22 +32,12 @@ export const MEWSheet = () => ({
   template: `
     <div>
     <br />
-    <mew-tabs
-      :is-vertical="isVertical"
-      :has-underline="hasUnderline"
-      :items="items"
-      :is-block="isBlock"
-      :is-centered="isCentered"
-      :active-tab="activeTab"
-      @onTab="onTab"
+    <mew-sheet
     >
-      <template v-slot:tabItemContent1>
-        <span v-if="!isBlock"> I am a placeholder tab </span>
+      <template #content>
+        <span>Hi I'm mew-sheet and I am still in the works </span>
       </template>
-      <template v-slot:tabContent2>
-        <span v-if="isBlock"> I am a placeholder tab </span>
-      </template>
-    </mew-tabs>
+    </mew-sheet>
   </div>`,
   methods: {
     onTab(newVal) {

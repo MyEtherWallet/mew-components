@@ -1,44 +1,47 @@
 <template>
-  <div class="mt-4">
-    <v-row
-      class="mx-0"
-      align="end"
-      justify="center"
+  <!--
+=====================================================================================
+  Mew Warning Sheet 
+=====================================================================================
+-->
+  <v-row
+    class="mx-0"
+    align="end"
+    justify="center"
+  >
+    <v-sheet
+      class="px-10 py-6 warning-sheet"
+      color="warning"
+      height="100%"
+      width="100%"
     >
-      <v-sheet
-        class="px-10 py-3 warning-sheet"
-        color="warning"
-        height="100%"
-        width="100%"
+      <v-row
+        align="start"
+        justify="start"
       >
-        <v-row
-          align="start"
-          justify="start"
-        >
-          <v-col cols="auto">
-            <v-icon
-              class="title"
-              color="warning darken-2"
-            >
-              mdi-alert
-            </v-icon>
-          </v-col>
-          <v-col class="d-flex flex-column titlePrimary--text">
-            <span class="text-uppercase font-weight-bold">{{ title }}</span>
-            <span>
-              {{ description }}
-            </span>
-            <span>
-              <a
-                :href="linkObj.url"
-              >{{ linkObj.title }}
-              </a>
-            </span>
-          </v-col>
-        </v-row>
-      </v-sheet>
-    </v-row>
-  </div>
+        <v-col cols="auto">
+          <v-icon
+            class="title"
+            color="warning darken-2"
+          >
+            mdi-alert
+          </v-icon>
+        </v-col>
+        <v-col class="d-flex flex-column titlePrimary--text">
+          <span class="text-uppercase font-weight-bold">{{ title }}</span>
+          <span>
+            {{ description }}
+          </span>
+          <span>
+            <a
+              :href="linkObj.url"
+            >{{ linkObj.title }}
+            </a>
+          </span>
+        </v-col>
+      </v-row>
+    </v-sheet>
+  </v-row>
 </template>
 
 <script>

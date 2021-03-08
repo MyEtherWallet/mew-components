@@ -1,127 +1,119 @@
 <template>
-  <div>
-    <!--
-  =====================================================================================
-    Mew Address Select
-  =====================================================================================
-  -->
-    <v-combobox
-      class="address-select pa-0"
-      v-model="addressValue"
-      color="titlePrimary"
-      :items="items"
-      :label="label"
-      item-value="address"
-      item-text="address"
-      :placeholder="placeholder"
-      :disabled="disabled"
-      :hint="resolvedAddr ? resolvedAddr : ''"
-      :persistent-hint="resolvedAddr.length > 0"
-      :rules="rules"
-      :menu-props="{ value: dropdown, closeOnClick: true }"
-      @update:search-input="onChange"
-      ref="mewAddressSelect"
-      outlined
-    >
-    <!--
-  =====================================================================================
-    Blockie: displays placeholder if invalid address, otherwise displays the correct blockie.
-    The blockie is always displayed at the beginning of the input. 
-  =====================================================================================
-  -->
-      <template v-slot:prepend-inner>
-        <div
-          v-if="!isValidAddress"
-          class="blockie-placeholder mr-1 selectHover"
+  <!--
+=====================================================================================
+  Mew Address Select
+=====================================================================================
+-->
+  <v-combobox
+    height="62"
+    class="address-select pa-0"
+    v-model="addressValue"
+    color="titlePrimary"
+    :items="items"
+    :label="label"
+    item-value="address"
+    item-text="address"
+    :placeholder="placeholder"
+    :disabled="disabled"
+    :hint="resolvedAddr ? resolvedAddr : ''"
+    :persistent-hint="resolvedAddr.length > 0"
+    :rules="rules"
+    :menu-props="{ value: dropdown, closeOnClick: true }"
+    @update:search-input="onChange"
+    ref="mewAddressSelect"
+    outlined
+  >
+  <!--
+=====================================================================================
+  Blockie: displays placeholder if invalid address, otherwise displays the correct blockie.
+  The blockie is always displayed at the beginning of the input. 
+=====================================================================================
+-->
+    <template v-slot:prepend-inner>
+      <div
+        v-if="!isValidAddress"
+        class="blockie-placeholder mr-1 selectHover"
+      />
+      <mew-blockie
+        v-if="isValidAddress"
+        class="mr-1"
+        :address="blockieHash"
+        width="25px"
+        height="25px"
+      />
+    </template>
+  <!--
+=====================================================================================
+  Copy and save address button. Always displayed at the end of the input before the dropdown arrow.
+=====================================================================================
+-->
+    <template v-slot:append>
+      <div class="icon-container d-flex align-center">
+        <mew-copy
+          class="mr-3"
+          :tooltip="copyTooltip"
+          :copy-ref="getRefValue()"
         />
-        <mew-blockie
-          v-if="isValidAddress"
-          class="mr-1"
-          :address="blockieHash"
-          width="25px"
-          height="25px"
-        />
-      </template>
-    <!--
-  =====================================================================================
-    Copy and save address button. Always displayed at the end of the input before the dropdown arrow.
-  =====================================================================================
-  -->
-      <template v-slot:append>
-        <div class="icon-container d-flex align-center">
-          <mew-copy
-            class="mr-3"
-            :tooltip="copyTooltip"
-            :copy-ref="getRefValue()"
+        <v-tooltip
+          content-class="tooltip-inner"
+          color="titlePrimary--text"
+          top
+        >
+          <template v-slot:activator="{ on }">
+            <v-icon
+              :class="['save-icon', enableSaveAddress ? 'basic--text' : 'disabled--text, no-pointer-events']"
+              v-on="on"
+              @click="saveAddress"
+            >
+              mdi-bookmark-outline
+            </v-icon>
+          </template>
+          <span>{{ saveTooltip }}</span>
+        </v-tooltip>
+      </div>
+  <!--
+=====================================================================================
+  Dropdown arrow. Toggles the dropdown.
+=====================================================================================
+-->
+      <div
+        class="dropdown-icon-container d-flex align-center justify-center cursor-pointer full-height"
+        @click="toggle"
+      >
+        <v-icon class="mew-heading-1 mx-5">
+          mdi-chevron-down
+        </v-icon>
+      </div>
+    </template>
+  <!--
+=====================================================================================
+  Displays each item in the dropdown. 
+=====================================================================================
+-->
+    <template v-slot:item="{ item }">
+      <div
+        :class="['py-4 px-0 full-width d-flex align-center justify-space-between', $vuetify.breakpoint.smAndDown ? 'column-reverse align-baseline' : '']"
+        @click="selectAddress(item)"
+      >
+        <div class="d-flex align-center justify-space-between full-max-width">
+          <mew-blockie
+            class="mr-2"
+            :address="item.resolvedAddr ? item.resolvedAddr : item.address"
+            width="25px"
+            height="25px"
           />
-          <v-tooltip
-            content-class="tooltip-inner"
-            color="titlePrimary--text"
-            top
-          >
-            <template v-slot:activator="{ on }">
-              <v-icon
-                :class="['save-icon', enableSaveAddress ? 'basic--text' : 'disabled--text, no-pointer-events']"
-                v-on="on"
-                @click="saveAddress"
-              >
-                mdi-bookmark-outline
-              </v-icon>
-            </template>
-            <span>{{ saveTooltip }}</span>
-          </v-tooltip>
+          <mew-transform-hash :hash="item.address" />
         </div>
-    <!--
-  =====================================================================================
-    Dropdown arrow. Toggles the dropdown.
-  =====================================================================================
-  -->
-        <div
-          class="dropdown-icon-container d-flex align-center justify-center cursor-pointer full-height"
-          @click="toggle"
-        >
-          <v-icon class="mew-heading-1 mx-5">
-            mdi-chevron-down
-          </v-icon>
+        <div class="overline primary--text font-weight-medium">
+          {{ item.nickname }}
         </div>
-      </template>
-    <!--
-  =====================================================================================
-    Displays each item in the dropdown. 
-  =====================================================================================
-  -->
-      <template v-slot:item="{ item }">
-        <div
-          :class="['py-4 px-0 full-width d-flex align-center justify-space-between', $vuetify.breakpoint.smAndDown ? 'column-reverse align-baseline' : '']"
-          @click="selectAddress(item)"
-        >
-          <div class="d-flex align-center justify-space-between full-max-width">
-            <mew-blockie
-              class="mr-2"
-              :address="item.resolvedAddr ? item.resolvedAddr : item.address"
-              width="25px"
-              height="25px"
-            />
-            <mew-transform-hash :hash="item.address" />
-          </div>
-          <div class="overline primary--text font-weight-medium">
-            {{ item.nickname }}
-          </div>
-        </div>
-      </template>
-    </v-combobox>
-    <mew-toast
-      ref="toast"
-      :duration="2000"
-      toast-type="success"
-      :text="successToast"
-    />
-  </div>
+      </div>
+    </template>
+  </v-combobox>
 </template>
 
 <script>
 import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
-import MewToast from '@/components/MewToast/MewToast.vue';
 import MewCopy from '@/components/MewCopy/MewCopy.vue';
 import MewTransformHash from '../MewTransformHash/MewTransformHash.vue';
 
@@ -208,18 +200,10 @@ export default {
     saveTooltip: {
       type: String,
       default: ''
-    },
-    /**
-     * Text for toast success.
-     */
-    successToast: {
-      type: String,
-      default: ''
     }
   },
   components: {
     MewBlockie,
-    MewToast,
     MewCopy,
     MewTransformHash
   },
@@ -302,6 +286,7 @@ export default {
      * Emits 'input' when there is a v-model value change (happens as the user types).
      */
     onChange(value) {
+      console.error('value', value)
       this.$emit('input', value)
     }
   }

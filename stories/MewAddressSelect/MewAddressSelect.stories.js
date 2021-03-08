@@ -53,9 +53,6 @@ export const mewAddressSelect = () => ({
     saveTooltip: {
       default: text('save-tooltip', 'Save Address')
     },
-    successToast: {
-      default: text('success-toast', 'Success!')
-    },
     value: {
       default: text('value', '')
     },
@@ -77,7 +74,7 @@ export const mewAddressSelect = () => ({
   template: `
     <div>
     <br />
-    <mew-address-select ref="address" :rules="rules" :resolved-addr="resolvedAddr" :value="value" :success-toast="successToast" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" :is-valid-address="isValidAddress" :label="label" :items="items" @saveAddress="onSaveAddress" @input="getSelectedValue"/>
+    <mew-address-select ref="address" :rules="rules" :resolved-addr="resolvedAddr" :value="value" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" :is-valid-address="isValidAddress" :label="label" :items="items" @saveAddress="onSaveAddress" @input="getSelectedValue"/>
   </div>`,
   methods: {
     getSelectedValue(value) {

@@ -8,6 +8,10 @@ a {
   background-color: var(--v-white-base) !important;
 }
 
+.break-word {
+  word-break: break-word;
+}
+
 .truncate {
   white-space: nowrap;
   overflow: hidden;

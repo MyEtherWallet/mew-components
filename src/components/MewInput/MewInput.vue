@@ -1,4 +1,9 @@
 <template>  
+  <!--
+=====================================================================================
+  Mew Input
+=====================================================================================
+-->
   <v-text-field
     :class="[getClasses(), 'mew-input']"
     :disabled="disabled"
@@ -14,7 +19,10 @@
     :clearable="!hideClearBtn"
     :rules="rules"
     :prepend-inner-icon="isSearch ? 'mdi-magnify' : ''"
-    :type="type"
+    :type="inputType"
+    :append-icon="showPasswordIcon"
+    @click:append="onPasswordIconClick"
+    validate-on-blur
     height="62"
   >
     <template v-slot:prepend-inner>
@@ -34,6 +42,8 @@
 
 <script>
 import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
+
+const types = ['password'];
 
 export default {
   name: 'MewInput',
@@ -98,7 +108,7 @@ export default {
       default: ''
     },
     /**
-     * Enables input clear functionality. Clear symbol will be displayed on the right side.
+     * Hides input clear functionality. Clear symbol will be displayed on the right side.
      */
     hideClearBtn: {
       type: Boolean,
@@ -144,7 +154,8 @@ export default {
   },
   data() {
     return {
-      inputValue: ''
+      inputValue: '',
+      showPassword: false
     }
   },
   watch: {
@@ -159,17 +170,37 @@ export default {
       }
     }
   },
+  computed: {
+    isPasswordType() {
+      return this.type === types[0];
+    },
+    showPasswordIcon() {
+      if (this.isPasswordType) {
+        return !this.showPassword ? 'mdi-eye' : 'mdi-eye-off';
+      }
+      return ''
+    },
+    inputType() {
+      if (this.isPasswordType && this.showPassword) {
+        return 'text';
+      } 
+      return this.type;
+    }
+  }, 
   mounted() {
+    console.error('type', this.type)
     this.inputValue = this.value;
   },
   methods: {
-    getClasses() {
-      const classes = [];
-
-      if (this.isSearch) {
-        classes.push('search-input');
+    onPasswordIconClick() {
+      if (this.isPasswordType) {
+        this.showPassword = !this.showPassword;
       }
-      return classes;
+    },
+    getClasses() {
+      if (this.isSearch) {
+        return 'search-input'
+      }
     },
     clear(val) {
       this.inputValue = val;
@@ -177,3 +208,12 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.mew-input {
+  .v-input__icon--append {
+    .mdi {
+      color: var(--v-disabled-base);
+    }
+  }
+}
+</style>

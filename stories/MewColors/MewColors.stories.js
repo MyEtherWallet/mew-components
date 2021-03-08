@@ -65,7 +65,7 @@ export const All = () => ({
       {
         shades: [
           {name: 'selectActive', lightHex: '#dcfff9', darkHex: '#2e3c75'},
-          {name: 'selectHover', lightHex: '#f0f0f0', darkHex: '#2c3448'},
+          {name: 'selectHover', lightHex: '#E5EAEE', darkHex: '#2c3448'},
           {name: 'expandHeader', lightHex: '#184f90', darkHex: '#184f90'}
         ]
       },

@@ -5,7 +5,7 @@ import {
   number
 } from '@storybook/addon-knobs';
 import MewStepper from '@/components/MewStepper/MewStepper.vue';
-import MewStepperDoc from './MewStepper.mdx';
+import MewStepperDoc from './MewStepperDoc.mdx';
 
 export default {
   title: 'MewStepper',

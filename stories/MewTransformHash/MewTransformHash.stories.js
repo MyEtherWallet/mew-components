@@ -4,11 +4,15 @@ import {
   text
 } from '@storybook/addon-knobs';
 import MewTransformHash from '@/components/MewTransformHash/MewTransformHash.vue';
+import MewTransformHashDoc from './MewTransformHashDoc.mdx';
 
 export default {
   title: 'MewTransformHash',
   parameters: {
-    component: MewTransformHash
+    component: MewTransformHash,
+    docs: {
+      page: MewTransformHashDoc
+    }
   },
   decorators: [withKnobs]
 };
@@ -29,10 +33,10 @@ export const mewTransformHash = () => ({
     }
   },
   template: `
-    <div class="text-center mt-10">
-    <br />
-    <mew-transform-hash
-      :hash="hash"
-    />
+    <div class="d-flex align-center text-center mt-10">
+      <br />
+      <mew-transform-hash
+        :hash="hash"
+      />
   </div>`
 });

@@ -20,7 +20,7 @@
   -->
         <v-card-title
           v-if="title"
-          :class="[!isPopupTypeError ? 'pt-6 titlePrimary--text' : 'pa-0 white--text','text-center' , 'justify-center', 'font-weight-bold']"
+          :class="[!isPopupTypeError ? 'pt-6 titlePrimary--text' : 'pa-0 white--text','text-center' , 'justify-center', 'font-weight-bold', 'break-word']"
         >
           <img
             v-if="isPopupTypeError"

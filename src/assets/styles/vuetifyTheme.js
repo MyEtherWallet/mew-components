@@ -15,7 +15,7 @@ export default {
         errorOutlineActive: '#ffd7dc',
         basicOutlineActive: '#c5ccd3',
         selectActive: '#dcfff9',
-        selectHover: '#f0f0f0',
+        selectHover: '#E5EAEE',
         superPrimary: {
           base: '#f2fafa',
           darken1: '#e3f2f2'

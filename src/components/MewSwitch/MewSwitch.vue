@@ -1,4 +1,9 @@
 <template>
+    <!--
+  =====================================================================================
+    Mew Switch 
+  =====================================================================================
+  -->
   <div class="d-flex align-center"> 
     <span
       class="mew-body textPrimary--text mr-4 cursor-pointer"
@@ -38,7 +43,6 @@ export default {
     },
     switchToggle() {
       this.value = !this.value;
-      console.error('in here')
       this.$emit('switch', this.value);
     }
   }
