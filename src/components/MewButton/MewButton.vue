@@ -196,7 +196,7 @@ export default {
       const classes = [];
 
       if (this.btnSize.toLowerCase()) {
-        classes.push(this.btnSize.toLowerCase() + '-btn', 'mew-caption');
+        classes.push(this.btnSize.toLowerCase() + '-btn' );
       }
 
       if (this.hasFullWidth === true ) {
