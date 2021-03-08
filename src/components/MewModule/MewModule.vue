@@ -5,7 +5,7 @@
   =====================================================================================
   -->
   <v-sheet 
-    :class="[ hasElevation ? 'elevation-3' : '', 'full-width', 'module-container']"
+    :class="[ hasElevation ? 'module-box-shadow' : '', 'full-width', 'module-container']"
     :color="colorType"
     :height="hasfullHeight ? '100%' : 'auto'"
   >
@@ -174,7 +174,9 @@ export default {
 <style lang="scss" scoped>
 .module-container {
   border-radius: 12px;
-  box-shadow: 0 0 15px var(--v-box-shadow-base);
+  &.module-box-shadow {
+     box-shadow: 0 12px 17px rgb(21 29 63 / 3%) !important;
+  }
   .indicator {
     border-left: 4px solid var(--v-primary-base);
     min-height: 30px;
