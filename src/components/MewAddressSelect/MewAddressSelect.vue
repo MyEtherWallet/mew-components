@@ -216,7 +216,7 @@ export default {
     /**
      * Controls the dropdown expansion.
      */
-      dropdown: true
+      dropdown: false
     };
   },
   mounted() {
@@ -286,7 +286,6 @@ export default {
      * Emits 'input' when there is a v-model value change (happens as the user types).
      */
     onChange(value) {
-      console.error('value', value)
       this.$emit('input', value)
     }
   }

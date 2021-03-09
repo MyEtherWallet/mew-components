@@ -188,7 +188,6 @@ export default {
     }
   }, 
   mounted() {
-    console.error('type', this.type)
     this.inputValue = this.value;
   },
   methods: {

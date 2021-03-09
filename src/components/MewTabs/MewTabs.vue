@@ -6,7 +6,7 @@
 -->
   <div>
     <v-tabs
-      :class="[hasUnderline ? 'mew-tabs-underline' : '', isBlock ? 'mew-tabs-block elevation-3' : '']"
+      :class="[hasUnderline ? 'mew-tabs-underline' : '', isBlock ? 'mew-tabs-block elevation-3' : '', 'mew-tabs']"
       background-color="transparent"
       color="titlePrimary"
       :centered="isCentered"
@@ -15,7 +15,7 @@
       :hide-slider="isBlock || isVertical"
       :grow="isBlock"
       :vertical="isVertical"
-      :align-with-title="!isBlock && !isVertical && !isCentered"
+      :align-with-title="!isBlock && !isCentered && !isVertical"
     >
       <v-tab
         :class="[isBlock ? 'mew-tab-block' : 'mew-heading-2', 'capitalize']"
@@ -166,6 +166,13 @@ export default {
 
   .mew-tab-block:last-of-type {
     border-radius: 0px 12px 12px 0px;
+  }
+}
+
+.mew-tabs {
+  &.v-tabs--vertical > .v-tabs-bar .v-tab {
+    display: flex;
+    justify-content: start;
   }
 }
 </style>
