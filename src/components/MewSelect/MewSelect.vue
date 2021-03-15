@@ -154,7 +154,13 @@ export default {
         this.selectItems = this.items;
       } else {
         const valLowerCase = newVal.toLowerCase();
-        const foundItems = this.items.filter(item => item.name?.toLowerCase().includes(valLowerCase) || item.subtext?.toLowerCase().includes(valLowerCase) || item.value?.toLowerCase().includes(valLowerCase));
+        const foundItems = this.items.filter(item => {
+            const name = item.hasOwnProperty('name') && item.name !== '' ? item.name.toLowerCase() : '';
+            const subtext = item.hasOwnProperty('subtext') && item.subtext !== '' ? item.subtext.toLowerCase() : '';
+            const value = item.hasOwnProperty('value') && item.value !== '' ? item.value.toLowerCase() : '';
+
+            return name.includes(valLowerCase) || subtext.includes(valLowerCase) || value.includes(valLowerCase);
+        })
         this.selectItems = foundItems;
       }
     },
