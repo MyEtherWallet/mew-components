@@ -2,7 +2,7 @@
   <v-btn
     :target="btnLink ? '_blank' : ''"
     :href="btnLink"
-    :ripple="true"
+    :ripple="!isTransparent"
     @click="onBtnClick"
     :class="[ getClasses(), 'mew-button' ]"
     :color="colorTheme"
