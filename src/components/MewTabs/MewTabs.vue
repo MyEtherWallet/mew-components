@@ -195,7 +195,7 @@ export default {
       text-decoration: underline;
     }
     &:before {
-      background-color: transparent !important;
+      background-color: transparent;
     }
   }
 }

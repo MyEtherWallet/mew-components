@@ -316,7 +316,7 @@ export default {
 
     &.mew-transparent {
       &:before {
-        background-color: transparent !important;
+        background-color: transparent;
       }
       &:hover {
         text-decoration: underline;
