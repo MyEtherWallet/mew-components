@@ -58,7 +58,8 @@ import Vuetify, {
   VListGroup,
   VListItemGroup,
   VImg,
-  VInput
+  VInput,
+  VTextarea
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -117,7 +118,8 @@ Vue.use(Vuetify, {
     VListGroup,
     VListItemGroup,
     VImg,
-    VInput
+    VInput,
+    VTextarea
   }
 });
 

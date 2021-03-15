@@ -27,7 +27,7 @@
         > 
           <div
             v-if="leftBtnText"
-            class="close-container cursor-pointer d-flex align-center ml-4"
+            class="close-container cursor-pointer d-flex align-center ml-5"
             @click="goBack"
           > 
             <v-icon
@@ -39,7 +39,7 @@
           </div>
           <div
             v-if="rightBtnText"
-            class="close-container cursor-pointer d-flex align-center mr-4"
+            class="close-container cursor-pointer d-flex align-center mr-5"
             @click="closeOverlay"
           > 
             <v-icon

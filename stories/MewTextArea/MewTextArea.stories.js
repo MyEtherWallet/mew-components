@@ -1,22 +1,29 @@
 import {
   withKnobs,
-  boolean
+  boolean,
+  text
 } from '@storybook/addon-knobs';
-import MewSheet from '@/components/MewSheet/MewSheet.vue';
+import MewTextArea from '@/components/MewTextArea/MewTextArea.vue';
 
 export default {
-  title: 'MewSheet',
+  title: 'MewTextArea',
   parameters: {
-    component: MewSheet
+    component: MewTextArea
   },
   decorators: [withKnobs]
 };
 
-export const MEWSheet = () => ({
-  components: { MewSheet },
+export const MEWTextArea = () => ({
+  components: { MewTextArea },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)
+    },
+    label: {
+      default: text('label', '')
+    },
+    value: {
+      default: text('value', '')
     }
   },
   watch: {
@@ -27,12 +34,7 @@ export const MEWSheet = () => ({
   template: `
     <div>
     <br />
-    <mew-sheet
-    >
-      <template #content>
-        <span>Hi I'm mew-sheet and I am still in the works </span>
-      </template>
-    </mew-sheet>
+    <mew-text-area :label="label" :value="value" />
   </div>`,
   methods: {
     onTab(newVal) {

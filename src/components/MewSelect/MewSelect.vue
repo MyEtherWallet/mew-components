@@ -154,7 +154,7 @@ export default {
         this.selectItems = this.items;
       } else {
         const valLowerCase = newVal.toLowerCase();
-        const foundItems = this.items.filter(item => item.name.toLowerCase().includes(valLowerCase) || item.subtext.toLowerCase().includes(valLowerCase) || item.value.toLowerCase().includes(valLowerCase));
+        const foundItems = this.items.filter(item => item.name?.toLowerCase().includes(valLowerCase) || item.subtext?.toLowerCase().includes(valLowerCase) || item.value?.toLowerCase().includes(valLowerCase));
         this.selectItems = foundItems;
       }
     },
