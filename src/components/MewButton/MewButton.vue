@@ -314,11 +314,14 @@ export default {
       color: var(--v-white-base) !important;
     }
 
-    // &.mew-transparent {
-    //   &:hover {
-    //     color: var(--v-selectHover-base) !important;
-    //   }
-    // }
+    &.mew-transparent {
+      &:before {
+        background-color: transparent !important;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 </style>

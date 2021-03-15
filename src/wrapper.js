@@ -29,6 +29,8 @@ import MewIcon from './components/MewIcon/MewIcon.vue';
 import MewChart from './components/MewChart/MewChart.vue';
 import MewTransformHash from './components/MewTransformHash/MewTransformHash.vue';
 import MewCopy from './components/MewCopy/MewCopy.vue';
+import MewSheet from './components/MewSheet/MewSheet.vue';
+import MewTextarea from './components/MewTextarea/MewTextarea.vue';
 
 // import Vue from 'vue';
 // import wrap from '@vue/web-component-wrapper';
@@ -68,7 +70,9 @@ const Components = {
   MewIcon,
   MewChart,
   MewTransformHash,
-  MewCopy
+  MewCopy,
+  MewSheet,
+  MewTextarea
 }
 
 // Declare install function executed by Vue.use()

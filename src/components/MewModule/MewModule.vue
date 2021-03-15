@@ -19,7 +19,7 @@
         align="center"
         justify="space-between"
       >
-        <div :class="['left-wrapper pl-8 py-4 d-flex flex-row justify-center align-center', hasIndicator ? 'indicator' : '']">
+        <div :class="['left-wrapper pl-8 pt-3 mt-2 d-flex flex-row justify-start align-end', hasIndicator ? 'indicator' : '']">
           <div class="left-icon mr-2" v-if="showIcon(icon)">
             <img
               v-if="iconAlign.toLowerCase() === iconAlignments.left"
@@ -71,7 +71,7 @@
     Slot: moduleBody (used to place custom ui on the body content)
   =====================================================================================
   -->
-        <v-container class="pa-3 pa-md-10" fluid> 
+        <v-container class="pa-3 pa-md-10 pt-md-5" fluid> 
           <slot name="moduleBody" />
         </v-container>
       </v-row> 

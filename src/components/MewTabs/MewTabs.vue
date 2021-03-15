@@ -6,7 +6,7 @@
 -->
   <div>
     <v-tabs
-      :class="[hasUnderline ? 'mew-tabs-underline' : '', isBlock ? 'mew-tabs-block elevation-3' : '', 'mew-tabs']"
+      :class="tabClasses"
       background-color="transparent"
       color="titlePrimary"
       :centered="isCentered"
@@ -15,6 +15,7 @@
       :hide-slider="isBlock || isVertical"
       :grow="isBlock"
       :vertical="isVertical"
+      :show-arrows="showArrows"
       :align-with-title="!isBlock && !isCentered && !isVertical"
     >
       <v-tab
@@ -78,6 +79,13 @@ export default {
   },
   props: {
     /**
+     * Displays arrows if tab items overflow container.
+     */
+    showArrows: {
+      type: Boolean,
+      default: false
+    },
+    /**
      * Sets the active tab.
      */
     activeTab: {
@@ -120,6 +128,14 @@ export default {
     isBlock: {
       type: Boolean,
       default: false
+    }
+  },
+  computed: {
+    tabClasses() {
+      const classes = ['mew-tabs'];
+      if (this.hasUnderline) { classes.push('mew-tabs-underline')}
+      if (this.isBlock) { classes.push('mew-tabs-block elevation-3')}
+      return classes;
     }
   },
   methods: {
@@ -171,8 +187,16 @@ export default {
 
 .mew-tabs {
   &.v-tabs--vertical > .v-tabs-bar .v-tab {
+    font-size: 14px !important;
     display: flex;
     justify-content: start;
+    padding-left: 0;
+    &:hover {
+      text-decoration: underline;
+    }
+    &:before {
+      background-color: transparent !important;
+    }
   }
 }
 </style>

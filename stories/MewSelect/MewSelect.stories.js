@@ -9,7 +9,7 @@ export default {
   decorators: [withKnobs]
 };
 
-const itemsArray = [{ name: 'ETH', value: 'Ethereum', img: ethereumIcon }, { name: 'DAI', value: 'Makerdao', img: ethereumIcon }];
+const itemsArray = [{ name: 'ETH', value: 'Ethereum', img: ethereumIcon }, { name: 'DAI', value: 'Makerdao',  img: ethereumIcon }];
 
 export const MEWSelect = () => ({
   components: { MewSelect },

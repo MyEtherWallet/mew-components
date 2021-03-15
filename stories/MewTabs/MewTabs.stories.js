@@ -42,6 +42,9 @@ export const MEWTabs = () => ({
     },
     activeTab: {
       default: number('active-tab', 0)
+    },
+    showArrows: {
+      default: boolean('show-arrows', false)
     }
   },
   watch: {
@@ -53,6 +56,7 @@ export const MEWTabs = () => ({
     <div>
     <br />
     <mew-tabs
+      :show-arrows="showArrows"
       :is-vertical="isVertical"
       :has-underline="hasUnderline"
       :items="items"
