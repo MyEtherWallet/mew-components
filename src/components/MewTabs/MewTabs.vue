@@ -19,7 +19,8 @@
       :align-with-title="!isBlock && !isCentered && !isVertical"
     >
       <v-tab
-        :class="[isBlock ? 'mew-tab-block' : 'mew-heading-2', 'capitalize']"
+        :class="[isBlock ? 'mew-tab-block' : isVertical ? 'mew-body font-weight-bold' : 'mew-heading-2', 'capitalize']"
+        :ripple="!isVertical"
         v-for="(item, i) in items"
         :key="item + i"
       >
@@ -187,7 +188,6 @@ export default {
 
 .mew-tabs {
   &.v-tabs--vertical > .v-tabs-bar .v-tab {
-    font-size: 14px !important;
     display: flex;
     justify-content: start;
     padding-left: 0;
