@@ -20,10 +20,10 @@ export const MEWTextArea = () => ({
       default: boolean('dark mode ?', false)
     },
     label: {
-      default: text('label', '')
+      default: text('label', 'label')
     },
     value: {
-      default: text('value', '')
+      default: text('value', 'text')
     }
   },
   watch: {
