@@ -155,9 +155,9 @@ export default {
       } else {
         const valLowerCase = newVal.toLowerCase();
         const foundItems = this.items.filter(item => {
-            const name = item.name ? item.name.toLowerCase() : '';
-            const subtext = item.subtext ? item.subtext.toLowerCase() : '';
-            const value = item.value ? item.value.toLowerCase() : '';
+            const name = item.hasOwnProperty('name') && item.name !== '' ? item.name.toLowerCase() : '';
+            const subtext = item.hasOwnProperty('subtext') && item.subtext !== '' ? item.subtext.toLowerCase() : '';
+            const value = item.hasOwnProperty('value') && item.value !== '' ? item.value.toLowerCase() : '';
 
             return name.includes(valLowerCase) || subtext.includes(valLowerCase) || value.includes(valLowerCase);
         })
