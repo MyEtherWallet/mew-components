@@ -7,10 +7,9 @@
   <v-data-table
     :class="['mew-table', hasSelect ? 'mew-select-table' : '', hasColor ? 'mew-super-primary-table' : '']"
     :items="tableData"
-    :item-key="tableHeaders[0].value"
+    :item-key="tableHeaders.value"
     :headers="tableHeaders"
-    :calculate-widths="true"
-    :single-select="true"
+    single-select
     :show-select="hasSelect"
     hide-default-footer
     @item-selected="onSelect"
@@ -54,12 +53,13 @@
 -->
     <template v-slot:[`item.change`]="{ item }">
       <div class="chart-container d-flex align-center">
-        <mew-chart
+        <!-- hiding for now because we don't have the data -->
+        <!-- <mew-chart
           v-if="item.changeData"
           :data="item.changeData"
           :color="item.status === '+' ? '#05c0a5' : '#ff445b'"
-        />
-        <span :class="[item.status === '+' ? 'primary--text' : 'error--text', 'pl-3', 'd-flex']">{{ item.change }}
+        /> -->
+        <span :class="[item.status === '+' ? 'primary--text' : 'error--text', 'd-flex']">{{ '%' + item.change }}
           <v-icon
             class="primary--text"
             v-if="item.status === '+'"
@@ -73,15 +73,31 @@
     </template>
   <!--
 =====================================================================================
+  Displays the balance in ETH and USD
+=====================================================================================
+-->
+    <template v-slot:[`item.balance`]="{ item }">
+        <div class="d-flex flex-column py-2">
+          <span v-for="(bal, idx) in item.balance" :key="idx" :class="idx === 1 ? 'searchText--text' : ''">{{bal}}</span>
+        </div>
+    </template>
+  <!--
+=====================================================================================
   Displays a call to action button
 =====================================================================================
 -->
     <template v-slot:[`item.callToAction`]="{ item }">
-      <mew-button
-        @click.native="onClick(item)"
-        :title="item.callToAction"
-        btn-style="transparent"
-      />
+      <div class="d-flex flex-row py-3">
+        <mew-button
+          v-for="(button, idx) in item.callToAction"
+          :key="idx"
+          @click.native="button.method(item)"
+          :title="button.title"
+          :btn-style="button.btnStyle"
+          :btn-colorTheme="button.colorTheme"
+        />
+
+      </div>
     </template>
   <!--
 =====================================================================================
@@ -258,9 +274,10 @@ export default {
       width: 80%;
     }
   }
-  .chart-container {
-    justify-content: flex-end;
-  }
+  // hiding for now because we are hiding the chart, see line 56
+  // .chart-container {
+  //   justify-content: flex-end;
+  // }
 
   .v-icon {
     color: inherit;

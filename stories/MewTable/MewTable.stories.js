@@ -63,15 +63,15 @@ const tableSelectHeaders = [
     value: 'address',
     sortable: false,
     filterable: false,
-    width: '100%'
+    width: '70%'
   },
-  // {
-  //   text: 'Eth Balance',
-  //   value: 'ethBalance',
-  //   sortable: false,
-  //   filterable: false,
-  //   width: '30%'
-  // },
+  {
+    text: 'Balance',
+    value: 'balance',
+    sortable: false,
+    filterable: false,
+    width: '30%'
+  },
   {
     text: '#Token',
     value: 'token',
@@ -81,7 +81,7 @@ const tableSelectHeaders = [
     width: '30%'
   },
   {
-    text: '24H Changes',
+    text: '24H',
     value: 'change',
     sortable: false,
     filterable: false,
@@ -92,20 +92,20 @@ const tableSelectHeaders = [
     value: 'callToAction',
     sortable: false,
     filterable: false,
-    width: '20%'
+    width: '80%'
   }
 ]
 
 
 const tableSelectData = [
   {
-    ethBalance: '0.0001 ETH',
+    balance: ['0.0001 ETH', '$300'],
     token: '21',
     tokenImg: 'https://cdn4.iconfinder.com/data/icons/cryptocoins/227/ETH-512.png',
     address: '0xAECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
   },
   {
-    ethBalance: '2.23 ETH',
+    balance: ['2.23 ETH', '$50000'],
     token: '10',
     address: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
     change: '0.23%',
@@ -116,12 +116,16 @@ const tableSelectData = [
     }
   },
   {
-    ethBalance: '0.23 ETH',
+    balance: ['0.23 ETH', '$500'],
     token: '8',
     address: '0xAECFF9CD2367cdbb726E904cD6397eDFcAe6068D',
-    callToAction: 'Edit'
+    callToAction: [{ title: 'Edit', method: onClick, btnStyle: 'transparent', colorTheme: 'primary'}, { title: 'Trade', method: onClick, btnStyle: 'outline', colorTheme: 'primary'}]
   }
 ]
+
+function onClick(item) {
+  console.log('clicked', item)
+}
 
 export const mewTable = () => ({
   components: { MewTable },
