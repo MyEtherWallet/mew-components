@@ -92,7 +92,7 @@ const tableSelectHeaders = [
     value: 'callToAction',
     sortable: false,
     filterable: false,
-    width: '80%'
+    width: '50%'
   }
 ]
 
@@ -101,6 +101,8 @@ const tableSelectData = [
   {
     balance: ['0.0001 ETH', '$300'],
     token: '21',
+    change: '-0.4',
+    status: '-',
     tokenImg: 'https://cdn4.iconfinder.com/data/icons/cryptocoins/227/ETH-512.png',
     address: '0xAECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
   },
@@ -108,7 +110,7 @@ const tableSelectData = [
     balance: ['2.23 ETH', '$50000'],
     token: '10',
     address: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
-    change: '0.23%',
+    change: '0.23',
     status: '+',
     changeData: {
       x: [1, 4, 10, 4],
@@ -118,8 +120,10 @@ const tableSelectData = [
   {
     balance: ['0.23 ETH', '$500'],
     token: '8',
+    change: '-2.3',
+    status: '-',
     address: '0xAECFF9CD2367cdbb726E904cD6397eDFcAe6068D',
-    callToAction: [{ title: 'Edit', method: onClick, btnStyle: 'transparent', colorTheme: 'primary'}, { title: 'Trade', method: onClick, btnStyle: 'outline', colorTheme: 'primary'}]
+    callToAction: [{ title: 'Edit', method: onClick, btnStyle: '', colorTheme: 'primary'}, { title: 'Trade', method: onClick, btnStyle: 'outline', colorTheme: 'primary'}]
   }
 ]
 

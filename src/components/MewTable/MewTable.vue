@@ -11,7 +11,8 @@
     :headers="tableHeaders"
     single-select
     :show-select="hasSelect"
-    hide-default-footer
+    :hide-default-footer="tableData.length <= 10"
+    items-per-page="10"
     @item-selected="onSelect"
   > 
   <!--
@@ -59,7 +60,7 @@
           :data="item.changeData"
           :color="item.status === '+' ? '#05c0a5' : '#ff445b'"
         /> -->
-        <span :class="[item.status === '+' ? 'primary--text' : 'error--text', 'd-flex']">{{ '%' + item.change }}
+        <span :class="[item.status === '+' ? 'primary--text' : 'error--text', 'd-flex']">{{ item.change + '%'}}
           <v-icon
             class="primary--text"
             v-if="item.status === '+'"
@@ -87,12 +88,14 @@
 =====================================================================================
 -->
     <template v-slot:[`item.callToAction`]="{ item }">
-      <div class="d-flex flex-row py-3">
+      <div class="d-flex flex-row py-3 justify-space-around">
         <mew-button
           v-for="(button, idx) in item.callToAction"
           :key="idx"
+          class="mr-1"
           @click.native="button.method(item)"
           :title="button.title"
+          btn-size="small"
           :btn-style="button.btnStyle"
           :btn-colorTheme="button.colorTheme"
         />
