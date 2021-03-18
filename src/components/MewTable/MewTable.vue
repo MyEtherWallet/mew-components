@@ -38,6 +38,7 @@
     <template v-slot:[`item.token`]="{item}">
       <div class="d-flex align-center">
         <img
+          class="mr-2"
           height="20"
           v-if="item.tokenImg"
           :src="item.tokenImg"

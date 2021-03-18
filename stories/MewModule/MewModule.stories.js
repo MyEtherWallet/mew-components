@@ -64,6 +64,9 @@ export const MEWModule = () => ({
     },
     hasFullHeight: {
       default: boolean('has-full-height', false)
+    },
+    hasBodyPadding: {
+      default: boolean('has-body-padding', true)
     }
   },
   watch: {
@@ -75,6 +78,7 @@ export const MEWModule = () => ({
     <div>
     <br />
     <mew-module
+      :has-body-padding="hasBodyPadding"
       :has-full-height="hasFullHeight"
       :color-type="colorType"
       :title="title"

@@ -66,10 +66,16 @@ export const MEWTabs = () => ({
       @onTab="onTab"
     >
       <template v-slot:tabItemContent1>
-        <span v-if="!isBlock"> I am a placeholder tab </span>
+        <span v-if="!isBlock"> I am a placeholder tab 1 </span>
+      </template>
+      <template v-slot:tabItemContent2>
+        <span v-if="!isBlock"> I am a placeholder tab 2</span>
+      </template>
+      <template v-slot:tabContent1>
+        <span v-if="isBlock"> I am a placeholder tab 1</span>
       </template>
       <template v-slot:tabContent2>
-        <span v-if="isBlock"> I am a placeholder tab </span>
+        <span v-if="isBlock"> I am a placeholder tab 2</span>
       </template>
     </mew-tabs>
   </div>`,
