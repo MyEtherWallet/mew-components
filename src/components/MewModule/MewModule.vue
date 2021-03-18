@@ -19,7 +19,7 @@
         align="center"
         justify="space-between"
       >
-        <div :class="['left-wrapper pl-8 pt-3 mt-2 d-flex flex-row justify-start align-end', hasIndicator ? 'indicator' : '']">
+        <div :class="['left-wrapper pl-8 mt-2 d-flex flex-row', hasBodyPadding ? 'justify-start align-end pt-6' : 'justify-center align-center', hasIndicator ? 'indicator' : '']">
           <div class="left-icon mr-2" v-if="showIcon(icon)">
             <img
               v-if="iconAlign.toLowerCase() === iconAlignments.left"
