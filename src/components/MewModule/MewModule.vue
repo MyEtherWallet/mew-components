@@ -5,7 +5,7 @@
   =====================================================================================
   -->
   <v-sheet 
-    :class="[ hasElevation ? 'module-box-shadow' : '', 'full-width', 'module-container']"
+    :class="[ hasElevation ? 'module-box-shadow' : '', 'full-width', 'module-container pt-6']"
     :color="colorType"
     :height="hasFullHeight ? '100%' : 'auto'"
   >
@@ -71,7 +71,7 @@
     Slot: moduleBody (used to place custom ui on the body content)
   =====================================================================================
   -->
-        <v-container class="pa-3 pa-md-10 pt-md-5" fluid> 
+        <v-container :class="hasBodyPadding ? 'pa-3 pa-md-10 pt-md-5' : 'pa-0'" fluid> 
           <slot name="moduleBody" />
         </v-container>
       </v-row> 
@@ -160,6 +160,13 @@ export default {
     hasFullHeight: {
       type: Boolean,
       default: false
+    },
+    /**
+     * Adds padding to the body container.
+     */
+    hasBodyPadding: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {

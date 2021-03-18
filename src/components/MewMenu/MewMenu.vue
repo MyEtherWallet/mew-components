@@ -64,7 +64,7 @@ export default {
   name: 'MewMenu',
   data() {
     return {
-      isMenuOpen: false,
+      isMenuOpen: false
     };
   },
   props: {

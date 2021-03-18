@@ -13,11 +13,13 @@
     padding: 0;
   }
 
-  .v-list-item--link {
-    border-top: 1px solid var(--v-selectHover-base);
-
-    &:hover {
-      background-color: var(--v-selectHover-base) !important;
+  .mew-menu-content {
+    .v-list-item--link {
+      border-top: 1px solid var(--v-selectHover-base);
+  
+      &:hover {
+        background-color: var(--v-selectHover-base) !important;
+      }
     }
   }
   
