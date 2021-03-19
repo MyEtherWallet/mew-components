@@ -17,7 +17,6 @@ const textInputTypes = {
   time: 'time',
   url: 'url',
   week: 'week',
-  search: 'search',
   month: 'month',
   number: 'number',
   password: 'password',
@@ -56,9 +55,6 @@ export const MEWInput = () => ({
     rules: {
       default: array('rules', ruleValue)
     },
-    isSearch: {
-      default: boolean('is-search', false)
-    },
     type: {
       default: optionsKnob('type', textInputTypes, 'text', optionsObj)
     },
@@ -86,7 +82,7 @@ export const MEWInput = () => ({
   template: `
     <div>
     <br />
-    <mew-input ref="input" :id="id" :hint="hint" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :is-search="isSearch" :rules="rules" :hide-clear-btn="hideClearBtn" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
+    <mew-input ref="input" :id="id" :hint="hint" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :rules="rules" :hide-clear-btn="hideClearBtn" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
     />
   </div>`
 });

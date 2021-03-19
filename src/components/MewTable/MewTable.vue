@@ -11,7 +11,7 @@
     :headers="tableHeaders"
     single-select
     :show-select="hasSelect"
-    :hide-default-footer="tableData.length <= 10"
+    :hide-default-footer="tableData && tableData.length <= 10"
     :items-per-page="10"
     @item-selected="onSelect"
   > 
@@ -88,11 +88,11 @@
 =====================================================================================
 -->
     <template v-slot:[`item.callToAction`]="{ item }">
-      <div class="d-flex flex-row py-3 justify-space-around">
+      <div class="d-flex flex-row py-3 justify-end">
         <mew-button
           v-for="(button, idx) in item.callToAction"
           :key="idx"
-          class="mr-1"
+          :class="idx !== item.callToAction.length - 1 && item.callToAction.length > 1? 'mr-1' : ''"
           @click.native="button.method(item)"
           :title="button.title"
           btn-size="small"
