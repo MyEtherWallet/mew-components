@@ -12,7 +12,7 @@
     single-select
     :show-select="hasSelect"
     :hide-default-footer="tableData.length <= 10"
-    items-per-page="10"
+    :items-per-page="10"
     @item-selected="onSelect"
   > 
   <!--
