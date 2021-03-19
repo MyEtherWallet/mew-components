@@ -5,9 +5,9 @@
 =====================================================================================
 -->
   <v-text-field
-    :class="[getClasses(), 'mew-input']"
+    class="mew-input"
     :disabled="disabled"
-    :label="label === '' || isSearch ? '' : label"
+    :label="label"
     :placeholder="placeholder"
     :outlined="!hasNoBorder"
     :solo="hasNoBorder"
@@ -18,7 +18,6 @@
     :suffix="rightLabel"
     :clearable="!hideClearBtn"
     :rules="rules"
-    :prepend-inner-icon="isSearch ? 'mdi-magnify' : ''"
     :type="inputType"
     :append-icon="showPasswordIcon"
     @click:append="onPasswordIconClick"
@@ -43,7 +42,7 @@
 <script>
 import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
 
-const types = ['password'];
+const types = ['password', 'text'];
 
 export default {
   name: 'MewInput',
@@ -94,7 +93,7 @@ export default {
       default: ''
     },
     /**
-     * The input value.
+     * The input id.
      */
     id: {
       type: Number,
@@ -182,7 +181,7 @@ export default {
     },
     inputType() {
       if (this.isPasswordType && this.showPassword) {
-        return 'text';
+        return types[1];
       } 
       return this.type;
     }
@@ -194,11 +193,6 @@ export default {
     onPasswordIconClick() {
       if (this.isPasswordType) {
         this.showPassword = !this.showPassword;
-      }
-    },
-    getClasses() {
-      if (this.isSearch) {
-        return 'search-input'
       }
     },
     clear(val) {

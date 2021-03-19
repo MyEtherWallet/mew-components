@@ -84,13 +84,7 @@
     }
 
     // for search mew input
-    &.search-input {
-      fieldset {
-        background-color: var(--v-searchInput-base) !important;
-        border: none !important;
-        z-index: -1 !important;
-      }
-
+    &.search-block {
       input::placeholder {
         color: var(--v-searchText-base);
       }
