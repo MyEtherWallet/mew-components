@@ -1,190 +1,206 @@
 <template>
-  <!--
-=====================================================================================
-  Mew Table 
-=====================================================================================
--->
-  <v-data-table
-    :class="['mew-table', hasSelect ? 'mew-select-table' : '', hasColor ? 'mew-super-primary-table' : '']"
-    :items="tableData"
-    :item-key="tableHeaders.value"
-    :headers="tableHeaders"
-    single-select
-    :show-select="hasSelect"
-    :hide-default-footer="tableData && tableData.length <= 10"
-    :items-per-page="10"
-    @item-selected="onSelect"
-  > 
-  <!--
-=====================================================================================
-  Displays checkboxes next to each row (hasSelect needs to be set to true)
-=====================================================================================
--->
-    <template v-slot:[`item.data-table-select`]="{ select, isSelected }">
-      <v-simple-checkbox
-        :value="isSelected"
-        @input="select($event)"
-        color="primary"
-        on-icon="mdi-circle-slice-8"
-        off-icon="mdi-circle-outline"
-        :ripple="false"
-      /> 
-    </template>
-  <!--
-=====================================================================================
-  Displays the token image and token title
-=====================================================================================
--->
-    <template v-slot:[`item.token`]="{item}">
-      <div class="d-flex align-center">
-        <img
-          class="mr-2"
-          height="20"
-          v-if="item.tokenImg"
-          :src="item.tokenImg"
-          :alt="item.token"
-        >
-        <span>{{ item.token }}</span>
-      </div>
-    </template>
-  <!--
-=====================================================================================
-  Displays the chart change
-=====================================================================================
--->
-    <template v-slot:[`item.change`]="{ item }">
-      <div class="chart-container d-flex align-center">
-        <!-- hiding for now because we don't have the data -->
-        <!-- <mew-chart
-          v-if="item.changeData"
-          :data="item.changeData"
-          :color="item.status === '+' ? '#05c0a5' : '#ff445b'"
-        /> -->
-        <span :class="[item.status === '+' ? 'primary--text' : 'error--text', 'd-flex']">{{ item.change + '%'}}
-          <v-icon
-            class="primary--text"
-            v-if="item.status === '+'"
-          >mdi-arrow-up-thick</v-icon>
-          <v-icon
-            class="error--text"
-            v-if="item.status === '-'"
-          >mdi-arrow-down-thick</v-icon>
-        </span>
-      </div>
-    </template>
-  <!--
-=====================================================================================
-  Displays the balance in ETH and USD
-=====================================================================================
--->
-    <template v-slot:[`item.balance`]="{ item }">
-        <div class="d-flex flex-column py-2">
-          <span v-for="(bal, idx) in item.balance" :key="idx" :class="idx === 1 ? 'searchText--text' : ''">{{bal}}</span>
+<div>
+    <v-skeleton-loader v-if="loading" type="table" />
+    <!--
+  =====================================================================================
+    Mew Table 
+  =====================================================================================
+  -->
+    <v-data-table
+      v-if="!loading"
+      :class="['mew-table', hasSelect ? 'mew-select-table' : '', hasColor ? 'mew-super-primary-table' : '']"
+      :items="tableData"
+      :item-key="tableHeaders.value"
+      :headers="tableHeaders"
+      single-select
+      :show-select="hasSelect"
+      :hide-default-footer="tableData && tableData.length <= 10"
+      :items-per-page="10"
+      @item-selected="onSelect"
+    > 
+    <!--
+  =====================================================================================
+    Displays checkboxes next to each row (hasSelect needs to be set to true)
+  =====================================================================================
+  -->
+      <template v-slot:[`item.data-table-select`]="{ select, isSelected }">
+        <v-simple-checkbox
+          :value="isSelected"
+          @input="select($event)"
+          color="primary"
+          on-icon="mdi-circle-slice-8"
+          off-icon="mdi-circle-outline"
+          :ripple="false"
+        /> 
+      </template>
+    <!--
+  =====================================================================================
+    Displays the token image and token title
+  =====================================================================================
+  -->
+      <template v-slot:[`item.token`]="{item}">
+        <div class="d-flex align-center">
+          <img
+            class="mr-2"
+            height="20"
+            v-if="item.tokenImg"
+            :src="item.tokenImg"
+            :alt="item.token"
+          >
+          <span>{{ item.token }}</span>
         </div>
-    </template>
-  <!--
-=====================================================================================
-  Displays a call to action button
-=====================================================================================
--->
-    <template v-slot:[`item.callToAction`]="{ item }">
-      <div class="d-flex flex-row py-3 justify-end">
-        <mew-button
-          v-for="(button, idx) in item.callToAction"
-          :key="idx"
-          :class="idx !== item.callToAction.length - 1 && item.callToAction.length > 1? 'mr-1' : ''"
-          @click.native="button.method(item)"
-          :title="button.title"
-          btn-size="small"
-          :btn-style="button.btnStyle"
-          :btn-colorTheme="button.colorTheme"
-        />
+      </template>
+    <!--
+  =====================================================================================
+    Displays a toggle button
+  =====================================================================================
+  -->
+      <template v-slot:[`item.toggle`]="{item}">
+        <v-switch v-if="item.toggle" @click="item.toggle.method(item)" v-model="item.toggle.value" inset :color="item.toggle.color">
+          <template #label> 
+            <span :class="item.toggle.color + '--text font-weight-regular mew-body'">{{ item.toggle.label }}</span>
+          </template>
+        </v-switch>
+      </template>
+    <!--
+  =====================================================================================
+    Displays the chart change
+  =====================================================================================
+  -->
+      <template v-slot:[`item.change`]="{ item }">
+        <div class="chart-container d-flex align-center">
+          <!-- hiding for now because we don't have the data -->
+          <!-- <mew-chart
+            v-if="item.changeData"
+            :data="item.changeData"
+            :color="item.status === '+' ? '#05c0a5' : '#ff445b'"
+          /> -->
+          <span :class="[item.status === '+' ? 'primary--text' : 'error--text', 'd-flex']">{{ item.change + '%'}}
+            <v-icon
+              class="primary--text"
+              v-if="item.status === '+'"
+            >mdi-arrow-up-thick</v-icon>
+            <v-icon
+              class="error--text"
+              v-if="item.status === '-'"
+            >mdi-arrow-down-thick</v-icon>
+          </span>
+        </div>
+      </template>
+    <!--
+  =====================================================================================
+    Displays the balance in ETH and USD
+  =====================================================================================
+  -->
+      <template v-slot:[`item.balance`]="{ item }">
+          <div class="d-flex flex-column py-2">
+            <span v-for="(bal, idx) in item.balance" :key="idx" :class="idx === 1 ? 'searchText--text' : ''">{{bal}}</span>
+          </div>
+      </template>
+    <!--
+  =====================================================================================
+    Displays a call to action button
+  =====================================================================================
+  -->
+      <template v-slot:[`item.callToAction`]="{ item }">
+        <div class="d-flex flex-row py-3 justify-end">
+          <mew-button
+            v-for="(button, idx) in item.callToAction"
+            :key="idx"
+            :class="idx !== item.callToAction.length - 1 && item.callToAction.length > 1? 'mr-1' : ''"
+            @click.native="button.method(item)"
+            :title="button.title"
+            btn-size="small"
+            :btn-style="button.btnStyle"
+            :btn-colorTheme="button.colorTheme"
+          />
 
-      </div>
-    </template>
-  <!--
-=====================================================================================
-  Displays the tx hash
-=====================================================================================
--->
-    <template
-      v-slot:[`item.txHash`]="{ item }"
-    >
-      <div :class="[!$vuetify.breakpoint.xs ? 'pr-3' : '']">
-        <v-tooltip
-          eager
-          open-on-hover
-          content-class="tooltip-inner"
-          color="titlePrimary--text"
-          top
-        >
-          <template v-slot:[`activator`]="{ on }">
-            <a
-              v-on="on"
-              :href="'https://etherscan.io/tx/' + item.txHash"
-              target="_blank"
-              class="font-weight-medium mew-address d-flex full-width"
-            >
-              <mew-transform-hash :hash="item.txHash" />
-              <v-icon
-                class="arrow-top-right"
-                color="primary"
-              >mdi-arrow-top-right</v-icon>
-            </a>
-          </template>
-          <span>{{ item.txHash }}</span>
-        </v-tooltip>
-      </div>
-    </template>
-  <!--
-=====================================================================================
-  Displays the address hash
-=====================================================================================
--->
-    <template v-slot:[`item.address`]="{ item }">
-      <div class="d-flex align-center">
-        <mew-blockie
-          class="mr-2 d-none d-sm-flex"
-          :address="item.resolvedAddr ? item.resolvedAddr : item.address"
-          width="25px"
-          height="25px"
-        />
-        <v-tooltip
-          eager
-          open-on-hover
-          content-class="tooltip-inner"
-          color="titlePrimary--text"
-          top
-        >
-          <template v-slot:activator="{ on }">
-            <div
-              v-on="on"
-              class="address-container font-weight-medium mew-address d-flex"
-            >
-              <mew-transform-hash :hash="item.address" />
-              <mew-copy
-                class="ml-3"
-                :copy-value="item.address"
-                :is-ref="false"
-              />
+        </div>
+      </template>
+    <!--
+  =====================================================================================
+    Displays the tx hash
+  =====================================================================================
+  -->
+      <template
+        v-slot:[`item.txHash`]="{ item }"
+      >
+        <div :class="[!$vuetify.breakpoint.xs ? 'pr-3' : '']">
+          <v-tooltip
+            eager
+            open-on-hover
+            content-class="tooltip-inner"
+            color="titlePrimary--text"
+            top
+          >
+            <template v-slot:[`activator`]="{ on }">
               <a
-                class="address-link"
-                :href="'https://www.ethvm.com/address/' + (item.resolvedAddr ? item.resolvedAddr : item.address)"
+                v-on="on"
+                :href="'https://www.ethvm.com/tx/' + item.txHash"
                 target="_blank"
+                class="font-weight-medium mew-address d-flex full-width"
               >
+                <mew-transform-hash :hash="item.txHash" />
                 <v-icon
-                  class="call-made"
-                >
-                  mdi-call-made
-                </v-icon>
+                  class="arrow-top-right"
+                  color="primary"
+                >mdi-arrow-top-right</v-icon>
               </a>
-            </div>
-          </template>
-          <span id="mew-table-address">{{ item.address }}</span>
-        </v-tooltip>
-      </div>
-    </template>
-  </v-data-table>
+            </template>
+            <span>{{ item.txHash }}</span>
+          </v-tooltip>
+        </div>
+      </template>
+    <!--
+  =====================================================================================
+    Displays the address hash
+  =====================================================================================
+  -->
+      <template v-slot:[`item.address`]="{ item }">
+        <div class="d-flex align-center">
+          <mew-blockie
+            class="mr-2 d-none d-sm-flex"
+            :address="item.resolvedAddr ? item.resolvedAddr : item.address"
+            width="25px"
+            height="25px"
+          />
+          <v-tooltip
+            eager
+            open-on-hover
+            content-class="tooltip-inner"
+            color="titlePrimary--text"
+            top
+          >
+            <template v-slot:activator="{ on }">
+              <div
+                v-on="on"
+                class="address-container font-weight-medium mew-address d-flex"
+              >
+                <mew-transform-hash :hash="item.address" />
+                <mew-copy
+                  class="ml-3"
+                  :copy-value="item.address"
+                  :is-ref="false"
+                />
+                <a
+                  class="address-link"
+                  :href="'https://www.ethvm.com/address/' + (item.resolvedAddr ? item.resolvedAddr : item.address)"
+                  target="_blank"
+                >
+                  <v-icon
+                    class="call-made"
+                  >
+                    mdi-call-made
+                  </v-icon>
+                </a>
+              </div>
+            </template>
+            <span id="mew-table-address">{{ item.address }}</span>
+          </v-tooltip>
+        </div>
+      </template>
+    </v-data-table>
+  </div>
 </template>
 
 <script>
@@ -206,6 +222,13 @@ export default {
     MewCopy
   },
   props: {
+    /**
+     * Applies skeleton loader 
+     */
+    loading: {
+      type: Boolean,
+      default: false
+    },
     /**
      * The table headers.
      */
