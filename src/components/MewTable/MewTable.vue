@@ -136,7 +136,7 @@
             <template v-slot:[`activator`]="{ on }">
               <a
                 v-on="on"
-                :href="'https://etherscan.io/tx/' + item.txHash"
+                :href="'https://www.ethvm.com/tx/' + item.txHash"
                 target="_blank"
                 class="font-weight-medium mew-address d-flex full-width"
               >
