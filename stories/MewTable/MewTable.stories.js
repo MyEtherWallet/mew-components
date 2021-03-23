@@ -36,6 +36,13 @@ const tableHeaders = [
     filterable: false,
     containsLink: true,
     width: '100%'
+  },
+  {
+    text: 'Use as collateral',
+    value: 'toggle',
+    sortable: false,
+    filterable: false,
+    width: '100%'
   }
 ]
 
@@ -43,7 +50,13 @@ const tableData = [
   {
     activity: 'Deposited 0.0001 ETH into Vault',
     date: '01/02/2020, 2:16:32 PM',
-    txHash: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
+    txHash: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
+    toggle: {
+      color: 'secondary',
+      label: 'Label',
+      method: onClick,
+      value: true
+    }
   },
   {
     activity: 'Generated 30.0000 new Dai from Vault',
@@ -154,6 +167,9 @@ export const mewTable = () => ({
     },
     hasColor: {
       default: boolean('has-color', true)
+    },
+    loading: {
+      default: boolean('loading', false)
     }
   },
   watch: {
@@ -165,6 +181,7 @@ export const mewTable = () => ({
     <div>
     <br />
     <mew-table
+      :loading="loading"
       :has-color="hasColor"
       :has-select="hasSelect"
       :table-data="hasSelect ? tableSelectData : tableData"

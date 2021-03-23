@@ -59,7 +59,8 @@ import Vuetify, {
   VListItemGroup,
   VImg,
   VInput,
-  VTextarea
+  VTextarea,
+  VSkeletonLoader
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -119,7 +120,8 @@ Vue.use(Vuetify, {
     VListItemGroup,
     VImg,
     VInput,
-    VTextarea
+    VTextarea,
+    VSkeletonLoader
   }
 });
 
