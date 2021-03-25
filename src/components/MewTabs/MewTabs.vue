@@ -28,26 +28,17 @@
       </v-tab>
       <v-tabs-items v-model="onTab">
         <v-tab-item
+          :reverse-transition="!isVertical ? 'slide-x-transition' : 'slide-y-transition'"
           v-for="(item, i) in items"
           :key="item + i"
         >
-          <v-slide-x-reverse-transition
-            v-if="!isVertical"
-            :hide-on-leave="true"
-            mode="out-in"
-          >
   <!--
 =====================================================================================
   Slot: 'tabItemContent' + number of tab content (used to place custom tab content 
   inside of the tab container)
-
-  Note: for now only use v-slide-x-reverse-transition if it is horizontal (it is wonky 
-  if it is used with vertical tabs)
 =====================================================================================
 -->
             <slot :name="'tabItemContent' + (i + 1)" />
-          </v-slide-x-reverse-transition>
-          <slot v-if="isVertical" :name="'tabItemContent' + (i + 1)" />
         </v-tab-item>
       </v-tabs-items>
     </v-tabs>

@@ -1,28 +1,35 @@
 <template>
 <div>
-      <!--
-  =====================================================================================
-    Loading Mew Table
-  =====================================================================================
-  -->
-    <v-skeleton-loader v-if="loading" type="table" />
     <!--
   =====================================================================================
-    Mew Table (loaded)
+    Mew Table
   =====================================================================================
   -->
     <v-data-table
-      v-if="!loading"
       :class="['mew-table', hasSelect ? 'mew-select-table' : '', hasColor ? 'mew-super-primary-table' : '']"
       :items="tableData"
       :item-key="tableHeaders.value"
-      :headers="tableHeaders"
       single-select
+      :headers="tableHeaders"
       :show-select="hasSelect"
       :hide-default-footer="tableData && tableData.length <= 10"
       :items-per-page="10"
       @item-selected="onSelect"
     > 
+      <!--
+  =====================================================================================
+    Loading Mew Table
+  =====================================================================================
+  -->
+      <template v-if="loading" v-slot:body="tableHeaders"> 
+        <tbody>
+          <tr>
+              <td v-for="(header,idx) in tableHeaders" :key="header + idx" class="py-3" >
+                <v-skeleton-loader class="py-1" width="100%" min-width="100%" v-for="i in 3" :key="i" type="text" elevation="0"/>
+              </td>
+          </tr>
+        </tbody>
+      </template>
     <!--
   =====================================================================================
     Displays checkboxes next to each row (hasSelect needs to be set to true)
@@ -61,7 +68,7 @@
   =====================================================================================
   -->
       <template v-slot:[`item.toggle`]="{ item }">
-        <v-switch v-if="item.toggle" @click="item.toggle.method(item)" v-model="item.toggle.value" inset :color="item.toggle.color">
+        <v-switch v-if="item.toggle" :disabled="item.toggle.disabled" @click="item.toggle.method(item)" v-model="item.toggle.value" inset :color="item.toggle.color">
           <template #label> 
             <span v-if="item.toggle.label" :class="item.toggle.color + '--text font-weight-regular mew-body'">{{ item.toggle.label }}</span>
           </template>
@@ -115,6 +122,7 @@
             :class="idx !== item.callToAction.length - 1 && item.callToAction.length > 1? 'mr-1' : ''"
             @click.native="button.method(item)"
             :title="button.title"
+            :disabled="button.disabled"
             btn-size="small"
             :btn-style="button.btnStyle"
             :btn-colorTheme="button.colorTheme"
