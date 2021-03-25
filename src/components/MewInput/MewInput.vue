@@ -25,6 +25,11 @@
     height="62"
   >
     <template v-slot:prepend-inner>
+  <!--
+=====================================================================================
+  Mew Input: Blockie (displays at the beginning of the input)
+=====================================================================================
+-->
       <div
         v-if="showBlockie && !value"
         class="blockie-placeholder mr-1 selectHover"
@@ -35,6 +40,14 @@
         width="25px"
         height="25px"
       />
+  <!--
+=====================================================================================
+  Mew Input: Token Image  (displays at the beginning of the input)
+=====================================================================================
+-->
+    <div class="d-flex align-center justify-center">
+      <img v-if="image" height="30" :src="image" alt="token image" />
+    </div>
     </template>
   </v-text-field>
 </template>
@@ -51,7 +64,7 @@ export default {
   },
   props: {
     /**
-     * Show the blockie.
+     * Displays the blockie.
      */
     showBlockie: {
       type: Boolean,
@@ -130,7 +143,7 @@ export default {
       default: ''
     },
     /**
-     * Resolved address
+     * Hint text
      */
     hint: {
       type: String,
@@ -149,6 +162,13 @@ export default {
     type: {
       type: String,
       default: 'text'
+    },
+    /**
+     * Prepends an image in the input
+     */
+    image: {
+      type: String,
+      default: ''
     }
   },
   data() {
@@ -203,6 +223,11 @@ export default {
 </script>
 <style lang="scss">
 .mew-input {
+  .v-text-field__slot {
+    .v-label {
+      margin-top: 5px;
+    }
+  }
   .v-input__icon--append {
     .mdi {
       color: var(--v-disabled-base);

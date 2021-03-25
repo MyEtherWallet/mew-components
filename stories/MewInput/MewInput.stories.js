@@ -1,4 +1,4 @@
-import { withKnobs, number, text, boolean, array, optionsKnob } from '@storybook/addon-knobs';
+import { withKnobs, files, number, text, boolean, array, optionsKnob } from '@storybook/addon-knobs';
 import MewInput from '@/components/MewInput/MewInput.vue';
 
 export default {
@@ -70,6 +70,9 @@ export const MEWInput = () => ({
     hint: {
       default: text('hint', '')
     },
+    image: {
+      default: files('image', '.png, .svg', '')
+    },
     id: {
       default: number('id', null)
     }
@@ -82,7 +85,7 @@ export const MEWInput = () => ({
   template: `
     <div>
     <br />
-    <mew-input ref="input" :id="id" :hint="hint" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :rules="rules" :hide-clear-btn="hideClearBtn" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
+    <mew-input ref="input" :image="image" :id="id" :hint="hint" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :rules="rules" :hide-clear-btn="hideClearBtn" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
     />
   </div>`
 });

@@ -1,9 +1,14 @@
 <template>
 <div>
+      <!--
+  =====================================================================================
+    Loading Mew Table
+  =====================================================================================
+  -->
     <v-skeleton-loader v-if="loading" type="table" />
     <!--
   =====================================================================================
-    Mew Table 
+    Mew Table (loaded)
   =====================================================================================
   -->
     <v-data-table
@@ -55,10 +60,10 @@
     Displays a toggle button
   =====================================================================================
   -->
-      <template v-slot:[`item.toggle`]="{item}">
+      <template v-slot:[`item.toggle`]="{ item }">
         <v-switch v-if="item.toggle" @click="item.toggle.method(item)" v-model="item.toggle.value" inset :color="item.toggle.color">
           <template #label> 
-            <span :class="item.toggle.color + '--text font-weight-regular mew-body'">{{ item.toggle.label }}</span>
+            <span v-if="item.toggle.label" :class="item.toggle.color + '--text font-weight-regular mew-body'">{{ item.toggle.label }}</span>
           </template>
         </v-switch>
       </template>
