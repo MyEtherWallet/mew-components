@@ -170,6 +170,9 @@ export const mewTable = () => ({
     },
     loading: {
       default: boolean('loading', false)
+    },
+    noDataText: {
+      default: text('no-data-text', '')
     }
   },
   watch: {
@@ -186,6 +189,7 @@ export const mewTable = () => ({
       :has-select="hasSelect"
       :table-data="hasSelect ? tableSelectData : tableData"
       :table-headers="hasSelect ? tableSelectHeaders : tableHeaders"
+      :no-data-text="noDataText"
       @selectedRow="onSelect"
       @onClick="onClick"
     />
