@@ -14,6 +14,9 @@
       :show-select="hasSelect"
       :hide-default-footer="tableData && tableData.length <= 10"
       :items-per-page="10"
+      :loader-height="0"
+      :loading="loading"
+      :no-data-text="noDataText"
       @item-selected="onSelect"
     > 
       <!--
@@ -21,21 +24,15 @@
     Loading Mew Table
   =====================================================================================
   -->
-      <template v-if="loading" v-slot:body="tableHeaders"> 
-        <tbody>
-          <tr>
-              <td v-for="(header,idx) in tableHeaders" :key="header + idx" class="py-3" >
-                <v-skeleton-loader class="py-1" width="100%" min-width="100%" v-for="i in 3" :key="i" type="text" elevation="0"/>
-              </td>
-          </tr>
-        </tbody>
+      <template v-if="loading" #loading> 
+        <v-skeleton-loader class="py-1" width="100%" min-width="100%" v-for="i in 3" :key="i" type="text" elevation="0"/>
       </template>
     <!--
   =====================================================================================
     Displays checkboxes next to each row (hasSelect needs to be set to true)
   =====================================================================================
   -->
-      <template v-slot:[`item.data-table-select`]="{ select, isSelected }">
+      <template v-if="!loading" v-slot:[`item.data-table-select`]="{ select, isSelected }">
         <v-simple-checkbox
           :value="isSelected"
           @input="select($event)"
@@ -50,7 +47,7 @@
     Displays the token image and token title
   =====================================================================================
   -->
-      <template v-slot:[`item.token`]="{item}">
+      <template v-if="!loading" v-slot:[`item.token`]="{item}">
         <div class="d-flex align-center">
           <img
             class="mr-2"
@@ -67,7 +64,7 @@
     Displays a toggle button
   =====================================================================================
   -->
-      <template v-slot:[`item.toggle`]="{ item }">
+      <template v-if="!loading" v-slot:[`item.toggle`]="{ item }">
         <v-switch v-if="item.toggle" :disabled="item.toggle.disabled" @click="item.toggle.method(item)" v-model="item.toggle.value" inset :color="item.toggle.color">
           <template #label> 
             <span v-if="item.toggle.label" :class="item.toggle.color + '--text font-weight-regular mew-body'">{{ item.toggle.label }}</span>
@@ -79,7 +76,7 @@
     Displays the chart change
   =====================================================================================
   -->
-      <template v-slot:[`item.change`]="{ item }">
+      <template v-if="!loading" v-slot:[`item.change`]="{ item }">
         <div class="chart-container d-flex align-center">
           <!-- hiding for now because we don't have the data -->
           <!-- <mew-chart
@@ -104,7 +101,7 @@
     Displays the balance in ETH and USD
   =====================================================================================
   -->
-      <template v-slot:[`item.balance`]="{ item }">
+      <template v-if="!loading" v-slot:[`item.balance`]="{ item }">
           <div class="d-flex flex-column py-2">
             <span v-for="(bal, idx) in item.balance" :key="idx" :class="idx === 1 ? 'searchText--text' : ''">{{bal}}</span>
           </div>
@@ -114,7 +111,7 @@
     Displays a call to action button
   =====================================================================================
   -->
-      <template v-slot:[`item.callToAction`]="{ item }">
+      <template v-if="!loading" v-slot:[`item.callToAction`]="{ item }">
         <div class="d-flex flex-row py-3 justify-end">
           <mew-button
             v-for="(button, idx) in item.callToAction"
@@ -136,6 +133,7 @@
   =====================================================================================
   -->
       <template
+        v-if="!loading"
         v-slot:[`item.txHash`]="{ item }"
       >
         <div :class="[!$vuetify.breakpoint.xs ? 'pr-3' : '']">
@@ -169,7 +167,7 @@
     Displays the address hash
   =====================================================================================
   -->
-      <template v-slot:[`item.address`]="{ item }">
+      <template v-if="!loading" v-slot:[`item.address`]="{ item }">
         <div class="d-flex align-center">
           <mew-blockie
             class="mr-2 d-none d-sm-flex"
@@ -269,6 +267,13 @@ export default {
     hasColor: {
       type: Boolean,
       default: false
+    },
+    /**
+     * No data text
+     */
+    noDataText: {
+      type: String,
+      default: ''
     }
   },
   methods: {
