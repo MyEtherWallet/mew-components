@@ -1,7 +1,8 @@
 import {
   withKnobs,
   boolean,
-  text
+  text,
+  array
 } from '@storybook/addon-knobs';
 import MewTextArea from '@/components/MewTextArea/MewTextArea.vue';
 
@@ -12,6 +13,8 @@ export default {
   },
   decorators: [withKnobs]
 };
+
+const ruleValue = [value => !!value || 'Required.'];
 
 export const MEWTextArea = () => ({
   components: { MewTextArea },
@@ -24,6 +27,9 @@ export const MEWTextArea = () => ({
     },
     value: {
       default: text('value', 'text')
+    },
+    rules: {
+      default: array('rules', ruleValue)
     }
   },
   watch: {
@@ -34,12 +40,12 @@ export const MEWTextArea = () => ({
   template: `
     <div>
     <br />
-    <mew-text-area :label="label" :value="value" />
+    <mew-text-area @input="onInput" :rules="rules" :label="label" :value="value" />
   </div>`,
   methods: {
-    onTab(newVal) {
+    onInput(newVal) {
       // eslint-disable-next-line no-console
-      console.log('on tab:', newVal)
+      console.log('input val:', newVal)
     }
   }
 });
