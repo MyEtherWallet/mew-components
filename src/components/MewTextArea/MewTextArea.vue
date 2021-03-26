@@ -4,7 +4,7 @@
   =====================================================================================
   -->
 <template>
-  <v-textarea outlined :label="label" :value="inputValue"/>
+  <v-textarea outlined :rules="rules" :label="label" :value="inputValue"/>
 </template>
 
 <script>
@@ -30,14 +30,29 @@ export default {
     this.inputValue = this.value;
   },
   props: {
+    /**
+     * Text area label.
+     */
     label: {
       default: '',
       type: String
     },
+    /**
+     * Text area value.
+     */
     value: {
       default: '',
       type: [String, Array]
-    }
+    },
+    /**
+     * For validating your input - accepts an array of functions that take an input value as an argument and return either true / false or a string with an error message.
+     */
+    rules: {
+      type: Array,
+      default: () => {
+        return [];
+      }
+    },
   }
 };
 </script>
