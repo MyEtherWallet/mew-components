@@ -70,6 +70,9 @@ export const MEWInput = () => ({
     hint: {
       default: text('hint', '')
     },
+    persistentHint: {
+      default: boolean('persistent-hint', false)
+    },
     image: {
       default: files('image', '.png, .svg', '')
     },
@@ -85,7 +88,7 @@ export const MEWInput = () => ({
   template: `
     <div>
     <br />
-    <mew-input ref="input" :image="image" :id="id" :hint="hint" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :rules="rules" :hide-clear-btn="hideClearBtn" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
+    <mew-input ref="input" :persistent-hint="persistentHint" :image="image" :id="id" :hint="hint" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :rules="rules" :hide-clear-btn="hideClearBtn" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
     />
   </div>`
 });

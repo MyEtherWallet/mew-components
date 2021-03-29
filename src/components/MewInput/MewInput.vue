@@ -14,7 +14,7 @@
     color="titlePrimary"
     v-model="inputValue"
     :hint="resolvedAddr ? resolvedAddr : hint"
-    :persistent-hint="resolvedAddr.length > 0"
+    :persistent-hint="persistentHint || resolvedAddr.length > 0"
     :suffix="rightLabel"
     :clearable="!hideClearBtn"
     :rules="rules"
@@ -141,6 +141,13 @@ export default {
     resolvedAddr: {
       type: String,
       default: ''
+    },
+    /**
+     * Enables persistent hint
+     */
+    persistentHint: {
+      type: Boolean,
+      default: false
     },
     /**
      * Hint text
