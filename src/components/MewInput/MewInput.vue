@@ -9,6 +9,7 @@
     :disabled="disabled"
     :label="label"
     :placeholder="placeholder"
+    :error-messages="errorMessages"
     :outlined="!hasNoBorder"
     :solo="hasNoBorder"
     color="titlePrimary"
@@ -63,6 +64,13 @@ export default {
     MewBlockie
   },
   props: {
+    /**
+     * Error messages to display
+     */
+    errorMessages: {
+      type: [ String, Array],
+      default: ''
+    },
     /**
      * Displays the blockie.
      */

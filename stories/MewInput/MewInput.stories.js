@@ -78,6 +78,9 @@ export const MEWInput = () => ({
     },
     id: {
       default: number('id', null)
+    },
+    errorMessages: {
+      default: text('error-messages', null)
     }
   },
   watch: {
@@ -88,7 +91,7 @@ export const MEWInput = () => ({
   template: `
     <div>
     <br />
-    <mew-input ref="input" :persistent-hint="persistentHint" :image="image" :id="id" :hint="hint" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :rules="rules" :hide-clear-btn="hideClearBtn" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
+    <mew-input ref="input" :error-messages="errorMessages" :persistent-hint="persistentHint" :image="image" :id="id" :hint="hint" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :rules="rules" :hide-clear-btn="hideClearBtn" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
     />
   </div>`
 });
