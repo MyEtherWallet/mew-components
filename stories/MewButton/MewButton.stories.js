@@ -106,6 +106,9 @@ export const MEWButton = () => ({
     showsActiveState: {
       default: boolean('shows-active-state', false)
     },
+    loading: {
+      default: boolean('loading', false)
+    },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     }
@@ -119,6 +122,7 @@ export const MEWButton = () => ({
     <div>
     <br />
     <mew-button
+      :loading="loading"
       :btn-link="btnLink"
       :icon-align="iconAlign"
       :disabled="disabled"
