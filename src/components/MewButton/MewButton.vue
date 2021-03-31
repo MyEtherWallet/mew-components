@@ -1,4 +1,9 @@
 <template>
+    <!--
+  =====================================================================================
+    Mew Button
+  =====================================================================================
+  -->
   <v-btn
     :target="btnLink ? '_blank' : ''"
     :href="btnLink"
@@ -11,43 +16,96 @@
     :outlined="isOutline"
     :text="isTransparent"
   >
-    <img
-      v-if="showIcon('img') && !showIconAlignRight"
-      class="icon mr-1"
-      :src="icon"
-      alt="icon"
-    >
-    <v-icon
-      class="icon mr-1"
-      v-if="showIcon('mdi') && !showIconAlignRight"
-    >
-      {{ icon }}
-    </v-icon>
-    <mew-icon
-      :img-height="30"
-      class="icon mr-1"
-      v-if="showIcon('mew') && !showIconAlignRight"
-      :icon-name="icon"
+    <!--
+  =====================================================================================
+    Loading state
+  =====================================================================================
+  -->
+    <v-progress-circular
+      v-if="loading"
+      indeterminate
+      size="25"
+      color="white"
     />
-    <span>{{ title }}</span>
-    <img
-      v-if="showIcon('img') && showIconAlignRight"
-      class="icon ml-1"
-      :src="icon"
-      alt="icon"
-    >
-    <mew-icon
-      :img-height="30"
-      class="icon mr-1"
-      v-if="showIcon('mew') && showIconAlignRight"
-      :icon-name="icon"
-    />
-    <v-icon
-      class="icon mr-1"
-      v-if="showIcon('mdi') && showIconAlignRight"
-    >
-      {{ icon }}
-    </v-icon>
+    <!--
+  =====================================================================================
+    Loaded Button Content 
+  =====================================================================================
+  -->
+    <div class="d-flex justify-center align-center" v-if="!loading">  
+    <!--
+  =====================================================================================
+    Img content - uses img src (Left)
+  =====================================================================================
+  -->
+      <img
+        v-if="showIcon('img') && !showIconAlignRight"
+        class="icon mr-1"
+        :src="icon"
+        alt="icon"
+      >
+    <!--
+  =====================================================================================
+   V-Icon Content - uses material design icons (Left)
+  =====================================================================================
+  -->
+      <v-icon
+        class="icon mr-1"
+        v-if="showIcon('mdi') && !showIconAlignRight"
+      >
+        {{ icon }}
+      </v-icon>
+    <!--
+  =====================================================================================
+   Mew Icon Content - uses mew icons (Left)
+  =====================================================================================
+  -->
+      <mew-icon
+        :img-height="30"
+        class="icon mr-1"
+        v-if="showIcon('mew') && !showIconAlignRight"
+        :icon-name="icon"
+      />
+    <!--
+  =====================================================================================
+   Button text
+  =====================================================================================
+  -->
+      <span>{{ title }}</span>
+    <!--
+  =====================================================================================
+    Img content - uses img src (Right)
+  =====================================================================================
+  -->
+      <img
+        v-if="showIcon('img') && showIconAlignRight"
+        class="icon ml-1"
+        :src="icon"
+        alt="icon"
+      >
+    <!--
+  =====================================================================================
+   V-Icon Content - uses material design icons (Right)
+  =====================================================================================
+  -->
+      <v-icon
+        class="icon mr-1"
+        v-if="showIcon('mdi') && showIconAlignRight"
+      >
+        {{ icon }}
+      </v-icon>
+    <!--
+  =====================================================================================
+   Mew Icon Content - uses mew icons (Right)
+  =====================================================================================
+  -->
+      <mew-icon
+        :img-height="30"
+        class="icon mr-1"
+        v-if="showIcon('mew') && showIconAlignRight"
+        :icon-name="icon"
+      />
+    </div>
   </v-btn>
 </template>
 
@@ -60,6 +118,13 @@ export default {
     MewIcon
   },
   props: {
+    /**
+     * Enables loading state
+     */
+    loading: {
+      type: Boolean,
+      default: false
+    },
     /**
      * Button size: small, medium, large, xlarge.
      */

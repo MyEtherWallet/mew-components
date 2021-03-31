@@ -61,7 +61,8 @@ import Vuetify, {
   VImg,
   VInput,
   VTextarea,
-  VSkeletonLoader
+  VSkeletonLoader,
+  VProgressCircular
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -123,7 +124,8 @@ Vue.use(Vuetify, {
     VImg,
     VInput,
     VTextarea,
-    VSkeletonLoader
+    VSkeletonLoader,
+    VProgressCircular
   }
 });
 
