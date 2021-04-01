@@ -18,6 +18,7 @@
     :hint="resolvedAddr ? resolvedAddr : ''"
     :persistent-hint="resolvedAddr.length > 0"
     :rules="rules"
+    :no-data-text="noDataText"
     :menu-props="{ value: dropdown, closeOnClick: true }"
     @update:search-input="onChange"
     ref="mewAddressSelect"
@@ -128,6 +129,13 @@ export default {
       default: () => {
         return [];
       }
+    },
+    /**
+     * Displays text if there is no data.
+     */
+    noDataText: {
+      type: String,
+      default: ''
     },
     /**
      * Resolved address for name.
