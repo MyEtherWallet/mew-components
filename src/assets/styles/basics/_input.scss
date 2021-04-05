@@ -1,5 +1,7 @@
 .v-application {
-  // address select dropdown 
+  /**
+    * Mew Address Select dropdown 
+    */
   .v-autocomplete__content.v-menu__content {
       border-bottom: 1px solid var(--v-dropdownBorder-base);
       border-left: 1px solid var(--v-dropdownBorder-base);
@@ -8,9 +10,22 @@
       box-shadow: 0px 5px 5px -3px rgb(13 41 66 / 20%), 0px 8px 10px 1px rgb(13 41 66 / 14%), 0px 3px 14px 2px rgb(13 41 66 / 12%);
   }
 
-  // dropdown, select menu
+/**
+  * Dropdown, select menu
+  */
   .v-select-list {
     padding: 0;
+  }
+
+/**
+  * Mew Menu, simple menu select
+  */
+  .simple-input.v-text-field>.v-input__control>.v-input__slot:before {
+    border-style: none;
+  }
+
+  .simple-input.v-text-field>.v-input__control>.v-input__slot:after {
+    border-style: none;
   }
 
   .mew-menu-content {
@@ -28,25 +43,32 @@
     box-shadow: 0px 5px 5px -3px rgb(13 41 66 / 20%), 0px 8px 10px 1px rgb(13 41 66 / 14%), 0px 3px 14px 2px rgb(13 41 66 / 12%);
   }
 
-  // input disable theme
+  /**
+  * Text Field Disabled Theme
+  */
   .theme--light.v-text-field--outlined:not(.v-input--is-focused).v-input--is-disabled > .v-input__control > .v-input__slot fieldset, .theme--dark.v-text-field--outlined:not(.v-input--is-focused).v-input--is-disabled > .v-input__control > .v-input__slot fieldset { 
     color: var(--v-inputDisabled-base) !important;
   }
 
-  // input border color
+/**
+  * Text Field Border Color
+  */
   .v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state) > .v-input__control > .v-input__slot fieldset {
     color: var(--v-inputBorder-base) !important;
   }
-  // }
 
+/**
+  * Inputs
+  */
   .v-input {
-    // input
     input {
       color: var(--v-titlePrimary-base) !important;
       font-size: 14px;
     }
 
-    // input label
+  /**
+    * Input label
+    */
     .v-label {
       color: var(--v-inputLabel-base);
       font-weight: 500;
@@ -56,19 +78,22 @@
         color: var(--v-inputDisabled-base); 
       }
     }
-
-    // input placeholder
+  /**
+    * Input placeholder
+    */
     input::placeholder {
       color: var(--v-disabled-base);
       font-weight: 400;
     }
-
-    // input suffix color
+  /**
+    * Input suffix color
+    */
     .v-text-field__suffix {
       color: var(--v-searchText-base) !important;
     }
-
-    // dropdown icon
+  /**
+    * Dropdown icon
+    */
     &.mew-select {
       .mdi-chevron-down {
         color: var(--v-titlePrimary-base);
@@ -76,14 +101,16 @@
         font-size: 20px;
       }
     }
-    
-    // disable icon
+  /**
+    * Disabled icon
+    */
     .disable-icon {
       filter: grayscale(100%);
       pointer-events: none;
     }
-
-    // for search mew input
+  /**
+    * Mew Input - Search
+    */
     &.search-block {
       input::placeholder {
         color: var(--v-searchText-base);
@@ -91,16 +118,9 @@
     }
   }
 
-  // simple menu select 
-  .simple-input.v-text-field>.v-input__control>.v-input__slot:before {
-    border-style: none;
-  }
-
-  .simple-input.v-text-field>.v-input__control>.v-input__slot:after {
-    border-style: none;
-  }
-
-  // blockie-placeholder
+/**
+  * Blockie placeholder
+  */
   .blockie-placeholder {
     height: 25px;
     width: 25px;

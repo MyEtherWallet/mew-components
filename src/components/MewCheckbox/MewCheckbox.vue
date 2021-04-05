@@ -14,6 +14,7 @@
       @click="toggleCheckbox"
     >{{ label }}
       <a
+        target="_blank"
         v-if="link.url && link.title"
         :href="link.url"
       >{{ link.title }}</a>

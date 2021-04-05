@@ -206,7 +206,15 @@ export default {
       height: 100%;
     }
   }
-
+/**
+  * Readonly input is not being used (since we are using our own ui via slots) and is taking up unnecessary space
+  * so will hide for now
+  */
+  .v-select__selections {
+    input {
+      display: none;
+    }
+  }
   .item-img {
     margin-right: 5px;
     max-height: 25px;
