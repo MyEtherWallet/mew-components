@@ -33,7 +33,7 @@
             @click.native="btnAction"
             btn-size="xlarge"
             :title="btnText"
-            :disabled="btnEnabled"
+            :disabled="!btnEnabled"
           />
         </v-col>
       </v-row>
@@ -42,8 +42,12 @@
 </template>
 
 <script>
+import MewButton from "@/components/MewButton/MewButton.vue";
 export default {
   name: "MewModal",
+  components: {
+    MewButton,
+  },
   props: {
     /**
      * Title that shows at the top of the modal

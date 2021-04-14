@@ -30,9 +30,6 @@ export const MEWModal = () => ({
     btnText: {
       default: text("text btn", "Close"),
     },
-    toggleModal: {
-      default: boolean("show modal?", false),
-    },
   },
   watch: {
     enableDarkMode(newVal) {
@@ -48,7 +45,7 @@ export const MEWModal = () => ({
     <br />
     <mew-modal
       :title="title"
-      :enable-button="enableButton"
+      :btn-enabled="enableButton"
       :btn-text="btnText"
       :close="closeModal"
       :show="showModal"
@@ -60,7 +57,7 @@ export const MEWModal = () => ({
       this.showModal = false;
     },
     show() {
-      this.showModal = false;
+      this.showModal = true;
     },
   },
 });
