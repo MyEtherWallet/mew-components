@@ -13,6 +13,7 @@
     item-text="name"
     item-value="value"
     :label="label"
+    :disabled="disabled"
     v-model="selectModel"
     return-object
     :menu-props="{ bottom: true, offsetY: true}"
