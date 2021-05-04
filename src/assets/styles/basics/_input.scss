@@ -37,10 +37,29 @@
       }
     }
   }
-  
+/**
+  * Mew Select Dropdown Menu
+  */
   .v-menu__content {
     border: 1px solid var(--v-dropdownBorder-base);
     box-shadow: 0px 5px 5px -3px rgb(13 41 66 / 20%), 0px 8px 10px 1px rgb(13 41 66 / 14%), 0px 3px 14px 2px rgb(13 41 66 / 12%);
+    .v-select-list {
+    /**
+      * Mew Select Dropdown Menu Header
+      */
+      .v-subheader {
+        align-items: center;
+        background-color: var(--v-selectHeaderBg-base);
+        border: 1px solid var(--v-selectBorder-base);
+        color: var(--v-textSecondary-base);
+        display: flex;
+        height: 32px;
+        padding: 8px 22px 8px 48px;
+      }
+      .v-list-item--link {
+        border-bottom: 1px solid var(--v-selectBorder-base);
+      }
+    }
   }
 
   /**
@@ -101,6 +120,53 @@
         font-size: 20px;
       }
     }
+  /**
+    * Mew Select
+    */
+  &.mew-select {   
+    .label-token-img {
+      margin-right: -20px;
+    }
+    .total-token-placeholder {
+      border-radius: 50%;        
+      height: 35px;
+      width: 35px;
+    }
+    &.v-text-field--enclosed .v-input__append-inner {
+      height: 100%;
+      margin-top: 0;
+  
+      .v-input__icon {
+        height: 100%;
+      }
+    }
+  /**
+    * Readonly input is not being used (since we are using our own ui via slots) and is taking up unnecessary space
+    * so will hide for now
+    */
+    .v-select__selections {
+      input {
+        display: none;
+      }
+    }
+    .item-img {
+      margin-right: 5px;
+      max-height: 25px;
+    }
+  
+    .selected-img {
+      margin-left: 6px;
+    }
+  }
+  &.mew-select-search {
+    border-bottom: 1px solid var(--v-dropdownBorder-base);
+    border-radius: 5px;
+    height: 42px;
+    padding: 12px 16px;
+    .v-icon {
+      font-size: 18px;
+    }
+  }
   /**
     * Disabled icon
     */

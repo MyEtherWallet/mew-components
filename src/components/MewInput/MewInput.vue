@@ -50,6 +50,16 @@
       <img v-if="image" height="30" :src="image" alt="token image" />
     </div>
     </template>
+  <!--
+=====================================================================================
+  Max Button (displays at the end of the input)
+=====================================================================================
+-->
+    <template v-slot:append>
+      <v-btn v-if="maxBtnObj.method" @click="maxBtnObj.method" 
+          :class="[maxBtnObj.disabled ? 'disabled--text no-pointer-events' : 'inputLabel--text', 'rounded-lg mt-n2 mew-body font-weight-medium text-capitalize']" 
+          min-width="40" min-height="40" height="40" width="40" depressed color="maxButton">{{maxBtnObj.title}}</v-btn>
+    </template>
   </v-text-field>
 </template>
 
@@ -184,7 +194,16 @@ export default {
     image: {
       type: String,
       default: ''
-    }
+    },
+    /**
+     * Object for max button, i.e. {title: 'Max', disabled: false, method: () => {}}
+     */
+    maxBtnObj: {
+      type: Object,
+      default: () => {
+        return {};
+      }
+    },
   },
   data() {
     return {
@@ -241,6 +260,9 @@ export default {
   .v-text-field__slot {
     .v-label {
       margin-top: 5px;
+    }
+    .v-label--active {
+      margin-top: 0;
     }
   }
   .v-input__icon--append {

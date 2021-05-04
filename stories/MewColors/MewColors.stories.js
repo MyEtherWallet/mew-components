@@ -66,6 +66,8 @@ export const All = () => ({
         shades: [
           {name: 'selectActive', lightHex: '#dcfff9', darkHex: '#2e3c75'},
           {name: 'selectHover', lightHex: '#E5EAEE', darkHex: '#2c3448'},
+          {name: 'selectHeaderBg', lightHex: '#F8FAFC', darkHex: '#F8FAFC'},
+          {name: 'selectBorder', lightHex: '#F1F1F1', darkHex: '#F1F1F1'},
           {name: 'expandHeader', lightHex: '#184f90', darkHex: '#184f90'}
         ]
       },
@@ -101,6 +103,7 @@ export const All = () => ({
           {name: 'inputBorder', lightHex: '#e0e0e0', darkHex: '#6679fb'},
           {name: 'inputDisabled', lightHex: '#cecece', darkHex: '#1f2b42'},
           {name: 'inputLabel', lightHex: '#6d89a6', darkHex: '#4e5a6e'},
+          {name: 'maxButton', lightHex: '#F7F9FA', darkHex: '#F7F9FA'},
           {name: 'searchInput', lightHex: '#f2f4fa', darkHex: '#f2f4fa'},
           {name: 'searchText', lightHex: '#96a8b6', darkHex: '#96a8b6'},
           {name: 'dropdownBorder', lightHex: '#05c0a5', darkHex: '#7e90a7'},

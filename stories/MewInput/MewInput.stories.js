@@ -1,4 +1,4 @@
-import { withKnobs, files, number, text, boolean, array, optionsKnob } from '@storybook/addon-knobs';
+import { withKnobs, files, number, text, boolean, array, optionsKnob, object } from '@storybook/addon-knobs';
 import MewInput from '@/components/MewInput/MewInput.vue';
 
 export default {
@@ -27,6 +27,14 @@ const textInputTypes = {
 const optionsObj = {
   display: 'inline-radio'
 };
+
+const maxBtnObj = {
+  title: 'Max', disabled: false, method: onClick
+}
+
+function onClick() {
+  console.error('mew input: clicked max button!')
+}
 
 export const MEWInput = () => ({
   components: { MewInput },
@@ -81,6 +89,9 @@ export const MEWInput = () => ({
     },
     errorMessages: {
       default: text('error-messages', null)
+    },
+    maxBtnObj: {
+      default: object('max-btn-obj', maxBtnObj)
     }
   },
   watch: {
@@ -91,7 +102,7 @@ export const MEWInput = () => ({
   template: `
     <div>
     <br />
-    <mew-input ref="input" :error-messages="errorMessages" :persistent-hint="persistentHint" :image="image" :id="id" :hint="hint" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :rules="rules" :hide-clear-btn="hideClearBtn" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
+    <mew-input ref="input" :max-btn-obj="maxBtnObj" :error-messages="errorMessages" :persistent-hint="persistentHint" :image="image" :id="id" :hint="hint" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :rules="rules" :hide-clear-btn="hideClearBtn" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
     />
   </div>`
 });

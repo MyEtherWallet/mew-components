@@ -61,7 +61,10 @@ export default {
           darken2: '#ff7700'
         },
         disabled: '#cecece',
-        tableHeader: '#f9f9f9'
+        tableHeader: '#f9f9f9',
+        selectHeaderBg: '#F8FAFC',
+        selectBorder: '#F1F1F1',
+        maxButton: '#F7F9FA'
       },
       dark: {
         primaryHover: '#1eb19b',
@@ -120,7 +123,10 @@ export default {
           darken1: '#f5a623'
         },
         disabled: '#1f2b42',
-        tableHeader: '#0f1320'
+        tableHeader: '#0f1320',
+        selectHeaderBg: '#F8FAFC',
+        selectBorder: '#F1F1F1',
+        maxButton: '#F7F9FA'
       }
     }
   }
