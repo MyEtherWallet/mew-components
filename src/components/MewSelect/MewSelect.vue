@@ -9,24 +9,24 @@
     class="mew-select"
     color="basic"
     append-icon="mdi-chevron-down"
-    :disabled="disabled"
     :items="selectItems"
     item-text="name"
     item-value="value"
     :label="label"
+    :disabled="disabled"
     v-model="selectModel"
     return-object
     :menu-props="{ bottom: true, offsetY: true}"
     outlined
   >
-    <template v-slot:prepend-item>
       <!--
   =====================================================================================
     Filter for dropdown items
   =====================================================================================
   -->
+    <template v-slot:prepend-item>
       <v-text-field
-        v-if="hasFilter"
+        v-if="hasFilter || isSwap"
         height="35"
         class="px-2 mew-select-search d-flex align-center"
         color="disabled"
@@ -44,10 +44,30 @@
     >
       <!--
   =====================================================================================
+    Select Token Placeholder
+  =====================================================================================
+  -->
+      <div v-if="item.selectTokenLabel" class="d-flex align-center flex-row justify-space-between full-width">
+        <span>{{item.text }}</span>
+        <v-skeleton-loader
+        class="no-pointer-events"
+        v-if="loading"
+        type="chip" />
+        <div v-if="!loading" class="flex-row d-flex align-center">
+          <img class="label-token-img" width="35" height="35" :src="url" v-for="(url, idx) in item.imgs" :key="url + idx" />
+          <div
+            class="total-token-placeholder inputBorder d-flex align-center justify-center mew-caption"
+          >
+            <span class="textSecondary--text">+{{item.total}}</span>
+          </div>
+        </div>
+      </div>
+      <!--
+  =====================================================================================
     Selected item
   =====================================================================================
   -->
-      <div class="d-flex align-center justify-center">
+      <div v-if="!item.selectTokenLabel"  class="d-flex align-center justify-center">
         <v-img
           v-if="item.img"
           class="item-img selected-img"
@@ -57,7 +77,7 @@
           max-width="25"
           max-height="25"
         />
-        <span class="text-capitalize mt-1">{{ item.name ? item.name : item }} <span
+        <span class="text-capitalize mt-1 ml-2">{{ item.name ? item.name : item }} <span
           v-if="item.subtext"
           class="searchText--text text-capitalize"
         >- {{ item.subtext }}</span></span>
@@ -66,10 +86,20 @@
     <template v-slot:item="data">
       <!--
   =====================================================================================
-    Dropdown items
+    Loading Select Dropdown items
   =====================================================================================
   -->
-      <div class="d-flex align-center justify-center">
+      <v-skeleton-loader
+        class="no-pointer-events"
+        min-width="100%"
+        v-if="loading"
+        type="list-item-avatar" />
+      <!--
+  =====================================================================================
+    Default Select Dropdown items
+  =====================================================================================
+  -->
+      <div v-if="!isSwap && !loading" class="d-flex align-center justify-center">
         <v-img
           class="item-img"
           v-if="data.item.img"
@@ -79,10 +109,52 @@
           max-width="25"
           max-height="25"
         />
-        <span class="text-capitalize pl-1 mt-1">{{ data.item.name ? data.item.name : data.item }} <span
+        <span class="text-capitalize ml-2 mt-1">{{ data.item.name ? data.item.name : data.item }} <span
           v-if="data.item.subtext"
           class="textSecondary--text text-capitalize"
         >- {{ data.item.subtext }}</span></span>
+      </div>
+      <!--
+  =====================================================================================
+    Swap Select Dropdown items
+  =====================================================================================
+  -->
+      <div v-if="isSwap && !loading" class="d-flex align-center full-width">
+      <!--
+  =====================================================================================
+      Empty Wallet Link
+  =====================================================================================
+  -->
+        <div class="no-pointer-events titlePrimary--text" v-if="data.item.hasNoEth">
+          {{ data.item.text }} <a class="all-pointer-events" target="_blank" :href="data.item.link">{{ data.item.linkText }}</a>
+        </div>
+      <!--
+  =====================================================================================
+    Swap Dropdown Item
+  =====================================================================================
+  -->
+        <div class="d-flex align-center justify-space-between full-width" v-if="data.item.name">
+          <div v-if="!loading" class="d-flex align-center">
+            <v-img
+              class="item-img"
+              v-if="data.item.img"
+              :src="data.item.img"
+              :alt="data.item.img"
+              :contain="true"
+              max-width="25"
+              max-height="25"
+            />
+            <span class="text-capitalize ml-2 my-2 d-flex flex-column">{{ data.item.name ? data.item.name : data.item }} <span
+              v-if="data.item.subtext"
+              class="mew-caption font-weight-regular textSecondary--text text-capitalize"
+            >{{ data.item.tokenBalance || data.item.subtext }}</span></span>
+          </div>
+          <div class="d-flex justify-center flex-column">
+            <span>${{ data.item.tokenPriceBalance || data.item.tokenPrice }}</span>
+            <span class="mew-caption font-weight-regular textSecondary--text" v-if="data.item.tokenPriceBalance">@ ${{ data.item.tokenPrice }}</span>
+          </div>
+
+        </div>
       </div>
     </template>
   </v-select>
@@ -125,6 +197,8 @@ export default {
     /**
      * Can be an array of objects or array of strings. When using objects, will look for a text and value field.
      * Can also add an img attribute to the object to append an img to the value.
+     * Also takes in header objs and a select token label obj, i.e. {text: 'Select Token', imgs: [], total: '', selectTokenLabel: true, divider: true}
+     * Please check swapItems for more info
      * Example: { name: "Eth", subtext: "Ethereum", value: "Ethereum", img: ethIcon }
      */
     items: {
@@ -139,7 +213,21 @@ export default {
     label: {
       type: String,
       default: ''
-    }
+    },
+    /**
+     * Applies Swap Select styles
+     */
+    isSwap: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Loading state
+     */
+    loading: {
+      type: Boolean,
+      default: false
+    },
   },
   data() {
     return {
@@ -176,58 +264,34 @@ export default {
         this.selectModel = newVal;
       }
     },
+    loading() {
+      if (!this.loading) {
+        this.selectModel = this.value || this.defaultItem;
+      }
+    },
     items: {
       handler: function(newVal) {
         this.selectItems = newVal;
-        this.selectModel = newVal[0] || this.value;
+        this.selectModel = this.value || this.defaultItem;
       },
       deep: true
     }
   },
+  computed: {
+    defaultItem() {
+      return this.items.find(obj => {
+        return obj.selectTokenLabel || obj.name
+      })
+    }
+  },
   mounted() {
     this.selectItems = this.items;
-    this.selectModel = this.items[0] || this.value;
+    this.selectModel = this.defaultItem || this.value;
   },
   methods: {
     clear(val) {
-      this.selectModel = val ? val : this.item[0];
+      this.selectModel = val ? val : this.defaultItem;
     }
   }
 };
 </script>
-
-<style lang="scss">
-.mew-select {
-  &.v-text-field--enclosed .v-input__append-inner {
-    height: 100%;
-    margin-top: 0;
-
-    .v-input__icon {
-      height: 100%;
-    }
-  }
-/**
-  * Readonly input is not being used (since we are using our own ui via slots) and is taking up unnecessary space
-  * so will hide for now
-  */
-  .v-select__selections {
-    input {
-      display: none;
-    }
-  }
-  .item-img {
-    margin-right: 5px;
-    max-height: 25px;
-  }
-
-  .selected-img {
-    margin-left: 6px;
-  }
-}
-.mew-select-search {
-  border-bottom: 1px solid var(--v-dropdownBorder-base);
-  .v-icon {
-    font-size: 18px;
-  }
-}
-</style>

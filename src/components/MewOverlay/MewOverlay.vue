@@ -52,7 +52,7 @@
         </v-row>
         <v-row 
           align="center"
-          class="pt-5 mb-3"
+          class="pt-5 mb-3 mx-0"
           justify="center"
         >
           <span
@@ -62,7 +62,7 @@
         <v-row 
           v-if="description"
           align="center"
-          class="mb-6"
+          class="mb-6 mx-0"
           justify="center"
         >
           <span

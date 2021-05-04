@@ -1,6 +1,8 @@
 import { withKnobs, text, boolean, object } from '@storybook/addon-knobs';
 import MewSelect from '@/components/MewSelect/MewSelect.vue';
 import ethereumIcon from '@/assets/images/icons/footer/eth.png'
+import bitcoinIcon from '@/assets/images/icons/footer/btc.png'
+
 export default {
   title: 'MewSelect',
   parameters: {
@@ -9,7 +11,21 @@ export default {
   decorators: [withKnobs]
 };
 
-const itemsArray = [{ name: 'ETH', value: 'Ethereum', img: ethereumIcon }, { name: 'DAI', value: 'Makerdao',  img: ethereumIcon }];
+const swapItemsArray = [{
+  text: 'Select Token',
+  imgs: [bitcoinIcon, ethereumIcon, bitcoinIcon, ethereumIcon],
+  total: '150',
+  divider: true,
+  selectTokenLabel: true
+},
+{header: 'My Wallet'},
+{ hasNoEth: true, disabled: true, text: 'Your wallet is empty.', linkText: 'Buy ETH', link: 'https://ccswap.myetherwallet.com/#/'},
+{ header: 'Other Tokens'},
+{ name: 'ETH', subtext: 'Ethereum', value: 'Ethereum', img: ethereumIcon, tokenPrice: '3000'}, 
+{ name: 'DAI',  subtext: 'Makerdao', value: 'Makerdao', tokenBalance: '20.22 DAI',  img: ethereumIcon, tokenPriceBalance: '40000', tokenPrice: '2000'},
+{ name: 'AAVE',  subtext: 'Aave', value: 'Aave', tokenBalance: '1.34 AAVE',  img: ethereumIcon, tokenPriceBalance: '234.3430', tokenPrice: '454.000'}];
+
+const itemsArray = [{ name: 'ETH', subtext: 'Ethereum', value: 'Ethereum', img: ethereumIcon }, { name: 'DAI', value: 'Makerdao',  subtext: 'Makerdao', img: ethereumIcon }];
 
 export const MEWSelect = () => ({
   components: { MewSelect },
@@ -23,6 +39,9 @@ export const MEWSelect = () => ({
     items: {
       default: object('items', itemsArray)
     },
+    swapItems: {
+      default: object('swap-items', swapItemsArray)
+    },
     value: {
       default: object('value', {})
     },
@@ -31,6 +50,12 @@ export const MEWSelect = () => ({
     },
     hasFilter: {
       default: boolean('has-filter', false)
+    },
+    isSwap: {
+      default: boolean('is-swap', true)
+    },
+    loading: {
+      default: boolean('loading', false)
     },
     filterPlaceholder: {
       default: text('filter-placeholder', 'Search token name')
@@ -44,7 +69,7 @@ export const MEWSelect = () => ({
   template: `
     <div>
     <br />
-    <mew-select :filter-placeholder="filterPlaceholder" :has-filter="hasFilter" :label="label" :items="items" :disabled="disabled" :value="value"
+    <mew-select :loading="loading" :is-swap="isSwap" :filter-placeholder="filterPlaceholder" :has-filter="hasFilter" :label="label" :items="isSwap ? swapItems : items" :disabled="disabled" :value="value"
     />
   </div>`
 });
