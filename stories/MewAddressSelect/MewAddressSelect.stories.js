@@ -1,92 +1,97 @@
-import { withKnobs, text, boolean, object, array } from '@storybook/addon-knobs';
-import MewAddressSelect from '@/components/MewAddressSelect/MewAddressSelect.vue';
+import {
+  withKnobs,
+  text,
+  boolean,
+  object,
+  array,
+} from "@storybook/addon-knobs";
+import MewAddressSelect from "@/components/MewAddressSelect/MewAddressSelect.vue";
 
 export default {
-  title: 'MewAddressSelect',
+  title: "MewAddressSelect",
   parameters: {
-    component: MewAddressSelect
+    component: MewAddressSelect,
   },
-  decorators: [withKnobs]
+  decorators: [withKnobs],
 };
 
-const ruleValue = [value => !!value || 'Required.'];
+const ruleValue = [(value) => !!value || "Required."];
 
 const addressesArray = [
   {
-    address: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
-    currency: 'ETH',
-    nickname: 'My Address',
-    resolverAddr: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
+    address: "0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D",
+    currency: "ETH",
+    nickname: "My Address",
+    resolverAddr: "0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D",
   },
   {
-    address: '0x43689531907482BEE7e650D18411E284A7337A66',
-    currency: 'ETH',
-    nickname: 'nickname',
-    resolverAddr: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
-  }
+    address: "0x43689531907482BEE7e650D18411E284A7337A66",
+    currency: "ETH",
+    nickname: "nickname",
+    resolverAddr: "0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D",
+  },
 ];
 
 export const mewAddressSelect = () => ({
   components: { MewAddressSelect },
   props: {
     label: {
-      default: text('label', 'To Address')
+      default: text("label", "To Address"),
     },
     items: {
-      default: object('items', addressesArray)
+      default: object("items", addressesArray),
     },
     placeholder: {
-      default: text('placeholder', 'Please enter an address')
+      default: text("placeholder", "Please enter an address"),
     },
     isValidAddress: {
-      default: boolean('is-valid-address', false)
+      default: boolean("is-valid-address", false),
     },
     enableSaveAddress: {
-      default: boolean('enable-save-address', false)
+      default: boolean("enable-save-address", false),
     },
     disabled: {
-      default: boolean('disabled', false)
+      default: boolean("disabled", false),
     },
     copyTooltip: {
-      default: text('copy-tooltip', 'Copy')
+      default: text("copy-tooltip", "Copy"),
     },
     noDataText: {
-      default: text('no-data-text', '')
+      default: text("no-data-text", ""),
     },
     saveTooltip: {
-      default: text('save-tooltip', 'Save Address')
+      default: text("save-tooltip", "Save Address"),
     },
     value: {
-      default: text('value', '')
+      default: text("value", ""),
     },
     resolvedAddr: {
-      default: text('resolved-addr', '')
+      default: text("resolved-addr", ""),
     },
     enableDarkMode: {
-      default: boolean('dark mode ?', false)
+      default: boolean("dark mode ?", false),
     },
     rules: {
-      default: array('rules', ruleValue)
-    }
+      default: array("rules", ruleValue),
+    },
   },
   watch: {
     enableDarkMode(newVal) {
       this.$vuetify.theme.dark = newVal === true ? true : false;
-    }
+    },
   },
   template: `
     <div>
     <br />
-    <mew-address-select ref="address" :no-data-text="noDataText" :rules="rules" :resolved-addr="resolvedAddr" :value="value" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" :is-valid-address="isValidAddress" :label="label" :items="items" @saveAddress="onSaveAddress" @input="getSelectedValue"/>
+    <mew-address-select ref="address" :no-data-text="noDataText" :rules="rules" :resolved-addr="resolvedAddr" :value="value" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" :is-valid-address="isValidAddress" :label="label" :items="items" @saveAddress="onSaveAddress" @input="onSelectValue"/>
   </div>`,
   methods: {
-    getSelectedValue(value) {
-      // eslint-disable-next-line no-console
-      console.log('selected value:', value);
-    },
     onSaveAddress() {
       // eslint-disable-next-line no-console
-      console.log('saveAddress: clicked')
-    }
-  }
+      console.log("saveAddress: clicked");
+    },
+    onSelectValue(value, type) {
+      console.log(value, type);
+    },
+  },
 });

@@ -21,6 +21,7 @@
     :no-data-text="noDataText"
     :menu-props="{ value: dropdown, closeOnClick: true }"
     @update:search-input="onChange"
+    @input.native="onInputChange"
     ref="mewAddressSelect"
     outlined
   >
@@ -152,13 +153,6 @@ export default {
       default: "",
     },
     /**
-     * Input value.
-     */
-    value: {
-      type: String,
-      default: "",
-    },
-    /**
      * Disables the input.
      */
     disabled: {
@@ -262,15 +256,6 @@ export default {
         this.$emit("input", newVal, this.isTyped);
       }
     },
-    /**
-     * Watches the value prop and set it to the v-model value everytime it changes.
-     */
-    value(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        this.addressValue = newVal;
-        this.isTyped = USER_INPUT_TYPES.typed;
-      }
-    },
   },
   methods: {
     /**
@@ -304,14 +289,21 @@ export default {
      */
     selectAddress(data) {
       this.dropdown = false;
-      this.addressValue = data.address;
       this.isTyped = USER_INPUT_TYPES.selected;
+      this.addressValue = data.address;
     },
     /**
-     * Emits 'input' when there is a v-model value change (happens as the user types).
+     * Emits 'input' when there is a v-model value change.
      */
     onChange(value) {
       this.$emit("input", value, this.isTyped);
+    },
+    /**
+     * Sets the value for what the user types int
+     */
+    onInputChange(e) {
+      this.isTyped = USER_INPUT_TYPES.typed;
+      this.addressValue = e.srcElement.value;
     },
   },
 };
