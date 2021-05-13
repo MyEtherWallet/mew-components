@@ -24,7 +24,7 @@
     ref="mewAddressSelect"
     outlined
   >
-  <!--
+    <!--
 =====================================================================================
   Blockie: displays placeholder if invalid address, otherwise displays the correct blockie.
   The blockie is always displayed at the beginning of the input. 
@@ -43,7 +43,7 @@
         height="25px"
       />
     </template>
-  <!--
+    <!--
 =====================================================================================
   Copy and save address button. Always displayed at the end of the input before the dropdown arrow.
 =====================================================================================
@@ -55,14 +55,15 @@
           :tooltip="copyTooltip"
           :copy-ref="getRefValue()"
         />
-        <v-tooltip
-          content-class="tooltip-inner"
-          color="titlePrimary--text"
-          top
-        >
+        <v-tooltip content-class="tooltip-inner" color="titlePrimary--text" top>
           <template v-slot:activator="{ on }">
             <v-icon
-              :class="['save-icon', enableSaveAddress ? 'basic--text' : 'disabled--text, no-pointer-events']"
+              :class="[
+                'save-icon',
+                enableSaveAddress
+                  ? 'basic--text'
+                  : 'disabled--text, no-pointer-events',
+              ]"
               v-on="on"
               @click="saveAddress"
             >
@@ -72,7 +73,7 @@
           <span>{{ saveTooltip }}</span>
         </v-tooltip>
       </div>
-  <!--
+      <!--
 =====================================================================================
   Dropdown arrow. Toggles the dropdown.
 =====================================================================================
@@ -86,14 +87,17 @@
         </v-icon>
       </div>
     </template>
-  <!--
+    <!--
 =====================================================================================
   Displays each item in the dropdown. 
 =====================================================================================
 -->
     <template v-slot:item="{ item }">
       <div
-        :class="['py-4 px-0 full-width d-flex align-center justify-space-between', $vuetify.breakpoint.smAndDown ? 'column-reverse align-baseline' : '']"
+        :class="[
+          'py-4 px-0 full-width d-flex align-center justify-space-between',
+          $vuetify.breakpoint.smAndDown ? 'column-reverse align-baseline' : '',
+        ]"
         @click="selectAddress(item)"
       >
         <div class="d-flex align-center justify-space-between full-max-width">
@@ -114,12 +118,15 @@
 </template>
 
 <script>
-import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
-import MewCopy from '@/components/MewCopy/MewCopy.vue';
-import MewTransformHash from '../MewTransformHash/MewTransformHash.vue';
-
+import MewBlockie from "@/components/MewBlockie/MewBlockie.vue";
+import MewCopy from "@/components/MewCopy/MewCopy.vue";
+import MewTransformHash from "../MewTransformHash/MewTransformHash.vue";
+const USER_INPUT_TYPES = {
+  typed: "TYPED",
+  selected: "SELECTED",
+};
 export default {
-  name: 'MewAddressSelect',
+  name: "MewAddressSelect",
   props: {
     /**
      * For validating your input - accepts an array of functions that take an input value as an argument and return either true / false or a string with an error message.
@@ -128,56 +135,56 @@ export default {
       type: Array,
       default: () => {
         return [];
-      }
+      },
     },
     /**
      * Displays text if there is no data.
      */
     noDataText: {
       type: String,
-      default: ''
+      default: "",
     },
     /**
      * Resolved address for name.
      */
     resolvedAddr: {
       type: String,
-      default: ''
+      default: "",
     },
     /**
      * Input value.
      */
     value: {
       type: String,
-      default: ''
+      default: "",
     },
     /**
      * Disables the input.
      */
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Enables save address button.
      */
     enableSaveAddress: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Returns if the address is valid or not.
      */
     isValidAddress: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * The input label.
      */
     label: {
       type: String,
-      default: 'To Address'
+      default: "To Address",
     },
     /**
      * Displays the saved addresses.
@@ -186,45 +193,49 @@ export default {
       type: Array,
       default: () => {
         return [];
-      }
+      },
     },
     /**
      * The input placeholder.
      */
     placeholder: {
       type: String,
-      default: 'Please enter an address'
+      default: "Please enter an address",
     },
     /**
      * Tooltip for copy.
      */
     copyTooltip: {
       type: String,
-      default: ''
+      default: "",
     },
     /**
      * Tooltip for save address.
      */
     saveTooltip: {
       type: String,
-      default: ''
-    }
+      default: "",
+    },
   },
   components: {
     MewBlockie,
     MewCopy,
-    MewTransformHash
+    MewTransformHash,
   },
   data() {
     return {
-    /**
-     * The v-model value for the combobox.
-     */
-      addressValue: '',
-    /**
-     * Controls the dropdown expansion.
-     */
-      dropdown: false
+      /**
+       * The v-model value for the combobox.
+       */
+      addressValue: "",
+      /**
+       * Controls the dropdown expansion.
+       */
+      dropdown: false,
+      /**
+       * Indicates whether the user selected from dropdown or typed in the address
+       */
+      isTyped: USER_INPUT_TYPES.typed,
     };
   },
   mounted() {
@@ -235,8 +246,12 @@ export default {
      * If the input item is a name (i.e, ens) and has a valid resolved address, display the blockie for the resolved address otherwise display the blockie for the regular address value.
      */
     blockieHash() {
-      return this.resolvedAddr.length > 0 ? this.resolvedAddr : this.addressValue.address ? this.addressValue.address : this.addressValue;
-    }
+      return this.resolvedAddr.length > 0
+        ? this.resolvedAddr
+        : this.addressValue.address
+        ? this.addressValue.address
+        : this.addressValue;
+    },
   },
   watch: {
     /**
@@ -244,7 +259,7 @@ export default {
      */
     addressValue(newVal, oldVal) {
       if (newVal !== oldVal) {
-        this.$emit('input', newVal)
+        this.$emit("input", newVal, this.isTyped);
       }
     },
     /**
@@ -253,6 +268,7 @@ export default {
     value(newVal, oldVal) {
       if (newVal !== oldVal) {
         this.addressValue = newVal;
+        this.isTyped = USER_INPUT_TYPES.typed;
       }
     },
   },
@@ -262,7 +278,7 @@ export default {
      */
     getRefValue() {
       if (this.$refs.mewAddressSelect) {
-        return this.$refs.mewAddressSelect.$el.querySelector('input');
+        return this.$refs.mewAddressSelect.$el.querySelector("input");
       }
     },
     /**
@@ -275,7 +291,7 @@ export default {
      * Emits 'saveAddress' when triggered by save address button.
      */
     saveAddress() {
-      this.$emit('saveAddress');
+      this.$emit("saveAddress");
     },
     /**
      * Toggles the dropdown.
@@ -289,35 +305,36 @@ export default {
     selectAddress(data) {
       this.dropdown = false;
       this.addressValue = data.address;
+      this.isTyped = USER_INPUT_TYPES.selected;
     },
     /**
      * Emits 'input' when there is a v-model value change (happens as the user types).
      */
     onChange(value) {
-      this.$emit('input', value)
-    }
-  }
+      this.$emit("input", value, this.isTyped);
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-.v-application  {
+.v-application {
   /**
     * Address select input.
     */
   .address-select {
     &.v-text-field {
       input {
-        font-family: 'PT Mono';
+        font-family: "PT Mono";
       }
     }
 
-    &.v-input--is-focused  {
+    &.v-input--is-focused {
       .dropdown-icon-container {
         border-left: 1px solid var(--v-titlePrimary-base) !important;
       }
     }
-  /**
+    /**
     * Right icons
     */
     .v-input__append-inner {
