@@ -31,7 +31,7 @@ import MewChart from "./components/MewChart/MewChart.vue";
 import MewTransformHash from "./components/MewTransformHash/MewTransformHash.vue";
 import MewCopy from "./components/MewCopy/MewCopy.vue";
 import MewSheet from "./components/MewSheet/MewSheet.vue";
-import MewTextArea from "./components/MewTextarea/MewTextArea.vue";
+import MewTextArea from "./components/MewTextArea/MewTextArea.vue";
 import MewSearch from "./components/MewSearch/MewSearch.vue";
 
 // import Vue from 'vue';
