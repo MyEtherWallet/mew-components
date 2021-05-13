@@ -121,7 +121,10 @@
 import MewBlockie from "@/components/MewBlockie/MewBlockie.vue";
 import MewCopy from "@/components/MewCopy/MewCopy.vue";
 import MewTransformHash from "../MewTransformHash/MewTransformHash.vue";
-
+const USER_INPUT_TYPES = {
+  typed: "TYPED",
+  selected: "SELECTED",
+};
 export default {
   name: "MewAddressSelect",
   props: {
@@ -232,7 +235,7 @@ export default {
       /**
        * Indicates whether the user selected from dropdown or typed in the address
        */
-      isTyped: "typed",
+      isTyped: USER_INPUT_TYPES.typed,
     };
   },
   mounted() {
@@ -265,7 +268,7 @@ export default {
     value(newVal, oldVal) {
       if (newVal !== oldVal) {
         this.addressValue = newVal;
-        this.isTyped = "typed";
+        this.isTyped = USER_INPUT_TYPES.typed;
       }
     },
   },
@@ -302,7 +305,7 @@ export default {
     selectAddress(data) {
       this.dropdown = false;
       this.addressValue = data.address;
-      this.isTyped = "selected";
+      this.isTyped = USER_INPUT_TYPES.selected;
     },
     /**
      * Emits 'input' when there is a v-model value change (happens as the user types).
