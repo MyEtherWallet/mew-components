@@ -232,9 +232,6 @@ export default {
       isTyped: USER_INPUT_TYPES.typed,
     };
   },
-  mounted() {
-    this.addressValue = this.value;
-  },
   computed: {
     /**
      * If the input item is a name (i.e, ens) and has a valid resolved address, display the blockie for the resolved address otherwise display the blockie for the regular address value.
