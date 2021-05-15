@@ -67,6 +67,9 @@ export const MEWModule = () => ({
     },
     hasBodyPadding: {
       default: boolean('has-body-padding', true)
+    },
+    removeTitlePaddings: {
+      default: boolean('remove-title-paddings', false)
     }
   },
   watch: {
@@ -89,6 +92,7 @@ export const MEWModule = () => ({
       :has-elevation="hasElevation"
       :icon="icon"
       :icon-align="iconAlign"
+      :remove-title-paddings="removeTitlePaddings"
     />
   </div>`
 });
