@@ -31,8 +31,7 @@
 =====================================================================================
 -->
     <template v-slot:message="item">
-      <span v-if="buyMoreStr && item.key === 0">{{ item.message }} <a href="https://ccswap.myetherwallet.com/#/" target="_blank">{{  buyMoreStr }}</a></span>
-      <span v-if="!buyMoreStr"> {{ item.message }}</span>
+      <span>{{ item.message }} <a v-if="buyMoreStr" rel="noopener noreferrer" href="https://ccswap.myetherwallet.com/#/" target="_blank">{{  buyMoreStr }}</a></span>
     </template>
     <template v-slot:prepend-inner>
   <!--
