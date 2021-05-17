@@ -15,6 +15,7 @@
     :label="label"
     :disabled="disabled"
     v-model="selectModel"
+    @click="onClick"
     return-object
     :menu-props="{ bottom: true, offsetY: true}"
     outlined
@@ -27,6 +28,7 @@
     <template v-slot:prepend-item>
       <v-text-field
         v-if="hasFilter || isSwap"
+        ref="filterTextField"
         height="35"
         class="px-2 mew-select-search d-flex align-center"
         color="disabled"
@@ -90,7 +92,7 @@
   =====================================================================================
   -->
       <v-skeleton-loader
-        class="no-pointer-events"
+        class="no-pointer-events mew-select-loading"
         min-width="100%"
         v-if="loading"
         type="list-item-avatar" />
@@ -291,7 +293,25 @@ export default {
   methods: {
     clear(val) {
       this.selectModel = val ? val : this.defaultItem;
+    },
+    onClick() {
+      setTimeout(() => {
+        this.$refs.filterTextField.$refs.input.focus();
+      }, 100)
     }
   }
 };
 </script>
+<style lang="scss">
+.mew-select-loading {
+  .v-skeleton-loader__list-item-avatar {
+    .v-skeleton-loader__avatar {
+      height: 22px;
+      width: 22px;
+    }
+    .v-skeleton-loader__text {
+      height: 14px;
+    }
+  }
+}
+</style>
