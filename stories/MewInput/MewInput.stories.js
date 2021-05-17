@@ -90,6 +90,9 @@ export const MEWInput = () => ({
     errorMessages: {
       default: text('error-messages', '')
     },
+    buyMoreStr: {
+      default: text('buy-more-str', '')
+    },
     maxBtnObj: {
       default: object('max-btn-obj', maxBtnObj)
     }
@@ -102,7 +105,7 @@ export const MEWInput = () => ({
   template: `
     <div>
     <br />
-    <mew-input ref="input" :max-btn-obj="maxBtnObj" :error-messages="errorMessages" :persistent-hint="persistentHint" :image="image" :id="id" :hint="hint" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :rules="rules" :hide-clear-btn="hideClearBtn" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
+    <mew-input ref="input" :buy-more-str="buyMoreStr" :max-btn-obj="maxBtnObj" :error-messages="errorMessages" :persistent-hint="persistentHint" :image="image" :id="id" :hint="hint" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :rules="rules" :hide-clear-btn="hideClearBtn" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
     />
   </div>`
 });

@@ -31,7 +31,8 @@
 =====================================================================================
 -->
     <template v-slot:message="item">
-      <span v-if="hasBuyMoreLink(item.message)">{{ hasBuyMoreLink(item.message).text }}. <a href="https://ccswap.myetherwallet.com/#/" target="_blank">{{  hasBuyMoreLink(item.message).link }}</a></span>
+      <span v-if="buyMoreStr && item.key === 0">{{ item.message }} <a href="https://ccswap.myetherwallet.com/#/" target="_blank">{{  buyMoreStr }}</a></span>
+      <span v-if="!buyMoreStr"> {{ item.message }}</span>
     </template>
     <template v-slot:prepend-inner>
   <!--
@@ -204,6 +205,13 @@ export default {
       default: ''
     },
     /**
+     * Adds a "Buy more" string to the end of the first index of the errorMessages prop.
+     */
+    buyMoreStr: {
+      type: String,
+      default: ''
+    },
+    /**
      * Object for max button, i.e. {title: 'Max', disabled: false, method: () => {}}
      */
     maxBtnObj: {
@@ -252,16 +260,6 @@ export default {
     this.inputValue = this.value;
   },
   methods: {
-    hasBuyMoreLink(str) {
-      if (str.includes('Buy more')) {
-        const splitStringArr = str.split(". ");
-        return {
-          text: splitStringArr[0],
-          link: splitStringArr[1]
-        }
-      }
-      return false;
-    },
     onPasswordIconClick() {
       if (this.isPasswordType) {
         this.showPassword = !this.showPassword;
