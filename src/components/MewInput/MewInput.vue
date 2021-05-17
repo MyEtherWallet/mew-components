@@ -25,6 +25,14 @@
     validate-on-blur
     height="62"
   >
+    <!--
+=====================================================================================
+  Mew Input: Error Messages 
+=====================================================================================
+-->
+    <template v-slot:message="item">
+      <span v-if="hasBuyMoreLink(item.message)">{{ hasBuyMoreLink(item.message).text }}. <a href="https://ccswap.myetherwallet.com/#/" target="_blank">{{  hasBuyMoreLink(item.message).link }}</a></span>
+    </template>
     <template v-slot:prepend-inner>
   <!--
 =====================================================================================
@@ -244,6 +252,16 @@ export default {
     this.inputValue = this.value;
   },
   methods: {
+    hasBuyMoreLink(str) {
+      if (str.includes('Buy more')) {
+        const splitStringArr = str.split(". ");
+        return {
+          text: splitStringArr[0],
+          link: splitStringArr[1]
+        }
+      }
+      return false;
+    },
     onPasswordIconClick() {
       if (this.isPasswordType) {
         this.showPassword = !this.showPassword;

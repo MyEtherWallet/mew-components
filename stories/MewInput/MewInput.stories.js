@@ -88,7 +88,7 @@ export const MEWInput = () => ({
       default: number('id', null)
     },
     errorMessages: {
-      default: text('error-messages', null)
+      default: text('error-messages', '')
     },
     maxBtnObj: {
       default: object('max-btn-obj', maxBtnObj)
