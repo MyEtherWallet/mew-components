@@ -29,7 +29,7 @@ export const MEWSheet = () => ({
     <br />
     <mew-sheet
     >
-      <template #content>
+      <template>
         <span>Hi I'm mew-sheet and I am still in the works </span>
       </template>
     </mew-sheet>
