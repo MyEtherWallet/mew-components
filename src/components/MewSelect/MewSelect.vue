@@ -17,7 +17,7 @@
     v-model="selectModel"
     @click="onClick"
     return-object
-    :menu-props="{ bottom: true, offsetY: true}"
+    :menu-props="{ bottom: true, offsetY: true, maxHeight: '419px' }"
     outlined
   >
       <!--
@@ -105,6 +105,15 @@
         <v-img
           class="item-img"
           v-if="data.item.img"
+          :src="data.item.img"
+          :alt="data.item.img"
+          :contain="true"
+          max-width="25"
+          max-height="25"
+        />
+        <v-img
+          class="item-img"
+          v-else
           :src="data.item.img"
           :alt="data.item.img"
           :contain="true"

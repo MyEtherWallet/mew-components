@@ -187,6 +187,8 @@ export default {
           return this.copy;
         case 'diploma':
           return this.diploma
+        case 'edit': 
+          return this.edit
         case 'ensManager':
           return this.ensManager;
         case 'ethBalance':

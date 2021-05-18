@@ -25,10 +25,10 @@ export const MEWModal = () => ({
       default: text("title", "Im a modal!"),
     },
     enableButton: {
-      default: boolean("enable button?", true),
+      default: boolean("enable-button", true),
     },
     btnText: {
-      default: text("text btn", "Close"),
+      default: text("btn-text", "Close"),
     },
   },
   watch: {

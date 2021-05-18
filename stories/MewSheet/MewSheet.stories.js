@@ -30,7 +30,9 @@ export const MEWSheet = () => ({
     <mew-sheet
     >
       <template>
-        <span>Hi I'm mew-sheet and I am still in the works </span>
+        <div class="pa-10">
+          <span>Hi I'm mew-sheet</span>
+        </div>
       </template>
     </mew-sheet>
   </div>`,
