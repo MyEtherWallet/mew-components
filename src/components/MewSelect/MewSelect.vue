@@ -17,7 +17,7 @@
     v-model="selectModel"
     @click="onClick"
     return-object
-    :menu-props="{ bottom: true, offsetY: true}"
+    :menu-props="{ bottom: true, offsetY: true, maxHeight: '419px' }"
     outlined
   >
       <!--
@@ -104,13 +104,13 @@
       <div v-if="!isSwap && !loading" class="d-flex align-center justify-center">
         <v-img
           class="item-img"
-          v-if="data.item.img"
-          :src="data.item.img"
-          :alt="data.item.img"
+          v-on:error="imgError = true"
+          :src="imgError || !data.item.img ? ethTokenPlaceholder : data.item.img"
+          :alt="imgError || !data.item.img ? 'token placeholder' : data.item.img"
           :contain="true"
           max-width="25"
           max-height="25"
-        />
+        /> 
         <span class="text-capitalize ml-2 mt-1">{{ data.item.name ? data.item.name : data.item }} <span
           v-if="data.item.subtext"
           class="textSecondary--text text-capitalize"
@@ -139,13 +139,13 @@
           <div v-if="!loading" class="d-flex align-center">
             <v-img
               class="item-img"
-              v-if="data.item.img"
-              :src="data.item.img"
-              :alt="data.item.img"
+              v-on:error="imgError = true"
+              :src="imgError || !data.item.img ? ethTokenPlaceholder : data.item.img"
+              :alt="imgError || !data.item.img ? 'token placeholder' : data.item.img"
               :contain="true"
               max-width="25"
               max-height="25"
-            />
+            /> 
             <span class="text-capitalize ml-2 my-2 d-flex flex-column">{{ data.item.name ? data.item.name : data.item }} <span
               v-if="data.item.subtext"
               class="mew-caption font-weight-regular textSecondary--text text-capitalize"
@@ -163,6 +163,8 @@
 </template>
 
 <script>
+import ethTokenPlaceholder from '@/assets/images/icons/eth.svg';
+
 export default {
   name: 'MewSelect',
   props: {
@@ -233,9 +235,11 @@ export default {
   },
   data() {
     return {
+      imgError: false,
       selectModel: null,
       selectItems: [],
-      search: ''
+      search: '',
+      ethTokenPlaceholder: ethTokenPlaceholder
     };
   },
   watch: {

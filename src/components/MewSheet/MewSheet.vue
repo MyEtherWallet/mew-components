@@ -1,3 +1,9 @@
+    <!--
+  =====================================================================================
+    Mew Sheet 
+    slot: used to place custom ui
+  =====================================================================================
+  -->
 <template>
   <v-sheet
     color="mewBg"
@@ -14,6 +20,6 @@ export default {};
 <style lang="scss">
 .mew-sheet {
   border-radius: 10px;
-  box-shadow: 0 0 15px var(--v-sheetBoxShadow-base) !important;
+  box-shadow: 0 0 15px var(--v-boxShadow-base) !important;
 }
 </style>
