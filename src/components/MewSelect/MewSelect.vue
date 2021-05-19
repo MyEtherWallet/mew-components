@@ -104,7 +104,7 @@
       <div v-if="!isSwap && !loading" class="d-flex align-center justify-center">
         <v-img
           class="item-img"
-          v-on:error="onImgErr"
+          v-on:error="onImgErr(data)"
           :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
           :alt="!data.item.img ? 'token placeholder' : data.item.img"
           :contain="true"
@@ -139,7 +139,7 @@
           <div v-if="!loading" class="d-flex align-center">
             <v-img
               class="item-img"
-              v-on:error="onImgErr"
+              v-on:error="onImgErr(data)"
               :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
               :alt="!data.item.img ? 'token placeholder' : data.item.img"
               :contain="true"
@@ -295,8 +295,8 @@ export default {
     this.selectModel = this.defaultItem || this.value;
   },
   methods: {
-    onImgErr(event) {
-      event.target.src = ethTokenPlaceholder;
+    onImgErr(data) {
+      data.item.img = ethTokenPlaceholder;
     },
     clear(val) {
       this.selectModel = val ? val : this.defaultItem;
