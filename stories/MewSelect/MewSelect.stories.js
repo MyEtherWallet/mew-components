@@ -22,7 +22,7 @@ const swapItemsArray = [{
 { hasNoEth: true, disabled: true, text: 'Your wallet is empty.', linkText: 'Buy ETH', link: 'https://ccswap.myetherwallet.com/#/'},
 { header: 'Other Tokens'},
 { name: 'ETH', subtext: 'Ethereum', value: 'Ethereum', img: ethereumIcon, tokenPrice: '3000'}, 
-{ name: 'DAI',  subtext: 'Makerdao', value: 'Makerdao', tokenBalance: '20.22 DAI',  img: ethereumIcon, tokenPriceBalance: '40000', tokenPrice: '2000'},
+{ name: 'DAI',  subtext: 'Makerdao', value: 'Makerdao', tokenBalance: '20.22 DAI',  img: null, tokenPriceBalance: '40000', tokenPrice: '2000'},
 { name: 'AAVE',  subtext: 'Aave', value: 'Aave', tokenBalance: '1.34 AAVE',  img: ethereumIcon, tokenPriceBalance: '234.3430', tokenPrice: '454.000'}];
 
 const itemsArray = [{ name: 'ETH', subtext: 'Ethereum', value: 'Ethereum', img: ethereumIcon }, { name: 'DAI', value: 'Makerdao',  subtext: 'Makerdao', img: ethereumIcon }];
