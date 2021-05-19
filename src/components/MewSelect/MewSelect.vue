@@ -297,7 +297,7 @@ export default {
   methods: {
     onImgErr(event) {
       event.target.src = ethTokenPlaceholder;
-    };
+    },
     clear(val) {
       this.selectModel = val ? val : this.defaultItem;
     },
