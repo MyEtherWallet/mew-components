@@ -73,7 +73,7 @@
         <v-img
           v-if="item.img"
           class="item-img selected-img"
-          :src="item.img"
+          :src="!item.img ? ethTokenPlaceholder : item.img"
           :alt="item.name ? item.name : item"
           :contain="true"
           max-width="25"
@@ -104,9 +104,8 @@
       <div v-if="!isSwap && !loading" class="d-flex align-center justify-center">
         <v-img
           class="item-img"
-          v-on:error="imgError = true"
-          :src="imgError || !data.item.img ? ethTokenPlaceholder : data.item.img"
-          :alt="imgError || !data.item.img ? 'token placeholder' : data.item.img"
+          :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
+          :alt="!data.item.img ? 'token placeholder' : data.item.img"
           :contain="true"
           max-width="25"
           max-height="25"
@@ -139,9 +138,8 @@
           <div v-if="!loading" class="d-flex align-center">
             <v-img
               class="item-img"
-              v-on:error="imgError = true"
-              :src="imgError || !data.item.img ? ethTokenPlaceholder : data.item.img"
-              :alt="imgError || !data.item.img ? 'token placeholder' : data.item.img"
+              :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
+              :alt="!data.item.img ? 'token placeholder' : data.item.img"
               :contain="true"
               max-width="25"
               max-height="25"
