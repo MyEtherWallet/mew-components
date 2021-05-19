@@ -104,6 +104,7 @@
       <div v-if="!isSwap && !loading" class="d-flex align-center justify-center">
         <v-img
           class="item-img"
+          v-on:error="this.src = ethTokenPlaceholder"
           :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
           :alt="!data.item.img ? 'token placeholder' : data.item.img"
           :contain="true"
@@ -138,6 +139,7 @@
           <div v-if="!loading" class="d-flex align-center">
             <v-img
               class="item-img"
+              v-on:error="this.src = ethTokenPlaceholder"
               :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
               :alt="!data.item.img ? 'token placeholder' : data.item.img"
               :contain="true"
