@@ -157,7 +157,9 @@ export default {
      */
     rules: {
       type: Array,
-      default: () => []
+      default: () => {
+        return [];
+      }
     },
     /**
      * Resolved address
@@ -214,8 +216,8 @@ export default {
     maxBtnObj: {
       type: Object,
       default: () => {
-        ({});
-      }
+        return {};
+      },
     },
   },
   data() {
