@@ -21,9 +21,9 @@ const swapItemsArray = [{
 {header: 'My Wallet'},
 { hasNoEth: true, disabled: true, text: 'Your wallet is empty.', linkText: 'Buy ETH', link: 'https://ccswap.myetherwallet.com/#/'},
 { header: 'Other Tokens'},
-{ name: 'ETH', subtext: 'Ethereum', value: 'Ethereum', img: ethereumIcon, tokenPrice: '3000'}, 
-{ name: 'DAI',  subtext: 'Makerdao', value: 'Makerdao', tokenBalance: '20.22 DAI',  img: "", tokenPriceBalance: '40000', tokenPrice: '2000'},
-{ name: 'AAVE',  subtext: 'Aave', value: 'Aave', tokenBalance: '1.34 AAVE',  img: ethereumIcon, tokenPriceBalance: '234.3430', tokenPrice: '454.000'}];
+{ name: 'ETH', subtext: 'Ethereum', symbol: 'ETH', value: 'Ethereum', img: ethereumIcon, price: '3000'}, 
+{ name: 'DAI',  subtext: 'Makerdao', symbol: 'DAI', value: 'Makerdao', tokenBalance: '20.22',  img: "", totalBalance: '40000', price: '2000'},
+{ name: 'AAVE',  subtext: 'Aave', symbol: 'AAVE', value: 'Aave', tokenBalance: '1.34',  img: ethereumIcon, totalBalance: '234.3430', price: '454.000'}];
 
 const itemsArray = [{ name: 'ETH', subtext: 'Ethereum', value: 'Ethereum', img: ethereumIcon }, { name: 'DAI', value: 'Makerdao',  subtext: 'Makerdao', img: ethereumIcon }];
 
@@ -34,7 +34,7 @@ export const MEWSelect = () => ({
       default: boolean('Disabled', false)
     },
     label: {
-      default: text('select-label', 'label')
+      default: text('label', 'label')
     },
     items: {
       default: object('items', itemsArray)

@@ -146,14 +146,14 @@
               max-width="25"
               max-height="25"
             /> 
-            <span class="text-capitalize ml-2 my-2 d-flex flex-column">{{ data.item.name ? data.item.name : data.item }} <span
-              v-if="data.item.subtext"
+            <span class="text-capitalize ml-2 my-2 d-flex flex-column">{{ data.item.symbol || data.item.name || data.item }} <span
+              v-if="data.item.tokenBalance || data.item.subtext"
               class="mew-caption font-weight-regular textSecondary--text text-capitalize"
-            >{{ data.item.tokenBalance || data.item.subtext }}</span></span>
+            >{{ data.item.tokenBalance ? data.item.tokenBalance + ' ' + data.item.symbol : data.item.subtext }}</span></span>
           </div>
           <div class="d-flex justify-center flex-column">
-            <span>${{ data.item.tokenPriceBalance || data.item.tokenPrice }}</span>
-            <span class="mew-caption font-weight-regular textSecondary--text" v-if="data.item.tokenPriceBalance">@ ${{ data.item.tokenPrice }}</span>
+            <span>${{ data.item.totalBalance || data.item.price }}</span>
+            <span class="mew-caption font-weight-regular textSecondary--text" v-if="data.item.totalBalance">@ ${{ data.item.price }}</span>
           </div>
 
         </div>
@@ -272,13 +272,14 @@ export default {
     },
     loading() {
       if (!this.loading) {
-        this.selectModel = this.value || this.defaultItem;
+        this.togglePointerEventStyle();
+        this.selectModel = this.value && Object.keys(this.value).length !== 0 ? this.value : this. defaultItem;
       }
     },
     items: {
       handler: function(newVal) {
         this.selectItems = newVal;
-        this.selectModel = this.value || this.defaultItem;
+        this.selectModel = this.value && Object.keys(this.value).length !== 0 ? this.value : this. defaultItem;
       },
       deep: true
     }
@@ -292,7 +293,8 @@ export default {
   },
   mounted() {
     this.selectItems = this.items;
-    this.selectModel = this.defaultItem || this.value;
+    this.selectModel = this.value && Object.keys(this.value).length !== 0 ? this.value : this. defaultItem;
+
   },
   methods: {
     onImgErr(data) {
@@ -301,8 +303,18 @@ export default {
     clear(val) {
       this.selectModel = val ? val : this.defaultItem;
     },
+    togglePointerEventStyle() {
+      const elems = document.querySelectorAll("div.v-list-item--link");
+      if (elems) {
+        const pointerEventStyle = this.loading ? 'none' : 'all'
+        for (let i = 0 ; i < elems.length ; i++) {
+          elems[i].style.pointerEvents = pointerEventStyle;
+        }
+      }
+    },
     onClick() {
       setTimeout(() => {
+        this.togglePointerEventStyle();
         this.$refs.filterTextField.$refs.input.focus();
       }, 100)
     }
