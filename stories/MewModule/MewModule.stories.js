@@ -44,6 +44,9 @@ export const MEWModule = () => ({
     titleSize: {
       default: text('title-size', 'mew-heading-1')
     },
+    mewTooltipText: {
+      default: text('mew-tooltip-text', '')
+    },
     subtitle: {
       default: text('subtitle', 'subtitle')
     },
@@ -78,6 +81,7 @@ export const MEWModule = () => ({
     <div>
     <br />
     <mew-module
+      :mew-tooltip-text="mewTooltipText"
       :has-body-padding="hasBodyPadding"
       :has-full-height="hasFullHeight"
       :color-type="colorType"

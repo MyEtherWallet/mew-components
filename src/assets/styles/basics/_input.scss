@@ -89,8 +89,9 @@
     * Input label
     */
     .v-label {
-      color: var(--v-inputLabel-base);
-      font-weight: 500;
+      color: var(--v-titlePrimary-base) !important;      
+      font-weight: 400;
+      font-size: 14px;
       text-transform: capitalize;
 
       &.v-label--is-disabled {
@@ -129,8 +130,8 @@
     }
     .total-token-placeholder {
       border-radius: 50%;        
-      height: 35px;
-      width: 35px;
+      height: 38px;
+      width: 38px;
     }
     &.v-text-field--enclosed .v-input__append-inner {
       height: 100%;

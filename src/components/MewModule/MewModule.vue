@@ -30,7 +30,7 @@
           </div>
           <div class="d-flex flex-column">
             <span v-if="subtitle" class="mew-heading-3 textPrimaryModule--text text-uppercase">{{ subtitle }}</span>
-            <span v-if="title" :class="['titlePrimary--text', titleSize]">{{ title }}</span>
+            <span v-if="title" :class="['titlePrimary--text d-flex align-center', titleSize]">{{ title }} <mew-tooltip v-if="mewTooltipText" class="mb-1 ml-1" :text="mewTooltipText" /></span>
             <span v-if="caption" class="mew-body textSecondaryModule--text font-weight-bold">{{ caption }}</span>
           </div>
           <div class="right-icon" v-if="showIcon(icon)">
@@ -80,8 +80,13 @@
 </template>
 
 <script>
+import MewTooltip from '@/components/MewTooltip/MewTooltip.vue';
+
 export default {
   name: 'MewModule',
+  components: {
+    MewTooltip
+  },
   data() {
     return {
         iconAlignments: {
@@ -113,23 +118,30 @@ export default {
       default: ''
     },
     /**
-     * The title of the module.
+     * The module title.
      */
     title: {
       type: String,
       default: ''
     },
     /**
-     * The subtitle of the module.
+     * The module subtitle.
      */
     subtitle: {
       type: String,
       default: ''
     },
     /**
-     * The caption of the module.
+     * The module caption.
      */
     caption: {
+      type: String,
+      default: ''
+    },
+    /**
+     * The mew tooltip text.
+     */
+    mewTooltipText: {
       type: String,
       default: ''
     },
