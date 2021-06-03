@@ -5,40 +5,54 @@
 }
 
 .mew-title {
-  font-size: 50px;
-  font-weight: 700
+  /* size - 50px,  height - 52px */
+  font-size: 3.571rem;
+  line-height: 3.714rem;
+  font-weight: 700;
 }
 
 .mew-subtitle {
-  font-size: 30px;
-  font-weight: 700
+/* size - 30px,  height - 36px */
+  font-size: 2.143rem;
+  font-weight: 700;
+  line-height: 2.571rem;
 }
 
 .mew-heading-1 {
-  font-size: 24px !important;
-  font-weight: 700 !important;
-}
-
-.mew-heading-2 {
-  font-size: 22px !important;
-  font-weight: 700 !important;
-}
-
-.mew-heading-3 {
-  font-size: 16px !important;
-  font-weight: 700 !important;
-}
-
-.mew-body {
-  font-size: 14px !important;
-  font-weight: 400 !important;
-}
-
-.mew-caption {
-  font-size: 12px !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-}
+  /* size - 24px,  height - 26px */
+  font-size: 1.714rem;
+  font-weight: 700;
+  line-height: 1.857rem;
+  }
+  
+  .mew-heading-2 {
+  /* size - 22px,  height - 26px */
+  font-size: 1.571rem; 
+  line-height: 1.857rem;
+  font-weight: 700;
+  }
+  
+  .mew-heading-3 {
+  /* size - 16px,  height - 22px */
+  font-size: 1.143rem; 
+  font-weight: 700;
+  line-height: 1.571rem;
+  }
+  
+  .mew-body {
+  /* size - 14px ,  height - 19px */
+  font-size: 1rem; 
+  font-weight: 400;
+  line-height: 1.357rem;
+  }
+  
+  .mew-caption {
+  /* size - 12px,  height - 14px */
+  font-size: 0.8571rem;
+  line-height: 1rem;
+  font-weight: 700; 
+  text-transform: uppercase;
+  }
 
 .capitalize {
   text-transform: capitalize !important;
@@ -54,3 +68,17 @@
   margin-bottom: 15px;
   padding-left: 10px;
 }
+
+.mew-label {
+  /* size - 12px,  height - 14px */
+  font-size: 0.8571rem;
+  font-weight: 400;
+  line-height: 1rem;
+} 
+  
+.mew-heading-4 {
+  /* size - 16px,  height - 22px */
+  font-size: 1.143rem; 
+  line-height: 1.571rem;
+}
+  

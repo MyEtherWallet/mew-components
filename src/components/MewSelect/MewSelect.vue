@@ -13,6 +13,7 @@
     item-text="name"
     item-value="value"
     :label="label"
+    :hide-selected="loading"
     :disabled="disabled"
     v-model="selectModel"
     @click="onClick"
@@ -56,7 +57,7 @@
         v-if="loading"
         type="chip" />
         <div v-if="!loading" class="flex-row d-flex align-center">
-          <img class="label-token-img" width="35" height="35" :src="url" v-for="(url, idx) in item.imgs" :key="url + idx" />
+          <img class="label-token-img" width="44" height="44" :src="url" v-for="(url, idx) in item.imgs" :key="url + idx" />
           <div
             class="total-token-placeholder inputBorder d-flex align-center justify-center mew-caption"
           >
@@ -266,20 +267,18 @@ export default {
       this.$emit('input', newVal);
     },
     value(newVal) {
-      if (newVal) {
-        this.selectModel = newVal;
-      }
+        this.selectModel = newVal && Object.keys(newVal).length !== 0 ? newVal : this.defaultItem;
     },
     loading() {
       if (!this.loading) {
         this.togglePointerEventStyle();
-        this.selectModel = this.value && Object.keys(this.value).length !== 0 ? this.value : this. defaultItem;
+        this.selectModel = this.value && Object.keys(this.value).length !== 0 ? this.value : this.defaultItem;
       }
     },
     items: {
       handler: function(newVal) {
         this.selectItems = newVal;
-        this.selectModel = this.value && Object.keys(this.value).length !== 0 ? this.value : this. defaultItem;
+        this.selectModel = this.value && Object.keys(this.value).length !== 0 ? this.value : this.defaultItem;
       },
       deep: true
     }
@@ -293,7 +292,7 @@ export default {
   },
   mounted() {
     this.selectItems = this.items;
-    this.selectModel = this.value && Object.keys(this.value).length !== 0 ? this.value : this. defaultItem;
+    this.selectModel = this.value && Object.keys(this.value).length !== 0 ? this.value : this.defaultItem;
 
   },
   methods: {
@@ -301,7 +300,7 @@ export default {
       data.item.img = ethTokenPlaceholder;
     },
     clear(val) {
-      this.selectModel = val ? val : this.defaultItem;
+      this.selectModel = val && Object.keys(val).length !== 0 ? val : this.defaultItem;
     },
     togglePointerEventStyle() {
       const elems = document.querySelectorAll("div.v-list-item--link");

@@ -84,18 +84,21 @@
       color: var(--v-titlePrimary-base) !important;
       font-size: 14px;
     }
-
-  /**
+    /**
     * Input label
     */
     .v-label {
-      color: var(--v-inputLabel-base);
+      color: var(--v-inputLabel-base);   
       font-weight: 500;
+      font-size: 1rem;
       text-transform: capitalize;
-
+      
       &.v-label--is-disabled {
         color: var(--v-inputDisabled-base); 
       }
+    }
+    &.v-text-field--outlined .v-label--active {
+      transform: translateY(-24px) scale(0.85) !important;
     }
   /**
     * Input placeholder
@@ -125,12 +128,12 @@
     */
   &.mew-select {   
     .label-token-img {
-      margin-right: -20px;
+      margin-right: -25px;
     }
     .total-token-placeholder {
       border-radius: 50%;        
-      height: 35px;
-      width: 35px;
+      height: 44px;
+      width: 44px;
     }
     &.v-text-field--enclosed .v-input__append-inner {
       height: 100%;

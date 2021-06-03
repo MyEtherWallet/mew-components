@@ -14,7 +14,7 @@ export default {
 const swapItemsArray = [{
   text: 'Select Token',
   imgs: [bitcoinIcon, ethereumIcon, bitcoinIcon, ethereumIcon],
-  total: '150',
+  total: '1500',
   divider: true,
   selectTokenLabel: true
 },
