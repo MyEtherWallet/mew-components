@@ -14,7 +14,8 @@ export const All = () => ({
       mewHeading4: {
         /* size - 16px,  height - 22px */
         fontSize: '1.143rem',
-        lineHeight: '1.571rem'
+        lineHeight: '1.571rem',
+        fontWeight: '400'
       },
       mewAddress: {
         fontFamily: 'PT Mono'

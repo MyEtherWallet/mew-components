@@ -91,7 +91,6 @@
       color: var(--v-inputLabel-base);   
       font-weight: 500;
       font-size: 1rem;
-      text-transform: capitalize;
       
       &.v-label--is-disabled {
         color: var(--v-inputDisabled-base); 
@@ -132,8 +131,8 @@
     }
     .total-token-placeholder {
       border-radius: 50%;        
-      height: 44px;
-      width: 44px;
+      height: 40px;
+      width: 40px;
     }
     &.v-text-field--enclosed .v-input__append-inner {
       height: 100%;
