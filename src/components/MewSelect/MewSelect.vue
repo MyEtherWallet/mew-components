@@ -57,7 +57,7 @@
         v-if="loading"
         type="chip" />
         <div v-if="!loading" class="flex-row d-flex align-center">
-          <img class="label-token-img" width="44" height="44" :src="url" v-for="(url, idx) in item.imgs" :key="url + idx" />
+          <img class="label-token-img" width="40" height="40" :src="url" v-for="(url, idx) in item.imgs" :key="url + idx" />
           <div
             class="total-token-placeholder inputBorder d-flex align-center justify-center mew-caption"
           >
