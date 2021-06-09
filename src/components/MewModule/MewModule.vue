@@ -5,7 +5,7 @@
   =====================================================================================
   -->
   <v-sheet 
-    :class="[ hasElevation ? 'module-box-shadow' : '', 'full-width', 'module-container pt-6']"
+    :class="[ hasElevation ? 'module-box-shadow' : '', 'full-width', 'module-container pt-8']"
     :color="colorType"
     :height="hasFullHeight ? '100%' : 'auto'"
   >
@@ -19,7 +19,7 @@
         align="center"
         justify="space-between"
       >
-        <div :class="['left-wrapper pl-8 mt-2 d-flex flex-row', hasBodyPadding ? 'justify-start align-end pt-6' : 'justify-center align-center', hasIndicator ? 'indicator' : '']">
+        <div :class="['left-wrapper pl-md-13 pl-8 mt-2 d-flex flex-row', hasBodyPadding ? 'justify-start align-end pt-6' : 'justify-center align-center', hasIndicator ? 'indicator' : '']">
           <div class="left-icon mr-2" v-if="showIcon(icon)">
             <img
               v-if="iconAlign.toLowerCase() === iconAlignments.left"
@@ -71,7 +71,7 @@
     Slot: moduleBody (used to place custom ui on the body content)
   =====================================================================================
   -->
-        <v-container :class="hasBodyPadding ? 'pa-3 pa-md-10 pt-md-5' : 'pa-0'" fluid> 
+        <v-container :class="hasBodyPadding ? 'pa-6 pb-13 px-md-13 py-md-8' : 'pa-0'" fluid> 
           <slot name="moduleBody" />
         </v-container>
       </v-row> 
@@ -200,7 +200,7 @@ export default {
   }
   .indicator {
     border-left: 4px solid var(--v-primary-base);
-    min-height: 30px;
+    height: 24px;
   }
 }
 </style>
