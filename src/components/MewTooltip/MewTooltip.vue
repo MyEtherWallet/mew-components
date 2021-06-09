@@ -14,7 +14,7 @@
     >
       <template v-slot:activator="{ on }"> 
         <v-icon
-          class="cursor-pointer"
+          class="cursor-pointer mew-body"
           color="searchText"
           v-on="on"
         >
