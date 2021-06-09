@@ -152,7 +152,7 @@
               class="mew-caption font-weight-regular textSecondary--text text-capitalize"
             >{{ data.item.tokenBalance ? data.item.tokenBalance + ' ' + data.item.symbol : data.item.subtext }}</span></span>
           </div>
-          <div class="d-flex justify-center flex-column">
+          <div class="d-flex justify-center flex-column align-end">
             <span>${{ data.item.totalBalance || data.item.price }}</span>
             <span class="mew-caption font-weight-regular textSecondary--text" v-if="data.item.totalBalance">@ ${{ data.item.price }}</span>
           </div>
