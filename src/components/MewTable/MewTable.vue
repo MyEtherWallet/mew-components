@@ -1,5 +1,5 @@
 <template>
-<div>
+  <div>
     <!--
   =====================================================================================
     Mew Table
@@ -24,15 +24,29 @@
     Loading Mew Table
   =====================================================================================
   -->
-      <template v-if="loading" #loading> 
-        <v-skeleton-loader class="py-1" width="100%" min-width="100%" v-for="i in 3" :key="i" type="text" elevation="0"/>
+      <template
+        v-if="loading"
+        #loading
+      > 
+        <v-skeleton-loader
+          class="py-1"
+          width="100%"
+          min-width="100%"
+          v-for="i in 3"
+          :key="i"
+          type="text"
+          elevation="0"
+        />
       </template>
-    <!--
+      <!--
   =====================================================================================
     Displays checkboxes next to each row (hasSelect needs to be set to true)
   =====================================================================================
   -->
-      <template v-if="!loading" v-slot:[`item.data-table-select`]="{ select, isSelected }">
+      <template
+        v-if="!loading"
+        v-slot:[`item.data-table-select`]="{ select, isSelected }"
+      >
         <v-simple-checkbox
           :value="isSelected"
           @input="select($event)"
@@ -42,12 +56,15 @@
           :ripple="false"
         /> 
       </template>
-    <!--
+      <!--
   =====================================================================================
     Displays the token image and token title
   =====================================================================================
   -->
-      <template v-if="!loading" v-slot:[`item.token`]="{item}">
+      <template
+        v-if="!loading"
+        v-slot:[`item.token`]="{item}"
+      >
         <div class="d-flex align-center">
           <img
             class="mr-2"
@@ -59,24 +76,40 @@
           <span>{{ item.token }}</span>
         </div>
       </template>
-    <!--
+      <!--
   =====================================================================================
     Displays a toggle button
   =====================================================================================
   -->
-      <template v-if="!loading" v-slot:[`item.toggle`]="{ item }">
-        <v-switch v-if="item.toggle" :disabled="item.toggle.disabled" @click="item.toggle.method(item)" v-model="item.toggle.value" inset :color="item.toggle.color">
+      <template
+        v-if="!loading"
+        v-slot:[`item.toggle`]="{ item }"
+      >
+        <v-switch
+          v-if="item.toggle"
+          :disabled="item.toggle.disabled"
+          @click="item.toggle.method(item)"
+          v-model="item.toggle.value"
+          inset
+          :color="item.toggle.color"
+        >
           <template #label> 
-            <span v-if="item.toggle.label" :class="item.toggle.color + '--text font-weight-regular mew-body'">{{ item.toggle.label }}</span>
+            <span
+              v-if="item.toggle.label"
+              :class="item.toggle.color + '--text font-weight-regular mew-body capitalize'"
+            >{{ item.toggle.label }}</span>
           </template>
         </v-switch>
       </template>
-    <!--
+      <!--
   =====================================================================================
     Displays the chart change
   =====================================================================================
   -->
-      <template v-if="!loading" v-slot:[`item.change`]="{ item }">
+      <template
+        v-if="!loading"
+        v-slot:[`item.change`]="{ item }"
+      >
         <div class="chart-container d-flex align-center">
           <!-- hiding for now because we don't have the data -->
           <!-- <mew-chart
@@ -84,7 +117,10 @@
             :data="item.changeData"
             :color="item.status === '+' ? '#05c0a5' : '#ff445b'"
           /> -->
-          <span :class="[item.status === '+' ? 'primary--text' : 'error--text', 'd-flex']">{{ item.change + '%'}}
+          <span
+            v-if="item.change !== ''"
+            :class="[item.status === '+' ? 'primary--text' : 'error--text', 'd-flex']"
+          >{{ item.change + '%' }}
             <v-icon
               class="primary--text"
               v-if="item.status === '+'"
@@ -96,22 +132,32 @@
           </span>
         </div>
       </template>
-    <!--
+      <!--
   =====================================================================================
     Displays the balance in ETH and USD
   =====================================================================================
   -->
-      <template v-if="!loading" v-slot:[`item.balance`]="{ item }">
-          <div class="d-flex flex-column py-2">
-            <span v-for="(bal, idx) in item.balance" :key="idx" :class="idx === 1 ? 'searchText--text' : ''">{{bal}}</span>
-          </div>
+      <template
+        v-if="!loading"
+        v-slot:[`item.balance`]="{ item }"
+      >
+        <div class="d-flex flex-column py-2">
+          <span
+            v-for="(bal, idx) in item.balance"
+            :key="idx"
+            :class="idx === 1 ? 'searchText--text' : ''"
+          >{{ bal }}</span>
+        </div>
       </template>
-    <!--
+      <!--
   =====================================================================================
     Displays a call to action button
   =====================================================================================
   -->
-      <template v-if="!loading" v-slot:[`item.callToAction`]="{ item }">
+      <template
+        v-if="!loading"
+        v-slot:[`item.callToAction`]="{ item }"
+      >
         <div class="d-flex flex-row py-3 justify-end">
           <mew-button
             v-for="(button, idx) in item.callToAction"
@@ -122,12 +168,11 @@
             :disabled="button.disabled"
             btn-size="small"
             :btn-style="button.btnStyle"
-            :btn-colorTheme="button.colorTheme"
+            :btn-color-theme="button.colorTheme"
           />
-
         </div>
       </template>
-    <!--
+      <!--
   =====================================================================================
     Displays the tx hash
   =====================================================================================
@@ -162,12 +207,15 @@
           </v-tooltip>
         </div>
       </template>
-    <!--
+      <!--
   =====================================================================================
     Displays the address hash
   =====================================================================================
   -->
-      <template v-if="!loading" v-slot:[`item.address`]="{ item }">
+      <template
+        v-if="!loading"
+        v-slot:[`item.address`]="{ item }"
+      >
         <div class="d-flex align-center">
           <mew-blockie
             class="mr-2 d-none d-sm-flex"
@@ -216,9 +264,7 @@
 
 <script>
 import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
-import MewToast from '@/components/MewToast/MewToast.vue';
 import MewButton from '@/components/MewButton/MewButton.vue';
-import MewChart from '@/components/MewChart/MewChart.vue';
 import MewTransformHash from '@/components/MewTransformHash/MewTransformHash.vue';
 import MewCopy from '@/components/MewCopy/MewCopy.vue';
 
@@ -226,9 +272,7 @@ export default {
   name: 'MewTable',
   components: {
     MewBlockie,
-    MewToast,
     MewButton,
-    MewChart,
     MewTransformHash,
     MewCopy
   },
