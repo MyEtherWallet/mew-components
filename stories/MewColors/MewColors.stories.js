@@ -93,6 +93,8 @@ export const All = () => ({
           {name: 'disabled', lightHex: '#cecece', darkHex: '#1f2b42'},
           {name: 'white', lightHex: '#fff', darkHex: '#fff'},
           {name: 'black', lightHex: '#000', darkHex: '#000'},
+          {name: 'textBlack', lightHex: '202124', darkHex: '202124'},
+          {name: 'textBlack2', lightHex: '5F6368', darkHex: '5F6368'},
           {name: 'mewBg', lightHex: '#fff', darkHex: '#151a29'},
           {name: 'walletBg', lightHex: '#f2f4fa', darkHex: '#151a29'},
           {name: 'boxShadow', lightHex: '#ececec', darkHex: '#3c3c3c'}
@@ -121,7 +123,7 @@ export const All = () => ({
   methods: {
     getClasses(shade) {
       const classes = [];
-      if (shade.name === 'expandHeader' || shade.name === 'basic base' || shade.name === 'titlePrimary') {
+      if (shade.name === 'black' || shade.name === 'textBlack' || shade.name === 'expandHeader' || shade.name === 'basic base' || shade.name === 'titlePrimary') {
         return 'white--text';
       }
 

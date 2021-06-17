@@ -64,7 +64,9 @@ export default {
         tableHeader: '#f9f9f9',
         selectHeaderBg: '#F8FAFC',
         selectBorder: '#F1F1F1',
-        maxButton: '#F7F9FA'
+        maxButton: '#F7F9FA',
+        textBlack: '#202124',
+        textBlack2: '#5F6368'
       },
       dark: {
         primaryHover: '#1eb19b',
@@ -126,7 +128,9 @@ export default {
         tableHeader: '#0f1320',
         selectHeaderBg: '#F8FAFC',
         selectBorder: '#F1F1F1',
-        maxButton: '#F7F9FA'
+        maxButton: '#F7F9FA',
+        textBlack: '#202124',
+        textBlack2: '#5F6368'
       }
     }
   }

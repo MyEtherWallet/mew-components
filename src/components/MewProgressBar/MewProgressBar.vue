@@ -1,29 +1,27 @@
 <template>
-    <!--
+  <!--
   =====================================================================================
     Mew Progress Bar
   =====================================================================================
   -->
   <div
-    :title="'Remaining:' + remainingAmt"
     class="mew-progress-bar full-width d-flex cursor-pointer"
   >
     <div
       :class="[
-        data.color,
+        section.color,
         idx === 0 ? 'left-border-radius' : '',
-        idx === balanceObj.data.length - 1 && hasRightBorderRadius ? 'right-border-radius' : ''
+        idx === data.length - 1 ? 'right-border-radius' : ''
       ]"
-      v-for="(data, idx) in balanceObj.data"
-      :key="data + idx"
-      :style="{ height: '10px', width: data.percentage + '%'}"
-      :title="data.tooltip ? data.tooltip : ''"
+      v-for="(section, idx) in data"
+      :key="section + idx"
+      :style="{ height: '10px', width: section.percentage + '%'}"
+      :title="section.tooltip ? section.tooltip : ''"
     />
   </div>
 </template>
 
 <script>
-import BigNumber from 'bignumber.js';
 
 export default {
   name: 'MewProgressBar',
@@ -35,38 +33,15 @@ export default {
   },
   props: {
     /**
-     * Balance object, i.e, {total:10  , data: [ title: '', amount: 1, color: '' ]}
+     * Array of progress bar data , i.e [ percentage: '', color: '' ]}
      */
-    balanceObj: {
-      type: Object,
+    data: {
+      type: Array,
       default: () => {
-        return {}
+        return []
       }
-    }
-  },
-  beforeMount() {
-    let total = 0;
-
-    this.balanceObj.data.forEach((data, idx) => {
-      if (this.balanceObj.total < data.amount) {
-        return;
-      }
-      
-      const percentage = new BigNumber(data.amount).div(this.balanceObj.total).times(100).toFixed(2);
-
-      total = new BigNumber(total).plus(data.amount).toFixed();
-      this.balanceObj.data[idx].percentage = percentage;
-    })
-
-    if (total < this.balanceObj.total) {
-      this.remainingAmt = new BigNumber(this.balanceObj.total).minus(total).toFixed();
-    }
-
-    if (total >= this.balanceObj.total ) {
-      this.hasRightBorderRadius = true;
     }
   }
-  
 }
 </script>
 

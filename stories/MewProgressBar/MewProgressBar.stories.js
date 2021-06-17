@@ -1,6 +1,6 @@
 import {
   withKnobs,
-  object,
+  array,
   boolean
 } from '@storybook/addon-knobs';
 import MewProgressBar from '@/components/MewProgressBar/MewProgressBar.vue';
@@ -13,13 +13,10 @@ export default {
   decorators: [withKnobs]
 };
 
-const balanceObj = {
-  total: 20.32,
-  data: [
-    { title: 'sendBal', color: 'titlePrimary', amount: 5.3, tooltip: 'Send: 5.3'},
-    { title: 'feeBal', color: 'warning darken-1', amount: 3.2, tooltip: 'Fee: 3.2'}
+const data =  [
+    { color: 'titlePrimary', percentage: '20', tooltip: 'Aave: 5.3'},
+    { color: 'warning darken-1', percentage: '80', tooltip: 'ETH: 3.2'}
   ]
-}
 
 export const mewProgressBar = () => ({
   components: { MewProgressBar },
@@ -27,8 +24,8 @@ export const mewProgressBar = () => ({
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     },
-    balanceObj: {
-      default: object('balance-obj', balanceObj)
+    data: {
+      default: array('data', data)
     }
   },
   watch: {
@@ -39,6 +36,6 @@ export const mewProgressBar = () => ({
   template: `
     <div>
     <br />
-    <mew-progress-bar :balance-obj="balanceObj" />
+    <mew-progress-bar :data="data" />
   </div>`
 });
