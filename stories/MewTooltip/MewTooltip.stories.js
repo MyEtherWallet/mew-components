@@ -25,6 +25,9 @@ export const mewTooltip = () => ({
     },
     text: {
       default: text('text', 'I am a tooltip')
+    },
+    maxWidth: {
+      default: text('', '100%')
     }
   },
   watch: {
@@ -37,6 +40,7 @@ export const mewTooltip = () => ({
     <br />
     <mew-tooltip
       :text="text"
+      :max-width="maxWidth"
     />
   </div>`
 });

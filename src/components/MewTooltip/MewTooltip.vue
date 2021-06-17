@@ -7,6 +7,7 @@
   <div>
     <v-tooltip
       eager
+      :max-width="maxWidth"
       open-on-hover
       content-class="tooltip-inner"
       color="titlePrimary--text"
@@ -36,6 +37,13 @@ export default {
     text: {
       type: String,
       default: ''
+    },
+    /**
+     * The tooltip text.
+     */
+    maxWidth: {
+      type: [String , Number],
+      default: '100%'
     }
   }
 }
