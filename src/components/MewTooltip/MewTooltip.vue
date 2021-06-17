@@ -39,7 +39,7 @@ export default {
       default: ''
     },
     /**
-     * The tooltip text.
+     * The max width for tooltip text.
      */
     maxWidth: {
       type: [String , Number],
