@@ -31,10 +31,15 @@
 =====================================================================================
 -->
     <template v-slot:message="item">
-      <span>{{ item.message }} <a v-if="buyMoreStr" rel="noopener noreferrer" href="https://ccswap.myetherwallet.com/#/" target="_blank">{{  buyMoreStr }}</a></span>
+      <span>{{ item.message }} <a
+        v-if="buyMoreStr"
+        rel="noopener noreferrer"
+        href="https://ccswap.myetherwallet.com/#/"
+        target="_blank"
+      >{{ buyMoreStr }}</a></span>
     </template>
     <template v-slot:prepend-inner>
-  <!--
+      <!--
 =====================================================================================
   Mew Input: Blockie (displays at the beginning of the input)
 =====================================================================================
@@ -49,24 +54,39 @@
         width="25px"
         height="25px"
       />
-  <!--
+      <!--
 =====================================================================================
   Mew Input: Token Image  (displays at the beginning of the input)
 =====================================================================================
 -->
-    <div class="d-flex align-center justify-center">
-      <img v-if="image" height="30" :src="image" alt="token image" />
-    </div>
+      <div class="d-flex align-center justify-center">
+        <img
+          v-if="image"
+          height="30"
+          :src="image"
+          alt="token image"
+        >
+      </div>
     </template>
-  <!--
+    <!--
 =====================================================================================
   Max Button (displays at the end of the input)
 =====================================================================================
 -->
     <template v-slot:append>
-      <v-btn v-if="maxBtnObj.method" @click="maxBtnObj.method" 
-          :class="[maxBtnObj.disabled ? 'disabled--text no-pointer-events' : 'inputLabel--text', 'rounded-lg mt-n2 mew-body font-weight-medium text-capitalize']" 
-          min-width="40" min-height="40" height="40" width="40" depressed color="maxButton">{{maxBtnObj.title}}</v-btn>
+      <v-btn
+        v-if="maxBtnObj.method"
+        @click="maxBtnObj.method" 
+        :class="[maxBtnObj.disabled ? 'disabled--text no-pointer-events' : 'inputLabel--text', 'rounded-lg mt-n2 mew-body font-weight-medium text-capitalize']" 
+        min-width="40"
+        min-height="40"
+        height="40"
+        width="40"
+        depressed
+        color="maxButton"
+      >
+        {{ maxBtnObj.title }}
+      </v-btn>
     </template>
   </v-text-field>
 </template>

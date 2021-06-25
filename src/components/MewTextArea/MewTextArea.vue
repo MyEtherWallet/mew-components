@@ -4,7 +4,12 @@
   =====================================================================================
   -->
 <template>
-  <v-textarea outlined :rules="rules" :label="label" :value="inputValue"/>
+  <v-textarea
+    outlined
+    :rules="rules"
+    :label="label"
+    :value="inputValue"
+  />
 </template>
 
 <script>

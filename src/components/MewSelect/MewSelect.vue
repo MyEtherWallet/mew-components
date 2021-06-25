@@ -1,5 +1,5 @@
 <template>
-    <!--
+  <!--
   =====================================================================================
     Mew Select
   =====================================================================================
@@ -21,7 +21,7 @@
     :menu-props="{ bottom: true, offsetY: true, maxHeight: '419px' }"
     outlined
   >
-      <!--
+    <!--
   =====================================================================================
     Filter for dropdown items
   =====================================================================================
@@ -50,18 +50,32 @@
     Select Token Placeholder
   =====================================================================================
   -->
-      <div v-if="item.selectTokenLabel" class="d-flex align-center flex-row justify-space-between full-width">
-        <span>{{item.text }}</span>
+      <div
+        v-if="item.selectTokenLabel"
+        class="d-flex align-center flex-row justify-space-between full-width"
+      >
+        <span>{{ item.text }}</span>
         <v-skeleton-loader
-        class="no-pointer-events"
-        v-if="loading"
-        type="chip" />
-        <div v-if="!loading" class="flex-row d-flex align-center">
-          <img class="label-token-img" width="24" height="24" :src="url" v-for="(url, idx) in item.imgs" :key="url + idx" />
+          class="no-pointer-events"
+          v-if="loading"
+          type="chip"
+        />
+        <div
+          v-if="!loading"
+          class="flex-row d-flex align-center"
+        >
+          <img
+            class="label-token-img"
+            width="24"
+            height="24"
+            :src="url"
+            v-for="(url, idx) in item.imgs"
+            :key="url + idx"
+          >
           <div
             class="total-token-placeholder inputBorder d-flex align-center justify-center mew-caption"
           >
-            <span class="textSecondary--text">+{{item.total}}</span>
+            <span class="textSecondary--text">+{{ item.total }}</span>
           </div>
         </div>
       </div>
@@ -70,7 +84,10 @@
     Selected item
   =====================================================================================
   -->
-      <div v-if="!item.selectTokenLabel"  class="d-flex align-center justify-center">
+      <div
+        v-if="!item.selectTokenLabel"
+        class="d-flex align-center justify-center"
+      >
         <v-img
           v-if="item.img"
           class="item-img selected-img"
@@ -96,16 +113,20 @@
         class="no-pointer-events mew-select-loading"
         min-width="100%"
         v-if="loading"
-        type="list-item-avatar" />
+        type="list-item-avatar"
+      />
       <!--
   =====================================================================================
     Default Select Dropdown items
   =====================================================================================
   -->
-      <div v-if="!isSwap && !loading" class="d-flex align-center justify-center">
+      <div
+        v-if="!isSwap && !loading"
+        class="d-flex align-center justify-center"
+      >
         <v-img
           class="item-img"
-          v-on:error="onImgErr(data)"
+          @error="onImgErr(data)"
           :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
           :alt="!data.item.img ? 'token placeholder' : data.item.img"
           :contain="true"
@@ -122,25 +143,41 @@
     Swap Select Dropdown items
   =====================================================================================
   -->
-      <div v-if="isSwap && !loading" class="d-flex align-center full-width">
-      <!--
+      <div
+        v-if="isSwap && !loading"
+        class="d-flex align-center full-width"
+      >
+        <!--
   =====================================================================================
       Empty Wallet Link
   =====================================================================================
   -->
-        <div class="no-pointer-events titlePrimary--text" v-if="data.item.hasNoEth">
-          {{ data.item.text }} <a class="all-pointer-events" target="_blank" :href="data.item.link">{{ data.item.linkText }}</a>
+        <div
+          class="no-pointer-events titlePrimary--text"
+          v-if="data.item.hasNoEth"
+        >
+          {{ data.item.text }} <a
+            class="all-pointer-events"
+            target="_blank"
+            :href="data.item.link"
+          >{{ data.item.linkText }}</a>
         </div>
-      <!--
+        <!--
   =====================================================================================
     Swap Dropdown Item
   =====================================================================================
   -->
-        <div class="d-flex align-center justify-space-between full-width" v-if="data.item.name">
-          <div v-if="!loading" class="d-flex align-center">
+        <div
+          class="d-flex align-center justify-space-between full-width"
+          v-if="data.item.name"
+        >
+          <div
+            v-if="!loading"
+            class="d-flex align-center"
+          >
             <v-img
               class="item-img"
-              v-on:error="onImgErr(data)"
+              @error="onImgErr(data)"
               :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
               :alt="!data.item.img ? 'token placeholder' : data.item.img"
               :contain="true"
@@ -154,9 +191,11 @@
           </div>
           <div class="d-flex justify-center flex-column align-end">
             <span>${{ data.item.totalBalance || data.item.price }}</span>
-            <span class="mew-caption font-weight-regular textSecondary--text" v-if="data.item.totalBalance">@ ${{ data.item.price }}</span>
+            <span
+              class="mew-caption font-weight-regular textSecondary--text"
+              v-if="data.item.totalBalance"
+            >@ ${{ data.item.price }}</span>
           </div>
-
         </div>
       </div>
     </template>
@@ -303,7 +342,7 @@ export default {
       this.selectModel = val && Object.keys(val).length !== 0 ? val : this.defaultItem;
     },
     togglePointerEventStyle() {
-      const elems = document.querySelectorAll("div.v-list-item--link");
+      const elems = document.querySelectorAll('div.v-list-item--link');
       if (elems) {
         const pointerEventStyle = this.loading ? 'none' : 'all'
         for (let i = 0 ; i < elems.length ; i++) {

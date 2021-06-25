@@ -1,10 +1,10 @@
 <template>
-    <!--
+  <!--
   =====================================================================================
     Mew Switch 
   =====================================================================================
   -->
-  <div class="d-flex align-center"> 
+  <div :class="[itemOrder, 'd-flex align-center']">
     <span
       class="mew-body textPrimary--text mr-4 cursor-pointer"
       @click="switchToggle"
@@ -20,13 +20,12 @@
 </template>
 
 <script>
-
 export default {
   name: 'MewSwitch',
   data() {
     return {
-      value: false
-    }
+      value: false,
+    };
   },
   props: {
     /**
@@ -34,19 +33,28 @@ export default {
      */
     label: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
+    labelSide: {
+      type: String,
+      default: 'left',
+    },
+  },
+  computed: {
+    itemOrder() {
+      return this.labelSide === 'left' ? '' : 'flex-row-reverse';
+    },
   },
   methods: {
     setToggle(val) {
-      this.value = val
+      this.value = val;
     },
     switchToggle() {
       this.value = !this.value;
       this.$emit('switch', this.value);
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss">
