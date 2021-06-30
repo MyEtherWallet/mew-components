@@ -89,7 +89,7 @@
               <div class="caption mew-heading-2">
                 <div class="d-inline-block mr-1">
                   {{ notification.fromObj.amount }}
-                  <span class="textSecondary--text">{{
+                  <span class="textPrimary--text">{{
                     notification.fromObj.currency
                   }}</span>
                 </div>
@@ -98,7 +98,7 @@
                 </v-icon>
                 <div class="d-inline-block">
                   {{ notification.toObj.amount }}
-                  <span class="textSecondary--text">{{
+                  <span class="textPrimary--text">{{
                     notification.toObj.currency
                   }}</span>
                 </div>
@@ -106,7 +106,7 @@
             </div>
           </div>
         </v-col>
-        <v-col cols="4" class="text-right">
+        <v-col cols="4" class="text-right pr-2">
           <mew-badge
             :badge-title="notification.type.string"
             :badge-type="getBadgeType"
@@ -123,9 +123,11 @@
   =====================================================================================
   -->
     <div class="activated-container capitalize" v-if="active">
-      <v-container>
+      <v-container class="pa-2">
         <v-row v-for="(detail, idx) in getDetails" :key="idx">
-          <v-col cols="6"> {{ detail.string }}: </v-col>
+          <v-col cols="6" class="textPrimary--text">
+            {{ detail.string }}:
+          </v-col>
           <v-col
             cols="6"
             :class="[getClasses(detail.value) + '--text', 'text-right']"
