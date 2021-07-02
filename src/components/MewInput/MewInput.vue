@@ -265,7 +265,7 @@ export default {
       }
     },
     clear(val) {
-      this.inputValue = val;
+      this.inputValue = val ? val : '';
     }
   }
 };
