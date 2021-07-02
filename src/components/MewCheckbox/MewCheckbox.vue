@@ -10,7 +10,7 @@
       v-model="isChecked"
     />
     <span
-      class="titlePrimary--text mr-2 cursor-pointer"
+      :class="['mr-2 cursor-pointer', colorText]"
       @click="toggleCheckbox"
     >{{ label }}
       <a
@@ -27,6 +27,13 @@
 export default {
   name: 'MewCheckbox',
   props: {
+    /**
+     * Changes the label text color (i.e error--text)
+     */
+    colorText: {
+        type: String,
+        default: 'titlePrimary--text'
+    },
     /**
      * Checkbox label
      */

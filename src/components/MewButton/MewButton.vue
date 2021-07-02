@@ -25,7 +25,7 @@
       v-if="loading"
       indeterminate
       size="25"
-      color="white"
+      :color="isTransparent || isOutline ? 'primary' : 'white'"
     />
     <!--
   =====================================================================================
