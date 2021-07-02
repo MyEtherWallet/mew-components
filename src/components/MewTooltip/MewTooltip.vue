@@ -21,7 +21,9 @@
         >
           mdi-information
         </v-icon>
+        <slot name="activatorSlot" />
       </template>
+      <slot name="contentSlot" />
       <span>{{ text }}</span>
     </v-tooltip>
   </div>
