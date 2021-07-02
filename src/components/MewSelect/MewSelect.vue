@@ -318,7 +318,7 @@ export default {
       } else {
         const foundItems = this.items.filter(item => {
             const valueIsInteger = Number.isInteger(item.value);
-            const valLowerCase = isInteger ? newVal :  newVal.toLowerCase();
+            const valLowerCase = valueIsInteger ? newVal :  newVal.toLowerCase();
             const value = item.hasOwnProperty('value') && item.value ? item.value : '';
             if (!valueIsInteger) {
               const name = item.hasOwnProperty('name') && item.name !== '' ? item.name.toLowerCase() : '';
