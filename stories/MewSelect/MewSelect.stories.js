@@ -11,7 +11,7 @@ export default {
   decorators: [withKnobs]
 };
 
-const swapItemsArray = [{
+const customItemsArray = [{
   text: 'Select Token',
   imgs: [bitcoinIcon, ethereumIcon, bitcoinIcon, ethereumIcon],
   total: '1500',
@@ -42,8 +42,8 @@ export const MEWSelect = () => ({
     items: {
       default: object('items', itemsArray)
     },
-    swapItems: {
-      default: object('swap-items', swapItemsArray)
+    customItems: {
+      default: object('custom-items', customItemsArray)
     },
     value: {
       default: object('value', {})
@@ -54,14 +54,20 @@ export const MEWSelect = () => ({
     hasFilter: {
       default: boolean('has-filter', false)
     },
-    isSwap: {
-      default: boolean('is-swap', true)
+    isCustom: {
+      default: boolean('is-custom', true)
     },
     loading: {
       default: boolean('loading', false)
     },
     filterPlaceholder: {
       default: text('filter-placeholder', 'Search token name')
+    },
+    buyMoreStr: {
+      default: text('buy-more-str', '')
+    },
+    errorMessages: {
+      default: text('error-messages', '')
     }
   },
   watch: {
@@ -72,7 +78,7 @@ export const MEWSelect = () => ({
   template: `
     <div>
     <br />
-    <mew-select :loading="loading" :is-swap="isSwap" :filter-placeholder="filterPlaceholder" :has-filter="hasFilter" :label="label" :items="isSwap ? swapItems : items" :disabled="disabled" :value="value"
+    <mew-select :loading="loading" :buy-more-str="buyMoreStr"  :error-messages="errorMessages" :is-custom="isCustom" :filter-placeholder="filterPlaceholder" :has-filter="hasFilter" :label="label" :items="isCustom ? customItems : items" :disabled="disabled" :value="value"
     />
   </div>`
 });
