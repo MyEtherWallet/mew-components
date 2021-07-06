@@ -10,7 +10,7 @@
     justify="center"
   >
     <v-sheet
-      class="px-10 py-6 warning-sheet"
+      class="px-10 py-6 rounded"
       color="warning"
       height="100%"
       width="100%"
@@ -75,10 +75,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.warning-sheet {
-  border-radius: 10px;
-}
-
-</style>
