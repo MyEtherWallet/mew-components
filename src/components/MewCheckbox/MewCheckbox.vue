@@ -6,6 +6,7 @@
   -->
   <div class="d-flex mew-checkbox"> 
     <v-checkbox
+      :dense="dense"
       class="titlePrimary--text"
       v-model="isChecked"
     />
@@ -18,6 +19,7 @@
         v-if="link.url && link.title"
         :href="link.url"
       >{{ link.title }}</a>
+      <slot name="contentSlot" />
     </span>
   </div>
 </template>
@@ -54,6 +56,13 @@ export default {
      * Controls the value of the checkbox (checked or not)
      */
     value: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Reduces the input height
+     */
+    dense: {
       type: Boolean,
       default: false
     }

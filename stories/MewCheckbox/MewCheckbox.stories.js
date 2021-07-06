@@ -36,6 +36,9 @@ export const MEWCheckbox = () => ({
     },
     value: {
       default: boolean('value', false)
+    },
+    dense: {
+      default: boolean('dense', false)
     }
   },
   watch: {
@@ -48,6 +51,7 @@ export const MEWCheckbox = () => ({
     <br />
     <mew-checkbox
       :label="label"
+      :dense="dense"
       :color-text="colorText"
       :link="link"
     />
