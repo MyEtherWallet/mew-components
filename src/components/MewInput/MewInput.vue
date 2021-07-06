@@ -31,7 +31,7 @@
 =====================================================================================
 -->
     <template v-slot:message="item">
-      <span>{{ item.message }} <a v-if="buyMoreStr" rel="noopener noreferrer" href="https://ccswap.myetherwallet.com/#/" target="_blank">{{  buyMoreStr }}</a></span>
+      <span class="mew-label">{{ item.message }} <a v-if="buyMoreStr" rel="noopener noreferrer" href="https://ccswap.myetherwallet.com/#/" target="_blank" class="mew-label">{{  buyMoreStr }}</a></span>
     </template>
     <template v-slot:prepend-inner>
   <!--
@@ -265,7 +265,7 @@ export default {
       }
     },
     clear(val) {
-      this.inputValue = val;
+      this.inputValue = val ? val : '';
     }
   }
 };

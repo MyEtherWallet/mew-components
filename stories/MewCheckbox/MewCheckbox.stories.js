@@ -31,6 +31,9 @@ export const MEWCheckbox = () => ({
     link: {
       default: object('link', linkObj)
     },
+    colorText: {
+      default: text('color-text', '')
+    },
     value: {
       default: boolean('value', false)
     },

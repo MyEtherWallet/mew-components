@@ -4,14 +4,14 @@
     Mew Checkbox
   =====================================================================================
   -->
-  <div class="d-flex align-center"> 
+  <div class="d-flex mew-checkbox"> 
     <v-checkbox
       :dense="dense"
       class="titlePrimary--text"
       v-model="isChecked"
     />
     <span
-      class="titlePrimary--text mr-2 cursor-pointer"
+      :class="['mr-2 cursor-pointer', colorText]"
       @click="toggleCheckbox"
     >{{ label }}
       <a
@@ -29,6 +29,13 @@
 export default {
   name: 'MewCheckbox',
   props: {
+    /**
+     * Changes the label text color (i.e error--text)
+     */
+    colorText: {
+        type: String,
+        default: 'titlePrimary--text'
+    },
     /**
      * Checkbox label
      */
@@ -77,3 +84,11 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.mew-checkbox {
+  .v-input--checkbox {
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+</style>

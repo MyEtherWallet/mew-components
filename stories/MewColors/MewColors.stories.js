@@ -83,7 +83,7 @@ export const All = () => ({
         shades: [
           {name: 'txIn', lightHex: '#7895f2', darkHex: '#7895f2'},
           {name: 'txOut', lightHex: '#ffaf8f', darkHex: '#ffaf8f'},
-          {name: 'swap', lightHex: '#184f90', darkHex: '#0f1320'},
+          {name: 'swap', lightHex: '#7fdefb', darkHex: '#0f1320'},
           {name: 'swapDisable', lightHex: '#f8f8f8', darkHex: '#0f1320'},
           {name: 'tableHeader', lightHex: '#f9f9f9', darkHex: '#0f1320'}
         ]

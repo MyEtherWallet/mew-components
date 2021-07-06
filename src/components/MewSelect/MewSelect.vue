@@ -1,5 +1,5 @@
 <template>
-    <!--
+  <!--
   =====================================================================================
     Mew Select
   =====================================================================================
@@ -15,20 +15,36 @@
     :label="label"
     :hide-selected="loading"
     :disabled="disabled"
+    :error-messages="errorMessages"
     v-model="selectModel"
     @click="onClick"
     return-object
     :menu-props="{ bottom: true, offsetY: true, maxHeight: '419px' }"
     outlined
   >
-      <!--
+    <!--
+=====================================================================================
+  Mew select: Error Messages 
+=====================================================================================
+-->
+    <template v-slot:message="item">
+      <span class="mew-label">{{ item.message }} <a
+        rel="noopener noreferrer"
+        v-if="buyMoreStr"
+        href="https://ccswap.myetherwallet.com/#/"
+        target="_blank"
+        class="mew-label"
+      >{{ buyMoreStr }}</a></span>
+    </template>
+
+    <!--
   =====================================================================================
     Filter for dropdown items
   =====================================================================================
   -->
     <template v-slot:prepend-item>
       <v-text-field
-        v-if="hasFilter || isSwap"
+        v-if="hasFilter || isCustom"
         ref="filterTextField"
         height="35"
         class="px-2 mew-select-search d-flex align-center"
@@ -50,18 +66,32 @@
     Select Token Placeholder
   =====================================================================================
   -->
-      <div v-if="item.selectTokenLabel" class="d-flex align-center flex-row justify-space-between full-width">
-        <span>{{item.text }}</span>
+      <div
+        v-if="item.selectTokenLabel"
+        class="d-flex align-center flex-row justify-space-between full-width"
+      >
+        <span>{{ item.text }}</span>
         <v-skeleton-loader
-        class="no-pointer-events"
-        v-if="loading"
-        type="chip" />
-        <div v-if="!loading" class="flex-row d-flex align-center">
-          <img class="label-token-img" width="24" height="24" :src="url" v-for="(url, idx) in item.imgs" :key="url + idx" />
+          class="no-pointer-events"
+          v-if="loading"
+          type="chip"
+        />
+        <div
+          v-if="!loading"
+          class="flex-row d-flex align-center"
+        >
+          <img
+            class="label-token-img"
+            width="24"
+            height="24"
+            :src="url"
+            v-for="(url, idx) in item.imgs"
+            :key="url + idx"
+          >
           <div
             class="total-token-placeholder inputBorder d-flex align-center justify-center mew-caption"
           >
-            <span class="textSecondary--text">+{{item.total}}</span>
+            <span class="textSecondary--text">+{{ item.total }}</span>
           </div>
         </div>
       </div>
@@ -70,7 +100,10 @@
     Selected item
   =====================================================================================
   -->
-      <div v-if="!item.selectTokenLabel"  class="d-flex align-center justify-center">
+      <div
+        v-if="!item.selectTokenLabel"
+        class="d-flex align-center justify-center"
+      >
         <v-img
           v-if="item.img"
           class="item-img selected-img"
@@ -96,16 +129,20 @@
         class="no-pointer-events mew-select-loading"
         min-width="100%"
         v-if="loading"
-        type="list-item-avatar" />
+        type="list-item-avatar"
+      />
       <!--
   =====================================================================================
     Default Select Dropdown items
   =====================================================================================
   -->
-      <div v-if="!isSwap && !loading" class="d-flex align-center justify-center">
+      <div
+        v-if="!isCustom && !loading"
+        class="d-flex align-center justify-center"
+      >
         <v-img
           class="item-img"
-          v-on:error="onImgErr(data)"
+          @error="onImgErr(data)"
           :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
           :alt="!data.item.img ? 'token placeholder' : data.item.img"
           :contain="true"
@@ -119,28 +156,44 @@
       </div>
       <!--
   =====================================================================================
-    Swap Select Dropdown items
+    Custom Select Dropdown items
   =====================================================================================
   -->
-      <div v-if="isSwap && !loading" class="d-flex align-center full-width">
-      <!--
+      <div
+        v-if="isCustom && !loading"
+        class="d-flex align-center full-width"
+      >
+        <!--
   =====================================================================================
       Empty Wallet Link
   =====================================================================================
   -->
-        <div class="no-pointer-events titlePrimary--text" v-if="data.item.hasNoEth">
-          {{ data.item.text }} <a class="all-pointer-events" target="_blank" :href="data.item.link">{{ data.item.linkText }}</a>
+        <div
+          class="no-pointer-events titlePrimary--text"
+          v-if="data.item.hasNoEth"
+        >
+          {{ data.item.text }} <a
+            class="all-pointer-events"
+            target="_blank"
+            :href="data.item.link"
+          >{{ data.item.linkText }}</a>
         </div>
-      <!--
+        <!--
   =====================================================================================
-    Swap Dropdown Item
+    Custom Dropdown Item
   =====================================================================================
   -->
-        <div class="d-flex align-center justify-space-between full-width" v-if="data.item.name">
-          <div v-if="!loading" class="d-flex align-center">
+        <div
+          class="d-flex align-center justify-space-between full-width"
+          v-if="data.item.name"
+        >
+          <div
+            v-if="!loading"
+            class="d-flex align-center"
+          >
             <v-img
               class="item-img"
-              v-on:error="onImgErr(data)"
+              @error="onImgErr(data)"
               :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
               :alt="!data.item.img ? 'token placeholder' : data.item.img"
               :contain="true"
@@ -154,21 +207,36 @@
           </div>
           <div class="d-flex justify-center flex-column align-end">
             <span>${{ data.item.totalBalance || data.item.price }}</span>
-            <span class="mew-caption font-weight-regular textSecondary--text" v-if="data.item.totalBalance">@ ${{ data.item.price }}</span>
+            <span
+              class="mew-caption font-weight-regular textSecondary--text"
+              v-if="data.item.totalBalance"
+            >@ ${{ data.item.price }}</span>
           </div>
-
         </div>
       </div>
     </template>
   </v-select>
 </template>
-
 <script>
 import ethTokenPlaceholder from '@/assets/images/icons/eth.svg';
 
 export default {
   name: 'MewSelect',
   props: {
+    /**
+     * Adds a "Buy more" string to the end of the first index of the errorMessages prop.
+     */
+    buyMoreStr: {
+      type: String,
+      default: ''
+    },
+    /**
+     * Error messages to display
+     */
+    errorMessages: {
+      type: [ String, Array],
+      default: ''
+    },
     /**
      * Adds filter to select items
      */
@@ -203,7 +271,7 @@ export default {
      * Can be an array of objects or array of strings. When using objects, will look for a text and value field.
      * Can also add an img attribute to the object to append an img to the value.
      * Also takes in header objs and a select token label obj, i.e. {text: 'Select Token', imgs: [], total: '', selectTokenLabel: true, divider: true}
-     * Please check swapItems for more info
+     * Please check customItems for more info
      * Example: { name: "Eth", subtext: "Ethereum", value: "Ethereum", img: ethIcon }
      */
     items: {
@@ -220,9 +288,9 @@ export default {
       default: ''
     },
     /**
-     * Applies Swap Select styles
+     * Applies Custom Select styles
      */
-    isSwap: {
+    isCustom: {
       type: Boolean,
       default: false
     },
@@ -248,13 +316,16 @@ export default {
       if (newVal === '') {
         this.selectItems = this.items;
       } else {
-        const valLowerCase = newVal.toLowerCase();
         const foundItems = this.items.filter(item => {
-            const name = item.hasOwnProperty('name') && item.name !== '' ? item.name.toLowerCase() : '';
-            const subtext = item.hasOwnProperty('subtext') && item.subtext !== '' ? item.subtext.toLowerCase() : '';
-            const value = item.hasOwnProperty('value') && item.value !== '' ? item.value.toLowerCase() : '';
-
-            return name.includes(valLowerCase) || subtext.includes(valLowerCase) || value.includes(valLowerCase);
+            const valueIsInteger = Number.isInteger(item.value);
+            const valLowerCase = valueIsInteger ? newVal :  newVal.toLowerCase();
+            const value = item.hasOwnProperty('value') && item.value ? item.value : '';
+            if (!valueIsInteger) {
+              const name = item.hasOwnProperty('name') && item.name !== '' ? item.name.toLowerCase() : '';
+              const subtext = item.hasOwnProperty('subtext') && item.subtext !== '' ? item.subtext.toLowerCase() : '';  
+              return name.includes(valLowerCase) || subtext.includes(valLowerCase) || value.includes(valLowerCase);
+            } 
+            return newVal === value;
         })
         this.selectItems = foundItems;
       }
@@ -303,7 +374,7 @@ export default {
       this.selectModel = val && Object.keys(val).length !== 0 ? val : this.defaultItem;
     },
     togglePointerEventStyle() {
-      const elems = document.querySelectorAll("div.v-list-item--link");
+      const elems = document.querySelectorAll('div.v-list-item--link');
       if (elems) {
         const pointerEventStyle = this.loading ? 'none' : 'all'
         for (let i = 0 ; i < elems.length ; i++) {

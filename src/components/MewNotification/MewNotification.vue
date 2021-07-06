@@ -1,29 +1,38 @@
 <template>
-    <!--
+  <!--
   =====================================================================================
     Mew Notifications
   =====================================================================================
   -->
   <div
     @click="onToggle"
-    :class="[active ? 'activated' : '', notification.status.value + '-type', 'notification-container', 'px-3', 'titlePrimary--text', notification.read ? 'read' : '']"
+    :class="[
+      active ? 'activated' : '',
+      notification.status.value + '-type',
+      'notification-container',
+      'px-1',
+      'titlePrimary--text',
+      notification.read ? 'read' : '',
+    ]"
   >
-    <v-container fluid>
-      <v-row>
-        <v-col
-          class="d-flex align-center"
-          cols="6"
-        >
-    <!--
+    <v-container fluid class="px-0">
+      <v-row dense>
+        <v-col class="d-flex align-center" cols="8">
+          <!--
   =====================================================================================
     Displays indicator if notification not read
   =====================================================================================
   -->
           <div
-            :class="[ getClasses(notification.status.value.toLowerCase()), 'indicator', 'd-none', 'd-sm-flex']"
+            :class="[
+              getClasses(notification.status.value.toLowerCase()),
+              'indicator',
+              'd-none',
+              'd-sm-flex',
+            ]"
             v-if="!notification.read"
           />
-    <!--
+          <!--
   =====================================================================================
    Displays blockie if it is not a swap notification 
   =====================================================================================
@@ -31,73 +40,73 @@
           <mew-blockie
             class="d-flex"
             v-if="!isSwap"
-            width="30px"
-            height="30px"
+            width="24px"
+            height="24px"
             :address="notification.from.value"
           />
-    <!--
+          <!--
   =====================================================================================
    Displays swap icons if it is a swap notification 
   =====================================================================================
   -->
-          <div
-            v-else
-            class="d-flex flex-column currency-symbol"
-          >
-            <img
-              :src="notification.fromObj.icon"
-              width="30px"
-              height="30px"
-            >
+          <div v-else class="d-flex flex-column currency-symbol">
+            <img :src="notification.fromObj.icon" width="24px" height="24px" />
             <img
               :src="notification.toObj.icon"
-              width="30px"
-              height="30px"
+              width="24px"
+              height="24px"
               class="overlap"
-            >
+            />
           </div>
-    <!--
+          <!--
   =====================================================================================
    Displays different notification info based on notification type
   =====================================================================================
   -->
-          <div class="ml-5 detail-container full-width">
+          <div class="ml-5 detail-container pr-1">
             <div v-if="!isSwap">
-              <div
-                class="caption font-weight-medium d-flex"
-              >
-                {{ notification.from.string }}: <mew-transform-hash :hash="notification.from.value" /> 
+              <div class="caption font-weight-medium d-flex">
+                {{ notification.from.string }}:
+                <mew-transform-hash
+                  :hash="notification.from.value"
+                  class="ml-1 detail-hash"
+                />
               </div>
-              <div
-                class="caption font-weight-medium d-flex"
-              >
-                {{ notification.amount.string }}: {{ notification.amount.value }}
+
+              <div class="caption font-weight-medium d-flex">
+                {{ notification.amount.string }}:
+                {{ notification.amount.value }}
               </div>
             </div>
             <div v-else>
-              <div
-                class="caption font-weight-medium d-flex"
-              >
-                {{ notification.to.string }}: <mew-transform-hash :hash="notification.toObj.to" /> 
+              <div class="caption font-weight-medium d-flex">
+                {{ notification.to.string }}:
+                <mew-transform-hash
+                  :hash="notification.toObj.to"
+                  class="ml-1 detail-hash"
+                />
               </div>
-              <div
-                class="caption mew-heading-2 d-flex"
-              >
-                {{ notification.fromObj.amount }} {{ notification.fromObj.currency }}
-                <v-icon
-                  class="subtitle-1 ml-1"
-                >
+              <div class="caption mew-heading-2">
+                <div class="d-inline-block mr-1">
+                  {{ notification.fromObj.amount }}
+                  <span class="textPrimary--text">{{
+                    notification.fromObj.currency
+                  }}</span>
+                </div>
+                <v-icon class="subtitle-1 d-inline-block">
                   mdi-arrow-right
                 </v-icon>
-                {{ notification.toObj.amount }} {{ notification.toObj.currency }}
+                <div class="d-inline-block">
+                  {{ notification.toObj.amount }}
+                  <span class="textPrimary--text">{{
+                    notification.toObj.currency
+                  }}</span>
+                </div>
               </div>
             </div>
           </div>
         </v-col>
-        <v-col
-          cols="6"
-          class="text-right"
-        >
+        <v-col cols="4" class="text-right pr-2">
           <mew-badge
             :badge-title="notification.type.string"
             :badge-type="getBadgeType"
@@ -108,22 +117,16 @@
         </v-col>
       </v-row>
     </v-container>
-      <!--
+    <!--
   =====================================================================================
    Displays more info if the notification is expanded
   =====================================================================================
   -->
-    <div
-      class="activated-container capitalize"
-      v-if="active"
-    >
-      <v-container>
-        <v-row
-          v-for="(detail, idx) in getDetails"
-          :key="idx"
-        >
-          <v-col cols="6">
-            {{ detail.string }}: 
+    <div class="activated-container capitalize" v-if="active">
+      <v-container class="pa-2">
+        <v-row v-for="(detail, idx) in getDetails" :key="idx">
+          <v-col cols="6" class="textPrimary--text">
+            {{ detail.string }}:
           </v-col>
           <v-col
             cols="6"
@@ -132,11 +135,7 @@
           >
             {{ detail.value }}
           </v-col>
-          <v-col
-            cols="6"
-            class="text-right"
-            v-if="isHash(detail.string)"
-          >
+          <v-col cols="6" class="text-right" v-if="isHash(detail.string)">
             <v-tooltip
               eager
               open-on-hover
@@ -145,11 +144,9 @@
               top
             >
               <template v-slot:activator="{ on }">
-                <a
-                  v-on="on"
-                  :href="detail.link"
-                  target="_blank"
-                > <mew-transform-hash :hash="detail.value" /> </a>
+                <a v-on="on" :href="detail.link" target="_blank">
+                  <mew-transform-hash :hash="detail.value" />
+                </a>
               </template>
               <span>{{ detail.value }}</span>
             </v-tooltip>
@@ -161,56 +158,64 @@
 </template>
 
 <script>
-import MewBadge from '@/components/MewBadge/MewBadge.vue';
-import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
-import MewTransformHash from '@/components/MewTransformHash/MewTransformHash.vue';
+import MewBadge from "@/components/MewBadge/MewBadge.vue";
+import MewBlockie from "@/components/MewBlockie/MewBlockie.vue";
+import MewTransformHash from "@/components/MewTransformHash/MewTransformHash.vue";
 
 export default {
-  name: 'MewNotification',
+  name: "MewNotification",
   components: {
     MewBadge,
     MewBlockie,
-    MewTransformHash
+    MewTransformHash,
   },
   data() {
     return {
       active: false,
       txTypes: {
-        in: 'txIn',
-        out: 'txOut',
-        swap: 'swap'
+        in: "txIn",
+        out: "txOut",
+        swap: "swap",
       },
       txStatusOptions: {
-        success: 'success',
-        pending: 'pending',
-        failed: 'failed'
+        success: "success",
+        pending: "pending",
+        failed: "failed",
       },
-      hashType: 'Transaction Hash'
-    }
+      hashType: "Transaction Hash",
+    };
   },
   computed: {
     getBadgeType() {
-      const type = this.notification.type.value.toLowerCase()
-      return this.txTypes[type]
+      const type = this.notification.type.value.toLowerCase();
+      return this.txTypes[type];
     },
     getDetails() {
-      const details = [], detailTypes = ['txHash', 'gasPrice', 'gasLimit', 'total', 'timestamp', 'status']
+      const details = [],
+        detailTypes = [
+          "txHash",
+          "gasPrice",
+          "gasLimit",
+          "total",
+          "timestamp",
+          "status",
+        ];
       for (const key in this.notification) {
         if (detailTypes.indexOf(key) >= 0) {
-          details.push(this.notification[key])
+          details.push(this.notification[key]);
         }
       }
       return details;
     },
     isSwap() {
       return this.notification.type.value.toLowerCase() === this.txTypes.swap;
-    }
+    },
   },
   props: {
     /**
      * Takes an object of notification information
      * i.e. { txHash: { value: '', string: '' },
-     *        gasPrice: { value: '', string: '' }, gasLimit: { value: '', string: '' }, 
+     *        gasPrice: { value: '', string: '' }, gasLimit: { value: '', string: '' },
      *        total: { value: '', string: '' }, from: { value: '', string: '' },
      *        to: { value: '', string: '' }, amount: { value: '', string: '' },
      *        timestamp: { value: '', string: '' }, status: { value: '', string: '' },
@@ -222,60 +227,60 @@ export default {
       default: () => {
         return {
           txHash: {
-            value: '',
-            string: ''
+            value: "",
+            string: "",
           },
           gasPrice: {
-            value: '',
-            string: ''
+            value: "",
+            string: "",
           },
           gasLimit: {
-            value: '',
-            string: ''
+            value: "",
+            string: "",
           },
           total: {
-            value: '',
-            string: ''
+            value: "",
+            string: "",
           },
           from: {
-            value: '',
-            string: ''
+            value: "",
+            string: "",
           },
           to: {
-            value: '',
-            string: ''
+            value: "",
+            string: "",
           },
           amount: {
-            value: '',
-            string: ''
+            value: "",
+            string: "",
           },
           timestamp: {
-            value: '',
-            string: ''
+            value: "",
+            string: "",
           },
           status: {
-            value: '',
-            string: ''
+            value: "",
+            string: "",
           },
           type: {
-            value: '',
-            string: ''
+            value: "",
+            string: "",
           },
           fromObj: {
-            'currency': '',
-            'amount': '',
-            'icon': ''
+            currency: "",
+            amount: "",
+            icon: "",
           },
           toObj: {
-            'currency': '',
-            'amount': '',
-            'icon': '',
-            'to': ''
+            currency: "",
+            amount: "",
+            icon: "",
+            to: "",
           },
-          read: false
-        }
-      }
-    }
+          read: false,
+        };
+      },
+    },
   },
   methods: {
     isHash(type) {
@@ -283,22 +288,21 @@ export default {
     },
     getClasses(status) {
       if (status === this.txStatusOptions.success) {
-        return 'primary';
+        return "primary";
       }
       if (status === this.txStatusOptions.pending) {
-        return 'text--darken-1 darken-1 warning';
+        return "text--darken-1 darken-1 warning";
       }
       if (status === this.txStatusOptions.failed) {
-        return 'failed';
+        return "failed";
       }
     },
     onToggle() {
       this.active = !this.active;
-    }
-  }
-}
+    },
+  },
+};
 </script>
-
 
 <style lang="scss" scoped>
 .notification-container {
@@ -306,7 +310,11 @@ export default {
   overflow: auto;
 
   .detail-container {
-    max-width: 250px;
+    max-width: 100%;
+
+    .detail-hash {
+      max-width: 60%;
+    }
   }
 
   .indicator {
@@ -321,13 +329,12 @@ export default {
     .container {
       border-top: 1px solid var(--v-inputBorder-base);
     }
-
   }
 }
 
 .success-type {
   background-color: var(--v-superPrimary-base);
-  border: 1px solid var(--v-primary-base);  
+  border: 1px solid var(--v-primary-base);
   &.activated {
     border: 1px solid var(--v-superPrimary-base);
   }
@@ -339,7 +346,7 @@ export default {
 
 .pending-type {
   background-color: var(--v-warning-base);
-  border: 1px solid var(--v-warning-darken1);  
+  border: 1px solid var(--v-warning-darken1);
   &.activated {
     border: 1px solid var(--v-warning-base);
   }
@@ -351,14 +358,14 @@ export default {
 
 .failed-type {
   background-color: var(--v-error-lighten1);
-  border: 1px solid var(--v-error-base); 
+  border: 1px solid var(--v-error-base);
   &.activated {
     border: 1px solid var(--v-error-lighten1);
   }
 
   &.read {
     border: 1px solid var(--v-error-lighten1);
-  } 
+  }
 }
 
 .currency-symbol {
@@ -369,8 +376,8 @@ export default {
     border-radius: 50%;
   }
   .overlap {
-      position: absolute;
-      left: 14px;
+    position: absolute;
+    left: 14px;
   }
 }
 </style>
