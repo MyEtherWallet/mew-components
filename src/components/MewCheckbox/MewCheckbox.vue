@@ -4,7 +4,7 @@
     Mew Checkbox
   =====================================================================================
   -->
-  <div class="d-flex align-center"> 
+  <div class="d-flex mew-checkbox"> 
     <v-checkbox
       class="titlePrimary--text"
       v-model="isChecked"
@@ -75,3 +75,11 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.mew-checkbox {
+  .v-input--checkbox {
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+</style>
