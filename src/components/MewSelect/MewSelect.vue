@@ -67,7 +67,7 @@
   =====================================================================================
   -->
       <div
-        v-if="item.selectTokenLabel"
+        v-if="item.selectLabel"
         class="d-flex align-center flex-row justify-space-between full-width"
       >
         <span>{{ item.text }}</span>
@@ -77,7 +77,7 @@
           type="chip"
         />
         <div
-          v-if="!loading"
+          v-if="!loading && item.imgs"
           class="flex-row d-flex align-center"
         >
           <img
@@ -101,7 +101,7 @@
   =====================================================================================
   -->
       <div
-        v-if="!item.selectTokenLabel"
+        v-if="!item.selectLabel"
         class="d-flex align-center justify-center"
       >
         <v-img
@@ -270,7 +270,7 @@ export default {
     /**
      * Can be an array of objects or array of strings. When using objects, will look for a text and value field.
      * Can also add an img attribute to the object to append an img to the value.
-     * Also takes in header objs and a select token label obj, i.e. {text: 'Select Token', imgs: [], total: '', selectTokenLabel: true, divider: true}
+     * Also takes in header objs and a select token label obj, i.e. {text: 'Select Token', imgs: [], total: '', selectLabel: true, divider: true}
      * Please check customItems for more info
      * Example: { name: "Eth", subtext: "Ethereum", value: "Ethereum", img: ethIcon }
      */
@@ -357,7 +357,7 @@ export default {
   computed: {
     defaultItem() {
       return this.items.find(obj => {
-        return obj.selectTokenLabel || obj.name
+        return obj.selectLabel || obj.name
       })
     }
   },
@@ -383,6 +383,9 @@ export default {
       }
     },
     onClick() {
+      if (!this.hasFilter && !this.isCustom) {
+        return;
+      }
       setTimeout(() => {
         this.togglePointerEventStyle();
         this.$refs.filterTextField.$refs.input.focus();
