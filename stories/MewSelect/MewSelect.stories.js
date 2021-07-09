@@ -28,7 +28,7 @@ const customItemsArray = [{
 { name: 'DAI',  subtext: 'Makerdao', symbol: 'DAI', value: 'Bat', tokenBalance: '20.22',  img: "", totalBalance: '40000', price: '2000'},
 { name: 'AAVE',  subtext: 'Aave', symbol: 'AAVE', value: 'ada', tokenBalance: '1.34',  img: ethereumIcon, totalBalance: '234.3430', price: '454.000'}];
 
-const itemsArray = [{ text: 'Select a Contract', selectLabel: true, divider: true },
+const itemsArray = [{ text: 'Select a Token', selectLabel: true, divider: true },
 { name: 'ETH', subtext: 'Ethereum', value: 'btc', img: ethereumIcon }, { name: 'DAI', value: 'Makerdao',  subtext: 'Makerdao', img: ethereumIcon }];
 
 export const MEWSelect = () => ({
