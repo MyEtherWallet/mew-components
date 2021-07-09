@@ -16,7 +16,7 @@ const customItemsArray = [{
   imgs: [bitcoinIcon, ethereumIcon, bitcoinIcon, ethereumIcon],
   total: '1500',
   divider: true,
-  selectTokenLabel: true
+  selectLabel: true
 },
 {header: 'My Wallet'},
 { hasNoEth: true, disabled: true, text: 'Your wallet is empty.', linkText: 'Buy ETH', link: 'https://ccswap.myetherwallet.com/#/'},
@@ -28,7 +28,8 @@ const customItemsArray = [{
 { name: 'DAI',  subtext: 'Makerdao', symbol: 'DAI', value: 'Bat', tokenBalance: '20.22',  img: "", totalBalance: '40000', price: '2000'},
 { name: 'AAVE',  subtext: 'Aave', symbol: 'AAVE', value: 'ada', tokenBalance: '1.34',  img: ethereumIcon, totalBalance: '234.3430', price: '454.000'}];
 
-const itemsArray = [{ name: 'ETH', subtext: 'Ethereum', value: 'btc', img: ethereumIcon }, { name: 'DAI', value: 'Makerdao',  subtext: 'Makerdao', img: ethereumIcon }];
+const itemsArray = [{ text: 'Select a Token', selectLabel: true, divider: true },
+{ name: 'ETH', subtext: 'Ethereum', value: 'btc', img: ethereumIcon }, { name: 'DAI', value: 'Makerdao',  subtext: 'Makerdao', img: ethereumIcon }];
 
 export const MEWSelect = () => ({
   components: { MewSelect },
