@@ -7,7 +7,7 @@
   <div
     @click="onToggle"
     :class="[
-      active ? 'activated' : '',
+      expanded ? 'expanded' : '',
       notification.status.value + '-type',
       'notification-container',
       'px-1',
@@ -15,9 +15,15 @@
       notification.read ? 'read' : '',
     ]"
   >
-    <v-container fluid class="px-0">
+    <v-container 
+      fluid
+      class="px-0"
+    >
       <v-row dense>
-        <v-col class="d-flex align-center" cols="8">
+        <v-col
+          class="d-flex align-center"
+          cols="8"
+        >
           <!--
   =====================================================================================
     Displays indicator if notification not read
@@ -27,6 +33,7 @@
             :class="[
               getClasses(notification.status.value.toLowerCase()),
               'indicator',
+              'mx-2',
               'd-none',
               'd-sm-flex',
             ]"
@@ -49,14 +56,21 @@
    Displays swap icons if it is a swap notification 
   =====================================================================================
   -->
-          <div v-else class="d-flex flex-column currency-symbol">
-            <img :src="notification.fromObj.icon" width="24px" height="24px" />
+          <div
+            v-else
+            class="d-flex flex-column currency-symbol"
+          >
+            <img
+              :src="notification.fromObj.icon ? notification.fromObj.icon : ethTokenPlaceholder"
+              width="24px"
+              height="24px"
+            >
             <img
               :src="notification.toObj.icon"
               width="24px"
               height="24px"
               class="overlap"
-            />
+            >
           </div>
           <!--
   =====================================================================================
@@ -96,7 +110,7 @@
                 <v-icon class="subtitle-1 d-inline-block">
                   mdi-arrow-right
                 </v-icon>
-                <div class="d-inline-block">
+                <div class="d-inline-block mr-2">
                   {{ notification.toObj.amount }}
                   <span class="textPrimary--text">{{
                     notification.toObj.currency
@@ -106,7 +120,10 @@
             </div>
           </div>
         </v-col>
-        <v-col cols="4" class="text-right pr-2">
+        <v-col
+          cols="4"
+          class="text-right pr-2"
+        >
           <mew-badge
             :badge-title="notification.type.string"
             :badge-type="getBadgeType"
@@ -122,10 +139,19 @@
    Displays more info if the notification is expanded
   =====================================================================================
   -->
-    <div class="activated-container capitalize" v-if="active">
+    <div
+      class="expanded-container capitalize"
+      v-if="expanded"
+    >
       <v-container class="pa-2">
-        <v-row v-for="(detail, idx) in getDetails" :key="idx">
-          <v-col cols="6" class="textPrimary--text">
+        <v-row
+          v-for="(detail, idx) in getDetails"
+          :key="idx"
+        >
+          <v-col
+            cols="6"
+            class="textPrimary--text"
+          >
             {{ detail.string }}:
           </v-col>
           <v-col
@@ -135,7 +161,11 @@
           >
             {{ detail.value }}
           </v-col>
-          <v-col cols="6" class="text-right" v-if="isHash(detail.string)">
+          <v-col
+            cols="6"
+            class="text-right"
+            v-if="isHash(detail.string)"
+          >
             <v-tooltip
               eager
               open-on-hover
@@ -144,7 +174,11 @@
               top
             >
               <template v-slot:activator="{ on }">
-                <a v-on="on" :href="detail.link" target="_blank">
+                <a
+                  v-on="on"
+                  :href="detail.link"
+                  target="_blank"
+                >
                   <mew-transform-hash :hash="detail.value" />
                 </a>
               </template>
@@ -158,12 +192,13 @@
 </template>
 
 <script>
-import MewBadge from "@/components/MewBadge/MewBadge.vue";
-import MewBlockie from "@/components/MewBlockie/MewBlockie.vue";
-import MewTransformHash from "@/components/MewTransformHash/MewTransformHash.vue";
+import MewBadge from '@/components/MewBadge/MewBadge.vue';
+import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
+import MewTransformHash from '@/components/MewTransformHash/MewTransformHash.vue';
+import ethTokenPlaceholder from '@/assets/images/icons/eth.svg';
 
 export default {
-  name: "MewNotification",
+  name: 'MewNotification',
   components: {
     MewBadge,
     MewBlockie,
@@ -171,18 +206,19 @@ export default {
   },
   data() {
     return {
-      active: false,
+      ethTokenPlaceholder: ethTokenPlaceholder,
+      expanded: false,
       txTypes: {
-        in: "txIn",
-        out: "txOut",
-        swap: "swap",
+        in: 'txIn',
+        out: 'txOut',
+        swap: 'swap',
       },
       txStatusOptions: {
-        success: "success",
-        pending: "pending",
-        failed: "failed",
+        success: 'success',
+        pending: 'pending',
+        failed: 'failed',
       },
-      hashType: "Transaction Hash",
+      hashType: 'Transaction Hash',
     };
   },
   computed: {
@@ -193,12 +229,12 @@ export default {
     getDetails() {
       const details = [],
         detailTypes = [
-          "txHash",
-          "gasPrice",
-          "gasLimit",
-          "total",
-          "timestamp",
-          "status",
+          'txHash',
+          'gasPrice',
+          'gasLimit',
+          'total',
+          'timestamp',
+          'status',
         ];
       for (const key in this.notification) {
         if (detailTypes.indexOf(key) >= 0) {
@@ -227,55 +263,55 @@ export default {
       default: () => {
         return {
           txHash: {
-            value: "",
-            string: "",
+            value: '',
+            string: '',
           },
           gasPrice: {
-            value: "",
-            string: "",
+            value: '',
+            string: '',
           },
           gasLimit: {
-            value: "",
-            string: "",
+            value: '',
+            string: '',
           },
           total: {
-            value: "",
-            string: "",
+            value: '',
+            string: '',
           },
           from: {
-            value: "",
-            string: "",
+            value: '',
+            string: '',
           },
           to: {
-            value: "",
-            string: "",
+            value: '',
+            string: '',
           },
           amount: {
-            value: "",
-            string: "",
+            value: '',
+            string: '',
           },
           timestamp: {
-            value: "",
-            string: "",
+            value: '',
+            string: '',
           },
           status: {
-            value: "",
-            string: "",
+            value: '',
+            string: '',
           },
           type: {
-            value: "",
-            string: "",
+            value: '',
+            string: '',
           },
           fromObj: {
-            currency: "",
-            amount: "",
-            icon: "",
+            currency: '',
+            amount: '',
+            icon: '',
           },
           toObj: {
-            currency: "",
-            amount: "",
-            icon: "",
-            to: "",
+            currency: '',
+            amount: '',
+            icon: '',
+            to: '',
           },
           read: false,
         };
@@ -288,17 +324,17 @@ export default {
     },
     getClasses(status) {
       if (status === this.txStatusOptions.success) {
-        return "primary";
+        return 'primary';
       }
       if (status === this.txStatusOptions.pending) {
-        return "text--darken-1 darken-1 warning";
+        return 'text--darken-1 darken-1 warning';
       }
       if (status === this.txStatusOptions.failed) {
-        return "failed";
+        return 'failed';
       }
     },
     onToggle() {
-      this.active = !this.active;
+      this.expanded = !this.expanded;
     },
   },
 };
@@ -321,11 +357,10 @@ export default {
     border-radius: 50%;
     display: table;
     height: 6px;
-    margin-right: 10px;
     width: 6px;
   }
 
-  .activated-container {
+  .expanded-container {
     .container {
       border-top: 1px solid var(--v-inputBorder-base);
     }
@@ -335,7 +370,7 @@ export default {
 .success-type {
   background-color: var(--v-superPrimary-base);
   border: 1px solid var(--v-primary-base);
-  &.activated {
+  &.expanded {
     border: 1px solid var(--v-superPrimary-base);
   }
 
@@ -347,7 +382,7 @@ export default {
 .pending-type {
   background-color: var(--v-warning-base);
   border: 1px solid var(--v-warning-darken1);
-  &.activated {
+  &.expanded {
     border: 1px solid var(--v-warning-base);
   }
 
@@ -359,7 +394,7 @@ export default {
 .failed-type {
   background-color: var(--v-error-lighten1);
   border: 1px solid var(--v-error-base);
-  &.activated {
+  &.expanded {
     border: 1px solid var(--v-error-lighten1);
   }
 
