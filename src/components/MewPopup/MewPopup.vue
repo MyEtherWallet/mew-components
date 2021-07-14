@@ -234,7 +234,7 @@ export default {
       this.$emit('onClick', btn);
     },
     copyToClipboard() {
-      copy(this.$refs.errContainer, true);
+      copy(this.error.msg);
       this.$refs.toast.showToast();
     },
   }

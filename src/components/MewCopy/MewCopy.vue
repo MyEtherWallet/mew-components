@@ -68,13 +68,6 @@ export default {
       default: ''
     },
     /**
-     * The ref of the element to copy.
-     */
-    copyRef: {
-      type: [String, HTMLInputElement],
-      default: ''
-    },
-    /**
      * The tooltip text
      */
     tooltip: {
@@ -91,8 +84,7 @@ export default {
   },
   methods: {
    copyToClipboard() {
-      const value = this.copyRef ? this.copyRef : this.copyValue;
-      copy(value, this.copyRef ? true : false)
+      copy(this.copyValue)
       document.activeElement.blur()
       this.$refs.toast.showToast();
     }
