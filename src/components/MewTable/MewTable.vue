@@ -239,7 +239,6 @@
                 <mew-copy
                   class="ml-3"
                   :copy-value="item.address"
-                  :is-ref="false"
                 />
                 <a
                   class="address-link"
