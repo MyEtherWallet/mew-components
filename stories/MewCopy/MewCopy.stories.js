@@ -30,9 +30,6 @@ export const mewCopy = () => ({
     isSmall: {
       default: boolean('is-small', false)
     },
-    copyId: {
-      default: text('copy-ref', 'mew-id')
-    },
     copyValue: {
       default: text('copyValue', 'Copied value')
     },
@@ -50,7 +47,6 @@ export const mewCopy = () => ({
     <br />
     <mew-copy
       :is-small="isSmall"
-      :copy-ref="copyId"
       :tooltip="tooltip"
       :copy-value="copyValue"
       :color="color"
