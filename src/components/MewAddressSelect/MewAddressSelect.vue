@@ -54,7 +54,7 @@
         <mew-copy
           class="mr-3"
           :tooltip="copyTooltip"
-          :copy-ref="getRefValue()"
+          :copy-value="addressValue.address || addressValue"
         />
         <v-tooltip
           content-class="tooltip-inner"
@@ -128,7 +128,7 @@ import MewCopy from '@/components/MewCopy/MewCopy.vue';
 import MewTransformHash from '../MewTransformHash/MewTransformHash.vue';
 const USER_INPUT_TYPES = {
   typed: 'TYPED',
-  selected: 'SELECTED',
+  selected: 'SELECTED'
 };
 export default {
   name: 'MewAddressSelect',
@@ -259,14 +259,6 @@ export default {
     },
   },
   methods: {
-    /**
-     * Returns the ref value for mew-coppy
-     */
-    getRefValue() {
-      if (this.$refs.mewAddressSelect) {
-        return this.$refs.mewAddressSelect.$el.querySelector('input');
-      }
-    },
     /**
      * Clears the v-model value.
      */
