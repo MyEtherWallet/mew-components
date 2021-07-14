@@ -54,7 +54,7 @@
         <mew-copy
           class="mr-3"
           :tooltip="copyTooltip"
-          :copy-value="addressValue"
+          :copy-value="addressValue.address || addressValue"
         />
         <v-tooltip
           content-class="tooltip-inner"
