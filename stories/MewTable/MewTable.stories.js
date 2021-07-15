@@ -122,7 +122,8 @@ const tableSelectData = [
   {
     balance: ['2.23 ETH', '$50000'],
     token: '10',
-    address: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
+    address: 'jessp.eth',
+    resolvedAddr: '0xAECFF9CD2367cdbb726E904cD6397eDFcAe6068D',
     change: '0.23',
     status: '+',
     changeData: {
