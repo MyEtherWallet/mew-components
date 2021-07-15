@@ -234,8 +234,15 @@
               <div
                 v-on="on"
                 class="address-container font-weight-medium mew-address d-flex"
-              >
-                <mew-transform-hash :hash="item.address" />
+              > 
+                <span
+                  class="mew-address"
+                  v-if="item.resolvedAddr"
+                >{{ item.address }}</span>
+                <mew-transform-hash
+                  v-if="!item.resolvedAddr"
+                  :hash="item.address"
+                />
                 <mew-copy
                   class="ml-3"
                   :copy-value="item.address"

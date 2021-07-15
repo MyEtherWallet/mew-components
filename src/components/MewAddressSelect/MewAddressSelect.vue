@@ -114,7 +114,7 @@
           />
           <mew-transform-hash :hash="item.address" />
         </div>
-        <div class="overline primary--text font-weight-medium">
+        <div class="overline primary--text font-weight-medium ml-3">
           {{ item.nickname }}
         </div>
       </div>
@@ -251,6 +251,7 @@ export default {
   watch: {
     /**
      * Watches the v-model value and emits 'input' everytime it changes.
+     * TODO: check if we need this input since we have the other one.
      */
     addressValue(newVal, oldVal) {
       if (newVal !== oldVal) {
