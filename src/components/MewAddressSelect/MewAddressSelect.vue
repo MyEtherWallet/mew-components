@@ -248,17 +248,6 @@ export default {
         : this.addressValue;
     },
   },
-  watch: {
-    /**
-     * Watches the v-model value and emits 'input' everytime it changes.
-     * TODO: check if we need this input since we have the other one.
-     */
-    addressValue(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        this.$emit('input', newVal, this.isTyped);
-      }
-    },
-  },
   methods: {
     /**
      * Clears the v-model value.
