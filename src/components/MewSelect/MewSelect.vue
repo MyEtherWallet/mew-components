@@ -106,7 +106,7 @@
       >
         <v-img
           v-if="item.img"
-          class="item-img selected-img"
+          class="mew-select-item-img selected-img"
           :src="!item.img ? ethTokenPlaceholder : item.img"
           :alt="item.name ? item.name : item"
           :contain="true"
@@ -141,7 +141,7 @@
         class="d-flex align-center justify-center"
       >
         <v-img
-          class="item-img"
+          class="mew-select-item-img"
           @error="onImgErr(data)"
           :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
           :alt="!data.item.img ? 'token placeholder' : data.item.img"
@@ -192,7 +192,7 @@
             class="d-flex align-center"
           >
             <v-img
-              class="item-img"
+              class="mew-select-item-img"
               @error="onImgErr(data)"
               :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
               :alt="!data.item.img ? 'token placeholder' : data.item.img"
@@ -405,5 +405,9 @@ export default {
       height: 14px;
     }
   }
+}
+.mew-select-item-img {
+  border: 1px solid var(--v-boxShadow-base);
+  border-radius: 50%;
 }
 </style>
