@@ -33,11 +33,11 @@
             :class="[
               getClasses(notification.status.value.toLowerCase()),
               'indicator',
-              'mx-2',
+              'ml-2',
               'd-none',
               'd-sm-flex',
             ]"
-            v-if="!notification.read"
+            v-if="$vuetify.breakpoint.smAndUp && !notification.read"
           />
           <!--
   =====================================================================================
@@ -45,7 +45,7 @@
   =====================================================================================
   -->
           <mew-blockie
-            class="d-flex"
+            class="d-flex ml-2"
             v-if="!isSwap"
             width="24px"
             height="24px"
@@ -110,7 +110,7 @@
                 <v-icon class="subtitle-1 d-inline-block">
                   mdi-arrow-right
                 </v-icon>
-                <div class="d-inline-block mr-2">
+                <div class="d-inline-block mr-3">
                   {{ notification.toObj.amount }}
                   <span class="textPrimary--text">{{
                     notification.toObj.currency
@@ -330,7 +330,7 @@ export default {
         return 'text--darken-1 darken-1 warning';
       }
       if (status === this.txStatusOptions.failed) {
-        return 'failed';
+        return 'error';
       }
     },
     onToggle() {
