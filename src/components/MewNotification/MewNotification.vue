@@ -37,7 +37,7 @@
               'd-none',
               'd-sm-flex',
             ]"
-            v-if="$vuetify.breakpoint.smAndUp && !notification.read"
+            v-if="$vuetify.breakpoint.smAndUp && !notification.read && showIndicator"
           />
           <!--
   =====================================================================================
@@ -77,7 +77,7 @@
    Displays different notification info based on notification type
   =====================================================================================
   -->
-          <div class="ml-5 detail-container pr-1">
+          <div :class="['detail-container pr-1', isSwap ? 'ml-5' : 'ml-2']">
             <div v-if="!isSwap">
               <div class="caption font-weight-medium d-flex">
                 {{ notification.from.string }}:
@@ -313,10 +313,14 @@ export default {
             icon: '',
             to: '',
           },
-          read: false,
+          read: false
         };
       },
     },
+    showIndicator: {
+      type: Boolean,
+      default: true
+    }
   },
   methods: {
     isHash(type) {
