@@ -80,6 +80,9 @@ export const MEWNotification = () => ({
     },
     notification: {
       default: object('notification', notifObj)
+    },
+    showIndicator: {
+      default: boolean('show-indicator', true)
     }
   },
   watch: {
@@ -91,6 +94,7 @@ export const MEWNotification = () => ({
     <div>
     <br />
     <mew-notification
+      :show-indicator="showIndicator"
       :notification="notification"
     />
   </div>`
