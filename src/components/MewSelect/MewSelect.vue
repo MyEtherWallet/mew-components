@@ -388,7 +388,9 @@ export default {
       }
       setTimeout(() => {
         this.togglePointerEventStyle();
-        this.$refs.filterTextField.$refs.input.focus();
+        if (this.$refs.filterTextField) {
+          this.$refs.filterTextField.$refs.input.focus();
+        }
       }, 100)
     }
   }
