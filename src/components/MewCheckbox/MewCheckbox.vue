@@ -1,11 +1,12 @@
 <template>
-    <!--
+  <!--
   =====================================================================================
     Mew Checkbox
   =====================================================================================
   -->
-  <div class="d-flex mew-checkbox"> 
+  <div class="d-flex align-center mew-checkbox"> 
     <v-checkbox
+      hide-details
       :dense="dense"
       class="titlePrimary--text"
       v-model="isChecked"
