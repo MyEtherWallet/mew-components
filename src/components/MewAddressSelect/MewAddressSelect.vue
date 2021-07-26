@@ -6,9 +6,9 @@
 -->
   <v-combobox
     height="62"
-    class="address-select pa-0"
+    class="address-select pa-0 rounded-lg"
     v-model="addressValue"
-    color="titlePrimary"
+    color="primary"
     :items="items"
     :label="label"
     item-value="address"
