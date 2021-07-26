@@ -1,5 +1,5 @@
 <template>
-    <!--
+  <!--
   =====================================================================================
     Mew Overlay
   =====================================================================================
@@ -15,40 +15,34 @@
       class="mew-overlay-container"
     >
       <v-container fluid>
-      <!--
+        <!--
   =====================================================================================
     Mew Overlay action buttons and header title
   =====================================================================================
   -->
         <v-row
+          class="icon-container"
           align="center"
-          class="pt-5"
-          :justify="leftBtnText ? 'space-between' : 'end'"
+          :justify="back ? 'space-between' : 'end'"
         > 
-          <div
-            v-if="leftBtnText"
-            class="close-container cursor-pointer d-flex align-center ml-5"
+          <v-icon
+            v-if="back"
+            class="cursor-pointer d-flex align-center ma-5 pa-2"
             @click="goBack"
-          > 
-            <v-icon
-              color="titlePrimary"
-            >
-              mdi-arrow-left-circle-outline
-            </v-icon>
-            <span class="titlePrimary--text font-weight-medium ml-2">{{ leftBtnText }}</span>
-          </div>
-          <div
-            v-if="rightBtnText"
-            class="close-container cursor-pointer d-flex align-center mr-5"
+            size="16"
+            color="textBlack2"
+          >
+            mdi-arrow-left
+          </v-icon>
+          <v-icon
+            v-if="close"
+            class="cursor-pointer d-flex align-center ma-5 pa-2"
             @click="closeOverlay"
-          > 
-            <v-icon
-              color="error"
-            >
-              mdi-close-circle-outline
-            </v-icon>
-            <span class="error--text font-weight-medium ml-2">{{ rightBtnText }}</span>
-          </div>
+            size="16"
+            color="textBlack2"
+          >
+            mdi-close
+          </v-icon>
         </v-row>
         <v-row 
           align="center"
@@ -67,9 +61,9 @@
         >
           <span
             class="mew-heading-3 titlePrimary--text font-weight-regular text-center"
-          >{{description}}</span>
+          >{{ description }}</span>
         </v-row>
-    <!--
+        <!--
   =====================================================================================
     Mew Overlay Body, slot: mewOverlayBody (used to place custom ui in overlay body)
   =====================================================================================
@@ -153,20 +147,6 @@ export default {
       default: ''
     },
     /**
-     * Right button string.
-     */
-    rightBtnText: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Left button string.
-     */
-    leftBtnText: {
-      type: String,
-      default: ''
-    },
-    /**
      * Close button.
      */
     close: {
@@ -199,7 +179,6 @@ export default {
       this.close();
     },
     goBack() {
-      this.$emit('back')
       this.back();
     }
   }
@@ -209,5 +188,11 @@ export default {
 <style lang="scss" scoped>
 .mew-overlay-container {
   overflow: auto;
+  .icon-container {
+    .v-icon:hover {
+    background-color: rgba(95, 99, 104, 0.06);
+    border-radius: 50%;
+    }
+  }
 }
 </style>
