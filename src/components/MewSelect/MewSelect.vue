@@ -6,7 +6,7 @@
   -->
   <v-select
     height="62"
-    class="mew-select"
+    class="mew-select rounded-lg"
     color="basic"
     append-icon="mdi-chevron-down"
     :items="selectItems"
