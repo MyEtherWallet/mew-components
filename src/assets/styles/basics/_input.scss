@@ -76,11 +76,21 @@
     color: var(--v-inputBorder-base) !important;
   }
 
+  /**
+  * This removes the underlying black outline for mew address select, mew text area and mew input
+  */
+  .theme--light {
+    &.address-select, &.mew-input, &.mew-text-area {
+      &.v-input {
+        color: transparent;
+      }
+    }
+  }
+
 /**
   * Inputs
   */
   .v-input {
-    color: transparent;
     input {
       color: var(--v-textBlack-base) !important;
       font-size: 14px;

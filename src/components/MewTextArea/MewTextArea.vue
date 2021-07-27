@@ -4,7 +4,7 @@
   =====================================================================================
   -->
 <template>
-  <v-textarea outlined :rules="rules" :label="label" :value="inputValue"/>
+  <v-textarea class="mew-text-area" outlined :rules="rules" :label="label" :value="inputValue"/>
 </template>
 
 <script>
