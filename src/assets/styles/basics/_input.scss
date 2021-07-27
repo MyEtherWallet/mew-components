@@ -80,7 +80,7 @@
   * This removes the underlying black outline for address select and mew input
   */
   .theme--light {
-    &.address-select, &.mew-input {
+    &.address-select, &.mew-input, &.mew-text-area {
       &.v-input {
         color: transparent;
       }
