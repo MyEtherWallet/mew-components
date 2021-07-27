@@ -8,7 +8,7 @@
     <v-checkbox
       hide-details
       :dense="dense"
-      off-icon="mdi-check-circle-outline"
+      off-icon="mdi-circle-outline"
       on-icon="mdi-check-circle"
       class="titlePrimary--text"
       v-model="isChecked"
