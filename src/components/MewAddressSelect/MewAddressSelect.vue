@@ -303,12 +303,6 @@ export default {
         font-family: "PT Mono";
       }
     }
-
-    &.v-input--is-focused {
-      .dropdown-icon-container {
-        border-left: 1px solid var(--v-titlePrimary-base) !important;
-      }
-    }
     /**
     * Right icons
     */
