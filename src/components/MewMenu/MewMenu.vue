@@ -99,9 +99,18 @@ export default {
 </script>
 
 <style lang="scss">
+/**
+  * Mew Menu
+  */
 .mew-menu-content {
   border: none !important;
+  .v-list-item--link {
+    border-top: 1px solid var(--v-selectHover-base);
 
+    &:hover {
+      background-color: var(--v-selectHover-base) !important;
+    }
+  }
   .v-list {
     border-radius: 0;
     

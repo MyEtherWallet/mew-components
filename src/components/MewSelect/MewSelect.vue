@@ -7,7 +7,7 @@
   <v-select
     height="62"
     class="mew-select rounded-lg"
-    color="basic"
+    color="primary"
     append-icon="mdi-chevron-down"
     :items="selectItems"
     item-text="name"
@@ -68,7 +68,7 @@
   -->
       <div
         v-if="item.selectLabel"
-        class="d-flex align-center flex-row justify-space-between full-width"
+        class="d-flex align-center flex-row justify-space-between full-width basic--text"
       >
         <span>{{ item.text }}</span>
         <v-skeleton-loader
@@ -113,7 +113,7 @@
           max-width="25"
           max-height="25"
         />
-        <span class="text-capitalize mt-1 ml-2">{{ item.name ? item.name : item }} <span
+        <span class="text-capitalize mt-1 ml-2 basic--text">{{ item.name ? item.name : item }} <span
           v-if="item.subtext"
           class="searchText--text text-capitalize"
         >- {{ item.subtext }}</span></span>
@@ -397,6 +397,70 @@ export default {
 };
 </script>
 <style lang="scss">
+/**
+  * Mew Select styles
+  */
+.mew-select {   
+  .mdi-chevron-down {
+    color: var(--v-titlePrimary-base);
+    cursor: pointer;
+    font-size: 20px;
+  }
+  .label-token-img {
+    margin-right: -13px;
+  }
+  .total-token-placeholder {
+    border-radius: 50%;  
+    font-size: 8px;      
+    height: 24px;
+    width: 24px;
+  }
+  &.v-text-field--enclosed .v-input__append-inner {
+    height: 100%;
+    margin-top: 0;
+
+    .v-input__icon {
+      height: 100%;
+    }
+  }
+/**
+  * Readonly input is not being used (since we are using our own ui via slots) and is taking up unnecessary space
+  * so will hide for now
+  */
+  .v-select__selections {
+    input {
+      display: none;
+    }
+  }
+  .mew-select-item-img {
+    margin-right: 5px;
+    max-height: 25px;
+  }
+
+  .selected-img {
+    margin-left: 6px;
+  }
+}
+/**
+  * Mew Select Search
+  */
+.mew-select-search {
+  background: var(--v-white-base);
+  border-bottom: 1px solid var(--v-dropdownBorder-base);
+  border-radius: 5px;
+  height: 42px;
+  padding: 12px 16px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  .v-icon {
+    font-size: 18px;
+  }
+}
+/**
+  * Mew Select Loading
+  */
 .mew-select-loading {
   .v-skeleton-loader__list-item-avatar {
     .v-skeleton-loader__avatar {
@@ -408,6 +472,9 @@ export default {
     }
   }
 }
+/**
+  * Mew Selected Img
+  */
 .mew-select-item-img {
   border: 1px solid var(--v-boxShadow-base);
   border-radius: 50%;

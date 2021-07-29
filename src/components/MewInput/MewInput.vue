@@ -292,6 +292,9 @@ export default {
 };
 </script>
 <style lang="scss">
+/**
+  * Mew Input styles
+  */
 .mew-input {
   .mdi-close {
       font-size: 20px !important;
