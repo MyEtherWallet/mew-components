@@ -6,9 +6,9 @@
 -->
   <v-combobox
     height="62"
-    class="address-select pa-0"
+    class="address-select pa-0 rounded-lg"
     v-model="addressValue"
-    color="titlePrimary"
+    color="primary"
     :items="items"
     :label="label"
     item-value="address"
@@ -301,12 +301,6 @@ export default {
     &.v-text-field {
       input {
         font-family: "PT Mono";
-      }
-    }
-
-    &.v-input--is-focused {
-      .dropdown-icon-container {
-        border-left: 1px solid var(--v-titlePrimary-base) !important;
       }
     }
     /**
