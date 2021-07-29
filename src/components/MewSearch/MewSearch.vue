@@ -78,3 +78,13 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+/**
+  * Mew Search
+  */
+  .search-block {
+    input::placeholder {
+      color: var(--v-searchText-base);
+    }
+  }
+</style>

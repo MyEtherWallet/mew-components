@@ -1,24 +1,25 @@
-.v-application {
-  /**
-    * Mew Address Select dropdown 
-    */
-  .v-autocomplete__content.v-menu__content {
-      border-bottom: 1px solid var(--v-dropdownBorder-base);
-      border-left: 1px solid var(--v-dropdownBorder-base);
-      border-radius: 4px;
-      border-right: 1px solid var(--v-dropdownBorder-base);
-      box-shadow: 0px 5px 5px -3px rgb(13 41 66 / 20%), 0px 8px 10px 1px rgb(13 41 66 / 14%), 0px 3px 14px 2px rgb(13 41 66 / 12%);
-  }
-
 /**
-  * Dropdown, select menu
+  * Global Input styles
+  */
+.v-application {
+/**
+  * Dropdown, select menu (for mew-select and mew-address)
   */
   .v-select-list {
     padding: 0;
   }
-
 /**
-  * Mew Menu, simple menu select
+  * Autocomplete menu styles (mainly used for mew-address)
+  */
+  .v-autocomplete__content.v-menu__content {
+    border-bottom: 1px solid var(--v-dropdownBorder-base);
+    border-left: 1px solid var(--v-dropdownBorder-base);
+    border-radius: 4px;
+    border-right: 1px solid var(--v-dropdownBorder-base);
+    box-shadow: 0px 5px 5px -3px rgb(13 41 66 / 20%), 0px 8px 10px 1px rgb(13 41 66 / 14%), 0px 3px 14px 2px rgb(13 41 66 / 12%);
+  }
+/**
+  * Simple menu select styles (mainly used for mew-menu)
   */
   .simple-input.v-text-field>.v-input__control>.v-input__slot:before {
     border-style: none;
@@ -27,18 +28,32 @@
   .simple-input.v-text-field>.v-input__control>.v-input__slot:after {
     border-style: none;
   }
+/**
+  * Text Fieldset Disabled State
+  */
+  .theme--light.v-text-field--outlined:not(.v-input--is-focused).v-input--is-disabled > .v-input__control > .v-input__slot fieldset, .theme--dark.v-text-field--outlined:not(.v-input--is-focused).v-input--is-disabled > .v-input__control > .v-input__slot fieldset { 
+    color: var(--v-inputDisabled-base) !important;
+  }
+/**
+  * Text Field Border Color
+  */
+  .v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state) > .v-input__control > .v-input__slot fieldset {
+    color: var(--v-inputBorder-base) !important;
+  }
 
-  .mew-menu-content {
-    .v-list-item--link {
-      border-top: 1px solid var(--v-selectHover-base);
-  
-      &:hover {
-        background-color: var(--v-selectHover-base) !important;
+  /**
+  * This removes the underlying black outline for mew address select, mew text area, mew select 
+  * and mew input
+  */
+  .theme--light {
+    &.address-select, &.mew-input, &.mew-text-area, &.mew-select {
+      &.v-input {
+        color: transparent;
       }
     }
   }
 /**
-  * Mew Select Dropdown Menu
+  * Dropdown menu content styles (mainly used for mew-select)
   */
   .v-menu__content {
     border: 1px solid var(--v-dropdownBorder-base);
@@ -61,39 +76,18 @@
       }
     }
   }
-
-  /**
-  * Text Field Disabled Theme
-  */
-  .theme--light.v-text-field--outlined:not(.v-input--is-focused).v-input--is-disabled > .v-input__control > .v-input__slot fieldset, .theme--dark.v-text-field--outlined:not(.v-input--is-focused).v-input--is-disabled > .v-input__control > .v-input__slot fieldset { 
-    color: var(--v-inputDisabled-base) !important;
-  }
-
 /**
-  * Text Field Border Color
-  */
-  .v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state) > .v-input__control > .v-input__slot fieldset {
-    color: var(--v-inputBorder-base) !important;
-  }
-
-  /**
-  * This removes the underlying black outline for mew address select, mew text area and mew input
-  */
-  .theme--light {
-    &.address-select, &.mew-input, &.mew-text-area {
-      &.v-input {
-        color: transparent;
-      }
-    }
-  }
-
-/**
-  * Inputs
+  * V-Input class styles
   */
   .v-input {
     input {
       color: var(--v-textBlack-base) !important;
       font-size: 14px;
+    }
+    &.v-input--is-disabled {
+      input {
+        color: var(--v-inputDisabled-base) !important;
+      }
     }
     /**
     * Input label
@@ -121,85 +115,13 @@
       color: var(--v-searchText-base) !important;
     }
   /**
-    * Dropdown icon
-    */
-    &.mew-select {
-      .mdi-chevron-down {
-        color: var(--v-titlePrimary-base);
-        cursor: pointer;
-        font-size: 20px;
-      }
-    }
-  /**
-    * Mew Select
-    */
-  &.mew-select {   
-    .label-token-img {
-      margin-right: -13px;
-    }
-    .total-token-placeholder {
-      border-radius: 50%;  
-      font-size: 8px;      
-      height: 24px;
-      width: 24px;
-    }
-    &.v-text-field--enclosed .v-input__append-inner {
-      height: 100%;
-      margin-top: 0;
-  
-      .v-input__icon {
-        height: 100%;
-      }
-    }
-  /**
-    * Readonly input is not being used (since we are using our own ui via slots) and is taking up unnecessary space
-    * so will hide for now
-    */
-    .v-select__selections {
-      input {
-        display: none;
-      }
-    }
-    .mew-select-item-img {
-      margin-right: 5px;
-      max-height: 25px;
-    }
-  
-    .selected-img {
-      margin-left: 6px;
-    }
-  }
-  &.mew-select-search {
-    background: var(--v-white-base);
-    border-bottom: 1px solid var(--v-dropdownBorder-base);
-    border-radius: 5px;
-    height: 42px;
-    padding: 12px 16px;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
-    .v-icon {
-      font-size: 18px;
-    }
-  }
-  /**
     * Disabled icon
     */
     .disable-icon {
       filter: grayscale(100%);
       pointer-events: none;
     }
-  /**
-    * Mew Input - Search
-    */
-    &.search-block {
-      input::placeholder {
-        color: var(--v-searchText-base);
-      }
-    }
   }
-
 /**
   * Blockie placeholder
   */
