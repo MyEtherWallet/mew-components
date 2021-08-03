@@ -65,27 +65,29 @@
   -->
         <v-row class="ma-0 pa-0 d-flex align-center justify-center flex-column">
           <v-sheet
-            :width="sheetWidth"
+            :width="isMobile ? '100%' : sheetWidth"
             height="100%"
             color="white"
-            :class="['white-sheet-container', isMobile ? 'mt-0 pt-6 px-15' : 'mt-4 pa-8', isMobile && !back ? 'pl-0' : '']"
+            :class="['white-sheet-container', isMobile ? 'mt-0' : 'mt-4']"
           >
             <div
-              :class="['titlePrimary--text mb-8', isMobile ? 'mew-heading-2 text-left ml-3' : 'mew-subtitle text-center', isMobile && !back ? 'ml-4' : '']"
+              :class="['titlePrimary--text', isMobile ? 'mew-heading-2 text-left pt-6 px-15 pb-8' : 'mew-subtitle text-center pa-8', isMobile && !back ? 'pl-0' : '']"
             > 
               <!--
       =====================================================================================
       Title displayed on white sheet
       =====================================================================================
       -->
-              {{ title }}
+              <div :class="[isMobile ? 'ml-3' : isMobile && !back ? 'ml-4' : '']">
+                {{ title }}
+              </div>
             </div>
             <!--
         =====================================================================================
           Slot: used to place custom ui content
         =====================================================================================
         -->
-            <div class="d-flex flex-column align-center justify-center">
+            <div :class="['d-flex flex-column align-center justify-center', isMobile ? 'px-3 pb-6' : 'px-8 pb-8']">
               <slot />
             </div>
           </v-sheet>
@@ -189,8 +191,6 @@ export default {
     sheetWidth() {
       if (this.contentSize) {
         switch(this.contentSize.toLowerCase()) {
-          case this.isMobile:
-            return '100%';
           case sizes.small: 
             return '384px';
           case sizes.medium: 
