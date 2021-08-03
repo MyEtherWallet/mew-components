@@ -12,40 +12,50 @@
     <v-sheet 
       height="100%"
       color="overlayBg"
-      class="mew-overlay-container d-flex align-center flex-column "
+      class="mew-overlay-container d-flex align-center flex-column"
     >
       <!--
   =====================================================================================
-    Mew Overlay action buttons (back and close)
+    Mew Overlay action fab buttons (back and close)
   =====================================================================================
   -->
-      <v-row
-        class="icon-container full-width ma-0"
-        align="center"
-        :justify="back ? 'space-between' : 'end'"
-      > 
+      <v-btn
+        v-if="back"
+        top
+        left
+        absolute
+        text
+        color="textBlack2"
+        @click="back"
+        class="d-flex action-btn align-center mt-4 ml-1 pa-3"
+        fab
+      >
         <v-icon
-          v-if="back"
-          class="cursor-pointer d-flex align-center ma-5 pa-2"
-          @click="back"
-          size="16"
-          color="textBlack2"
+          size="24"
         >
           mdi-arrow-left
         </v-icon>
+      </v-btn>
+      <v-btn
+        fab
+        top
+        right
+        absolute
+        text
+        color="textBlack2"
+        class="d-flex action-btn align-center mt-4 mr-1 pa-3"
+        v-if="close"
+        @click="close"
+      >
         <v-icon
-          v-if="close"
-          class="cursor-pointer d-flex align-center ma-5 pa-2"
-          @click="close"
-          size="16"
+          size="24"
           color="textBlack2"
         >
           mdi-close
         </v-icon>
-      </v-row>
+      </v-btn>
       <v-container
-        ref="white-sheet-container"
-        class="pa-0 d-flex align-center justify-center flex-column"
+        :class="['ma-0 pa-0', isMobile ? 'full-height' : '']"
         fluid
       >
         <!--
@@ -53,40 +63,37 @@
     White sheet (displays on the overlay - size is based on the contentSize prop)
   =====================================================================================
   -->
-        <v-row class="ma-0">
+        <v-row class="ma-0 pa-0 d-flex align-center justify-center flex-column">
           <v-sheet
-            ref="white-sheet-container"
             :width="sheetWidth"
             height="100%"
             color="white"
-            class="white-sheet-container pa-8 mt-4"
+            :class="['white-sheet-container pa-8', isMobile ? 'mt-0' : 'mt-4' ]"
           >
-            <v-row 
-              align="center"
-              justify="center"
-              class="ma-0"
-            >
+            <div
+              :class="['titlePrimary--text', isMobile ? 'mew-heading-2' : 'mew-subtitle', isMobile && !back ? 'text-left' : 'text-center']"
+            > 
               <!--
-    =====================================================================================
-    Title displayed on white sheet
-    =====================================================================================
-    -->
-              <span
-                class="mew-subtitle titlePrimary--text text-center"
-              >{{ title }}</span>
-              {{ hasScrollBar }}
-            </v-row>
-            <!--
       =====================================================================================
-        Slot: used to place custom ui content
+      Title displayed on white sheet
       =====================================================================================
       -->
+              {{ title }}
+            </div>
+            <!--
+        =====================================================================================
+          Slot: used to place custom ui content
+        =====================================================================================
+        -->
             <div class="d-flex flex-column align-center justify-center">
               <slot />
             </div>
           </v-sheet>
         </v-row>
-        <v-row class="ma-0 py-8 footer-text">
+        <v-row
+          justify="center"
+          class="ma-0 py-8 footer-text"
+        >
           {{ footer.text }} 
           <a
             v-if="footer && footer.linkTitle && footer.link"
@@ -164,9 +171,7 @@ export default {
      */
     back: {
       type: Function,
-      default: () => {
-        return {};
-      }
+      default: null
     },
     /**
      * Applies the size of the white sheet on the overlay.
@@ -179,6 +184,9 @@ export default {
     },
   },
   computed: {
+    isMobile() {
+      return this.contentSize.toLowerCase() === sizes.mobile || this.$vuetify.breakpoint.xs;
+    },
     sheetWidth() {
       if (this.contentSize) {
         switch(this.contentSize.toLowerCase()) {
@@ -197,16 +205,10 @@ export default {
         }
       }
       return '384px';
-    },
-    hasScrollBar() {
-
-      return '';
     }
   },
   watch: {
     showOverlay(newVal) {
-          console.error('adsfadsf', this.$refs)
-
       this.isOverlayShown = newVal;
     }
   },
@@ -217,18 +219,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.mew-overlay-container::before, .mew-overlay-container::after {
+  content: ''; 
+  margin: auto;
+}
+
 .mew-overlay-container {
   overflow: auto;
   .white-sheet-container {
     border-radius: 12px;
     box-shadow: 0px 12px 17px rgba(21, 29, 63, 0.0332441);
   }
-  .icon-container {
-    position: absolute;
-    top: 0;
-    .v-icon:hover {
-    background-color: rgba(95, 99, 104, 0.06);
-    border-radius: 50%;
+  .action-btn {
+    height: auto;
+    top: 0 !important;
+    width: auto;
+    .v-btn:hover {
+      background-color: rgba(95, 99, 104, 0.06);
     }
   }
   .footer-text {
