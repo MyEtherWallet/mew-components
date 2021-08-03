@@ -1,173 +1,163 @@
 <template>
-    <!--
+  <!--
   =====================================================================================
     Mew Overlay
   =====================================================================================
   -->
   <v-bottom-sheet
-    :value="isOverlayOn" 
+    :value="isOverlayShown" 
     :fullscreen="true"
     persistent
   >
     <v-sheet 
-      height="100%" 
+      height="100%"
       color="overlayBg"
-      class="mew-overlay-container"
+      class="mew-overlay-container d-flex align-center flex-column"
     >
-      <v-container fluid>
       <!--
   =====================================================================================
-    Mew Overlay action buttons and header title
+    Mew Overlay action fab buttons (back and close)
   =====================================================================================
   -->
+      <v-btn
+        v-if="back"
+        top
+        left
+        absolute
+        text
+        color="textBlack2"
+        @click="back"
+        class="d-flex action-btn align-center mt-4 ml-1 pa-3"
+        fab
+      >
+        <v-icon
+          size="24"
+        >
+          mdi-arrow-left
+        </v-icon>
+      </v-btn>
+      <v-btn
+        fab
+        top
+        right
+        absolute
+        text
+        color="textBlack2"
+        class="d-flex action-btn align-center mt-4 mr-1 pa-3"
+        v-if="close"
+        @click="close"
+      >
+        <v-icon
+          size="24"
+          color="textBlack2"
+        >
+          mdi-close
+        </v-icon>
+      </v-btn>
+      <v-container
+        :class="['ma-0 pa-0', isMobile ? 'full-height' : '']"
+        fluid
+      >
+        <!--
+  =====================================================================================
+    White sheet (displays on the overlay - size is based on the contentSize prop)
+  =====================================================================================
+  -->
+        <v-row class="ma-0 pa-0 d-flex align-center justify-center flex-column">
+          <v-sheet
+            :width="sheetWidth"
+            height="100%"
+            color="white"
+            :class="['white-sheet-container pa-8', isMobile ? 'mt-0' : 'mt-4' ]"
+          >
+            <div
+              :class="['titlePrimary--text', isMobile ? 'mew-heading-2' : 'mew-subtitle', isMobile && !back ? 'text-left' : 'text-center']"
+            > 
+              <!--
+      =====================================================================================
+      Title displayed on white sheet
+      =====================================================================================
+      -->
+              {{ title }}
+            </div>
+            <!--
+        =====================================================================================
+          Slot: used to place custom ui content
+        =====================================================================================
+        -->
+            <div class="d-flex flex-column align-center justify-center">
+              <slot />
+            </div>
+          </v-sheet>
+        </v-row>
         <v-row
-          align="center"
-          class="pt-5"
-          :justify="leftBtnText ? 'space-between' : 'end'"
-        > 
-          <div
-            v-if="leftBtnText"
-            class="close-container cursor-pointer d-flex align-center ml-5"
-            @click="goBack"
-          > 
-            <v-icon
-              color="titlePrimary"
-            >
-              mdi-arrow-left-circle-outline
-            </v-icon>
-            <span class="titlePrimary--text font-weight-medium ml-2">{{ leftBtnText }}</span>
-          </div>
-          <div
-            v-if="rightBtnText"
-            class="close-container cursor-pointer d-flex align-center mr-5"
-            @click="closeOverlay"
-          > 
-            <v-icon
-              color="error"
-            >
-              mdi-close-circle-outline
-            </v-icon>
-            <span class="error--text font-weight-medium ml-2">{{ rightBtnText }}</span>
-          </div>
-        </v-row>
-        <v-row 
-          align="center"
-          class="pt-5 mb-3 mx-0"
           justify="center"
+          class="ma-0 py-8 footer-text"
         >
-          <span
-            class="mew-subtitle titlePrimary--text text-center"
-          >{{ title }}</span>
+          {{ footer.text }} 
+          <a
+            v-if="footer && footer.linkTitle && footer.link"
+            rel="noopener noreferrer"
+            class="cursor-pointer font-weight-medium ml-1"
+            :href="footer.link"
+            target="_blank"
+          >
+            {{ footer.linkTitle }}
+          </a>
         </v-row>
-        <v-row 
-          v-if="description"
-          align="center"
-          class="mb-6 mx-0"
-          justify="center"
-        >
-          <span
-            class="mew-heading-3 titlePrimary--text font-weight-regular text-center"
-          >{{description}}</span>
-        </v-row>
-    <!--
-  =====================================================================================
-    Mew Overlay Body, slot: mewOverlayBody (used to place custom ui in overlay body)
-  =====================================================================================
-  -->
-        <div class="body-container d-flex flex-column align-center justify-center">
-          <slot name="mewOverlayBody" />
-          <mew-button
-            class="mt-4"
-            v-if="btnText"
-            color-theme="primary"
-            btn-type="background"
-            :title="btnText"
-          />
-          <mew-warning-sheet
-            v-if="warningTitle || warningDesc"
-            :title="warningTitle"
-            :description="warningDesc"
-          />
-        </div>
       </v-container>
     </v-sheet>
   </v-bottom-sheet>
 </template>
 
 <script>
-import MewButton from '@/components/MewButton/MewButton.vue';
-import MewWarningSheet from '@/components/MewWarningSheet/MewWarningSheet.vue';
+const sizes = {
+  mobile: 'mobile',
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+  xlarge: 'xlarge'
+}
 
 export default {
   name: 'MewOverlay',
   data() {
     return {
-      isOverlayOn: false
+      isOverlayShown: false
     }
-  },
-  components: {
-    MewButton,
-    MewWarningSheet
   },
   props: {
     /**
-     * Shows the overlay.
+     * Displays on the outside bottom of the white sheet.
+     * takes an object, i.e {text: 'Need help?', linkTitle: 'Contact support',
+     * link: 'mailto:support@myetherwallet.com'}
+     */
+    footer: {
+      type: Object,
+      default: () => {
+        return {};
+      }
+    },
+    /**
+     * Opens the overlay from 
+     * the bottom of the screen.
      */
     showOverlay: {
       type: Boolean,
       default: false
     },
     /**
-     * Title of overlay.
+     * Overlay title.
+     * Displays on the white sheet.
      */
     title: {
       type: String,
       default: ''
     },
     /**
-     * Description of overlay.
-     */
-    description: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Displays and shows the button text.
-     */
-    btnText: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Displays and shows the warning title.
-     */
-    warningTitle: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Displays and shows the warning description.
-     */
-    warningDesc: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Right button string.
-     */
-    rightBtnText: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Left button string.
-     */
-    leftBtnText: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Close button.
+     * Function that gets triggered 
+     * by close icon on the right.
+     *
      */
     close: {
       type: Function,
@@ -176,38 +166,80 @@ export default {
       }
     },
     /**
-     * Back button.
+     * Function that gets triggered
+     * by left arrow icon on the left.
      */
     back: {
       type: Function,
-      default: () => {
-        return {};
+      default: null
+    },
+    /**
+     * Applies the size of the white sheet on the overlay.
+     * options: 'mobile' - < 344, 'small' - 384px, 
+     * 'medium' - 504px, 'large' - 624px, 'xlarge' - 744px.
+     */
+    contentSize: {
+      type: String,
+      default: 'small'
+    },
+  },
+  computed: {
+    isMobile() {
+      return this.contentSize.toLowerCase() === sizes.mobile || this.$vuetify.breakpoint.xs;
+    },
+    sheetWidth() {
+      if (this.contentSize) {
+        switch(this.contentSize.toLowerCase()) {
+          case sizes.mobile || this.$vuetify.breakpoint.xs:
+            return '100%';
+          case sizes.small: 
+            return '384px';
+          case sizes.medium: 
+            return '504px';
+          case sizes.large: 
+            return '624px';
+          case sizes.xlarge:
+            return '744px';
+          default: 
+            return '384px';
+        }
       }
+      return '384px';
     }
   },
   watch: {
     showOverlay(newVal) {
-      this.isOverlayOn = newVal;
+      this.isOverlayShown = newVal;
     }
   },
   mounted() {
-    this.isOverlayOn = this.showOverlay;
-  },
-  methods: {
-    closeOverlay() {
-      this.$emit('closeOverlay')
-      this.close();
-    },
-    goBack() {
-      this.$emit('back')
-      this.back();
-    }
+    this.isOverlayShown = this.showOverlay;
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.mew-overlay-container::before, .mew-overlay-container::after {
+  content: ''; 
+  margin: auto;
+}
+
 .mew-overlay-container {
   overflow: auto;
+  .white-sheet-container {
+    border-radius: 12px;
+    box-shadow: 0px 12px 17px rgba(21, 29, 63, 0.0332441);
+  }
+  .action-btn {
+    height: auto;
+    top: 0 !important;
+    width: auto;
+    .v-btn:hover {
+      background-color: rgba(95, 99, 104, 0.06);
+    }
+  }
+  .footer-text {
+    color: rgba(11, 40, 64, 0.72);
+  }
 }
 </style>

@@ -1,7 +1,9 @@
 import {
   withKnobs,
   boolean,
-  text
+  text,
+  optionsKnob,
+  object
 } from '@storybook/addon-knobs';
 import MewOverlay from '@/components/MewOverlay/MewOverlay.vue';
 
@@ -12,6 +14,18 @@ export default {
   },
   decorators: [withKnobs]
 };
+
+const options = {
+  display: 'inline-radio'
+};
+
+const sizes = {
+  mobile: 'mobile',
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+  xlarge: 'xlarge'
+}
 
 export const MEWOverlay = () => ({
   data() {
@@ -30,23 +44,17 @@ export const MEWOverlay = () => ({
     title: {
       default: text('title', 'Title')
     },
-    btnText: {
-      default: text('btn-text', '')
+    contentSize: {
+      default: optionsKnob(
+        'content-size',
+        sizes,
+        '',
+        options
+      )
     },
-    warningTitle: {
-      default: text('warning-title', '')
-    },
-    warningDesc: {
-      default: text('warning-desc', '')
-    },
-    rightBtnText: {
-      default: text('right-btn-text', 'Cancel')
-    },
-    leftBtnText: {
-      default: text('left-btn-text', 'Back')
-    },
-    description: {
-      default: text('description', '')
+    footer: {
+      default: object('footer-text', {text: 'Need help?', linkTitle: 'Contact support',
+      link: 'mailto:support@myetherwallet.com'})
     }
   },
   watch: {
@@ -60,11 +68,11 @@ export const MEWOverlay = () => ({
   methods: {
     close() {
       // eslint-disable-next-line no-console
-      this.showsOverlay = false;
+      this.showOverlay = false;
     },
     back() {
       // eslint-disable-next-line no-console
-      this.showsOverlay = false;
+      this.showOverlay = false;
     }
   },
   template: `
@@ -73,18 +81,12 @@ export const MEWOverlay = () => ({
     <mew-overlay
       :back="back"
       :close="close"
-      :show-overlay="showsOverlay"
+      :footer="footer"
+      :content-size="contentSize"
+      :show-overlay="showOverlay"
       :title="title"
-      :btn-text="btnText"
-      :warning-title="warningTitle"
-      :warning-desc="warningDesc"
-      :right-btn-text="rightBtnText"
-      :left-btn-text="leftBtnText"
-      :description="description"
     >
-      <template v-slot:mewOverlayBody>
-        <span>MEW overlay body</span>
-      </template>
+      <span>MEW overlay body</span>
     </mew-overlay>
   </div>`
 });
