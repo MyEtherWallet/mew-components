@@ -20,7 +20,6 @@ const options = {
 };
 
 const sizes = {
-  mobile: 'mobile',
   small: 'small',
   medium: 'medium',
   large: 'large',
@@ -40,6 +39,9 @@ export const MEWOverlay = () => ({
     },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
+    },
+    hideBack: {
+      default: boolean('hide-back', false)
     },
     title: {
       default: text('title', 'Title')
@@ -79,7 +81,7 @@ export const MEWOverlay = () => ({
     <div>
     <br />
     <mew-overlay
-      :back="back"
+      :back="hideBack ? null : back"
       :close="close"
       :footer="footer"
       :content-size="contentSize"

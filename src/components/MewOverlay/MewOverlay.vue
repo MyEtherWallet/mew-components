@@ -27,7 +27,7 @@
         text
         color="textBlack2"
         @click="back"
-        class="d-flex action-btn align-center mt-4 ml-1 pa-3"
+        :class="['d-flex action-btn align-center pa-3', isMobile ? 'mt-3 ml-n1' : 'mt-4 ml-1']"
         fab
       >
         <v-icon
@@ -43,7 +43,7 @@
         absolute
         text
         color="textBlack2"
-        class="d-flex action-btn align-center mt-4 mr-1 pa-3"
+        :class="['d-flex action-btn align-center pa-3', , isMobile ? 'mt-3 mr-n1' : 'mt-4 mr-1']"
         v-if="close"
         @click="close"
       >
@@ -68,10 +68,10 @@
             :width="sheetWidth"
             height="100%"
             color="white"
-            :class="['white-sheet-container pa-8', isMobile ? 'mt-0' : 'mt-4' ]"
+            :class="['white-sheet-container', isMobile ? 'mt-0 pt-6 px-15' : 'mt-4 pa-8', isMobile && !back ? 'pl-0' : '']"
           >
             <div
-              :class="['titlePrimary--text', isMobile ? 'mew-heading-2' : 'mew-subtitle', isMobile && !back ? 'text-left' : 'text-center']"
+              :class="['titlePrimary--text mb-8', isMobile ? 'mew-heading-2 text-left ml-3' : 'mew-subtitle text-center', isMobile && !back ? 'ml-4' : '']"
             > 
               <!--
       =====================================================================================
@@ -112,7 +112,6 @@
 
 <script>
 const sizes = {
-  mobile: 'mobile',
   small: 'small',
   medium: 'medium',
   large: 'large',
@@ -175,8 +174,8 @@ export default {
     },
     /**
      * Applies the size of the white sheet on the overlay.
-     * options: 'mobile' - < 344, 'small' - 384px, 
-     * 'medium' - 504px, 'large' - 624px, 'xlarge' - 744px.
+     * options: 'small' - 384px, 'medium' - 504px, 
+     * 'large' - 624px, 'xlarge' - 744px.
      */
     contentSize: {
       type: String,
@@ -185,12 +184,12 @@ export default {
   },
   computed: {
     isMobile() {
-      return this.contentSize.toLowerCase() === sizes.mobile || this.$vuetify.breakpoint.xs;
+      return this.$vuetify.breakpoint.xs || this.$vuetify.breakpoint.sm;
     },
     sheetWidth() {
       if (this.contentSize) {
         switch(this.contentSize.toLowerCase()) {
-          case sizes.mobile || this.$vuetify.breakpoint.xs:
+          case this.isMobile:
             return '100%';
           case sizes.small: 
             return '384px';
