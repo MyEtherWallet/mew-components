@@ -44,6 +44,7 @@
         text
         color="textBlack2"
         :class="['d-flex action-btn align-center pa-3', , isMobile ? 'mt-3 mr-n1' : 'mt-4 mr-1']"
+        v-if="close"
         @click="close"
       >
         <v-icon
@@ -155,6 +156,17 @@ export default {
       default: ''
     },
     /**
+     * Function that gets triggered 
+     * by close icon on the right.
+     *
+     */
+    close: {
+      type: Function,
+      default: () => {
+        return {};
+      }
+    },
+    /**
      * Function that gets triggered
      * by left arrow icon on the left.
      */
@@ -194,15 +206,7 @@ export default {
       return '384px';
     }
   },
-  methods: {
-    close() {
-      this.isOverlayShown = false;
-    }
-  },
   watch: {
-    isOverlayShown(newVal) {
-      this.$emit('overlayClosed', newVal);
-    },
     showOverlay(newVal) {
       this.isOverlayShown = newVal;
     }
