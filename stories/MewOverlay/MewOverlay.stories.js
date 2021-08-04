@@ -68,6 +68,10 @@ export const MEWOverlay = () => ({
     }
   },
   methods: {
+    close() {
+      // eslint-disable-next-line no-console
+      this.showOverlay = false;
+    },
     back() {
       // eslint-disable-next-line no-console
       this.showOverlay = false;
@@ -79,6 +83,7 @@ export const MEWOverlay = () => ({
     <mew-overlay
       :back="hideBack ? null : back"
       :footer="footer"
+      :close="close"
       :content-size="contentSize"
       :show-overlay="showOverlay"
       :title="title"
