@@ -40,9 +40,6 @@ export const MEWOverlay = () => ({
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     },
-    hideBack: {
-      default: boolean('hide-back', false)
-    },
     title: {
       default: text('title', 'Title')
     },
@@ -81,7 +78,7 @@ export const MEWOverlay = () => ({
     <div>
     <br />
     <mew-overlay
-      :back="hideBack ? null : back"
+      :back="back"
       :footer="footer"
       :close="close"
       :content-size="contentSize"
