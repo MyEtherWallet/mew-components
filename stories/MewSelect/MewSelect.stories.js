@@ -53,7 +53,7 @@ export const MEWSelect = () => ({
       default: boolean('has-filter', false)
     },
     isCustom: {
-      default: boolean('is-custom', true)
+      default: boolean('is-custom', false)
     },
     loading: {
       default: boolean('loading', false)

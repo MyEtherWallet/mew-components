@@ -105,7 +105,7 @@
         class="d-flex align-center justify-center"
       >
         <v-img
-          v-if="item.img"
+          v-if="isCustom"
           class="mew-select-item-img selected-img"
           :src="!item.img ? ethTokenPlaceholder : item.img"
           :alt="item.name ? item.name : item"
@@ -140,15 +140,6 @@
         v-if="!isCustom && !loading"
         class="d-flex align-center justify-center"
       >
-        <v-img
-          class="mew-select-item-img"
-          @error="onImgErr(data)"
-          :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
-          :alt="!data.item.img ? 'token placeholder' : data.item.img"
-          :contain="true"
-          max-width="25"
-          max-height="25"
-        /> 
         <span class="text-capitalize ml-2 mt-1">{{ data.item.name ? data.item.name : data.item }} <span
           v-if="data.item.subtext"
           class="textSecondary--text text-capitalize"
@@ -193,7 +184,7 @@
           >
             <v-img
               class="mew-select-item-img"
-              @error="onImgErr(data)"
+              @error="onDropdownItemImgErr(data)"
               :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
               :alt="!data.item.img ? 'token placeholder' : data.item.img"
               :contain="true"
@@ -300,7 +291,7 @@ export default {
     loading: {
       type: Boolean,
       default: false
-    },
+    }
   },
   data() {
     return {
@@ -367,7 +358,7 @@ export default {
 
   },
   methods: {
-    onImgErr(data) {
+    onDropdownItemImgErr(data) {
       data.item.img = ethTokenPlaceholder;
     },
     clear(val) {
