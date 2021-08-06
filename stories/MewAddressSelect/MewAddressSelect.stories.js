@@ -71,6 +71,9 @@ export const mewAddressSelect = () => ({
     rules: {
       default: array("rules", ruleValue),
     },
+    errorMessages: {
+      default: text('error-messages', '')
+    }
   },
   watch: {
     enableDarkMode(newVal) {
@@ -80,7 +83,7 @@ export const mewAddressSelect = () => ({
   template: `
     <div>
     <br />
-    <mew-address-select ref="address" :no-data-text="noDataText" :rules="rules" :resolved-addr="resolvedAddr" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" :is-valid-address="isValidAddress" :label="label" :items="items" @saveAddress="onSaveAddress" @input="onSelectValue"/>
+    <mew-address-select ref="address" :error-messages="errorMessages" :no-data-text="noDataText" :rules="rules" :resolved-addr="resolvedAddr" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" :is-valid-address="isValidAddress" :label="label" :items="items" @saveAddress="onSaveAddress" @input="onSelectValue"/>
   </div>`,
   methods: {
     onSaveAddress() {
