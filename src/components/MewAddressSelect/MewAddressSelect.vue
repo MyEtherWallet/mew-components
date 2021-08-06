@@ -15,6 +15,7 @@
     item-text="address"
     :placeholder="placeholder"
     :disabled="disabled"
+    :error-messages="errorMessages"
     :hint="resolvedAddr ? resolvedAddr : ''"
     :persistent-hint="resolvedAddr.length > 0"
     :rules="rules"
@@ -214,6 +215,13 @@ export default {
       type: String,
       default: '',
     },
+    /**
+     * Error messages to display
+     */
+    errorMessages: {
+      type: [ String, Array],
+      default: ''
+    }
   },
   components: {
     MewBlockie,

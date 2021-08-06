@@ -236,7 +236,7 @@
                 class="address-container font-weight-medium mew-address d-flex"
               > 
                 <span
-                  class="mew-address"
+                  class="mew-address truncate"
                   v-if="item.resolvedAddr"
                 >{{ item.address }}</span>
                 <mew-transform-hash

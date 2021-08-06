@@ -4,7 +4,7 @@
     Mew Stepper 
   =====================================================================================
   -->
-  <div>
+  <div class="full-width">
     <v-stepper
       alt-labels
       color="primary"
