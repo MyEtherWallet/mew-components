@@ -1,24 +1,38 @@
 <template>
-    <!--
+  <!--
   =====================================================================================
-    Mew Blockie
+  Mew Blockie
   =====================================================================================
   -->
   <div>
-    <div
-      ref="identicon"
-      class="address-identicon"
-    />
+    <!--
+    ===========================================================================
+    Blockie to print
+    ===========================================================================
+    -->
     <img
-      v-if="currency"
-      alt="icon"
-      class="currency-icon"
-      :src="currency"
-    >
+      v-if="printable"
+      ref="printable"
+      :src="PrintableBlockieImg"
+      alt="Blockie Image"
+      class="printable-blockie-image"
+    />
+
+    <!--
+    ===========================================================================
+    Blockie to display
+    ===========================================================================
+    -->
+    <div v-else>
+      <div ref="identicon" class="address-identicon" />
+      <img v-if="currency" alt="icon" class="currency-icon" :src="currency" />
+    </div>
   </div>
 </template>
+
 <script>
 import Blockies from '@/helpers/blockies.js';
+
 export default {
   name: 'MewBlockie',
   props: {
@@ -49,13 +63,20 @@ export default {
     height: {
       type: String,
       default: '64px'
+    },
+    /**
+     * Printable blockie image
+     */
+    printable: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
       scale: 16,
-      size: 8
-
+      size: 8,
+      PrintableBlockieImg: null
     };
   },
   watch: {
@@ -76,9 +97,20 @@ export default {
     }
   },
   mounted() {
-    this.setBlockie();
+    // Create printable blockie image
+    if (this.printable) this.createPrintableBlockie();
+    else this.setBlockie();
   },
   methods: {
+    createPrintableBlockie() {
+      this.PrintableBlockieImg = Blockies({
+        seed: this.address ? this.address.toLowerCase() : '',
+        size: this.size,
+        scale: this.scale
+      }).toDataURL();
+      this.$refs.printable.style.width = this.width;
+      this.$refs.printable.style.height = this.height;
+    },
     setBlockie() {
       const data = Blockies({
         seed: this.address ? this.address.toLowerCase() : '',
@@ -92,6 +124,7 @@ export default {
   }
 };
 </script>
+
 <style lang="scss" scoped>
 .address-identicon {
   background-repeat: no-repeat;
@@ -101,5 +134,10 @@ export default {
     inset rgba(0, 0, 0, 0.6) 0 -1px 8px;
   height: 100%;
   width: 100%;
+}
+// box-shadow removed for print quality
+.printable-blockie-image {
+  display: block;
+  border-radius: 50%;
 }
 </style>
