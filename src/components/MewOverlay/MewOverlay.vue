@@ -41,6 +41,7 @@
         top
         right
         absolute
+        retain-focus-on-click
         text
         color="textBlack2"
         :class="['d-flex action-btn align-center pa-3', , isMobile ? 'mt-3 mr-n1' : 'mt-4 mr-1']"
@@ -207,9 +208,6 @@ export default {
     }
   },
   watch: {
-    isOverlayShown(newVal) {
-      this.$emit('overlayShown', newVal);
-    },
     showOverlay(newVal) {
       this.isOverlayShown = newVal;
     }
@@ -238,9 +236,6 @@ export default {
     width: auto;
     .v-btn:hover {
       background-color: rgba(95, 99, 104, 0.06);
-    }
-    &.v-btn:focus::before {
-    opacity: 0;
     }
   }
   .footer-text {

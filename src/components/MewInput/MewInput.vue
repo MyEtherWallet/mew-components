@@ -13,6 +13,7 @@
     :outlined="!hasNoBorder"
     :solo="hasNoBorder"
     color="primary"
+    :autofocus="autofocus"
     v-model="inputValue"
     :hint="resolvedAddr ? resolvedAddr : hint"
     :persistent-hint="persistentHint || resolvedAddr.length > 0"
@@ -238,7 +239,14 @@ export default {
       type: Object,
       default: () => {
         return {};
-      },
+      }
+    },
+    /**
+     * Autofocuses the input
+     */
+    autofocus: {
+      type: Boolean,
+      default: false
     },
   },
   data() {

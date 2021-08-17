@@ -60,6 +60,9 @@ export const MEWInput = () => ({
     hideClearBtn: {
       default: boolean('hide-clear-btn', false)
     },
+    autofocus: {
+      default: boolean('autofocus', true)
+    },
     rules: {
       default: array('rules', ruleValue)
     },
@@ -105,7 +108,7 @@ export const MEWInput = () => ({
   template: `
     <div>
     <br />
-    <mew-input ref="input" :buy-more-str="buyMoreStr" :max-btn-obj="maxBtnObj" :error-messages="errorMessages" :persistent-hint="persistentHint" :image="image" :id="id" :hint="hint" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :rules="rules" :hide-clear-btn="hideClearBtn" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
+    <mew-input ref="input" :autofocus="autofocus" :buy-more-str="buyMoreStr" :max-btn-obj="maxBtnObj" :error-messages="errorMessages" :persistent-hint="persistentHint" :image="image" :id="id" :hint="hint" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :rules="rules" :hide-clear-btn="hideClearBtn" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type"
     />
   </div>`
 });
