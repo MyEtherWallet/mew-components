@@ -41,7 +41,6 @@
         top
         right
         absolute
-        retain-focus-on-click
         text
         color="textBlack2"
         :class="['d-flex action-btn align-center pa-3', , isMobile ? 'mt-3 mr-n1' : 'mt-4 mr-1']"
