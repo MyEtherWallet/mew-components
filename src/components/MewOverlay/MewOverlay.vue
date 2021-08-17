@@ -207,6 +207,9 @@ export default {
     }
   },
   watch: {
+    isOverlayShown(newVal) {
+      this.$emit('overlayShown', newVal);
+    },
     showOverlay(newVal) {
       this.isOverlayShown = newVal;
     }
@@ -235,6 +238,9 @@ export default {
     width: auto;
     .v-btn:hover {
       background-color: rgba(95, 99, 104, 0.06);
+    }
+    &.v-btn:focus::before {
+    opacity: 0;
     }
   }
   .footer-text {
