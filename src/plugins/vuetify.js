@@ -1,7 +1,7 @@
-import Vue from "vue";
-import "@mdi/font/css/materialdesignicons.css"; // Ensure you are using css-loader
-import "@/assets/styles/global.scss";
-import vuetifyTheme from "@/assets/styles/vuetifyTheme.js";
+import Vue from 'vue';
+import '@mdi/font/css/materialdesignicons.css'; // Ensure you are using css-loader
+import '@/assets/styles/global.scss';
+import vuetifyTheme from '@/assets/styles/vuetifyTheme.js';
 
 import Vuetify, {
   VApp,
@@ -63,7 +63,7 @@ import Vuetify, {
   VTextarea,
   VSkeletonLoader,
   VProgressCircular,
-} from "vuetify/lib";
+} from 'vuetify/lib';
 
 Vue.use(Vuetify, {
   components: {

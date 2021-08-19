@@ -1,5 +1,8 @@
 <template>
-  <v-dialog max-width="500" :value="show">
+  <v-dialog
+    max-width="500"
+    :value="show"
+  >
     <v-sheet class="py-6 px-4">
       <!--
         =====================================================================================
@@ -7,12 +10,21 @@
         =====================================================================================
         -->
       <v-row class="header-container">
-        <v-col cols="11" align-self="center">
-          <p class="mew-heading-2 text-center">{{ title }}</p>
-        </v-col>
-        <v-icon size="large" color="grey cursor--pointer icon" @click="close"
-          >mdi-close</v-icon
+        <v-col
+          cols="11"
+          align-self="center"
         >
+          <p class="mew-heading-2 text-center">
+            {{ title }}
+          </p>
+        </v-col>
+        <v-icon
+          size="large"
+          color="grey cursor--pointer icon"
+          @click="close"
+        >
+          mdi-close
+        </v-icon>
       </v-row>
       <!--
         =====================================================================================
@@ -28,7 +40,10 @@
         =====================================================================================
         -->
       <v-row>
-        <v-col cols="12" class="text-center">
+        <v-col
+          cols="12"
+          class="text-center"
+        >
           <mew-button
             @click.native="btnAction"
             btn-size="xlarge"
@@ -42,9 +57,9 @@
 </template>
 
 <script>
-import MewButton from "@/components/MewButton/MewButton.vue";
+import MewButton from '@/components/MewButton/MewButton.vue';
 export default {
-  name: "MewModal",
+  name: 'MewModal',
   components: {
     MewButton,
   },
@@ -54,7 +69,7 @@ export default {
      */
     title: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * Close function from parent.
@@ -89,7 +104,7 @@ export default {
      */
     btnText: {
       type: String,
-      default: "Confirm and Send",
+      default: 'Confirm and Send',
     },
   },
 };

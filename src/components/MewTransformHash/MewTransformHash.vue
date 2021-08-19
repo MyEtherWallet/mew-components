@@ -1,12 +1,11 @@
 <template>
-    <!--
+  <!--
   =====================================================================================
     Mew Transform Hash 
   =====================================================================================
   -->
   <div class="d-flex justify-end hash-container mew-address">
-      <span class="firstPart">{{ start }}</span
-      ><span class="lastPart">{{ end }}</span>
+    <span class="firstPart">{{ start }}</span><span class="lastPart">{{ end }}</span>
   </div>
 </template>
 
