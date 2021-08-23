@@ -14,15 +14,18 @@
   >
     <v-card
       color="white"
-      class="py-0 px-5 px-md-7"
+      class="pa-0"
     >
       <!--
       =====================================================================================
         Dialog Header
         =====================================================================================
       -->
-      <v-card-title class="justify-center py-5 py-md-8">
-        <div class="mew-heading-2 text-center">
+      <v-card-title class="justify-center py-5 py-md-8 px-5 px-md-7">
+        <div
+          v-if="title"
+          class="mew-heading-2 break-word text-center"
+        >
           {{ title }}
         </div>
         <v-btn
@@ -40,11 +43,11 @@
       </v-card-title>
       <!--
       =====================================================================================
-        Dialog Body: Scrollable
+        Dialog Body
       =====================================================================================
       -->
       <v-card-text
-        class="py-3 px-5 px-md-0"
+        :class="['tableHeader', hasPadding ? 'py-3 px-5 px-md-7' : 'pa-0']"
       >
         <slot />
       </v-card-text>
@@ -174,6 +177,13 @@ export default {
      * there is no btnAction method passed.
      */
     hasButtons: {
+      type: Boolean,
+      default: true
+    },
+    /**
+     * Will display popup content padding if true
+     */
+    hasPadding: {
       type: Boolean,
       default: true
     }
