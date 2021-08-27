@@ -1,9 +1,8 @@
-import {
+  import {
   withKnobs,
   boolean,
   text,
-  object,
-  optionsKnob
+  object
 } from '@storybook/addon-knobs';
 import MewPopup from '@/components/MewPopup/MewPopup.vue';
 import MewPopupDoc from './MewPopup.mdx';
@@ -19,19 +18,9 @@ export default {
   decorators: [withKnobs]
 };
 
-const buttonLeftObj = {
-  title: 'Cancel',
-  colorTheme: 'basic'
-}
-
-const buttonRightObj = {
-  title: 'Log out',
-  colorTheme: 'error'
-}
-
-const popupTypeOptions = {
-  error: 'error',
-  confirm: 'confirm'
+const btnTexts = {
+  close: 'Cancel',
+  action: 'Confirm'
 }
 
 export const MEWPopup = () => ({
@@ -45,59 +34,58 @@ export const MEWPopup = () => ({
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     },
-    isOpen: {
-      default: boolean('is-open', true)
+    show: {
+      default: boolean('show', true)
     },
     title: {
       default: text('title', 'Are you sure you want to log out?')
     },
-    desc: {
-      default: text('desc', '')
+    btnEnabled: {
+      default: boolean('btn-enabled', true)
     },
-    popupType: {
-      default: optionsKnob('popup-type', popupTypeOptions, 'confirm', { display: 'inline-radio' })
+    btnTexts: {
+      default: object('btn-texts', btnTexts)
     },
-    buttonLeft: {
-      default: object('button-left', buttonLeftObj)
+    scrollable: {
+      default: boolean('scrollable', false)
     },
-    buttonRight: {
-      default: object('button-right', buttonRightObj)
+    width: {
+      default: text('width', '600')
     },
-    error: {
-      default: object('error', {title: '', msg: ''})
+    hasButtons: {
+      default: boolean('has-buttons', true)
     },
-    copyMsg: {
-      default: text('copy-msg', 'Copy the message')
-    },
-    successToast: {
-      default: text('success-toast', 'Success!')
+    hasPadding: {
+      default: boolean('has-padding', true)
     }
   },
   watch: {
     enableDarkMode(newVal) {
       this.$vuetify.theme.dark = newVal === true ? true : false;
-    },
-    isOpen(newVal) {
-      this.isPopupOpen = newVal;
     }
   },
   template: `
     <div>
     <br />
     <mew-popup
-      :is-open="isPopupOpen"
+      :show="show"
       :title="title"
-      :desc="desc"
-      :button-right="buttonRight"
-      :button-left="buttonLeft"
-      :popup-type="popupType"
-      :error="error"
-      :copy-msg="copyMsg"
-      @onClick="onClick"
-      :successToast="successToast"
-    />
+      :btn-action="btnAction"
+      :btn-texts="btnTexts"
+      :btn-enabled="btnEnabled"
+      :scrollable="scrollable"
+      :width="width"
+      :has-buttons="hasButtons"
+      :has-padding="hasPadding"
+    > 
+      <div>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</div>
+    </mew-popup>
   </div>`,
   methods: {
+    btnAction() {
+      // eslint-disable-next-line no-console
+      console.log('btn action clicked')
+    },
     onClick(btn) {
       this.isPopupOpen = false;
       // eslint-disable-next-line no-console

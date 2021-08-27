@@ -32,13 +32,13 @@
           v-for="(item, i) in items"
           :key="item + i"
         >
-  <!--
+          <!--
 =====================================================================================
   Slot: 'tabItemContent' + number of tab content (used to place custom tab content 
   inside of the tab container)
 =====================================================================================
 -->
-            <slot :name="'tabItemContent' + (i + 1)" />
+          <slot :name="'tabItemContent' + (i + 1)" />
         </v-tab-item>
       </v-tabs-items>
     </v-tabs>
@@ -51,7 +51,7 @@
         :hide-on-leave="true"
         mode="out-in"
       >
-  <!--
+        <!--
 =====================================================================================
   Slot: 'tabContent' + number of tab content (used to place custom tab content outside of the 
   tab container)

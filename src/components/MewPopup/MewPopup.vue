@@ -1,253 +1,210 @@
 <template>
-  <div>
-    <!--
-  =====================================================================================
-    Mew Popup
-  =====================================================================================
-  -->
-    <v-dialog
-      class="text-center"
-      max-width="400"
-      height="100%"
-      :persistent="false"
-      v-model="open"
+  <!--
+      =====================================================================================
+        Mew Popup
+        =====================================================================================
+      -->
+  <v-dialog
+    :max-width="width"
+    :value="show"
+    :fullscreen="scrollable ? $vuetify.breakpoint.xs : false"
+    content-class="ma-0"
+    :scrollable="scrollable"
+    @click:outside="handleClickOutside"
+  >
+    <v-card
+      color="white"
+      class="pa-0"
     >
-      <v-card>
-    <!--
-  =====================================================================================
-    Mew Popup Title
-  =====================================================================================
-  -->
-        <v-card-title
+      <!--
+      =====================================================================================
+        Dialog Header
+        =====================================================================================
+      -->
+      <v-card-title class="justify-center py-5 py-md-8 px-5 px-md-7">
+        <div
           v-if="title"
-          :class="[!isPopupTypeError ? 'pt-6 titlePrimary--text' : 'pa-0 white--text','text-center' , 'justify-center', 'font-weight-bold', 'break-word']"
+          class="mew-heading-2 break-word text-center"
         >
-          <img
-            v-if="isPopupTypeError"
-            height="100%"
-            width="100%"
-            :src="errorImg"
-          >
-          <span :class="isPopupTypeError ? 'error-popup-title' : ''">{{ title }}</span>
-        </v-card-title>
-        <div class="px-8">
-          <v-card-text
-            v-if="desc"
-            class="text-left titlePrimary--text px-0"
-          >
-            {{ desc }}
-          </v-card-text>
-          <v-card-actions class="px-0 btn-container d-flex align-center justify-center pb-6">
-            <mew-button
-              @click.native="onClick(buttonLeft)"
-              v-if="buttonLeft"
-              :title="buttonLeft.title"
-              :color-theme="buttonLeft.colorTheme"
-              btn-style="outline"
-            />
-            <mew-button 
-              @click.native="onClick(buttonRight)"
-              v-if="buttonRight"
-              :class="buttonLeft ? 'ml-3' : ''"
-              :title="buttonRight.title"
-              :color-theme="buttonRight.colorTheme"
-              btn-style="background"
-            />
-          </v-card-actions>
-              <!--
-  =====================================================================================
-    Mew Popup Error Type
-  =====================================================================================
-  -->
-          <div
-            v-if="isPopupTypeError && error"
-            class="footer-container pb-9"
-          >
-                <!--
-  =====================================================================================
-    Slot: footerText (used to place custom ui on the footer)
-  =====================================================================================
-  -->
-            <div class="text-center">
-              <slot name="footerText" />
-            </div>
-            <v-divider />
-            <div
-              class="d-flex justify-space-between mew-heading-3 pa-4 titlePrimary--text"
-            >
-              <span>{{ error.title }}</span>
-              <v-icon
-                @click="toggleErrMsg"
-                class="titlePrimary--text cursor-pointer"
-                v-if="!toggleErrContainer"
-              >
-                {{ toggleErrContainer ? 'mdi-chevron-up' : 'mdi-chevron-down' }}
-              </v-icon>
-            </div>
-            <div
-              v-if="toggleErrContainer"
-              class="px-4 pb-4 mew-address error-container"
-            >
-              <textarea
-                class="full-height full-width no-pointer-events"
-                ref="errContainer"
-                v-model="error.msg"
-              />
-            </div>
-            <v-divider />
-            <div
-              v-if="toggleErrContainer"
-              class="text-center font-weight-medium mt-6"
-            >
-              <span
-                class="cursor-pointer primary--text text-decoration-underline"
-                @click="copyToClipboard"
-              >{{ copyMsg }}</span>
-            </div>
-          </div>
+          {{ title }}
         </div>
-      </v-card>
-    </v-dialog>
-    <mew-toast
-      ref="toast"
-      :duration="2000"
-      toast-type="success"
-      :text="successToast"
-    />
-  </div>
+        <v-btn
+          icon
+          class="header-close-icon"
+        >
+          <v-icon
+            size="x-large"
+            color="grey cursor--pointer"
+            @click="close"
+          >
+            mdi-close
+          </v-icon>
+        </v-btn>
+      </v-card-title>
+      <!--
+      =====================================================================================
+        Dialog Body
+      =====================================================================================
+      -->
+      <v-card-text
+        :class="['tableHeader', hasPadding ? 'py-3 px-5 px-md-7' : 'pa-0']"
+      >
+        <slot />
+      </v-card-text>
+      <!--
+      =====================================================================================
+        Dialog action
+      =====================================================================================
+      -->
+      <v-card-actions class="py-5 py-md-8">
+        <v-row
+          v-if="hasButtons"
+          class="pa-0"
+          justify="space-around"
+          dense
+        >
+          <v-col
+            cols="12"
+            :sm="!hasActionBtn ? '12' : '6'"
+            :class="!hasActionBtn ? 'text-left' : 'text-right'"
+            :order="!hasActionBtn ? '1' : '2'"
+            order-sm="1"
+          >
+            <mew-button
+              btn-style="outline"
+              btn-size="xlarge"
+              :title="btnTexts.close"
+              :has-full-width="!hasActionBtn ? true :$vuetify.breakpoint.xs"
+              @click.native="close"
+            />
+          </v-col>
+          <v-col
+            v-if="hasActionBtn"
+            cols="12"
+            sm="6"
+            class="text-left"
+            order="1"
+            order-sm="2"
+          >
+            <mew-button
+              btn-size="xlarge"
+              :title="btnTexts.action"
+              :disabled="!btnEnabled"
+              :has-full-width="$vuetify.breakpoint.xs"
+              @click.native="btnAction"
+            />
+          </v-col>
+        </v-row>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
 import MewButton from '@/components/MewButton/MewButton.vue';
-import MewToast from '@/components/MewToast/MewToast.vue';
-import copy from '@/helpers/copy.js';
-import errorImg from '@/assets/images/popup-img.png';
 
 export default {
-  name: 'MewPopup',
-  components: {
-    MewButton,
-    MewToast
-  },
-  data() {
-    return {
-      errorImg: errorImg,
-      open: false,
-      toggleErrContainer: false,
-      popupTypes: {
-        error: 'error',
-        confirm: 'confirm'
-      }
-    }
-  },
-  mounted() {
-    this.open = this.isOpen
-  },
-  watch: {
-    isOpen(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        this.open = newVal
-      }
-    }
-  },
+  components: { MewButton },
   props: {
     /**
-     * Controls whether the component is visible or hidden.
-     */
-    isOpen: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Pop-up title.
+     * Title of popup.
      */
     title: {
       type: String,
       default: ''
     },
     /**
-     * Pop-up description. 
+     * Function used to close popup. 
      */
-    desc: {
-      type: String,
-      default: ''
+    close: {
+      type: Function,
+      default: () => {}
     },
     /**
-     * Button type: confirm or error. 
+     * Controls popup visibility.
      */
-    popupType: {
-      type: String,
-      default: ''
+    show: {
+      type: Boolean,
+      default: false
     },
     /**
-     * Left button attributes. 
+     * Enables the action button. 
+     * It will be displayed as the second button, next to 
+     * close button on the footer.
      */
-    buttonLeft: {
+    btnEnabled: {
+      type: Boolean,
+      default: true
+    },
+    /**
+     * Function used on click of action button.
+     */
+    btnAction: {
+      type: Function,
+      default: () => {}
+    },
+    /**
+     * Object of button title strings.
+     * Close key value will be used as the close button title.
+     * Action key value will be used as the action button title.
+     */
+    btnTexts: {
       type: Object,
       default: () => {
-        return {title: '', color: ''};
+        return {
+          close: 'Cancel',
+          action: 'Confirm'
+        }
       }
     },
     /**
-     * Right button attributes. 
+     * Makes the popup content scrollable.
      */
-    buttonRight: {
-      type: Object,
-      default: () => {
-        return {title: '', color: ''};
-      }
+    scrollable: {
+      type: Boolean,
+      default: false
     },
     /**
-     * Error message. Takes a title and msg attribute.
+     * Max width of the popup.
      */
-    error: {
-      type: Object,
-      default: () => {
-        return {title: '', msg: ''};
-      }
-    },
-    /**
-     * Copy message string. 
-     */
-    copyMsg: {
+    width: {
       type: String,
-      default: 'Copy the message'
+      default: '600'
     },
     /**
-     * Text for toast success.
+     * Displays buttons on footer if true.
+     * Will only display the close button if 
+     * there is no btnAction method passed.
      */
-    successToast: {
-      type: String,
-      default: ''
+    hasButtons: {
+      type: Boolean,
+      default: true
+    },
+    /**
+     * Will display popup content padding if true
+     */
+    hasPadding: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
-    isPopupTypeError() {
-      return this.popupType.toLowerCase() === this.popupTypes.error
+    hasActionBtn() {
+      return this.btnAction && this.btnTexts.action
     }
   },
   methods: {
-    toggleErrMsg() {
-      this.toggleErrContainer = !this.toggleErrContainer;
-    },
-    onClick(btn) {
-      this.$emit('onClick', btn);
-    },
-    copyToClipboard() {
-      copy(this.error.msg);
-      this.$refs.toast.showToast();
-    },
+    handleClickOutside() {
+      this.close();
+    }
   }
-}
-
+};
 </script>
 
 <style lang="scss" scoped>
-.error-container {
-  min-height: 100px;
-}
-
-.error-popup-title {
+.header-close-icon {
+  right: 10px;
+  top: 10px;
   position: absolute;
 }
 </style>

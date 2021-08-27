@@ -260,7 +260,7 @@ export default {
     getColor() {
       const colorThemesWhite = ['outline', 'basic'];
       if (colorThemesWhite.indexOf(this.colorTheme) >= 0) {
-        return 'white';
+        return 'white basic-border';
       }
       
       if (this.colorTheme === this.colorThemes.primary) {
@@ -302,6 +302,9 @@ export default {
       .v-btn__content {
         height: 160px;
       }
+    }
+    &.basic-border {
+      border: 1px solid rgb(109, 137, 166, 0.24) !important;
     }
   }
   .disabled-btn {

@@ -1,5 +1,5 @@
 <template>
-    <!--
+  <!--
   =====================================================================================
     Mew Module
   =====================================================================================
@@ -20,7 +20,10 @@
         justify="space-between"
       >
         <div :class="['left-wrapper pl-8 mt-2 d-flex flex-row', hasBodyPadding ? 'justify-start align-end pt-6' : 'justify-center align-center', hasIndicator ? 'indicator pl-md-13' : '']">
-          <div class="left-icon mr-2" v-if="showIcon(icon)">
+          <div
+            class="left-icon mr-2"
+            v-if="showIcon(icon)"
+          >
             <img
               v-if="iconAlign.toLowerCase() === iconAlignments.left"
               :src="icon"
@@ -29,11 +32,27 @@
             >
           </div>
           <div class="d-flex flex-column">
-            <span v-if="subtitle" class="mew-heading-3 textPrimaryModule--text text-uppercase">{{ subtitle }}</span>
-            <span v-if="title" :class="['titlePrimary--text d-flex align-center', titleSize]">{{ title }} <mew-tooltip v-if="mewTooltipText" class="mb-1 ml-1" :text="mewTooltipText" /></span>
-            <span v-if="caption" class="mew-body textSecondaryModule--text font-weight-bold">{{ caption }}</span>
+            <span
+              v-if="subtitle"
+              class="mew-heading-3 textPrimaryModule--text text-uppercase"
+            >{{ subtitle }}</span>
+            <span
+              v-if="title"
+              :class="['titlePrimary--text d-flex align-center', titleSize]"
+            >{{ title }} <mew-tooltip
+              v-if="mewTooltipText"
+              class="mb-1 ml-1"
+              :text="mewTooltipText"
+            /></span>
+            <span
+              v-if="caption"
+              class="mew-body textSecondaryModule--text font-weight-bold"
+            >{{ caption }}</span>
           </div>
-          <div class="right-icon" v-if="showIcon(icon)">
+          <div
+            class="right-icon"
+            v-if="showIcon(icon)"
+          >
             <img
               v-if="iconAlign.toLowerCase() === iconAlignments.right"
               :src="icon"
@@ -41,7 +60,7 @@
               alt="right icon"
             >
           </div>
-    <!--
+          <!--
   =====================================================================================
     Slot: leftHeaderContainer (used to place custom ui on the left)
   =====================================================================================
@@ -49,7 +68,7 @@
           <slot name="leftHeaderContainer" />
         </div>
         <div class="right-wrapper pr-10 pt-2">
-      <!--
+          <!--
   =====================================================================================
     Slot: rightHeaderContainer (used to place custom ui on the right)
   =====================================================================================
@@ -66,12 +85,15 @@
         align="center"
         justify="center"
       >
-      <!--
+        <!--
   =====================================================================================
     Slot: moduleBody (used to place custom ui on the body content)
   =====================================================================================
   -->
-        <v-container :class="hasBodyPadding ? 'pa-6 pb-13 px-md-13 py-md-8' : 'pa-0'" fluid> 
+        <v-container
+          :class="hasBodyPadding ? 'pa-6 pb-13 px-md-13 py-md-8' : 'pa-0'"
+          fluid
+        > 
           <slot name="moduleBody" />
         </v-container>
       </v-row> 

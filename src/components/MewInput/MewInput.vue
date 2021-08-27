@@ -1,4 +1,4 @@
-<template>  
+<template>
   <!--
 =====================================================================================
   Mew Input
@@ -13,6 +13,7 @@
     :outlined="!hasNoBorder"
     :solo="hasNoBorder"
     color="primary"
+    :autofocus="autofocus"
     v-model="inputValue"
     :hint="resolvedAddr ? resolvedAddr : hint"
     :persistent-hint="persistentHint || resolvedAddr.length > 0"
@@ -21,6 +22,7 @@
     :rules="rules"
     :type="inputType"
     :append-icon="showPasswordIcon"
+    :readonly="isReadOnly"
     @click:append="onPasswordIconClick"
     validate-on-blur
     height="62"
@@ -31,13 +33,16 @@
 =====================================================================================
 -->
     <template v-slot:message="item">
-      <span class="mew-label">{{ item.message }} <a
-        v-if="buyMoreStr"
-        rel="noopener noreferrer"
-        href="https://ccswap.myetherwallet.com/#/"
-        target="_blank"
+      <span
         class="mew-label"
-      >{{ buyMoreStr }}</a></span>
+      >{{ item.message }}
+        <a
+          v-if="buyMoreStr"
+          rel="noopener noreferrer"
+          href="https://ccswap.myetherwallet.com/#/"
+          target="_blank"
+          class="mew-label"
+        >{{ buyMoreStr }}</a></span>
     </template>
     <template v-slot:prepend-inner>
       <!--
@@ -77,8 +82,13 @@
     <template v-slot:append>
       <v-btn
         v-if="maxBtnObj.method"
-        @click="maxBtnObj.method" 
-        :class="[maxBtnObj.disabled ? 'disabled--text no-pointer-events' : 'titlePrimary--text', 'rounded-lg mt-n2 mew-caption font-weight-medium']" 
+        @click="maxBtnObj.method"
+        :class="[
+          maxBtnObj.disabled
+            ? 'disabled--text no-pointer-events'
+            : 'titlePrimary--text',
+          'rounded-lg mt-n2 mew-caption font-weight-medium',
+        ]"
         min-width="40"
         min-height="40"
         height="40"
@@ -100,78 +110,85 @@ const types = ['password', 'text'];
 export default {
   name: 'MewInput',
   components: {
-    MewBlockie
+    MewBlockie,
   },
   props: {
     /**
      * Error messages to display
      */
     errorMessages: {
-      type: [ String, Array],
-      default: ''
+      type: [String, Array],
+      default: '',
+    },
+    /**
+     * input is read only
+     */
+    isReadOnly: {
+      type: Boolean,
+      default: false,
     },
     /**
      * Displays the blockie.
      */
     showBlockie: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Removes the border.
      */
     hasNoBorder: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Disables the input.
      */
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * The input label.
      */
     label: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * The input placeholder.
      */
     placeholder: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * The input value.
      */
     value: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * The input id.
      */
     id: {
       type: Number,
-      default: null
+      default: null,
     },
     /**
      * Displays a label on the right side of the input.
      */
     rightLabel: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Hides input clear functionality. Clear symbol will be displayed on the right side.
      */
     hideClearBtn: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * For validating your input - accepts an array of functions that take an input value as an argument and return either true / false or a string with an error message.
@@ -180,56 +197,56 @@ export default {
       type: Array,
       default: () => {
         return [];
-      }
+      },
     },
     /**
      * Resolved address
      */
     resolvedAddr: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Enables persistent hint
      */
     persistentHint: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Hint text
      */
     hint: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Displays search input
      */
     isSearch: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Sets input type
      */
     type: {
       type: String,
-      default: 'text'
+      default: 'text',
     },
     /**
      * Prepends an image in the input
      */
     image: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Adds a "Buy more" string to the end of the first index of the errorMessages prop.
      */
     buyMoreStr: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Object for max button, i.e. {title: 'Max', disabled: false, method: () => {}}
@@ -240,24 +257,31 @@ export default {
         return {};
       },
     },
+    /**
+     * Autofocuses the input
+     */
+    autofocus: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
       inputValue: '',
-      showPassword: false
-    }
+      showPassword: false,
+    };
   },
   watch: {
     inputValue(newVal, oldVal) {
       if (newVal !== oldVal) {
-         this.$emit('input', newVal, this.id) 
+        this.$emit('input', newVal, this.id);
       }
     },
     value(newVal, oldVal) {
       if (newVal !== oldVal) {
         this.inputValue = newVal;
       }
-    }
+    },
   },
   computed: {
     isPasswordType() {
@@ -267,15 +291,15 @@ export default {
       if (this.isPasswordType) {
         return !this.showPassword ? 'mdi-eye' : 'mdi-eye-off';
       }
-      return ''
+      return '';
     },
     inputType() {
       if (this.isPasswordType && this.showPassword) {
         return types[1];
-      } 
+      }
       return this.type;
-    }
-  }, 
+    },
+  },
   mounted() {
     this.inputValue = this.value;
   },
@@ -287,8 +311,8 @@ export default {
     },
     clear(val) {
       this.inputValue = val ? val : '';
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -297,13 +321,13 @@ export default {
   */
 .mew-input {
   .mdi-close {
-      font-size: 20px !important;
+    font-size: 20px !important;
+  }
+  &.v-input--is-focused {
+    .mdi-close {
+      color: var(--v-titlePrimary-base) !important;
     }
-    &.v-input--is-focused {
-      .mdi-close {
-        color: var(--v-titlePrimary-base) !important;
-      }
-    }
+  }
   .v-text-field__slot {
     .v-label {
       margin-top: 5px;
