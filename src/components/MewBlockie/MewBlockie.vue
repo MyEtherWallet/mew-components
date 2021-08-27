@@ -1,32 +1,15 @@
 <template>
-  <!--
-  =====================================================================================
-  Mew Blockie
-  =====================================================================================
-  -->
   <div>
-    <!--
-    ===========================================================================
-    Blockie to print
-    ===========================================================================
-    -->
-    <img
-      v-if="printable"
-      ref="printable"
-      :src="PrintableBlockieImg"
-      alt="Blockie Image"
-      class="printable-blockie-image"
-    />
-
-    <!--
-    ===========================================================================
-    Blockie to display
-    ===========================================================================
-    -->
-    <div v-else>
-      <div ref="identicon" class="address-identicon" />
-      <img v-if="currency" alt="icon" class="currency-icon" :src="currency" />
+    <div style="position: relative">
+      <img
+        ref="printable"
+        :src="PrintableBlockieImg"
+        alt="Blockie Image"
+        class="printable-blockie-image"
+      />
+      <div v-if="!printable" class="inset-shadow"></div>
     </div>
+    <img v-if="currency" alt="icon" class="currency-icon" :src="currency" />
   </div>
 </template>
 
@@ -48,7 +31,7 @@ export default {
      */
     address: {
       type: String,
-      default: ''
+      default: '0xAa682624a57b0Ac4215BeCa5126b8C2bD61609fF'
     },
     /**
      * Blockie width
@@ -64,9 +47,6 @@ export default {
       type: String,
       default: '64px'
     },
-    /**
-     * Printable blockie image
-     */
     printable: {
       type: Boolean,
       default: false
@@ -97,9 +77,7 @@ export default {
     }
   },
   mounted() {
-    // Create printable blockie image
-    if (this.printable) this.createPrintableBlockie();
-    else this.setBlockie();
+    this.createPrintableBlockie();
   },
   methods: {
     createPrintableBlockie() {
@@ -110,32 +88,21 @@ export default {
       }).toDataURL();
       this.$refs.printable.style.width = this.width;
       this.$refs.printable.style.height = this.height;
-    },
-    setBlockie() {
-      const data = Blockies({
-        seed: this.address ? this.address.toLowerCase() : '',
-        size: this.size,
-        scale: this.scale
-      }).toDataURL();
-      this.$refs.identicon.style.width = this.width;
-      this.$refs.identicon.style.height = this.height;
-      this.$refs.identicon.style.backgroundImage = `url('${data}')`;
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.address-identicon {
-  background-repeat: no-repeat;
-  background-size: cover;
+.inset-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
   border-radius: 50%;
-  box-shadow: inset rgba(255, 255, 255, 0.25) 0 2px 2px,
-    inset rgba(0, 0, 0, 0.6) 0 -1px 8px;
+  box-shadow: inset 0px 0px 4px #939393;
   height: 100%;
   width: 100%;
 }
-// box-shadow removed for print quality
 .printable-blockie-image {
   display: block;
   border-radius: 50%;
