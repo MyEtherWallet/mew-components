@@ -5,6 +5,7 @@
   =====================================================================================
   -->
   <v-menu
+    max-height="520"
     v-model="isDropdownOpen"
     content-class="mew-dropdown-content-class"
     offset-y
@@ -28,7 +29,6 @@
   -->
     <v-card
       width="380"
-      height="520"
       color="white"
       class="pa-0"
     >
@@ -119,6 +119,7 @@ export default {
   position: absolute;
 }
 .mew-dropdown-content-class {
+  border: none;
   box-shadow: 0px 12px 12px rgba(11, 40, 64, 0.04), 0px 6px 26px rgba(11, 40, 64, 0.06), 0px 4px 48px rgba(11, 40, 64, 0.04);
 }
 </style>
