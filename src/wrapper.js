@@ -11,7 +11,6 @@ import MewExpandPanel from './components/MewExpandPanel/MewExpandPanel.vue';
 import MewInput from './components/MewInput/MewInput.vue';
 import MewMenu from './components/MewMenu/MewMenu.vue';
 import MewModule from './components/MewModule/MewModule.vue';
-import MewModal from './components/MewModal/MewModal.vue';
 import MewOverlay from './components/MewOverlay/MewOverlay.vue';
 import MewPopup from './components/MewPopup/MewPopup.vue';
 import MewProgressBar from './components/MewProgressBar/MewProgressBar.vue';
@@ -33,6 +32,7 @@ import MewCopy from './components/MewCopy/MewCopy.vue';
 import MewSheet from './components/MewSheet/MewSheet.vue';
 import MewTextArea from './components/MewTextArea/MewTextArea.vue';
 import MewSearch from './components/MewSearch/MewSearch.vue';
+import MewDropdown from './components/MewDropdown/MewDropdown.vue';
 
 // import Vue from 'vue';
 // import wrap from '@vue/web-component-wrapper';
@@ -52,7 +52,6 @@ const Components = {
   MewInput,
   MewMenu,
   MewModule,
-  MewModal,
   MewOverlay,
   MewPopup,
   MewSelect,
@@ -77,6 +76,7 @@ const Components = {
   MewSheet,
   MewTextArea,
   MewSearch,
+  MewDropdown
 };
 
 // Declare install function executed by Vue.use()
