@@ -9,6 +9,7 @@
     v-model="isDropdownOpen"
     content-class="mew-dropdown-content-class"
     offset-y
+    :close-on-content-click="false"
     left
   >
     <template v-slot:activator="{ on }">
