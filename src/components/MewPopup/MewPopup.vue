@@ -5,7 +5,7 @@
         =====================================================================================
       -->
   <v-dialog
-    :max-width="width"
+    :max-width="maxWidth"
     :value="show"
     :fullscreen="scrollable ? $vuetify.breakpoint.xs : false"
     content-class="ma-0"
@@ -21,7 +21,7 @@
         Dialog Header
         =====================================================================================
       -->
-      <v-card-title class="justify-center py-5 py-md-8 px-5 px-md-7">
+      <v-card-title :class="['justify-center px-5 px-md-7', hasBodyContent ? 'py-5 py-md-8' : 'pb-0 pt-5 pt-md-8'] ">
         <div
           v-if="title"
           class="mew-heading-2 break-word text-center"
@@ -35,7 +35,7 @@
           <v-icon
             size="x-large"
             color="grey cursor--pointer"
-            @click="close"
+            @click="leftBtn.method"
           >
             mdi-close
           </v-icon>
@@ -47,7 +47,8 @@
       =====================================================================================
       -->
       <v-card-text
-        :class="['tableHeader', hasPadding ? 'py-3 px-5 px-md-7' : 'pa-0']"
+        v-if="hasBodyContent"
+        :class="[hasPadding ? 'py-3 px-5 px-md-7' : 'pa-0']"
       >
         <slot />
       </v-card-text>
@@ -58,28 +59,29 @@
       -->
       <v-card-actions class="py-5 py-md-8">
         <v-row
-          v-if="hasButtons"
+          v-if="leftBtn"
           class="pa-0"
           justify="space-around"
           dense
         >
           <v-col
             cols="12"
-            :sm="!hasActionBtn ? '12' : '6'"
-            :class="!hasActionBtn ? 'text-left' : 'text-right'"
-            :order="!hasActionBtn ? '1' : '2'"
+            :sm="!rightBtn ? '12' : '6'"
+            :class="!rightBtn ? 'text-left' : 'text-right'"
+            :order="!rightBtn ? '1' : '2'"
             order-sm="1"
           >
             <mew-button
               btn-style="outline"
               btn-size="xlarge"
-              :title="btnTexts.close"
-              :has-full-width="!hasActionBtn ? true :$vuetify.breakpoint.xs"
-              @click.native="close"
+              :color-theme="leftBtn.color || 'primary'"
+              :title="leftBtn.text"
+              :has-full-width="!rightBtn ? true :$vuetify.breakpoint.xs"
+              @click.native="leftBtn.method"
             />
           </v-col>
           <v-col
-            v-if="hasActionBtn"
+            v-if="rightBtn"
             cols="12"
             sm="6"
             class="text-left"
@@ -88,10 +90,11 @@
           >
             <mew-button
               btn-size="xlarge"
-              :title="btnTexts.action"
-              :disabled="!btnEnabled"
+              :color-theme="rightBtn.color || 'primary'"
+              :title="rightBtn.text"
+              :disabled="!rightBtn.enabled"
               :has-full-width="$vuetify.breakpoint.xs"
-              @click.native="btnAction"
+              @click.native="rightBtn.method"
             />
           </v-col>
         </v-row>
@@ -114,13 +117,6 @@ export default {
       default: ''
     },
     /**
-     * Function used to close popup. 
-     */
-    close: {
-      type: Function,
-      default: () => {}
-    },
-    /**
      * Controls popup visibility.
      */
     show: {
@@ -128,34 +124,21 @@ export default {
       default: false
     },
     /**
-     * Enables the action button. 
-     * It will be displayed as the second button, next to 
-     * close button on the footer.
+     * Left Button: object of information.
+     * Includes text, color and method attributes.
+     * left button is always enabled.
      */
-    btnEnabled: {
-      type: Boolean,
-      default: true
-    },
-    /**
-     * Function used on click of action button.
-     */
-    btnAction: {
-      type: Function,
-      default: () => {}
-    },
-    /**
-     * Object of button title strings.
-     * Close key value will be used as the close button title.
-     * Action key value will be used as the action button title.
-     */
-    btnTexts: {
+    leftBtn: {
       type: Object,
-      default: () => {
-        return {
-          close: 'Cancel',
-          action: 'Confirm'
-        }
-      }
+      default: () => { return {text: 'Cancel', color: 'primary', method: () => {}} }
+    },
+    /**
+     * Right Button: object of information.
+     * Includes text, color, enabled and method attributes.
+     */
+    rightBtn: {
+      type: Object,
+      default: () => { return {text: 'Confirm', color: 'primary', enabled: true, method: () => {}} }
     },
     /**
      * Makes the popup content scrollable.
@@ -167,35 +150,32 @@ export default {
     /**
      * Max width of the popup.
      */
-    width: {
+    maxWidth: {
       type: String,
       default: '600'
     },
     /**
-     * Displays buttons on footer if true.
-     * Will only display the close button if 
-     * there is no btnAction method passed.
+     * Displays v-card-text if there is popup body content
+     * otherwise it removes it and adjusts the padding accordingly
      */
-    hasButtons: {
+    hasBodyContent: {
       type: Boolean,
-      default: true
+      default: false
     },
     /**
-     * Will display popup content padding if true
+     * Will display popup body content padding if true
      */
     hasPadding: {
       type: Boolean,
       default: true
     }
   },
-  computed: {
-    hasActionBtn() {
-      return this.btnAction && this.btnTexts.action
-    }
-  },
   methods: {
+    /**
+     * Will call left btn method which is cancel method.
+     */
     handleClickOutside() {
-      this.close();
+      this.leftBtn.method();
     }
   }
 };
