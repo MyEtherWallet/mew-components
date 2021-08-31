@@ -29,6 +29,7 @@
           {{ title }}
         </div>
         <v-btn
+          v-if="!hideCloseBtn"
           icon
           class="header-close-icon"
         >
@@ -115,6 +116,13 @@ export default {
     title: {
       type: String,
       default: ''
+    },
+    /**
+     * Hide top right close button
+     */
+    hideCloseBtn: {
+      type: Boolean,
+      default: false
     },
     /**
      * Controls popup visibility.
