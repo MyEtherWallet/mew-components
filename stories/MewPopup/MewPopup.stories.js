@@ -5,23 +5,22 @@
   object
 } from '@storybook/addon-knobs';
 import MewPopup from '@/components/MewPopup/MewPopup.vue';
-import MewPopupDoc from './MewPopup.mdx';
+// import MewPopupDoc from './MewPopup.mdx';
 
 export default {
   title: 'MewPopup',
   parameters: {
     component: MewPopup,
-    docs: {
-      page: MewPopupDoc
-    }
+    // docs: {
+    //   page: MewPopupDoc
+    // }
   },
   decorators: [withKnobs]
 };
-
-const btnTexts = {
-  close: 'Cancel',
-  action: 'Confirm'
-}
+// eslint-disable-next-line no-console
+const leftBtn = {text: 'Cancel', color: 'primary', method: () => { console.log('clicked left button')}};
+// eslint-disable-next-line no-console
+const rightBtn = {text: 'Confirm', color: 'primary', enabled: true, method: () => { console.log('clicked right button')}}
 
 export const MEWPopup = () => ({
   components: { MewPopup },
@@ -40,20 +39,20 @@ export const MEWPopup = () => ({
     title: {
       default: text('title', 'Are you sure you want to log out?')
     },
-    btnEnabled: {
-      default: boolean('btn-enabled', true)
+    leftBtn: {
+      default: object('left-btn', leftBtn )
     },
-    btnTexts: {
-      default: object('btn-texts', btnTexts)
+    rightBtn: {
+      default: object('right-btn', rightBtn )
     },
     scrollable: {
       default: boolean('scrollable', false)
     },
-    width: {
-      default: text('width', '600')
+    maxWidth: {
+      default: text('max-width', '600')
     },
-    hasButtons: {
-      default: boolean('has-buttons', true)
+    hasBodyContent: {
+      default: boolean('has-body-content', true)
     },
     hasPadding: {
       default: boolean('has-padding', true)
@@ -70,26 +69,19 @@ export const MEWPopup = () => ({
     <mew-popup
       :show="show"
       :title="title"
-      :btn-action="btnAction"
-      :btn-texts="btnTexts"
-      :btn-enabled="btnEnabled"
+      :left-btn="leftBtn"
+      :right-btn="rightBtn"
       :scrollable="scrollable"
-      :width="width"
-      :has-buttons="hasButtons"
+      :max-width="maxWidth"
+      :has-body-content="hasBodyContent"
       :has-padding="hasPadding"
     > 
       <div>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</div>
     </mew-popup>
   </div>`,
   methods: {
-    btnAction() {
-      // eslint-disable-next-line no-console
-      console.log('btn action clicked')
-    },
-    onClick(btn) {
-      this.isPopupOpen = false;
-      // eslint-disable-next-line no-console
-      console.log('Clicked:', btn)
+    close() {
+      this.show = false;
     }
   }
 });
