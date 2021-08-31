@@ -48,6 +48,9 @@ export const MEWPopup = () => ({
     scrollable: {
       default: boolean('scrollable', false)
     },
+    hideCloseBtn: {
+      default: boolean('hide-close-btn', false)
+    },
     maxWidth: {
       default: text('max-width', '600')
     },
@@ -69,6 +72,7 @@ export const MEWPopup = () => ({
     <mew-popup
       :show="show"
       :title="title"
+      :hide-close-btn="hideCloseBtn"
       :left-btn="leftBtn"
       :right-btn="rightBtn"
       :scrollable="scrollable"
