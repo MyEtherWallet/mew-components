@@ -31,7 +31,7 @@ export default {
      */
     address: {
       type: String,
-      default: '0xAa682624a57b0Ac4215BeCa5126b8C2bD61609fF'
+      default: ''
     },
     /**
      * Blockie width
