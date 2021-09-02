@@ -7,20 +7,21 @@
   <v-btn
     :target="btnLink ? '_blank' : ''"
     :href="btnLink"
-    :ripple="!isTransparent"
-    @click="onBtnClick"
-    :class="[ getClasses(), 'mew-button' ]"
-    :color="colorTheme"
+    :ripple="rippleColor ? { class: `${rippleColor}--text` } : !isTransparent"
+    :class="[getClasses(), 'mew-button', `${textColor}--text`]"
+    :color="btnColor ? btnColor : colorTheme"
     :disabled="disabled"
     depressed
     :outlined="isOutline"
     :text="isTransparent"
+    :style="hoverColor ? hoverColorStyle : ''"
+    @click="onBtnClick"
   >
     <!--
-  =====================================================================================
-    Loading state
-  =====================================================================================
-  -->
+    =====================================================================================
+      Loading state
+    =====================================================================================
+    -->
     <v-progress-circular
       v-if="loading"
       indeterminate
@@ -28,84 +29,75 @@
       :color="isTransparent || isOutline ? 'primary' : 'white'"
     />
     <!--
-  =====================================================================================
-    Loaded Button Content 
-  =====================================================================================
-  -->
-    <div
-      class="d-flex justify-center align-center"
-      v-if="!loading"
-    >  
+    =====================================================================================
+      Loaded Button Content 
+    =====================================================================================
+    -->
+    <div v-if="!loading" class="d-flex justify-center align-center">
       <!--
-  =====================================================================================
-    Img content - uses img src (Left)
-  =====================================================================================
-  -->
+      =====================================================================================
+        Img content - uses img src (Left)
+      =====================================================================================
+      -->
       <img
         v-if="showIcon('img') && !showIconAlignRight"
         class="icon mr-1"
         :src="icon"
         alt="icon"
-      >
+      />
       <!--
-  =====================================================================================
-   V-Icon Content - uses material design icons (Left)
-  =====================================================================================
-  -->
-      <v-icon
-        class="icon mr-1"
-        v-if="showIcon('mdi') && !showIconAlignRight"
-      >
+      =====================================================================================
+      V-Icon Content - uses material design icons (Left)
+      =====================================================================================
+      -->
+      <v-icon v-if="showIcon('mdi') && !showIconAlignRight" class="icon mr-1">
         {{ icon }}
       </v-icon>
       <!--
-  =====================================================================================
-   Mew Icon Content - uses mew icons (Left)
-  =====================================================================================
-  -->
+      =====================================================================================
+      Mew Icon Content - uses mew icons (Left)
+      =====================================================================================
+      -->
       <mew-icon
+        v-if="showIcon('mew') && !showIconAlignRight"
         :img-height="30"
         class="icon mr-1"
-        v-if="showIcon('mew') && !showIconAlignRight"
         :icon-name="icon"
       />
       <!--
-  =====================================================================================
-   Button text
-  =====================================================================================
-  -->
+      =====================================================================================
+      Button text
+      =====================================================================================
+      -->
       <span>{{ title }}</span>
       <!--
-  =====================================================================================
-    Img content - uses img src (Right)
-  =====================================================================================
-  -->
+      =====================================================================================
+        Img content - uses img src (Right)
+      =====================================================================================
+      -->
       <img
         v-if="showIcon('img') && showIconAlignRight"
         class="icon ml-1"
         :src="icon"
         alt="icon"
-      >
+      />
       <!--
-  =====================================================================================
-   V-Icon Content - uses material design icons (Right)
-  =====================================================================================
-  -->
-      <v-icon
-        class="icon mr-1"
-        v-if="showIcon('mdi') && showIconAlignRight"
-      >
+      =====================================================================================
+      V-Icon Content - uses material design icons (Right)
+      =====================================================================================
+      -->
+      <v-icon v-if="showIcon('mdi') && showIconAlignRight" class="icon mr-1">
         {{ icon }}
       </v-icon>
       <!--
-  =====================================================================================
-   Mew Icon Content - uses mew icons (Right)
-  =====================================================================================
-  -->
+      =====================================================================================
+      Mew Icon Content - uses mew icons (Right)
+      =====================================================================================
+      -->
       <mew-icon
+        v-if="showIcon('mew') && showIconAlignRight"
         :img-height="30"
         class="icon mr-1"
-        v-if="showIcon('mew') && showIconAlignRight"
         :icon-name="icon"
       />
     </div>
@@ -153,7 +145,7 @@ export default {
      * The icon url. Inserts an icon next to the button title.
      */
     icon: {
-      type: [ String, Array],
+      type: [String, Array],
       default: ''
     },
     /**
@@ -192,7 +184,7 @@ export default {
       default: false
     },
     /**
-     * Opens up a new page with the link. 
+     * Opens up a new page with the link.
      */
     btnLink: {
       type: String,
@@ -204,6 +196,24 @@ export default {
     showsActiveState: {
       type: Boolean,
       default: false
+    },
+    btnColor: {
+      type: String,
+      default: ''
+    },
+    textColor: {
+      type: String,
+      default: ''
+    },
+    // white as default hover color
+    hoverColor: {
+      type: String,
+      default: 'white'
+    },
+    // white as default ripple color
+    rippleColor: {
+      type: String,
+      default: 'white'
     }
   },
   data() {
@@ -215,7 +225,7 @@ export default {
       },
       colorThemes: {
         white: 'white',
-        primary: 'primary',
+        primary: 'primary'
       },
       iconAlignments: {
         left: 'left',
@@ -237,25 +247,33 @@ export default {
   },
   computed: {
     isTransparent() {
-      return this.btnStyle.toLowerCase() === this.btnStyles.transparent
+      return this.btnStyle.toLowerCase() === this.btnStyles.transparent;
     },
     isOutline() {
-      return this.btnStyle.toLowerCase() === this.btnStyles.outline
+      return this.btnStyle.toLowerCase() === this.btnStyles.outline;
     },
     isBackground() {
-      return this.btnStyle.toLowerCase() === this.btnStyles.background
+      return this.btnStyle.toLowerCase() === this.btnStyles.background;
     },
     isPlain() {
-      return this.colorTheme.toLowerCase() === this.colorThemes.white
+      return this.colorTheme.toLowerCase() === this.colorThemes.white;
     },
     showIconAlignRight() {
-      return this.iconAlign.toLowerCase() === this.iconAlignments.right
+      return this.iconAlign.toLowerCase() === this.iconAlignments.right;
+    },
+    hoverColorStyle() {
+      // If hoverColor is set, create a css variable
+      return {
+        '--hover-color': this.hoverColor
+      };
     }
-    
   },
   methods: {
     showIcon(val) {
-      return this.iconType.toLowerCase() === this.iconTypes[val] && this.hasSrc(this.icon)
+      return (
+        this.iconType.toLowerCase() === this.iconTypes[val] &&
+        this.hasSrc(this.icon)
+      );
     },
     onBtnClick() {
       this.active = !this.active;
@@ -264,38 +282,28 @@ export default {
       const classes = [];
 
       if (this.btnSize.toLowerCase()) {
-        classes.push(this.btnSize.toLowerCase() + '-btn' );
+        classes.push(this.btnSize.toLowerCase() + '-btn');
       }
 
-      if (this.hasFullWidth === true ) {
+      if (this.hasFullWidth === true) {
         classes.push('full-width');
       }
-      
-      if (
-        this.isBackground &&
-        !this.isPlain
-      ) {
+
+      if (this.isBackground && !this.isPlain) {
         classes.push('white--text');
       }
 
-      if (
-        this.isBackground &&
-        this.isPlain
-      ) {
+      if (this.isBackground && this.isPlain) {
         classes.push('primary--text');
       }
 
-      if (
-        this.active &&
-        !this.disabled &&
-        this.showsActiveState
-      ) {
+      if (this.active && !this.disabled && this.showsActiveState) {
         classes.push('active');
       }
 
       if (
         this.active &&
-        this.showsActiveState && 
+        this.showsActiveState &&
         !this.disabled &&
         this.isOutline
       ) {
@@ -303,13 +311,13 @@ export default {
       }
 
       if (this.isTransparent) {
-        classes.push('mew-transparent')
+        classes.push('mew-transparent');
       }
 
       return classes;
     },
     hasSrc(src) {
-      if (src === '' || src.length <= 0 ) {
+      if (src === '' || src.length <= 0) {
         return false;
       }
       return true;
@@ -355,7 +363,7 @@ export default {
     &.primary.white--text.active {
       background-color: var(--v-primaryActive-base) !important;
     }
-    
+
     &.primary.white--text:hover {
       background-color: var(--v-primaryHover-base) !important;
     }
@@ -397,5 +405,11 @@ export default {
       }
     }
   }
+}
+
+// If hoverColor is set, use css variable to set hover color
+// otherwise use default hover color
+.v-btn::before {
+  background-color: var(--hover-color, currentColor);
 }
 </style>
