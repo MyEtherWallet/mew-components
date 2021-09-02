@@ -1,13 +1,22 @@
 <template>
   <div>
-    <div style="position: relative">
+    <div
+      style="position: relative"
+      :style="`width: ${width}; height: ${height}`"
+    >
       <img
-        ref="printable"
-        :src="PrintableBlockieImg"
+        ref="blockie"
+        :src="blockieImg"
         alt="Blockie Image"
-        class="printable-blockie-image"
+        style="display: block; border-radius: 50%"
       />
-      <div v-if="!printable" class="inset-shadow"></div>
+
+      <!--
+      =====================================================================
+      Inset shadow on edge of blockie image
+      =====================================================================
+      -->
+      <div v-if="!flat" class="inset-shadow"></div>
     </div>
     <img v-if="currency" alt="icon" class="currency-icon" :src="currency" />
   </div>
@@ -47,7 +56,10 @@ export default {
       type: String,
       default: '64px'
     },
-    printable: {
+    /**
+     * Remove inset shadow
+     */
+    flat: {
       type: Boolean,
       default: false
     }
@@ -56,7 +68,7 @@ export default {
     return {
       scale: 16,
       size: 8,
-      PrintableBlockieImg: null
+      blockieImg: null
     };
   },
   watch: {
@@ -77,17 +89,17 @@ export default {
     }
   },
   mounted() {
-    this.createPrintableBlockie();
+    this.createBlockie();
   },
   methods: {
-    createPrintableBlockie() {
-      this.PrintableBlockieImg = Blockies({
+    createBlockie() {
+      this.blockieImg = Blockies({
         seed: this.address ? this.address.toLowerCase() : '',
         size: this.size,
         scale: this.scale
       }).toDataURL();
-      this.$refs.printable.style.width = this.width;
-      this.$refs.printable.style.height = this.height;
+      this.$refs.blockie.style.width = this.width;
+      this.$refs.blockie.style.height = this.height;
     }
   }
 };
@@ -102,9 +114,5 @@ export default {
   box-shadow: inset 0px 0px 4px #939393;
   height: 100%;
   width: 100%;
-}
-.printable-blockie-image {
-  display: block;
-  border-radius: 50%;
 }
 </style>
