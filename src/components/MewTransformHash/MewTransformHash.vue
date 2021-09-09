@@ -4,7 +4,7 @@
     Mew Transform Hash 
   =====================================================================================
   -->
-  <div class="d-flex justify-end hash-container mew-address">
+  <div :class="['d-flex hash-container mew-address', justifyStart ? 'justify-start' : 'justify-end']">
     <span class="firstPart">{{ start }}</span><span class="lastPart">{{ end }}</span>
   </div>
 </template>
@@ -19,6 +19,14 @@ export default {
     hash: {
       type: String,
       default: ''
+    },
+    /**
+     * Adds justify start to parent div 
+     * instead of justify end
+     */
+    justifyStart: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
