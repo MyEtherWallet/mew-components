@@ -23,6 +23,9 @@ export const mewTransformHash = () => ({
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     },
+    justifyStart: {
+      default: boolean('justify-start', false)
+    },
     hash: {
       default: text('hash', '9f9547db4cc39e14e2db5c35fb9b691c0e7849af4cc2fb131fbb8ea2051dabc6')
     }
@@ -36,6 +39,7 @@ export const mewTransformHash = () => ({
     <div class="d-flex align-center text-center mt-10">
       <br />
       <mew-transform-hash
+        :justify-start="justifyStart"cd
         :hash="hash"
       />
   </div>`

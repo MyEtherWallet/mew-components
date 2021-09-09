@@ -36,9 +36,9 @@ export default {
         tagLabel: '#6d89a6',
         inputLabel: '#6d89a6',
         searchInput: '#f2f4fa',
-        searchText: '#96a8b6',
+        searchText: '#C3CCDF',
         titlePrimary: '#0b2840',
-        textPrimary: '#667f9b',
+        textPrimary: '#707D9E',
         textPrimaryModule: '#667f9b',
         white: '#fff',
         black: '#000',
@@ -64,9 +64,10 @@ export default {
         tableHeader: '#f9f9f9',
         selectHeaderBg: '#F8FAFC',
         selectBorder: '#F1F1F1',
-        maxButton: '#F7F9FA',
+        maxButton: '#F6F8FD',
         textBlack: '#202124',
-        textBlack2: '#5F6368'
+        textBlack2: '#5F6368',
+        buttonSelect: '#D7F5F4'
       },
       dark: {
         primaryHover: '#1eb19b',
@@ -100,7 +101,7 @@ export default {
         inputLabel: '#4e5a6e',
         tagLabel: '#95aed8',
         searchInput: '#f2f4fa',
-        searchText: '#96a8b6',
+        searchText: '#C3CCDF',
         white: '#fff',
         mewBg: '#151a29',
         walletBg: '#151a29',
@@ -108,7 +109,7 @@ export default {
         boxShadow: '#3c3c3c',
         expandHeader: '#184f90',
         titlePrimary: '#95aed8',
-        textPrimary: '#4e5a6e',
+        textPrimary: '#707D9E',
         textPrimaryModule: '#95aed8',
         textSecondaryModule: '#95aed8',
         primary: '#05c0a5',
@@ -128,9 +129,10 @@ export default {
         tableHeader: '#0f1320',
         selectHeaderBg: '#F8FAFC',
         selectBorder: '#F1F1F1',
-        maxButton: '#F7F9FA',
+        maxButton: '#F6F8FD',
         textBlack: '#202124',
-        textBlack2: '#5F6368'
+        textBlack2: '#5F6368',
+        buttonSelect: '#D7F5F4'
       }
     }
   }

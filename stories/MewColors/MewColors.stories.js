@@ -47,7 +47,7 @@ export const All = () => ({
       {
         shades: [
           {name: 'titlePrimary', lightHex: '#0b2840', darkHex: '#95aed8'},
-          {name: 'textPrimary', lightHex: '#667f9b', darkHex: '#4e5a6e'},
+          {name: 'textPrimary', lightHex: '#707D9E', darkHex: '#707D9E'},
           {name: 'textSecondary', lightHex: '#999999', darkHex: '#999999'},
           {name: 'textPrimaryModule', lightHex: '#667f9b', darkHex: '#95aed8'},
           {name: 'textSecondaryModule', lightHex: '#999999', darkHex: '#95aed8'},
@@ -59,7 +59,8 @@ export const All = () => ({
           {name: 'superPrimary base', lightHex: '#f2fafa', darkHex: '#242c48'},
           {name: 'superPrimary darken1', lightHex: '#e3f2f2', darkHex: '#e3f2f2'},
           {name: 'superPrimaryHover', lightHex: '#f5fdfb', darkHex: '#00c0a5'},
-          {name: 'tagLabel', lightHex: '#6d89a6', darkHex: '#95aed8'}
+          {name: 'tagLabel', lightHex: '#6d89a6', darkHex: '#95aed8'},
+          {name: 'buttonSelect', lightHex: '#D7F5F4', darkHex: '#D7F5F4'}
         ]
       },
       {
@@ -105,9 +106,9 @@ export const All = () => ({
           {name: 'inputBorder', lightHex: '#e0e0e0', darkHex: '#6679fb'},
           {name: 'inputDisabled', lightHex: '#cecece', darkHex: '#1f2b42'},
           {name: 'inputLabel', lightHex: '#6d89a6', darkHex: '#4e5a6e'},
-          {name: 'maxButton', lightHex: '#F7F9FA', darkHex: '#F7F9FA'},
+          {name: 'maxButton', lightHex: '#F6F8FD', darkHex: '#F6F8FD'},
           {name: 'searchInput', lightHex: '#f2f4fa', darkHex: '#f2f4fa'},
-          {name: 'searchText', lightHex: '#96a8b6', darkHex: '#96a8b6'},
+          {name: 'searchText', lightHex: '#C3CCDF', darkHex: '#C3CCDF'},
           {name: 'dropdownBorder', lightHex: '#05c0a5', darkHex: '#7e90a7'},
           {name: 'progressBar', lightHex: '#F3FAFA', darkHex: '#151A29'},
         ]
