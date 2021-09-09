@@ -103,6 +103,9 @@ export const MEWSuperButton = () => ({
     },
     fontClass: {
       default: text('font-class', 'mew-heading-3')
+    },
+    hideRightCol: {
+      default: boolean('hide-right-col', false)
     }
   },
   watch: {
@@ -130,6 +133,7 @@ export const MEWSuperButton = () => ({
       :colorTheme="colorTheme"
       :disabled="disabled"
       :title-icon-class="titleIconClass"
+      :hide-right-col="hideRightCol"
     />
   </div>`
 });

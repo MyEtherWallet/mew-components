@@ -25,7 +25,7 @@
           'full-width',
           isColumn ? 'text-center' : 'text-left'
         ]"
-        :cols="isColumn || noRightImg ? 12 : leftColsNum"
+        :cols="isColumn || hideRightCol ? 12 : leftColsNum"
       >
         <div
           :class="[
@@ -67,7 +67,7 @@
         </div>
       </v-col>
       <v-col
-        v-if="!noRightImg"
+        v-if="!hideRightCol"
         :cols="isColumn ? 12 : rightColsNum"
         :class="[
           'right-container',
@@ -244,9 +244,9 @@ export default {
       default: false
     },
     /**
-     * Hides right img
+     * Hides right Col
      */
-    noRightImg: {
+    hideRightCol: {
       type: Boolean,
       default: false
     }
