@@ -39,7 +39,7 @@ export const mewTransformHash = () => ({
     <div class="d-flex align-center text-center mt-10">
       <br />
       <mew-transform-hash
-        :justify-start="justifyStart"cd
+        :justify-start="justifyStart"
         :hash="hash"
       />
   </div>`
