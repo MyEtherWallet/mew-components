@@ -27,7 +27,7 @@
         text
         color="textBlack2"
         @click="back"
-        :class="['d-flex action-btn align-center pa-3', isMobile ? 'mt-3 ml-n1' : 'mt-4 ml-1']"
+        :class="['d-flex action-btn align-center pa-3', isMobile ? 'mt-3 ml-n1 mobile-btn' : 'mt-4 ml-1']"
         fab
       >
         <v-icon
@@ -43,7 +43,7 @@
         absolute
         text
         color="textBlack2"
-        :class="['d-flex action-btn align-center pa-3', , isMobile ? 'mt-3 mr-n1' : 'mt-4 mr-1']"
+        :class="['d-flex action-btn align-center pa-3', , isMobile ? 'mt-3 mr-n1 mobile-btn' : 'mt-4 mr-1']"
         v-if="close"
         @click="close"
       >
@@ -249,6 +249,9 @@ export default {
   }
   .mobile-content {
     margin-top: 68px;
+  }
+  .mobile-btn {
+    z-index: 99999;
   }
 }
 </style>
