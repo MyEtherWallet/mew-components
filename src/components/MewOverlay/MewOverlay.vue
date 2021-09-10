@@ -71,7 +71,7 @@
             :class="['white-sheet-container', isMobile ? 'mt-0' : 'mt-4']"
           >
             <div
-              :class="[isMobile ? 'text-left pt-6 px-15 pb-8' : 'text-center pa-8', isMobile && !back ? 'pl-0' : '']"
+              :class="[isMobile ? 'text-left pt-6 px-15 pb-3 mobile-title white' : 'text-center pa-8', isMobile && !back ? 'pl-0' : '']"
             > 
               <!--
       =====================================================================================
@@ -87,7 +87,7 @@
           Slot: used to place custom ui content
         =====================================================================================
         -->
-            <div :class="['d-flex flex-column align-center justify-center', isMobile ? 'px-3 pb-6' : 'px-8 pb-8']">
+            <div :class="['d-flex flex-column align-center justify-center', isMobile ? 'px-3 pb-6 mobile-content' : 'px-8 pb-8']">
               <slot />
             </div>
           </v-sheet>
@@ -239,6 +239,15 @@ export default {
   }
   .footer-text {
     color: rgba(11, 40, 64, 0.72);
+  }
+  .mobile-title {
+    box-shadow: 0px 1px 6px rgba(11, 40, 64, 0.06), 0px 2px 8px rgba(11, 40, 64, 0.04);
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  .mobile-content {
+    margin-top: 68px;
   }
 }
 </style>

@@ -47,6 +47,7 @@ export const All = () => ({
       {
         shades: [
           {name: 'titlePrimary', lightHex: '#0b2840', darkHex: '#95aed8'},
+          {name: 'titleSecondary', lightHex: '#4E5A6E', darkHex: '#4E5A6E'},
           {name: 'textPrimary', lightHex: '#707D9E', darkHex: '#707D9E'},
           {name: 'textSecondary', lightHex: '#999999', darkHex: '#999999'},
           {name: 'textPrimaryModule', lightHex: '#667f9b', darkHex: '#95aed8'},

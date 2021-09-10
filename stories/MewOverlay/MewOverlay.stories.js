@@ -85,7 +85,7 @@ export const MEWOverlay = () => ({
       :show-overlay="showOverlay"
       :title="title"
     >
-      <span>MEW overlay body</span>
+      <span class="pt-5">MEW overlay body</span>
     </mew-overlay>
   </div>`
 });
