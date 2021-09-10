@@ -33,7 +33,10 @@
       Loaded Button Content 
     =====================================================================================
     -->
-    <div v-if="!loading" class="d-flex justify-center align-center">
+    <div
+      v-if="!loading"
+      class="d-flex justify-center align-center"
+    >
       <!--
       =====================================================================================
         Img content - uses img src (Left)
@@ -44,13 +47,16 @@
         class="icon mr-1"
         :src="icon"
         alt="icon"
-      />
+      >
       <!--
       =====================================================================================
       V-Icon Content - uses material design icons (Left)
       =====================================================================================
       -->
-      <v-icon v-if="showIcon('mdi') && !showIconAlignRight" class="icon mr-1">
+      <v-icon
+        v-if="showIcon('mdi') && !showIconAlignRight"
+        class="icon mr-1"
+      >
         {{ icon }}
       </v-icon>
       <!--
@@ -80,13 +86,16 @@
         class="icon ml-1"
         :src="icon"
         alt="icon"
-      />
+      >
       <!--
       =====================================================================================
       V-Icon Content - uses material design icons (Right)
       =====================================================================================
       -->
-      <v-icon v-if="showIcon('mdi') && showIconAlignRight" class="icon mr-1">
+      <v-icon
+        v-if="showIcon('mdi') && showIconAlignRight"
+        class="icon mr-1"
+      >
         {{ icon }}
       </v-icon>
       <!--
@@ -289,7 +298,7 @@ export default {
         classes.push('full-width');
       }
 
-      if (this.isBackground && !this.isPlain) {
+      if (this.isBackground && !this.isPlain && !this.textColor) {
         classes.push('white--text');
       }
 

@@ -111,6 +111,18 @@ export const MEWButton = () => ({
     },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
+    },
+    btnColor: {
+      default: text('btn-color', '')
+    },
+    textColor: {
+      default: text('text-color', '')
+    },
+    hoverColor: {
+      default: text('hover-color', 'white')
+    },
+    rippleColor: {
+      default: text('ripple-color', 'white')
     }
   },
   watch: {
@@ -134,6 +146,10 @@ export const MEWButton = () => ({
       :has-full-width="hasFullWidth"
       :shows-active-state="showsActiveState"
       :btn-size="buttonSize"
+      :btn-color="btnColor"
+      :text-color="textColor"
+      :hover-color="hoverColor"
+      :ripple-color="rippleColor"
     />
   </div>`
 });
