@@ -1,14 +1,26 @@
 <template>
-  <!--
-  =====================================================================================
-    Mew Blockie
-  =====================================================================================
-  -->
   <div>
     <div
-      ref="identicon"
-      class="address-identicon"
-    />
+      style="position: relative"
+      :style="`width: ${width}; height: ${height}`"
+    >
+      <img
+        ref="blockie"
+        :src="blockieImg"
+        alt="Blockie Image"
+        style="display: block; border-radius: 50%"
+      >
+
+      <!--
+      =====================================================================
+      Inset shadow on edge of blockie image
+      =====================================================================
+      -->
+      <div
+        v-if="!flat"
+        class="inset-shadow"
+      />
+    </div>
     <img
       v-if="currency"
       alt="icon"
@@ -17,8 +29,10 @@
     >
   </div>
 </template>
+
 <script>
 import Blockies from '@/helpers/blockies.js';
+
 export default {
   name: 'MewBlockie',
   props: {
@@ -49,13 +63,20 @@ export default {
     height: {
       type: String,
       default: '64px'
+    },
+    /**
+     * Remove inset shadow
+     */
+    flat: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
       scale: 16,
-      size: 8
-
+      size: 8,
+      blockieImg: null
     };
   },
   watch: {
@@ -76,29 +97,29 @@ export default {
     }
   },
   mounted() {
-    this.setBlockie();
+    this.createBlockie();
   },
   methods: {
-    setBlockie() {
-      const data = Blockies({
+    createBlockie() {
+      this.blockieImg = Blockies({
         seed: this.address ? this.address.toLowerCase() : '',
         size: this.size,
         scale: this.scale
       }).toDataURL();
-      this.$refs.identicon.style.width = this.width;
-      this.$refs.identicon.style.height = this.height;
-      this.$refs.identicon.style.backgroundImage = `url('${data}')`;
+      this.$refs.blockie.style.width = this.width;
+      this.$refs.blockie.style.height = this.height;
     }
   }
 };
 </script>
+
 <style lang="scss" scoped>
-.address-identicon {
-  background-repeat: no-repeat;
-  background-size: cover;
+.inset-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
   border-radius: 50%;
-  box-shadow: inset rgba(255, 255, 255, 0.25) 0 2px 2px,
-    inset rgba(0, 0, 0, 0.6) 0 -1px 8px;
+  box-shadow: inset 0px 0px 4px #939393;
   height: 100%;
   width: 100%;
 }

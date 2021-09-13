@@ -1,6 +1,7 @@
 import {
   withKnobs,
-  text
+  text,
+  boolean
 } from '@storybook/addon-knobs';
 import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
 import MewBlockieDoc from './MewBlockie.mdx';
@@ -28,12 +29,15 @@ export const mewBlockie = () => ({
     },
     height: {
       default: text('height', ' 64px')
+    },
+    flat: {
+      default: boolean('flat', false)
     }
   },
   template: `
     <div>
     <br />
-    <mew-blockie :address="address" :width="width" :height="height"
+    <mew-blockie :address="address" :width="width" :height="height" :flat="flat"
     />
   </div>`
 });
