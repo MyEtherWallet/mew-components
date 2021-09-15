@@ -40,7 +40,7 @@
       v-for="(item, index) in listObj.items"
       :key="index"
     >
-      <v-list-item>
+      <v-list-item v-if="item.title">
         <v-list-item-title class="basic--text mew-heading-3 titleItem">
           {{ item.title }}
         </v-list-item-title>
