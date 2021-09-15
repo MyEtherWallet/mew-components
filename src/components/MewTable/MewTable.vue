@@ -8,8 +8,7 @@
     <v-data-table
       :class="['mew-table', hasSelect ? 'mew-select-table' : '', hasColor ? 'mew-super-primary-table' : '']"
       :items="tableData"
-      :item-key="tableHeaders.value"
-      single-select
+      :item-key="tableHeaders[0].value"
       :headers="tableHeaders"
       :show-select="hasSelect"
       :hide-default-footer="tableData && tableData.length <= 10"
@@ -41,21 +40,18 @@
       <!--
   =====================================================================================
     Displays checkboxes next to each row (hasSelect needs to be set to true)
+    COMMENTED OUT FOR NOW - USING VUETIFYS CHECKBOX
   =====================================================================================
   -->
-      <template
+      <!-- <template
         v-if="!loading"
-        v-slot:[`item.data-table-select`]="{ select, isSelected }"
+        v-slot:[`item.data-table-select`]="{ isSelected, select, item }"
       >
-        <v-simple-checkbox
+        <mew-checkbox
           :value="isSelected"
-          @input="select($event)"
-          color="primary"
-          on-icon="mdi-circle-slice-8"
-          off-icon="mdi-circle-outline"
-          :ripple="false"
+          dense
         /> 
-      </template>
+      </template> -->
       <!--
   =====================================================================================
     Displays the token image and token title
@@ -386,11 +382,20 @@ export default {
   }
 
 /**
-  * Selected table
+  * Checkbox (not active)
   */
   .v-simple-checkbox {
-    i {
+    .mdi-checkbox-blank-outline {
       color: var(--v-searchText-base);
+    }
+  }
+
+  /**
+  * Checkbox (not active)
+  */
+  .v-simple-checkbox {
+    .mdi-checkbox-marked {
+      color: var(--v-primary-base);
     }
   }
 
@@ -400,17 +405,6 @@ export default {
 
   
   &.mew-select-table {
-    tbody {
-      tr:nth-of-type(odd) {
-        background-color: var(--v-swapDisable-base) !important;
-      }
-      td {
-        color: var(--v-searchText-base) !important;
-      }
-      .v-icon.call-made {
-        font-size: 21px;
-      }
-    }
     .v-data-table__selected {
       background: inherit !important;
       td {
