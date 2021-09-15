@@ -391,7 +391,7 @@ export default {
   }
 
   /**
-  * Checkbox (not active)
+  * Checkbox (active)
   */
   .v-simple-checkbox {
     .mdi-checkbox-marked {
