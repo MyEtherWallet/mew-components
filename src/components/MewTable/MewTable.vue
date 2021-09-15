@@ -17,6 +17,7 @@
       :loading="loading"
       :no-data-text="noDataText"
       @item-selected="onSelect"
+      @toggle-select-all="onSelectAll"
     > 
       <!--
   =====================================================================================
@@ -323,10 +324,17 @@ export default {
     }
   },
   methods: {
+    /**
+     * emits selectedRow when selecting a checkbox
+     */
+    onSelectAll(item) {
+      this.$emit('selectedAll', item)
+    },
+    /**
+     * emits selectedRow when selecting a checkbox
+     */
     onSelect(item) {
-      if (item.value === true) {
-        this.$emit('selectedRow', item)
-      }
+      this.$emit('selectedRow', item)
     },
     onClick(item) {
       this.$emit('onClick', item);

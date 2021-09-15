@@ -192,6 +192,7 @@ export const mewTable = () => ({
       :table-headers="hasSelect ? tableSelectHeaders : tableHeaders"
       :no-data-text="noDataText"
       @selectedRow="onSelect"
+      @selectedAll="onSelectAll"
       @onClick="onClick"
     />
     
@@ -200,6 +201,10 @@ export const mewTable = () => ({
     onSelect(newVal) {
       // eslint-disable-next-line no-console
       console.log('selected:', newVal);
+    },
+    onSelectAll(newVal) {
+      // eslint-disable-next-line no-console
+      console.log('selected all:', newVal);
     },
     onClick(newVal) {
       // eslint-disable-next-line no-console
