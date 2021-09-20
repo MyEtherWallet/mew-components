@@ -113,6 +113,11 @@ export const All = () => ({
           {name: 'dropdownBorder', lightHex: '#05c0a5', darkHex: '#7e90a7'},
           {name: 'progressBar', lightHex: '#F3FAFA', darkHex: '#151A29'},
         ]
+      },
+      {
+        shades: [
+          {name: 'blue100', lightHex: '#F3F5FB', darkHex: '#F3F5FB'},
+        ]
       }
     ]
     }

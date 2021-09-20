@@ -56,6 +56,13 @@ export default {
       }
     },
     /**
+     * The checkbox id. Mainly used for when mew-checkbox is used in a loop.
+     */
+    id: {
+      type: Number,
+      default: null,
+    },
+    /**
      * Controls the value of the checkbox (checked or not)
      */
     value: {
@@ -76,13 +83,13 @@ export default {
         return this.value;
       },
       set(val) {
-        this.$emit('input', val)
+        this.$emit('input', val, this.id)
       }
     }
   },
   methods: {
     toggleCheckbox() {
-      this.$emit('input', !this.value);
+      this.$emit('input', !this.value, this.id);
     }
   }
 }

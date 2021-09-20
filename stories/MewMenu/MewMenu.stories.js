@@ -5,6 +5,7 @@ import {
   text
 } from '@storybook/addon-knobs';
 import MewMenu from '@/components/MewMenu/MewMenu.vue';
+import ethTokenPlaceholder from '@/assets/images/icons/eth.svg';
 
 export default {
   title: 'MewMenu',
@@ -17,7 +18,7 @@ export default {
 const listObj = {
   name: 'Links',
   items: [
-  { title: '1st Links', items: [{ title: 'Link 1'}, {title: 'Link 2'}] },
+  { title: '1st Links', items: [{ title: 'Link 1', img: ethTokenPlaceholder }, {title: 'Link 2'}] },
   { title: '2nd Links', items: [{ title: 'Link 3'}, {title: 'Link 4'}]} ]
 };
 

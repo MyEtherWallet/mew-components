@@ -2,7 +2,8 @@ import {
   withKnobs,
   boolean,
   text,
-  object
+  object,
+  number
 } from '@storybook/addon-knobs';
 import MewCheckbox from '@/components/MewCheckbox/MewCheckbox.vue';
 
@@ -39,7 +40,10 @@ export const MEWCheckbox = () => ({
     },
     dense: {
       default: boolean('dense', false)
-    }
+    },
+    id: {
+      default: number('id', null),
+    },
   },
   watch: {
     enableDarkMode(newVal) {
@@ -54,6 +58,7 @@ export const MEWCheckbox = () => ({
       :dense="dense"
       :color-text="colorText"
       :link="link"
+      :id="id"
     />
   </div>`
 });
