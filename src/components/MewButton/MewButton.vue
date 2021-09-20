@@ -350,6 +350,10 @@ export default {
       min-height: 62px;
       padding: 0 46px;
     }
+    // basic color theme using a light blue border
+    &.basic--text.v-btn--outlined {
+      border-color: var(--v-blue100-base) !important;
+    }
 
     // button active states
     &.primary.white--text.active {

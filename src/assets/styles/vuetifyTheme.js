@@ -68,7 +68,8 @@ export default {
         maxButton: '#F6F8FD',
         textBlack: '#202124',
         textBlack2: '#5F6368',
-        buttonSelect: '#D7F5F4'
+        buttonSelect: '#D7F5F4',
+        blue100: '#F3F5FB'
       },
       dark: {
         primaryHover: '#1eb19b',
@@ -134,7 +135,8 @@ export default {
         maxButton: '#F6F8FD',
         textBlack: '#202124',
         textBlack2: '#5F6368',
-        buttonSelect: '#D7F5F4'
+        buttonSelect: '#D7F5F4',
+        blue100: '#F3F5FB'
       }
     }
   }

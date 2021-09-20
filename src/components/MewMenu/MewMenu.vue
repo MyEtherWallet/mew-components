@@ -51,8 +51,13 @@
         @click="goTo(subItem.to)"
         class="cursor-pointer"
       >
-        <v-list-item-title class="mew-body basic--text subItem">
-          {{ subItem.title }}
+        <v-list-item-title class="mew-body basic--text subItem d-flex align-center">
+          <img
+            class="mr-1"
+            height="20px"
+            :src="subItem.img"
+            :alt="subItem.item"
+          > {{ subItem.title }}
         </v-list-item-title>
       </v-list-item>
     </v-list>
@@ -69,7 +74,7 @@ export default {
   },
   props: {
     /**
-     * Menu content. Accepts an object, i.e, { name: '', items: [{ title: '', items: [{ title: ''}]}]}
+     * Menu content. Accepts an object, i.e, { name: '', items: [{ title: '', items: [{ title: '' , img: ''}]}]}
      */
     listObj: {
       type: Object,
@@ -126,11 +131,11 @@ export default {
     }
   }
     .v-list:first-of-type > .v-list-item:first-of-type {
-      padding-top: 10px;
+      margin-top: 10px;
     }
 
     .v-list:last-of-type > .v-list-item:last-of-type {
-      padding-bottom: 10px;
+      margin-bottom: 10px;
     }
 
 
