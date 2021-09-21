@@ -5,7 +5,6 @@ import {
   text
 } from '@storybook/addon-knobs';
 import MewMenu from '@/components/MewMenu/MewMenu.vue';
-import ethTokenPlaceholder from '@/assets/images/icons/eth.svg';
 
 export default {
   title: 'MewMenu',
@@ -18,7 +17,7 @@ export default {
 const listObj = {
   name: 'Links',
   items: [
-  { title: '1st Links', items: [{ title: 'Link 1', img: ethTokenPlaceholder }, {title: 'Link 2'}] },
+  { title: '1st Links', items: [{ title: 'Link 1', iconName: 'mdi-plus' }, {title: 'Link 2'}] },
   { title: '2nd Links', items: [{ title: 'Link 3'}, {title: 'Link 4'}]} ]
 };
 
@@ -31,8 +30,8 @@ export const MEWMenu = () => ({
     listObj: {
       default: object('list-obj', listObj)
     },
-    textColor: {
-      default: text('text-color', 'basic--text')
+    activatorTextColor: {
+      default: text('activator-text-color', 'basic--text')
     }
   },
   watch: {
@@ -45,7 +44,7 @@ export const MEWMenu = () => ({
     <br />
     <mew-menu
       :list-obj="listObj"
-      :text-color="textColor"
+      :activator-text-color="activatorTextColor"
       @goToPage="goToPage"
     />
   </div>`,

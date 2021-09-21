@@ -14,7 +14,7 @@
     <template v-slot:activator="{ on }">
       <span
         :class="[
-          textColor,
+          activatorTextColor,
           'cursor-pointer',
           isMenuOpen ? 'font-weight-medium' : '',
         ]"
@@ -23,11 +23,11 @@
         {{ listObj.name }}
         <v-icon
           v-if="!isMenuOpen"
-          :class="['title', textColor]"
+          :class="['title', activatorTextColor]"
         >mdi-chevron-down</v-icon>
         <v-icon
           v-if="isMenuOpen"
-          :class="['title', textColor]"
+          :class="['title', activatorTextColor]"
         >mdi-chevron-up</v-icon>
       </span>
     </template>
@@ -52,12 +52,12 @@
         class="cursor-pointer"
       >
         <v-list-item-title class="mew-body basic--text subItem d-flex align-center">
-          <img
-            class="mr-1"
-            height="20px"
-            :src="subItem.img"
-            :alt="subItem.item"
-          > {{ subItem.title }}
+          <v-icon
+            class="mr-1 basic--text"
+            size="14px"
+          >
+            {{ subItem.iconName }}
+          </v-icon> {{ subItem.title }}
         </v-list-item-title>
       </v-list-item>
     </v-list>
@@ -74,7 +74,8 @@ export default {
   },
   props: {
     /**
-     * Menu content. Accepts an object, i.e, { name: '', items: [{ title: '', items: [{ title: '' , img: ''}]}]}
+     * Menu content. Accepts an object, i.e, { name: '', items: [{ title: '', items: [{ title: '' , iconName: ''}]}]}
+     * name and title takes any string and iconName takes material icon name
      */
     listObj: {
       type: Object,
@@ -83,9 +84,9 @@ export default {
       },
     },
     /**
-     * Text color. Accepts a class.
+     * Text color for activator title. Accepts a class.
      */
-    textColor: {
+    activatorTextColor: {
       type: String,
       default: 'basic--text',
     }
