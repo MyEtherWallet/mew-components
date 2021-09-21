@@ -53,6 +53,7 @@
       >
         <v-list-item-title class="mew-body basic--text subItem d-flex align-center">
           <v-icon
+            v-if="subItem.iconName"
             class="mr-1 basic--text"
             size="14px"
           >
