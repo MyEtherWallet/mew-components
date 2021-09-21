@@ -81,19 +81,19 @@ export default {
   },
   watch: {
     address() {
-      this.setBlockie();
+      this.createBlockie();
     },
     width() {
-      this.setBlockie();
+      this.createBlockie();
     },
     height() {
-      this.setBlockie();
+      this.createBlockie();
     },
     scale() {
-      this.setBlockie();
+      this.createBlockie();
     },
     size() {
-      this.setBlockie();
+      this.createBlockie();
     }
   },
   mounted() {
