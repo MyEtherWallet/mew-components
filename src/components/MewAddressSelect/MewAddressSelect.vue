@@ -113,7 +113,14 @@
             width="25px"
             height="25px"
           />
-          <mew-transform-hash :hash="item.address" />
+          <mew-transform-hash
+            v-if="!item.resolvedAddr || item.resolvedAddr === ''"
+            :hash="item.address"
+          />
+          <span
+            class="mew-address"
+            v-else
+          >{{ item.address }}</span>
         </div>
         <div class="overline primary--text font-weight-medium ml-3">
           {{ item.nickname }}
