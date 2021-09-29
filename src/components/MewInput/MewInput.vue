@@ -264,6 +264,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    /**
+     * Hides the toggle show password icon on the right
+     * when input type is password.
+     */
+    hidePasswordIcon: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
@@ -288,7 +296,7 @@ export default {
       return this.type === types[0];
     },
     showPasswordIcon() {
-      if (this.isPasswordType) {
+      if (this.isPasswordType && !this.hidePasswordIcon) {
         return !this.showPassword ? 'mdi-eye' : 'mdi-eye-off';
       }
       return '';
