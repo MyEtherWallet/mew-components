@@ -134,7 +134,7 @@ export default {
       min-width: 31px !important;
       margin-right: 5px;
       &.v-btn--active {
-        background-color: var(--v-secondary-base) !important;
+        background-color: var(--v-blue500-base) !important;
         color: var(--v-white-base);
         font-weight: bold !important;
       }

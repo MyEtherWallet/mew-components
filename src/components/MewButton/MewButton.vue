@@ -9,11 +9,11 @@
     :href="btnLink"
     :ripple="!isTransparent"
     @click="onBtnClick"
-    :class="[ getClasses(), 'mew-button' ]"
-    :color="colorTheme"
+    :class="[ buttonClasses, 'mew-button' ]"
+    :color="buttonColor"
     :disabled="disabled"
     depressed
-    :outlined="isOutline"
+    :outlined="hasOutline"
     :text="isTransparent"
   >
     <!--
@@ -25,7 +25,7 @@
       v-if="loading"
       indeterminate
       size="25"
-      :color="isTransparent || isOutline ? 'primary' : 'white'"
+      :color="isTransparent || hasOutline ? 'primary' : 'white'"
     />
     <!--
   =====================================================================================
@@ -38,88 +38,19 @@
     >  
       <!--
   =====================================================================================
-    Img content - uses img src (Left)
-  =====================================================================================
-  -->
-      <img
-        v-if="showIcon('img') && !showIconAlignRight"
-        class="icon mr-1"
-        :src="icon"
-        alt="icon"
-      >
-      <!--
-  =====================================================================================
-   V-Icon Content - uses material design icons (Left)
-  =====================================================================================
-  -->
-      <v-icon
-        class="icon mr-1"
-        v-if="showIcon('mdi') && !showIconAlignRight"
-      >
-        {{ icon }}
-      </v-icon>
-      <!--
-  =====================================================================================
-   Mew Icon Content - uses mew icons (Left)
-  =====================================================================================
-  -->
-      <mew-icon
-        :img-height="30"
-        class="icon mr-1"
-        v-if="showIcon('mew') && !showIconAlignRight"
-        :icon-name="icon"
-      />
-      <!--
-  =====================================================================================
    Button text
   =====================================================================================
   -->
-      <span>{{ title }}</span>
-      <!--
-  =====================================================================================
-    Img content - uses img src (Right)
-  =====================================================================================
-  -->
-      <img
-        v-if="showIcon('img') && showIconAlignRight"
-        class="icon ml-1"
-        :src="icon"
-        alt="icon"
-      >
-      <!--
-  =====================================================================================
-   V-Icon Content - uses material design icons (Right)
-  =====================================================================================
-  -->
-      <v-icon
-        class="icon mr-1"
-        v-if="showIcon('mdi') && showIconAlignRight"
-      >
-        {{ icon }}
-      </v-icon>
-      <!--
-  =====================================================================================
-   Mew Icon Content - uses mew icons (Right)
-  =====================================================================================
-  -->
-      <mew-icon
-        :img-height="30"
-        class="icon mr-1"
-        v-if="showIcon('mew') && showIconAlignRight"
-        :icon-name="icon"
-      />
+      <span class="font-weight-regular">{{ title }}</span>
+      <slot />
     </div>
   </v-btn>
 </template>
 
 <script>
-import MewIcon from '@/components/MewIcon/MewIcon.vue';
 
 export default {
   name: 'MewButton',
-  components: {
-    MewIcon
-  },
   props: {
     /**
      * Enables loading state
@@ -143,46 +74,33 @@ export default {
       default: false
     },
     /**
-     * The text that will go in the button.
+     * Makes the button transparent and gives the button a border.
+     */
+    hasOutline: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Gives the button a subtle color effect.
+     */
+    isSubtle: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * The text that will go in the center of the button.
+     * If not passed, a slot should be used.
      */
     title: {
       type: String,
       default: ''
     },
     /**
-     * The icon url. Inserts an icon next to the button title.
-     */
-    icon: {
-      type: [ String, Array],
-      default: ''
-    },
-    /**
-     * Aligns the icon: left, right, or none.
-     */
-    iconAlign: {
-      type: String,
-      default: 'none'
-    },
-    /**
-     * The type of icon: mew, mdi, or img
-     */
-    iconType: {
-      type: String,
-      default: 'mew'
-    },
-    /**
-     * Applies the button color theme: basic, primary, error, white, or secondary.
+     * Applies the button color theme: primary, royal, grey, error
      */
     colorTheme: {
       type: String,
       default: 'primary'
-    },
-    /**
-     * Applies the button style: background, transparent, or outline.
-     */
-    btnStyle: {
-      type: String,
-      default: 'background'
     },
     /**
      * Removes the ability to click or target the component.
@@ -197,70 +115,48 @@ export default {
     btnLink: {
       type: String,
       default: ''
-    },
-    /**
-     * Displays the buttons' active state.
-     */
-    showsActiveState: {
-      type: Boolean,
-      default: false
     }
   },
   data() {
     return {
-      btnStyles: {
-        background: 'background',
-        transparent: 'transparent',
-        outline: 'outline'
-      },
       colorThemes: {
-        white: 'white',
+        royal: 'royal',
         primary: 'primary',
-      },
-      iconAlignments: {
-        left: 'left',
-        right: 'right'
+        grey: 'grey',
+        error: 'error'
       },
       btnSizes: {
         small: 'small',
         medium: 'medium',
         large: 'large',
         xlarge: 'xlarge'
-      },
-      iconTypes: {
-        mew: 'mew',
-        mdi: 'mdi',
-        img: 'img'
-      },
-      active: false
+      }
     };
   },
   computed: {
-    isTransparent() {
-      return this.btnStyle.toLowerCase() === this.btnStyles.transparent
+    isPrimaryTheme() {
+      return this.colorTheme.toLowerCase() === this.colorThemes.primary;
     },
-    isOutline() {
-      return this.btnStyle.toLowerCase() === this.btnStyles.outline
+    isRoyalTheme() {
+      return this.colorTheme.toLowerCase() === this.colorThemes.royal;
     },
-    isBackground() {
-      return this.btnStyle.toLowerCase() === this.btnStyles.background
+    isGreyTheme() {
+      return this.colorTheme.toLowerCase() === this.colorThemes.primary;
     },
-    isPlain() {
-      return this.colorTheme.toLowerCase() === this.colorThemes.white
+    isErrorTheme() {
+      return this.colorTheme.toLowerCase() === this.colorThemes.royal;
     },
-    showIconAlignRight() {
-      return this.iconAlign.toLowerCase() === this.iconAlignments.right
-    }
-    
-  },
-  methods: {
-    showIcon(val) {
-      return this.iconType.toLowerCase() === this.iconTypes[val] && this.hasSrc(this.icon)
+    buttonColor() {
+      if (this.isRoyalTheme) {
+        return 'blue500';
+      }
+
+      if (this.isPrimaryTheme && this.isSubtle) {
+        return 'emerald100'
+      }
+      return this.colorTheme;
     },
-    onBtnClick() {
-      this.active = !this.active;
-    },
-    getClasses() {
+    buttonClasses() {
       const classes = [];
 
       if (this.btnSize.toLowerCase()) {
@@ -272,8 +168,7 @@ export default {
       }
       
       if (
-        this.isBackground &&
-        !this.isPlain
+        !this.isSubtle && !this.isOutline
       ) {
         classes.push('white--text');
       }
@@ -287,17 +182,15 @@ export default {
 
       if (
         this.active &&
-        !this.disabled &&
-        this.showsActiveState
+        !this.disabled 
       ) {
         classes.push('active');
       }
 
       if (
         this.active &&
-        this.showsActiveState && 
         !this.disabled &&
-        this.isOutline
+        this.hasOutline
       ) {
         classes.push('bg-white');
       }
@@ -308,12 +201,17 @@ export default {
 
       return classes;
     },
-    hasSrc(src) {
-      if (src === '' || src.length <= 0 ) {
-        return false;
-      }
-      return true;
-    }
+    // isTransparent() {
+    //   return this.btnStyle.toLowerCase() === this.btnStyles.transparent
+    // },
+    // isBackground() {
+    //   return this.btnStyle.toLowerCase() === this.btnStyles.background
+    // // },
+    // isPlain() {
+    //   return this.colorTheme.toLowerCase() === this.colorThemes.white
+    // }
+  },
+  methods: {
   }
 };
 </script>
@@ -321,7 +219,7 @@ export default {
 <style lang="scss" scoped>
 .v-application {
   .v-btn {
-    border-radius: 6px !important;
+    border-radius: 10px !important;
 
     .icon {
       display: flex;
@@ -332,23 +230,23 @@ export default {
 
     // button sizes
     &.small-btn {
-      min-height: 28px;
-      padding: 0 15px;
+      height: 32px;
+      // padding: 0 15px;
     }
 
     &.medium-btn {
-      min-height: 34x;
-      padding: 0 20px;
+      height: 36x;
+      // padding: 0 20px;
     }
 
     &.large-btn {
-      min-height: 46px;
-      padding: 0 32px;
+      height: 46px;
+      // padding: 0 32px;
     }
 
     &.xlarge-btn {
-      min-height: 62px;
-      padding: 0 46px;
+      height: 62px;
+      // padding: 0 46px;
     }
     // basic color theme using a light blue border
     &.basic--text.v-btn--outlined {

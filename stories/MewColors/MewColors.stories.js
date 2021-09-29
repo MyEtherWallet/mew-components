@@ -17,16 +17,21 @@ export const All = () => ({
   data() {
     return {
       mewColors: [ {
+        shades: [
+          {name: 'emerald100', lightHex: '#f5fdfb', darkHex: '#151a29'},
+          {name: 'blue100', lightHex: '#F3F5FB', darkHex: '#F3F5FB'},
+          {name: 'blue500', lightHex: '#5a78f0', darkHex: '#5a78f0'}
+        ]
+      },
+      {
         shades: [ 
           {name: 'primary base', lightHex: '#05c0a5'}, 
           {name: 'primaryHover', lightHex: '#1eb19b', darkHex: '#1eb19b'}, 
           {name: 'primaryActive', lightHex: '#56c5b4', darkHex: '#56c5b4'},
           {name: 'primaryOutlineActive', lightHex: '#baede6', darkHex: '#15796a'},
-          {name: 'overlayBg', lightHex: '#f5fdfb', darkHex: '#151a29'}
         ]
       }, {
         shades: [
-          {name: 'secondary base', lightHex: '#5a78f0', darkHex: '#5a78f0'},
           {name: 'secondaryOutlineActive', lightHex: '#d6dffa', darkHex: '#2e3c75'}
         ]
       },
@@ -112,11 +117,6 @@ export const All = () => ({
           {name: 'searchText', lightHex: '#C3CCDF', darkHex: '#C3CCDF'},
           {name: 'dropdownBorder', lightHex: '#05c0a5', darkHex: '#7e90a7'},
           {name: 'progressBar', lightHex: '#F3FAFA', darkHex: '#151A29'},
-        ]
-      },
-      {
-        shades: [
-          {name: 'blue100', lightHex: '#F3F5FB', darkHex: '#F3F5FB'},
         ]
       }
     ]

@@ -11,7 +11,7 @@
   >
     <v-sheet 
       height="100%"
-      color="overlayBg"
+      color="emerald100"
       class="mew-overlay-container d-flex align-center flex-column"
     >
       <!--
