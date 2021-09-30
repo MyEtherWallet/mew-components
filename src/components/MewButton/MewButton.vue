@@ -7,7 +7,6 @@
   <v-btn
     :target="btnLink ? '_blank' : ''"
     :href="btnLink"
-    :ripple="!isTransparent"
     @click="onBtnClick"
     :class="[ buttonClasses, 'mew-button' ]"
     :color="buttonColor"
@@ -25,7 +24,7 @@
       v-if="loading"
       indeterminate
       size="25"
-      :color="isTransparent || hasOutline ? 'primary' : 'white'"
+      :color="hasOutline ? 'primary' : 'white'"
     />
     <!--
   =====================================================================================
@@ -41,10 +40,11 @@
    Button text
   =====================================================================================
   -->
-      <span class="font-weight-regular">{{ title }}</span>
+      <span class="font-weight-regular">{{ title }} {{buttonColor}}</span>
       <slot />
     </div>
   </v-btn>
+
 </template>
 
 <script>
@@ -74,19 +74,28 @@ export default {
       default: false
     },
     /**
+     * Applies the button style: light, transparent, or outline.
+     * If nothing is passed then the button will be the 
+     * default standard background color theme.
+     */
+    btnStyle: {
+      type: String,
+      default: 'background'
+    },
+    /**
      * Makes the button transparent and gives the button a border.
      */
-    hasOutline: {
-      type: Boolean,
-      default: false
-    },
+    // hasOutline: {
+    //   type: Boolean,
+    //   default: false
+    // },
     /**
      * Gives the button a subtle color effect.
      */
-    isSubtle: {
-      type: Boolean,
-      default: false
-    },
+    // isLight: {
+    //   type: Boolean,
+    //   default: false
+    // },
     /**
      * The text that will go in the center of the button.
      * If not passed, a slot should be used.
@@ -96,7 +105,7 @@ export default {
       default: ''
     },
     /**
-     * Applies the button color theme: primary, royal, grey, error
+     * Applies the button color theme: primary, secondary, basic, error
      */
     colorTheme: {
       type: String,
@@ -120,10 +129,16 @@ export default {
   data() {
     return {
       colorThemes: {
-        royal: 'royal',
+        secondary: 'secondary',
         primary: 'primary',
-        grey: 'grey',
+        basic: 'basic',
         error: 'error'
+      },
+      btnStyles: {
+        light: 'light',
+        transparent: 'transparent',
+        outline: 'outline',
+        background: 'background'
       },
       btnSizes: {
         small: 'small',
@@ -137,23 +152,41 @@ export default {
     isPrimaryTheme() {
       return this.colorTheme.toLowerCase() === this.colorThemes.primary;
     },
-    isRoyalTheme() {
-      return this.colorTheme.toLowerCase() === this.colorThemes.royal;
+    isSecondaryTheme() {
+      return this.colorTheme.toLowerCase() === this.colorThemes.secondary;
     },
-    isGreyTheme() {
-      return this.colorTheme.toLowerCase() === this.colorThemes.primary;
+    isBasicTheme() {
+      return this.colorTheme.toLowerCase() === this.colorThemes.basic;
     },
     isErrorTheme() {
-      return this.colorTheme.toLowerCase() === this.colorThemes.royal;
+      return this.colorTheme.toLowerCase() === this.colorThemes.error;
     },
     buttonColor() {
-      if (this.isRoyalTheme) {
+      if (this.isLight && this.isSecondaryTheme) {
+        return 'rgba(90, 120, 240, 0.08)';
+      }
+
+      if (this.isLight && this.isErrorTheme) {
+        return 'rgba(255, 68, 91, 0.08)';
+      }
+
+      if (this.isLight && this.isBasicTheme) {
+        return '#F0F3F9'
+      }
+  
+      if (this.isPrimaryTheme && this.isLight) {
+        return 'emerald100'
+      }
+
+      if (this.isSecondaryTheme) {
         return 'blue500';
       }
 
-      if (this.isPrimaryTheme && this.isSubtle) {
-        return 'emerald100'
+
+      if (this.isBasicTheme) {
+        return 'textPrimary'
       }
+
       return this.colorTheme;
     },
     buttonClasses() {
@@ -168,50 +201,45 @@ export default {
       }
       
       if (
-        !this.isSubtle && !this.isOutline
+        this.isBackground
       ) {
         classes.push('white--text');
       }
 
-      if (
-        this.isBackground &&
-        this.isPlain
-      ) {
+      if (this.isPrimaryTheme && this.isLight) {
         classes.push('primary--text');
       }
 
-      if (
-        this.active &&
-        !this.disabled 
-      ) {
-        classes.push('active');
+      if (this.isErrorTheme && this.isLight) {
+        classes.push('error--text');
       }
 
-      if (
-        this.active &&
-        !this.disabled &&
-        this.hasOutline
-      ) {
-        classes.push('bg-white');
+      if (this.isSecondaryTheme && this.isLight) {
+        return 'blue500--text';
       }
-
-      if (this.isTransparent) {
-        classes.push('mew-transparent')
+      if (this.isBasicTheme  && this.isLight) {
+        return 'textPrimary--text';
       }
 
       return classes;
     },
-    // isTransparent() {
-    //   return this.btnStyle.toLowerCase() === this.btnStyles.transparent
-    // },
-    // isBackground() {
-    //   return this.btnStyle.toLowerCase() === this.btnStyles.background
-    // // },
-    // isPlain() {
-    //   return this.colorTheme.toLowerCase() === this.colorThemes.white
-    // }
+    isTransparent() {
+      return this.btnStyle.toLowerCase() === this.btnStyles.transparent
+    },
+    hasOutline() {
+      return this.btnStyle.toLowerCase() === this.btnStyles.outline
+    },
+    isLight() {
+      return this.btnStyle.toLowerCase() === this.btnStyles.light
+    },
+    isBackground() {
+      return this.btnStyle.toLowerCase() === this.btnStyles.background
+    }
   },
   methods: {
+    onBtnClick() {
+      console.error('in here')
+    }
   }
 };
 </script>
@@ -220,14 +248,6 @@ export default {
 .v-application {
   .v-btn {
     border-radius: 10px !important;
-
-    .icon {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      height: 45px;
-    }
-
     // button sizes
     &.small-btn {
       height: 32px;
@@ -249,55 +269,59 @@ export default {
       // padding: 0 46px;
     }
     // basic color theme using a light blue border
-    &.basic--text.v-btn--outlined {
-      border-color: var(--v-blue100-base) !important;
-    }
+    // &.basic--text.v-btn--outlined {
+    //   border-color: var(--v-blue100-base) !important;
+    // }
 
     // button active states
-    &.primary.white--text.active {
-      background-color: var(--v-primaryActive-base) !important;
+    // &.primary.white--text.active {
+    //   background-color: var(--v-primaryActive-base) !important;
+    // }
+    
+    &.blue500.white--text:hover {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #5A78F0 !important;
     }
     
-    &.primary.white--text:hover {
-      background-color: var(--v-primaryHover-base) !important;
+    &.blue500.white--text:active {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #5A78F0;
     }
 
-    &.primary--text.v-btn--outlined.active {
-      background-color: var(--v-primaryOutlineActive-base) !important;
-    }
+    // &.primary--text.v-btn--outlined.active {
+    //   background-color: var(--v-primaryOutlineActive-base) !important;
+    // }
 
-    &.secondary--text.v-btn--outlined.active {
-      background-color: var(--v-secondaryOutlineActive-base) !important;
-    }
+    // &.secondary--text.v-btn--outlined.active {
+    //   background-color: var(--v-secondaryOutlineActive-base) !important;
+    // }
 
-    &.error--text.v-btn--outlined.active {
-      background-color: var(--v-errorOutlineActive-base) !important;
-    }
+    // &.error--text.v-btn--outlined.active {
+    //   background-color: var(--v-errorOutlineActive-base) !important;
+    // }
 
-    &.basic--text.v-btn--outlined.active {
-      background-color: var(--v-basicOutlineActive-base) !important;
-    }
+    // &.basic--text.v-btn--outlined.active {
+    //   background-color: var(--v-basicOutlineActive-base) !important;
+    // }
 
-    // disabled btn
-    &.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
-      background-color: var(--v-disabled-base) !important;
-      color: var(--v-white-base) !important;
-    }
+    // // disabled btn
+    // &.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+    //   background-color: var(--v-disabled-base) !important;
+    //   color: var(--v-white-base) !important;
+    // }
 
-    &.v-btn--disabled.v-btn--has-bg {
-      .v-icon {
-        color: var(--v-white-base) !important;
-      }
-    }
+    // &.v-btn--disabled.v-btn--has-bg {
+    //   .v-icon {
+    //     color: var(--v-white-base) !important;
+    //   }
+    // }
 
-    &.mew-transparent {
-      &:before {
-        background-color: transparent;
-      }
-      &:hover {
-        text-decoration: underline;
-      }
-    }
+    // &.mew-transparent {
+    //   &:before {
+    //     background-color: transparent;
+    //   }
+    //   &:hover {
+    //     text-decoration: underline;
+    //   }
+    // }
   }
 }
 </style>

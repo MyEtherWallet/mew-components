@@ -20,9 +20,9 @@ export default {
 };
 
 const colorThemeOptions = {
-  royal: 'royal',
+  secondary: 'secondary',
   primary: 'primary',
-  grey: 'grey',
+  basic: 'basic',
   error: 'error'
 };
 const optionsObj = {
@@ -34,6 +34,13 @@ const btnButtonOptions = {
   medium: 'medium',
   large: 'large',
   xlarge: 'xlarge'
+};
+
+const btnStyleOptions = {
+  background: 'background',
+  outline: 'outline',
+  light: 'light',
+  transparent: 'transparent'
 };
 
 export const MEWButton = () => ({
@@ -51,6 +58,14 @@ export const MEWButton = () => ({
     title: {
       default: text('title', 'MEW Button')
     },
+    btnStyle: {
+      default: optionsKnob(
+        'btn-style',
+        btnStyleOptions,
+        'background',
+        optionsObj
+      )
+    },
     colorTheme: {
       default: optionsKnob(
         'color-theme',
@@ -61,15 +76,6 @@ export const MEWButton = () => ({
     },
     buttonSize: {
       default: optionsKnob('btn-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
-    },
-    showsActiveState: {
-      default: boolean('shows-active-state', false)
-    },
-    hasOutline: {
-      default: boolean('has-outline', false)
-    },
-    isSubtle: {
-      default: boolean('is-subtle', false)
     },
     loading: {
       default: boolean('loading', false)
@@ -87,11 +93,10 @@ export const MEWButton = () => ({
     <div>
     <br />
     <mew-button
-      :is-subtle="isSubtle"
-      :has-outline="hasOutline"
       :loading="loading"
       :btn-link="btnLink"
       :disabled="disabled"
+      :btn-style="btnStyle"
       :title="title"
       :color-theme="colorTheme"
       :has-full-width="hasFullWidth"
