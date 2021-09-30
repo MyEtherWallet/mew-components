@@ -114,7 +114,7 @@ export const All = () => ({
           {name: 'inputLabel', lightHex: '#6d89a6', darkHex: '#4e5a6e'},
           {name: 'maxButton', lightHex: '#F6F8FD', darkHex: '#F6F8FD'},
           {name: 'searchInput', lightHex: '#f2f4fa', darkHex: '#f2f4fa'},
-          {name: 'searchText', lightHex: '#C3CCDF', darkHex: '#C3CCDF'},
+          {name: 'searchText', lightHex: '#96a8b6', darkHex: '#96a8b6'},
           {name: 'dropdownBorder', lightHex: '#05c0a5', darkHex: '#7e90a7'},
           {name: 'progressBar', lightHex: '#F3FAFA', darkHex: '#151A29'},
         ]
