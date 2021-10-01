@@ -18,15 +18,11 @@ export default {
     }
   },
 };
-
 const colorThemeOptions = {
   secondary: 'secondary',
   primary: 'primary',
   basic: 'basic',
   error: 'error'
-};
-const optionsObj = {
-  display: 'inline-radio'
 };
 
 const btnButtonOptions = {
@@ -41,6 +37,11 @@ const btnStyleOptions = {
   outline: 'outline',
   light: 'light',
   transparent: 'transparent'
+};
+
+// used to display options on knob
+const optionsObj = {
+  display: 'inline-radio'
 };
 
 export const MEWButton = () => ({

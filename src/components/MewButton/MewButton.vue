@@ -7,7 +7,6 @@
   <v-btn
     :target="btnLink ? '_blank' : ''"
     :href="btnLink"
-    @click="onBtnClick"
     :class="[ buttonClasses, 'mew-button' ]"
     :color="buttonColor"
     :disabled="disabled"
@@ -23,8 +22,8 @@
     <v-progress-circular
       v-if="loading"
       indeterminate
-      size="25"
-      :color="hasOutline ? 'primary' : 'white'"
+      size="20"
+      :color="loadingColor"
     />
     <!--
   =====================================================================================
@@ -37,14 +36,13 @@
     >  
       <!--
   =====================================================================================
-   Button text
+   Button text (if no title prop is passed, then slot should be used)
   =====================================================================================
   -->
-      <span class="font-weight-regular">{{ title }} {{buttonColor}}</span>
+      <span class="font-weight-regular">{{ title }} </span>
       <slot />
     </div>
   </v-btn>
-
 </template>
 
 <script>
@@ -83,20 +81,6 @@ export default {
       default: 'background'
     },
     /**
-     * Makes the button transparent and gives the button a border.
-     */
-    // hasOutline: {
-    //   type: Boolean,
-    //   default: false
-    // },
-    /**
-     * Gives the button a subtle color effect.
-     */
-    // isLight: {
-    //   type: Boolean,
-    //   default: false
-    // },
-    /**
      * The text that will go in the center of the button.
      * If not passed, a slot should be used.
      */
@@ -128,18 +112,27 @@ export default {
   },
   data() {
     return {
+    /**
+     * all color theme options
+     */
       colorThemes: {
         secondary: 'secondary',
         primary: 'primary',
         basic: 'basic',
         error: 'error'
       },
+    /**
+     * all btn style options
+     */
       btnStyles: {
         light: 'light',
         transparent: 'transparent',
         outline: 'outline',
         background: 'background'
       },
+    /**
+     * all btn sizes options
+     */
       btnSizes: {
         small: 'small',
         medium: 'medium',
@@ -149,18 +142,47 @@ export default {
     };
   },
   computed: {
+    /**
+     * @returns if color theme is primary.
+     */
     isPrimaryTheme() {
       return this.colorTheme.toLowerCase() === this.colorThemes.primary;
     },
+    /**
+     * @returns if color theme is secondary.
+     */
     isSecondaryTheme() {
       return this.colorTheme.toLowerCase() === this.colorThemes.secondary;
     },
+    /**
+     * @returns if color theme is basic.
+     */
     isBasicTheme() {
       return this.colorTheme.toLowerCase() === this.colorThemes.basic;
     },
+    /**
+     * @returns if color theme is error.
+     */
     isErrorTheme() {
       return this.colorTheme.toLowerCase() === this.colorThemes.error;
     },
+    /**
+     * @returns the process circular loading color.
+     */
+    loadingColor() {
+      if (!this.disabled && !this.isBackground) {
+        return this.buttonColor
+      }
+
+      if (this.disabled && !this.isBackground) {
+        return 'disabled'
+      }
+
+      return 'white'
+    },
+    /**
+     * @returns button color based on color theme and btn style props.
+     */
     buttonColor() {
       if (this.isLight && this.isSecondaryTheme) {
         return 'rgba(90, 120, 240, 0.08)';
@@ -182,13 +204,15 @@ export default {
         return 'blue500';
       }
 
-
       if (this.isBasicTheme) {
         return 'textPrimary'
       }
 
       return this.colorTheme;
     },
+    /**
+     * @returns button classes based on given props
+     */
     buttonClasses() {
       const classes = [];
 
@@ -199,6 +223,24 @@ export default {
       if (this.hasFullWidth === true ) {
         classes.push('full-width');
       }
+
+      if (!this.disabled) {
+        if (this.isPrimaryTheme && this.isLight) {
+          classes.push('primary--text');
+        }
+
+        if (this.isErrorTheme && this.isLight) {
+          classes.push('error--text');
+        }
+
+        if (this.isSecondaryTheme && this.isLight) {
+          classes.push('blue500--text');
+        }
+
+        if (this.isBasicTheme  && this.isLight) {
+          classes.push('textPrimary--text');
+        }
+      }
       
       if (
         this.isBackground
@@ -206,39 +248,39 @@ export default {
         classes.push('white--text');
       }
 
-      if (this.isPrimaryTheme && this.isLight) {
-        classes.push('primary--text');
+
+      if (this.disabled && this.isLight) {
+        classes.push('disabled-light')
       }
 
-      if (this.isErrorTheme && this.isLight) {
-        classes.push('error--text');
+      if (this.disabled && this.isBackground) {
+        classes.push('disabled-bg')
       }
-
-      if (this.isSecondaryTheme && this.isLight) {
-        return 'blue500--text';
-      }
-      if (this.isBasicTheme  && this.isLight) {
-        return 'textPrimary--text';
-      }
-
       return classes;
     },
+    /**
+     * @returns if btn style is transparent.
+     */
     isTransparent() {
       return this.btnStyle.toLowerCase() === this.btnStyles.transparent
     },
+    /**
+     * @returns if btn style has an outline/border.
+     */
     hasOutline() {
       return this.btnStyle.toLowerCase() === this.btnStyles.outline
     },
+    /**
+     * @returns if btn style is a lighter color.
+     */
     isLight() {
       return this.btnStyle.toLowerCase() === this.btnStyles.light
     },
+    /**
+     * @returns if btn style is the default background color.
+     */
     isBackground() {
       return this.btnStyle.toLowerCase() === this.btnStyles.background
-    }
-  },
-  methods: {
-    onBtnClick() {
-      console.error('in here')
     }
   }
 };
@@ -246,82 +288,113 @@ export default {
 
 <style lang="scss" scoped>
 .v-application {
-  .v-btn {
+  .v-btn.mew-button {
     border-radius: 10px !important;
-    // button sizes
+    // BUTTON SIZES
     &.small-btn {
-      height: 32px;
-      // padding: 0 15px;
+      padding: 8px;
     }
 
     &.medium-btn {
-      height: 36x;
-      // padding: 0 20px;
+      padding: 12px;
     }
 
     &.large-btn {
       height: 46px;
-      // padding: 0 32px;
     }
 
     &.xlarge-btn {
       height: 62px;
-      // padding: 0 46px;
     }
-    // basic color theme using a light blue border
-    // &.basic--text.v-btn--outlined {
-    //   border-color: var(--v-blue100-base) !important;
-    // }
-
-    // button active states
-    // &.primary.white--text.active {
-    //   background-color: var(--v-primaryActive-base) !important;
-    // }
+  
+  // PRIMARY COLOR THEME - active & hover states
+  // btn style: default background 
+    &.primary.white--text:hover {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #05C0A5 !important;
+    }
     
+    &.primary.white--text:active {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #05C0A5 !important;
+    }
+
+  // btn style: light, outline, transparent 
+    &.primary--text:hover {
+      background: rgba(5, 192, 165, 0.08) !important;
+    }
+    
+    &.primary--text:active {
+      background: rgba(5, 192, 165, 0.2) !important;
+    }
+
+
+  // SECONDARY COLOR THEME - active & hover states
+  // btn style: default background
     &.blue500.white--text:hover {
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #5A78F0 !important;
     }
     
     &.blue500.white--text:active {
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #5A78F0;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #5A78F0 !important;
+    }
+  
+    // btn style: light, outline, transparent 
+    &.blue500--text:hover {
+      background: rgba(90, 120, 240, 0.08) !important;
+    }
+    
+    &.blue500--text:active {
+      background: rgba(90, 120, 240, 0.2) !important;
     }
 
-    // &.primary--text.v-btn--outlined.active {
-    //   background-color: var(--v-primaryOutlineActive-base) !important;
-    // }
+  // BASIC COLOR THEME - active & hover states
+  // btn style: default background
+    &.textPrimary.white--text:hover {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #687699 !important;
+    }
+    
+    &.textPrimary.white--text:active {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #687699 !important;
+    }
+  
+    // btn style: light, outline, transparent 
+    &.textPrimary--text:hover {
+      background: linear-gradient(0deg, rgba(104, 118, 153, 0.08), rgba(104, 118, 153, 0.08)), #F0F3F9 !important;
+    }
+    
+    &.textPrimary--text:active {
+      background: linear-gradient(0deg, rgba(104, 118, 153, 0.2), rgba(104, 118, 153, 0.2)), #F0F3F9 !important;
+    }
 
-    // &.secondary--text.v-btn--outlined.active {
-    //   background-color: var(--v-secondaryOutlineActive-base) !important;
-    // }
+  // ERROR COLOR THEME - active & hover states
+  // btn style: default background
+    &.error.white--text:hover {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #FF445B !important;
+    }
+    
+    &.error.white--text:active {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #FF445B !important;
+    }
+  
+    // btn style: light, outline, transparent 
+    &.error--text:hover {
+      background: linear-gradient(0deg, rgba(255, 68, 91, 0.08), rgba(255, 68, 91, 0.08)), rgba(255, 68, 91, 0.08) !important;
+    }
+    
+    &.error--text:active {
+      background: linear-gradient(0deg, rgba(255, 68, 91, 0.2), rgba(255, 68, 91, 0.2)), rgba(255, 68, 91, 0.08) !important;
+    }
 
-    // &.error--text.v-btn--outlined.active {
-    //   background-color: var(--v-errorOutlineActive-base) !important;
-    // }
-
-    // &.basic--text.v-btn--outlined.active {
-    //   background-color: var(--v-basicOutlineActive-base) !important;
-    // }
-
-    // // disabled btn
-    // &.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
-    //   background-color: var(--v-disabled-base) !important;
-    //   color: var(--v-white-base) !important;
-    // }
-
-    // &.v-btn--disabled.v-btn--has-bg {
-    //   .v-icon {
-    //     color: var(--v-white-base) !important;
-    //   }
-    // }
-
-    // &.mew-transparent {
-    //   &:before {
-    //     background-color: transparent;
-    //   }
-    //   &:hover {
-    //     text-decoration: underline;
-    //   }
-    // }
+   // DISABLED THEME 
+   // btn style: light
+   &.disabled-light {
+     background-color: var(--v-tableHeader-base) !important;
+     color: var(--v-disabled-base) !important;
+   }
+   // btn style: bg
+   &.disabled-bg {
+     background-color: var(--v-disabled-base) !important;
+     color: var(--v-white-base) !important;
+   }
   }
 }
 </style>
