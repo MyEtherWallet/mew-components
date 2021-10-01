@@ -7,13 +7,11 @@
   <v-btn
     :target="btnLink ? '_blank' : ''"
     :href="btnLink"
-    :ripple="!isTransparent"
-    @click="onBtnClick"
-    :class="[ getClasses(), 'mew-button' ]"
-    :color="colorTheme"
+    :class="[ buttonClasses, 'mew-button' ]"
+    :color="buttonColor"
     :disabled="disabled"
     depressed
-    :outlined="isOutline"
+    :outlined="hasOutline"
     :text="isTransparent"
   >
     <!--
@@ -24,8 +22,8 @@
     <v-progress-circular
       v-if="loading"
       indeterminate
-      size="25"
-      :color="isTransparent || isOutline ? 'primary' : 'white'"
+      size="20"
+      :color="loadingColor"
     />
     <!--
   =====================================================================================
@@ -38,88 +36,19 @@
     >  
       <!--
   =====================================================================================
-    Img content - uses img src (Left)
+   Button text (if no title prop is passed, then slot should be used)
   =====================================================================================
   -->
-      <img
-        v-if="showIcon('img') && !showIconAlignRight"
-        class="icon mr-1"
-        :src="icon"
-        alt="icon"
-      >
-      <!--
-  =====================================================================================
-   V-Icon Content - uses material design icons (Left)
-  =====================================================================================
-  -->
-      <v-icon
-        class="icon mr-1"
-        v-if="showIcon('mdi') && !showIconAlignRight"
-      >
-        {{ icon }}
-      </v-icon>
-      <!--
-  =====================================================================================
-   Mew Icon Content - uses mew icons (Left)
-  =====================================================================================
-  -->
-      <mew-icon
-        :img-height="30"
-        class="icon mr-1"
-        v-if="showIcon('mew') && !showIconAlignRight"
-        :icon-name="icon"
-      />
-      <!--
-  =====================================================================================
-   Button text
-  =====================================================================================
-  -->
-      <span>{{ title }}</span>
-      <!--
-  =====================================================================================
-    Img content - uses img src (Right)
-  =====================================================================================
-  -->
-      <img
-        v-if="showIcon('img') && showIconAlignRight"
-        class="icon ml-1"
-        :src="icon"
-        alt="icon"
-      >
-      <!--
-  =====================================================================================
-   V-Icon Content - uses material design icons (Right)
-  =====================================================================================
-  -->
-      <v-icon
-        class="icon mr-1"
-        v-if="showIcon('mdi') && showIconAlignRight"
-      >
-        {{ icon }}
-      </v-icon>
-      <!--
-  =====================================================================================
-   Mew Icon Content - uses mew icons (Right)
-  =====================================================================================
-  -->
-      <mew-icon
-        :img-height="30"
-        class="icon mr-1"
-        v-if="showIcon('mew') && showIconAlignRight"
-        :icon-name="icon"
-      />
+      <span class="font-weight-regular">{{ title }} </span>
+      <slot />
     </div>
   </v-btn>
 </template>
 
 <script>
-import MewIcon from '@/components/MewIcon/MewIcon.vue';
 
 export default {
   name: 'MewButton',
-  components: {
-    MewIcon
-  },
   props: {
     /**
      * Enables loading state
@@ -143,46 +72,28 @@ export default {
       default: false
     },
     /**
-     * The text that will go in the button.
+     * Applies the button style: light, transparent, or outline.
+     * If nothing is passed then the button will be the 
+     * default standard background color theme.
+     */
+    btnStyle: {
+      type: String,
+      default: 'background'
+    },
+    /**
+     * The text that will go in the center of the button.
+     * If not passed, a slot should be used.
      */
     title: {
       type: String,
       default: ''
     },
     /**
-     * The icon url. Inserts an icon next to the button title.
-     */
-    icon: {
-      type: [ String, Array],
-      default: ''
-    },
-    /**
-     * Aligns the icon: left, right, or none.
-     */
-    iconAlign: {
-      type: String,
-      default: 'none'
-    },
-    /**
-     * The type of icon: mew, mdi, or img
-     */
-    iconType: {
-      type: String,
-      default: 'mew'
-    },
-    /**
-     * Applies the button color theme: basic, primary, error, white, or secondary.
+     * Applies the button color theme: primary, secondary, basic, error
      */
     colorTheme: {
       type: String,
       default: 'primary'
-    },
-    /**
-     * Applies the button style: background, transparent, or outline.
-     */
-    btnStyle: {
-      type: String,
-      default: 'background'
     },
     /**
      * Removes the ability to click or target the component.
@@ -197,70 +108,112 @@ export default {
     btnLink: {
       type: String,
       default: ''
-    },
-    /**
-     * Displays the buttons' active state.
-     */
-    showsActiveState: {
-      type: Boolean,
-      default: false
     }
   },
   data() {
     return {
-      btnStyles: {
-        background: 'background',
-        transparent: 'transparent',
-        outline: 'outline'
-      },
+    /**
+     * all color theme options
+     */
       colorThemes: {
-        white: 'white',
+        secondary: 'secondary',
         primary: 'primary',
+        basic: 'basic',
+        error: 'error'
       },
-      iconAlignments: {
-        left: 'left',
-        right: 'right'
+    /**
+     * all btn style options
+     */
+      btnStyles: {
+        light: 'light',
+        transparent: 'transparent',
+        outline: 'outline',
+        background: 'background'
       },
+    /**
+     * all btn sizes options
+     */
       btnSizes: {
         small: 'small',
         medium: 'medium',
         large: 'large',
         xlarge: 'xlarge'
-      },
-      iconTypes: {
-        mew: 'mew',
-        mdi: 'mdi',
-        img: 'img'
-      },
-      active: false
+      }
     };
   },
   computed: {
-    isTransparent() {
-      return this.btnStyle.toLowerCase() === this.btnStyles.transparent
+    /**
+     * @returns if color theme is primary.
+     */
+    isPrimaryTheme() {
+      return this.colorTheme.toLowerCase() === this.colorThemes.primary;
     },
-    isOutline() {
-      return this.btnStyle.toLowerCase() === this.btnStyles.outline
+    /**
+     * @returns if color theme is secondary.
+     */
+    isSecondaryTheme() {
+      return this.colorTheme.toLowerCase() === this.colorThemes.secondary;
     },
-    isBackground() {
-      return this.btnStyle.toLowerCase() === this.btnStyles.background
+    /**
+     * @returns if color theme is basic.
+     */
+    isBasicTheme() {
+      return this.colorTheme.toLowerCase() === this.colorThemes.basic;
     },
-    isPlain() {
-      return this.colorTheme.toLowerCase() === this.colorThemes.white
+    /**
+     * @returns if color theme is error.
+     */
+    isErrorTheme() {
+      return this.colorTheme.toLowerCase() === this.colorThemes.error;
     },
-    showIconAlignRight() {
-      return this.iconAlign.toLowerCase() === this.iconAlignments.right
-    }
-    
-  },
-  methods: {
-    showIcon(val) {
-      return this.iconType.toLowerCase() === this.iconTypes[val] && this.hasSrc(this.icon)
+    /**
+     * @returns the process circular loading color.
+     */
+    loadingColor() {
+      if (!this.disabled && !this.isBackground) {
+        return this.buttonColor
+      }
+
+      if (this.disabled && !this.isBackground) {
+        return 'disabled'
+      }
+
+      return 'white'
     },
-    onBtnClick() {
-      this.active = !this.active;
+    /**
+     * @returns button color based on color theme and btn style props.
+     */
+    buttonColor() {
+      if (this.isLight && this.isSecondaryTheme) {
+        return 'rgba(90, 120, 240, 0.08)';
+      }
+
+      if (this.isLight && this.isErrorTheme) {
+        return 'rgba(255, 68, 91, 0.08)';
+      }
+
+      if (this.isLight && this.isBasicTheme) {
+        return '#F0F3F9'
+      }
+  
+      if (this.isPrimaryTheme && this.isLight) {
+        return 'emerald100'
+      }
+
+      if (this.isSecondaryTheme) {
+        return 'blue500';
+      }
+
+      if (this.isBasicTheme) {
+        return 'textPrimary'
+      }
+
+      return this.colorTheme;
     },
-    getClasses() {
+    /**
+     * @returns button classes based on given props
+     */
+    buttonClasses() {
       const classes = [];
 
       if (this.btnSize.toLowerCase()) {
@@ -270,49 +223,64 @@ export default {
       if (this.hasFullWidth === true ) {
         classes.push('full-width');
       }
+
+      if (!this.disabled) {
+        if (this.isPrimaryTheme && this.isLight) {
+          classes.push('primary--text');
+        }
+
+        if (this.isErrorTheme && this.isLight) {
+          classes.push('error--text');
+        }
+
+        if (this.isSecondaryTheme && this.isLight) {
+          classes.push('blue500--text');
+        }
+
+        if (this.isBasicTheme  && this.isLight) {
+          classes.push('textPrimary--text');
+        }
+      }
       
       if (
-        this.isBackground &&
-        !this.isPlain
+        this.isBackground
       ) {
         classes.push('white--text');
       }
 
-      if (
-        this.isBackground &&
-        this.isPlain
-      ) {
-        classes.push('primary--text');
+
+      if (this.disabled && this.isLight) {
+        classes.push('disabled-light')
       }
 
-      if (
-        this.active &&
-        !this.disabled &&
-        this.showsActiveState
-      ) {
-        classes.push('active');
+      if (this.disabled && this.isBackground) {
+        classes.push('disabled-bg')
       }
-
-      if (
-        this.active &&
-        this.showsActiveState && 
-        !this.disabled &&
-        this.isOutline
-      ) {
-        classes.push('bg-white');
-      }
-
-      if (this.isTransparent) {
-        classes.push('mew-transparent')
-      }
-
       return classes;
     },
-    hasSrc(src) {
-      if (src === '' || src.length <= 0 ) {
-        return false;
-      }
-      return true;
+    /**
+     * @returns if btn style is transparent.
+     */
+    isTransparent() {
+      return this.btnStyle.toLowerCase() === this.btnStyles.transparent
+    },
+    /**
+     * @returns if btn style has an outline/border.
+     */
+    hasOutline() {
+      return this.btnStyle.toLowerCase() === this.btnStyles.outline
+    },
+    /**
+     * @returns if btn style is a lighter color.
+     */
+    isLight() {
+      return this.btnStyle.toLowerCase() === this.btnStyles.light
+    },
+    /**
+     * @returns if btn style is the default background color.
+     */
+    isBackground() {
+      return this.btnStyle.toLowerCase() === this.btnStyles.background
     }
   }
 };
@@ -320,86 +288,113 @@ export default {
 
 <style lang="scss" scoped>
 .v-application {
-  .v-btn {
-    border-radius: 6px !important;
-
-    .icon {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      height: 45px;
-    }
-
-    // button sizes
+  .v-btn.mew-button {
+    border-radius: 10px !important;
+    // BUTTON SIZES
     &.small-btn {
-      min-height: 28px;
-      padding: 0 15px;
+      padding: 8px;
     }
 
     &.medium-btn {
-      min-height: 34x;
-      padding: 0 20px;
+      padding: 12px;
     }
 
     &.large-btn {
-      min-height: 46px;
-      padding: 0 32px;
+      height: 46px;
     }
 
     &.xlarge-btn {
-      min-height: 62px;
-      padding: 0 46px;
+      height: 62px;
     }
-    // basic color theme using a light blue border
-    &.basic--text.v-btn--outlined {
-      border-color: var(--v-blue100-base) !important;
-    }
-
-    // button active states
-    &.primary.white--text.active {
-      background-color: var(--v-primaryActive-base) !important;
+  
+  // PRIMARY COLOR THEME - active & hover states
+  // btn style: default background 
+    &.primary.white--text:hover {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #05C0A5 !important;
     }
     
-    &.primary.white--text:hover {
-      background-color: var(--v-primaryHover-base) !important;
+    &.primary.white--text:active {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #05C0A5 !important;
     }
 
-    &.primary--text.v-btn--outlined.active {
-      background-color: var(--v-primaryOutlineActive-base) !important;
+  // btn style: light, outline, transparent 
+    &.primary--text:hover {
+      background: rgba(5, 192, 165, 0.08) !important;
+    }
+    
+    &.primary--text:active {
+      background: rgba(5, 192, 165, 0.2) !important;
     }
 
-    &.secondary--text.v-btn--outlined.active {
-      background-color: var(--v-secondaryOutlineActive-base) !important;
+
+  // SECONDARY COLOR THEME - active & hover states
+  // btn style: default background
+    &.blue500.white--text:hover {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #5A78F0 !important;
+    }
+    
+    &.blue500.white--text:active {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #5A78F0 !important;
+    }
+  
+    // btn style: light, outline, transparent 
+    &.blue500--text:hover {
+      background: rgba(90, 120, 240, 0.08) !important;
+    }
+    
+    &.blue500--text:active {
+      background: rgba(90, 120, 240, 0.2) !important;
     }
 
-    &.error--text.v-btn--outlined.active {
-      background-color: var(--v-errorOutlineActive-base) !important;
+  // BASIC COLOR THEME - active & hover states
+  // btn style: default background
+    &.textPrimary.white--text:hover {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #687699 !important;
+    }
+    
+    &.textPrimary.white--text:active {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #687699 !important;
+    }
+  
+    // btn style: light, outline, transparent 
+    &.textPrimary--text:hover {
+      background: linear-gradient(0deg, rgba(104, 118, 153, 0.08), rgba(104, 118, 153, 0.08)), #F0F3F9 !important;
+    }
+    
+    &.textPrimary--text:active {
+      background: linear-gradient(0deg, rgba(104, 118, 153, 0.2), rgba(104, 118, 153, 0.2)), #F0F3F9 !important;
     }
 
-    &.basic--text.v-btn--outlined.active {
-      background-color: var(--v-basicOutlineActive-base) !important;
+  // ERROR COLOR THEME - active & hover states
+  // btn style: default background
+    &.error.white--text:hover {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #FF445B !important;
+    }
+    
+    &.error.white--text:active {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #FF445B !important;
+    }
+  
+    // btn style: light, outline, transparent 
+    &.error--text:hover {
+      background: linear-gradient(0deg, rgba(255, 68, 91, 0.08), rgba(255, 68, 91, 0.08)), rgba(255, 68, 91, 0.08) !important;
+    }
+    
+    &.error--text:active {
+      background: linear-gradient(0deg, rgba(255, 68, 91, 0.2), rgba(255, 68, 91, 0.2)), rgba(255, 68, 91, 0.08) !important;
     }
 
-    // disabled btn
-    &.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
-      background-color: var(--v-disabled-base) !important;
-      color: var(--v-white-base) !important;
-    }
-
-    &.v-btn--disabled.v-btn--has-bg {
-      .v-icon {
-        color: var(--v-white-base) !important;
-      }
-    }
-
-    &.mew-transparent {
-      &:before {
-        background-color: transparent;
-      }
-      &:hover {
-        text-decoration: underline;
-      }
-    }
+   // DISABLED THEME 
+   // btn style: light
+   &.disabled-light {
+     background-color: var(--v-tableHeader-base) !important;
+     color: var(--v-disabled-base) !important;
+   }
+   // btn style: bg
+   &.disabled-bg {
+     background-color: var(--v-disabled-base) !important;
+     color: var(--v-white-base) !important;
+   }
   }
 }
 </style>

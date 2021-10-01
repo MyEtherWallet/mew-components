@@ -21,7 +21,7 @@ export default {
           darken1: '#e3f2f2'
         },
         superPrimaryHover: '#f5fdfb',
-        overlayBg: '#f2fafa',
+        emerald100: '#f2fafa',
         inputBorder: '#e0e0e0',
         inputDisabled: '#cecece',
         dropdownBorder: '#05c0a5',
@@ -48,7 +48,7 @@ export default {
         boxShadow: '#ececec',
         expandHeader: '#184f90',
         primary: '#05c0a5',
-        secondary: '#5a78f0',
+        blue500: '#5a78f0',
         basic: '#0b1a40',
         success: '#2cc479',
         error: {
@@ -89,7 +89,7 @@ export default {
           darken1: '#e3f2f2'
         },
         superPrimaryHover: '#f5fdfb',
-        overlayBg: '#151a29',
+        emerald100: '#151a29',
         inputBorder: '#667f9b',
         inputDisabled: '#3A465D',
         dropdownBorder: '#7e90a7',
@@ -116,7 +116,7 @@ export default {
         textPrimaryModule: '#95aed8',
         textSecondaryModule: '#95aed8',
         primary: '#05c0a5',
-        secondary: '#5c79f0',
+        blue500: '#5c79f0',
         basic: '#151A29',
         success: '#2cc479',
         error: {

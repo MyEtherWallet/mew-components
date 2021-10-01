@@ -52,7 +52,7 @@ const tableData = [
     date: '01/02/2020, 2:16:32 PM',
     txHash: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
     toggle: {
-      color: 'secondary',
+      color: 'blue500',
       label: 'Label',
       method: onClick,
       value: true
