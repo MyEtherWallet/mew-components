@@ -257,6 +257,11 @@ export default {
 
       }
 
+      // adds class for btn style
+      if (this.btnStyle.toLowerCase()) {
+        classes.push('btn-' + this.btnStyle.toLowerCase())
+      }
+
       return classes;
     },
     /**
@@ -312,78 +317,119 @@ export default {
   
   // PRIMARY COLOR THEME - active & hover states
   // btn style: default background 
-    &.primary.white--text:hover {
+    &.primary.btn-background.white--text:hover {
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #05C0A5 !important;
     }
     
-    &.primary.white--text:active {
+    &.primary.btn-background.white--text:active {
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #05C0A5 !important;
     }
 
-  // btn style: light, outline, transparent 
-    &.primary--text:hover {
+
+  // btn style: light
+    &.primary--text.btn-light:hover {
+      background: linear-gradient(0deg, rgba(5, 192, 165, 0.08), rgba(5, 192, 165, 0.08)), #F2FAFA !important;
+    }
+    
+    &.primary--text.btn-light:active {
+      background: linear-gradient(0deg, rgba(5, 192, 165, 0.2), rgba(5, 192, 165, 0.2)), #F2FAFA !important;
+    }
+
+
+  // btn style: outline, transparent 
+    &.primary--text.btn-outline:hover, &.primary--text.btn-transparent:hover {
       background: rgba(5, 192, 165, 0.08) !important;
     }
     
-    &.primary--text:active {
+    &.primary--text.btn-outline:active, &.primary--text.btn-transparent:active {
       background: rgba(5, 192, 165, 0.2) !important;
     }
 
 
   // SECONDARY COLOR THEME - active & hover states
   // btn style: default background
-    &.blue500.white--text:hover {
+    &.blue500.btn-background.white--text:hover {
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #5A78F0 !important;
     }
     
-    &.blue500.white--text:active {
+    &.blue500.btn-background.white--text:active {
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #5A78F0 !important;
     }
-  
-    // btn style: light, outline, transparent 
-    &.blue500--text:hover {
+
+      // btn style: light
+    &.blue500--text.btn-light:hover {
+      background: linear-gradient(0deg, rgba(90, 120, 240, 0.08), rgba(90, 120, 240, 0.08)), rgba(90, 120, 240, 0.08) !important;
+    }
+    
+    &.blue500--text.btn-light:active {
+      background: linear-gradient(0deg, rgba(90, 120, 240, 0.2), rgba(90, 120, 240, 0.2)), rgba(90, 120, 240, 0.08) !important;
+    }
+
+
+  // btn style: outline, transparent 
+    &.blue500--text.btn-outline:hover, &.blue500--text.btn-transparent:hover {
       background: rgba(90, 120, 240, 0.08) !important;
     }
     
-    &.blue500--text:active {
+    &.blue500--text.btn-outline:active, &.blue500--text.btn-transparent:active {
       background: rgba(90, 120, 240, 0.2) !important;
     }
+  
 
   // BASIC COLOR THEME - active & hover states
   // btn style: default background
-    &.textPrimary.white--text:hover {
+    &.textPrimary.btn-background.white--text:hover {
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #687699 !important;
     }
     
-    &.textPrimary.white--text:active {
+    &.textPrimary.btn-background.white--text:active {
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #687699 !important;
     }
-  
-    // btn style: light, outline, transparent 
-    &.textPrimary--text:hover {
+
+  // btn style: light
+    &.textPrimary--text.btn-light:hover {
       background: linear-gradient(0deg, rgba(104, 118, 153, 0.08), rgba(104, 118, 153, 0.08)), #F0F3F9 !important;
     }
     
-    &.textPrimary--text:active {
+    &.textPrimary--text.btn-light:active {
+      background: linear-gradient(0deg, rgba(104, 118, 153, 0.2), rgba(104, 118, 153, 0.2)), #F0F3F9 !important;
+    }
+
+
+  // btn style: outline, transparent 
+    &.textPrimary--text.btn-outline:hover, &.textPrimary--text.btn-transparent:hover {
+      background: linear-gradient(0deg, rgba(104, 118, 153, 0.08), rgba(104, 118, 153, 0.08)), #F0F3F9 !important;
+    }
+    
+    &.textPrimary--text.btn-outline:active, &.textPrimary--text.btn-transparent:active {
       background: linear-gradient(0deg, rgba(104, 118, 153, 0.2), rgba(104, 118, 153, 0.2)), #F0F3F9 !important;
     }
 
   // ERROR COLOR THEME - active & hover states
   // btn style: default background
-    &.error.white--text:hover {
+    &.error.btn-background.white--text:hover {
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #FF445B !important;
     }
     
-    &.error.white--text:active {
+    &.error.btn-background.white--text:active {
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #FF445B !important;
     }
-  
-    // btn style: light, outline, transparent 
-    &.error--text:hover {
+
+  // btn style: light
+    &.error--text.btn-light:hover {
       background: linear-gradient(0deg, rgba(255, 68, 91, 0.08), rgba(255, 68, 91, 0.08)), rgba(255, 68, 91, 0.08) !important;
     }
     
-    &.error--text:active {
+    &.error--text.btn-light:active {
+      background: linear-gradient(0deg, rgba(255, 68, 91, 0.2), rgba(255, 68, 91, 0.2)), rgba(255, 68, 91, 0.08) !important;
+    }
+
+  // btn style: outline, transparent 
+    &.error--text.btn-outline:hover, &.error--text.btn-transparent:hover {
+      background: linear-gradient(0deg, rgba(255, 68, 91, 0.08), rgba(255, 68, 91, 0.08)), rgba(255, 68, 91, 0.08) !important;
+    }
+    
+    &.error--text.btn-outline:active, &.error--text.btn-transparent:active {
       background: linear-gradient(0deg, rgba(255, 68, 91, 0.2), rgba(255, 68, 91, 0.2)), rgba(255, 68, 91, 0.08) !important;
     }
 
