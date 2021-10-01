@@ -215,15 +215,17 @@ export default {
      */
     buttonClasses() {
       const classes = [];
-
+      // adds btn size 
       if (this.btnSize.toLowerCase()) {
         classes.push(this.btnSize.toLowerCase() + '-btn' );
       }
 
+      // adds 100% full width 
       if (this.hasFullWidth === true ) {
         classes.push('full-width');
       }
 
+      // adds correct button color text
       if (!this.disabled) {
         if (this.isPrimaryTheme && this.isLight) {
           classes.push('primary--text');
@@ -241,21 +243,20 @@ export default {
           classes.push('textPrimary--text');
         }
       }
-      
+      // adds white text for all default backgrounds
       if (
         this.isBackground
       ) {
         classes.push('white--text');
       }
 
-
+      // adds class for disabled btns (btn style: light and background)
       if (this.disabled && this.isLight) {
-        classes.push('disabled-light')
+        if (this.isLight) classes.push('disabled-light')
+        if (this.isBackground) classes.push('disabled-bg')
+
       }
 
-      if (this.disabled && this.isBackground) {
-        classes.push('disabled-bg')
-      }
       return classes;
     },
     /**
@@ -287,6 +288,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// MEW BUTTON STYLES
 .v-application {
   .v-btn.mew-button {
     border-radius: 10px !important;
@@ -296,7 +298,7 @@ export default {
     }
 
     &.medium-btn {
-      padding: 12px;
+      padding: 12px 32px;
     }
 
     &.large-btn {
@@ -305,6 +307,7 @@ export default {
 
     &.xlarge-btn {
       height: 62px;
+      padding: 0 46px;
     }
   
   // PRIMARY COLOR THEME - active & hover states
