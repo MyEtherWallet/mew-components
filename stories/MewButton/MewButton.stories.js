@@ -25,7 +25,7 @@ const colorThemeOptions = {
   error: 'error'
 };
 
-const btnButtonOptions = {
+const btnSizeOptions = {
   small: 'small',
   medium: 'medium',
   large: 'large',
@@ -76,7 +76,7 @@ export const MEWButton = () => ({
       )
     },
     buttonSize: {
-      default: optionsKnob('btn-size', btnButtonOptions, btnButtonOptions.large , optionsObj)
+      default: optionsKnob('btn-size', btnSizeOptions, btnSizeOptions.large , optionsObj)
     },
     loading: {
       default: boolean('loading', false)
