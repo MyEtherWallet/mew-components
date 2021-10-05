@@ -7,19 +7,18 @@
   <v-alert
     :class="alertClasses"
     colored-border
-    :color="alertBorderColor"
+    :color="alertColor"
     border="left"
-    min-height="88"
+    min-height="100%"
     :icon="alertIcon"
     dismissible
-    :close-icon="hideIcons? null : 'mdi-close'"
   > 
     <!--
   =====================================================================================
    Title + Description + LinkObject
   =====================================================================================
   -->
-    <div class="ml-1">
+    <div :class="['pr-5', hideAlertIcon ? 'pl-5' : 'pl-1']">
       <span
         v-if="title"
         class="mew-body font-weight-bold text"
@@ -30,19 +29,38 @@
       >
         {{ description }} <a
           v-if="linkObject"
+          target="_blank"
           class="text text-decoration-underline"
           :href="linkObject.url"
         >{{ linkObject.text }}</a>
       </div>
+      <!--
+  =====================================================================================
+   slot: default (should be used if there is no text or description prop)
+  =====================================================================================
+  -->
+      <slot />      
     </div>
     <!--
   =====================================================================================
-   @slot default (should be used if there is no text or description prop)
+   Close Button 
+   TODO: change this to mew-icon component after its finalized.
   =====================================================================================
   -->
-    <div :class="hideIcons ? 'ml-3' : 'ml-1'">
-      <slot />
-    </div>
+    <template v-slot:close="{ toggle }">
+      <v-btn
+        class="pa-2 close-btn"
+        @click="toggle"
+        icon
+      >
+        <v-icon
+          v-if="!hideCloseIcon"
+          :color="alertColor"
+        >
+          mdi-close
+        </v-icon>
+      </v-btn>
+    </template>
   </v-alert>
 </template>
 
@@ -69,7 +87,14 @@ export default {
     /**
      * Hides top left icon.
      */
-    hideIcons: {
+    hideAlertIcon: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Hides close button.
+     */
+    hideCloseIcon: {
       type: Boolean,
       default: false
     },
@@ -137,7 +162,7 @@ export default {
     /**
      * @returns the alert border color.
      */
-    alertBorderColor() {
+    alertColor() {
       if (this.isWarningTheme) {
         return 'warning darken-1';
       }
@@ -147,7 +172,7 @@ export default {
       return this.theme;
     },
     /**
-     * @returns the alert icon. Will not show if hideIcons is true.
+     * @returns the alert icon. Will not show if hideAlertIcon is true.
      */
     alertIcon() {
       if (this.isWarningTheme) {
@@ -159,7 +184,7 @@ export default {
       if (this.isErrorTheme) {
         return 'mdi-close-circle';
       }
-      if (this.hideIcons) {
+      if (this.hideAlertIcon) {
         return null;
       }
       return 'mdi-checkbox-marked-circle';
@@ -202,18 +227,10 @@ export default {
   &.warning-alert {
     background-color: rgba(245, 166, 35, 0.09);
   }
-}
-
-</style>
-
-<style lang="scss">
-// MEW ALERT STYLES (global - the only way to override vuetify styles)
-.mew-alert {
-  .v-alert__dismissible {
-    .mdi-close {
-      color: rgba(21, 28, 44, 0.6) !important;
-      // top: 16px;
-    }
+  .close-btn {
+    height: auto;
+    width: auto;
   }
 }
+
 </style>

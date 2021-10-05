@@ -46,8 +46,11 @@ export const MEWAlert = () => ({
     hasWhiteBackground: {
       default: boolean('has-white-background', false)
     },
-    hideIcons: {
-      default: boolean('hide-icons', false)
+    hideAlertIcon: {
+      default: boolean('hide-alert-icon', false)
+    },
+    hideCloseIcon: {
+      default: boolean('hide-close-icon', false)
     },
     title: {
       default: text('title', 'Hello')
@@ -67,7 +70,7 @@ export const MEWAlert = () => ({
   template: `
     <div>
     <br />
-    <mew-alert :link-object="linkObject" :has-white-background="hasWhiteBackground" :hide-icons="hideIcons" :title="title" :description="description" :theme="theme" />
+    <mew-alert :link-object="linkObject" :has-white-background="hasWhiteBackground" :hide-alert-icon="hideAlertIcon" :hide-close-icon="hideCloseIcon" :title="title" :description="description" :theme="theme" />
   </div>`,
   methods: {
   },
