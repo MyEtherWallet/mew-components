@@ -7,13 +7,9 @@ import './../GlobalStorybook.scss'
 
 ## Overview
 
-The mew-button component replaces the Vuetify v-btn button with acceptable MEW theme options. This is a flex component with a minimum width of 64px, centered text, and a font size of 14px. 
-MEW theme options include: primary, basic, error, royal (blue500) and white. 
+The mew-button component replaces the Vuetify v-btn button with acceptable MEW theme options. This is a flex component with with different sizes (small, medium, large, xlarge), centered text, and a font size of 14px. 
+MEW theme options include: primary, secondary, basic, error, royal (blue500). 
 Please refer to the *Button Themes* section.
-
-*Infographic*
-<b>Codepen:</b> <a target="_blank" href="https://codepen.io/gesseekur/pen/jOWGeeL" id="Bar">Click here</a>
-
 
 ## Props
 <Props of={MewButton} />
@@ -33,7 +29,7 @@ This is a default button with a default primary colorTheme. It inherits the back
 
 btn-style=”outline”
 
-Outlined buttons inherit their borders and text color from the colorTheme prop with a transparent background. Outlined buttons with the white colorTheme should be used within a component that has a non-white color.
+Outlined buttons inherit their borders and text color from the colorTheme prop with a transparent background. 
 
 <Preview><Story id="mewbutton--outline-button" /></Preview>
 
@@ -45,18 +41,6 @@ Transparent Buttons only have text, no box shadow, and no background color. The 
 
 <Preview><Story id="mewbutton--transparent-button" /></Preview>
 
-## IV. Icons
-
-Icon prop allows the inclusion of icon content within the button component. Please use icons from our <a href="https://myetherwallet.github.io/mew-components/?path=/story/mewicon--mew-icon">Library</a> or from Material icon designs.  Material icon colors will be inherited from the colorTheme prop. Please specify the iconType by passing 'mew' (our Library icons) or 'mdi' (Material Design Icons) to display text and icons, you have to specify iconAlign to either the ‘left’ or the ‘right’.
-To display an icon as the primary content for the button, set the btn-style as ‘transparent’.
-
-*If you are adding custom icons and including a pull request in Github, in the PR description include: “NEW ICON added”*
-
-<Preview><Story id="mewbutton--icon-button" /></Preview>
-<Preview><Story id="mewbutton--icon-title-button" /></Preview>
-
-
-## Button Themes
-Please refer to the style guide (link to the style guide for buttons)
-
-
+# Slot
+If there is no title prop passed, then please use slot to input custom content. Click "Show Code" for an example.
+<Preview><Story id="mewbutton--slot-button" /></Preview>
