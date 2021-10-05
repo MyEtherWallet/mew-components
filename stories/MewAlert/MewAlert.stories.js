@@ -2,9 +2,8 @@ import {
   withKnobs,
   optionsKnob,
   boolean,
-  text
-  // object,
-  // array,
+  text,
+  object
 } from '@storybook/addon-knobs';
 import MewAlert from '@/components/MewAlert/MewAlert.vue';
 
@@ -21,12 +20,19 @@ const optionsObj = {
   display: 'inline-radio'
 };
 
+// alert theme options
 const themeOptions = {
   error: 'error',
   warning: 'warning',
   success: 'success',
   info: 'info'
 };
+
+// link object (goes at the end of description)
+const linkObject = {
+  text: 'Add more funds',
+  url: 'https://ccswap.myetherwallet.com/#/'
+}
 
 export const MEWAlert = () => ({
   components: { MewAlert },
@@ -44,10 +50,13 @@ export const MEWAlert = () => ({
       default: boolean('hide-icons', false)
     },
     title: {
-      default: text('title', '')
+      default: text('title', 'Hello')
     },
     description: {
-      default: text('description', '')
+      default: text('description', 'This is an alert. When the messge goes to two lines, center align the body.')
+    },
+    linkObject: {
+      default: object('link-object', linkObject)
     }
   },
   watch: {
@@ -58,7 +67,7 @@ export const MEWAlert = () => ({
   template: `
     <div>
     <br />
-    <mew-alert :has-white-background="hasWhiteBackground" :hide-icons="hideIcons" :title="title" :description="description" :theme="theme">Hello</mew-alert>
+    <mew-alert :link-object="linkObject" :has-white-background="hasWhiteBackground" :hide-icons="hideIcons" :title="title" :description="description" :theme="theme" />
   </div>`,
   methods: {
   },

@@ -16,7 +16,7 @@
   > 
     <!--
   =====================================================================================
-   Title + Description
+   Title + Description + LinkObject
   =====================================================================================
   -->
     <div class="ml-1">
@@ -28,12 +28,16 @@
         v-if="description"
         class="mew-body text"
       >
-        {{ description }}
+        {{ description }} <a
+          v-if="linkObject"
+          class="text text-decoration-underline"
+          :href="linkObject.url"
+        >{{ linkObject.text }}</a>
       </div>
     </div>
     <!--
   =====================================================================================
-   Slot (should be used if there is no text or description prop)
+   @slot default (should be used if there is no text or description prop)
   =====================================================================================
   -->
     <div :class="hideIcons ? 'ml-3' : 'ml-1'">
@@ -82,6 +86,14 @@ export default {
     description: {
       type: String,
       default: ''
+    },
+    /**
+     * Expects a link object with attributes text and url, i.e { url: 'www.myetherwallet.com', text: 'Home" }
+     * is added at the end of description.
+     */
+    linkObject: {
+      type: Object,
+      default: () => {}
     }
   },
   data() {
