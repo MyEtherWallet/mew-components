@@ -39,7 +39,10 @@
    Button text (if no title prop is passed, then slot should be used)
   =====================================================================================
   -->
-      <span class="font-weight-regular">{{ title }} </span>
+      <span
+        v-if="title"
+        class="font-weight-regular"
+      >{{ title }} </span>
       <slot />
     </div>
   </v-btn>
@@ -72,7 +75,7 @@ export default {
       default: false
     },
     /**
-     * Applies the button style: light, transparent, or outline.
+     * Applies the button style: background, light, transparent, or outline.
      * If nothing is passed then the button will be the 
      * default standard background color theme.
      */

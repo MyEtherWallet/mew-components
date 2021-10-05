@@ -63,6 +63,7 @@ import Vuetify, {
   VTextarea,
   VSkeletonLoader,
   VProgressCircular,
+  VAlert
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -126,6 +127,7 @@ Vue.use(Vuetify, {
     VTextarea,
     VSkeletonLoader,
     VProgressCircular,
+    VAlert
   },
 });
 
