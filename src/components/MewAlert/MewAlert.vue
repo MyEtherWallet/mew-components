@@ -49,12 +49,12 @@
   -->
     <template v-slot:close="{ toggle }">
       <v-btn
+        v-if="!hideCloseIcon"
         class="pa-2 close-btn"
         @click="toggle"
         icon
       >
         <v-icon
-          v-if="!hideCloseIcon"
           :color="alertColor"
         >
           mdi-close
