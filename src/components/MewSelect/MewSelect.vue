@@ -304,19 +304,15 @@ export default {
   },
   watch: {
     search(newVal) {
-      if (newVal === '') {
+      if (newVal === '' || newVal === null) {
         this.selectItems = this.items;
       } else {
         const foundItems = this.items.filter(item => {
-            const valueIsInteger = Number.isInteger(item.value);
-            const valLowerCase = valueIsInteger ? newVal :  newVal.toLowerCase();
-            const value = item.hasOwnProperty('value') && item.value ? item.value : '';
-            if (!valueIsInteger) {
-              const name = item.hasOwnProperty('name') && item.name !== '' ? item.name.toLowerCase() : '';
-              const subtext = item.hasOwnProperty('subtext') && item.subtext !== '' ? item.subtext.toLowerCase() : '';  
-              return name.includes(valLowerCase) || subtext.includes(valLowerCase) || value.includes(valLowerCase);
-            } 
-            return newVal === value;
+            const searchValue = String(newVal).toLowerCase();
+            const value = item.hasOwnProperty('value') ? String(item.value).toLowerCase() : '';
+            const name = item.hasOwnProperty('name')? String(item.name).toLowerCase() : '';
+            const subtext = item.hasOwnProperty('subtext') ? String(item.subtext).toLowerCase() : '' ;  
+            return name.includes(searchValue) || subtext.includes(searchValue) || value.includes(searchValue);
         })
         this.selectItems = foundItems;
       }

@@ -6,7 +6,6 @@ import {
   text
 } from '@storybook/addon-knobs';
 import MewExpandPanel from '@/components/MewExpandPanel/MewExpandPanel.vue';
-import MewButton from '@/components/MewButton/MewButton.vue';
 
 export default {
   title: 'MewExpandPanel',
@@ -26,7 +25,7 @@ const items = [
 ]
 
 export const MEWExpandPanel = () => ({
-  components: { MewExpandPanel, MewButton },
+  components: { MewExpandPanel },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)
@@ -34,17 +33,14 @@ export const MEWExpandPanel = () => ({
     panelItems: {
       default: object('panel-items', items)
     },
-    isToggle: {
-      default: boolean('is-toggle', false)
+    isGreyTheme: {
+      default: boolean('is-grey-theme', true)
     },
-    hasDividers: {
-      default: boolean('has-dividers', false)
+    isAccordion: {
+      default: boolean('is-accordion', true)
     },
     idxToExpand: {
       default: number('idx-to-expand', 1)
-    },
-    rightActionText: {
-      default: text('right-action-text', 'Buy Domain')
     }
   },
   watch: {
@@ -57,11 +53,10 @@ export const MEWExpandPanel = () => ({
     <br />
     <mew-expand-panel
       ref="expandPanel"
-      :right-action-text="rightActionText"
-      :has-dividers="hasDividers" 
-      :is-toggle="isToggle"
+      :is-accordion="isAccordion"
+      :is-grey-theme="isGreyTheme" 
       :idx-to-expand="idxToExpand"
-      :panel-items="isToggle ? [panelItems[0]] : panelItems"
+      :panel-items="panelItems"
     >
       <template v-slot:panelBody1>
         <span>Panel slot example</span>

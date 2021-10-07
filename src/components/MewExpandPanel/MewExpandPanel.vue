@@ -6,17 +6,16 @@
   -->
   <v-expansion-panels
     v-model="expandIdxArr"
-    :multiple="isToggle"
-    class="mew-expand-panel rounded"
+    :accordion="isAccordion"
+    multiple
+    :class="expandPanelsClasses"
     :flat="true"
   >
     <v-expansion-panel
-      :disabled="item.disabled"
+      :class="!isAccordion ? 'mb-2' : ''"
       v-for="(item, i) in panelItems"
-      :class="item.hasActiveBorder ? 'active-border' : ''"
       :key="i"
     >
-      <v-divider v-if="hasDividers" />
       <!--
     =====================================================================================
       Panel Header 
@@ -24,45 +23,17 @@
     -->
       <v-expansion-panel-header
         :class="[
-          'rounded',
-          'titlePrimary--text',
-          'mew-heading-3',
-          isToggle ? 'pa-3 no-pointer-events' : 'pa-5',
+          'pa-5',
         ]"
-        :color="item.colorTheme"
+        :color="isGreyTheme ? 'rgba(90, 103, 138, 0.08)' : 'white'"
       >
         <!--
     =====================================================================================
       Panel Header - Left 
     =====================================================================================
     -->
-        <div class="d-flex align-center">
-          <span
-            :class="[
-              'mew-heading-3',
-              item.tooltip ? 'd-flex align-center' : '',
-            ]"
-          >
-            {{ item.name }}
-            <mew-tooltip
-              class="ml-1"
-              :text="item.tooltip"
-              v-if="item.tooltip"
-            />
-          </span>
-          <span
-            v-if="!item.tooltip && item.warningBadge"
-            :class="[
-              item.warningBadge.color,
-              'ml-2',
-              'text-center',
-              'white--text',
-              'px-2',
-              'py-1',
-              'rounded',
-              'mew-caption',
-            ]"
-          >{{ item.warningBadge.text }}</span>
+        <div class="d-flex align-center mew-body font-weight-medium surface--text">
+          {{ item.name }}
         </div>
         <!--
     =====================================================================================
@@ -70,43 +41,21 @@
     =====================================================================================
     -->
         <div
-          v-if="item.disabled"
-          class="text-right"
-        >
-          <mew-button
-            btn-style="transparent"
-            btn-size="xlarge"
-            color-theme="primary"
-            :title="rightActionText"
-            @click.native="onActionClick"
-          />
-        </div>
-        <div
           slot="actions"
           class="d-flex align-center justify-center"
         >
-          <span class="inputLabel--text mew-body mx-2 text-right">{{ item.subtext }}</span>
+          <span class="inputLabel--text mew-body mr-5 text-right">{{ item.subtext }}</span>
           <!--
   =====================================================================================
-    Slot: mewExpandPanelActions (used to place custom ui on the right side of the expand panel header)
+    Chevron icon to toggle expand
   =====================================================================================
   -->
-          <slot name="mewExpandPanelActions" />
-          <mew-switch
-            ref="switch"
-            @click.native="onSwitch"
-            v-if="isToggle && !item.disabled"
-          />
-          <span v-if="!isToggle && !item.disabled">
-            <img
-              v-if="!isExpanded(i)"
-              height="30"
-              src="@/assets/images/icons/edit.svg"
-            >
-            <v-icon v-if="isExpanded(i)">
-              mdi-chevron-down
-            </v-icon>
-          </span>
+          <v-icon v-if="!isExpanded(i)">
+            mdi-chevron-down
+          </v-icon>
+          <v-icon v-else>
+            mdi-chevron-down
+          </v-icon>
         </div>
       </v-expansion-panel-header>
       <!--
@@ -117,22 +66,13 @@
       <v-expansion-panel-content color="white">
         <slot :name="'panelBody' + (i + 1)" />
       </v-expansion-panel-content>
-      <v-divider v-if="hasDividers" />
     </v-expansion-panel>
   </v-expansion-panels>
 </template>
 <script>
-import MewSwitch from '@/components/MewSwitch/MewSwitch.vue';
-import MewTooltip from '@/components/MewTooltip/MewTooltip.vue';
-import MewButton from '@/components/MewButton/MewButton.vue';
 
 export default {
   name: 'MewExpandPanel',
-  components: {
-    MewSwitch,
-    MewButton,
-    MewTooltip,
-  },
   data() {
     return {
       expandIdxArr: [],
@@ -140,42 +80,29 @@ export default {
   },
   props: {
     /**
-     * Applies text to the right action button when panel is disabled.
-     */
-    rightActionText: {
-      type: String,
-      default: '',
-    },
-    /**
-     * Applies dividers to the expand panel.
+     * Expands the panel index.
      */
     idxToExpand: {
       type: Number,
       default: 0,
     },
     /**
-     * Applies dividers to the expand panel.
-     */
-    hasDividers: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Turns the panel actions to a toggle btn. The subtext attribute in panelItems becomes the switch label.
-     */
-    isToggle: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Accepts an array of panel objects, i.e [{ name: '', tooltip: '', subtext: '', link: '', disabled: false }]
+     * Accepts an array of panel objects, i.e [{ name: '', subtext: '' }]
      */
     panelItems: {
       type: Array,
       default: () => {
         return [];
-      },
+      }
     },
+    isGreyTheme: {
+      type: Boolean,
+      default: false
+    },
+    isAccordion: {
+      type: Boolean,
+      default: false
+    }
   },
   watch: {
     idxToExpand(newVal, oldVal) {
@@ -184,19 +111,23 @@ export default {
       }
     },
   },
+  computed: {
+    expandPanelsClasses() {
+      const classes = ['mew-expand-panel', 'rounded-lg'];
+      if (this.isGreyTheme) {
+        classes.push('grey-theme');
+      }
+      if (!this.isAccordion) {
+        classes.push('split-panels');
+      }
+      return classes;
+    }
+  },
   mounted() {
+    console.error("dafsad", this.isAccordion)
     this.expandIdxArr = this.idxToExpand;
   },
   methods: {
-    setToggle(val) {
-      if (val === true && !this.expandIdxArr.includes(0)) {
-        this.expandIdxArr.push(0);
-      }
-      if (val === false && this.expandIdxArr.includes(0)) {
-        this.expandIdxArr.pop();
-      }
-      this.$refs.switch[0].setToggle(val);
-    },
     isExpanded(idx) {
       if (
         (Array.isArray(this.expandIdxArr) && this.expandIdxArr.includes(idx)) ||
@@ -205,12 +136,6 @@ export default {
         return true;
       }
       return false;
-    },
-    onActionClick() {
-      this.$emit('onActionClick');
-    },
-    onSwitch() {
-      this.$emit('toggled');
     }
   },
 };
@@ -218,18 +143,25 @@ export default {
 
 <style lang="scss">
 .mew-expand-panel {
+  &.v-expansion-panels--accordion {
+    &.grey-theme {
+      border: 1px solid rgba(90, 103, 138, 0.24);
+      .v-expansion-panel {
+        border-bottom: 1px solid rgba(90, 103, 138, 0.24);
+      }
+      .v-expansion-panel:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
   .v-expansion-panel {
-    margin-bottom: 10px;
     .v-expansion-panel-content__wrap {
       padding: 0;
     }
-  }
-  .v-item--active.active-border {
-    border: 1px solid var(--v-primary-base);
-    .v-expansion-panel-header {
-      border-bottom: 1px solid var(--v-primary-base) !important;
-      border-radius: 4px 4px 0 0 !important;
-    }
+    // &.v-expansion-panel--active {
+    //   margin-top: 0;
+    // }
   }
 }
 </style>

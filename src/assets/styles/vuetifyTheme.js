@@ -69,7 +69,8 @@ export default {
         textBlack: '#202124',
         textBlack2: '#5F6368',
         buttonSelect: '#D7F5F4',
-        blue100: '#F3F5FB'
+        blue100: '#F3F5FB',
+        surface: '#192133' // name from figma. not sure if its correct
       },
       dark: {
         primaryHover: '#1eb19b',
@@ -136,7 +137,8 @@ export default {
         textBlack: '#202124',
         textBlack2: '#5F6368',
         buttonSelect: '#D7F5F4',
-        blue100: '#F3F5FB'
+        blue100: '#F3F5FB',
+        surface: '#192133' //name from figma
       }
     }
   }

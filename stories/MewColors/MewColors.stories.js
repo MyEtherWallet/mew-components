@@ -117,6 +117,7 @@ export const All = () => ({
           {name: 'searchText', lightHex: '#96a8b6', darkHex: '#96a8b6'},
           {name: 'dropdownBorder', lightHex: '#05c0a5', darkHex: '#7e90a7'},
           {name: 'progressBar', lightHex: '#F3FAFA', darkHex: '#151A29'},
+          {name: 'surface', lightHex: '#192133', darkHex: '#192133'},
         ]
       }
     ]
