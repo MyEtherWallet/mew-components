@@ -2,8 +2,7 @@ import {
   withKnobs,
   boolean,
   object,
-  array,
-  number
+  array
 } from '@storybook/addon-knobs';
 import MewExpandPanel from '@/components/MewExpandPanel/MewExpandPanel.vue';
 
@@ -17,7 +16,7 @@ export default {
 
 const items = [
   { name: 'Network', toggleTitle: 'Manage' }, 
-  { name: 'Address to interact with' },
+  { name: 'Address to interact with'},
   { name: 'crypto.eth' }, 
 ]
 
