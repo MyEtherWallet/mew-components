@@ -5,7 +5,7 @@
   =====================================================================================
   -->
   <v-expansion-panels
-    v-model="expandIdxArr"
+    :value="expandIdxArr"
     :accordion="isAccordion"
     multiple
     :class="expandPanelsClasses"
@@ -44,7 +44,7 @@
           slot="actions"
           class="d-flex align-center justify-center"
         >
-          <span class="inputLabel--text mew-body mr-5 text-right">{{ item.subtext }}</span>
+          <span class="titleSecondary--text mew-body mr-5 text-right">{{ item.toggleTitle }}</span>
           <!--
   =====================================================================================
     Chevron icon to toggle expand
@@ -80,31 +80,40 @@ export default {
   },
   props: {
     /**
-     * Expands the panel index.
+     * Takes an array of panel indexes and 
+     * will expand the panel indexes found in the array.
      */
     idxToExpand: {
-      type: Number,
-      default: 0,
+      type: Array,
+      default: () => [0],
     },
     /**
-     * Accepts an array of panel objects, i.e [{ name: '', subtext: '' }]
+     * Accepts an array of panel objects, i.e [{ name: '', toggleTitle: '' }]
      */
     panelItems: {
       type: Array,
-      default: () => {
-        return [];
-      }
+      default: () => []
     },
+    /**
+     * Sets a grey background and border.
+     */
     isGreyTheme: {
       type: Boolean,
       default: false
     },
+    /**
+     * Removes margins between the panels
+     * if nothing is passed then there will be 8px margin in between panels (split)
+     */
     isAccordion: {
       type: Boolean,
       default: false
     }
   },
   watch: {
+    /**
+     * @watches idxToExpand to ensure the correct panel is expanded
+     */
     idxToExpand(newVal, oldVal) {
       if (newVal !== oldVal) {
         this.expandIdxArr = newVal;
@@ -112,11 +121,12 @@ export default {
     },
   },
   computed: {
+    /**
+     * @returns classes for expand panel - needed for styling
+     */
     expandPanelsClasses() {
       const classes = ['mew-expand-panel', 'rounded-lg'];
-      if (this.isGreyTheme) {
-        classes.push('grey-theme');
-      }
+      this.isGreyTheme ? classes.push('grey-theme') : classes.push('white-theme');
       if (!this.isAccordion) {
         classes.push('split-panels');
       }
@@ -124,14 +134,18 @@ export default {
     }
   },
   mounted() {
-    console.error("dafsad", this.isAccordion)
+    /**
+     * on mount, will assign prop idxToExpand to expandIdxArr (so we can manipulate the data)
+     */
     this.expandIdxArr = this.idxToExpand;
   },
   methods: {
+    /**
+     * @returns if the panel is expanded
+     */
     isExpanded(idx) {
       if (
-        (Array.isArray(this.expandIdxArr) && this.expandIdxArr.includes(idx)) ||
-        this.expandIdxArr === idx
+        (Array.isArray(this.expandIdxArr) && this.expandIdxArr.includes(idx))
       ) {
         return true;
       }
@@ -141,27 +155,118 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+// MEW EXPAND STYLES
 .mew-expand-panel {
-  &.v-expansion-panels--accordion {
+  // grey theme + split panels border styles
+  &.split-panels {
     &.grey-theme {
-      border: 1px solid rgba(90, 103, 138, 0.24);
       .v-expansion-panel {
-        border-bottom: 1px solid rgba(90, 103, 138, 0.24);
-      }
-      .v-expansion-panel:last-child {
-        border-bottom: none;
+        border: 1px solid rgba(90, 103, 138, 0.24);
+        border-radius: 8px;
+        .v-expansion-panel-header {
+          border-radius: 8px;
+        }
+        .v-expansion-panel-content {
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
+        }
+        &.v-expansion-panel--active {
+          .v-expansion-panel-header {
+            border-radius: 0;
+          }
+        }
       }
     }
   }
+  // grey theme + accordion panel border styles
+  &.v-expansion-panels--accordion {
+    &.grey-theme {
+      .v-expansion-panel {
+        .v-expansion-panel-header {
+          border: 1px solid rgba(90, 103, 138, 0.24);
+          border-bottom: none;
+          border-color: rgba(90, 103, 138, 0.24) !important; // adding this to override vuetify
+        }
+        // adds border to expand content
+        .v-expansion-panel-content {
+          border-color: rgba(90, 103, 138, 0.24) !important; // adding this to override vuetify
+          border-left: 1px solid rgba(90, 103, 138, 0.24);
+          border-right: 1px solid rgba(90, 103, 138, 0.24);
+        }
+      }
+      // adds bottom border to last panel
+      .v-expansion-panel:last-child {
+        .v-expansion-panel-header {
+          border-bottom: 1px solid rgba(90, 103, 138, 0.24);
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
+        }
+        // adds border to last expand panel content
+        .v-expansion-panel-content {
+          border-bottom: 1px solid rgba(90, 103, 138, 0.24);  
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
+        }
+      }
+      // removes bottom radius for last panel when active
+      .v-expansion-panel--active {
+        &.v-expansion-panel:last-child {
+          .v-expansion-panel-header {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+        }
+      }
+    }
+  }
+  // white theme + split panels border styles
+  &.split-panels {
+    &.white-theme {
+      .v-expansion-panel {
+        border: 1px solid rgba(90, 103, 138, 0.24);
+        border-radius: 8px;
+        .v-expansion-panel-header {
+          border-radius: 8px;
+        }
+      }
+      .v-expansion-panel-content {
+        border-radius: 8px;
+      }
+    }
+  }
+  // white theme + accordion panel border styles
+  &.v-expansion-panels--accordion {
+    &.white-theme {
+      .v-expansion-panel {
+        border: 1px solid #D7DAE3;
+        border-bottom: none;
+      }
+      .v-expansion-panel:last-child {
+        border-bottom: 1px solid #D7DAE3;
+        .v-expansion-panel-header {
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
+        }
+      }
+      .v-expansion-panel--active {
+        .v-expansion-panel-content {
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
+        }
+      }
+   }
+  }
+}
 
+</style>
+
+<style lang="scss">
+// removes padding for expand panel content
+// needs to be global to override vuetify style
   .v-expansion-panel {
     .v-expansion-panel-content__wrap {
       padding: 0;
     }
-    // &.v-expansion-panel--active {
-    //   margin-top: 0;
-    // }
   }
-}
 </style>

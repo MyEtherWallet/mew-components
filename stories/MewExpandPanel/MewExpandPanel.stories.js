@@ -2,8 +2,8 @@ import {
   withKnobs,
   boolean,
   object,
-  number,
-  text
+  array,
+  number
 } from '@storybook/addon-knobs';
 import MewExpandPanel from '@/components/MewExpandPanel/MewExpandPanel.vue';
 
@@ -16,12 +16,9 @@ export default {
 };
 
 const items = [
-  { name: 'Network', subtext: 'ETH - myetherapi.com', colorTheme: 'superPrimary' }, 
-  { name: 'Address to interact with' ,  subtext: '', tooltip: 'Tooltip', colorTheme: 'errorOutlineActive'},
-  { name: 'crypto.eth', hasActiveBorder: true, colorTheme: 'superPrimary', warningBadge: {
-    color: 'warning darken-2',
-    text: 'Expire soon'
-  } }, 
+  { name: 'Network', toggleTitle: 'Manage' }, 
+  { name: 'Address to interact with' },
+  { name: 'crypto.eth' }, 
 ]
 
 export const MEWExpandPanel = () => ({
@@ -40,7 +37,7 @@ export const MEWExpandPanel = () => ({
       default: boolean('is-accordion', true)
     },
     idxToExpand: {
-      default: number('idx-to-expand', 1)
+      default: array('idx-to-expand', [1])
     }
   },
   watch: {
@@ -63,6 +60,9 @@ export const MEWExpandPanel = () => ({
       </template>
       <template v-slot:panelBody2>
         <span>Panel slot example 2</span>
+      </template>
+      <template v-slot:panelBody3>
+        <span>Panel slot example 3</span>
       </template>
     </mew-expand-panel>
   </div>`
