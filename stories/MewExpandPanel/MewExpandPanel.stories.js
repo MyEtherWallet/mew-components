@@ -2,11 +2,9 @@ import {
   withKnobs,
   boolean,
   object,
-  number,
-  text
+  array
 } from '@storybook/addon-knobs';
 import MewExpandPanel from '@/components/MewExpandPanel/MewExpandPanel.vue';
-import MewButton from '@/components/MewButton/MewButton.vue';
 
 export default {
   title: 'MewExpandPanel',
@@ -17,16 +15,13 @@ export default {
 };
 
 const items = [
-  { name: 'Network', subtext: 'ETH - myetherapi.com', colorTheme: 'superPrimary' }, 
-  { name: 'Address to interact with' ,  subtext: '', tooltip: 'Tooltip', colorTheme: 'errorOutlineActive'},
-  { name: 'crypto.eth', hasActiveBorder: true, colorTheme: 'superPrimary', warningBadge: {
-    color: 'warning darken-2',
-    text: 'Expire soon'
-  } }, 
+  { name: 'Network', toggleTitle: 'Manage' }, 
+  { name: 'Address to interact with'},
+  { name: 'crypto.eth' }, 
 ]
 
 export const MEWExpandPanel = () => ({
-  components: { MewExpandPanel, MewButton },
+  components: { MewExpandPanel },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)
@@ -34,17 +29,14 @@ export const MEWExpandPanel = () => ({
     panelItems: {
       default: object('panel-items', items)
     },
-    isToggle: {
-      default: boolean('is-toggle', false)
+    isGreyTheme: {
+      default: boolean('is-grey-theme', true)
     },
-    hasDividers: {
-      default: boolean('has-dividers', false)
+    isAccordion: {
+      default: boolean('is-accordion', true)
     },
     idxToExpand: {
-      default: number('idx-to-expand', 1)
-    },
-    rightActionText: {
-      default: text('right-action-text', 'Buy Domain')
+      default: array('idx-to-expand', [1])
     }
   },
   watch: {
@@ -57,17 +49,19 @@ export const MEWExpandPanel = () => ({
     <br />
     <mew-expand-panel
       ref="expandPanel"
-      :right-action-text="rightActionText"
-      :has-dividers="hasDividers" 
-      :is-toggle="isToggle"
+      :is-accordion="isAccordion"
+      :is-grey-theme="isGreyTheme" 
       :idx-to-expand="idxToExpand"
-      :panel-items="isToggle ? [panelItems[0]] : panelItems"
+      :panel-items="panelItems"
     >
       <template v-slot:panelBody1>
         <span>Panel slot example</span>
       </template>
       <template v-slot:panelBody2>
         <span>Panel slot example 2</span>
+      </template>
+      <template v-slot:panelBody3>
+        <span>Panel slot example 3</span>
       </template>
     </mew-expand-panel>
   </div>`

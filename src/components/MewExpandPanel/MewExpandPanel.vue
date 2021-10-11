@@ -2,21 +2,21 @@
   <!--
   =====================================================================================
     Mew Expand Panel
+    TODO: colors will have to be updated once we get that finalized
   =====================================================================================
   -->
   <v-expansion-panels
-    v-model="expandIdxArr"
-    :multiple="isToggle"
-    class="mew-expand-panel rounded"
+    :value="expandIdxArr"
+    :accordion="isAccordion"
+    multiple
+    :class="expandPanelsClasses"
     :flat="true"
   >
     <v-expansion-panel
-      :disabled="item.disabled"
+      :class="!isAccordion ? 'mb-2' : ''"
       v-for="(item, i) in panelItems"
-      :class="item.hasActiveBorder ? 'active-border' : ''"
       :key="i"
     >
-      <v-divider v-if="hasDividers" />
       <!--
     =====================================================================================
       Panel Header 
@@ -24,45 +24,17 @@
     -->
       <v-expansion-panel-header
         :class="[
-          'rounded',
-          'titlePrimary--text',
-          'mew-heading-3',
-          isToggle ? 'pa-3 no-pointer-events' : 'pa-5',
+          'pa-5',
         ]"
-        :color="item.colorTheme"
+        :color="isGreyTheme ? 'rgba(90, 103, 138, 0.08)' : 'white'"
       >
         <!--
     =====================================================================================
       Panel Header - Left 
     =====================================================================================
     -->
-        <div class="d-flex align-center">
-          <span
-            :class="[
-              'mew-heading-3',
-              item.tooltip ? 'd-flex align-center' : '',
-            ]"
-          >
-            {{ item.name }}
-            <mew-tooltip
-              class="ml-1"
-              :text="item.tooltip"
-              v-if="item.tooltip"
-            />
-          </span>
-          <span
-            v-if="!item.tooltip && item.warningBadge"
-            :class="[
-              item.warningBadge.color,
-              'ml-2',
-              'text-center',
-              'white--text',
-              'px-2',
-              'py-1',
-              'rounded',
-              'mew-caption',
-            ]"
-          >{{ item.warningBadge.text }}</span>
+        <div class="d-flex align-center mew-body font-weight-medium surface--text">
+          {{ item.name }}
         </div>
         <!--
     =====================================================================================
@@ -70,43 +42,21 @@
     =====================================================================================
     -->
         <div
-          v-if="item.disabled"
-          class="text-right"
-        >
-          <mew-button
-            btn-style="transparent"
-            btn-size="xlarge"
-            color-theme="primary"
-            :title="rightActionText"
-            @click.native="onActionClick"
-          />
-        </div>
-        <div
           slot="actions"
           class="d-flex align-center justify-center"
         >
-          <span class="inputLabel--text mew-body mx-2 text-right">{{ item.subtext }}</span>
+          <span class="titleSecondary--text mew-body mr-5 text-right">{{ item.toggleTitle }}</span>
           <!--
   =====================================================================================
-    Slot: mewExpandPanelActions (used to place custom ui on the right side of the expand panel header)
+    Chevron icon to toggle expand
   =====================================================================================
   -->
-          <slot name="mewExpandPanelActions" />
-          <mew-switch
-            ref="switch"
-            @click.native="onSwitch"
-            v-if="isToggle && !item.disabled"
-          />
-          <span v-if="!isToggle && !item.disabled">
-            <img
-              v-if="!isExpanded(i)"
-              height="30"
-              src="@/assets/images/icons/edit.svg"
-            >
-            <v-icon v-if="isExpanded(i)">
-              mdi-chevron-down
-            </v-icon>
-          </span>
+          <v-icon v-if="!isExpanded(i)">
+            mdi-chevron-down
+          </v-icon>
+          <v-icon v-else>
+            mdi-chevron-down
+          </v-icon>
         </div>
       </v-expansion-panel-header>
       <!--
@@ -117,22 +67,13 @@
       <v-expansion-panel-content color="white">
         <slot :name="'panelBody' + (i + 1)" />
       </v-expansion-panel-content>
-      <v-divider v-if="hasDividers" />
     </v-expansion-panel>
   </v-expansion-panels>
 </template>
 <script>
-import MewSwitch from '@/components/MewSwitch/MewSwitch.vue';
-import MewTooltip from '@/components/MewTooltip/MewTooltip.vue';
-import MewButton from '@/components/MewButton/MewButton.vue';
 
 export default {
   name: 'MewExpandPanel',
-  components: {
-    MewSwitch,
-    MewButton,
-    MewTooltip,
-  },
   data() {
     return {
       expandIdxArr: [],
@@ -140,96 +81,193 @@ export default {
   },
   props: {
     /**
-     * Applies text to the right action button when panel is disabled.
-     */
-    rightActionText: {
-      type: String,
-      default: '',
-    },
-    /**
-     * Applies dividers to the expand panel.
+     * Takes an array of panel indexes and 
+     * will expand the panel indexes found in the array.
      */
     idxToExpand: {
-      type: Number,
-      default: 0,
+      type: Array,
+      default: () => [0],
     },
     /**
-     * Applies dividers to the expand panel.
-     */
-    hasDividers: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Turns the panel actions to a toggle btn. The subtext attribute in panelItems becomes the switch label.
-     */
-    isToggle: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Accepts an array of panel objects, i.e [{ name: '', tooltip: '', subtext: '', link: '', disabled: false }]
+     * Accepts an array of panel objects, i.e [{ name: '', toggleTitle: '' }]
      */
     panelItems: {
       type: Array,
-      default: () => {
-        return [];
-      },
+      default: () => []
     },
+    /**
+     * Sets a grey background and border.
+     */
+    isGreyTheme: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Removes margins between the panels
+     * if nothing is passed then there will be 8px margin in between panels (split)
+     */
+    isAccordion: {
+      type: Boolean,
+      default: false
+    }
   },
   watch: {
+    /**
+     * @watches idxToExpand to ensure the correct panel is expanded
+     */
     idxToExpand(newVal, oldVal) {
       if (newVal !== oldVal) {
         this.expandIdxArr = newVal;
       }
     },
   },
+  computed: {
+    /**
+     * @returns classes for expand panel - needed for styling
+     */
+    expandPanelsClasses() {
+      const classes = ['mew-expand-panel', 'rounded-lg'];
+      this.isGreyTheme ? classes.push('grey-theme') : classes.push('white-theme');
+      if (!this.isAccordion) {
+        classes.push('split-panels');
+      }
+      return classes;
+    }
+  },
   mounted() {
+    /**
+     * on mount, will assign prop idxToExpand to expandIdxArr (so we can manipulate the data)
+     */
     this.expandIdxArr = this.idxToExpand;
   },
   methods: {
-    setToggle(val) {
-      if (val === true && !this.expandIdxArr.includes(0)) {
-        this.expandIdxArr.push(0);
-      }
-      if (val === false && this.expandIdxArr.includes(0)) {
-        this.expandIdxArr.pop();
-      }
-      this.$refs.switch[0].setToggle(val);
-    },
+    /**
+     * @returns if the panel is expanded
+     */
     isExpanded(idx) {
       if (
-        (Array.isArray(this.expandIdxArr) && this.expandIdxArr.includes(idx)) ||
-        this.expandIdxArr === idx
+        (Array.isArray(this.expandIdxArr) && this.expandIdxArr.includes(idx))
       ) {
         return true;
       }
       return false;
-    },
-    onActionClick() {
-      this.$emit('onActionClick');
-    },
-    onSwitch() {
-      this.$emit('toggled');
     }
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+// MEW EXPAND STYLES
 .mew-expand-panel {
+  // grey theme + split panels border styles
+  &.split-panels {
+    &.grey-theme {
+      .v-expansion-panel {
+        border: 1px solid rgba(90, 103, 138, 0.24);
+        border-radius: 8px;
+        .v-expansion-panel-header {
+          border-radius: 8px;
+        }
+        .v-expansion-panel-content {
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
+        }
+        &.v-expansion-panel--active {
+          .v-expansion-panel-header {
+            border-radius: 0;
+          }
+        }
+      }
+    }
+  }
+  // grey theme + accordion panel border styles
+  &.v-expansion-panels--accordion {
+    &.grey-theme {
+      .v-expansion-panel {
+        .v-expansion-panel-header {
+          border: 1px solid rgba(90, 103, 138, 0.24);
+          border-bottom: none;
+          border-color: rgba(90, 103, 138, 0.24) !important; // adding this to override vuetify
+        }
+        // adds border to expand content
+        .v-expansion-panel-content {
+          border-color: rgba(90, 103, 138, 0.24) !important; // adding this to override vuetify
+          border-left: 1px solid rgba(90, 103, 138, 0.24);
+          border-right: 1px solid rgba(90, 103, 138, 0.24);
+        }
+      }
+      // adds bottom border to last panel
+      .v-expansion-panel:last-child {
+        .v-expansion-panel-header {
+          border-bottom: 1px solid rgba(90, 103, 138, 0.24);
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
+        }
+        // adds border to last expand panel content
+        .v-expansion-panel-content {
+          border-bottom: 1px solid rgba(90, 103, 138, 0.24);  
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
+        }
+      }
+      // removes bottom radius for last panel when active
+      .v-expansion-panel--active {
+        &.v-expansion-panel:last-child {
+          .v-expansion-panel-header {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+        }
+      }
+    }
+  }
+  // white theme + split panels border styles
+  &.split-panels {
+    &.white-theme {
+      .v-expansion-panel {
+        border: 1px solid rgba(90, 103, 138, 0.24);
+        border-radius: 8px;
+        .v-expansion-panel-header {
+          border-radius: 8px;
+        }
+      }
+      .v-expansion-panel-content {
+        border-radius: 8px;
+      }
+    }
+  }
+  // white theme + accordion panel border styles
+  &.v-expansion-panels--accordion {
+    &.white-theme {
+      .v-expansion-panel {
+        border: 1px solid #D7DAE3;
+        border-bottom: none;
+      }
+      .v-expansion-panel:last-child {
+        border-bottom: 1px solid #D7DAE3;
+        .v-expansion-panel-header {
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
+        }
+      }
+      .v-expansion-panel--active {
+        .v-expansion-panel-content {
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
+        }
+      }
+   }
+  }
+}
+
+</style>
+
+<style lang="scss">
+// removes padding for expand panel content
+// needs to be global to override vuetify style
   .v-expansion-panel {
-    margin-bottom: 10px;
     .v-expansion-panel-content__wrap {
       padding: 0;
     }
   }
-  .v-item--active.active-border {
-    border: 1px solid var(--v-primary-base);
-    .v-expansion-panel-header {
-      border-bottom: 1px solid var(--v-primary-base) !important;
-      border-radius: 4px 4px 0 0 !important;
-    }
-  }
-}
 </style>
