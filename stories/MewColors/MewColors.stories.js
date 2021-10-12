@@ -120,6 +120,71 @@ export const All = () => ({
           {name: 'surface', lightHex: '#192133', darkHex: '#192133'},
         ]
       }
+    ],
+    newColors: [
+      {
+        shades: [
+          {name: 'backgroundWallet', lightHex: '#F2F4FA', darkHex: '#F2F4FA'},
+          {name: 'backgroundOverlay', lightHex: '#F2FAFA', darkHex: '#F2FAFA'},
+          {name: 'backgroundGrey', lightHex: '#F8F9FB', darkHex: '#F8F9FB'}
+        ]
+      },
+      {
+        shades: [
+          {name: 'whiteAlways', lightHex: '#FFFFFF', darkHex: '#FFFFFF'},
+          {name: 'whiteBackground', lightHex: '#FFFFFF', darkHex: '#FFFFFF'},
+          {name: 'whitePopup', lightHex: '#FFFFFF', darkHex: '#FFFFFF'}
+        ]
+      },
+      {
+        shades: [
+          {name: 'textDark', lightHex: '#192133', darkHex: '#192133'},
+          {name: 'textMedium', lightHex: '#5A678A', darkHex: '#5A678A'},
+          {name: 'textLight', lightHex: '#939FB9', darkHex: '#939FB9'}
+        ]
+      },
+      {
+        shades: [
+          {name: 'greenPrimary', lightHex: '#05C0A5', darkHex: '#05C0A5'},
+          {name: 'greenMedium', lightHex: '#C3F0E9', darkHex: '#C3F0E9'},
+          {name: 'greenLight', lightHex: '#EBFAF8', darkHex: '#EBFAF8'}
+        ]
+      },
+      {
+        shades: [
+          {name: 'greyPrimary', lightHex: '#5A678A', darkHex: '#5A678A'},
+          {name: 'greyMedium', lightHex: '#D7DAE3', darkHex: '#D7DAE3'},
+          {name: 'greyLight', lightHex: '#F2F3F6', darkHex: '#F2F3F6'}
+        ]
+      },
+      {
+        shades: [
+          {name: 'bluePrimary', lightHex: '#4B83E8', darkHex: '#4B83E8'},
+          {name: 'blueMedium', lightHex: '#D4E1F9', darkHex: '#D4E1F9'},
+          {name: 'blueLight', lightHex: '#D4E1F9', darkHex: '#D4E1F9'}
+        ]
+      },
+      {
+        shades: [
+          {name: 'redPrimary', lightHex: '#FF445B', darkHex: '#FF445B'},
+          {name: 'redMedium', lightHex: '#FFD2D8', darkHex: '#FFD2D8'},
+          {name: 'redLight', lightHex: '#FFF0F2', darkHex: '#FFF0F2'}
+        ]
+      },
+      {
+        shades: [
+          {name: 'orangePrimary', lightHex: '#F5A623', darkHex: '#F5A623'},
+          {name: 'orangeMedium', lightHex: '#FBDBA7', darkHex: '#FBDBA7'},
+          {name: 'orangeLight', lightHex: '#FEF4E5', darkHex: '#FEF4E5'}
+        ]
+      },
+      {
+        shades: [
+          {name: 'disabledPrimary', lightHex: '#CECECE', darkHex: '#CECECE'},
+          {name: 'disabledMedium', lightHex: '#E0E0E0', darkHex: '#E0E0E0'},
+          {name: 'disabledLight', lightHex: '#F6F6F6', darkHex: '#F6F6F6'}
+        ]
+      },
     ]
     }
   },
@@ -131,7 +196,7 @@ export const All = () => ({
   methods: {
     getClasses(shade) {
       const classes = [];
-      if (shade.name === 'black' || shade.name === 'textBlack' || shade.name === 'expandHeader' || shade.name === 'basic base' || shade.name === 'titlePrimary') {
+      if (shade.name === 'textDark' || shade.name === 'black' || shade.name === 'textBlack' || shade.name === 'expandHeader' || shade.name === 'basic base' || shade.name === 'titlePrimary') {
         return 'white--text';
       }
 
@@ -144,6 +209,27 @@ export const All = () => ({
   },
   template: `
     <div>
+    <br />
+    <div class="mew-heading-2">New colors</div>
+    <br />
+    <v-row align="center" v-for="( color, idx) in newColors" :key="color + idx">
+      <v-card
+        v-for="shade in color.shades"
+        :key="shade.name"
+        :color="shade.name"
+        outlined
+        tile
+        width="170"
+        height="80"
+      > 
+        <v-card-text :class="getClasses(shade)">
+          <div style="font-size: 12px">{{shade.name}}</div>
+          <div style="font-size: 12px">{{$vuetify.theme.dark ? shade.darkHex :shade.lightHex}}</div>
+        </v-card-text>
+      </v-card>
+    </v-row>
+    <br />
+    <div class="mew-heading-2">Old colors</div>
     <br />
     <v-row align="center" v-for="( color, idx) in mewColors" :key="color + idx">
       <v-card
