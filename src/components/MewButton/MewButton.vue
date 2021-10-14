@@ -207,38 +207,18 @@ export default {
         return 'redLight';
       }
 
-<<<<<<< Updated upstream
       // PRIMARY COLORS
-=======
-      if (this.isLight && this.isBasicTheme) {
-        return 'greyLight'
-      }
-  
->>>>>>> Stashed changes
       if (this.isPrimaryTheme && this.isLight) {
         return 'greenLight'
       }
 
-<<<<<<< Updated upstream
       // BASIC THEME COLORS
-      if (this.isBasicTheme && this.hasOutline) {
-        return 'greyPrimary';
-      }
-
       if (this.isBasicTheme && this.isLight) {
         return 'greyLight'
       }
 
-      if (this.isBasicTheme) {
+      if (this.isBasicTheme && this.hasOutline || this.isBasicTheme) {
         return 'greyPrimary';
-=======
-      if (this.isSecondaryTheme) {
-        return 'bluePrimary';
-      }
-
-      if (this.isBasicTheme) {
-        return 'greyPrimary'
->>>>>>> Stashed changes
       }
 
       return this.colorTheme;
@@ -272,11 +252,7 @@ export default {
           classes.push('bluePrimary--text');
         }
 
-<<<<<<< Updated upstream
         if (this.isBasicTheme  && this.isLight || this.isBasicTheme && this.hasOutline) {
-=======
-        if (this.isBasicTheme  && this.isLight) {
->>>>>>> Stashed changes
           classes.push('greyPrimary--text');
         }
       }
