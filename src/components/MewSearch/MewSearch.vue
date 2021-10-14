@@ -245,8 +245,17 @@ export default {
             border-right: none;
           }
         }
-        &.error--text fieldset {
-          border-right: none;
+        // for error border colors
+        &.error--text {
+          fieldset {
+            border-right: none;
+          }
+          .v-input__append-outer {
+            .search-btn {
+              border: 2px solid var(--v-redPrimary-base) !important;
+              border-left: none !important;
+            }
+          }
         }
         .v-input__append-inner {
           .mew-search-menu-select {
