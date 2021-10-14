@@ -2,7 +2,6 @@
   <!--
   =====================================================================================
     Mew Expand Panel
-    TODO: colors will have to be updated once we get that finalized
   =====================================================================================
   -->
   <v-expansion-panels
@@ -26,14 +25,14 @@
         :class="[
           'pa-5',
         ]"
-        :color="isGreyTheme ? 'rgba(90, 103, 138, 0.08)' : 'white'"
+        :color="isGreyTheme ? 'greyLight' : 'whiteAlways'"
       >
         <!--
     =====================================================================================
       Panel Header - Left 
     =====================================================================================
     -->
-        <div class="d-flex align-center mew-body font-weight-medium surface--text">
+        <div class="d-flex align-center mew-body font-weight-medium textDark--text">
           {{ item.name }}
         </div>
         <!--
@@ -45,16 +44,22 @@
           slot="actions"
           class="d-flex align-center justify-center"
         >
-          <span class="titleSecondary--text mew-body mr-5 text-right">{{ item.toggleTitle }}</span>
+          <span :class="['mew-body mr-5 text-right', isGreyTheme ? 'textMedium--text' : 'textLight--text']">{{ item.toggleTitle }}</span>
           <!--
   =====================================================================================
     Chevron icon to toggle expand
   =====================================================================================
   -->
-          <v-icon v-if="!isExpanded(i)">
+          <v-icon
+            :color="isGreyTheme ? 'textMedium' : 'textLight'"
+            v-if="!isExpanded(i)"
+          >
             mdi-chevron-down
           </v-icon>
-          <v-icon v-else>
+          <v-icon
+            :color="isGreyTheme ? 'textMedium' : 'textLight'"
+            v-else
+          >
             mdi-chevron-down
           </v-icon>
         </div>
@@ -157,13 +162,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// MEW EXPAND STYLES
+/**
+  *  MEW EXPAND STYLES
+  */
 .mew-expand-panel {
   // grey theme + split panels border styles
   &.split-panels {
     &.grey-theme {
       .v-expansion-panel {
-        border: 1px solid rgba(90, 103, 138, 0.24);
+        border: 1px solid var(--v-greyMedium-base);
         border-radius: 8px;
         .v-expansion-panel-header {
           border-radius: 8px;
@@ -185,27 +192,27 @@ export default {
     &.grey-theme {
       .v-expansion-panel {
         .v-expansion-panel-header {
-          border: 1px solid rgba(90, 103, 138, 0.24);
+          border: 1px solid var(--v-greyMedium-base);
           border-bottom: none;
-          border-color: rgba(90, 103, 138, 0.24) !important; // adding this to override vuetify
+          border-color: var(--v-greyMedium-base) !important; // adding this to override vuetify
         }
         // adds border to expand content
         .v-expansion-panel-content {
-          border-color: rgba(90, 103, 138, 0.24) !important; // adding this to override vuetify
-          border-left: 1px solid rgba(90, 103, 138, 0.24);
-          border-right: 1px solid rgba(90, 103, 138, 0.24);
+          border-color: var(--v-greyMedium-base) !important; // adding this to override vuetify
+          border-left: 1px solid var(--v-greyMedium-base);
+          border-right: 1px solid var(--v-greyMedium-base);
         }
       }
       // adds bottom border to last panel
       .v-expansion-panel:last-child {
         .v-expansion-panel-header {
-          border-bottom: 1px solid rgba(90, 103, 138, 0.24);
+          border-bottom: 1px solid var(--v-greyMedium-base);
           border-bottom-left-radius: 8px;
           border-bottom-right-radius: 8px;
         }
         // adds border to last expand panel content
         .v-expansion-panel-content {
-          border-bottom: 1px solid rgba(90, 103, 138, 0.24);  
+          border-bottom: 1px solid var(--v-greyMedium-base);  
           border-bottom-left-radius: 8px;
           border-bottom-right-radius: 8px;
         }
@@ -225,7 +232,7 @@ export default {
   &.split-panels {
     &.white-theme {
       .v-expansion-panel {
-        border: 1px solid rgba(90, 103, 138, 0.24);
+        border: 1px solid var(--v-greyMedium-base);
         border-radius: 8px;
         .v-expansion-panel-header {
           border-radius: 8px;
@@ -240,11 +247,11 @@ export default {
   &.v-expansion-panels--accordion {
     &.white-theme {
       .v-expansion-panel {
-        border: 1px solid #D7DAE3;
+        border: 1px solid var(--v-greyMedium-base);
         border-bottom: none;
       }
       .v-expansion-panel:last-child {
-        border-bottom: 1px solid #D7DAE3;
+        border-bottom: 1px solid var(--v-greyMedium-base);
         .v-expansion-panel-header {
           border-bottom-left-radius: 8px;
           border-bottom-right-radius: 8px;

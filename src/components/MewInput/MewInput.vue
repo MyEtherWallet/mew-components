@@ -86,7 +86,7 @@
         :class="[
           maxBtnObj.disabled
             ? 'disabled--text no-pointer-events'
-            : 'titlePrimary--text',
+            : 'greyPrimary--text',
           'rounded-lg mt-n2 mew-caption font-weight-medium',
         ]"
         min-width="40"
@@ -94,7 +94,7 @@
         height="40"
         width="40"
         depressed
-        color="maxButton"
+        color="greyLight"
       >
         {{ maxBtnObj.title }}
       </v-btn>

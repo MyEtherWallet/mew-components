@@ -81,7 +81,7 @@
   */
   .v-input {
     input {
-      color: var(--v-textBlack-base) !important;
+      color: var(--v-textDark-base) !important;
       font-size: 14px;
     }
     &.v-input--is-disabled {
@@ -93,7 +93,7 @@
     * Input label
     */
     .v-label {
-      color: var(--v-textSecondary-base);   
+      color: var(--v-textMedium-base);   
       font-weight: 400;
       font-size: 1rem;
       
@@ -105,7 +105,7 @@
     * Input placeholder
     */
     input::placeholder {
-      color: var(--v-disabled-base);
+      color: var(--v-textLight-base);
       font-weight: 400;
     }
   /**

@@ -2,7 +2,6 @@
   <!--
   =====================================================================================
     Mew Alert
-    TODO: colors will have to be updated once we get that finalized
   =====================================================================================
   -->
   <v-alert
@@ -22,16 +21,16 @@
     <div :class="['pr-5', hideAlertIcon ? 'pl-5' : 'pl-1']">
       <span
         v-if="title"
-        class="mew-body font-weight-bold text"
+        class="mew-body font-weight-bold textDark--text"
       >{{ title }}</span>
       <div
         v-if="description"
-        class="mew-body text"
+        class="mew-body textDark--text"
       >
         {{ description }} <a
           v-if="linkObject"
           target="_blank"
-          class="text text-decoration-underline"
+          class="textDark--text text-decoration-underline"
           :href="linkObject.url"
         >{{ linkObject.text }}</a>
       </div>
@@ -45,7 +44,7 @@
     <!--
   =====================================================================================
    Close Button 
-   TODO: change this to mew-icon component after its finalized.
+   TODO: change this to mew-icon component after icon buttons are finalized.
   =====================================================================================
   -->
     <template v-slot:close="{ toggle }">
@@ -165,10 +164,16 @@ export default {
      */
     alertColor() {
       if (this.isWarningTheme) {
-        return 'warning darken-1';
+        return 'orangePrimary';
       }
       if (this.isInfoTheme) {
-        return 'blue500';
+        return 'bluePrimary';
+      }
+      if (this.isErrorTheme) {
+        return 'redPrimary';
+      }
+      if (this.isSuccessTheme) {
+        return 'greenPrimary';
       }
       return this.theme;
     },
@@ -198,8 +203,17 @@ export default {
       if (this.hasWhiteBackground) {
         classes.push('white');
       }
-      if (this.theme) {
-        classes.push(this.theme.toLowerCase() + '-alert');
+      if (this.isWarningTheme) {
+        classes.push('orangeLight');
+      }
+      if (this.isInfoTheme) {
+        classes.push('blueLight');
+      }
+      if (this.isErrorTheme) {
+       classes.push('redLight');
+      }
+      if (this.isSuccessTheme) {
+        classes.push('greenLight');
       }
       return classes;
     }
@@ -209,29 +223,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// MEW ALERT STYLES (scoped)
+/**
+  * MEW ALERT STYLES
+  */
 .mew-alert {
   border-radius: 8px;
   box-shadow: 0px 1.6px 6px rgba(90, 103, 138, 0.6) !important;
-  .text {
-    color: rgba(21, 28, 44, 0.87);
-  }
-  &.success-alert {
-    background-color: rgba(44, 196, 121, 0.09);
-  }
-  &.info-alert {
-    background-color: rgba(90, 120, 240, 0.08);
-  }
-  &.error-alert {
-    background-color: rgba(255, 68, 91, 0.09);
-  }
-  &.warning-alert {
-    background-color: rgba(245, 166, 35, 0.09);
-  }
   .close-btn {
     height: auto;
     width: auto;
   }
 }
-
 </style>
