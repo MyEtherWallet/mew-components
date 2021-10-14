@@ -5,19 +5,19 @@
 =====================================================================================
 -->
   <v-text-field
-    :class="['mew-search', isSearchBlock ? 'search-block' : '']"
+    :class="mewSearchClasses"
     :disabled="disabled"
-    :background-color="isSearchBlock ? 'searchInput' : ''"
+    :background-color="isSearchBlock && isFilled ? 'backgroundWallet' : ''"
     :label="''"
     :placeholder="placeholder"
     color="primary"
-    :filled="isSearchBlock"
+    :error-messages="errorMessages"
     v-model="inputValue"
     prepend-inner-icon="mdi-magnify"
     clearable
-    hide-details
-    :height="isCompact ? '36px' : '64px'"
+    :height="searchHeight"
     :solo="isSearchBlock"
+    :outlined="isSearchBlock"
     :flat="isSearchBlock"
     validate-on-blur
     type="search"
@@ -29,12 +29,41 @@
 =====================================================================================
 -->
       <v-select
-        :height="isCompact ? '36px' : '64px'"
-        v-if="hasMenuSelect"
+        hide-details
+        :height="searchHeight"
+        single-line
+        :items="menuSelect.items"
+        item-text="name"
+        item-value="value"
+        v-model="menuSelectModel"
+        @click="onMenuSelect"
+        v-if="menuSelect && menuSelect.label"
+        :menu-props="{ bottom: true, offsetY: true, maxHeight: '200px' }"
+        return-object
         append-icon="mdi-chevron-down"
-        label="All extensions"
+        :label="menuSelect.label"
         class="mew-search-menu-select ma-0 pt-0"
       />
+    </template>
+    <template v-slot:append-outer>
+      <!--
+=====================================================================================
+  Click to search Button
+=====================================================================================
+-->
+      <v-btn
+        v-if="isSearchBlock"
+        :height="searchHeight"
+        @click="onSearch"
+        width="64"
+        depressed
+        class="search-btn"
+        color="primary"
+      >
+        <v-icon color="white">
+          mdi-magnify
+        </v-icon>
+      </v-btn>
     </template>
   </v-text-field>
 </template>
@@ -43,6 +72,14 @@
 export default {
   name: 'MewSearch',
   props: {
+    /**
+     * Click to search method for search button
+     * displays on isSearchBlock
+     */
+    onSearch: {
+      type: Function,
+      default: () => {}
+    },
     /**
      * Disables the input.
      */
@@ -65,18 +102,29 @@ export default {
       default: ''
     },
     /**
-     * Displays search input
+     * Displays an outline around input
+     * default is with a white background,
+     * if want to be filled then isFilled prop needs to be passed
      */
     isSearchBlock: {
       type: Boolean,
       default: false
     },
     /**
-     * Adds a menu select dropdown
+     * Adds a grey background color to the search block.
+     * In order to use this, isSearchBlock must be passed as true.
      */
-    hasMenuSelect: {
+    isFilled: {
       type: Boolean,
       default: false
+    },
+    /**
+     * Adds a menu select dropdown
+     * Expects attributes label, and items, i.e {label: '', items: [{ name: '', value: ''}]}
+     */
+    menuSelect: {
+      type: Object,
+      default: () => {}
     },
     /**
      * Adds a 36px height 
@@ -85,27 +133,81 @@ export default {
     isCompact: {
       type: Boolean,
       default: false
+    },
+    /**
+     * Error messages to display
+     */
+    errorMessages: {
+      type: [String, Array],
+      default: '',
     }
   },
   data() {
     return {
       inputValue: '',
+      menuSelectModel: {}
+    }
+  },
+  computed: {
+    /**
+     * @returns height for mew search input
+     */
+    searchHeight() {
+      if (this.isCompact && !this.isSearchBlock) {
+        return '36px';
+      }
+      if (this.isCompact && this.isSearchBlock) {
+        return '46px';
+      }
+      return '62px';
+    },
+    /**
+     * @returns classes for mew search - needed for styling
+     */
+    mewSearchClasses() {
+      const classes = ['mew-search'];
+      this.isSearchBlock ? classes.push('search-block') : classes.push('search-standard')
+      if (!this.isCompact) {
+        classes.push('search-large')
+      }
+      if (this.isFilled) {
+        classes.push('search-filled')
+      }
+      return classes;
     }
   },
   watch: {
+    /**
+     * @watches the search value and emits it when it changes
+     */
     inputValue(newVal, oldVal) {
       if (newVal !== oldVal) {
          this.$emit('input', newVal) 
       }
     },
+    /**
+     * @watches the prop value and sets it to v-model value when it changes
+     */
     value(newVal, oldVal) {
       if (newVal !== oldVal) {
         this.inputValue = newVal;
       }
     }
   },
+  /**
+   * sets prop value to inputValue on mount
+   */
   mounted() {
     this.inputValue = this.value;
+  },
+  methods: {
+  /**
+   * gets triggered from selecting an item from menu select
+   * will @emit menu-select with value to parent container
+   */
+    onMenuSelect() {
+      this.$emit('menu-select', this.menuSelectModel)
+    }
   }
 };
 </script>
@@ -117,58 +219,169 @@ export default {
   */
   .mew-search {
   /**
-    * styling for search block
+    * SEARCH BLOCK
     */
-    .search-block {
-      input::placeholder {
-        color: var(--v-searchText-base);
+    &.search-block {
+      .v-input__slot {
+        border-radius: 10px 0px 0px 10px; 
+        min-height: 46px;
+      }
+      &.v-text-field {
+        &.v-text-field--outlined fieldset {
+          box-shadow: 0px 2px 8px rgba(90, 103, 138, 0.48), 0px 5px 18px rgba(90, 103, 138, 0.24);
+        }
+        // for search filled borders
+        &.search-filled {
+          &.v-text-field--outlined fieldset {
+            border: 1px solid var(--v-backgroundWallet-base);
+            box-shadow: none;
+          }
+          &.v-input--is-focused fieldset {
+            border: 2px solid var(--v-greenPrimary-base);
+            border-right: none;
+          }
+          &.error--text fieldset {
+            border: 2px solid var(--v-redPrimary-base);
+            border-right: none;
+          }
+        }
+        &.error--text fieldset {
+          border-right: none;
+        }
+        .v-input__append-inner {
+          .mew-search-menu-select {
+            &.v-text-field > .v-input__control > .v-input__slot:before  {
+              border-color: transparent;
+              transition: none;
+            }
+          }
+        }
+      }
+      // Menu select 
+      .mew-search-menu-select.v-text-field {
+        &.v-input--is-focused > .v-input__control > .v-input__slot:after {
+          border: transparent;
+        }
+        .v-input__control > .v-input__slot:after {
+          transition: none;
+        }
       }
     }
+  /**
+    * SEARCH FIELD BORDER COLORS
+    */
     &.v-text-field > .v-input__control > .v-input__slot:before  {
-      border-color: var(--v-greyMedium-base) !important;
+      // changing the border bottom color when in regular state
+      border-color: var(--v-greyMedium-base);
+      transition: none;
+    }
+    &.v-text-field:not(.v-input--has-state):hover > .v-input__control > .v-input__slot:before  {
+      // changing the border bottom color when in hover state
+      border-color: var(--v-greyMedium-base);
+      transition: none;
+    }
+    &.v-text-field.error--text > .v-input__control > .v-input__slot:before  {
+      // changing the border bottom color when in error state
+      border-color: var(--v-errorMedium-base);
       transition: none;
     }
   /**
-    * search icon
+    * SEARCH ICON
     */
+    &.search-standard {
+      .mdi-magnify {
+        margin-top: 5px;  
+      }
+      // icon height changes when not compact so have to adjust accordingly
+      &.search-large {
+        .mdi-magnify {
+          margin-top: 30px;
+        }
+      }
+    }
+    // search colors
     .mdi-magnify {
       color: var(--v-textMedium-base) !important;
-      &.primary--text {
+      &.primary--text, &.error--text {
         color: var(--v-textMedium-base) !important;
       }
     }
   /**
-    * close icon
+    * CLOSE ICON
     */
+    &.search-standard {
+      .mdi-close {
+        margin-top: 12px;
+      }
+      // icon height changes when not compact so have to adjust accordingly
+      &.search-large {
+        .mdi-close {
+          margin-top: 39px;
+        }
+      }
+    }
     .mdi-close {
       color: var(--v-textMedium-base) !important;
-      margin-right: 32px;
-      margin-top: 11px;
-      &.primary--text {
+      margin-right: 16px; //this might be changed - ask russ
+      &.primary--text, &.error--text {
         color: var(--v-textMedium-base) !important;
       }
     }
   /**
-    * used for menu select dropdown
+    * MENU SELECT DROPDOWN STYLES
+    * for all search input types
     */
-    .v-input__append-inner {
-      margin-top: 0;
-      margin-left: 0;
-      .mew-search-menu-select {
-        &.v-text-field > .v-input__control > .v-input__slot:before  {
-          border-color: var(--v-greyMedium-base) !important;
+    .mew-search-menu-select {
+      max-width: 150px; //TODO: ask russ to confirm this width
+    }
+
+  /**
+    * MENU SELECT DROPDOWN STYLES
+    * for search standard only
+    */
+    &.search-standard {
+      &.v-text-field.error--text {
+        .v-input__append-inner {
+  
+          .mew-search-menu-select {
+            &.v-text-field > .v-input__control > .v-input__slot:before  {
+              // changing the border bottom color when in error state
+              border-color: var(--v-redPrimary-base);
+              transition: none;
+            }
+          }
         }
+      }
+      .v-input__append-inner {
+        margin-top: 0;
+        margin-left: 0;
+        .mew-search-menu-select {
+          &.v-text-field > .v-input__control > .v-input__slot:before  {
+            // changing the border bottom color when in regular state
+            border-color: var(--v-greyMedium-base);
+            transition: none;
+          }
+          .mdi-chevron-down {
+            margin-top: 8px;
+          }
+        }
+      }
+      // menu select dropdown icon
+      .v-input__icon--append {
         .mdi-chevron-down {
-          margin-top: 10px;
+          color: var(--v-textMedium-base);
         }
       }
     }
   /**
-    * menu select dropdown icon
+    * CLICK TO SEARCH BTN STYLE
     */
-    .v-input__icon--append {
-      .mdi-chevron-down {
-        color: var(--v-textMedium-base);
+
+    .v-input__append-outer {
+      border-radius: 0px 10px 10px 0px; 
+      margin: 0 !important;
+      .search-btn {
+        border-radius: 0px 10px 10px 0px; 
       }
     }
   }

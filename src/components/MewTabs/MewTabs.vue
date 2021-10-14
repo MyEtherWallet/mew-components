@@ -7,8 +7,8 @@
   <div>
     <v-tabs
       :class="tabClasses"
-      background-color="transparent"
-      color="titlePrimary"
+      :background-color="background"
+      :color="activeColor"
       :centered="isCentered"
       slider-size="3"
       v-model="onTab"
@@ -76,6 +76,22 @@ export default {
   },
   props: {
     /**
+     * Sets the color for active tab.
+     * If nothing passed, titlePrimary will be used.
+     */
+    activeColor: {
+      type: String,
+      default: 'titlePrimary'
+    },
+    /**
+     * Sets the color for the background of mew-tabs.
+     * If nothing passed, transparent will be used.
+     */
+    background: {
+      type: String,
+      default: 'transparent'
+    },
+    /**
      * Displays arrows if tab items overflow container.
      */
     showArrows: {
@@ -142,6 +158,7 @@ export default {
   },
   mounted() {
     this.onTab = this.activeTab;
+    console.error("background", this.background)
   },
   watch: {
     activeTab(newVal) {

@@ -111,7 +111,7 @@ export const MEWInput = () => ({
       default: text('buy-more-str', ''),
     },
     maxBtnObj: {
-      default: object('max-btn-obj', {}),
+      default: object('max-btn-obj', maxBtnObj),
     },
     hidePasswordIcon: {
       default: boolean('hide-password-icon', false)

@@ -33,6 +33,7 @@ import MewSheet from './components/MewSheet/MewSheet.vue';
 import MewTextArea from './components/MewTextArea/MewTextArea.vue';
 import MewSearch from './components/MewSearch/MewSearch.vue';
 import MewDropdown from './components/MewDropdown/MewDropdown.vue';
+import MewAlert from './components/MewAlert/MewAlert.vue';
 
 // import Vue from 'vue';
 // import wrap from '@vue/web-component-wrapper';
@@ -76,7 +77,8 @@ const Components = {
   MewSheet,
   MewTextArea,
   MewSearch,
-  MewDropdown
+  MewDropdown,
+  MewAlert
 };
 
 // Declare install function executed by Vue.use()

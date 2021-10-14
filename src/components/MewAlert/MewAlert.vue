@@ -223,7 +223,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// MEW ALERT STYLES
+/**
+  * MEW ALERT STYLES
+  */
 .mew-alert {
   border-radius: 8px;
   box-shadow: 0px 1.6px 6px rgba(90, 103, 138, 0.6) !important;

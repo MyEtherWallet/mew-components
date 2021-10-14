@@ -1,4 +1,4 @@
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+import { withKnobs, object, text, boolean } from '@storybook/addon-knobs';
 import MewSearch from '@/components/MewSearch/MewSearch.vue';
 
 export default {
@@ -8,6 +8,11 @@ export default {
   },
   decorators: [withKnobs]
 };
+
+const menuSelect = {
+  label: 'Extensions',
+  items: [ { name: '.crypto', value: '.crypto' }]
+}
 
 export const MEWSearch = () => ({
   components: { MewSearch },
@@ -22,16 +27,22 @@ export const MEWSearch = () => ({
       default: text('value', '')
     },
     isSearchBlock: {
-      default: boolean('is-search-block', false)
+      default: boolean('is-search-block', true)
     },
-    hasMenuSelect: {
-      default: boolean('has-menu-select', true)
+    menuSelect: {
+      default: object('menu-select', menuSelect)
     },
     isCompact: {
-      default: boolean('is-compact', true)
+      default: boolean('is-compact', false)
+    },
+    isFilled: {
+      default: boolean('is-filled', true)
     },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
+    },
+    errorMessages: {
+      default: text('error-messages', '')
     }
   },
   watch: {
@@ -39,10 +50,15 @@ export const MEWSearch = () => ({
       this.$vuetify.theme.dark = newVal === true ? true : false;
     }
   },
+  methods: {
+    onSearch() {
+      console.log('search button clicked')
+    }
+  },
   template: `
     <div>
     <br />
-    <mew-search :is-compact="isCompact" :has-menu-select="hasMenuSelect" :is-search-block="isSearchBlock" :disabled="disabled" :placeholder="placeholder" :value="value"
+    <mew-search :on-search="onSearch" :is-filled="isFilled" :error-messages="errorMessages" :is-compact="isCompact" :menu-select="menuSelect" :is-search-block="isSearchBlock" :disabled="disabled" :placeholder="placeholder" :value="value"
     />
   </div>`
 });

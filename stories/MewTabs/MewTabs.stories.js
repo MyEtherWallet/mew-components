@@ -2,7 +2,8 @@ import {
   withKnobs,
   boolean,
   object,
-  number
+  number,
+  text
 } from '@storybook/addon-knobs';
 import MewTabs from '@/components/MewTabs/MewTabs.vue';
 
@@ -45,6 +46,12 @@ export const MEWTabs = () => ({
     },
     showArrows: {
       default: boolean('show-arrows', false)
+    },
+    activeColor: {
+      default: text('active-color', 'titlePrimary')
+    },
+    background: {
+      default: text('background', 'transparent')
     }
   },
   watch: {
@@ -56,6 +63,8 @@ export const MEWTabs = () => ({
     <div>
     <br />
     <mew-tabs
+      :active-color="activeColor"
+      :background="background"
       :show-arrows="showArrows"
       :is-vertical="isVertical"
       :has-underline="hasUnderline"

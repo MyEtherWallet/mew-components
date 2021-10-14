@@ -162,7 +162,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// MEW EXPAND STYLES
+/**
+  *  MEW EXPAND STYLES
+  */
 .mew-expand-panel {
   // grey theme + split panels border styles
   &.split-panels {
