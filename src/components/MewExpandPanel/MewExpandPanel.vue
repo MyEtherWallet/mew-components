@@ -45,7 +45,7 @@
           slot="actions"
           class="d-flex align-center justify-center"
         >
-          <span class="titleSecondary--text mew-body mr-5 text-right">{{ item.toggleTitle }}</span>
+          <span :class="['mew-body mr-5 text-right', isGreyTheme ? 'titlePrimary' : 'textMedium']">{{ item.toggleTitle }}</span>
           <!--
   =====================================================================================
     Chevron icon to toggle expand

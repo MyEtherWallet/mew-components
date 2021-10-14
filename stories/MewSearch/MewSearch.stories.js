@@ -1,4 +1,4 @@
-import { withKnobs, number, text, boolean, array, optionsKnob } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import MewSearch from '@/components/MewSearch/MewSearch.vue';
 
 export default {
@@ -24,6 +24,12 @@ export const MEWSearch = () => ({
     isSearchBlock: {
       default: boolean('is-search-block', false)
     },
+    hasMenuSelect: {
+      default: boolean('has-menu-select', true)
+    },
+    isCompact: {
+      default: boolean('is-compact', true)
+    },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     }
@@ -36,7 +42,7 @@ export const MEWSearch = () => ({
   template: `
     <div>
     <br />
-    <mew-search :is-search-block="isSearchBlock" :disabled="disabled" :placeholder="placeholder" :value="value"
+    <mew-search :is-compact="isCompact" :has-menu-select="hasMenuSelect" :is-search-block="isSearchBlock" :disabled="disabled" :placeholder="placeholder" :value="value"
     />
   </div>`
 });

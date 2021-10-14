@@ -195,7 +195,7 @@ export default {
     buttonColor() {
       // SECONDARY COLORS
       if (this.isLight && this.isSecondaryTheme) {
-        return 'rgba(90, 120, 240, 0.08)';
+        return 'blueLight';
       }
 
       if (this.isSecondaryTheme) {
@@ -204,14 +204,22 @@ export default {
 
       // ERROR COLORS
       if (this.isLight && this.isErrorTheme) {
-        return 'rgba(255, 68, 91, 0.08)';
+        return 'redLight';
       }
 
+<<<<<<< Updated upstream
       // PRIMARY COLORS
+=======
+      if (this.isLight && this.isBasicTheme) {
+        return 'greyLight'
+      }
+  
+>>>>>>> Stashed changes
       if (this.isPrimaryTheme && this.isLight) {
-        return 'emerald100'
+        return 'greenLight'
       }
 
+<<<<<<< Updated upstream
       // BASIC THEME COLORS
       if (this.isBasicTheme && this.hasOutline) {
         return 'greyPrimary';
@@ -223,6 +231,14 @@ export default {
 
       if (this.isBasicTheme) {
         return 'greyPrimary';
+=======
+      if (this.isSecondaryTheme) {
+        return 'bluePrimary';
+      }
+
+      if (this.isBasicTheme) {
+        return 'greyPrimary'
+>>>>>>> Stashed changes
       }
 
       return this.colorTheme;
@@ -245,18 +261,22 @@ export default {
       // adds correct button color text
       if (!this.disabled) {
         if (this.isPrimaryTheme && this.isLight) {
-          classes.push('primary--text');
+          classes.push('greenPrimary--text');
         }
 
         if (this.isErrorTheme && this.isLight) {
-          classes.push('error--text');
+          classes.push('redPrimary--text');
         }
 
         if (this.isSecondaryTheme && this.isLight) {
-          classes.push('blue500--text');
+          classes.push('bluePrimary--text');
         }
 
+<<<<<<< Updated upstream
         if (this.isBasicTheme  && this.isLight || this.isBasicTheme && this.hasOutline) {
+=======
+        if (this.isBasicTheme  && this.isLight) {
+>>>>>>> Stashed changes
           classes.push('greyPrimary--text');
         }
       }
@@ -269,8 +289,8 @@ export default {
 
       // adds class for disabled btns (btn style: light and background)
       if (this.disabled && this.isLight) {
-        if (this.isLight) classes.push('disabled-light')
-        if (this.isBackground) classes.push('disabled-bg')
+        if (this.isLight) classes.push('disabledLight')
+        if (this.isBackground) classes.push('disabledPrimary white--text')
 
       }
 
@@ -437,7 +457,7 @@ export default {
 
   // btn style: light
     &.error--text.btn-light:hover {
-      background: linear-gradient(0deg, rgba(255, 68, 91, 0.08), rgba(255, 68, 91, 0.08)), rgba(255, 68, 91, 0.08) !important;
+      background: rgba(255, 68, 91, 0.08) !important;
     }
     
     &.error--text.btn-light:active {
