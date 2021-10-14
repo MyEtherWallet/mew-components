@@ -193,28 +193,36 @@ export default {
      * @returns button color based on color theme and btn style props.
      */
     buttonColor() {
+      // SECONDARY COLORS
       if (this.isLight && this.isSecondaryTheme) {
         return 'rgba(90, 120, 240, 0.08)';
-      }
-
-      if (this.isLight && this.isErrorTheme) {
-        return 'rgba(255, 68, 91, 0.08)';
-      }
-
-      if (this.isLight && this.isBasicTheme) {
-        return '#F0F3F9'
-      }
-  
-      if (this.isPrimaryTheme && this.isLight) {
-        return 'emerald100'
       }
 
       if (this.isSecondaryTheme) {
         return 'blue500';
       }
 
+      // ERROR COLORS
+      if (this.isLight && this.isErrorTheme) {
+        return 'rgba(255, 68, 91, 0.08)';
+      }
+
+      // PRIMARY COLORS
+      if (this.isPrimaryTheme && this.isLight) {
+        return 'emerald100'
+      }
+
+      // BASIC THEME COLORS
+      if (this.isBasicTheme && this.hasOutline) {
+        return 'greyPrimary';
+      }
+
+      if (this.isBasicTheme && this.isLight) {
+        return 'greyLight'
+      }
+
       if (this.isBasicTheme) {
-        return 'textPrimary'
+        return 'greyPrimary';
       }
 
       return this.colorTheme;
@@ -248,8 +256,8 @@ export default {
           classes.push('blue500--text');
         }
 
-        if (this.isBasicTheme  && this.isLight) {
-          classes.push('textPrimary--text');
+        if (this.isBasicTheme  && this.isLight || this.isBasicTheme && this.hasOutline) {
+          classes.push('greyPrimary--text');
         }
       }
       // adds white text for all default backgrounds
@@ -385,34 +393,37 @@ export default {
     }
   
 
-  // BASIC COLOR THEME - active & hover states
+  // BASIC COLOR THEME - outline theme + active & hover states
   // btn style: default background
-    &.textPrimary.btn-background.white--text:hover {
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #687699 !important;
+    &.greyPrimary.btn-background.white--text:hover {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #5A678A  !important;
     }
     
-    &.textPrimary.btn-background.white--text:active {
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #687699 !important;
+    &.greyPrimary.btn-background.white--text:active {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #5A678A !important;
     }
 
   // btn style: light
-    &.textPrimary--text.btn-light:hover {
-      background: linear-gradient(0deg, rgba(104, 118, 153, 0.08), rgba(104, 118, 153, 0.08)), #F0F3F9 !important;
+    &.greyPrimary--text.btn-light:hover {
+      background: linear-gradient(0deg, rgba(123, 133, 161, 0.08), rgba(123, 133, 161, 0.08)), #F2F3F6 !important;
     }
     
-    &.textPrimary--text.btn-light:active {
-      background: linear-gradient(0deg, rgba(104, 118, 153, 0.2), rgba(104, 118, 153, 0.2)), #F0F3F9 !important;
+    &.greyPrimary--text.btn-light:active {
+      background: var(--v-greyMedium-base) !important;
     }
 
 
   // btn style: outline, transparent 
+    &.greyPrimary--text.btn-outline {
+      border: thin solid var(--v-greyMedium-base);
+    }
     &.textPrimary--text.btn-outline:hover, &.textPrimary--text.btn-transparent:hover {
       background: linear-gradient(0deg, rgba(104, 118, 153, 0.08), rgba(104, 118, 153, 0.08)), #F0F3F9 !important;
     }
     
     &.textPrimary--text.btn-outline:active, &.textPrimary--text.btn-transparent:active {
       background: linear-gradient(0deg, rgba(104, 118, 153, 0.2), rgba(104, 118, 153, 0.2)), #F0F3F9 !important;
-    }
+    } 
 
   // ERROR COLOR THEME - active & hover states
   // btn style: default background
