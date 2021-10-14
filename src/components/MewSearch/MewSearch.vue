@@ -113,7 +113,7 @@ export default {
 /**
   * Mew Search
   * using global styles to override vuetify
-  * TODO: probably not everything has to be global so move some styles under scoped
+  * TODO: probably not everything has to be global so move the correct styles under scoped
   */
   .mew-search {
   /**
