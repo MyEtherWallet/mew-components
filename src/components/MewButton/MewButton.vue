@@ -179,12 +179,28 @@ export default {
      * @returns the process circular loading color.
      */
     loadingColor() {
+      if (!this.disabled && this.isLight && this.isPrimaryTheme) {
+        return 'greenPrimary'
+      }
+
+      if (!this.disabled && this.isLight && this.isSecondaryTheme) {
+        return 'bluePrimary'
+      }
+
+      if (!this.disabled && this.isLight && this.isErrorTheme) {
+        return 'redPrimary'
+      }
+
+      if (!this.disabled && this.isLight && this.isBasicTheme) {
+        return 'greyPrimary'
+      }
+
       if (!this.disabled && !this.isBackground) {
         return this.buttonColor
       }
 
       if (this.disabled && !this.isBackground) {
-        return 'disabled'
+        return 'disabledPrimary'
       }
 
       return 'white'
@@ -195,29 +211,37 @@ export default {
     buttonColor() {
       // SECONDARY COLORS
       if (this.isLight && this.isSecondaryTheme) {
-        return 'blueLight';
+        return 'rgba(75, 128, 233, 0.08)';
       }
 
       if (this.isSecondaryTheme) {
-        return 'blue500';
+        return 'bluePrimary';
       }
 
       // ERROR COLORS
       if (this.isLight && this.isErrorTheme) {
-        return 'redLight';
+        return 'rgba(255, 68, 91, 0.08)';
+      }
+
+      if (this.isErrorTheme) {
+        return 'redPrimary';
       }
 
       // PRIMARY COLORS
       if (this.isPrimaryTheme && this.isLight) {
-        return 'greenLight'
+        return 'backgroundOverlay';
+      }
+
+      if (this.isPrimaryTheme) {
+        return 'greenPrimary';
       }
 
       // BASIC THEME COLORS
       if (this.isBasicTheme && this.isLight) {
-        return 'greyLight'
+        return 'greyLight';
       }
 
-      if (this.isBasicTheme && this.hasOutline || this.isBasicTheme) {
+      if (this.isBasicTheme) {
         return 'greyPrimary';
       }
 
@@ -252,7 +276,7 @@ export default {
           classes.push('bluePrimary--text');
         }
 
-        if (this.isBasicTheme  && this.isLight || this.isBasicTheme && this.hasOutline) {
+        if (this.isBasicTheme  && this.isLight) {
           classes.push('greyPrimary--text');
         }
       }
@@ -263,11 +287,9 @@ export default {
         classes.push('white--text');
       }
 
-      // adds class for disabled btns (btn style: light and background)
-      if (this.disabled && this.isLight) {
-        if (this.isLight) classes.push('disabledLight')
-        if (this.isBackground) classes.push('disabledPrimary white--text')
-
+      // adds class for disabled and btn style
+      if (this.disabled) {
+        classes.push('disabled-' + this.btnStyle.toLowerCase())
       }
 
       // adds class for btn style
@@ -327,70 +349,63 @@ export default {
       height: 62px;
       padding: 0 46px;
     }
-  
-  // PRIMARY COLOR THEME - active & hover states
-  // btn style: default background 
-    &.primary.btn-background.white--text:hover {
+
+  /**
+    * PRIMARY COLOR THEME 
+    */
+  // btn style: default background - active & hover states
+    &.greenPrimary.btn-background.white--text:hover {
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #05C0A5 !important;
     }
     
-    &.primary.btn-background.white--text:active {
+    &.greenPrimary.btn-background.white--text:active {
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #05C0A5 !important;
     }
 
-
-  // btn style: light
-    &.primary--text.btn-light:hover {
-      background: linear-gradient(0deg, rgba(5, 192, 165, 0.08), rgba(5, 192, 165, 0.08)), #F2FAFA !important;
+  // btn style: outline, transparent, light - active & hover states
+    &.greenPrimary--text.btn-light:hover, &.greenPrimary--text.btn-outline:hover, &.greenPrimary--text.btn-transparent:hover {
+      background: var(--v-greenLight-base) !important;
     }
     
-    &.primary--text.btn-light:active {
-      background: linear-gradient(0deg, rgba(5, 192, 165, 0.2), rgba(5, 192, 165, 0.2)), #F2FAFA !important;
+    &.greenPrimary--text.btn-light:active, &.greenPrimary--text.btn-outline:active, &.greenPrimary--text.btn-transparent:active {
+      background: var(--v-greenMedium-base) !important;
     }
 
+  //  btn style: outline, border color
+    &.greenPrimary--text.btn-outline {
+      border: thin solid var(--v-greenMedium-base);
+    }
 
-  // btn style: outline, transparent 
-    &.primary--text.btn-outline:hover, &.primary--text.btn-transparent:hover {
-      background: rgba(5, 192, 165, 0.08) !important;
+  /**
+    * SECONDARY COLOR THEME 
+    */
+  // btn style: default background - active & hover states
+    &.bluePrimary.btn-background.white--text:hover {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #4B83E8 !important;
     }
     
-    &.primary--text.btn-outline:active, &.primary--text.btn-transparent:active {
-      background: rgba(5, 192, 165, 0.2) !important;
+    &.bluePrimary.btn-background.white--text:active {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #4B83E8 !important;
     }
 
-
-  // SECONDARY COLOR THEME - active & hover states
-  // btn style: default background
-    &.blue500.btn-background.white--text:hover {
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #5A78F0 !important;
-    }
-    
-    &.blue500.btn-background.white--text:active {
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #5A78F0 !important;
+  // btn style: light, outline, transparent - active & hover states
+    &.bluePrimary--text.btn-light:active, &.bluePrimary--text.btn-outline:active, &.bluePrimary--text.btn-transparent:active  {
+      background: var(--v-blueMedium-base) !important;
     }
 
-      // btn style: light
-    &.blue500--text.btn-light:hover {
-      background: linear-gradient(0deg, rgba(90, 120, 240, 0.08), rgba(90, 120, 240, 0.08)), rgba(90, 120, 240, 0.08) !important;
-    }
-    
-    &.blue500--text.btn-light:active {
-      background: linear-gradient(0deg, rgba(90, 120, 240, 0.2), rgba(90, 120, 240, 0.2)), rgba(90, 120, 240, 0.08) !important;
+   &.bluePrimary--text.btn-light:hover,  &.bluePrimary--text.btn-outline:hover, &.bluePrimary--text.btn-transparent:hover {
+      background:  var(--v-blueLight-base) !important;
     }
 
-
-  // btn style: outline, transparent 
-    &.blue500--text.btn-outline:hover, &.blue500--text.btn-transparent:hover {
-      background: rgba(90, 120, 240, 0.08) !important;
-    }
-    
-    &.blue500--text.btn-outline:active, &.blue500--text.btn-transparent:active {
-      background: rgba(90, 120, 240, 0.2) !important;
+  //  btn style: outline, border color
+    &.bluePrimary--text.btn-outline {
+      border: thin solid var(--v-blueMedium-base);
     }
   
-
-  // BASIC COLOR THEME - outline theme + active & hover states
-  // btn style: default background
+  /**
+    * BASIC COLOR THEME 
+    */
+  // btn style: default background  - active & hover states
     &.greyPrimary.btn-background.white--text:hover {
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #5A678A  !important;
     }
@@ -399,65 +414,68 @@ export default {
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #5A678A !important;
     }
 
-  // btn style: light
-    &.greyPrimary--text.btn-light:hover {
-      background: linear-gradient(0deg, rgba(123, 133, 161, 0.08), rgba(123, 133, 161, 0.08)), #F2F3F6 !important;
+  // btn style: outline, light, transparent - active & hover state
+    &.greyPrimary--text.btn-light:hover, &.greyPrimary--text.btn-outline:hover, &.greyPrimary--text.btn-transparent:hover {
+      background: var(--v-greyLight-base) !important;
     }
-    
-    &.greyPrimary--text.btn-light:active {
+
+    &.greyPrimary--text.btn-light:active, &.greyPrimary--text.btn-outline:active, &.greyPrimary--text.btn-transparent:active {
       background: var(--v-greyMedium-base) !important;
-    }
+    } 
 
-
-  // btn style: outline, transparent 
+  //  btn style: outline, border color
     &.greyPrimary--text.btn-outline {
       border: thin solid var(--v-greyMedium-base);
     }
-    &.textPrimary--text.btn-outline:hover, &.textPrimary--text.btn-transparent:hover {
-      background: linear-gradient(0deg, rgba(104, 118, 153, 0.08), rgba(104, 118, 153, 0.08)), #F0F3F9 !important;
-    }
-    
-    &.textPrimary--text.btn-outline:active, &.textPrimary--text.btn-transparent:active {
-      background: linear-gradient(0deg, rgba(104, 118, 153, 0.2), rgba(104, 118, 153, 0.2)), #F0F3F9 !important;
-    } 
+  
 
-  // ERROR COLOR THEME - active & hover states
-  // btn style: default background
-    &.error.btn-background.white--text:hover {
+  /**
+    * ERROR COLOR THEME 
+    */
+  // btn style: default background - active & hover states
+    &.redPrimary.btn-background.white--text:hover {
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #FF445B !important;
     }
     
-    &.error.btn-background.white--text:active {
+    &.redPrimary.btn-background.white--text:active {
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #FF445B !important;
     }
 
-  // btn style: light
-    &.error--text.btn-light:hover {
-      background: rgba(255, 68, 91, 0.08) !important;
+  // btn style: light, outline, transparent - active & hover states
+    &.redPrimary--text.btn-light:hover, &.redPrimary--text.btn-outline:hover, &.redPrimary--text.btn-transparent:hover {
+      background: var(--v-redLight-base) !important;
     }
     
-    &.error--text.btn-light:active {
-      background: linear-gradient(0deg, rgba(255, 68, 91, 0.2), rgba(255, 68, 91, 0.2)), rgba(255, 68, 91, 0.08) !important;
+    &.redPrimary--text.btn-light:active, &.redPrimary--text.btn-outline:active, &.redPrimary--text.btn-transparent:active {
+      background: var(--v-redMedium-base) !important;
     }
 
-  // btn style: outline, transparent 
-    &.error--text.btn-outline:hover, &.error--text.btn-transparent:hover {
-      background: linear-gradient(0deg, rgba(255, 68, 91, 0.08), rgba(255, 68, 91, 0.08)), rgba(255, 68, 91, 0.08) !important;
+  // btn style: outline, border color
+    &.redPrimary--text.btn-outline {
+      border: thin solid var(--v-redMedium-base);
     }
-    
-    &.error--text.btn-outline:active, &.error--text.btn-transparent:active {
-      background: linear-gradient(0deg, rgba(255, 68, 91, 0.2), rgba(255, 68, 91, 0.2)), rgba(255, 68, 91, 0.08) !important;
-    }
+  
 
-   // DISABLED THEME 
+  /**
+    * DISABLED THEME
+    */
+   // btn style: outline
+   &.disabled-outline {
+     border: thin solid var(--v-disabledPrimary-base);
+     color: var(--v-disabledPrimary-base) !important;
+   }
+   // btn style: transparent
+   &.disabled-transparent {
+     color: var(--v-disabledPrimary-base) !important;
+   }
    // btn style: light
    &.disabled-light {
-     background-color: var(--v-tableHeader-base) !important;
-     color: var(--v-disabled-base) !important;
+     background-color: var(--v-disabledLight-base) !important;
+     color: var(--v-disabledPrimary-base) !important;
    }
-   // btn style: bg
-   &.disabled-bg {
-     background-color: var(--v-disabled-base) !important;
+   // btn style: default bg
+   &.disabled-background {
+     background-color: var(--v-disabledMedium-base) !important;
      color: var(--v-white-base) !important;
    }
   }
