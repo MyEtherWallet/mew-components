@@ -369,12 +369,7 @@ export default {
     &.greenPrimary--text.btn-light:active, &.greenPrimary--text.btn-outline:active, &.greenPrimary--text.btn-transparent:active {
       background: var(--v-greenMedium-base) !important;
     }
-
-  //  btn style: outline, border color
-    &.greenPrimary--text.btn-outline {
-      border: thin solid var(--v-greenMedium-base);
-    }
-
+    
   /**
     * SECONDARY COLOR THEME 
     */
@@ -396,11 +391,6 @@ export default {
       background:  var(--v-blueLight-base) !important;
     }
 
-  //  btn style: outline, border color
-    &.bluePrimary--text.btn-outline {
-      border: thin solid var(--v-blueMedium-base);
-    }
-  
   /**
     * BASIC COLOR THEME 
     */
@@ -422,12 +412,6 @@ export default {
       background: var(--v-greyMedium-base) !important;
     } 
 
-  //  btn style: outline, border color
-    &.greyPrimary--text.btn-outline {
-      border: thin solid var(--v-greyMedium-base);
-    }
-  
-
   /**
     * ERROR COLOR THEME 
     */
@@ -448,12 +432,6 @@ export default {
     &.redPrimary--text.btn-light:active, &.redPrimary--text.btn-outline:active, &.redPrimary--text.btn-transparent:active {
       background: var(--v-redMedium-base) !important;
     }
-
-  // btn style: outline, border color
-    &.redPrimary--text.btn-outline {
-      border: thin solid var(--v-redMedium-base);
-    }
-  
 
   /**
     * DISABLED THEME
