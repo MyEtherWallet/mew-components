@@ -44,27 +44,27 @@
         :label="menuSelect.label"
         class="mew-search-menu-select ma-0 pt-0"
       />
+        <!--
+  =====================================================================================
+    Click to search Button
+  =====================================================================================
+  -->
+        <v-btn
+          v-if="isSearchBlock"
+          :disabled="errorMessages.length > 0"
+          :height="searchHeight"
+          @click="onSearch"
+          width="64"
+          depressed
+          class="search-btn ml-10"
+          color="primary"
+        >
+          <v-icon color="white">
+            mdi-magnify
+          </v-icon>
+        </v-btn>
     </template>
     <template v-slot:append-outer>
-      <!--
-=====================================================================================
-  Click to search Button
-=====================================================================================
--->
-      <v-btn
-        v-if="isSearchBlock"
-        :disabled="errorMessages.length > 0"
-        :height="searchHeight"
-        @click="onSearch"
-        width="64"
-        depressed
-        class="search-btn"
-        color="primary"
-      >
-        <v-icon color="white">
-          mdi-magnify
-        </v-icon>
-      </v-btn>
     </template>
   </v-text-field>
 </template>
@@ -224,8 +224,9 @@ export default {
     */
     &.search-block {
       .v-input__slot {
-        border-radius: 10px 0px 0px 10px; 
+        border-radius: 10px; 
         min-height: 46px;
+        padding-right: 0 !important;
       }
       &.v-text-field {
         &.v-text-field--outlined fieldset {
@@ -239,22 +240,20 @@ export default {
           }
           &.v-input--is-focused fieldset {
             border: 2px solid var(--v-greenPrimary-base);
-            border-right: none;
           }
           &.error--text fieldset {
             border: 2px solid var(--v-redPrimary-base);
-            border-right: none;
           }
         }
         // for error border colors
         &.error--text {
-          fieldset {
-            border-right: none;
-          }
+          // fieldset {
+          //   border-right: none;
+          // }
           .v-input__append-outer {
             .search-btn {
               border: 2px solid var(--v-redPrimary-base) !important;
-              border-left: none !important;
+              // border-left: none !important;
             }
           }
         }
@@ -392,15 +391,13 @@ export default {
   /**
     * CLICK TO SEARCH BTN STYLE
     */ 
-    .v-input__append-outer {
+    .v-input__append-inner {
       border-radius: 0px 10px 10px 0px; 
       margin: 0 !important;
       .search-btn {
         border-radius: 0px 10px 10px 0px; 
-        box-shadow: 0px 2px 8px rgba(90, 103, 138, 0.48);
         &.v-btn--disabled {
           background-color: var(--v-disabledPrimary-base) !important;
-          box-shadow: none;
           .v-icon {
             color: var(--v-white-base) !important;
           }
@@ -410,7 +407,6 @@ export default {
     // removes box shadow for search btn
     &.search-filled {
       .search-btn {
-        box-shadow: none;
       }
     }
   }
