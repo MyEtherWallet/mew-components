@@ -13,7 +13,7 @@
     color="primary"
     :error-messages="errorMessages"
     v-model="inputValue"
-    prepend-inner-icon="mdi-magnify"
+    :prepend-inner-icon="isSearchBlock ? '' : 'mdi-magnify'"
     clearable
     :height="searchHeight"
     :solo="isSearchBlock"
@@ -53,6 +53,7 @@
 -->
       <v-btn
         v-if="isSearchBlock"
+        :disabled="errorMessages.length > 0"
         :height="searchHeight"
         @click="onSearch"
         width="64"
@@ -228,7 +229,7 @@ export default {
       }
       &.v-text-field {
         &.v-text-field--outlined fieldset {
-          box-shadow: 0px 2px 8px rgba(90, 103, 138, 0.48), 0px 5px 18px rgba(90, 103, 138, 0.24);
+          box-shadow: 0px 2px 8px rgba(90, 103, 138, 0.48);
         }
         // for search filled borders
         &.search-filled {
@@ -298,21 +299,27 @@ export default {
     * SEARCH ICON
     */
     &.search-standard {
-      .mdi-magnify {
-        margin-top: 5px;  
+      .v-input__prepend-inner {
+        .mdi-magnify {
+          margin-top: 5px;  
+        }
       }
       // icon height changes when not compact so have to adjust accordingly
       &.search-large {
-        .mdi-magnify {
-          margin-top: 30px;
+       .v-input__prepend-inner {
+          .mdi-magnify {
+            margin-top: 30px;
+          }
         }
       }
     }
-    // search colors
-    .mdi-magnify {
-      color: var(--v-textMedium-base) !important;
-      &.primary--text, &.error--text {
+    .v-input__prepend-inner {
+      // search colors
+      .mdi-magnify {
         color: var(--v-textMedium-base) !important;
+        &.primary--text, &.error--text {
+          color: var(--v-textMedium-base) !important;
+        }
       }
     }
   /**
@@ -384,13 +391,26 @@ export default {
     }
   /**
     * CLICK TO SEARCH BTN STYLE
-    */
-
+    */ 
     .v-input__append-outer {
       border-radius: 0px 10px 10px 0px; 
       margin: 0 !important;
       .search-btn {
         border-radius: 0px 10px 10px 0px; 
+        box-shadow: 0px 2px 8px rgba(90, 103, 138, 0.48);
+        &.v-btn--disabled {
+          background-color: var(--v-disabledPrimary-base) !important;
+          box-shadow: none;
+          .v-icon {
+            color: var(--v-white-base) !important;
+          }
+        }
+      }
+    }
+    // removes box shadow for search btn
+    &.search-filled {
+      .search-btn {
+        box-shadow: none;
       }
     }
   }

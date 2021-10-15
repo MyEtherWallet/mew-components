@@ -9,7 +9,6 @@
     colored-border
     :color="alertColor"
     border="left"
-    min-height="100%"
     :icon="alertIcon"
     dismissible
   > 
@@ -199,7 +198,7 @@ export default {
      * @returns specific mew alert classes. Used for styling.
      */
     alertClasses() {
-      const classes = ['mew-alert'];
+      const classes = ['mew-alert mb-0'];
       if (this.hasWhiteBackground) {
         classes.push('white');
       }
