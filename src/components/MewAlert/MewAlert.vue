@@ -5,7 +5,7 @@
   =====================================================================================
   -->
   <v-alert
-    :class="[alertClasses, hideAlertIcon ? 'pl-7 py-4 pr-5' : '']"
+    :class="[alertClasses, hideAlertIcon ? 'pl-7' : 'pl-4', 'py-3 pr-5']"
     colored-border
     :color="alertColor"
     border="left"
@@ -17,7 +17,7 @@
    Title + Description + LinkObject
   =====================================================================================
   -->
-    <div :class="['pr-5', hideAlertIcon ? 'pl-5' : 'pl-1']">
+    <div :class="[hideAlertIcon ? '' : 'pl-1']">
       <span v-if="title" class="mew-body font-weight-bold textDark--text">{{
         title
       }}</span>
@@ -45,8 +45,8 @@
   =====================================================================================
   -->
     <template v-slot:close="{ toggle }">
-      <v-btn v-if="!hideCloseIcon" class="pa-1 close-btn" @click="toggle" icon>
-        <v-icon :color="alertColor" small>
+      <v-btn v-if="!hideCloseIcon" class="close-btn" @click="toggle" icon>
+        <v-icon :color="alertColor" size="16" class="pa-1">
           mdi-close
         </v-icon>
       </v-btn>
