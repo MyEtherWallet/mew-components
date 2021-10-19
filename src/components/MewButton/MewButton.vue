@@ -7,7 +7,7 @@
   <v-btn
     :target="btnLink ? '_blank' : ''"
     :href="btnLink"
-    :class="[ buttonClasses, 'mew-button' ]"
+    :class="[buttonClasses, 'mew-button']"
     :color="buttonColor"
     :disabled="disabled"
     depressed
@@ -33,7 +33,7 @@
     <div
       class="d-flex justify-center align-center"
       v-if="!loading"
-    >  
+    >
       <!--
   =====================================================================================
    Button text (if no title prop is passed, then slot should be used)
@@ -54,7 +54,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'MewButton',
   props: {
@@ -63,30 +62,30 @@ export default {
      */
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Button size: small, medium, large, xlarge.
      */
     btnSize: {
       type: String,
-      default: 'large'
+      default: 'large',
     },
     /**
      * Sets the button to have 100% width.
      */
     hasFullWidth: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Applies the button style: background, light, transparent, or outline.
-     * If nothing is passed then the button will be the 
+     * If nothing is passed then the button will be the
      * default standard background color theme.
      */
     btnStyle: {
       type: String,
-      default: 'background'
+      default: 'background',
     },
     /**
      * The text that will go in the center of the button.
@@ -94,59 +93,59 @@ export default {
      */
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Applies the button color theme: primary, secondary, basic, error
      */
     colorTheme: {
       type: String,
-      default: 'primary'
+      default: 'primary',
     },
     /**
      * Removes the ability to click or target the component.
      */
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
-     * Opens up a new page with the link. 
+     * Opens up a new page with the link.
      */
     btnLink: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   data() {
     return {
-    /**
-     * all color theme options
-     */
+      /**
+       * all color theme options
+       */
       colorThemes: {
         secondary: 'secondary',
         primary: 'primary',
         basic: 'basic',
-        error: 'error'
+        error: 'error',
       },
-    /**
-     * all btn style options
-     */
+      /**
+       * all btn style options
+       */
       btnStyles: {
         light: 'light',
         transparent: 'transparent',
         outline: 'outline',
-        background: 'background'
+        background: 'background',
       },
-    /**
-     * all btn sizes options
-     */
+      /**
+       * all btn sizes options
+       */
       btnSizes: {
         small: 'small',
         medium: 'medium',
         large: 'large',
-        xlarge: 'xlarge'
-      }
+        xlarge: 'xlarge',
+      },
     };
   },
   computed: {
@@ -179,30 +178,30 @@ export default {
      */
     loadingColor() {
       if (!this.disabled && this.isLight && this.isPrimaryTheme) {
-        return 'greenPrimary'
+        return 'greenPrimary';
       }
 
       if (!this.disabled && this.isLight && this.isSecondaryTheme) {
-        return 'bluePrimary'
+        return 'bluePrimary';
       }
 
       if (!this.disabled && this.isLight && this.isErrorTheme) {
-        return 'redPrimary'
+        return 'redPrimary';
       }
 
       if (!this.disabled && this.isLight && this.isBasicTheme) {
-        return 'greyPrimary'
+        return 'greyPrimary';
       }
 
       if (!this.disabled && !this.isBackground) {
-        return this.buttonColor
+        return this.buttonColor;
       }
 
       if (this.disabled && !this.isBackground) {
-        return 'disabledPrimary'
+        return 'disabledPrimary';
       }
 
-      return 'white'
+      return 'white';
     },
     /**
      * @returns button color based on color theme and btn style props.
@@ -251,13 +250,13 @@ export default {
      */
     buttonClasses() {
       const classes = [];
-      // adds btn size 
+      // adds btn size
       if (this.btnSize.toLowerCase()) {
-        classes.push(this.btnSize.toLowerCase() + '-btn' );
+        classes.push(this.btnSize.toLowerCase() + '-btn');
       }
 
-      // adds 100% full width 
-      if (this.hasFullWidth === true ) {
+      // adds 100% full width
+      if (this.hasFullWidth === true) {
         classes.push('full-width');
       }
 
@@ -275,25 +274,23 @@ export default {
           classes.push('bluePrimary--text');
         }
 
-        if (this.isBasicTheme  && this.isLight) {
+        if (this.isBasicTheme && this.isLight) {
           classes.push('greyPrimary--text');
         }
       }
       // adds white text for all default backgrounds
-      if (
-        this.isBackground
-      ) {
+      if (this.isBackground) {
         classes.push('white--text');
       }
 
       // adds class for disabled and btn style
       if (this.disabled) {
-        classes.push('disabled-' + this.btnStyle.toLowerCase())
+        classes.push('disabled-' + this.btnStyle.toLowerCase());
       }
 
       // adds class for btn style
       if (this.btnStyle.toLowerCase()) {
-        classes.push('btn-' + this.btnStyle.toLowerCase())
+        classes.push('btn-' + this.btnStyle.toLowerCase());
       }
 
       return classes;
@@ -302,27 +299,27 @@ export default {
      * @returns if btn style is transparent.
      */
     isTransparent() {
-      return this.btnStyle.toLowerCase() === this.btnStyles.transparent
+      return this.btnStyle.toLowerCase() === this.btnStyles.transparent;
     },
     /**
      * @returns if btn style has an outline/border.
      */
     hasOutline() {
-      return this.btnStyle.toLowerCase() === this.btnStyles.outline
+      return this.btnStyle.toLowerCase() === this.btnStyles.outline;
     },
     /**
      * @returns if btn style is a lighter color.
      */
     isLight() {
-      return this.btnStyle.toLowerCase() === this.btnStyles.light
+      return this.btnStyle.toLowerCase() === this.btnStyles.light;
     },
     /**
      * @returns if btn style is the default background color.
      */
     isBackground() {
-      return this.btnStyle.toLowerCase() === this.btnStyles.background
-    }
-  }
+      return this.btnStyle.toLowerCase() === this.btnStyles.background;
+    },
+  },
 };
 </script>
 
@@ -337,11 +334,12 @@ export default {
     }
 
     &.medium-btn {
-      padding: 12px 32px;
+      padding: 0 20px;
     }
 
     &.large-btn {
       height: 46px;
+      padding: 0 20px;
     }
 
     &.xlarge-btn {
@@ -349,112 +347,168 @@ export default {
       padding: 0 46px;
     }
 
-  /**
+    /**
     * PRIMARY COLOR THEME 
     */
-  // btn style: default background - active & hover states
+    // btn style: default background - active & hover states
     &.greenPrimary.btn-background.white--text:hover {
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #05C0A5 !important;
-    }
-    
-    &.greenPrimary.btn-background.white--text:active {
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #05C0A5 !important;
+      background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.08)
+        ),
+        #05c0a5 !important;
     }
 
-  // btn style: outline, transparent, light - active & hover states
-    &.greenPrimary--text.btn-light:hover, &.greenPrimary--text.btn-outline:hover, &.greenPrimary--text.btn-transparent:hover {
+    &.greenPrimary.btn-background.white--text:active {
+      background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0.2)
+        ),
+        #05c0a5 !important;
+    }
+
+    // btn style: outline, transparent, light - active & hover states
+    &.greenPrimary--text.btn-light:hover,
+    &.greenPrimary--text.btn-outline:hover,
+    &.greenPrimary--text.btn-transparent:hover {
       background: var(--v-greenLight-base) !important;
     }
-    
-    &.greenPrimary--text.btn-light:active, &.greenPrimary--text.btn-outline:active, &.greenPrimary--text.btn-transparent:active {
+
+    &.greenPrimary--text.btn-light:active,
+    &.greenPrimary--text.btn-outline:active,
+    &.greenPrimary--text.btn-transparent:active {
       background: var(--v-greenMedium-base) !important;
     }
-    
-  /**
+
+    /**
     * SECONDARY COLOR THEME 
     */
-  // btn style: default background - active & hover states
+    // btn style: default background - active & hover states
     &.bluePrimary.btn-background.white--text:hover {
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #4B83E8 !important;
-    }
-    
-    &.bluePrimary.btn-background.white--text:active {
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #4B83E8 !important;
+      background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.08)
+        ),
+        #4b83e8 !important;
     }
 
-  // btn style: light, outline, transparent - active & hover states
-    &.bluePrimary--text.btn-light:active, &.bluePrimary--text.btn-outline:active, &.bluePrimary--text.btn-transparent:active  {
+    &.bluePrimary.btn-background.white--text:active {
+      background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0.2)
+        ),
+        #4b83e8 !important;
+    }
+
+    // btn style: light, outline, transparent - active & hover states
+    &.bluePrimary--text.btn-light:active,
+    &.bluePrimary--text.btn-outline:active,
+    &.bluePrimary--text.btn-transparent:active {
       background: var(--v-blueMedium-base) !important;
     }
 
-   &.bluePrimary--text.btn-light:hover,  &.bluePrimary--text.btn-outline:hover, &.bluePrimary--text.btn-transparent:hover {
-      background:  var(--v-blueLight-base) !important;
+    &.bluePrimary--text.btn-light:hover,
+    &.bluePrimary--text.btn-outline:hover,
+    &.bluePrimary--text.btn-transparent:hover {
+      background: var(--v-blueLight-base) !important;
     }
 
-  /**
+    /**
     * BASIC COLOR THEME 
     */
-  // btn style: default background  - active & hover states
+    // btn style: default background  - active & hover states
     &.greyPrimary.btn-background.white--text:hover {
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #5A678A  !important;
-    }
-    
-    &.greyPrimary.btn-background.white--text:active {
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #5A678A !important;
+      background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.08)
+        ),
+        #5a678a !important;
     }
 
-  // btn style: outline, light, transparent - active & hover state
-    &.greyPrimary--text.btn-light:hover, &.greyPrimary--text.btn-outline:hover, &.greyPrimary--text.btn-transparent:hover {
+    &.greyPrimary.btn-background.white--text:active {
+      background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0.2)
+        ),
+        #5a678a !important;
+    }
+
+    // btn style: outline, light, transparent - active & hover state
+    &.greyPrimary--text.btn-light:hover,
+    &.greyPrimary--text.btn-outline:hover,
+    &.greyPrimary--text.btn-transparent:hover {
       background: var(--v-greyLight-base) !important;
     }
 
-    &.greyPrimary--text.btn-light:active, &.greyPrimary--text.btn-outline:active, &.greyPrimary--text.btn-transparent:active {
+    &.greyPrimary--text.btn-light:active,
+    &.greyPrimary--text.btn-outline:active,
+    &.greyPrimary--text.btn-transparent:active {
       background: var(--v-greyMedium-base) !important;
-    } 
+    }
 
-  /**
+    /**
     * ERROR COLOR THEME 
     */
-  // btn style: default background - active & hover states
+    // btn style: default background - active & hover states
     &.redPrimary.btn-background.white--text:hover {
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), #FF445B !important;
-    }
-    
-    &.redPrimary.btn-background.white--text:active {
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #FF445B !important;
+      background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.08)
+        ),
+        #ff445b !important;
     }
 
-  // btn style: light, outline, transparent - active & hover states
-    &.redPrimary--text.btn-light:hover, &.redPrimary--text.btn-outline:hover, &.redPrimary--text.btn-transparent:hover {
+    &.redPrimary.btn-background.white--text:active {
+      background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0.2)
+        ),
+        #ff445b !important;
+    }
+
+    // btn style: light, outline, transparent - active & hover states
+    &.redPrimary--text.btn-light:hover,
+    &.redPrimary--text.btn-outline:hover,
+    &.redPrimary--text.btn-transparent:hover {
       background: var(--v-redLight-base) !important;
     }
-    
-    &.redPrimary--text.btn-light:active, &.redPrimary--text.btn-outline:active, &.redPrimary--text.btn-transparent:active {
+
+    &.redPrimary--text.btn-light:active,
+    &.redPrimary--text.btn-outline:active,
+    &.redPrimary--text.btn-transparent:active {
       background: var(--v-redMedium-base) !important;
     }
 
-  /**
+    /**
     * DISABLED THEME
     */
-   // btn style: outline
-   &.disabled-outline {
-     border: thin solid var(--v-disabledPrimary-base);
-     color: var(--v-disabledPrimary-base) !important;
-   }
-   // btn style: transparent
-   &.disabled-transparent {
-     color: var(--v-disabledPrimary-base) !important;
-   }
-   // btn style: light
-   &.disabled-light {
-     background-color: var(--v-disabledLight-base) !important;
-     color: var(--v-disabledPrimary-base) !important;
-   }
-   // btn style: default bg
-   &.disabled-background {
-     background-color: var(--v-disabledMedium-base) !important;
-     color: var(--v-white-base) !important;
-   }
+    // btn style: outline
+    &.disabled-outline {
+      border: thin solid var(--v-disabledPrimary-base);
+      color: var(--v-disabledPrimary-base) !important;
+    }
+    // btn style: transparent
+    &.disabled-transparent {
+      color: var(--v-disabledPrimary-base) !important;
+    }
+    // btn style: light
+    &.disabled-light {
+      background-color: var(--v-disabledLight-base) !important;
+      color: var(--v-disabledPrimary-base) !important;
+    }
+    // btn style: default bg
+    &.disabled-background {
+      background-color: var(--v-disabledMedium-base) !important;
+      color: var(--v-white-base) !important;
+    }
   }
 }
 </style>
