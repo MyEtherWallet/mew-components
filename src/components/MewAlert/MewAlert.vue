@@ -18,18 +18,23 @@
   =====================================================================================
   -->
     <div :class="[hideAlertIcon ? '' : 'pl-1']">
-      <span v-if="title" class="mew-body font-weight-bold textDark--text">{{
+      <span
+        v-if="title"
+        class="mew-body font-weight-bold textDark--text"
+      >{{
         title
       }}</span>
-      <div v-if="description" class="mew-body textDark--text">
+      <div
+        v-if="description"
+        class="mew-body textDark--text"
+      >
         {{ description }}
         <a
           v-if="linkObject"
           target="_blank"
           class="textDark--text text-decoration-underline"
           :href="linkObject.url"
-          >{{ linkObject.text }}</a
-        >
+        >{{ linkObject.text }}</a>
       </div>
       <!--
   =====================================================================================
@@ -45,8 +50,17 @@
   =====================================================================================
   -->
     <template v-slot:close="{ toggle }">
-      <v-btn v-if="!hideCloseIcon" class="close-btn" @click="toggle" icon>
-        <v-icon :color="alertColor" size="16" class="pa-1">
+      <v-btn
+        v-if="!hideCloseIcon"
+        class="close-btn"
+        @click="toggle"
+        icon
+      >
+        <v-icon
+          :color="alertColor"
+          size="16"
+          class="pa-1"
+        >
           mdi-close
         </v-icon>
       </v-btn>
@@ -56,14 +70,14 @@
 
 <script>
 export default {
-  name: "MewAlert",
+  name: 'MewAlert',
   props: {
     /**
      * Applies the theme: error, warning, success, info
      */
     theme: {
       type: String,
-      default: "info",
+      default: 'info',
     },
     /**
      * Sets a white background for the entire alert.
@@ -91,14 +105,14 @@ export default {
      */
     title: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * Adds a alert description.
      */
     description: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * Expects a link object with attributes text and url, i.e { url: 'www.myetherwallet.com', text: 'Home" }
@@ -115,10 +129,10 @@ export default {
        * all theme options
        */
       themes: {
-        error: "error",
-        warning: "warning",
-        success: "success",
-        info: "info",
+        error: 'error',
+        warning: 'warning',
+        success: 'success',
+        info: 'info',
       },
     };
   },
@@ -152,16 +166,16 @@ export default {
      */
     alertColor() {
       if (this.isWarningTheme) {
-        return "orangePrimary";
+        return 'orangePrimary';
       }
       if (this.isInfoTheme) {
-        return "bluePrimary";
+        return 'bluePrimary';
       }
       if (this.isErrorTheme) {
-        return "redPrimary";
+        return 'redPrimary';
       }
       if (this.isSuccessTheme) {
-        return "greenPrimary";
+        return 'greenPrimary';
       }
       return this.theme;
     },
@@ -173,35 +187,35 @@ export default {
         return null;
       }
       if (this.isWarningTheme) {
-        return "mdi-alert";
+        return 'mdi-alert';
       }
       if (this.isInfoTheme) {
-        return "mdi-information";
+        return 'mdi-information';
       }
       if (this.isErrorTheme) {
-        return "mdi-close-circle";
+        return 'mdi-close-circle';
       }
-      return "mdi-checkbox-marked-circle";
+      return 'mdi-checkbox-marked-circle';
     },
     /**
      * @returns specific mew alert classes. Used for styling.
      */
     alertClasses() {
-      const classes = ["mew-alert mb-0"];
+      const classes = ['mew-alert mb-0'];
       if (this.hasWhiteBackground) {
-        classes.push("white");
+        classes.push('white');
       }
       if (this.isWarningTheme) {
-        classes.push("orangeLight");
+        classes.push('orangeLight');
       }
       if (this.isInfoTheme) {
-        classes.push("blueLight");
+        classes.push('blueLight');
       }
       if (this.isErrorTheme) {
-        classes.push("redLight");
+        classes.push('redLight');
       }
       if (this.isSuccessTheme) {
-        classes.push("greenLight");
+        classes.push('greenLight');
       }
       return classes;
     },

@@ -19,7 +19,14 @@
       :align-with-title="!isBlock && !isCentered && !isVertical"
     >
       <v-tab
-        :class="[isBlock ? 'mew-tab-block' : isVertical ? 'mew-body font-weight-bold' : 'mew-heading-2', 'capitalize']"
+        :class="[
+          isBlock
+            ? 'mew-tab-block'
+            : isVertical
+              ? 'mew-body font-weight-bold'
+              : 'mew-heading-2',
+          'capitalize',
+        ]"
         :ripple="!isVertical"
         v-for="(item, i) in items"
         :key="item + i"
@@ -28,7 +35,9 @@
       </v-tab>
       <v-tabs-items v-model="onTab">
         <v-tab-item
-          :reverse-transition="!isVertical ? 'slide-x-transition' : 'slide-y-transition'"
+          :reverse-transition="
+            !isVertical ? 'slide-x-transition' : 'slide-y-transition'
+          "
           v-for="(item, i) in items"
           :key="item + i"
         >
@@ -71,8 +80,8 @@ export default {
   name: 'MewTabs',
   data() {
     return {
-      onTab: null
-    }
+      onTab: null,
+    };
   },
   props: {
     /**
@@ -81,7 +90,7 @@ export default {
      */
     activeColor: {
       type: String,
-      default: 'titlePrimary'
+      default: 'titlePrimary',
     },
     /**
      * Sets the color for the background of mew-tabs.
@@ -89,42 +98,42 @@ export default {
      */
     background: {
       type: String,
-      default: 'transparent'
+      default: 'transparent',
     },
     /**
      * Displays arrows if tab items overflow container.
      */
     showArrows: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Sets the active tab.
      */
     activeTab: {
       type: Number,
-      default: 0
+      default: 0,
     },
     /**
      * Sets the tabs as vertical.
      */
     hasUnderline: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Sets the tabs as vertical.
      */
     isVertical: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Sets the tabs to the center of the page.
      */
     isCentered: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Tab content
@@ -133,42 +142,45 @@ export default {
       type: Array,
       default: () => {
         return [];
-      }
+      },
     },
     /**
-     * Shows the tab as a block. 
+     * Shows the tab as a block.
      */
     isBlock: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     tabClasses() {
       const classes = ['mew-tabs'];
-      if (this.hasUnderline) { classes.push('mew-tabs-underline')}
-      if (this.isBlock) { classes.push('mew-tabs-block elevation-3')}
+      if (this.hasUnderline) {
+        classes.push('mew-tabs-underline');
+      }
+      if (this.isBlock) {
+        classes.push('mew-tabs-block elevation-3');
+      }
       return classes;
-    }
+    },
   },
   methods: {
     onClick() {
       this.$emit('onNextStep');
-    }
+    },
   },
   mounted() {
     this.onTab = this.activeTab;
-    console.error("background", this.background)
   },
   watch: {
     activeTab(newVal) {
       this.onTab = newVal;
     },
     onTab(newVal) {
-      this.$emit('onTab', newVal)
-    }
-  }
-}
+      this.$emit('onTab', newVal);
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -213,4 +225,3 @@ export default {
   }
 }
 </style>
-
