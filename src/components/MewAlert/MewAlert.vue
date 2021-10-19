@@ -5,40 +5,38 @@
   =====================================================================================
   -->
   <v-alert
-    :class="alertClasses"
+    :class="[alertClasses, hideAlertIcon ? 'pl-7 py-4 pr-5' : '']"
     colored-border
     :color="alertColor"
     border="left"
     :icon="alertIcon"
     dismissible
-  > 
+  >
     <!--
   =====================================================================================
    Title + Description + LinkObject
   =====================================================================================
   -->
     <div :class="['pr-5', hideAlertIcon ? 'pl-5' : 'pl-1']">
-      <span
-        v-if="title"
-        class="mew-body font-weight-bold textDark--text"
-      >{{ title }}</span>
-      <div
-        v-if="description"
-        class="mew-body textDark--text"
-      >
-        {{ description }} <a
+      <span v-if="title" class="mew-body font-weight-bold textDark--text">{{
+        title
+      }}</span>
+      <div v-if="description" class="mew-body textDark--text">
+        {{ description }}
+        <a
           v-if="linkObject"
           target="_blank"
           class="textDark--text text-decoration-underline"
           :href="linkObject.url"
-        >{{ linkObject.text }}</a>
+          >{{ linkObject.text }}</a
+        >
       </div>
       <!--
   =====================================================================================
    slot: default (should be used if there is no text or description prop)
   =====================================================================================
   -->
-      <slot />      
+      <slot />
     </div>
     <!--
   =====================================================================================
@@ -47,15 +45,8 @@
   =====================================================================================
   -->
     <template v-slot:close="{ toggle }">
-      <v-btn
-        v-if="!hideCloseIcon"
-        class="pa-2 close-btn"
-        @click="toggle"
-        icon
-      >
-        <v-icon
-          :color="alertColor"
-        >
+      <v-btn v-if="!hideCloseIcon" class="pa-1 close-btn" @click="toggle" icon>
+        <v-icon :color="alertColor" small>
           mdi-close
         </v-icon>
       </v-btn>
@@ -64,52 +55,50 @@
 </template>
 
 <script>
-
-
 export default {
-  name: 'MewAlert',
+  name: "MewAlert",
   props: {
     /**
      * Applies the theme: error, warning, success, info
      */
     theme: {
       type: String,
-      default: 'info'
+      default: "info",
     },
     /**
      * Sets a white background for the entire alert.
      */
     hasWhiteBackground: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Hides top left icon.
      */
     hideAlertIcon: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Hides close button.
      */
     hideCloseIcon: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
-     * Adds a alert title. 
+     * Adds a alert title.
      */
     title: {
       type: String,
-      default: ''
+      default: "",
     },
     /**
-     * Adds a alert description. 
+     * Adds a alert description.
      */
     description: {
       type: String,
-      default: ''
+      default: "",
     },
     /**
      * Expects a link object with attributes text and url, i.e { url: 'www.myetherwallet.com', text: 'Home" }
@@ -117,21 +106,21 @@ export default {
      */
     linkObject: {
       type: Object,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
   data() {
     return {
-    /**
-     * all theme options
-     */
+      /**
+       * all theme options
+       */
       themes: {
-        error: 'error',
-        warning: 'warning',
-        success: 'success',
-        info: 'info'
+        error: "error",
+        warning: "warning",
+        success: "success",
+        info: "info",
       },
-    }
+    };
   },
   computed: {
     /**
@@ -163,16 +152,16 @@ export default {
      */
     alertColor() {
       if (this.isWarningTheme) {
-        return 'orangePrimary';
+        return "orangePrimary";
       }
       if (this.isInfoTheme) {
-        return 'bluePrimary';
+        return "bluePrimary";
       }
       if (this.isErrorTheme) {
-        return 'redPrimary';
+        return "redPrimary";
       }
       if (this.isSuccessTheme) {
-        return 'greenPrimary';
+        return "greenPrimary";
       }
       return this.theme;
     },
@@ -180,45 +169,44 @@ export default {
      * @returns the alert icon. Will not show if hideAlertIcon is true.
      */
     alertIcon() {
-      if (this.isWarningTheme) {
-        return 'mdi-alert';
-      }
-      if (this.isInfoTheme) {
-        return 'mdi-information';
-      }
-      if (this.isErrorTheme) {
-        return 'mdi-close-circle';
-      }
       if (this.hideAlertIcon) {
         return null;
       }
-      return 'mdi-checkbox-marked-circle';
+      if (this.isWarningTheme) {
+        return "mdi-alert";
+      }
+      if (this.isInfoTheme) {
+        return "mdi-information";
+      }
+      if (this.isErrorTheme) {
+        return "mdi-close-circle";
+      }
+      return "mdi-checkbox-marked-circle";
     },
     /**
      * @returns specific mew alert classes. Used for styling.
      */
     alertClasses() {
-      const classes = ['mew-alert mb-0'];
+      const classes = ["mew-alert mb-0"];
       if (this.hasWhiteBackground) {
-        classes.push('white');
+        classes.push("white");
       }
       if (this.isWarningTheme) {
-        classes.push('orangeLight');
+        classes.push("orangeLight");
       }
       if (this.isInfoTheme) {
-        classes.push('blueLight');
+        classes.push("blueLight");
       }
       if (this.isErrorTheme) {
-       classes.push('redLight');
+        classes.push("redLight");
       }
       if (this.isSuccessTheme) {
-        classes.push('greenLight');
+        classes.push("greenLight");
       }
       return classes;
-    }
-  }
-}
-
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
