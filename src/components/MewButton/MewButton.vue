@@ -31,7 +31,10 @@
   =====================================================================================
   -->
     <div
-      class="d-flex justify-center align-center"
+      :class="[
+        hasFullWidth ? 'full-width' : '',
+        'd-flex justify-center align-center',
+      ]"
       v-if="!loading"
     >
       <!--
@@ -324,6 +327,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// Adding full width to the container itself
+.full-width {
+  width: 100%;
+}
 // MEW BUTTON STYLES
 .v-application {
   .v-btn.mew-button {

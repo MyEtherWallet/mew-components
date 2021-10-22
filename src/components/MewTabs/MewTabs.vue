@@ -23,8 +23,8 @@
           isBlock
             ? 'mew-tab-block'
             : isVertical
-              ? 'mew-body font-weight-bold'
-              : 'mew-heading-2',
+            ? 'mew-body font-weight-bold'
+            : 'mew-heading-2',
           'capitalize',
         ]"
         :ripple="!isVertical"
@@ -52,24 +52,15 @@
       </v-tabs-items>
     </v-tabs>
 
-    <div
-      v-for="(item, i) in items"
-      :key="item + i"
-    >
-      <v-slide-x-reverse-transition
-        :hide-on-leave="true"
-        mode="out-in"
-      >
+    <div v-for="(item, i) in items" :key="item + i">
+      <v-slide-x-reverse-transition :hide-on-leave="true" mode="out-in">
         <!--
 =====================================================================================
   Slot: 'tabContent' + number of tab content (used to place custom tab content outside of the 
   tab container)
 =====================================================================================
 -->
-        <slot
-          v-if="onTab === i"
-          :name="'tabContent' + (i + 1)"
-        />
+        <slot v-if="onTab === i" :name="'tabContent' + (i + 1)" />
       </v-slide-x-reverse-transition>
     </div>
   </div>
@@ -77,7 +68,7 @@
 
 <script>
 export default {
-  name: 'MewTabs',
+  name: "MewTabs",
   data() {
     return {
       onTab: null,
@@ -90,7 +81,7 @@ export default {
      */
     activeColor: {
       type: String,
-      default: 'titlePrimary',
+      default: "titlePrimary",
     },
     /**
      * Sets the color for the background of mew-tabs.
@@ -98,7 +89,7 @@ export default {
      */
     background: {
       type: String,
-      default: 'transparent',
+      default: "transparent",
     },
     /**
      * Displays arrows if tab items overflow container.
@@ -154,19 +145,19 @@ export default {
   },
   computed: {
     tabClasses() {
-      const classes = ['mew-tabs'];
+      const classes = ["mew-tabs"];
       if (this.hasUnderline) {
-        classes.push('mew-tabs-underline');
+        classes.push("mew-tabs-underline");
       }
       if (this.isBlock) {
-        classes.push('mew-tabs-block elevation-3');
+        classes.push("mew-tabs-block elevation-3");
       }
       return classes;
     },
   },
   methods: {
     onClick() {
-      this.$emit('onNextStep');
+      this.$emit("onNextStep");
     },
   },
   mounted() {
@@ -177,7 +168,7 @@ export default {
       this.onTab = newVal;
     },
     onTab(newVal) {
-      this.$emit('onTab', newVal);
+      this.$emit("onTab", newVal);
     },
   },
 };
