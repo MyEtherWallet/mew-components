@@ -158,7 +158,7 @@ export default {
   },
   mounted() {
     this.onTab = this.activeTab;
-    console.error("background", this.background)
+    console.error('background', this.background)
   },
   watch: {
     activeTab(newVal) {
