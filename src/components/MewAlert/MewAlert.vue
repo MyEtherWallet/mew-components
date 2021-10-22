@@ -5,28 +5,31 @@
   =====================================================================================
   -->
   <v-alert
-    :class="alertClasses"
+    :class="[alertClasses, hideAlertIcon ? 'pl-7' : 'pl-4', 'py-3 pr-5']"
     colored-border
     :color="alertColor"
     border="left"
     :icon="alertIcon"
     dismissible
-  > 
+  >
     <!--
   =====================================================================================
    Title + Description + LinkObject
   =====================================================================================
   -->
-    <div :class="['pr-5', hideAlertIcon ? 'pl-5' : 'pl-1']">
+    <div :class="[hideAlertIcon ? '' : 'pl-1']">
       <span
         v-if="title"
         class="mew-body font-weight-bold textDark--text"
-      >{{ title }}</span>
+      >{{
+        title
+      }}</span>
       <div
         v-if="description"
         class="mew-body textDark--text"
       >
-        {{ description }} <a
+        {{ description }}
+        <a
           v-if="linkObject"
           target="_blank"
           class="textDark--text text-decoration-underline"
@@ -38,7 +41,7 @@
    slot: default (should be used if there is no text or description prop)
   =====================================================================================
   -->
-      <slot />      
+      <slot />
     </div>
     <!--
   =====================================================================================
@@ -49,12 +52,14 @@
     <template v-slot:close="{ toggle }">
       <v-btn
         v-if="!hideCloseIcon"
-        class="pa-2 close-btn"
+        class="close-btn"
         @click="toggle"
         icon
       >
         <v-icon
           :color="alertColor"
+          size="16"
+          class="pa-1"
         >
           mdi-close
         </v-icon>
@@ -64,8 +69,6 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'MewAlert',
   props: {
@@ -74,42 +77,42 @@ export default {
      */
     theme: {
       type: String,
-      default: 'info'
+      default: 'info',
     },
     /**
      * Sets a white background for the entire alert.
      */
     hasWhiteBackground: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Hides top left icon.
      */
     hideAlertIcon: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Hides close button.
      */
     hideCloseIcon: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
-     * Adds a alert title. 
+     * Adds a alert title.
      */
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
-     * Adds a alert description. 
+     * Adds a alert description.
      */
     description: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Expects a link object with attributes text and url, i.e { url: 'www.myetherwallet.com', text: 'Home" }
@@ -117,21 +120,21 @@ export default {
      */
     linkObject: {
       type: Object,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
   data() {
     return {
-    /**
-     * all theme options
-     */
+      /**
+       * all theme options
+       */
       themes: {
         error: 'error',
         warning: 'warning',
         success: 'success',
-        info: 'info'
+        info: 'info',
       },
-    }
+    };
   },
   computed: {
     /**
@@ -180,6 +183,9 @@ export default {
      * @returns the alert icon. Will not show if hideAlertIcon is true.
      */
     alertIcon() {
+      if (this.hideAlertIcon) {
+        return null;
+      }
       if (this.isWarningTheme) {
         return 'mdi-alert';
       }
@@ -188,9 +194,6 @@ export default {
       }
       if (this.isErrorTheme) {
         return 'mdi-close-circle';
-      }
-      if (this.hideAlertIcon) {
-        return null;
       }
       return 'mdi-checkbox-marked-circle';
     },
@@ -209,16 +212,15 @@ export default {
         classes.push('blueLight');
       }
       if (this.isErrorTheme) {
-       classes.push('redLight');
+        classes.push('redLight');
       }
       if (this.isSuccessTheme) {
         classes.push('greenLight');
       }
       return classes;
-    }
-  }
-}
-
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

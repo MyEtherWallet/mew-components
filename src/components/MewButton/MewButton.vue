@@ -341,11 +341,12 @@ export default {
     }
 
     &.medium-btn {
-      padding: 12px 32px;
+      padding: 0 20px;
     }
 
     &.large-btn {
       height: 46px;
+      padding: 0 20px;
     }
 
     &.xlarge-btn {
