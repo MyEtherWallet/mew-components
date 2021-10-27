@@ -62,16 +62,6 @@
     >
       <!--
       =====================================================================================
-      Button text (if no title prop is passed, then slot should be used)
-      =====================================================================================
-      -->
-      <span
-        v-if="title"
-        class="font-weight-regular"
-      >{{ title }} </span>
-
-      <!--
-      =====================================================================================
         slot: default
       =====================================================================================
       -->
@@ -89,42 +79,42 @@ export default {
      */
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
-    * Enables circle shape
-    */
+     * Enables circle shape
+     */
     rounded: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Button size: small, medium.
      */
     btnSize: {
       type: String,
-      default: 'medium'
+      default: 'medium',
     },
     /**
      * Mdi icon size: small, medium.
      */
     mdiIconSize: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Image icon size: small, medium.
      */
     imgIconSize: {
       type: String,
-      default: '20'
+      default: '20',
     },
     /**
      * Sets the button to have 100% width.
      */
     hasFullWidth: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Applies the button style: background, light, transparent, or outline.
@@ -133,43 +123,35 @@ export default {
      */
     btnStyle: {
       type: String,
-      default: 'background'
-    },
-    /**
-     * The text that will go in the center of the button.
-     * If not passed, a slot should be used.
-     */
-    title: {
-      type: String,
-      default: ''
+      default: 'background',
     },
     /**
      * Applies the button color theme: primary, secondary, basic, error
      */
     colorTheme: {
       type: String,
-      default: 'primary'
+      default: 'primary',
     },
     /**
      * Removes the ability to click or target the component.
      */
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Opens up a new page with the link.
      */
     btnLink: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * mdi icon name.
      */
     mdiIcon: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * img icon path. (base dir: @/assets/images)
@@ -177,8 +159,8 @@ export default {
      */
     imgIcon: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   data() {
     return {
@@ -189,7 +171,7 @@ export default {
         secondary: 'secondary',
         primary: 'primary',
         basic: 'basic',
-        error: 'error'
+        error: 'error',
       },
       /**
        * all btn style options
@@ -198,14 +180,14 @@ export default {
         light: 'light',
         transparent: 'transparent',
         outline: 'outline',
-        background: 'background'
+        background: 'background',
       },
       /**
        * all btn size options
        */
       btnSizes: {
         small: 'small',
-        medium: 'medium'
+        medium: 'medium',
       },
       /**
        * all mdi icon size options
@@ -215,8 +197,8 @@ export default {
         small: 'small',
         dense: 'dense',
         large: 'large',
-        xlarge: 'x-large'
-      }
+        xlarge: 'x-large',
+      },
     };
   },
   computed: {
@@ -393,8 +375,8 @@ export default {
      */
     isBackground() {
       return this.btnStyle.toLowerCase() === this.btnStyles.background;
-    }
-  }
+    },
+  },
 };
 </script>
 
