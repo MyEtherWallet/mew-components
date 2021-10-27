@@ -91,6 +91,9 @@ export default {
       type: Boolean,
       default: false
     },
+    /**
+    * Enables circle shape
+    */
     rounded: {
       type: Boolean,
       default: false
