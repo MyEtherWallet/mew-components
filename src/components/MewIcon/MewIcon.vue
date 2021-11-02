@@ -195,6 +195,8 @@ export default {
           return this.ensManager;
         case 'ethBalance':
           return this.ethBalance;
+        case 'ethBlocks':
+          return this.ethBlocks;
         case 'finney':
           return this.finney;
         case 'keepkey':
