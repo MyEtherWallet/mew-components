@@ -6,70 +6,70 @@
   -->
   <img
     :height="imgHeight"
-    :src="getIcon()"  
+    :src="getIcon()"
   >
 </template>
 <script>
-import aave from '@/assets/images/icons/aave.svg'
-import account from '@/assets/images/icons/account.svg'
-import acctValue from '@/assets/images/icons/acct-value.svg'
-import advancedTools from '@/assets/images/icons/advanced-tools.svg'
-import arrow from '@/assets/images/icons/arrow.svg'
-import bcvault from '@/assets/images/icons/bcvault.svg'
-import bicycle from '@/assets/images/icons/bicycle.svg'
-import bitbox from '@/assets/images/icons/bitbox.svg'
-import buyEth from '@/assets/images/icons/buy-eth.svg'
-import calendar from '@/assets/images/icons/calendar.svg'
-import car from '@/assets/images/icons/car.svg'
-import chrome from '@/assets/images/icons/chrome.svg'
-import clock from '@/assets/images/icons/clock.svg'
-import coolWallet from '@/assets/images/icons/cool-wallet.svg'
-import copy from '@/assets/images/icons/copy.svg'
-import diploma from '@/assets/images/icons/diploma.svg'
-import edit from '@/assets/images/icons/edit.svg'
-import ensManager from '@/assets/images/icons/ens-manager.svg'
-import ethBalance from '@/assets/images/icons/eth-balance.svg'
-import finney from '@/assets/images/icons/finney.svg'
-import keepkey from '@/assets/images/icons/keepkey.svg'
-import keystore from '@/assets/images/icons/keystore.svg'
-import ledger from '@/assets/images/icons/ledger.svg'
-import lock from '@/assets/images/icons/lock.svg'
-import makerdao from '@/assets/images/icons/makerdao.svg'
-import message from '@/assets/images/icons/message.svg'
-import mewtopia from '@/assets/images/icons/mewtopia.svg'
-import mnemonic from '@/assets/images/icons/mnemonic.svg'
-import navBar from '@/assets/images/icons/nav-bar.svg'
-import networkNodes from '@/assets/images/icons/network-nodes.svg'
-import wallet from '@/assets/images/icons/new-wallet.svg'
-import nightMode from '@/assets/images/icons/night-mode.svg'
-import notification from '@/assets/images/icons/notification.svg'
-import paperPlane from '@/assets/images/icons/paper-plane.svg'
-import privateKey from '@/assets/images/icons/private-key.svg'
-import quickHelp from '@/assets/images/icons/quick-help.svg'
-import rocket from '@/assets/images/icons/rocket.svg'
-import secalot from '@/assets/images/icons/secalot.svg'
-import shield from '@/assets/images/icons/shield.svg'
-import stake from '@/assets/images/icons/stake.svg'
-import swapToken from '@/assets/images/icons/swap-token.svg'
-import tags from '@/assets/images/icons/tags.svg'
-import team from '@/assets/images/icons/team.svg'
-import thief from '@/assets/images/icons/thief.svg'
-import tokensList from '@/assets/images/icons/tokens-list.svg'
-import trezor from '@/assets/images/icons/trezor.svg'
-import viewOnly from '@/assets/images/icons/view-only.svg'
-import xwallet from '@/assets/images/icons/xwallet.svg'
-import btc from '@/assets/images/icons/footer/btc.png'
-import eth from '@/assets/images/icons/footer/eth.png'
-import facebook from '@/assets/images/icons/footer/facebook.png'
-import github from '@/assets/images/icons/footer/github.png'
-import instagram from '@/assets/images/icons/footer/instagram.png'
-import linkedin from '@/assets/images/icons/footer/linkedin.png'
-import love from '@/assets/images/icons/footer/love.png'
-import medium from '@/assets/images/icons/footer/medium.png'
-import reddit from '@/assets/images/icons/footer/reddit.png'
-import twitter from '@/assets/images/icons/footer/twitter.png'
-import youtube from '@/assets/images/icons/footer/youtube.png'
-
+import aave from '@/assets/images/icons/aave.svg';
+import account from '@/assets/images/icons/account.svg';
+import acctValue from '@/assets/images/icons/acct-value.svg';
+import advancedTools from '@/assets/images/icons/advanced-tools.svg';
+import arrow from '@/assets/images/icons/arrow.svg';
+import bcvault from '@/assets/images/icons/bcvault.svg';
+import bicycle from '@/assets/images/icons/bicycle.svg';
+import bitbox from '@/assets/images/icons/bitbox.svg';
+import buyEth from '@/assets/images/icons/buy-eth.svg';
+import calendar from '@/assets/images/icons/calendar.svg';
+import car from '@/assets/images/icons/car.svg';
+import chrome from '@/assets/images/icons/chrome.svg';
+import clock from '@/assets/images/icons/clock.svg';
+import coolWallet from '@/assets/images/icons/cool-wallet.svg';
+import copy from '@/assets/images/icons/copy.svg';
+import diploma from '@/assets/images/icons/diploma.svg';
+import edit from '@/assets/images/icons/edit.svg';
+import ensManager from '@/assets/images/icons/ens-manager.svg';
+import ethBalance from '@/assets/images/icons/eth-balance.svg';
+import ethBlocks from '@/assets/images/icons/eth-blocks.svg';
+import finney from '@/assets/images/icons/finney.svg';
+import keepkey from '@/assets/images/icons/keepkey.svg';
+import keystore from '@/assets/images/icons/keystore.svg';
+import ledger from '@/assets/images/icons/ledger.svg';
+import lock from '@/assets/images/icons/lock.svg';
+import makerdao from '@/assets/images/icons/makerdao.svg';
+import message from '@/assets/images/icons/message.svg';
+import mewtopia from '@/assets/images/icons/mewtopia.svg';
+import mnemonic from '@/assets/images/icons/mnemonic.svg';
+import navBar from '@/assets/images/icons/nav-bar.svg';
+import networkNodes from '@/assets/images/icons/network-nodes.svg';
+import wallet from '@/assets/images/icons/new-wallet.svg';
+import nightMode from '@/assets/images/icons/night-mode.svg';
+import notification from '@/assets/images/icons/notification.svg';
+import paperPlane from '@/assets/images/icons/paper-plane.svg';
+import privateKey from '@/assets/images/icons/private-key.svg';
+import quickHelp from '@/assets/images/icons/quick-help.svg';
+import rocket from '@/assets/images/icons/rocket.svg';
+import secalot from '@/assets/images/icons/secalot.svg';
+import shield from '@/assets/images/icons/shield.svg';
+import stake from '@/assets/images/icons/stake.svg';
+import swapToken from '@/assets/images/icons/swap-token.svg';
+import tags from '@/assets/images/icons/tags.svg';
+import team from '@/assets/images/icons/team.svg';
+import thief from '@/assets/images/icons/thief.svg';
+import tokensList from '@/assets/images/icons/tokens-list.svg';
+import trezor from '@/assets/images/icons/trezor.svg';
+import viewOnly from '@/assets/images/icons/view-only.svg';
+import xwallet from '@/assets/images/icons/xwallet.svg';
+import btc from '@/assets/images/icons/footer/btc.png';
+import eth from '@/assets/images/icons/footer/eth.png';
+import facebook from '@/assets/images/icons/footer/facebook.png';
+import github from '@/assets/images/icons/footer/github.png';
+import instagram from '@/assets/images/icons/footer/instagram.png';
+import linkedin from '@/assets/images/icons/footer/linkedin.png';
+import love from '@/assets/images/icons/footer/love.png';
+import medium from '@/assets/images/icons/footer/medium.png';
+import reddit from '@/assets/images/icons/footer/reddit.png';
+import twitter from '@/assets/images/icons/footer/twitter.png';
+import youtube from '@/assets/images/icons/footer/youtube.png';
 
 export default {
   name: 'MewIcon',
@@ -94,6 +94,7 @@ export default {
       edit: edit,
       ensManager: ensManager,
       ethBalance: ethBalance,
+      ethBlocks: ethBlocks,
       finney: finney,
       keepkey: keepkey,
       keystore: keystore,
@@ -133,38 +134,37 @@ export default {
       medium: medium,
       reddit: reddit,
       twitter: twitter,
-      youtube: youtube
-
-    }
+      youtube: youtube,
+    };
   },
   props: {
     /**
      * Pass the icon here. Icon names are: 'aave', 'account', 'acctValue', 'advancedTools', 'arrow', 'bcvault', 'bicycle', 'bitbox', 'buyEth', 'calendar', 'car', 'chrome', 'clock', 'coolWallet', 'copy', 'diploma', 'edit', 'ensManager', 'ethBalance', 'finney', 'keepkey', 'keystore', 'ledger', 'lock', 'makerdao', 'message', 'mewtopia', 'mnemonic', 'navBar', 'networkNodes', 'wallet', 'nightMode', 'notification', 'paperPlane', 'privateKey', 'quickHelp', 'rocket', 'secalot', 'shield', 'swapToken', 'tags', 'team', 'thief', 'tokensList', 'trezor', 'viewOnly', 'xwallet', 'btc', 'eth', 'facebook', 'github', 'instagram', 'linkedin', 'love', 'medium', 'reddit', 'twitter', 'youtube'
      */
-      iconName: {
+    iconName: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Image height
      */
-      imgHeight: {
+    imgHeight: {
       type: Number,
-      default: 40
-    }
+      default: 40,
+    },
   },
   methods: {
     // todo: think of a better way to do this.
     getIcon() {
-      switch(this.iconName) {
+      switch (this.iconName) {
         case 'aave':
           return this.aave;
         case 'account':
-          return this.account
+          return this.account;
         case 'acctValue':
           return this.acctValue;
         case 'advancedTools':
-          return this.advancedTools; 
+          return this.advancedTools;
         case 'arrow':
           return this.arrow;
         case 'bcvault':
@@ -188,13 +188,13 @@ export default {
         case 'copy':
           return this.copy;
         case 'diploma':
-          return this.diploma
-        case 'edit': 
-          return this.edit
+          return this.diploma;
+        case 'edit':
+          return this.edit;
         case 'ensManager':
           return this.ensManager;
         case 'ethBalance':
-          return this.ethBalance; 
+          return this.ethBalance;
         case 'finney':
           return this.finney;
         case 'keepkey':
@@ -216,7 +216,7 @@ export default {
         case 'navBar':
           return this.navBar;
         case 'networkNodes':
-          return this.networkNodes; 
+          return this.networkNodes;
         case 'wallet':
           return this.wallet;
         case 'nightMode':
@@ -240,7 +240,7 @@ export default {
         case 'swapToken':
           return this.swapToken;
         case 'tags':
-          return this.tags; 
+          return this.tags;
         case 'team':
           return this.team;
         case 'thief':
@@ -275,12 +275,10 @@ export default {
           return this.twitter;
         case 'youtube':
           return this.youtube;
-        default: 
+        default:
           return this.eth;
-
       }
-    }
-  }
-}
-
+    },
+  },
+};
 </script>
