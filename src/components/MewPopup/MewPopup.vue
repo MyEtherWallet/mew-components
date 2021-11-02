@@ -21,7 +21,12 @@
         Dialog Header
         =====================================================================================
       -->
-      <v-card-title :class="['justify-center px-5 px-md-7', hasBodyContent ? 'py-5 py-md-8' : 'pb-0 pt-5 pt-md-8'] ">
+      <v-card-title
+        :class="[
+          'justify-center px-5 px-md-7',
+          hasBodyContent ? 'py-5 py-md-8' : 'pb-0 pt-5 pt-md-8',
+        ]"
+      >
         <div
           v-if="title"
           class="mew-heading-2 break-word text-center"
@@ -60,7 +65,7 @@
       -->
       <v-card-actions class="py-5 py-md-8">
         <v-row
-          v-if="leftBtn"
+          v-if="hasButtons"
           class="pa-0"
           justify="space-around"
           dense
@@ -77,7 +82,7 @@
               btn-size="xlarge"
               :color-theme="leftBtn.color || 'primary'"
               :title="leftBtn.text"
-              :has-full-width="!rightBtn ? true :$vuetify.breakpoint.xs"
+              :has-full-width="!rightBtn ? true : $vuetify.breakpoint.xs"
               @click.native="leftBtn.method"
             />
           </v-col>
@@ -115,21 +120,21 @@ export default {
      */
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Hide top right close button
      */
     hideCloseBtn: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Controls popup visibility.
      */
     show: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Left Button: object of information.
@@ -138,7 +143,9 @@ export default {
      */
     leftBtn: {
       type: Object,
-      default: () => { return {text: 'Cancel', color: 'primary', method: () => {}} }
+      default: () => {
+        return { text: 'Cancel', color: 'primary', method: () => {} };
+      },
     },
     /**
      * Right Button: object of information.
@@ -146,21 +153,28 @@ export default {
      */
     rightBtn: {
       type: Object,
-      default: () => { return {text: 'Confirm', color: 'primary', enabled: true, method: () => {}} }
+      default: () => {
+        return {
+          text: 'Confirm',
+          color: 'primary',
+          enabled: true,
+          method: () => {},
+        };
+      },
     },
     /**
      * Makes the popup content scrollable.
      */
     scrollable: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Max width of the popup.
      */
     maxWidth: {
       type: String,
-      default: '600'
+      default: '600',
     },
     /**
      * Displays v-card-text if there is popup body content
@@ -168,15 +182,22 @@ export default {
      */
     hasBodyContent: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Will display popup body content padding if true
      */
     hasPadding: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
+    /**
+     * Will display popup body content padding if true
+     */
+    hasButtons: {
+      type: Boolean,
+      default: true,
+    },
   },
   methods: {
     /**
@@ -184,8 +205,8 @@ export default {
      */
     handleClickOutside() {
       this.leftBtn.method();
-    }
-  }
+    },
+  },
 };
 </script>
 
