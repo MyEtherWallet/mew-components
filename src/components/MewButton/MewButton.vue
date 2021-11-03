@@ -10,31 +10,20 @@
     :class="[buttonClasses, 'mew-button']"
     :color="buttonColor"
     :disabled="disabled"
+    :loading="loading"
     depressed
     :outlined="hasOutline"
     :text="isTransparent"
   >
     <!--
   =====================================================================================
-    Loading state
-  =====================================================================================
-  -->
-    <v-progress-circular
-      v-if="loading"
-      indeterminate
-      size="20"
-      :color="loadingColor"
-    />
-    <!--
-  =====================================================================================
     Loaded Button Content 
   =====================================================================================
   -->
     <div
-      v-if="!loading"
       :class="[
         hasFullWidth ? 'full-width' : '',
-        'd-flex justify-center align-center'
+        'd-flex justify-center align-center',
       ]"
     >
       <!--
@@ -42,10 +31,7 @@
    Button text (if no title prop is passed, then slot should be used)
   =====================================================================================
   -->
-      <span
-        v-if="title"
-        class="font-weight-regular"
-      >{{ title }} </span>
+      <span v-if="title" class="font-weight-regular">{{ title }} </span>
       <!--
   =====================================================================================
     slot: default
@@ -58,28 +44,28 @@
 
 <script>
 export default {
-  name: 'MewButton',
+  name: "MewButton",
   props: {
     /**
      * Enables loading state
      */
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Button size: small, medium, large, xlarge.
      */
     btnSize: {
       type: String,
-      default: 'large'
+      default: "large",
     },
     /**
      * Sets the button to have 100% width.
      */
     hasFullWidth: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Applies the button style: background, light, transparent, or outline.
@@ -88,7 +74,7 @@ export default {
      */
     btnStyle: {
       type: String,
-      default: 'background'
+      default: "background",
     },
     /**
      * The text that will go in the center of the button.
@@ -96,29 +82,29 @@ export default {
      */
     title: {
       type: String,
-      default: ''
+      default: "",
     },
     /**
      * Applies the button color theme: primary, secondary, basic, error, white
      */
     colorTheme: {
       type: String,
-      default: 'primary'
+      default: "primary",
     },
     /**
      * Removes the ability to click or target the component.
      */
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Opens up a new page with the link.
      */
     btnLink: {
       type: String,
-      default: ''
-    }
+      default: "",
+    },
   },
   data() {
     return {
@@ -126,20 +112,20 @@ export default {
        * all color theme options
        */
       colorThemes: {
-        secondary: 'secondary',
-        primary: 'primary',
-        basic: 'basic',
-        error: 'error'
+        secondary: "secondary",
+        primary: "primary",
+        basic: "basic",
+        error: "error",
       },
       /**
        * all btn style options
        */
       btnStyles: {
-        light: 'light',
-        transparent: 'transparent',
-        outline: 'outline',
-        background: 'background'
-      }
+        light: "light",
+        transparent: "transparent",
+        outline: "outline",
+        background: "background",
+      },
     };
   },
   computed: {
@@ -172,19 +158,19 @@ export default {
      */
     loadingColor() {
       if (!this.disabled && this.isLight && this.isPrimaryTheme) {
-        return 'greenPrimary';
+        return "greenPrimary";
       }
 
       if (!this.disabled && this.isLight && this.isSecondaryTheme) {
-        return 'bluePrimary';
+        return "bluePrimary";
       }
 
       if (!this.disabled && this.isLight && this.isErrorTheme) {
-        return 'redPrimary';
+        return "redPrimary";
       }
 
       if (!this.disabled && this.isLight && this.isBasicTheme) {
-        return 'greyPrimary';
+        return "greyPrimary";
       }
 
       if (!this.disabled && !this.isBackground) {
@@ -192,10 +178,10 @@ export default {
       }
 
       if (this.disabled && !this.isBackground) {
-        return 'disabledPrimary';
+        return "disabledPrimary";
       }
 
-      return 'white';
+      return "white";
     },
     /**
      * @returns button color based on color theme and btn style props.
@@ -203,38 +189,38 @@ export default {
     buttonColor() {
       // SECONDARY COLORS
       if (this.isLight && this.isSecondaryTheme) {
-        return 'rgba(75, 128, 233, 0.08)';
+        return "rgba(75, 128, 233, 0.08)";
       }
 
       if (this.isSecondaryTheme) {
-        return 'bluePrimary';
+        return "bluePrimary";
       }
 
       // ERROR COLORS
       if (this.isLight && this.isErrorTheme) {
-        return 'rgba(255, 68, 91, 0.08)';
+        return "rgba(255, 68, 91, 0.08)";
       }
 
       if (this.isErrorTheme) {
-        return 'redPrimary';
+        return "redPrimary";
       }
 
       // PRIMARY COLORS
       if (this.isPrimaryTheme && this.isLight) {
-        return 'backgroundOverlay';
+        return "backgroundOverlay";
       }
 
       if (this.isPrimaryTheme) {
-        return 'greenPrimary';
+        return "greenPrimary";
       }
 
       // BASIC THEME COLORS
       if (this.isBasicTheme && this.isLight) {
-        return 'greyLight';
+        return "greyLight";
       }
 
       if (this.isBasicTheme) {
-        return 'greyPrimary';
+        return "greyPrimary";
       }
 
       return this.colorTheme;
@@ -246,45 +232,45 @@ export default {
       const classes = [];
       // adds btn size
       if (this.btnSize.toLowerCase()) {
-        classes.push(this.btnSize.toLowerCase() + '-btn');
+        classes.push(this.btnSize.toLowerCase() + "-btn");
       }
 
       // adds 100% full width
       if (this.hasFullWidth === true) {
-        classes.push('full-width');
+        classes.push("full-width");
       }
 
       // adds correct button color text
       if (!this.disabled) {
         if (this.isPrimaryTheme && this.isLight) {
-          classes.push('greenPrimary--text');
+          classes.push("greenPrimary--text");
         }
 
         if (this.isErrorTheme && this.isLight) {
-          classes.push('redPrimary--text');
+          classes.push("redPrimary--text");
         }
 
         if (this.isSecondaryTheme && this.isLight) {
-          classes.push('bluePrimary--text');
+          classes.push("bluePrimary--text");
         }
 
         if (this.isBasicTheme && this.isLight) {
-          classes.push('greyPrimary--text');
+          classes.push("greyPrimary--text");
         }
       }
       // adds white text for all default backgrounds
       if (this.isBackground) {
-        classes.push('white--text');
+        classes.push("white--text");
       }
 
       // adds class for disabled and btn style
       if (this.disabled) {
-        classes.push('disabled-' + this.btnStyle.toLowerCase());
+        classes.push("disabled-" + this.btnStyle.toLowerCase());
       }
 
       // adds class for btn style
       if (this.btnStyle.toLowerCase()) {
-        classes.push('btn-' + this.btnStyle.toLowerCase());
+        classes.push("btn-" + this.btnStyle.toLowerCase());
       }
 
       return classes;
@@ -312,8 +298,8 @@ export default {
      */
     isBackground() {
       return this.btnStyle.toLowerCase() === this.btnStyles.background;
-    }
-  }
+    },
+  },
 };
 </script>
 
