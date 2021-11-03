@@ -5,20 +5,21 @@
   =====================================================================================
   -->
   <v-bottom-sheet
-    :value="isOverlayShown" 
+    :value="isOverlayShown"
     :fullscreen="true"
     persistent
+    :content-class="isMobile ? 'mew-components--mew-overlay--mobile-style' : ''"
   >
-    <v-sheet 
-      height="100%"
-      color="emerald100"
+    <v-sheet
+      :height="isMobile ? 'calc(100% - 70px)' : '100%'"
+      :color="!isMobile ? 'emerald100' : 'white'"
       class="mew-overlay-container d-flex align-center flex-column"
     >
       <!--
-  =====================================================================================
-    Mew Overlay action fab buttons (back and close)
-  =====================================================================================
-  -->
+      =====================================================================================
+        Mew Overlay action fab buttons (back and close)
+      =====================================================================================
+      -->
       <v-btn
         v-if="back"
         top
@@ -26,25 +27,30 @@
         absolute
         text
         color="textBlack2"
-        @click="back"
-        :class="['d-flex action-btn align-center pa-3', isMobile ? 'mt-3 ml-n1 mobile-btn' : 'mt-4 ml-1']"
+        :class="[
+          'd-flex action-btn align-center pa-3',
+          isMobile ? 'mt-3 ml-n1 mobile-btn' : 'mt-4 ml-1'
+        ]"
         fab
+        @click="back"
       >
-        <v-icon
-          size="24"
-        >
+        <v-icon size="24">
           mdi-arrow-left
         </v-icon>
       </v-btn>
       <v-btn
+        v-if="close"
         fab
         top
         right
         absolute
         text
         color="textBlack2"
-        :class="['d-flex action-btn align-center pa-3', , isMobile ? 'mt-3 mr-n1 mobile-btn' : 'mt-4 mr-1']"
-        v-if="close"
+        :class="[
+          'd-flex action-btn align-center pa-3',
+          ,
+          isMobile ? 'mt-3 mr-n1 mobile-btn' : 'mt-4 mr-1'
+        ]"
         @click="close"
       >
         <v-icon
@@ -59,35 +65,59 @@
         fluid
       >
         <!--
-  =====================================================================================
-    White sheet (displays on the overlay - size is based on the contentSize prop)
-  =====================================================================================
-  -->
+        =====================================================================================
+          White sheet (displays on the overlay - size is based on the contentSize prop)
+        =====================================================================================
+        -->
         <v-row class="ma-0 pa-0 d-flex align-center justify-center flex-column">
           <v-sheet
             :width="isMobile ? '100%' : sheetWidth"
             height="100%"
             color="white"
-            :class="['white-sheet-container', isMobile ? 'mt-0' : 'mt-4']"
+            class="pt-5"
+            :class="[
+              !isMobile ? 'white-sheet-container' : '',
+              isMobile ? 'my-0' : 'my-4'
+            ]"
           >
             <div
-              :class="[isMobile ? 'text-left pt-6 px-15 pb-3 mobile-title white' : 'text-center pa-8', isMobile && !back ? 'pl-0' : '']"
-            > 
+              :class="[
+                isMobile
+                  ? 'text-left px-15 mobile-title white'
+                  : 'text-center pa-8',
+                isMobile && !back ? 'pl-0' : ''
+              ]"
+            >
               <!--
-      =====================================================================================
-      Title displayed on white sheet
-      =====================================================================================
-      -->
-              <div :class="['titlePrimary--text', isMobile ? 'mew-heading-2 ml-3' : isMobile && !back ? 'mew-heading-2 ml-4' : 'mew-subtitle']">
+              =====================================================================================
+              Title displayed on white sheet
+              =====================================================================================
+              -->
+              <div
+                style="height: 100%"
+                :class="[
+                  'titlePrimary--text',
+                  isMobile
+                    ? 'mew-heading-2 ml-3 d-flex align-center'
+                    : isMobile && !back
+                      ? 'mew-heading-2 ml-4'
+                      : 'mew-subtitle'
+                ]"
+              >
                 {{ title }}
               </div>
             </div>
             <!--
-        =====================================================================================
-          Slot: used to place custom ui content
-        =====================================================================================
-        -->
-            <div :class="['d-flex flex-column align-center justify-center', isMobile ? 'px-3 pb-6 mobile-content' : 'px-8 pb-8']">
+            =====================================================================================
+              Slot: used to place custom ui content
+            =====================================================================================
+            -->
+            <div
+              :class="[
+                'd-flex flex-column align-center justify-center',
+                isMobile ? 'px-3 pb-6 mobile-content' : 'px-8 pb-8'
+              ]"
+            >
               <slot />
             </div>
           </v-sheet>
@@ -101,7 +131,7 @@
           justify="center"
           class="ma-0 py-8 footer-text"
         >
-          {{ footer.text }} 
+          {{ footer.text }}
           <a
             v-if="footer && footer.linkTitle && footer.link"
             rel="noopener noreferrer"
@@ -123,15 +153,10 @@ const sizes = {
   medium: 'medium',
   large: 'large',
   xlarge: 'xlarge'
-}
+};
 
 export default {
   name: 'MewOverlay',
-  data() {
-    return {
-      isOverlayShown: false
-    }
-  },
   props: {
     /**
      * Displays on the outside bottom of the white sheet.
@@ -145,7 +170,7 @@ export default {
       }
     },
     /**
-     * Opens the overlay from 
+     * Opens the overlay from
      * the bottom of the screen.
      */
     showOverlay: {
@@ -161,7 +186,7 @@ export default {
       default: ''
     },
     /**
-     * Function that gets triggered 
+     * Function that gets triggered
      * by close icon on the right.
      *
      */
@@ -181,13 +206,18 @@ export default {
     },
     /**
      * Applies the size of the white sheet on the overlay.
-     * options: 'small' - 384px, 'medium' - 504px, 
+     * options: 'small' - 384px, 'medium' - 504px,
      * 'large' - 624px, 'xlarge' - 744px.
      */
     contentSize: {
       type: String,
       default: 'small'
-    },
+    }
+  },
+  data() {
+    return {
+      isOverlayShown: false
+    };
   },
   computed: {
     isMobile() {
@@ -195,16 +225,16 @@ export default {
     },
     sheetWidth() {
       if (this.contentSize) {
-        switch(this.contentSize.toLowerCase()) {
-          case sizes.small: 
+        switch (this.contentSize.toLowerCase()) {
+          case sizes.small:
             return '384px';
-          case sizes.medium: 
+          case sizes.medium:
             return '504px';
-          case sizes.large: 
+          case sizes.large:
             return '624px';
           case sizes.xlarge:
             return '744px';
-          default: 
+          default:
             return '384px';
         }
       }
@@ -219,22 +249,26 @@ export default {
   mounted() {
     this.isOverlayShown = this.showOverlay;
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-.mew-overlay-container::before, .mew-overlay-container::after {
-  content: ''; 
+.mew-overlay-container::before,
+.mew-overlay-container::after {
+  content: '';
   margin: auto;
 }
 
 .mew-overlay-container {
   overflow: auto;
+  border-radius: 0;
+
   .white-sheet-container {
     border-radius: 12px;
     box-shadow: 0px 12px 17px rgba(21, 29, 63, 0.0332441);
   }
   .action-btn {
+    position: fixed;
     height: auto;
     top: 0 !important;
     width: auto;
@@ -246,17 +280,27 @@ export default {
     color: rgba(11, 40, 64, 0.72);
   }
   .mobile-title {
-    box-shadow: 0px 1px 6px rgba(11, 40, 64, 0.06), 0px 2px 8px rgba(11, 40, 64, 0.04);
+    box-shadow: 0px 1px 6px rgba(11, 40, 64, 0.06),
+      0px 2px 8px rgba(11, 40, 64, 0.04);
     position: fixed;
     top: 0;
     width: 100%;
+    height: 70px;
     z-index: 9999;
+
+    div {
+      line-height: 25px;
+    }
   }
-  .mobile-content {
-    margin-top: 68px;
-  }
+
   .mobile-btn {
     z-index: 99999;
   }
+}
+</style>
+
+<style lang="scss">
+.mew-components--mew-overlay--mobile-style {
+  margin-top: 70px !important;
 }
 </style>
