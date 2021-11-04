@@ -22,11 +22,17 @@
           >
             {{ item.name }}
           </v-stepper-step>
-          <v-divider :key="i" v-if="i < items.length - 1" />
+          <v-divider
+            :key="i"
+            v-if="i < items.length - 1"
+          />
         </template>
       </v-stepper-header>
     </v-stepper>
-    <div v-for="(step, i) in items" :key="step + i">
+    <div
+      v-for="(step, i) in items"
+      :key="step + i"
+    >
       <!--
   =====================================================================================
     Slot: 'stepperContent' + number of stepper content (used to place custom ui into
@@ -40,7 +46,7 @@
 
 <script>
 export default {
-  name: "MewStepper",
+  name: 'MewStepper',
   data() {
     return {
       stepNumber: this.onStep,
