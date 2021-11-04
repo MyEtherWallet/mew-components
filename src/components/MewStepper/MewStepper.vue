@@ -6,6 +6,7 @@
   -->
   <div class="full-width">
     <v-stepper
+      flat
       alt-labels
       color="primary"
       class="mew-stepper"
