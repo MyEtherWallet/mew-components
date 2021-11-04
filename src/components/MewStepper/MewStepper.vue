@@ -18,21 +18,15 @@
             :step="i + 1"
             :key="i + item"
             complete-icon="mdi-check"
-            :complete="stepNumber > (i + 1)"
+            :complete="stepNumber > i + 1"
           >
             {{ item.name }}
           </v-stepper-step>
-          <v-divider
-            :key="i"
-            v-if="i < items.length - 1"
-          />
+          <v-divider :key="i" v-if="i < items.length - 1" />
         </template>
       </v-stepper-header>
     </v-stepper>
-    <div
-      v-for="(step, i) in items"
-      :key="step + i"
-    >
+    <div v-for="(step, i) in items" :key="step + i">
       <!--
   =====================================================================================
     Slot: 'stepperContent' + number of stepper content (used to place custom ui into
@@ -46,11 +40,11 @@
 
 <script>
 export default {
-  name: 'MewStepper',
+  name: "MewStepper",
   data() {
-    return {  
-      stepNumber: this.onStep
-    }
+    return {
+      stepNumber: this.onStep,
+    };
   },
   props: {
     /**
@@ -58,29 +52,29 @@ export default {
      */
     items: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     /**
      * Controls which step is active.
      */
     onStep: {
       type: Number,
-      default: 1
-    }
+      default: 1,
+    },
   },
   watch: {
     onStep(newVal) {
-      this.stepNumber = ( newVal > this.items.length || newVal < 1 ) ? 1 : newVal;
-    }
-  }
-}
+      this.stepNumber = newVal > this.items.length || newVal < 1 ? 1 : newVal;
+    },
+  },
+};
 </script>
 
 <style lang="scss">
 .mew-stepper {
   background-color: transparent !important;
   &.v-stepper {
-    box-shadow: none;
+    box-shadow: none !important;
     .v-stepper__label {
       text-align: center;
     }
@@ -97,11 +91,12 @@ export default {
         }
       }
     }
-    .v-stepper__step__step { 
+    .v-stepper__step__step {
       padding: 15px;
     }
 
-    .v-stepper__step--complete, .v-stepper__step--active {
+    .v-stepper__step--complete,
+    .v-stepper__step--active {
       .v-stepper__label {
         color: var(--v-titlePrimary-base);
       }
@@ -109,4 +104,3 @@ export default {
   }
 }
 </style>
-
