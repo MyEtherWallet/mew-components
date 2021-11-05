@@ -98,6 +98,9 @@ export const MEWButton = () => ({
     loading: {
       default: boolean("loading", false),
     },
+    title: {
+      default: text("title", ""),
+    },
   },
   watch: {},
   template: `
@@ -110,6 +113,7 @@ export const MEWButton = () => ({
       :btn-link="btnLink"
       :disabled="disabled"
       :btn-style="btnStyle"
+      :title="title"
       :color-theme="colorTheme"
       :btn-size="buttonSize"
     />

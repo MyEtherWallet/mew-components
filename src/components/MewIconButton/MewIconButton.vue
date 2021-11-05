@@ -62,6 +62,16 @@
     >
       <!--
       =====================================================================================
+      Button text (if no title prop is passed, then slot should be used)
+      =====================================================================================
+      -->
+      <span
+        v-if="title"
+        class="font-weight-regular"
+      >{{ title }} </span>
+
+      <!--
+      =====================================================================================
         slot: default
       =====================================================================================
       -->
@@ -124,6 +134,14 @@ export default {
     btnStyle: {
       type: String,
       default: 'background',
+    },
+    /**
+     * The text that will go in the center of the button.
+     * If not passed, a slot should be used.
+     */
+    title: {
+      type: String,
+      default: '',
     },
     /**
      * Applies the button color theme: primary, secondary, basic, error
