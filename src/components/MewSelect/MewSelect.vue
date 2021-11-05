@@ -28,13 +28,16 @@
 =====================================================================================
 -->
     <template v-slot:message="item">
-      <span class="mew-label">{{ item.message }} <a
-        rel="noopener noreferrer"
-        v-if="buyMoreStr"
-        href="https://ccswap.myetherwallet.com/#/"
-        target="_blank"
+      <span
         class="mew-label"
-      >{{ buyMoreStr }}</a></span>
+      >{{ item.message }}
+        <a
+          rel="noopener noreferrer"
+          v-if="buyMoreStr"
+          href="https://ccswap.myetherwallet.com/#/"
+          target="_blank"
+          class="mew-label"
+        >{{ buyMoreStr }}</a></span>
     </template>
 
     <!--
@@ -58,9 +61,7 @@
         prepend-inner-icon="mdi-magnify"
       />
     </template>
-    <template
-      v-slot:selection="{ item }"
-    >
+    <template v-slot:selection="{ item }">
       <!--
   =====================================================================================
     Select Token Placeholder
@@ -106,6 +107,7 @@
       >
         <v-img
           v-if="isCustom"
+          :lazy-src="ethTokenPlaceholder"
           class="mew-select-item-img selected-img"
           :src="!item.img ? ethTokenPlaceholder : item.img"
           :alt="item.name ? item.name : item"
@@ -113,10 +115,13 @@
           max-width="25"
           max-height="25"
         />
-        <span class="text-capitalize mt-1 ml-2 basic--text">{{ item.name ? item.name : item }} <span
-          v-if="item.subtext"
-          class="searchText--text text-capitalize"
-        >- {{ item.subtext }}</span></span>
+        <span
+          class="text-capitalize mt-1 ml-2 basic--text"
+        >{{ item.name ? item.name : item }}
+          <span
+            v-if="item.subtext"
+            class="searchText--text text-capitalize"
+          >- {{ item.subtext }}</span></span>
       </div>
     </template>
     <template v-slot:item="data">
@@ -140,10 +145,13 @@
         v-if="!isCustom && !loading"
         class="d-flex align-center justify-center"
       >
-        <span class="text-capitalize ml-2 mt-1">{{ data.item.name ? data.item.name : data.item }} <span
-          v-if="data.item.subtext"
-          class="textSecondary--text text-capitalize"
-        >- {{ data.item.subtext }}</span></span>
+        <span
+          class="text-capitalize ml-2 mt-1"
+        >{{ data.item.name ? data.item.name : data.item }}
+          <span
+            v-if="data.item.subtext"
+            class="textSecondary--text text-capitalize"
+          >- {{ data.item.subtext }}</span></span>
       </div>
       <!--
   =====================================================================================
@@ -163,7 +171,8 @@
           class="no-pointer-events titlePrimary--text"
           v-if="data.item.hasNoEth"
         >
-          {{ data.item.text }} <a
+          {{ data.item.text }}
+          <a
             class="all-pointer-events"
             target="_blank"
             :href="data.item.link"
@@ -184,17 +193,24 @@
           >
             <v-img
               class="mew-select-item-img"
-              @error="onDropdownItemImgErr(data)"
+              :lazy-src="ethTokenPlaceholder"
               :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
               :alt="!data.item.img ? 'token placeholder' : data.item.img"
               :contain="true"
               max-width="25"
               max-height="25"
-            /> 
-            <span class="text-capitalize ml-2 my-2 d-flex flex-column">{{ data.item.symbol || data.item.name || data.item }} <span
-              v-if="data.item.tokenBalance || data.item.subtext"
-              class="mew-caption font-weight-regular textSecondary--text text-capitalize"
-            >{{ data.item.tokenBalance ? data.item.tokenBalance + ' ' + data.item.symbol : data.item.subtext }}</span></span>
+            />
+            <span
+              class="text-capitalize ml-2 my-2 d-flex flex-column"
+            >{{ data.item.symbol || data.item.name || data.item }}
+              <span
+                v-if="data.item.tokenBalance || data.item.subtext"
+                class="mew-caption font-weight-regular textSecondary--text text-capitalize"
+              >{{
+                data.item.tokenBalance
+                  ? data.item.tokenBalance + " " + data.item.symbol
+                  : data.item.subtext
+              }}</span></span>
           </div>
           <div class="d-flex justify-center flex-column align-end">
             <span>${{ data.item.totalBalance || data.item.price }}</span>
@@ -219,28 +235,28 @@ export default {
      */
     buyMoreStr: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Error messages to display
      */
     errorMessages: {
-      type: [ String, Array],
-      default: ''
+      type: [String, Array],
+      default: '',
     },
     /**
      * Adds filter to select items
      */
     hasFilter: {
       type: Boolean,
-      default: true //  change to false
+      default: true, //  change to false
     },
     /**
      * Filter placeholder
      */
     filterPlaceholder: {
       type: String,
-      default: 'Search token name'
+      default: 'Search token name',
     },
     /**
      * MEW select value
@@ -248,15 +264,15 @@ export default {
     value: {
       type: Object,
       default: () => {
-        return {}
-      }
+        return {};
+      },
     },
     /**
      * Disables the select dropdown.
      */
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Can be an array of objects or array of strings. When using objects, will look for a text and value field.
@@ -269,29 +285,29 @@ export default {
       type: Array,
       default: () => {
         return [];
-      }
+      },
     },
     /**
      * Sets the select label
      */
     label: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Applies Custom Select styles
      */
     isCustom: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Loading state
      */
     loading: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
@@ -299,7 +315,7 @@ export default {
       selectModel: null,
       selectItems: [],
       search: '',
-      ethTokenPlaceholder: ethTokenPlaceholder
+      ethTokenPlaceholder: ethTokenPlaceholder,
     };
   },
   watch: {
@@ -307,64 +323,86 @@ export default {
       if (newVal === '' || newVal === null) {
         this.selectItems = this.items;
       } else {
-        const foundItems = this.items.filter(item => {
-            const searchValue = String(newVal).toLowerCase();
-            const value = item.hasOwnProperty('value') ? String(item.value).toLowerCase() : '';
-            const name = item.hasOwnProperty('name')? String(item.name).toLowerCase() : '';
-            const subtext = item.hasOwnProperty('subtext') ? String(item.subtext).toLowerCase() : '' ;  
-            return name.includes(searchValue) || subtext.includes(searchValue) || value.includes(searchValue);
-        })
+        const foundItems = this.items.filter((item) => {
+          const searchValue = String(newVal).toLowerCase();
+          const value = item.hasOwnProperty('value')
+            ? String(item.value).toLowerCase()
+            : '';
+          const name = item.hasOwnProperty('name')
+            ? String(item.name).toLowerCase()
+            : '';
+          const subtext = item.hasOwnProperty('subtext')
+            ? String(item.subtext).toLowerCase()
+            : '';
+          return (
+            name.includes(searchValue) ||
+            subtext.includes(searchValue) ||
+            value.includes(searchValue)
+          );
+        });
         this.selectItems = foundItems;
       }
     },
     selectModel(newVal) {
       setTimeout(() => {
         this.search = '';
-        this.selectItems = this.items;
-      }, 1000)
+      }, 1000);
       this.$emit('input', newVal);
     },
     value(newVal) {
-        this.selectModel = newVal && Object.keys(newVal).length !== 0 ? newVal : this.defaultItem;
+      this.selectModel =
+        newVal && Object.keys(newVal).length !== 0 ? newVal : this.defaultItem;
     },
     loading() {
       if (!this.loading) {
         this.togglePointerEventStyle();
-        this.selectModel = this.value && Object.keys(this.value).length !== 0 ? this.value : this.defaultItem;
+        this.selectModel =
+          this.value && Object.keys(this.value).length !== 0
+            ? this.value
+            : this.defaultItem;
       }
     },
     items: {
       handler: function(newVal) {
         this.selectItems = newVal;
-        this.selectModel = this.value && Object.keys(this.value).length !== 0 ? this.value : this.defaultItem;
+        this.selectModel =
+          this.value && Object.keys(this.value).length !== 0
+            ? this.value
+            : this.defaultItem;
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   computed: {
     defaultItem() {
-      return this.items.find(obj => {
-        return obj.selectLabel || obj.name
-      })
-    }
+      return this.items.find((obj) => {
+        return obj.selectLabel || obj.name;
+      });
+    },
   },
   mounted() {
     this.selectItems = this.items;
-    this.selectModel = this.value && Object.keys(this.value).length !== 0 ? this.value : this.defaultItem;
-
+    this.selectModel =
+      this.value && Object.keys(this.value).length !== 0
+        ? this.value
+        : this.defaultItem;
   },
   methods: {
     onDropdownItemImgErr(data) {
       data.item.img = ethTokenPlaceholder;
     },
+    onCustomDropDownItemImgErr(data) {
+      data.item.img = ethTokenPlaceholder;
+    },
     clear(val) {
-      this.selectModel = val && Object.keys(val).length !== 0 ? val : this.defaultItem;
+      this.selectModel =
+        val && Object.keys(val).length !== 0 ? val : this.defaultItem;
     },
     togglePointerEventStyle() {
       const elems = document.querySelectorAll('div.v-list-item--link');
       if (elems) {
-        const pointerEventStyle = this.loading ? 'none' : 'all'
-        for (let i = 0 ; i < elems.length ; i++) {
+        const pointerEventStyle = this.loading ? 'none' : 'all';
+        for (let i = 0; i < elems.length; i++) {
           elems[i].style.pointerEvents = pointerEventStyle;
         }
       }
@@ -378,16 +416,16 @@ export default {
         if (this.$refs.filterTextField) {
           this.$refs.filterTextField.$refs.input.focus();
         }
-      }, 100)
-    }
-  }
+      }, 100);
+    },
+  },
 };
 </script>
 <style lang="scss">
 /**
   * Mew Select styles
   */
-.mew-select {   
+.mew-select {
   .mdi-chevron-down {
     color: var(--v-titlePrimary-base);
     cursor: pointer;
@@ -397,8 +435,8 @@ export default {
     margin-right: -13px;
   }
   .total-token-placeholder {
-    border-radius: 50%;  
-    font-size: 8px;      
+    border-radius: 50%;
+    font-size: 8px;
     height: 24px;
     width: 24px;
   }
@@ -410,7 +448,7 @@ export default {
       height: 100%;
     }
   }
-/**
+  /**
   * Readonly input is not being used (since we are using our own ui via slots) and is taking up unnecessary space
   * so will hide for now
   */
