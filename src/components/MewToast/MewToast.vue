@@ -16,7 +16,7 @@
       class="text-center"
       :tile="true"
       height="80"
-      :color="toastType.toLowerCase() === toastTypes.info ? 'white' : toastType"
+      :color="backgroundColor"
     >
       <v-container fill-height>
         <v-row
@@ -122,6 +122,14 @@ export default {
       }
     };
   },
+  computed: {
+    backgroundColor() {
+      if (this.toastType.toLowerCase() === this.toastTypes.info) return 'white';
+      if (this.toastType.toLowerCase() === this.toastTypes.success)
+        return 'primary';
+      return this.toastType;
+    }
+  },
   watch: {
     showsToast(newVal) {
       this.$nextTick(() => {
@@ -188,9 +196,9 @@ export default {
 
 <style lang="scss" scoped>
 .close {
-  font-size: 20px;
-  position: absolute;
-  right: 20px;
+  font-size: 20px !important;
+  position: absolute !important;
+  right: 20px !important;
 }
 </style>
 
