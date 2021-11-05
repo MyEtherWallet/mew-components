@@ -64,3 +64,4 @@ typings/
 dist/
 node/
 .out/
+.DS_Store

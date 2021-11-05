@@ -10,31 +10,20 @@
     :class="[buttonClasses, 'mew-button']"
     :color="buttonColor"
     :disabled="disabled"
+    :loading="loading"
     depressed
     :outlined="hasOutline"
     :text="isTransparent"
   >
     <!--
   =====================================================================================
-    Loading state
-  =====================================================================================
-  -->
-    <v-progress-circular
-      v-if="loading"
-      indeterminate
-      size="20"
-      :color="loadingColor"
-    />
-    <!--
-  =====================================================================================
     Loaded Button Content 
   =====================================================================================
   -->
     <div
-      v-if="!loading"
       :class="[
         hasFullWidth ? 'full-width' : '',
-        'd-flex justify-center align-center'
+        'd-flex justify-center align-center',
       ]"
     >
       <!--
@@ -65,21 +54,21 @@ export default {
      */
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Button size: small, medium, large, xlarge.
      */
     btnSize: {
       type: String,
-      default: 'large'
+      default: 'large',
     },
     /**
      * Sets the button to have 100% width.
      */
     hasFullWidth: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Applies the button style: background, light, transparent, or outline.
@@ -88,7 +77,7 @@ export default {
      */
     btnStyle: {
       type: String,
-      default: 'background'
+      default: 'background',
     },
     /**
      * The text that will go in the center of the button.
@@ -96,29 +85,29 @@ export default {
      */
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Applies the button color theme: primary, secondary, basic, error, white
      */
     colorTheme: {
       type: String,
-      default: 'primary'
+      default: 'primary',
     },
     /**
      * Removes the ability to click or target the component.
      */
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Opens up a new page with the link.
      */
     btnLink: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   data() {
     return {
@@ -129,7 +118,7 @@ export default {
         secondary: 'secondary',
         primary: 'primary',
         basic: 'basic',
-        error: 'error'
+        error: 'error',
       },
       /**
        * all btn style options
@@ -138,8 +127,8 @@ export default {
         light: 'light',
         transparent: 'transparent',
         outline: 'outline',
-        background: 'background'
-      }
+        background: 'background',
+      },
     };
   },
   computed: {
@@ -312,8 +301,8 @@ export default {
      */
     isBackground() {
       return this.btnStyle.toLowerCase() === this.btnStyles.background;
-    }
-  }
+    },
+  },
 };
 </script>
 
