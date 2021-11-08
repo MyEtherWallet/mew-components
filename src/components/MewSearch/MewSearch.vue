@@ -20,7 +20,7 @@
     :outlined="isSearchBlock"
     :flat="isSearchBlock"
     validate-on-blur
-    type="search"
+    :type="type"
     @keyup.enter="onSearch"
   >
     <template v-slot:append>
@@ -141,6 +141,14 @@ export default {
     errorMessages: {
       type: [String, Array],
       default: '',
+    },
+    /**
+     * Input types
+     * default search
+     */
+    type: {
+      type: String,
+      default: 'search',
     },
   },
   data() {
