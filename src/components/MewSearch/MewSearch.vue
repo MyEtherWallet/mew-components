@@ -71,7 +71,7 @@
 
 <script>
 export default {
-  name: 'MewSearch',
+  name: "MewSearch",
   props: {
     /**
      * Click to search method for search button
@@ -93,14 +93,14 @@ export default {
      */
     placeholder: {
       type: String,
-      default: '',
+      default: "",
     },
     /**
      * The input value.
      */
     value: {
       type: String,
-      default: '',
+      default: "",
     },
     /**
      * Displays an outline around input
@@ -140,7 +140,7 @@ export default {
      */
     errorMessages: {
       type: [String, Array],
-      default: '',
+      default: "",
     },
     /**
      * Input types
@@ -148,12 +148,12 @@ export default {
      */
     type: {
       type: String,
-      default: 'search',
+      default: "search",
     },
   },
   data() {
     return {
-      inputValue: '',
+      inputValue: "",
       menuSelectModel: {},
     };
   },
@@ -163,26 +163,26 @@ export default {
      */
     searchHeight() {
       if (this.isCompact && !this.isSearchBlock) {
-        return '36px';
+        return "36px";
       }
       if (this.isCompact && this.isSearchBlock) {
-        return '46px';
+        return "46px";
       }
-      return '62px';
+      return "62px";
     },
     /**
      * @returns classes for mew search - needed for styling
      */
     mewSearchClasses() {
-      const classes = ['mew-search'];
+      const classes = ["mew-search"];
       this.isSearchBlock
-        ? classes.push('search-block')
-        : classes.push('search-standard');
+        ? classes.push("search-block")
+        : classes.push("search-standard");
       if (!this.isCompact) {
-        classes.push('search-large');
+        classes.push("search-large");
       }
       if (this.isFilled) {
-        classes.push('search-filled');
+        classes.push("search-filled");
       }
       return classes;
     },
@@ -193,7 +193,7 @@ export default {
      */
     inputValue(newVal, oldVal) {
       if (newVal !== oldVal) {
-        this.$emit('input', newVal);
+        this.$emit("input", newVal);
       }
     },
     /**
@@ -217,7 +217,7 @@ export default {
      * will @emit menu-select with value to parent container
      */
     onMenuSelect() {
-      this.$emit('menu-select', this.menuSelectModel);
+      this.$emit("menu-select", this.menuSelectModel);
     },
   },
 };
@@ -355,6 +355,7 @@ export default {
     &.error--text {
       color: var(--v-textMedium-base) !important;
     }
+    margin-left: 16px;
   }
   /**
     * MENU SELECT DROPDOWN STYLES
