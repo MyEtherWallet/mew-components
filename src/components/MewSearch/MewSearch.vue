@@ -57,7 +57,7 @@
         @click="onSearch"
         width="64"
         depressed
-        :class="[isCompact ? 'margin-offset' : '', 'search-btn ml-10']"
+        :class="[isCompact ? 'margin-offset' : '', $vuetify.breakpoint.smAndDown ? 'ml-2' : 'ml-4', 'search-btn']"
         color="primary"
       >
         <v-icon color="white">
