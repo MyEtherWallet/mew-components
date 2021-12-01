@@ -6,34 +6,39 @@
 -->
   <v-bottom-sheet
     ref="toast"
-    v-model="showsToast" 
+    v-model="showsToast"
     :hide-overlay="true"
     :retain-focus="false"
     :persistent="persistent"
+    content-class="mew-components--mew-toast position--relative"
   >
-    <v-sheet 
+    <v-sheet
       class="text-center"
-      :tile="true" 
+      :tile="true"
       height="80"
       :color="toastType.toLowerCase() === toastTypes.info ? 'white' : toastType"
     >
       <v-container fill-height>
         <v-row
-          :class="['font-weight-medium', getRowClasses()]"  
+          :class="['font-weight-medium', getRowClasses()]"
           justify="center"
           align="center"
         >
           <div class="d-flex align-center">
             <v-icon
               v-if="toastTypes.info !== toastType.toLowerCase()"
-              :color="toastTypes.warning === toastType.toLowerCase() ? 'warning darken-1' : 'white'"
+              :color="
+                toastTypes.warning === toastType.toLowerCase()
+                  ? 'warning darken-1'
+                  : 'white'
+              "
             >
               {{ getIcon() }}
             </v-icon>
             {{ text }}
             <a
-              @click="onClick"
               :class="getLinkClasses()"
+              @click="onClick"
             >{{ linkObj.title }}
             </a>
             <!--
@@ -43,34 +48,26 @@
 -->
             <slot name="infoBtn" />
           </div>
-          <v-icon
-            @click="close"
-            color="titlePrimary"
-            v-if="canClose"
-            class="close cursor-pointer"
-          >
-            mdi-close
-          </v-icon>
         </v-row>
       </v-container>
     </v-sheet>
+
+    <v-btn
+      icon
+      color="white"
+      class="side-close-button"
+      @click="close"
+    >
+      <v-icon v-if="canClose">
+        mdi-close
+      </v-icon>
+    </v-btn>
   </v-bottom-sheet>
 </template>
 
 <script>
 export default {
   name: 'MewToast',
-  data() {
-    return {
-      showsToast: false,
-      toastTypes: {
-        warning: 'warning',
-        error: 'error',
-        success: 'success',
-        info: 'info'
-      }
-    }
-  },
   props: {
     /**
      * Toast types: success, warning, error.
@@ -115,68 +112,99 @@ export default {
     canClose: {
       type: Boolean,
       default: false
+    },
+    value: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      showsToast: false,
+      toastTypes: {
+        warning: 'warning',
+        error: 'error',
+        success: 'success',
+        info: 'info'
+      }
+    };
+  },
+  watch: {
+    value() {
+      if (this.showsToast === false) {
+        this.showsToast = true;
+      }
+
+      if (this.showsToast === true) {
+        this.$emit('input', false);
+      }
+    },
+    showsToast(newVal) {
+      this.$nextTick(() => {
+        this.$refs.toast.showScroll();
+      });
+
+      if (!newVal) {
+        this.$emit('closed');
+      }
     }
   },
   mounted() {
     this.setTimer();
-  },
-  watch: {
-    showsToast(newVal) {
-      this.$nextTick(() => {
-        this.$refs.toast.showScroll();
-      })
-
-      if(!newVal) {
-        this.$emit('closed');
-      }
-    }
   },
   methods: {
     close() {
       this.showsToast = false;
     },
     onClick() {
-      this.linkObj.url !== '' && this.linkObj.url ? window.open(this.linkObj.url) : this.$emit('onClick')
+      this.linkObj.url !== '' && this.linkObj.url
+        ? window.open(this.linkObj.url)
+        : this.$emit('onClick');
     },
-    showToast() {
-      this.showsToast = true;
-      this.setTimer();
-    },  
     getLinkClasses() {
-      if (this.toastTypes.warning === this.toastType.toLowerCase() || this.toastTypes.info === this.toastType.toLowerCase()) {
+      if (
+        this.toastTypes.warning === this.toastType.toLowerCase() ||
+        this.toastTypes.info === this.toastType.toLowerCase()
+      ) {
         return 'primary--text';
       }
       return 'white--text';
     },
     getRowClasses() {
-      if (this.toastTypes.warning === this.toastType.toLowerCase() || this.toastTypes.info === this.toastType.toLowerCase()) {
+      if (
+        this.toastTypes.warning === this.toastType.toLowerCase() ||
+        this.toastTypes.info === this.toastType.toLowerCase()
+      ) {
         return 'titlePrimary--text';
-      } 
+      }
       return 'white--text';
     },
     getIcon() {
       const toastType = this.toastType.toLowerCase();
-      if (toastType === this.toastTypes.warning ) {
+      if (toastType === this.toastTypes.warning) {
         return 'mdi-alert';
-      } else if (toastType === this.toastTypes.success ) {
+      } else if (toastType === this.toastTypes.success) {
         return 'mdi-check-circle';
       } else if (toastType === this.toastTypes.error) {
-        return 'mdi-close-circle'
+        return 'mdi-close-circle';
       }
     },
     setTimer() {
-      if(this.duration > 0 && this.showsToast === true && !this.persistent) {
-        setTimeout(() => this.showsToast = false, this.duration);
+      if (this.duration > 0 && this.showsToast === true && !this.persistent) {
+        setTimeout(() => (this.showsToast = false), this.duration);
       }
     }
   }
-}
+};
 </script>
 
-<style lang="scss" scoped>
-.close {
+<style lang="scss">
+.mew-components--mew-toast .side-close-button {
   font-size: 20px;
   position: absolute;
   right: 20px;
+  top: 0px;
+  bottom: 0;
+  margin: auto;
 }
 </style>
