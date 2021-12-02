@@ -53,12 +53,13 @@
     </v-sheet>
 
     <v-btn
+      v-if="canClose"
       icon
       color="white"
       class="side-close-button"
       @click="close"
     >
-      <v-icon v-if="canClose">
+      <v-icon>
         mdi-close
       </v-icon>
     </v-btn>
