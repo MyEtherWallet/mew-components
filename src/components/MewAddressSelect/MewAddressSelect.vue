@@ -54,14 +54,11 @@
       <div class="icon-container d-flex align-center">
         <mew-copy
           class="mr-3"
+          v-show="showCopy"
           :tooltip="copyTooltip"
           :copy-value="addressValue.address || addressValue"
         />
-        <v-tooltip
-          content-class="tooltip-inner"
-          color="titlePrimary--text"
-          top
-        >
+        <v-tooltip content-class="tooltip-inner" color="titlePrimary--text" top>
           <template v-slot:activator="{ on }">
             <v-icon
               :class="[
@@ -117,10 +114,7 @@
             v-if="!item.resolvedAddr || item.resolvedAddr === ''"
             :hash="item.address"
           />
-          <span
-            class="mew-address"
-            v-else
-          >{{ item.address }}</span>
+          <span class="mew-address" v-else>{{ item.address }}</span>
         </div>
         <div class="overline primary--text font-weight-medium ml-3">
           {{ item.nickname }}
@@ -131,15 +125,15 @@
 </template>
 
 <script>
-import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
-import MewCopy from '@/components/MewCopy/MewCopy.vue';
-import MewTransformHash from '../MewTransformHash/MewTransformHash.vue';
+import MewBlockie from "@/components/MewBlockie/MewBlockie.vue";
+import MewCopy from "@/components/MewCopy/MewCopy.vue";
+import MewTransformHash from "../MewTransformHash/MewTransformHash.vue";
 const USER_INPUT_TYPES = {
-  typed: 'TYPED',
-  selected: 'SELECTED'
+  typed: "TYPED",
+  selected: "SELECTED",
 };
 export default {
-  name: 'MewAddressSelect',
+  name: "MewAddressSelect",
   props: {
     /**
      * For validating your input - accepts an array of functions that take an input value as an argument and return either true / false or a string with an error message.
@@ -155,14 +149,14 @@ export default {
      */
     noDataText: {
       type: String,
-      default: '',
+      default: "",
     },
     /**
      * Resolved address for name.
      */
     resolvedAddr: {
       type: String,
-      default: '',
+      default: "",
     },
     /**
      * Disables the input.
@@ -190,7 +184,7 @@ export default {
      */
     label: {
       type: String,
-      default: 'To Address',
+      default: "To Address",
     },
     /**
      * Displays the saved addresses.
@@ -206,29 +200,36 @@ export default {
      */
     placeholder: {
       type: String,
-      default: 'Please enter an address',
+      default: "Please enter an address",
     },
     /**
      * Tooltip for copy.
      */
     copyTooltip: {
       type: String,
-      default: '',
+      default: "",
+    },
+    /**
+     * Displays copy button
+     */
+    showCopy: {
+      type: Boolean,
+      default: true,
     },
     /**
      * Tooltip for save address.
      */
     saveTooltip: {
       type: String,
-      default: '',
+      default: "",
     },
     /**
      * Error messages to display
      */
     errorMessages: {
-      type: [ String, Array],
-      default: ''
-    }
+      type: [String, Array],
+      default: "",
+    },
   },
   components: {
     MewBlockie,
@@ -240,7 +241,7 @@ export default {
       /**
        * The v-model value for the combobox.
        */
-      addressValue: '',
+      addressValue: "",
       /**
        * Controls the dropdown expansion.
        */
@@ -268,13 +269,13 @@ export default {
      * Clears the v-model value.
      */
     clear() {
-      this.addressValue = '';
+      this.addressValue = "";
     },
     /**
      * Emits 'saveAddress' when triggered by save address button.
      */
     saveAddress() {
-      this.$emit('saveAddress');
+      this.$emit("saveAddress");
     },
     /**
      * Toggles the dropdown.
@@ -294,7 +295,7 @@ export default {
      * Emits 'input' when there is a v-model value change.
      */
     onChange(value) {
-      this.$emit('input', value, this.isTyped);
+      this.$emit("input", value, this.isTyped);
     },
     /**
      * Sets the value for what the user types int
