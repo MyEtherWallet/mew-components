@@ -124,65 +124,65 @@ export const All = () => ({
     newColors: [
       {
         shades: [
-          {name: 'backgroundWallet', lightHex: '#F2F4FA', darkHex: '#F2F4FA'},
-          {name: 'backgroundOverlay', lightHex: '#F2FAFA', darkHex: '#F2FAFA'},
-          {name: 'backgroundGrey', lightHex: '#F8F9FB', darkHex: '#F8F9FB'}
+          {name: 'backgroundWallet', lightHex: '#F2F4FA', darkHex: '#000000'},
+          {name: 'backgroundOverlay', lightHex: '#F2FAFA', darkHex: '#000000'},
+          {name: 'backgroundGrey', lightHex: '#F8F9FB', darkHex: '#000000'}
         ]
       },
       {
         shades: [
           {name: 'whiteAlways', lightHex: '#FFFFFF', darkHex: '#FFFFFF'},
-          {name: 'whiteBackground', lightHex: '#FFFFFF', darkHex: '#FFFFFF'},
-          {name: 'whitePopup', lightHex: '#FFFFFF', darkHex: '#FFFFFF'}
+          {name: 'whiteBackground', lightHex: '#FFFFFF', darkHex: '#192439'},
+          {name: 'whitePopup', lightHex: '#FFFFFF', darkHex: '#202b43'}
         ]
       },
       {
         shades: [
-          {name: 'textDark', lightHex: '#192133', darkHex: '#192133'},
-          {name: 'textMedium', lightHex: '#5A678A', darkHex: '#5A678A'},
-          {name: 'textLight', lightHex: '#939FB9', darkHex: '#939FB9'}
+          {name: 'textDark', lightHex: '#192133', darkHex: '#ccd4e6'},
+          {name: 'textMedium', lightHex: '#5A678A', darkHex: '#626e86'},
+          {name: 'textLight', lightHex: '#939FB9', darkHex: '#3a4562'}
         ]
       },
       {
         shades: [
-          {name: 'greenPrimary', lightHex: '#05C0A5', darkHex: '#05C0A5'},
-          {name: 'greenMedium', lightHex: '#C3F0E9', darkHex: '#C3F0E9'},
-          {name: 'greenLight', lightHex: '#EBFAF8', darkHex: '#EBFAF8'}
+          {name: 'greenPrimary', lightHex: '#05C0A5', darkHex: '#06d9b9'},
+          {name: 'greenMedium', lightHex: '#C3F0E9', darkHex: '#107e7a'},
+          {name: 'greenLight', lightHex: '#EBFAF8', darkHex: '#154853'}
         ]
       },
       {
         shades: [
-          {name: 'greyPrimary', lightHex: '#5A678A', darkHex: '#5A678A'},
-          {name: 'greyMedium', lightHex: '#D7DAE3', darkHex: '#D7DAE3'},
-          {name: 'greyLight', lightHex: '#F2F3F6', darkHex: '#F2F3F6'}
+          {name: 'greyPrimary', lightHex: '#5A678A', darkHex: '#5a678a'},
+          {name: 'greyMedium', lightHex: '#D7DAE3', darkHex: '#323d57'},
+          {name: 'greyLight', lightHex: '#F2F3F6', darkHex: '#26324a'}
         ]
       },
       {
         shades: [
-          {name: 'bluePrimary', lightHex: '#4B83E8', darkHex: '#4B83E8'},
-          {name: 'blueMedium', lightHex: '#D4E1F9', darkHex: '#D4E1F9'},
-          {name: 'blueLight', lightHex: '#EEF3FD', darkHex: '#EEF3FD'}
+          {name: 'bluePrimary', lightHex: '#4B83E8', darkHex: '#6292eb'},
+          {name: 'blueMedium', lightHex: '#D4E1F9', darkHex: '#355288'},
+          {name: 'blueLight', lightHex: '#EEF3FD', darkHex: '#283a5d'}
         ]
       },
       {
         shades: [
-          {name: 'redPrimary', lightHex: '#FF445B', darkHex: '#FF445B'},
-          {name: 'redMedium', lightHex: '#FFD2D8', darkHex: '#FFD2D8'},
-          {name: 'redLight', lightHex: '#FFF0F2', darkHex: '#FFF0F2'}
+          {name: 'redPrimary', lightHex: '#FF445B', darkHex: '#ff5d70'},
+          {name: 'redMedium', lightHex: '#FFD2D8', darkHex: '#8c4155'},
+          {name: 'redLight', lightHex: '#FFF0F2', darkHex: '#473044'}
         ]
       },
       {
         shades: [
-          {name: 'orangePrimary', lightHex: '#F5A623', darkHex: '#F5A623'},
-          {name: 'orangeMedium', lightHex: '#FBDBA7', darkHex: '#FBDBA7'},
-          {name: 'orangeLight', lightHex: '#FEF4E5', darkHex: '#FEF4E5'}
+          {name: 'orangePrimary', lightHex: '#F5A623', darkHex: '#f6af3c'},
+          {name: 'orangeMedium', lightHex: '#FBDBA7', darkHex: '#87693b'},
+          {name: 'orangeLight', lightHex: '#FEF4E5', darkHex: '#45403a'}
         ]
       },
       {
         shades: [
-          {name: 'disabledPrimary', lightHex: '#CECECE', darkHex: '#CECECE'},
-          {name: 'disabledMedium', lightHex: '#E0E0E0', darkHex: '#E0E0E0'},
-          {name: 'disabledLight', lightHex: '#F6F6F6', darkHex: '#F6F6F6'}
+          {name: 'disabledPrimary', lightHex: '#CECECE', darkHex: '#606670'},
+          {name: 'disabledMedium', lightHex: '#E0E0E0', darkHex: '#383f4a'},
+          {name: 'disabledLight', lightHex: '#F6F6F6', darkHex: '#242d3e'}
         ]
       },
     ]
@@ -210,24 +210,51 @@ export const All = () => ({
   template: `
     <div>
     <br />
-    <div class="mew-heading-2">New colors</div>
+    <div class="mew-heading-2">New colors (Light)</div>
     <br />
     <v-row align="center" v-for="( color, idx) in newColors" :key="color + idx">
       <v-card
         v-for="shade in color.shades"
         :key="shade.name"
-        :color="shade.name"
+        :color="shade.lightHex"
         outlined
         tile
         width="170"
         height="80"
       > 
-        <v-card-text :class="getClasses(shade)">
-          <div style="font-size: 12px">{{shade.name}}</div>
-          <div style="font-size: 12px">{{$vuetify.theme.dark ? shade.darkHex :shade.lightHex}}</div>
+        <v-card-text class="pa-0">
+          <div><span class="pa-1" style="background-color: #ffffff73; font-size: 10px">{{shade.name}}</span></div>
+          <div><span class="pa-1" style="background-color: #ffffff73; font-size: 10px">{{shade.lightHex}}</span></div>
         </v-card-text>
       </v-card>
     </v-row>
+
+
+    <br />
+    <br />
+    <br />
+    <div class="mew-heading-2">New colors (Dark)</div>
+    <br />
+    <v-row align="center" v-for="( color, idx) in newColors" :key="color + idx">
+      <v-card
+        v-for="shade in color.shades"
+        :key="shade.name"
+        :color="shade.darkHex"
+        outlined
+        tile
+        width="170"
+        height="80"
+      > 
+        <v-card-text class="pa-0">
+          <div><span class="pa-1" style="background-color: #ffffff73; font-size: 10px">{{shade.name}}</span></div>
+          <div><span class="pa-1" style="background-color: #ffffff73; font-size: 10px">{{shade.darkHex}}</span></div>
+        </v-card-text>
+      </v-card>
+    </v-row>
+
+
+    <br />
+    <br />
     <br />
     <div class="mew-heading-2">Old colors</div>
     <br />
