@@ -74,7 +74,7 @@
             :width="isMobile ? '100%' : sheetWidth"
             height="100%"
             color="white"
-            class="pt-5"
+            class="pt-5 pt-md-0"
             :class="[
               !isMobile ? 'white-sheet-container' : '',
               isMobile ? 'my-0' : 'my-4'
