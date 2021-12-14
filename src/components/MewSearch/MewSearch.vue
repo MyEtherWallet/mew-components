@@ -74,6 +74,7 @@
           btn-style="transparent"
           mdi-icon-size="medium"
           mdi-icon="calendar"
+          @click="onDateSearch"
         />
         <mew-icon-button
           btn-style="transparent"
@@ -97,6 +98,14 @@ export default {
      * displays on isSearchBlock
      */
     onSearch: {
+      type: Function,
+      default: () => {},
+    },
+    /**
+     * click function for calendar icon
+     * displays on isSearchBlock
+     */
+    onDateSearch: {
       type: Function,
       default: () => {},
     },
