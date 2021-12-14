@@ -51,27 +51,46 @@
   =====================================================================================
   -->
       <v-btn
-        v-if="isSearchBlock"
+        v-if="isSearchBlock && !canSearchDate"
         :disabled="errorMessages.length > 0"
         :height="searchHeight"
         @click="onSearch"
         width="64"
         depressed
-        :class="[isCompact ? 'margin-offset' : '', $vuetify.breakpoint.smAndDown ? 'ml-2' : 'ml-4', 'search-btn']"
+        :class="[
+          isCompact ? 'margin-offset' : '',
+          $vuetify.breakpoint.smAndDown ? 'ml-2' : 'ml-4',
+          'search-btn',
+        ]"
         color="primary"
       >
         <v-icon color="white">
           mdi-magnify
         </v-icon>
       </v-btn>
+      <v-divider v-if="isSearchBlock && canSearchDate" vertical light />
+      <div v-if="isSearchBlock && canSearchDate">
+        <mew-icon-button
+          btn-style="transparent"
+          mdi-icon-size="medium"
+          mdi-icon="calendar"
+        />
+        <mew-icon-button
+          btn-style="transparent"
+          mdi-icon-size="medium"
+          mdi-icon="magnify"
+          @click="onSearch"
+        />
+      </div>
     </template>
     <template v-slot:append-outer />
   </v-text-field>
 </template>
 
 <script>
+import MewIconButton from "@/components/MewIconButton/MewIconButton.vue";
 export default {
-  name: 'MewSearch',
+  name: "MewSearch",
   props: {
     /**
      * Click to search method for search button
@@ -93,14 +112,14 @@ export default {
      */
     placeholder: {
       type: String,
-      default: '',
+      default: "",
     },
     /**
      * The input value.
      */
     value: {
       type: String,
-      default: '',
+      default: "",
     },
     /**
      * Displays an outline around input
@@ -108,6 +127,14 @@ export default {
      * if want to be filled then isFilled prop needs to be passed
      */
     isSearchBlock: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * Displays a calendar icon
+     * removes search button in favor of search icon
+     */
+    canSearchDate: {
       type: Boolean,
       default: false,
     },
@@ -140,7 +167,7 @@ export default {
      */
     errorMessages: {
       type: [String, Array],
-      default: '',
+      default: "",
     },
     /**
      * Input types
@@ -148,12 +175,15 @@ export default {
      */
     type: {
       type: String,
-      default: 'search',
+      default: "search",
     },
+  },
+  components: {
+    MewIconButton,
   },
   data() {
     return {
-      inputValue: '',
+      inputValue: "",
       menuSelectModel: {},
     };
   },
@@ -163,26 +193,26 @@ export default {
      */
     searchHeight() {
       if (this.isCompact && !this.isSearchBlock) {
-        return '36px';
+        return "36px";
       }
       if (this.isCompact && this.isSearchBlock) {
-        return '46px';
+        return "46px";
       }
-      return '62px';
+      return "62px";
     },
     /**
      * @returns classes for mew search - needed for styling
      */
     mewSearchClasses() {
-      const classes = ['mew-search'];
+      const classes = ["mew-search"];
       this.isSearchBlock
-        ? classes.push('search-block')
-        : classes.push('search-standard');
+        ? classes.push("search-block")
+        : classes.push("search-standard");
       if (!this.isCompact) {
-        classes.push('search-large');
+        classes.push("search-large");
       }
       if (this.isFilled) {
-        classes.push('search-filled');
+        classes.push("search-filled");
       }
       return classes;
     },
@@ -193,7 +223,7 @@ export default {
      */
     inputValue(newVal, oldVal) {
       if (newVal !== oldVal) {
-        this.$emit('input', newVal);
+        this.$emit("input", newVal);
       }
     },
     /**
@@ -217,7 +247,7 @@ export default {
      * will @emit menu-select with value to parent container
      */
     onMenuSelect() {
-      this.$emit('menu-select', this.menuSelectModel);
+      this.$emit("menu-select", this.menuSelectModel);
     },
   },
 };
