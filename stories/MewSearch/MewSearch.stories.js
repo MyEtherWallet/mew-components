@@ -52,6 +52,9 @@ export const MEWSearch = () => ({
     isSearchBlock: {
       default: boolean("is-search-block", true),
     },
+    canSearchDate: {
+      default: boolean("can-search-block", false),
+    },
     menuSelect: {
       default: object("menu-select", menuSelect),
     },
@@ -80,11 +83,14 @@ export const MEWSearch = () => ({
     onSearch() {
       console.log("search button clicked");
     },
+    onDateSearch() {
+      console.log("search button clicked");
+    },
   },
   template: `
     <div>
     <br />
-    <mew-search :on-search="onSearch" :is-filled="isFilled" :error-messages="errorMessages" :is-compact="isCompact" :menu-select="menuSelect" :is-search-block="isSearchBlock" :disabled="disabled" :placeholder="placeholder" :value="value" :type="type"
+    <mew-search :on-search="onSearch" :on-date-search="onDateSearch" :is-filled="isFilled" :error-messages="errorMessages" :is-compact="isCompact" :menu-select="menuSelect" :is-search-block="isSearchBlock" :can-search-date="canSearchDate" :disabled="disabled" :placeholder="placeholder" :value="value" :type="type"
     />
   </div>`,
 });

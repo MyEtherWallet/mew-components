@@ -51,25 +51,53 @@
   =====================================================================================
   -->
       <v-btn
-        v-if="isSearchBlock"
+        v-if="isSearchBlock && !canSearchDate"
         :disabled="errorMessages.length > 0"
         :height="searchHeight"
         @click="onSearch"
         width="64"
         depressed
-        :class="[isCompact ? 'margin-offset' : '', $vuetify.breakpoint.smAndDown ? 'ml-2' : 'ml-4', 'search-btn']"
+        :class="[
+          isCompact ? 'margin-offset' : '',
+          $vuetify.breakpoint.smAndDown ? 'ml-2' : 'ml-4',
+          'search-btn',
+        ]"
         color="primary"
       >
         <v-icon color="white">
           mdi-magnify
         </v-icon>
       </v-btn>
+      <v-divider
+        v-if="isSearchBlock && canSearchDate"
+        vertical
+        light
+      />
+      <div
+        class="pl-3 pr-4"
+        v-if="isSearchBlock && canSearchDate"
+      >
+        <mew-icon-button
+          btn-style="transparent"
+          mdi-icon-size="medium"
+          mdi-icon="calendar"
+          class="mr-1"
+          @click="onDateSearch"
+        />
+        <mew-icon-button
+          btn-style="transparent"
+          mdi-icon-size="medium"
+          mdi-icon="magnify"
+          @click="onSearch"
+        />
+      </div>
     </template>
     <template v-slot:append-outer />
   </v-text-field>
 </template>
 
 <script>
+import MewIconButton from '@/components/MewIconButton/MewIconButton.vue';
 export default {
   name: 'MewSearch',
   props: {
@@ -78,6 +106,14 @@ export default {
      * displays on isSearchBlock
      */
     onSearch: {
+      type: Function,
+      default: () => {},
+    },
+    /**
+     * click function for calendar icon
+     * displays on isSearchBlock
+     */
+    onDateSearch: {
       type: Function,
       default: () => {},
     },
@@ -108,6 +144,14 @@ export default {
      * if want to be filled then isFilled prop needs to be passed
      */
     isSearchBlock: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * Displays a calendar icon
+     * removes search button in favor of search icon
+     */
+    canSearchDate: {
       type: Boolean,
       default: false,
     },
@@ -150,6 +194,9 @@ export default {
       type: String,
       default: 'search',
     },
+  },
+  components: {
+    MewIconButton,
   },
   data() {
     return {
