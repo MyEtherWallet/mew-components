@@ -82,13 +82,13 @@
           mdi-icon-size="medium"
           mdi-icon="calendar"
           class="mr-1"
-          @click="onDateSearch"
+          @click.native="onDateSearch"
         />
         <mew-icon-button
           btn-style="transparent"
           mdi-icon-size="medium"
           mdi-icon="magnify"
-          @click="onSearch"
+          @click.native="onSearch"
         />
       </div>
     </template>
