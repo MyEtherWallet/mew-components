@@ -63,9 +63,11 @@
         Dialog action
       =====================================================================================
       -->
-      <v-card-actions class="py-5 py-md-8">
+      <v-card-actions
+        v-if="hasButtons"
+        class="py-5 py-md-8"
+      >
         <v-row
-          v-if="hasButtons"
           class="pa-0"
           justify="space-around"
           dense
