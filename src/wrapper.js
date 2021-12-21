@@ -9,6 +9,7 @@ import MewCarousel from './components/MewCarousel/MewCarousel.vue';
 import MewCheckbox from './components/MewCheckbox/MewCheckbox.vue';
 import MewExpandPanel from './components/MewExpandPanel/MewExpandPanel.vue';
 import MewInput from './components/MewInput/MewInput.vue';
+import MewIconButton from './components/MewIconButton/MewIconButton.vue';
 import MewMenu from './components/MewMenu/MewMenu.vue';
 import MewModule from './components/MewModule/MewModule.vue';
 import MewOverlay from './components/MewOverlay/MewOverlay.vue';
@@ -51,6 +52,7 @@ const Components = {
   MewCheckbox,
   MewExpandPanel,
   MewInput,
+  MewIconButton,
   MewMenu,
   MewModule,
   MewOverlay,
@@ -78,7 +80,7 @@ const Components = {
   MewTextArea,
   MewSearch,
   MewDropdown,
-  MewAlert
+  MewAlert,
 };
 
 // Declare install function executed by Vue.use()

@@ -54,6 +54,7 @@
       <div class="icon-container d-flex align-center">
         <mew-copy
           class="mr-3"
+          v-show="showCopy"
           :tooltip="copyTooltip"
           :copy-value="addressValue.address || addressValue"
         />
@@ -136,7 +137,7 @@ import MewCopy from '@/components/MewCopy/MewCopy.vue';
 import MewTransformHash from '../MewTransformHash/MewTransformHash.vue';
 const USER_INPUT_TYPES = {
   typed: 'TYPED',
-  selected: 'SELECTED'
+  selected: 'SELECTED',
 };
 export default {
   name: 'MewAddressSelect',
@@ -216,6 +217,13 @@ export default {
       default: '',
     },
     /**
+     * Displays copy button
+     */
+    showCopy: {
+      type: Boolean,
+      default: true,
+    },
+    /**
      * Tooltip for save address.
      */
     saveTooltip: {
@@ -226,9 +234,9 @@ export default {
      * Error messages to display
      */
     errorMessages: {
-      type: [ String, Array],
-      default: ''
-    }
+      type: [String, Array],
+      default: '',
+    },
   },
   components: {
     MewBlockie,
