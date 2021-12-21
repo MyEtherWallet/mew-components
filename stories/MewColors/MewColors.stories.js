@@ -133,56 +133,56 @@ export const All = () => ({
         shades: [
           {name: 'whiteAlways', lightHex: '#FFFFFF', darkHex: '#FFFFFF'},
           {name: 'whiteBackground', lightHex: '#FFFFFF', darkHex: '#192439'},
-          {name: 'whitePopup', lightHex: '#FFFFFF', darkHex: '#202b43'}
+          {name: 'whitePopup', lightHex: '#FFFFFF', darkHex: '#202B43'}
         ]
       },
       {
         shades: [
-          {name: 'textDark', lightHex: '#192133', darkHex: '#ccd4e6'},
-          {name: 'textMedium', lightHex: '#5A678A', darkHex: '#626e86'},
-          {name: 'textLight', lightHex: '#939FB9', darkHex: '#3a4562'}
+          {name: 'textDark', lightHex: '#192133', darkHex: '#CCD4E6'},
+          {name: 'textMedium', lightHex: '#5A678A', darkHex: '#626E86'},
+          {name: 'textLight', lightHex: '#939FB9', darkHex: '#3A4561'}
         ]
       },
       {
         shades: [
-          {name: 'greenPrimary', lightHex: '#05C0A5', darkHex: '#06d9b9'},
-          {name: 'greenMedium', lightHex: '#C3F0E9', darkHex: '#107e7a'},
+          {name: 'greenPrimary', lightHex: '#05C0A5', darkHex: '#06D9B9'},
+          {name: 'greenMedium', lightHex: '#C3F0E9', darkHex: '#107E7A'},
           {name: 'greenLight', lightHex: '#EBFAF8', darkHex: '#154853'}
         ]
       },
       {
         shades: [
-          {name: 'greyPrimary', lightHex: '#5A678A', darkHex: '#5a678a'},
-          {name: 'greyMedium', lightHex: '#D7DAE3', darkHex: '#323d57'},
-          {name: 'greyLight', lightHex: '#F2F3F6', darkHex: '#26324a'}
+          {name: 'greyPrimary', lightHex: '#5A678A', darkHex: '#5A678A'},
+          {name: 'greyMedium', lightHex: '#D7DAE3', darkHex: '#323D57'},
+          {name: 'greyLight', lightHex: '#F2F3F6', darkHex: '#263149'}
         ]
       },
       {
         shades: [
-          {name: 'bluePrimary', lightHex: '#4B83E8', darkHex: '#6292eb'},
+          {name: 'bluePrimary', lightHex: '#4B83E8', darkHex: '#6292EB'},
           {name: 'blueMedium', lightHex: '#D4E1F9', darkHex: '#355288'},
-          {name: 'blueLight', lightHex: '#EEF3FD', darkHex: '#283a5d'}
+          {name: 'blueLight', lightHex: '#EEF3FD', darkHex: '#283A5D'}
         ]
       },
       {
         shades: [
-          {name: 'redPrimary', lightHex: '#FF445B', darkHex: '#ff5d70'},
-          {name: 'redMedium', lightHex: '#FFD2D8', darkHex: '#8c4155'},
+          {name: 'redPrimary', lightHex: '#FF445B', darkHex: '#FF5E70'},
+          {name: 'redMedium', lightHex: '#FFD2D8', darkHex: '#8C4155'},
           {name: 'redLight', lightHex: '#FFF0F2', darkHex: '#473044'}
         ]
       },
       {
         shades: [
-          {name: 'orangePrimary', lightHex: '#F5A623', darkHex: '#f6af3c'},
-          {name: 'orangeMedium', lightHex: '#FBDBA7', darkHex: '#87693b'},
-          {name: 'orangeLight', lightHex: '#FEF4E5', darkHex: '#45403a'}
+          {name: 'orangePrimary', lightHex: '#F5A623', darkHex: '#F6AF3C'},
+          {name: 'orangeMedium', lightHex: '#FBDBA7', darkHex: '#87693B'},
+          {name: 'orangeLight', lightHex: '#FEF4E5', darkHex: '#45403A'}
         ]
       },
       {
         shades: [
           {name: 'disabledPrimary', lightHex: '#CECECE', darkHex: '#606670'},
-          {name: 'disabledMedium', lightHex: '#E0E0E0', darkHex: '#383f4a'},
-          {name: 'disabledLight', lightHex: '#F6F6F6', darkHex: '#242d3e'}
+          {name: 'disabledMedium', lightHex: '#E0E0E0', darkHex: '#383F4A'},
+          {name: 'disabledLight', lightHex: '#F6F6F6', darkHex: '#242D3E'}
         ]
       },
     ]
