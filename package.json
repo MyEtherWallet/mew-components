@@ -1,6 +1,6 @@
 {
   "name": "@myetherwallet/mew-components",
-  "version": "0.7.9-beta",
+  "version": "0.7.16-beta",
   "description": "MEW Components",
   "main": "dist/mew-components.umd.js",
   "module": "dist/mew-components.esm.js",
@@ -42,7 +42,7 @@
     "vue-loader": "^15.9.3",
     "vue-router": "^3.3.4",
     "vue-style-loader": "^4.1.2",
-    "vuetify": "^2.4.3",
+    "vuetify": "2.5.12",
     "vuex": "^3.5.1"
   },
   "devDependencies": {
