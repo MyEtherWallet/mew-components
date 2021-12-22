@@ -81,6 +81,7 @@
 -->
     <template v-slot:append>
       <v-btn
+        style="margin-top: -4px !important"
         v-if="maxBtnObj.method"
         @click="maxBtnObj.method"
         :class="[
@@ -89,10 +90,10 @@
             : 'greyPrimary--text',
           'rounded-lg mt-n2 mew-caption font-weight-medium',
         ]"
-        min-width="40"
-        min-height="40"
-        height="40"
-        width="40"
+        min-width="34"
+        min-height="34"
+        height="34"
+        width="34"
         depressed
         color="greyLight"
       >
