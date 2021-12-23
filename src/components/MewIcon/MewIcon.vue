@@ -51,6 +51,7 @@ import rocket from '@/assets/images/icons/rocket.svg';
 import secalot from '@/assets/images/icons/secalot.svg';
 import shield from '@/assets/images/icons/shield.svg';
 import stake from '@/assets/images/icons/stake.svg';
+import stakewise from '@/assets/images/icons/stakewise.svg';
 import swapToken from '@/assets/images/icons/swap-token.svg';
 import tags from '@/assets/images/icons/tags.svg';
 import team from '@/assets/images/icons/team.svg';
@@ -116,6 +117,7 @@ export default {
       secalot: secalot,
       shield: shield,
       stake: stake,
+      stakewise: stakewise,
       swapToken: swapToken,
       tags: tags,
       team: team,
@@ -239,6 +241,8 @@ export default {
           return this.shield;
         case 'stake':
           return this.stake;
+        case 'stakewise':
+          return this.stakewise;
         case 'swapToken':
           return this.swapToken;
         case 'tags':
