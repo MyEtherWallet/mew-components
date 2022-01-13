@@ -52,6 +52,9 @@ import secalot from '@/assets/images/icons/secalot.svg';
 import shield from '@/assets/images/icons/shield.svg';
 import stake from '@/assets/images/icons/stake.svg';
 import stakewise from '@/assets/images/icons/stakewise.svg';
+import stakewiseGreen from '@/assets/images/icons/stakewise-green.svg';
+import stakewisePurple from '@/assets/images/icons/stakewise-purple.svg';
+import stakewiseRed from '@/assets/images/icons/stakewise-red.svg';
 import swapToken from '@/assets/images/icons/swap-token.svg';
 import tags from '@/assets/images/icons/tags.svg';
 import team from '@/assets/images/icons/team.svg';
@@ -118,6 +121,9 @@ export default {
       shield: shield,
       stake: stake,
       stakewise: stakewise,
+      stakewiseGreen: stakewiseGreen,
+      stakewisePurple: stakewisePurple,
+      stakewiseRed: stakewiseRed,
       swapToken: swapToken,
       tags: tags,
       team: team,
@@ -243,6 +249,12 @@ export default {
           return this.stake;
         case 'stakewise':
           return this.stakewise;
+        case 'stakewiseGreen':
+          return this.stakewiseGreen;
+        case 'stakewisePurple':
+          return this.stakewisePurple;
+        case 'stakewiseRed':
+          return this.stakewiseRed;
         case 'swapToken':
           return this.swapToken;
         case 'tags':
