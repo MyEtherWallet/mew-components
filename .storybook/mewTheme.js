@@ -2,6 +2,10 @@ import { create } from '@storybook/theming/create';
 
 export default create({
   base: 'light',
+  title: 'default',
+  brandTitle: 'MEW Components',
+  brandUrl: 'www.myetherwallet.com',
+  brandImage: 'https://www.ledger.com/wp-content/uploads/2019/05/mew-logo.jpg'
 
 //   colorPrimary: '#f0f0f0',
 //   colorSecondary: 'deepskyblue',

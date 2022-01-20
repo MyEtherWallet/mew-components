@@ -9,12 +9,10 @@ export const All = () => ({
         /* size - 12px,  height - 16px */
         fontSize: '0.8571rem',
         fontWeight: 400,
-        lineHeight: '1.143rem'
       },
       mewHeading4: {
         /* size - 16px,  height - 24px */
         fontSize: '1.143rem',
-        lineHeight: '1.714rem',
         fontWeight: '400'
       },
       mewAddress: {
@@ -23,43 +21,36 @@ export const All = () => ({
       mewTitle: {
         /* size - 50px,  height - 52px */
         fontSize: '3.571rem',
-        lineHeight: '3.714rem',
         fontWeight: 700
       },
       mewSubtitle: {
         /* size - 30px,  height - 40px */
         fontSize: '2.143rem',
         fontWeight: 700,
-        lineHeight: '2.857rem'
       },
       mewHeading1: {
         /* size - 24px,  height - 32px */
         fontSize:  '1.714rem',
         fontWeight: 700,
-        lineHeight: '2.286rem'
       },
       mewHeading2: {
         /* size - 20px,  height - 28px */
         fontSize: '1.429rem', 
-        lineHeight: '2rem',
         fontWeight: 700
       },
       mewHeading3: {
         /* size - 16px,  height - 24px */
         fontSize: '1.143rem',
         fontWeight: 700,
-        lineHeight: '1.714rem'
       },
       mewBody: {
         /* size - 14px ,  height - 20px */
         fontSize: '1rem',
         fontWeight: 400,
-        lineHeight: '1.429rem'
       },
       mewCaption: {
         /* size - 12px,  height - 20px */
         fontSize: '0.8571rem',
-        lineHeight: '1.429rem',
         fontWeight: 700,
         textTransform: 'uppercase'
       },
