@@ -21,14 +21,12 @@
         v-on="on"
       >
         {{ listObj.name }}
-        <v-icon
-          v-if="!isMenuOpen"
-          :class="['title', activatorTextColor]"
-        >mdi-chevron-down</v-icon>
-        <v-icon
-          v-if="isMenuOpen"
-          :class="['title', activatorTextColor]"
-        >mdi-chevron-up</v-icon>
+        <v-icon v-if="!isMenuOpen" :class="['title', activatorTextColor]"
+          >mdi-chevron-down</v-icon
+        >
+        <v-icon v-if="isMenuOpen" :class="['title', activatorTextColor]"
+          >mdi-chevron-up</v-icon
+        >
       </span>
     </template>
     <!--
@@ -36,10 +34,13 @@
     Menu List Content
   =====================================================================================
   -->
-    <v-list
-      v-for="(item, index) in listObj.items"
-      :key="index"
-    >
+    <v-list v-for="(item, index) in listObj.items" :key="index">
+      <!--
+  =====================================================================================
+   slot: 'mewMenuItem' + menu item number
+  =====================================================================================
+  -->
+      <slot :name="'mewMenuItem' + (i + 1)" />
       <v-list-item v-if="item.title">
         <v-list-item-title class="basic--text mew-heading-3 titleItem">
           {{ item.title }}
@@ -51,14 +52,13 @@
         @click="goTo(subItem.to)"
         class="cursor-pointer"
       >
-        <v-list-item-title class="mew-body basic--text subItem d-flex align-center">
-          <v-icon
-            v-if="subItem.iconName"
-            class="mr-1 basic--text"
-            size="14px"
-          >
+        <v-list-item-title
+          class="mew-body basic--text subItem d-flex align-center"
+        >
+          <v-icon v-if="subItem.iconName" class="mr-1 basic--text" size="14px">
             {{ subItem.iconName }}
-          </v-icon> {{ subItem.title }}
+          </v-icon>
+          {{ subItem.title }}
         </v-list-item-title>
       </v-list-item>
     </v-list>
@@ -67,10 +67,10 @@
 
 <script>
 export default {
-  name: 'MewMenu',
+  name: "MewMenu",
   data() {
     return {
-      isMenuOpen: false
+      isMenuOpen: false,
     };
   },
   props: {
@@ -89,17 +89,17 @@ export default {
      */
     activatorTextColor: {
       type: String,
-      default: 'basic--text',
-    }
+      default: "basic--text",
+    },
   },
   computed: {
     contentClasses() {
-      return 'mew-menu-content elevation-2 '
-    }
+      return "mew-menu-content elevation-2 ";
+    },
   },
   methods: {
     goTo(link) {
-      this.$emit('goToPage', link);
+      this.$emit("goToPage", link);
     },
   },
 };
@@ -120,7 +120,7 @@ export default {
   }
   .v-list {
     border-radius: 0;
-    
+
     .v-list-item {
       min-height: 30px;
     }
@@ -132,14 +132,12 @@ export default {
       }
     }
   }
-    .v-list:first-of-type > .v-list-item:first-of-type {
-      margin-top: 10px;
-    }
+  .v-list:first-of-type > .v-list-item:first-of-type {
+    margin-top: 10px;
+  }
 
-    .v-list:last-of-type > .v-list-item:last-of-type {
-      margin-bottom: 10px;
-    }
-
-
+  .v-list:last-of-type > .v-list-item:last-of-type {
+    margin-bottom: 10px;
+  }
 }
 </style>
