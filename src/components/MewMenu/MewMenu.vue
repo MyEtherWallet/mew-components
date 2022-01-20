@@ -37,7 +37,7 @@
     <v-list v-for="(item, index) in listObj.items" :key="index">
       <!--
   =====================================================================================
-   slot: 'mewMenuItem' + number of menu item 
+   slot: 'mewMenuItem' + menu item number
   =====================================================================================
   -->
       <slot :name="'mewMenuItem' + (i + 1)" />
