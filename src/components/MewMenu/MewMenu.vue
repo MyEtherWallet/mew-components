@@ -77,6 +77,7 @@ export default {
     /**
      * Menu content. Accepts an object, i.e, { name: '', items: [{ title: '', items: [{ title: '' , iconName: ''}]}]}
      * name and title takes any string and iconName takes material icon name
+     * If you are using a slot then you just have to return the number of menu item categories you would like to have, i.e { name: '', items: 4 }
      */
     listObj: {
       type: Object,
