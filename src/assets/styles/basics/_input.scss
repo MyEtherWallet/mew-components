@@ -41,6 +41,13 @@
     color: var(--v-inputBorder-base) !important;
   }
 
+/**
+  * Text Field Border Hover Color
+  */
+  .v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state)>.v-input__control>.v-input__slot:hover > fieldset {
+    border: 1px solid var(--v-greyPrimary-base) !important;
+  }
+
   /**
   * This removes the underlying black outline for mew address select, mew text area, mew select 
   * and mew input
