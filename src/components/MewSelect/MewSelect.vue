@@ -98,7 +98,7 @@
         v-if="!item.selectLabel"
         class="d-flex align-center justify-center"
       >
-        <mew-token-container :loading="loading" :img="item.img" :name="item.name || item" size="small"/>
+        <mew-token-container class="ml-1" :loading="loading" :img="item.img" :name="item.name || item" size="small"/>
         <span
           class="text-capitalize mt-1 ml-2 basic--text"
         >{{ item.name ? item.name : item }}
@@ -175,7 +175,7 @@
             v-if="!loading"
             class="d-flex align-center"
           >
-            <mew-token-container :loading="loading" :img="!data.item.img ? null : data.item.img" :name="data.item.name" size="small"/>
+            <mew-token-container class="mr-1" :loading="loading" :img="!data.item.img ? null : data.item.img" :name="data.item.name" size="small"/>
             <span
               class="text-capitalize ml-2 my-2 d-flex flex-column"
             >{{ data.item.symbol || data.item.name || data.item }}
@@ -428,14 +428,6 @@ export default {
     input {
       display: none;
     }
-  }
-  .mew-select-item-img {
-    margin-right: 5px;
-    max-height: 25px;
-  }
-
-  .selected-img {
-    margin-left: 6px;
   }
 }
 /**

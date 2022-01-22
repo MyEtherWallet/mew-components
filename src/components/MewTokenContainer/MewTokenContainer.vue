@@ -29,7 +29,7 @@
       v-if="!loading && img"
       :height="getSize"
       :src="img || ethTokenPlaceholder"
-      alt="mew-token"
+      :alt="name"
       loading="lazy"
     />
     <!--
