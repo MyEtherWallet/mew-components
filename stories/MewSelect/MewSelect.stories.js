@@ -22,7 +22,7 @@ const customItemsArray = [{
 { hasNoEth: true, disabled: true, text: 'Your wallet is empty.', linkText: 'Buy ETH', link: 'https://ccswap.myetherwallet.com/#/'},
 { header: 'Other Tokens'},
 { name: 'ETH', subtext: 'Ethereum', symbol: 'ETH', value: 'Ethereum', img: ethereumIcon, price: '3000'}, 
-{ name: 'AAVE',  subtext: 'Aave', symbol: 'AAVE', value: 'Aave', tokenBalance: '1.34',  img: ethereumIcon, totalBalance: '234.3430', price: '454.000'},
+{ name: 'AAVE',  subtext: 'Aave', symbol: 'AAVE', value: 'Aave', tokenBalance: '1.34',  img: null, totalBalance: '234.3430', price: '454.000'},
 { name: 'LINK', subtext: 'Chainlink', symbol: 'LINK', value: 'Link', img: ethereumIcon, price: '3000'}]
 
 const itemsArray = [{ text: 'Select a Token', selectLabel: true, divider: true },

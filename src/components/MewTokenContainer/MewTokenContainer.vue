@@ -6,7 +6,7 @@
 -->
   <div
     :style="'height:' + getSize + ';width:' + getSize"
-    class="mew-token-container"
+    class="mew-token-container d-flex align-center justify-center"
   >
     <!--
 =====================================================================================
@@ -46,13 +46,13 @@
 
 
 <script>
-import placeholder from "@/assets/images/icons/eth-dark-navy.svg";
+import ethTokenPlaceholder from '@/assets/images/icons/eth.svg';
 
 export default {
   name: "MewTokenContainer",
   data() {
     return {
-      placeholder: placeholder,
+      ethTokenPlaceholder: ethTokenPlaceholder,
       sizeOptions: {
         small: "small",
         medium: "medium",

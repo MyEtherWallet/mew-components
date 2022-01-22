@@ -81,14 +81,16 @@
           v-if="!loading && item.imgs"
           class="flex-row d-flex align-center"
         >
-          <img
+          <!-- <img
             class="label-token-img"
             width="24"
             height="24"
             :src="url"
             v-for="(url, idx) in item.imgs"
             :key="url + idx"
-          >
+          > -->
+            <mew-token-container class="label-token-img" :loading="loading" :img="url" v-for="(url, idx) in item.imgs" :key="url + idx" size="small"/>
+
           <div
             class="total-token-placeholder inputBorder d-flex align-center justify-center mew-caption"
           >
@@ -105,16 +107,7 @@
         v-if="!item.selectLabel"
         class="d-flex align-center justify-center"
       >
-        <v-img
-          v-if="isCustom"
-          :lazy-src="ethTokenPlaceholder"
-          class="mew-select-item-img selected-img"
-          :src="!item.img ? ethTokenPlaceholder : item.img"
-          :alt="item.name ? item.name : item"
-          :contain="true"
-          max-width="25"
-          max-height="25"
-        />
+        <mew-token-container :loading="loading" :img="item.img" :name="item.name || item" size="small"/>
         <span
           class="text-capitalize mt-1 ml-2 basic--text"
         >{{ item.name ? item.name : item }}
@@ -191,15 +184,7 @@
             v-if="!loading"
             class="d-flex align-center"
           >
-            <v-img
-              class="mew-select-item-img"
-              :lazy-src="ethTokenPlaceholder"
-              :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
-              :alt="!data.item.img ? 'token placeholder' : data.item.img"
-              :contain="true"
-              max-width="25"
-              max-height="25"
-            />
+            <mew-token-container :loading="loading" :img="!data.item.img ? null : data.item.img" :name="data.item.name" size="small"/>
             <span
               class="text-capitalize ml-2 my-2 d-flex flex-column"
             >{{ data.item.symbol || data.item.name || data.item }}
@@ -226,6 +211,7 @@
 </template>
 <script>
 import ethTokenPlaceholder from '@/assets/images/icons/eth.svg';
+import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
 
 export default {
   name: 'MewSelect',
@@ -309,13 +295,16 @@ export default {
       default: false,
     },
   },
+  components: {
+    MewTokenContainer
+  },
   data() {
     return {
       imgError: false,
       selectModel: null,
       selectItems: [],
       search: '',
-      ethTokenPlaceholder: ethTokenPlaceholder,
+      ethTokenPlaceholder,
     };
   },
   watch: {
@@ -388,12 +377,6 @@ export default {
         : this.defaultItem;
   },
   methods: {
-    onDropdownItemImgErr(data) {
-      data.item.img = ethTokenPlaceholder;
-    },
-    onCustomDropDownItemImgErr(data) {
-      data.item.img = ethTokenPlaceholder;
-    },
     clear(val) {
       this.selectModel =
         val && Object.keys(val).length !== 0 ? val : this.defaultItem;
