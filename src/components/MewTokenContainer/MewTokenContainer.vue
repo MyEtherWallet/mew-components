@@ -28,7 +28,7 @@
     <img
       v-if="!loading && img"
       :height="getSize"
-      :src="img"
+      :src="img || ethTokenPlaceholder"
       alt="mew-token"
       loading="lazy"
     />
@@ -52,7 +52,7 @@ export default {
   name: "MewTokenContainer",
   data() {
     return {
-      ethTokenPlaceholder: ethTokenPlaceholder,
+      ethTokenPlaceholder,
       sizeOptions: {
         small: "small",
         medium: "medium",

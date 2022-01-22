@@ -81,16 +81,7 @@
           v-if="!loading && item.imgs"
           class="flex-row d-flex align-center"
         >
-          <!-- <img
-            class="label-token-img"
-            width="24"
-            height="24"
-            :src="url"
-            v-for="(url, idx) in item.imgs"
-            :key="url + idx"
-          > -->
             <mew-token-container class="label-token-img" :loading="loading" :img="url" v-for="(url, idx) in item.imgs" :key="url + idx" size="small"/>
-
           <div
             class="total-token-placeholder inputBorder d-flex align-center justify-center mew-caption"
           >
@@ -210,7 +201,6 @@
   </v-select>
 </template>
 <script>
-import ethTokenPlaceholder from '@/assets/images/icons/eth.svg';
 import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
 
 export default {
@@ -304,7 +294,6 @@ export default {
       selectModel: null,
       selectItems: [],
       search: '',
-      ethTokenPlaceholder,
     };
   },
   watch: {
@@ -479,12 +468,5 @@ export default {
       height: 14px;
     }
   }
-}
-/**
-  * Mew Selected Img
-  */
-.mew-select-item-img {
-  border: 1px solid var(--v-boxShadow-base);
-  border-radius: 50%;
 }
 </style>
