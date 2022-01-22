@@ -65,7 +65,7 @@
         <!--
 =====================================================================================
   slot: prependInnerIcon
-  prepends content at the beginning of the input.
+  prepends content to the beginning of the input.
 =====================================================================================
 -->
         <slot name="prependInnerIcon" />
