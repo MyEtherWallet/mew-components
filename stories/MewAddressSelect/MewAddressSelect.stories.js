@@ -19,7 +19,7 @@ const ruleValue = [(value) => !!value || "Required."];
 
 const addressesArray = [
   {
-    address: "0x43689531907482BEE7e650D18411E284A7337A66",
+    address: "0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D",
     currency: "ETH",
     nickname: "My Address",
   },
@@ -27,7 +27,7 @@ const addressesArray = [
     address: "jessp.eth",
     currency: "ETH",
     nickname: "nickname",
-    resolvedAddr: "0x43689531907482BEE7e650D18411E284A7337A66",
+    resolvedAddr: "0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D",
   },
 ];
 

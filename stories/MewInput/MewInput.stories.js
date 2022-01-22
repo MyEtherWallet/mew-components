@@ -44,7 +44,7 @@ const maxBtnObj = {
 };
 
 function onClick() {
-  console.error('mew input: clicked max button!');
+  console.log('mew input: clicked max button!');
 }
 
 export const MEWInput = () => ({
