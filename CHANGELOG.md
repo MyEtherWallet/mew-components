@@ -1,8 +1,8 @@
 ### Release 0.7.19-beta
 
 ### feature
-* added mew input hover state and added slot prependInnerIcon which prepends content to the beginning of the input [233](https://github.com/MyEtherWallet/mew-components/pull/233)
-* update mew-token-container with the correct styles and placeholders and update mew-select to use mew-token-container [234](https://github.com/MyEtherWallet/mew-components/pull/234)
+* added mew input hover state and added slot prependInnerIcon which prepends content to the beginning of the input [#233](https://github.com/MyEtherWallet/mew-components/pull/233)
+* update mew-token-container with the correct styles and placeholders and update mew-select to use mew-token-container [#234](https://github.com/MyEtherWallet/mew-components/pull/234)
 
 ### Release 0.7.18-beta
 
