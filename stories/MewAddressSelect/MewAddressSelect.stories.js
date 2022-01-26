@@ -6,11 +6,16 @@ import {
   array,
 } from "@storybook/addon-knobs";
 import MewAddressSelect from "@/components/MewAddressSelect/MewAddressSelect.vue";
+import MewAddressSelectDoc from './MewAddressSelect.mdx';
 
 export default {
   title: "MewAddressSelect",
   parameters: {
     component: MewAddressSelect,
+    docs: {
+      page: MewAddressSelectDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs],
 };

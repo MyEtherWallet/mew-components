@@ -55,7 +55,7 @@
         <mew-copy
           class="mr-3"
           v-show="showCopy"
-          :tooltip="copyTooltip"
+          :tooltip="copyTooltipText"
           :copy-value="addressValue.address || addressValue"
         />
         <v-tooltip
@@ -77,7 +77,7 @@
               mdi-bookmark-outline
             </v-icon>
           </template>
-          <span>{{ saveTooltip }}</span>
+          <span>{{ saveTooltipText }}</span>
         </v-tooltip>
       </div>
       <!--
@@ -152,7 +152,7 @@ export default {
       },
     },
     /**
-     * Displays text if there is no data.
+     * The text to display if there is no data.
      */
     noDataText: {
       type: String,
@@ -194,7 +194,8 @@ export default {
       default: 'To Address',
     },
     /**
-     * Displays the saved addresses.
+     * The items that are displayed in the dropdown.
+     * Currently takes an array of objects, i.e { address: '', nickname: ''}
      */
     items: {
       type: Array,
@@ -210,28 +211,28 @@ export default {
       default: 'Please enter an address',
     },
     /**
-     * Tooltip for copy.
+     * Tooltip text for copy icon.
      */
-    copyTooltip: {
+    copyTooltipText: {
       type: String,
       default: '',
     },
     /**
-     * Displays copy button
+     * Displays copy button.
      */
     showCopy: {
       type: Boolean,
       default: true,
     },
     /**
-     * Tooltip for save address.
+     * Tooltip text for save address icon.
      */
-    saveTooltip: {
+    saveTooltipText: {
       type: String,
       default: '',
     },
     /**
-     * Error messages to display
+     * Error messages to display when its an invalid value.
      */
     errorMessages: {
       type: [String, Array],
