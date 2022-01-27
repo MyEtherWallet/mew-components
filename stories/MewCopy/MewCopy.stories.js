@@ -4,11 +4,16 @@ import {
   text
 } from '@storybook/addon-knobs';
 import MewCopy from '@/components/MewCopy/MewCopy.vue';
+import MewCopyDoc from './MewCopy.mdx';
 
 export default {
   title: 'MewCopy',
   parameters: {
-    component: MewCopy
+    component: MewCopy,
+    docs: {
+      page: MewCopyDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs]
 };

@@ -1,0 +1,18 @@
+
+import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import MewCopy from '@/components/MewCopy/MewCopy.vue';
+import './../GlobalStorybook.scss'
+
+# MEW Copy Container 
+`<mew-copy />`
+
+## Overview
+The mew-copy component provides a way for users to copy specific values to their clipboard. 
+There is a slot called **contentSlot** that can be used to place customizable content to the right of the box. There is an option to change 
+the color of the label text by passing a class through the **className** prop. There is an **id** prop that is mainly used to distinguish each
+copy for when 
+mew-copy is found in a loop. When the copy is set, there is an event called **input** that will be emitted with the value and id as the params.
+## Props
+<Props of={MewCopy} />
+<Preview><Story id="mewcopy--mew-copy" /></Preview>
+

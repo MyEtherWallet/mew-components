@@ -80,7 +80,7 @@ export default {
       default: 'background',
     },
     /**
-     * The text that will go in the center of the button.
+     * The text that will go at the center of the button.
      * If not passed, a slot should be used.
      */
     title: {
@@ -102,7 +102,7 @@ export default {
       default: false,
     },
     /**
-     * Opens up a new page with the link.
+     * Opens up a new page with this link when clicked.
      */
     btnLink: {
       type: String,

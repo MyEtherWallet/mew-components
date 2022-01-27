@@ -57,7 +57,7 @@ export const mewAddressSelect = () => ({
     disabled: {
       default: boolean("disabled", false),
     },
-    copyTooltip: {
+    copyTooltipText: {
       default: text("copy-tooltip", "Copy"),
     },
     showCopy: {
@@ -66,7 +66,7 @@ export const mewAddressSelect = () => ({
     noDataText: {
       default: text("no-data-text", ""),
     },
-    saveTooltip: {
+    saveTooltipText: {
       default: text("save-tooltip", "Save Address"),
     },
     resolvedAddr: {
@@ -90,7 +90,7 @@ export const mewAddressSelect = () => ({
   template: `
     <div>
     <br />
-    <mew-address-select ref="address" :error-messages="errorMessages" :no-data-text="noDataText" :rules="rules" :resolved-addr="resolvedAddr" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" :is-valid-address="isValidAddress" :show-copy="showCopy" :label="label" :items="items" @saveAddress="onSaveAddress" @input="onSelectValue"/>
+    <mew-address-select ref="address" :error-messages="errorMessages" :no-data-text="noDataText" :rules="rules" :resolved-addr="resolvedAddr" :copy-tooltip-text="copyTooltipText" :save-tooltip-text="saveTooltipText" :disabled="disabled" :enable-save-address="enableSaveAddress" :is-valid-address="isValidAddress" :show-copy="showCopy" :label="label" :items="items" @saveAddress="onSaveAddress" @input="onSelectValue"/>
   </div>`,
   methods: {
     onSaveAddress() {
