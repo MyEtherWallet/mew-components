@@ -13,7 +13,7 @@
       <template v-slot:activator="{ on }">
         <v-icon
           :small="isSmall"
-          :class="['copy-icon cursor-pointer', color]"
+          :class="['copy-icon cursor-pointer', className]"
           v-on="on"
           @click="copyToClipboard"
         >
@@ -47,14 +47,14 @@ export default {
   },
   props: {
     /**
-     * Assigns the color of the icon. Accepts a text class color from mew-color. 
+     * Pass a class to change the icon color.
      */
-    color: {
+    className: {
       type: String,
       default: 'basic--text'
     },
     /**
-     * Makes the icon small.
+     * Makes the icon smaller.
      */
     isSmall: {
       type: Boolean,
@@ -68,14 +68,14 @@ export default {
       default: ''
     },
     /**
-     * The tooltip text
+     * The tooltip text.
      */
     tooltip: {
       type: String,
       default: 'Copy'
     },
     /**
-     * The toast text after successfully copying
+     * The toast text after successfully copying.
      */
     successToast: {
       type: String,

@@ -21,12 +21,14 @@
         v-on="on"
       >
         {{ listObj.name }}
-        <v-icon v-if="!isMenuOpen" :class="['title', activatorTextColor]"
-          >mdi-chevron-down</v-icon
-        >
-        <v-icon v-if="isMenuOpen" :class="['title', activatorTextColor]"
-          >mdi-chevron-up</v-icon
-        >
+        <v-icon
+          v-if="!isMenuOpen"
+          :class="['title', activatorTextColor]"
+        >mdi-chevron-down</v-icon>
+        <v-icon
+          v-if="isMenuOpen"
+          :class="['title', activatorTextColor]"
+        >mdi-chevron-up</v-icon>
       </span>
     </template>
     <!--
@@ -34,7 +36,10 @@
     Menu List Content
   =====================================================================================
   -->
-    <v-list v-for="(item, index) in listObj.items" :key="index">
+    <v-list
+      v-for="(item, index) in listObj.items"
+      :key="index"
+    >
       <!--
   =====================================================================================
    slot: 'mewMenuItem' + menu item number
@@ -55,7 +60,11 @@
         <v-list-item-title
           class="mew-body basic--text subItem d-flex align-center"
         >
-          <v-icon v-if="subItem.iconName" class="mr-1 basic--text" size="14px">
+          <v-icon
+            v-if="subItem.iconName"
+            class="mr-1 basic--text"
+            size="14px"
+          >
             {{ subItem.iconName }}
           </v-icon>
           {{ subItem.title }}
@@ -67,7 +76,7 @@
 
 <script>
 export default {
-  name: "MewMenu",
+  name: 'MewMenu',
   data() {
     return {
       isMenuOpen: false,
@@ -90,17 +99,17 @@ export default {
      */
     activatorTextColor: {
       type: String,
-      default: "basic--text",
+      default: 'basic--text',
     },
   },
   computed: {
     contentClasses() {
-      return "mew-menu-content elevation-2 ";
+      return 'mew-menu-content elevation-2 ';
     },
   },
   methods: {
     goTo(link) {
-      this.$emit("goToPage", link);
+      this.$emit('goToPage', link);
     },
   },
 };
