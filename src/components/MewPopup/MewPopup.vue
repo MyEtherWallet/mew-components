@@ -12,10 +12,7 @@
     :scrollable="scrollable"
     @click:outside="handleClickOutside"
   >
-    <v-card
-      color="white"
-      class="pa-0"
-    >
+    <v-card color="white" class="pa-0">
       <!--
       =====================================================================================
         Dialog Header
@@ -23,21 +20,15 @@
       -->
       <v-card-title
         :class="[
-          'justify-center px-5 px-md-7',
+          'justify-center',
+          hasTitle ? 'px-5 px-md-7' : '',
           hasBodyContent ? 'py-5 py-md-8' : 'pb-0 pt-5 pt-md-8',
         ]"
       >
-        <div
-          v-if="title"
-          class="mew-heading-2 break-word text-center"
-        >
+        <div v-if="title" class="mew-heading-2 break-word text-center">
           {{ title }}
         </div>
-        <v-btn
-          v-if="!hideCloseBtn"
-          icon
-          class="header-close-icon"
-        >
+        <v-btn v-if="!hideCloseBtn" icon class="header-close-icon">
           <v-icon
             size="x-large"
             color="grey cursor--pointer"
@@ -63,15 +54,8 @@
         Dialog action
       =====================================================================================
       -->
-      <v-card-actions
-        v-if="hasButtons"
-        class="py-5 py-md-8"
-      >
-        <v-row
-          class="pa-0"
-          justify="space-around"
-          dense
-        >
+      <v-card-actions v-if="hasButtons" class="py-5 py-md-8">
+        <v-row class="pa-0" justify="space-around" dense>
           <v-col
             cols="12"
             :sm="!rightBtn ? '12' : '6'"
@@ -112,7 +96,7 @@
 </template>
 
 <script>
-import MewButton from '@/components/MewButton/MewButton.vue';
+import MewButton from "@/components/MewButton/MewButton.vue";
 
 export default {
   components: { MewButton },
@@ -122,7 +106,7 @@ export default {
      */
     title: {
       type: String,
-      default: '',
+      default: "",
     },
     /**
      * Hide top right close button
@@ -146,7 +130,7 @@ export default {
     leftBtn: {
       type: Object,
       default: () => {
-        return { text: 'Cancel', color: 'primary', method: () => {} };
+        return { text: "Cancel", color: "primary", method: () => {} };
       },
     },
     /**
@@ -157,8 +141,8 @@ export default {
       type: Object,
       default: () => {
         return {
-          text: 'Confirm',
-          color: 'primary',
+          text: "Confirm",
+          color: "primary",
           enabled: true,
           method: () => {},
         };
@@ -176,7 +160,7 @@ export default {
      */
     maxWidth: {
       type: String,
-      default: '600',
+      default: "600",
     },
     /**
      * Displays v-card-text if there is popup body content
@@ -197,6 +181,13 @@ export default {
      * Will display popup body content padding if true
      */
     hasButtons: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * Will display popup top part content padding if true
+     */
+    hasTitle: {
       type: Boolean,
       default: true,
     },
