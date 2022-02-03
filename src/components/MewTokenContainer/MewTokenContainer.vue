@@ -31,32 +31,33 @@
       :src="img || ethTokenPlaceholder"
       :alt="name"
       loading="lazy"
-    />
+    >
     <!--
 =====================================================================================
   Img Placeholder
 =====================================================================================
 -->
-    <span :class="['d-flex align-center justify-center full-height textLight--text text-uppercase font-weight-medium', getFontClass]" v-if="!loading && !img">
+    <span
+      :class="['d-flex align-center justify-center full-height textLight--text text-uppercase font-weight-medium', getFontClass]"
+      v-if="!loading && !img"
+    >
       {{ getPlaceholderText }}
     </span>
   </div>
 </template>
 
-
-
 <script>
 import ethTokenPlaceholder from '@/assets/images/icons/eth.svg';
 
 export default {
-  name: "MewTokenContainer",
+  name: 'MewTokenContainer',
   data() {
     return {
       ethTokenPlaceholder,
       sizeOptions: {
-        small: "small",
-        medium: "medium",
-        large: "large",
+        small: 'small',
+        medium: 'medium',
+        large: 'large',
       },
     };
   },
@@ -73,21 +74,21 @@ export default {
      */
     size: {
       type: String,
-      default: "small",
+      default: 'small',
     },
     /**
      * Token name. Used for placeholder if there is no icon img.
      */
     name: {
       type: String,
-      default: "MEW",
+      default: 'MEW',
     },
     /**
      * Token Icon img src
      */
     img: {
       type: [String, Array],
-      default: "",
+      default: '',
     },
   },
   computed: {
@@ -101,10 +102,10 @@ export default {
       }
 
       if (this.size.toLowerCase() === this.sizeOptions.medium) {
-        return "mew-body";
+        return 'mew-body';
       }
 
-      return "mew-heading-1";
+      return 'mew-heading-1';
     },
     /**
      * @returns placeholder text
@@ -119,14 +120,14 @@ export default {
      */
     getSize() {
       if (this.size.toLowerCase() === this.sizeOptions.small) {
-        return "24px";
+        return '24px';
       }
 
       if (this.size.toLowerCase() === this.sizeOptions.medium) {
-        return "32px";
+        return '32px';
       }
 
-      return "52px";
+      return '52px';
     },
   },
 };
@@ -148,6 +149,8 @@ export default {
       background-color: var(--v-greyLight-base);
       max-height: 100%;
       max-width: 100%;
+      height: 100%;
+      width: 100%;
     }
   }
 }

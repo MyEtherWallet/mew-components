@@ -21,18 +21,7 @@
         Dialog Header
         =====================================================================================
       -->
-      <v-card-title
-        :class="[
-          'justify-center px-5 px-md-7',
-          hasBodyContent ? 'py-5 py-md-8' : 'pb-0 pt-5 pt-md-8',
-        ]"
-      >
-        <div
-          v-if="title"
-          class="mew-heading-2 break-word text-center"
-        >
-          {{ title }}
-        </div>
+      <div :class="title ? 'pt-0' : 'pt-8'">
         <v-btn
           v-if="!hideCloseBtn"
           icon
@@ -46,6 +35,20 @@
             mdi-close
           </v-icon>
         </v-btn>
+      </div>
+      <v-card-title
+        v-if="title"
+        :class="[
+          'justify-center px-5 px-md-7',
+          hasBodyContent ? 'py-5 py-md-8' : 'pb-0 pt-5 pt-md-8',
+        ]"
+      >
+        <div
+          v-if="title"
+          class="mew-heading-2 break-word text-center"
+        >
+          {{ title }}
+        </div>
       </v-card-title>
       <!--
       =====================================================================================

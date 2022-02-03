@@ -19,14 +19,16 @@ export const All = () => ({
         fontFamily: 'PT Mono'
       },
       mewTitle: {
-        /* size - 50px,  height - 52px */
-        fontSize: '3.571rem',
-        fontWeight: 700
+        /* size - 48px,  height - 64px */
+        fontSize: '3.428rem',
+        fontWeight: 700,
+        lineHeight:'4.571rem'
       },
       mewSubtitle: {
-        /* size - 30px,  height - 40px */
-        fontSize: '2.143rem',
+        /* size - 32px,  height - 44px */
+        fontSize: '2.285rem',
         fontWeight: 700,
+        lineHeight: '3.142rem'
       },
       mewHeading1: {
         /* size - 24px,  height - 32px */
@@ -101,10 +103,10 @@ export const All = () => ({
     <div :style="mewBody, { fontWeight: 700 }">.font-weight-bold</div>
     <div :style="markupStyle">font-weight: 700</div>
     <div :style="mewTitle">.mew-title</div>
-    <div :style="markupStyle">font-size: 3.571rem (50px); font-weight: 700</div>
+    <div :style="markupStyle">font-size: 3.428rem (48px); font-weight: 700; line-height: 4.571rem (64px) </div>
     <br />
     <div :style="mewSubtitle">.mew-subtitle</div>
-    <div :style="markupStyle">font-size: 2.143rem (30px); font-weight: 700;</div>
+    <div :style="markupStyle">font-size: 2.285rem (30px); font-weight: 700; line-height: 3.142rem (44px)</div>
     <br />
     <div :style="mewHeading1">.mew-heading-1</div>
     <div :style="markupStyle">font-size: 1.714rem (24px); font-weight: 700</div>

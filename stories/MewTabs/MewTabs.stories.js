@@ -44,8 +44,14 @@ export const MEWTabs = () => ({
     activeTab: {
       default: number('active-tab', 0)
     },
+    hasFullWidth: {
+      default: boolean('has-full-width', false)
+    },
     showArrows: {
       default: boolean('show-arrows', false)
+    },
+    isSmall: {
+      default: boolean('is-small', false)
     },
     activeColor: {
       default: text('active-color', 'titlePrimary')
@@ -63,6 +69,8 @@ export const MEWTabs = () => ({
     <div>
     <br />
     <mew-tabs
+      :is-small="isSmall"
+      :has-full-width="hasFullWidth"
       :active-color="activeColor"
       :background="background"
       :show-arrows="showArrows"

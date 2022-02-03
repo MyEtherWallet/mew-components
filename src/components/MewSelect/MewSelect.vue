@@ -81,7 +81,14 @@
           v-if="!loading && item.imgs"
           class="flex-row d-flex align-center"
         >
-            <mew-token-container class="label-token-img" :loading="loading" :img="url" v-for="(url, idx) in item.imgs" :key="url + idx" size="small"/>
+          <mew-token-container
+            class="label-token-img"
+            :loading="loading"
+            :img="url"
+            v-for="(url, idx) in item.imgs"
+            :key="url + idx"
+            size="small"
+          />
           <div
             class="total-token-placeholder inputBorder d-flex align-center justify-center mew-caption"
           >
@@ -98,7 +105,13 @@
         v-if="!item.selectLabel"
         class="d-flex align-center justify-center"
       >
-        <mew-token-container class="ml-1" :loading="loading" :img="item.img" :name="item.name || item" size="small"/>
+        <mew-token-container
+          class="ml-1"
+          :loading="loading"
+          :img="item.img"
+          :name="item.name || item"
+          size="small"
+        />
         <span
           class="text-capitalize mt-1 ml-2 basic--text"
         >{{ item.name ? item.name : item }}
@@ -175,7 +188,13 @@
             v-if="!loading"
             class="d-flex align-center"
           >
-            <mew-token-container class="mr-1" :loading="loading" :img="!data.item.img ? null : data.item.img" :name="data.item.name" size="small"/>
+            <mew-token-container
+              class="mr-1"
+              :loading="loading"
+              :img="!data.item.img ? null : data.item.img"
+              :name="data.item.name"
+              size="small"
+            />
             <span
               class="text-capitalize ml-2 my-2 d-flex flex-column"
             >{{ data.item.symbol || data.item.name || data.item }}

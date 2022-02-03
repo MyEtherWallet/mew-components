@@ -13,7 +13,7 @@
       slider-size="3"
       v-model="onTab"
       :hide-slider="isBlock || isVertical"
-      :grow="isBlock"
+      :grow="isBlock || hasFullWidth"
       :vertical="isVertical"
       :show-arrows="showArrows"
       :align-with-title="!isBlock && !isCentered && !isVertical"
@@ -22,8 +22,8 @@
         :class="[
           isBlock
             ? 'mew-tab-block'
-            : isVertical
-              ? 'mew-body font-weight-bold'
+            : isVertical || isSmall
+              ? 'mew-body font-weight-medium'
               : 'mew-heading-2',
           'capitalize',
         ]"
@@ -148,6 +148,20 @@ export default {
      * Shows the tab as a block.
      */
     isBlock: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * Allows tabs to take up the full-width of the page.
+     */
+    hasFullWidth: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * Sets the font size to 14px (mew-body)
+     */
+    isSmall: {
       type: Boolean,
       default: false,
     },
