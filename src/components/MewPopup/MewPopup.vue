@@ -12,10 +12,7 @@
     :scrollable="scrollable"
     @click:outside="handleClickOutside"
   >
-    <v-card
-      color="white"
-      class="pa-0"
-    >
+    <v-card color="white" class="pa-0">
       <!--
       =====================================================================================
         Dialog Header
@@ -66,15 +63,8 @@
         Dialog action
       =====================================================================================
       -->
-      <v-card-actions
-        v-if="hasButtons"
-        class="py-5 py-md-8"
-      >
-        <v-row
-          class="pa-0"
-          justify="space-around"
-          dense
-        >
+      <v-card-actions v-if="hasButtons" class="py-5 py-md-8">
+        <v-row class="pa-0" justify="space-around" dense>
           <v-col
             cols="12"
             :sm="!rightBtn ? '12' : '6'"
@@ -115,7 +105,7 @@
 </template>
 
 <script>
-import MewButton from '@/components/MewButton/MewButton.vue';
+import MewButton from "@/components/MewButton/MewButton.vue";
 
 export default {
   components: { MewButton },
@@ -125,7 +115,7 @@ export default {
      */
     title: {
       type: String,
-      default: '',
+      default: "",
     },
     /**
      * Hide top right close button
@@ -149,7 +139,7 @@ export default {
     leftBtn: {
       type: Object,
       default: () => {
-        return { text: 'Cancel', color: 'primary', method: () => {} };
+        return { text: "Cancel", color: "primary", method: () => {} };
       },
     },
     /**
@@ -160,8 +150,8 @@ export default {
       type: Object,
       default: () => {
         return {
-          text: 'Confirm',
-          color: 'primary',
+          text: "Confirm",
+          color: "primary",
           enabled: true,
           method: () => {},
         };
@@ -179,7 +169,7 @@ export default {
      */
     maxWidth: {
       type: String,
-      default: '600',
+      default: "600",
     },
     /**
      * Displays v-card-text if there is popup body content
