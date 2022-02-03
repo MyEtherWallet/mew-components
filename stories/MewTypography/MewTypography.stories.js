@@ -19,16 +19,18 @@ export const All = () => ({
         fontFamily: 'PT Mono'
       },
       mewTitle: {
-        /* size - 48px,  height - 64px */
+        /* size - 48px,  line-height - 64px */
         fontSize: '3.428rem',
         fontWeight: 700,
-        lineHeight:'4.571rem'
+        lineHeight:'4.571rem',
+        letterSpacing: '0.0178rem'
       },
       mewSubtitle: {
-        /* size - 32px,  height - 44px */
+        /* size - 32px, line-height - 44px */
         fontSize: '2.285rem',
         fontWeight: 700,
-        lineHeight: '3.142rem'
+        lineHeight: '3.142rem',
+        letterSpacing: '0.0178rem'
       },
       mewHeading1: {
         /* size - 24px,  height - 32px */

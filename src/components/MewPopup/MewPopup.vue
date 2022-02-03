@@ -41,7 +41,6 @@
         ]"
       >
         <div
-          v-if="title"
           class="mew-heading-2 break-word text-center"
         >
           {{ title }}
