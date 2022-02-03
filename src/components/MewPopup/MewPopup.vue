@@ -18,7 +18,7 @@
         Dialog Header
         =====================================================================================
       -->
-      <div :class="title ? 'pt-0' : 'pt-8'">
+      <div :class="title ? 'pt-0' : 'pt-5'">
         <v-btn
           v-if="!hideCloseBtn"
           icon
