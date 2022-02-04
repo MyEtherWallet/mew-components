@@ -3,14 +3,14 @@ import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import MewCheckbox from '@/components/MewCheckbox/MewCheckbox.vue';
 import './../GlobalStorybook.scss'
 
-# MEW Checkbox Container 
+# MEW Checkbox 
 `<mew-checkbox />`
 
 ## Overview
-The mew-checkbox component provides a way for users to select between two different values. 
-There is a slot called **contentSlot** that can be used to place customizable content to the right of the box. There is an option to change 
-the color of the label text by passing a class through the **className** prop. There is an **id** prop that is mainly used to distinguish each
-checkbox for when 
+The mew-checkbox component provides a way for users to select between different values. 
+There is a slot called **contentSlot** that is used to place customizable content to the right of the checkbox. There is an option to change 
+the color of the label text by passing a class through the **className** prop. There is an **id** prop that is used to distinguish an unique
+checkbox, which can be used for when 
 mew-checkbox is found in a loop. When the checkbox is set, there is an event called **input** that will be emitted with the value and id as the params.
 ## Props
 <Props of={MewCheckbox} />

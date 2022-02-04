@@ -5,11 +5,16 @@ import {
   array
 } from '@storybook/addon-knobs';
 import MewExpandPanel from '@/components/MewExpandPanel/MewExpandPanel.vue';
+import MewExpandPanelDoc from './MewExpandPanel.mdx';
 
 export default {
   title: 'MewExpandPanel',
   parameters: {
-    component: MewExpandPanel
+    component: MewExpandPanel,
+    docs: {
+      page: MewExpandPanelDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs]
 };

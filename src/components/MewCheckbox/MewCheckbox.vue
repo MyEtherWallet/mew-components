@@ -33,8 +33,7 @@ export default {
   name: 'MewCheckbox',
   props: {
     /**
-     * Used to change the label text color by 
-     * passing a class name. (i.e error--text)
+     * Pass a class to change the icon color (i.e error--text).
      */
     className: {
         type: String,
@@ -57,21 +56,21 @@ export default {
       }
     },
     /**
-     * The checkbox id. Mainly used for when mew-checkbox is used in a loop.
+     * The checkbox id. Mainly used to distinguish each checkbox when mew-checkbox is used in a loop.
      */
     id: {
       type: Number,
       default: null,
     },
     /**
-     * Controls the value of the checkbox (checked or not)
+     * Controls the value of the checkbox (checked or not).
      */
     value: {
       type: Boolean,
       default: false
     },
     /**
-     * Reduces the input height
+     * Reduces the input height.
      */
     dense: {
       type: Boolean,

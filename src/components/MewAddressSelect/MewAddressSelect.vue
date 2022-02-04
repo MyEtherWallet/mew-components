@@ -55,7 +55,7 @@
         <mew-copy
           class="mr-3"
           v-show="showCopy"
-          :tooltip="copyTooltipText"
+          :tooltip="copyTooltip"
           :copy-value="addressValue.address || addressValue"
         />
         <v-tooltip
@@ -77,7 +77,7 @@
               mdi-bookmark-outline
             </v-icon>
           </template>
-          <span>{{ saveTooltipText }}</span>
+          <span>{{ saveTooltip }}</span>
         </v-tooltip>
       </div>
       <!--
@@ -213,7 +213,7 @@ export default {
     /**
      * Tooltip text for copy icon.
      */
-    copyTooltipText: {
+    copyTooltip: {
       type: String,
       default: '',
     },
@@ -227,7 +227,7 @@ export default {
     /**
      * Tooltip text for save address icon.
      */
-    saveTooltipText: {
+    saveTooltip: {
       type: String,
       default: '',
     },

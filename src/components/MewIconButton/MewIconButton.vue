@@ -31,13 +31,14 @@
       mdi-{{ mdiIcon }}
     </v-icon>
 
-    <img
+    <!-- TODO: decide if we still want to allow this option -->
+    <!-- <img
       v-if="imgIcon && !loading"
       :src="require(`@/assets/images${imgIcon}`)"
       alt="Icon"
       :width="imgIconSize"
       :height="imgIconSize"
-    >
+    > -->
 
     <!--
     =====================================================================================
@@ -63,12 +64,13 @@
       <!--
       =====================================================================================
       Button text (if no title prop is passed, then slot should be used)
+      TODO: decide if we still want this option.
       =====================================================================================
       -->
-      <span
+      <!-- <span
         v-if="title"
         class="font-weight-regular"
-      >{{ title }} </span>
+      >{{ title }} </span> -->
 
       <!--
       =====================================================================================
@@ -85,47 +87,49 @@ export default {
   name: 'MewIconButton',
   props: {
     /**
-     * Enables loading state
+     * Enables loading state.
      */
     loading: {
       type: Boolean,
       default: false,
     },
     /**
-     * Enables circle shape
+     * Rounds button corners.
      */
     rounded: {
       type: Boolean,
       default: false,
     },
     /**
-     * Button size: small, medium.
+     * Button sizes: small, medium.
      */
     btnSize: {
       type: String,
       default: 'medium',
     },
     /**
-     * Mdi icon size: small, medium.
+     * Mdi icon size: xsmall, small, medium, large, xlarge.
      */
     mdiIconSize: {
       type: String,
       default: '',
     },
     /**
+     * TODO: decide if we still want to allow this option.
      * Image icon size: small, medium.
      */
-    imgIconSize: {
-      type: String,
-      default: '20',
-    },
+    // imgIconSize: {
+    //   type: String,
+    //   default: '20',
+    // },
     /**
+     * TODO: decide if we still want to allow this option.
      * Sets the button to have 100% width.
      */
-    hasFullWidth: {
-      type: Boolean,
-      default: false,
-    },
+    // hasFullWidth: {
+    //   type: Boolean,
+    //   default: true,
+    // },
     /**
      * Applies the button style: background, light, transparent, or outline.
      * If nothing is passed then the button will be the
@@ -136,15 +140,16 @@ export default {
       default: 'background',
     },
     /**
-     * The text that will go in the center of the button.
+     * TODO: decide if we still want to allow this option.
+     * The text that will display at the center of the button.
      * If not passed, a slot should be used.
      */
-    title: {
-      type: String,
-      default: '',
-    },
+    // title: {
+    //   type: String,
+    //   default: '',
+    // },
     /**
-     * Applies the button color theme: primary, secondary, basic, error
+     * Applies the button color theme: primary, secondary, basic, error.
      */
     colorTheme: {
       type: String,
@@ -158,7 +163,8 @@ export default {
       default: false,
     },
     /**
-     * Opens up a new page with the link.
+     * Designates that the component is a link.
+     * when clicked, the link will open up a new page.
      */
     btnLink: {
       type: String,
@@ -172,13 +178,14 @@ export default {
       default: '',
     },
     /**
+     * TODO: decide if we still want to allow this option.
      * img icon path. (base dir: @/assets/images)
      * use) img-icon="/icons/icon-chrome.svg"
      */
-    imgIcon: {
-      type: String,
-      default: '',
-    },
+    // imgIcon: {
+    //   type: String,
+    //   default: '',
+    // },
   },
   data() {
     return {
@@ -331,9 +338,9 @@ export default {
       }
 
       // adds 100% full width
-      if (this.hasFullWidth === true) {
-        classes.push('full-width');
-      }
+      // if (this.hasFullWidth === true) {
+      //   classes.push('full-width');
+      // }
 
       // adds correct button color text
       if (!this.disabled) {
@@ -415,17 +422,7 @@ export default {
     &.medium-btn {
       padding: 0 20px;
     }
-
-    &.large-btn {
-      height: 46px;
-      padding: 0 20px;
-    }
-
-    &.xlarge-btn {
-      height: 62px;
-      padding: 0 46px;
-    }
-
+    
     /**
     * PRIMARY COLOR THEME 
     */

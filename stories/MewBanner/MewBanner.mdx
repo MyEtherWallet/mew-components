@@ -7,13 +7,14 @@ import './../GlobalStorybook.scss'
 `<mew-banner />`
 
 ## Overview
-MEW Banner is used in the dapps module. It acts as a dapp’s screen header. It has one action, close dapp, which will return the user to the Dapps Center screen. The bannerImg prop is used to show the dapp image, with the Image aspect ratios = []. If the image is not passed, the default MEW picture will be displayed. Please refer to the example below.
-<p>*Need: Infographic*</p>
+MEW Banner is used in the dapps module. It acts as a dapp’s screen header. 
+The action close button will emit an event, **closeBanner**. The **bannerImg** prop is used to show the dapp image and 
+if the image is not passed, the default MEW picture will be displayed. 
 
-It contains a text object with:
-title: this value is used to display the Dapp’s Name.
-subtext: this value is used to display a short one sentence description about the dapp. 
-exit: this value is used to replace the action button text. The default value is ‘Exit Dapp’.
+There is also a **textObj** prop that is used to display text on the banner. It contains the following attributes: <br />
+**title**: this value is used to display the Dapp’s Name. <br />
+**subtext**: this value is used to display a short sentence description about the dapp. <br />
+**exit**: this value is used to replace the action button text. The default value is ‘Exit Dapp’. <br />
 <b>Codepen</b>: <a target="_blank" href="https://codepen.io/gesseekur/pen/JjGOxBa" id="Bar">Click here</a>
 
 ## Props

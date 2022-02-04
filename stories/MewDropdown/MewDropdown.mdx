@@ -7,7 +7,10 @@ import './../GlobalStorybook.scss'
 `<mew-dropdown />`
 
 ## Overview
-The mew-dropdown component provides a dropdown that gets activated by a button.
+The mew-dropdown component pops up a custom card that is activated by a button. The card will also open if the prop **isOpened** is set to true.
+The activator button text is set by the slot name **activatorBtnText**.
+The content of the card is customizable and uses the slot **cardContent** to place styles and text. The **popupTitle** prop is optional but will display
+as the header if a string is passed. 
 <Props of={MewDropdown} />
 <Preview><Story id="mewdropdown--mew-dropdown" /></Preview>
 

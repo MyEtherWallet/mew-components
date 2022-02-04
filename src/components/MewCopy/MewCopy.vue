@@ -47,7 +47,7 @@ export default {
   },
   props: {
     /**
-     * Pass a class to change the icon color.
+     * Pass a class to change the icon color (i.e error--text).
      */
     className: {
       type: String,

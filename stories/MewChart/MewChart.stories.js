@@ -5,11 +5,16 @@ import {
   text
 } from '@storybook/addon-knobs';
 import MewChart from '@/components/MewChart/MewChart.vue';
+import MewChartDoc from './MewChart.mdx';
 
 export default {
   title: 'MewChart',
   parameters: {
-    component: MewChart
+    component: MewChart,
+    docs: {
+      page: MewChartDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs]
 };

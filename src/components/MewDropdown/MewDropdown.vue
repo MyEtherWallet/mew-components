@@ -13,6 +13,12 @@
     left
   >
     <template v-slot:activator="{ on }">
+      <!--
+  =====================================================================================
+    Button to activate popup content
+    slot: activatorBtnText (used to place custom text on activator button)
+  =====================================================================================
+  -->
       <v-btn
         v-on="on"
         elevation="0"
@@ -62,6 +68,7 @@
       <!--
       =====================================================================================
         Popup Body
+        slot: cardContent (used to place custom content in card popup)
       =====================================================================================
       -->
       <v-card-text
@@ -83,14 +90,14 @@ export default {
   },
   props: {
     /**
-     * Popup title
+     * Popup title.
      */
     popupTitle: {
       type: String,
       default: '',
     },
     /**
-     * Controls if the popup dropdown is opened or closed.
+     * Opens the popup dropdown if true.
      */
     isOpened: {
       type: Boolean,

@@ -17,7 +17,11 @@
 #story--mewtransformhash--mew-transform-hash,
 #story--mewaddressselect--mew-address-select,
 #story--mewalert--mew-alert,
-#story--mewdropdown--mew-dropdown
+#story--mewdropdown--mew-dropdown,
+#story--mewcopy--mew-copy,
+#story--mewexpandpanel--mew-expand-panel,
+#story--mewbadge--mew-badge,
+#story--mewcarousel--mew-carousel
    {
   .v-application {
     height: 250px;
@@ -32,7 +36,8 @@
 #story--mewbutton--icon-button,
 #story--mewbutton--icon-title-button,
 #story--mewtokencontainer--mew-token-container,
-#story--mewcheckbox--mew-checkbox
+#story--mewcheckbox--mew-checkbox,
+#story--mewchart--mew-chart
  {
   .v-application {
     height: 80px;
