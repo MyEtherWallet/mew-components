@@ -336,9 +336,6 @@ export default {
     onSelect(item) {
       this.$emit('selectedRow', item)
     },
-    onClick(item) {
-      this.$emit('onClick', item);
-    }
   }
 }
 </script>

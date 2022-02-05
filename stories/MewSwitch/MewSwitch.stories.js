@@ -4,11 +4,15 @@ import {
   text
 } from '@storybook/addon-knobs';
 import MewSwitch from '@/components/MewSwitch/MewSwitch.vue';
+import MewSwitchDoc from './MewSwitch.mdx';
 
 export default {
   title: 'MewSwitch',
   parameters: {
-    component: MewSwitch
+    component: MewSwitch,
+    docs: {
+      page: MewSwitchDoc
+    } 
   },
   decorators: [withKnobs]
 };

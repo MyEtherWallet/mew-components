@@ -5,11 +5,15 @@ import {
   array
 } from '@storybook/addon-knobs';
 import MewTextArea from '@/components/MewTextArea/MewTextArea.vue';
+import MewTextAreaDoc from './MewTextArea.mdx';
 
 export default {
   title: 'MewTextArea',
   parameters: {
-    component: MewTextArea
+    component: MewTextArea,
+    docs: {
+      page: MewTextAreaDoc
+    } 
   },
   decorators: [withKnobs]
 };

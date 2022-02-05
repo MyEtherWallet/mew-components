@@ -1,0 +1,22 @@
+
+import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import MewTabs from '@/components/MewTabs/MewTabs.vue';
+import './../GlobalStorybook.scss'
+
+# MEW Tabs
+`<mew-tabs />`
+
+## Overview
+The MEW tabs component uses Vuetify's v-tabs with acceptable MEW theme options. It is used to 
+show content behind a selectable item. It uses a slot called **tabItemContent** + **number of tab**, i.e. *tabItemContent1* to
+display each tabs content within the container. There is also an option to display content
+outside of the tab container by using **tabContent** + **number of tab**, i.e. *tabContent1*. 
+You may change the colors by passing a string to **activeColor** or **background**.
+There is also an option to make the tabs vertical instead of horitzontal and that is set by passing true
+to the **isVertical** prop. Each tab title is set by the **items** prop which takes an array of objects that just require the name.
+
+
+## Props
+<Props of={MewTabs} />
+<Preview><Story id="mewtabs--mew-tabs" /></Preview>
+

@@ -6,11 +6,15 @@ import {
   object
 } from '@storybook/addon-knobs';
 import MewOverlay from '@/components/MewOverlay/MewOverlay.vue';
+import MewOverlayDoc from './MewOverlay.mdx';
 
 export default {
   title: 'MewOverlay',
   parameters: {
-    component: MewOverlay
+    component: MewOverlay,
+    docs: {
+      page: MewOverlayDoc
+    } 
   },
   decorators: [withKnobs]
 };

@@ -1,0 +1,21 @@
+
+import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import MewSearch from '@/components/MewSearch/MewSearch.vue';
+import './../GlobalStorybook.scss'
+
+# MEW Search
+`<mew-search />`
+
+## Overview
+The MEW search component is a Vuetify text field that is used to enter text for search queries. You may add 
+a menu to the end of the input with the **menuSelect** prop. This prop expects the following attributes: 
+label and items (which takes an array of objects that contains the names and values). The **isSearchBlock**, **isFilled**
+and **isCompact** props will change the input styles based on what you pass to it. You may also pass error messages 
+to the **errorMessages** prop.
+
+
+
+## Props
+<Props of={MewSearch} />
+<Preview><Story id="mewsearch--mew-search" /></Preview>
+

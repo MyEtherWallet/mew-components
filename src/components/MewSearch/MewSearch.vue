@@ -148,8 +148,8 @@ export default {
       default: false,
     },
     /**
-     * Displays a calendar icon
-     * removes search button in favor of search icon
+     * Displays a calendar icon.
+     * Removes search button in favor of search icon.
      */
     canSearchDate: {
       type: Boolean,

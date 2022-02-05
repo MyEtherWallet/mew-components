@@ -9,11 +9,16 @@ import {
   object,
 } from '@storybook/addon-knobs';
 import MewInput from '@/components/MewInput/MewInput.vue';
+import MewInputDoc from './MewInput.mdx';
 
 export default {
   title: 'MewInput',
   parameters: {
     component: MewInput,
+    docs: {
+      page: MewInputDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs],
 };

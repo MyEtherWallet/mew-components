@@ -21,7 +21,16 @@
 #story--mewcopy--mew-copy,
 #story--mewexpandpanel--mew-expand-panel,
 #story--mewbadge--mew-badge,
-#story--mewcarousel--mew-carousel
+#story--mewcarousel--mew-carousel,
+#story--mewinfocard--mew-info-card,
+#story--mewinput--mew-input,
+#story--mewsearch--mew-search,
+#story--mewwarningsheet--mew-warning-sheet,
+#story--mewselect--mew-select,
+#story--mewsheet--mew-sheet,
+#story--mewtable--mew-table,
+#story--mewtabs--mew-tabs,
+#story--mewtextarea--mew-text-area
    {
   .v-application {
     height: 250px;
@@ -37,7 +46,10 @@
 #story--mewbutton--icon-title-button,
 #story--mewtokencontainer--mew-token-container,
 #story--mewcheckbox--mew-checkbox,
-#story--mewchart--mew-chart
+#story--mewchart--mew-chart,
+#story--mewmenu--mew-menu,
+#story--mewprogressbar--mew-progress-bar,
+#story--mewswitch--mew-switch
  {
   .v-application {
     height: 80px;
