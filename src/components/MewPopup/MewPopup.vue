@@ -18,17 +18,12 @@
         Dialog Header
         =====================================================================================
       -->
-      <v-card-title
-        :class="[
-          'justify-center',
-          hasTitle ? 'px-5 px-md-7' : '',
-          hasBodyContent ? 'py-5 py-md-8' : 'pb-0 pt-5 pt-md-8',
-        ]"
-      >
-        <div v-if="title" class="mew-heading-2 break-word text-center">
-          {{ title }}
-        </div>
-        <v-btn v-if="!hideCloseBtn" icon class="header-close-icon">
+      <div :class="title ? 'pt-0' : 'pt-5'">
+        <v-btn
+          v-if="!hideCloseBtn"
+          icon
+          class="header-close-icon"
+        >
           <v-icon
             size="x-large"
             color="grey cursor--pointer"
@@ -37,6 +32,19 @@
             mdi-close
           </v-icon>
         </v-btn>
+      </div>
+      <v-card-title
+        v-if="title"
+        :class="[
+          'justify-center px-5 px-md-7',
+          hasBodyContent ? 'py-5 py-md-8' : 'pb-0 pt-5 pt-md-8',
+        ]"
+      >
+        <div
+          class="mew-heading-2 break-word text-center"
+        >
+          {{ title }}
+        </div>
       </v-card-title>
       <!--
       =====================================================================================
@@ -182,13 +190,6 @@ export default {
      * Will display popup body content padding if true
      */
     hasButtons: {
-      type: Boolean,
-      default: true,
-    },
-    /**
-     * Will display popup top part content padding if true
-     */
-    hasTitle: {
       type: Boolean,
       default: true,
     },

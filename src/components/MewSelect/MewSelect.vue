@@ -81,14 +81,14 @@
           v-if="!loading && item.imgs"
           class="flex-row d-flex align-center"
         >
-          <img
+          <mew-token-container
             class="label-token-img"
-            width="24"
-            height="24"
-            :src="url"
+            :loading="loading"
+            :img="url"
             v-for="(url, idx) in item.imgs"
             :key="url + idx"
-          >
+            size="small"
+          />
           <div
             class="total-token-placeholder inputBorder d-flex align-center justify-center mew-caption"
           >
@@ -105,15 +105,12 @@
         v-if="!item.selectLabel"
         class="d-flex align-center justify-center"
       >
-        <v-img
-          v-if="isCustom"
-          :lazy-src="ethTokenPlaceholder"
-          class="mew-select-item-img selected-img"
-          :src="!item.img ? ethTokenPlaceholder : item.img"
-          :alt="item.name ? item.name : item"
-          :contain="true"
-          max-width="25"
-          max-height="25"
+        <mew-token-container
+          class="ml-1"
+          :loading="loading"
+          :img="item.img"
+          :name="item.name || item"
+          size="small"
         />
         <span
           class="text-capitalize mt-1 ml-2 basic--text"
@@ -191,14 +188,12 @@
             v-if="!loading"
             class="d-flex align-center"
           >
-            <v-img
-              class="mew-select-item-img"
-              :lazy-src="ethTokenPlaceholder"
-              :src="!data.item.img ? ethTokenPlaceholder : data.item.img"
-              :alt="!data.item.img ? 'token placeholder' : data.item.img"
-              :contain="true"
-              max-width="25"
-              max-height="25"
+            <mew-token-container
+              class="mr-1"
+              :loading="loading"
+              :img="!data.item.img ? null : data.item.img"
+              :name="data.item.name"
+              size="small"
             />
             <span
               class="text-capitalize ml-2 my-2 d-flex flex-column"
@@ -225,7 +220,7 @@
   </v-select>
 </template>
 <script>
-import ethTokenPlaceholder from '@/assets/images/icons/eth.svg';
+import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
 
 export default {
   name: 'MewSelect',
@@ -309,13 +304,15 @@ export default {
       default: false,
     },
   },
+  components: {
+    MewTokenContainer
+  },
   data() {
     return {
       imgError: false,
       selectModel: null,
       selectItems: [],
       search: '',
-      ethTokenPlaceholder: ethTokenPlaceholder,
     };
   },
   watch: {
@@ -388,12 +385,6 @@ export default {
         : this.defaultItem;
   },
   methods: {
-    onDropdownItemImgErr(data) {
-      data.item.img = ethTokenPlaceholder;
-    },
-    onCustomDropDownItemImgErr(data) {
-      data.item.img = ethTokenPlaceholder;
-    },
     clear(val) {
       this.selectModel =
         val && Object.keys(val).length !== 0 ? val : this.defaultItem;
@@ -457,14 +448,6 @@ export default {
       display: none;
     }
   }
-  .mew-select-item-img {
-    margin-right: 5px;
-    max-height: 25px;
-  }
-
-  .selected-img {
-    margin-left: 6px;
-  }
 }
 /**
   * Mew Select Search
@@ -496,12 +479,5 @@ export default {
       height: 14px;
     }
   }
-}
-/**
-  * Mew Selected Img
-  */
-.mew-select-item-img {
-  border: 1px solid var(--v-boxShadow-base);
-  border-radius: 50%;
 }
 </style>

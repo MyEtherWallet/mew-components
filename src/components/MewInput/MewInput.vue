@@ -64,7 +64,7 @@
         <!--
 =====================================================================================
   slot: prependInnerIcon
-  prepends content at the beginning of the input.
+  prepends content to the beginning of the input.
 =====================================================================================
 -->
         <slot name="prependInnerIcon" />
@@ -73,12 +73,13 @@
   Mew Input: Token Image  (displays at the beginning of the input)
 =====================================================================================
 -->
-        <img
+        <mew-token-container
           v-if="image"
-          height="30"
-          :src="image"
-          alt="token image"
-        >
+          class="mx-1 mt-1"
+          :img="image"
+          alt="image"
+          size="small"
+        />
       </div>
     </template>
     <!--
@@ -111,6 +112,7 @@
 
 <script>
 import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
+import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
 
 const types = ['password', 'text'];
 
@@ -118,6 +120,7 @@ export default {
   name: 'MewInput',
   components: {
     MewBlockie,
+    MewTokenContainer
   },
   props: {
     /**

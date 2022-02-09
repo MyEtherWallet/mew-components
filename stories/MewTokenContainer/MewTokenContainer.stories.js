@@ -2,6 +2,7 @@ import {
   withKnobs,
   boolean,
   optionsKnob,
+  text,
   files
 } from '@storybook/addon-knobs';
 import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
@@ -34,8 +35,14 @@ export const mewTokenContainer = () => ({
     size: {
       default: optionsKnob('size', sizeOptions, sizeOptions.small, { display: 'inline-radio' })
     },
-    icon: {
-      default: files('icon', '.png, .svg', '')
+    img: {
+      default: files('img', '.png, .svg', '')
+    },
+    loading: {
+      default: boolean('loading', false)
+    },
+    name: {
+      default: text('name', 'MEW')
     }
   },
   watch: {
@@ -48,7 +55,9 @@ export const mewTokenContainer = () => ({
     <br />
     <mew-token-container
       :size="size"
-      :icon="icon"
+      :img="img"
+      :name="name"
+      :loading="loading"
     />
   </div>`
 });
