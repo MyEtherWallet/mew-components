@@ -6,11 +6,16 @@ import {
   number
 } from '@storybook/addon-knobs';
 import MewCheckbox from '@/components/MewCheckbox/MewCheckbox.vue';
+import MewCheckboxDoc from './MewCheckbox.mdx';
 
 export default {
   title: 'MewCheckbox',
   parameters: {
-    component: MewCheckbox
+    component: MewCheckbox,
+    docs: {
+      page: MewCheckboxDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs]
 };
@@ -32,8 +37,8 @@ export const MEWCheckbox = () => ({
     link: {
       default: object('link', linkObj)
     },
-    colorText: {
-      default: text('color-text', '')
+    className: {
+      default: text('class-name', '')
     },
     value: {
       default: boolean('value', false)
@@ -56,7 +61,7 @@ export const MEWCheckbox = () => ({
     <mew-checkbox
       :label="label"
       :dense="dense"
-      :color-text="colorText"
+      :className="className"
       :link="link"
       :id="id"
     />

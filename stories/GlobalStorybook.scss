@@ -1,136 +1,57 @@
-#story--mewtooltip--mew-tooltip {
+/**
+  * styles used to set the height of the preview component for documentation purposes.
+  */
+#story--mewtooltip--mew-tooltip,
+#story--mewsuperbutton--mew-super-button, 
+#story--mewsuperbutton--icon-button, 
+#story--mewsuperbutton--content-slot-button, 
+#story--mewbanner--mew-banner,
+#story--mewwarningsheet--mew-warning-sheet
+#story--mewtoast--mew-toast,
+#story--mewstepper--mew-stepper,
+#story--mewtoggle--mew-toggle,
+#story--mewpopup--mew-popup,
+#story--mewmodule--mew-module,
+#story--mewnotification--mew-notification,
+#story--mewtransformhash--mew-transform-hash,
+#story--mewaddressselect--mew-address-select,
+#story--mewalert--mew-alert,
+#story--mewdropdown--mew-dropdown,
+#story--mewcopy--mew-copy,
+#story--mewexpandpanel--mew-expand-panel,
+#story--mewbadge--mew-badge,
+#story--mewcarousel--mew-carousel,
+#story--mewinfocard--mew-info-card,
+#story--mewinput--mew-input,
+#story--mewsearch--mew-search,
+#story--mewwarningsheet--mew-warning-sheet,
+#story--mewselect--mew-select,
+#story--mewsheet--mew-sheet,
+#story--mewtable--mew-table,
+#story--mewtabs--mew-tabs,
+#story--mewtextarea--mew-text-area
+   {
   .v-application {
     height: 250px;
   }
 }
 
-#story--mewsuperbutton--mew-super-button {
-  .v-application {
-    height: 250px;
-  }
-}
 
-#story--mewsuperbutton--column-button {
-  .v-application {
-    height: 250px;
-  }
-}
-
-#story--mewsuperbutton--icon-button {
-  .v-application { 
-   height: 250px;
-  }
-}
-
-#story--mewsuperbutton--content-slot-button {
-  .v-application { 
-    height: 250px;
-  }
-}
-
-
-#story--mewbanner--mew-banner {
-  .v-application {
-    height: 250px;
-  }
-}
-
-
-#story--mewbutton--slot-button {
+#story--mewbutton--slot-button, 
+#story--mewbutton--background-button,
+#story--mewbutton--outline-button,
+#story--mewbutton--transparent-button,
+#story--mewbutton--icon-button,
+#story--mewbutton--icon-title-button,
+#story--mewtokencontainer--mew-token-container,
+#story--mewcheckbox--mew-checkbox,
+#story--mewchart--mew-chart,
+#story--mewmenu--mew-menu,
+#story--mewprogressbar--mew-progress-bar,
+#story--mewswitch--mew-switch,
+#story--mewblockie--mew-blockie
+ {
   .v-application {
     height: 80px;
-  }
-}
-
-#story--mewbutton--background-button {
-  .v-application {
-    height: 80px;
-  }
-}
-
-#story--mewbutton--outline-button {
-  .v-application {
-    height: 80px;
-  }
-}
-
-#story--mewbutton--transparent-button {
-  .v-application {
-    height: 80px;
-  }
-}
-
-#story--mewbutton--icon-button {
-  .v-application {
-    height: 80px;
-  }
-}
-
-
-#story--mewbutton--icon-title-button {
-  .v-application {
-    height: 80px;
-  }
-}
-
-#story--mewblockie--mew-blockie {
-  .v-application {
-    height: 250px;
-  }
-}
-
-
-#story--mewwarningsheet--mew-warning-sheet {
-  .v-application {
-    height: 250px;
-  }
-}
-
-#story--mewtokencontainer--mew-token-container {
-  .v-application {
-    height: 100px;
-  }
-}
-
-#story--mewtoast--mew-toast {
-  .v-application {
-    height: 250px;
-  }
-}
-
-
-#story--mewstepper--mew-stepper {
-  .v-application {
-    height: 250px;
-  }
-}
-
-#story--mewtoggle--mew-toggle {
-  .v-application {
-    height: 250px;
-  }  
-}
-
-#story--mewpopup--mew-popup {
-  .v-application {
-    height: 250px;
-  }
-}
-
-#story--mewnotification--mew-notification {
-  .v-application {
-    height: 250px;
-  }
-}
-
-#story--mewmodule--mew-module {
-  .v-application {
-    height: 250px;
-  }
-}
-
-#story--mewtransformhash--mew-transform-hash {
-  .v-application {
-    height: 250px;
   }
 }

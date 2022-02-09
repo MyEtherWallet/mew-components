@@ -6,11 +6,15 @@ import {
   text
 } from '@storybook/addon-knobs';
 import MewTabs from '@/components/MewTabs/MewTabs.vue';
+import MewTabsDoc from './MewTabs.mdx';
 
 export default {
   title: 'MewTabs',
   parameters: {
-    component: MewTabs
+    component: MewTabs,
+    docs: {
+      page: MewTabsDoc
+    } 
   },
   decorators: [withKnobs]
 };

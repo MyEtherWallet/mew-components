@@ -83,7 +83,8 @@ export default {
       default: ''
     },
     /**
-     * The link object. Takes a link title and the url, i.e. {title: '', url: ''}.
+     * The link object. Takes a title and url, i.e. {title: '', url: ''}.
+     * This is displayed below the description.
      */
     link: {
       type: Object,

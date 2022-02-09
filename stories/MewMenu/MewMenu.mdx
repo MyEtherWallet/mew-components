@@ -1,0 +1,18 @@
+
+import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import MewMenu from '@/components/MewMenu/MewMenu.vue';
+import './../GlobalStorybook.scss'
+
+# MEW Menu
+`<mew-menu />`
+
+## Overview
+MEW Menu component replaces Vuetifys v-menu with acceptable MEW theme options. It takes a **listObj** prop that 
+includes a name and items attribute. The items attribute takes an array of objects that also includes a title and items attribute.
+You can change the color of the activator title by passing a class to **activatorTextColor** prop.
+There is also an option to add a slot per menu item using the **mewMenuItem** + **menu number** slot, i.e. *mewMenuItem1*.
+An event called **goToPage** will be emitted with the link param on menu item click.
+## Props
+<Props of={MewMenu} />
+<Preview><Story id="mewmenu--mew-menu" /></Preview>
+

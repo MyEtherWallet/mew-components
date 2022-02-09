@@ -1,0 +1,17 @@
+
+import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import MewExpandPanel from '@/components/MewExpandPanel/MewExpandPanel.vue';
+import './../GlobalStorybook.scss'
+
+# MEW Expand Panel  
+`<mew-expand-panel />`
+
+## Overview
+The mew-expand-panel component provides a way to organize and display different information to users. There are two different color themes, grey and white. 
+The color theme is controlled by the **isGreyTheme** prop. The **isAccordion** prop removes the margins around the panels so it will share one border if passed true.
+You can control which panel is expanded by passing an array of the indexes to the **idxToExpand** prop. Each panel body is customizable and is set by passing a slot, **panelBody** + **the panel number** (index + 1) - i.e. *panelBody1*.
+You can set the header title of each panel by passing an obj with the **name** attribute to the **panelItems** array. This will also let the component know how many panels there are. If you would like text next to the toggle button,
+then pass a string to the **toggleTitle** attribute in the same panelItems obj.
+<Props of={MewExpandPanel} />
+<Preview><Story id="mewexpandpanel--mew-expand-panel" /></Preview>
+

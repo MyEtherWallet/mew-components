@@ -5,11 +5,15 @@ import {
   text
 } from '@storybook/addon-knobs';
 import MewTable from '@/components/MewTable/MewTable.vue';
+import MewTableDoc from './MewTable.mdx';
 
 export default {
   title: 'MewTable',
   parameters: {
-    component: MewTable
+    component: MewTable,
+    docs: {
+      page: MewTableDoc
+    } 
   },
   decorators: [withKnobs]
 };
@@ -145,7 +149,7 @@ function onClick(item) {
   console.log('clicked', item)
 }
 
-export const mewTable = () => ({
+export const MEWTable = () => ({
   components: { MewTable },
   props: {
     enableDarkMode: {

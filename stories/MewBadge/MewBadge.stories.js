@@ -5,11 +5,16 @@ import {
   text
 } from '@storybook/addon-knobs';
 import MewBadge from '@/components/MewBadge/MewBadge.vue';
+import MewBadgeDoc from './MewBadge.mdx';
 
 export default {
   title: 'MewBadge',
   parameters: {
-    component: MewBadge
+    component: MewBadge,
+    docs: {
+      page: MewBadgeDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs]
 };

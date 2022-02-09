@@ -3,11 +3,15 @@ import {
   boolean
 } from '@storybook/addon-knobs';
 import MewSheet from '@/components/MewSheet/MewSheet.vue';
+import MewSheetDoc from './MewSheet.mdx';
 
 export default {
   title: 'MewSheet',
   parameters: {
-    component: MewSheet
+    component: MewSheet,
+    docs: {
+      page: MewSheetDoc
+    } 
   },
   decorators: [withKnobs]
 };

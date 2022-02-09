@@ -6,7 +6,8 @@ module.exports = {
     'extends': [
         'eslint:recommended',
         'plugin:vue/essential',
-        'plugin:vue/strongly-recommended'
+        'plugin:vue/strongly-recommended',
+        'plugin:storybook/recommended'
     ],
     'globals': {
         'Atomics': 'readonly',

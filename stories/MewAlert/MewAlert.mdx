@@ -1,0 +1,18 @@
+import { Props, Story, Preview } from '@storybook/addon-docs/blocks'
+import MewAlert from '@/components/MewAlert/MewAlert.vue';
+import './../GlobalStorybook.scss'
+
+# MEW Alert
+`<mew-alert />`
+
+## Overview
+
+The mew-alert component is used to display different types of alerts, such as: error, warning, success, and info. The type of alert shown is determined by the **theme** prop. It is very customizable 
+due to the default **slot** that can be used in lieu of the **text** and **description** prop. There are also options to hide the icons as well. You may pass the **link-obj** prop to add a link
+at the end of the description.
+
+## Props
+<Props of={MewAlert} />
+<Preview><Story id="mewalert--mew-alert" /></Preview>
+
+

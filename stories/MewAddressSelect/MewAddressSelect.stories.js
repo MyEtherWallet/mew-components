@@ -4,30 +4,35 @@ import {
   boolean,
   object,
   array,
-} from "@storybook/addon-knobs";
-import MewAddressSelect from "@/components/MewAddressSelect/MewAddressSelect.vue";
+} from '@storybook/addon-knobs';
+import MewAddressSelect from '@/components/MewAddressSelect/MewAddressSelect.vue';
+import MewAddressSelectDoc from './MewAddressSelect.mdx';
 
 export default {
-  title: "MewAddressSelect",
+  title: 'MewAddressSelect',
   parameters: {
     component: MewAddressSelect,
+    docs: {
+      page: MewAddressSelectDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs],
 };
 
-const ruleValue = [(value) => !!value || "Required."];
+const ruleValue = [(value) => !!value || 'Required.'];
 
 const addressesArray = [
   {
-    address: "0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D",
-    currency: "ETH",
-    nickname: "My Address",
+    address: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
+    currency: 'ETH',
+    nickname: 'My Address',
   },
   {
-    address: "jessp.eth",
-    currency: "ETH",
-    nickname: "nickname",
-    resolvedAddr: "0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D",
+    address: 'jessp.eth',
+    currency: 'ETH',
+    nickname: 'nickname',
+    resolvedAddr: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
   },
 ];
 
@@ -35,46 +40,46 @@ export const mewAddressSelect = () => ({
   components: { MewAddressSelect },
   props: {
     label: {
-      default: text("label", "To Address"),
+      default: text('label', 'To Address'),
     },
     items: {
-      default: object("items", addressesArray),
+      default: object('items', addressesArray),
     },
     placeholder: {
-      default: text("placeholder", "Please enter an address"),
+      default: text('placeholder', 'Please enter an address'),
     },
     isValidAddress: {
-      default: boolean("is-valid-address", false),
+      default: boolean('is-valid-address', false),
     },
     enableSaveAddress: {
-      default: boolean("enable-save-address", false),
+      default: boolean('enable-save-address', false),
     },
     disabled: {
-      default: boolean("disabled", false),
+      default: boolean('disabled', false),
     },
     copyTooltip: {
-      default: text("copy-tooltip", "Copy"),
+      default: text('copy-tooltip', 'Copy'),
     },
     showCopy: {
-      default: boolean("show-copy", true),
+      default: boolean('show-copy', true),
     },
     noDataText: {
-      default: text("no-data-text", ""),
+      default: text('no-data-text', ''),
     },
     saveTooltip: {
-      default: text("save-tooltip", "Save Address"),
+      default: text('save-tooltip', 'Save Address'),
     },
     resolvedAddr: {
-      default: text("resolved-addr", ""),
+      default: text('resolved-addr', ''),
     },
     enableDarkMode: {
-      default: boolean("dark mode ?", false),
+      default: boolean('dark mode ?', false),
     },
     rules: {
-      default: array("rules", ruleValue),
+      default: array('rules', ruleValue),
     },
     errorMessages: {
-      default: text("error-messages", ""),
+      default: text('error-messages', ''),
     },
   },
   watch: {
@@ -90,7 +95,7 @@ export const mewAddressSelect = () => ({
   methods: {
     onSaveAddress() {
       // eslint-disable-next-line no-console
-      console.log("saveAddress: clicked");
+      console.log('saveAddress: clicked');
     },
     onSelectValue(value, type) {
       console.log(value, type);

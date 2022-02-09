@@ -4,11 +4,16 @@ import {
   text
 } from '@storybook/addon-knobs';
 import MewCopy from '@/components/MewCopy/MewCopy.vue';
+import MewCopyDoc from './MewCopy.mdx';
 
 export default {
   title: 'MewCopy',
   parameters: {
-    component: MewCopy
+    component: MewCopy,
+    docs: {
+      page: MewCopyDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs]
 };
@@ -33,8 +38,8 @@ export const mewCopy = () => ({
     copyValue: {
       default: text('copyValue', 'Copied value')
     },
-    color: {
-      default: text('color', 'basic--text')
+    className: {
+      default: text('className', 'basic--text')
     }
   },
   watch: {
@@ -49,7 +54,7 @@ export const mewCopy = () => ({
       :is-small="isSmall"
       :tooltip="tooltip"
       :copy-value="copyValue"
-      :color="color"
+      :class-name="className"
     />
     <br />
     <span id="mew-id">Copy me!</span>

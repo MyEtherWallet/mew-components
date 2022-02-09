@@ -11,7 +11,7 @@ name: 'MewChart',
 extends: Line,
   props: {
     /**
-     * Chart Data - takes in x and y attribute, i.e, { x: [], y: []}
+     * Chart Data - takes a x and y attribute, i.e, { x: [], y: []}
      */
     data: {
       type: Object,

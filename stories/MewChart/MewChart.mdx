@@ -1,0 +1,16 @@
+
+import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import MewChart from '@/components/MewChart/MewChart.vue';
+import './../GlobalStorybook.scss'
+
+# MEW Chart
+`<mew-chart />`
+
+## Overview
+MEW Chart is used to display different data points. We are using *vue-chartjs* for this component. In order to display data, you must pass
+an object with x and y attributes to the **data** prop. There is also an option to change
+the color of the chart by passing a hex number to **color**.
+## Props
+<Props of={MewChart} />
+<Preview><Story id="mewchart--mew-chart" /></Preview>
+

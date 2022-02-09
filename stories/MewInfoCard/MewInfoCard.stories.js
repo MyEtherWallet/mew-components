@@ -5,11 +5,16 @@ import {
   object
 } from '@storybook/addon-knobs';
 import MewInfoCard from '@/components/MewInfoCard/MewInfoCard.vue';
+import MewInfoCardDoc from './MewInfoCard.mdx';
 
 export default {
   title: 'MewInfoCard',
   parameters: {
-    component: MewInfoCard
+    component: MewInfoCard,
+    docs: {
+      page: MewInfoCardDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs]
 };
@@ -19,7 +24,7 @@ const linkObj = {
   url: 'www.myetherwallet.com'
 }
 
-export const mewInfoCard = () => ({
+export const MEWInfoCard = () => ({
   components: { MewInfoCard },
   props: {
     enableDarkMode: {

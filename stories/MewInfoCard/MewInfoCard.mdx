@@ -1,0 +1,21 @@
+
+import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import MewInfoCard from '@/components/MewInfoCard/MewInfoCard.vue';
+import './../GlobalStorybook.scss'
+
+# MEW Info Card
+`<mew-info-card />`
+
+## Overview
+MEW Info Card component is used to display information in a rounded container with a box shadow. There are props 
+you may pass or if you would like to customize it, there are slots as well. The **title** prop is displayed as the
+header and there is a **titleIconContainer** slot where you may insert customized icons to be displayed next to the title. The **icon**
+prop takes a src url and displays on top of the title.
+The **desc** prop is shown as the subtitle and if you would like to also customize this area, you may use the **desc** slot.
+The **link** obj prop is used to display a link but if you would like to add custom buttons here, you may use the 
+**buttonContainer** slot. The last slot that we have is the **cardImg** slot which is used to place a 
+custom image at the bottom of the card.
+## Props
+<Props of={MewInfoCard} />
+<Preview><Story id="mewinfocard--mew-info-card" /></Preview>
+

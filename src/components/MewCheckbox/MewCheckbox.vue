@@ -14,7 +14,7 @@
       v-model="isChecked"
     />
     <span
-      :class="['mr-2 cursor-pointer', colorText]"
+      :class="['mr-2 cursor-pointer', className]"
       @click="toggleCheckbox"
     >{{ label }}
       <a
@@ -33,21 +33,21 @@ export default {
   name: 'MewCheckbox',
   props: {
     /**
-     * Changes the label text color (i.e error--text)
+     * Pass a class to change the icon color (i.e error--text).
      */
-    colorText: {
+    className: {
         type: String,
         default: 'titlePrimary--text'
     },
     /**
-     * Checkbox label
+     * Checkbox label text
      */
     label: {
       type: String,
       default: ''
     },
     /**
-     * Adds a link to the checkbox label.
+     * Adds a link at the end of the label.
      */
     link: {
       type: Object,
@@ -56,21 +56,21 @@ export default {
       }
     },
     /**
-     * The checkbox id. Mainly used for when mew-checkbox is used in a loop.
+     * The checkbox id. Mainly used to distinguish each checkbox when mew-checkbox is used in a loop.
      */
     id: {
       type: Number,
       default: null,
     },
     /**
-     * Controls the value of the checkbox (checked or not)
+     * Controls the value of the checkbox (checked or not).
      */
     value: {
       type: Boolean,
       default: false
     },
     /**
-     * Reduces the input height
+     * Reduces the input height.
      */
     dense: {
       type: Boolean,

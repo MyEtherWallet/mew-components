@@ -101,14 +101,14 @@ export default {
       default: false,
     },
     /**
-     * Adds a alert title.
+     * Adds a title to the alert.
      */
     title: {
       type: String,
       default: '',
     },
     /**
-     * Adds a alert description.
+     * Adds a description to the alert.
      */
     description: {
       type: String,
@@ -116,7 +116,7 @@ export default {
     },
     /**
      * Expects a link object with attributes text and url, i.e { url: 'www.myetherwallet.com', text: 'Home" }
-     * is added at the end of description.
+     * This is added at the end of description.
      */
     linkObject: {
       type: Object,
