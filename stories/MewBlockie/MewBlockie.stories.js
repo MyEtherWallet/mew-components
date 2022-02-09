@@ -18,7 +18,7 @@ export default {
   decorators: [withKnobs]
 };
 
-export const mewBlockie = () => ({
+export const MEWBlockie = () => ({
   components: { MewBlockie },
   props: {
     address: {

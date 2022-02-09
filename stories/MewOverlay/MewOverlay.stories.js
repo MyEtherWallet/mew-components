@@ -31,11 +31,6 @@ const sizes = {
 }
 
 export const MEWOverlay = () => ({
-  data() {
-    return {
-      showsOverlay: false
-    }
-  },
   components: { MewOverlay },
   props: {
     showOverlay: {
@@ -64,9 +59,6 @@ export const MEWOverlay = () => ({
     enableDarkMode(newVal) {
       this.$vuetify.theme.dark = newVal === true ? true : false;
     },
-    showOverlay(newVal) {
-      this.showsOverlay = newVal;
-    }
   },
   methods: {
     close() {
