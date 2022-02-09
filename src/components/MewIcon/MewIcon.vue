@@ -154,7 +154,7 @@ export default {
       default: '',
     },
     /**
-     * Image height
+     * Icon image height
      */
     imgHeight: {
       type: Number,

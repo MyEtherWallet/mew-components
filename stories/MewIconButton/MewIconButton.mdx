@@ -2,14 +2,18 @@ import { Props, Story, Preview } from '@storybook/addon-docs/blocks'
 import MewIconButton from '@/components/MewIconButton/MewIconButton.vue';
 import './../GlobalStorybook.scss'
 
-# MEW Button 
+# MEW Icon Button 
 `<mew-icon-button />`
 
 ## Overview
 
-The mew-button component replaces the Vuetify v-btn button with acceptable MEW theme options. This is a flex component with with different sizes (small, medium, large, xlarge), centered text, and a font size of 14px. 
-MEW theme options include: primary, secondary, basic, error, royal (blue500). 
-Please refer to the *Button Themes* section.
+The mew-icon-button component replaces the Vuetify icon v-btn with acceptable MEW theme options. Currently, you can only pass a
+material design icon name to **mdiIcon** (https://materialdesignicons.com/). There are two different button sizes: small and large that you can pass
+to the **btnSize** prop. There are
+also 5 different icon sizes that you can pass to the **mdiIconSize** prop. Please see below all the different button styles that you can pass to
+the **btnStyle** prop.
+
+MEW icon button color theme options include: primary, secondary, basic, error, royal (blue500). 
 
 ## Props
 <Props of={MewIconButton} />
@@ -41,6 +45,3 @@ Transparent Buttons only have text, no box shadow, and no background color. The 
 
 <Preview><Story id="mewbutton--transparent-button" /></Preview>
 
-# Slot
-If there is no title prop passed, then please use slot to input custom content. Click "Show Code" for an example.
-<Preview><Story id="mewbutton--slot-button" /></Preview>

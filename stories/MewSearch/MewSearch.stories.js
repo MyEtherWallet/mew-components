@@ -4,74 +4,78 @@ import {
   text,
   boolean,
   optionsKnob,
-} from "@storybook/addon-knobs";
-import MewSearch from "@/components/MewSearch/MewSearch.vue";
+} from '@storybook/addon-knobs';
+import MewSearch from '@/components/MewSearch/MewSearch.vue';
+import MewSearchDoc from './MewSearch.mdx';
 
 export default {
-  title: "MewSearch",
+  title: 'MewSearch',
   parameters: {
     component: MewSearch,
+    docs: {
+      page: MewSearchDoc
+    } 
   },
   decorators: [withKnobs],
 };
 
 const menuSelect = {
-  label: "Extensions",
-  items: [{ name: ".crypto", value: ".crypto" }],
+  label: 'Extensions',
+  items: [{ name: '.crypto', value: '.crypto' }],
 };
 
 const textInputTypes = {
-  tel: "tel",
-  text: "text",
-  time: "time",
-  url: "url",
-  week: "week",
-  month: "month",
-  number: "number",
-  password: "password",
-  datetime: "datetime-local",
-  email: "email",
+  tel: 'tel',
+  text: 'text',
+  time: 'time',
+  url: 'url',
+  week: 'week',
+  month: 'month',
+  number: 'number',
+  password: 'password',
+  datetime: 'datetime-local',
+  email: 'email',
 };
 
 const optionsObj = {
-  display: "inline-radio",
+  display: 'inline-radio',
 };
 
 export const MEWSearch = () => ({
   components: { MewSearch },
   props: {
     disabled: {
-      default: boolean("disabled", false),
+      default: boolean('disabled', false),
     },
     placeholder: {
-      default: text("placeholder", "placeholder"),
+      default: text('placeholder', 'placeholder'),
     },
     value: {
-      default: text("value", ""),
+      default: text('value', ''),
     },
     isSearchBlock: {
-      default: boolean("is-search-block", true),
+      default: boolean('is-search-block', true),
     },
     canSearchDate: {
-      default: boolean("can-search-block", false),
+      default: boolean('can-search-date', false),
     },
     menuSelect: {
-      default: object("menu-select", menuSelect),
+      default: object('menu-select', menuSelect),
     },
     isCompact: {
-      default: boolean("is-compact", false),
+      default: boolean('is-compact', false),
     },
     isFilled: {
-      default: boolean("is-filled", true),
+      default: boolean('is-filled', true),
     },
     enableDarkMode: {
-      default: boolean("dark mode ?", false),
+      default: boolean('dark mode ?', false),
     },
     errorMessages: {
-      default: text("error-messages", ""),
+      default: text('error-messages', ''),
     },
     type: {
-      default: optionsKnob("type", textInputTypes, "text", optionsObj),
+      default: optionsKnob('type', textInputTypes, 'text', optionsObj),
     },
   },
   watch: {
@@ -81,10 +85,10 @@ export const MEWSearch = () => ({
   },
   methods: {
     onSearch() {
-      console.log("search button clicked");
+      console.log('search button clicked');
     },
     onDateSearch() {
-      console.log("search button clicked");
+      console.log('search button clicked');
     },
   },
   template: `

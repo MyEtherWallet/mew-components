@@ -2,11 +2,15 @@ import { withKnobs, text, boolean, object } from '@storybook/addon-knobs';
 import MewSelect from '@/components/MewSelect/MewSelect.vue';
 import ethereumIcon from '@/assets/images/icons/eth.svg'
 import bitcoinIcon from '@/assets/images/icons/footer/btc.png'
+import MewSelectDoc from './MewSelect.mdx';
 
 export default {
   title: 'MewSelect',
   parameters: {
-    component: MewSelect
+    component: MewSelect,
+    docs: {
+      page: MewSelectDoc
+    } 
   },
   decorators: [withKnobs]
 };

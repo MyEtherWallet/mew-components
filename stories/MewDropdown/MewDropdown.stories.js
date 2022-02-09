@@ -4,11 +4,16 @@ import {
   text
 } from '@storybook/addon-knobs';
 import MewDropdown from '@/components/MewDropdown/MewDropdown.vue';
+import MewDropdownDoc from './MewDropdown.mdx';
 
 export default {
   title: 'MewDropdown',
   parameters: {
-    component: MewDropdown
+    component: MewDropdown,
+    docs: {
+      page: MewDropdownDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs]
 };

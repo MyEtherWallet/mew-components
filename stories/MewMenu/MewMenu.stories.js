@@ -5,11 +5,16 @@ import {
   text
 } from '@storybook/addon-knobs';
 import MewMenu from '@/components/MewMenu/MewMenu.vue';
+import MewMenuDoc from './MewMenu.mdx';
 
 export default {
   title: 'MewMenu',
   parameters: {
-    component: MewMenu
+    component: MewMenu,
+    docs: {
+      page: MewMenuDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs]
 };

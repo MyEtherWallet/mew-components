@@ -33,17 +33,16 @@
 =====================================================================================
 -->
     <template v-slot:message="item">
-      <span class="mew-label"
-        >{{ item.message }}
+      <span
+        class="mew-label"
+      >{{ item.message }}
         <a
           v-if="buyMoreStr"
           rel="noopener noreferrer"
           href="https://ccswap.myetherwallet.com/#/"
           target="_blank"
           class="mew-label"
-          >{{ buyMoreStr }}</a
-        ></span
-      >
+        >{{ buyMoreStr }}</a></span>
     </template>
     <template v-slot:prepend-inner>
       <!--
@@ -74,7 +73,12 @@
   Mew Input: Token Image  (displays at the beginning of the input)
 =====================================================================================
 -->
-        <img v-if="image" height="30" :src="image" alt="token image" />
+        <img
+          v-if="image"
+          height="30"
+          :src="image"
+          alt="token image"
+        >
       </div>
     </template>
     <!--
@@ -106,39 +110,39 @@
 </template>
 
 <script>
-import MewBlockie from "@/components/MewBlockie/MewBlockie.vue";
+import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
 
-const types = ["password", "text"];
+const types = ['password', 'text'];
 
 export default {
-  name: "MewInput",
+  name: 'MewInput',
   components: {
     MewBlockie,
   },
   props: {
     /**
-     * Error messages to display
+     * Error messages to display at the bottom of the input.
      */
     errorMessages: {
       type: [String, Array],
-      default: "",
+      default: '',
     },
     /**
-     * input is read only
+     * Input becomes read only.
      */
     isReadOnly: {
       type: Boolean,
       default: false,
     },
     /**
-     * Displays the blockie.
+     * Prepends the blockie to the beginning of the input.
      */
     showBlockie: {
       type: Boolean,
       default: false,
     },
     /**
-     * Removes the border.
+     * Removes the input border and adds a box shadow.
      */
     hasNoBorder: {
       type: Boolean,
@@ -156,21 +160,21 @@ export default {
      */
     label: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * The input placeholder.
      */
     placeholder: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * The input value.
      */
     value: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * The input id.
@@ -180,11 +184,11 @@ export default {
       default: null,
     },
     /**
-     * Displays a label on the right side of the input.
+     * Displays text on the right inner side of the input.
      */
     rightLabel: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * Hides input clear functionality. Clear symbol will be displayed on the right side.
@@ -194,7 +198,8 @@ export default {
       default: false,
     },
     /**
-     * For validating your input - accepts an array of functions that take an input value as an argument and return either true / false or a string with an error message.
+     * For validating your input - accepts an array of functions that take an input value as an argument and returns either true / false
+     * or a string containing an error message. The input field will enter an error state if a function returns (or any value in the array contains) false or is a string.
      */
     rules: {
       type: Array,
@@ -203,56 +208,51 @@ export default {
       },
     },
     /**
-     * Resolved address
+     * The resolved address.
      */
     resolvedAddr: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
-     * Enables persistent hint
+     * Enables persistent hint.
      */
     persistentHint: {
       type: Boolean,
       default: false,
     },
     /**
-     * Hint text
+     * Hint text (will be displayed at the bottom of the input).
      */
     hint: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
-     * Displays search input
-     */
-    isSearch: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Sets input type
+     * Sets input type.
      */
     type: {
       type: String,
-      default: "text",
+      default: 'text',
     },
     /**
-     * Prepends an image in the input
+     * Prepends an image to the beginning of the input.
      */
     image: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * Adds a "Buy more" string to the end of the first index of the errorMessages prop.
      */
     buyMoreStr: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
-     * Object for max button, i.e. {title: 'Max', disabled: false, method: () => {}}
+     * Displays a button to the right inner side of the input.
+     * Takes an object.
+     * i.e. {title: 'Max', disabled: false, method: () => {}}.
      */
     maxBtnObj: {
       type: Object,
@@ -261,7 +261,7 @@ export default {
       },
     },
     /**
-     * Autofocuses the input
+     * Autofocuses the input.
      */
     autofocus: {
       type: Boolean,
@@ -278,14 +278,14 @@ export default {
   },
   data() {
     return {
-      inputValue: "",
+      inputValue: '',
       showPassword: false,
     };
   },
   watch: {
     inputValue(newVal, oldVal) {
       if (newVal !== oldVal) {
-        this.$emit("input", newVal, this.id);
+        this.$emit('input', newVal, this.id);
       }
     },
     value(newVal, oldVal) {
@@ -300,9 +300,9 @@ export default {
     },
     showPasswordIcon() {
       if (this.isPasswordType && !this.hidePasswordIcon) {
-        return !this.showPassword ? "mdi-eye" : "mdi-eye-off";
+        return !this.showPassword ? 'mdi-eye' : 'mdi-eye-off';
       }
-      return "";
+      return '';
     },
     inputType() {
       if (this.isPasswordType && this.showPassword) {
@@ -321,7 +321,7 @@ export default {
       }
     },
     clear(val) {
-      this.inputValue = val ? val : "";
+      this.inputValue = val ? val : '';
     },
   },
 };

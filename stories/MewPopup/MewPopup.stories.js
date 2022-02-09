@@ -1,32 +1,32 @@
-import { withKnobs, boolean, text, object } from "@storybook/addon-knobs";
-import MewPopup from "@/components/MewPopup/MewPopup.vue";
-// import MewPopupDoc from './MewPopup.mdx';
+import { withKnobs, boolean, text, object } from '@storybook/addon-knobs';
+import MewPopup from '@/components/MewPopup/MewPopup.vue';
+import MewPopupDoc from './MewPopup.mdx';
 
 export default {
-  title: "MewPopup",
+  title: 'MewPopup',
   parameters: {
     component: MewPopup,
-    // docs: {
-    //   page: MewPopupDoc
-    // }
+    docs: {
+      page: MewPopupDoc
+    }
   },
   decorators: [withKnobs],
 };
 // eslint-disable-next-line no-console
 const leftBtn = {
-  text: "Cancel",
-  color: "primary",
+  text: 'Cancel',
+  color: 'primary',
   method: () => {
-    console.log("clicked left button");
+    console.log('clicked left button');
   },
 };
 // eslint-disable-next-line no-console
 const rightBtn = {
-  text: "Confirm",
-  color: "primary",
+  text: 'Confirm',
+  color: 'primary',
   enabled: true,
   method: () => {
-    console.log("clicked right button");
+    console.log('clicked right button');
   },
 };
 
@@ -39,37 +39,37 @@ export const MEWPopup = () => ({
   },
   props: {
     enableDarkMode: {
-      default: boolean("dark mode ?", false),
+      default: boolean('dark mode ?', false),
     },
     show: {
-      default: boolean("show", true),
+      default: boolean('show', true),
     },
     title: {
-      default: text("title", "Are you sure you want to log out?"),
+      default: text('title', 'Are you sure you want to log out?'),
     },
     leftBtn: {
-      default: object("left-btn", leftBtn),
+      default: object('left-btn', leftBtn),
     },
     rightBtn: {
-      default: object("right-btn", rightBtn),
+      default: object('right-btn', rightBtn),
     },
     scrollable: {
-      default: boolean("scrollable", false),
+      default: boolean('scrollable', false),
     },
     hideCloseBtn: {
-      default: boolean("hide-close-btn", false),
+      default: boolean('hide-close-btn', false),
     },
     maxWidth: {
-      default: text("max-width", "600"),
+      default: text('max-width', '600'),
     },
     hasBodyContent: {
-      default: boolean("has-body-content", true),
+      default: boolean('has-body-content', true),
     },
     hasPadding: {
-      default: boolean("has-padding", true),
+      default: boolean('has-padding', true),
     },
     hasButtons: {
-      default: boolean("has-buttons", true),
+      default: boolean('has-buttons', true),
     },
     hasTitle: {
       default: boolean("has-title", true),

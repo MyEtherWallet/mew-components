@@ -37,42 +37,42 @@ export default {
   name: 'MewCarousel',
   props: {
     /**
-     * Pass the total number of slides if there are no links or else pass in an array of links, i.e ['https://www.google.com/', 'https://www.myetherwallet.com/']
+     * Pass the total number of slides if there are no links or else pass in an array of links, i.e ['https://www.google.com/', 'https://www.myetherwallet.com/'].
      */
     totalSlides: {
       type: [ Number, Array ],
       default: 0
     },
     /**
-     * The height of the carousel
+     * The height of the carousel.
      */
     carouselHeight: {
       type: String,
       default: '200'
     },
     /**
-     * Ripples carousel on click
+     * Ripples carousel on click.
      */
     ripple: {
       type: Boolean,
       default: true
     },
     /**
-     * Show the arrows on hover
+     * Show the arrows on hover.
      */
     showArrows: {
       type: Boolean,
       default: true
     },
     /**
-     * Allows the carousel to cycle automatically
+     * Allows the carousel to cycle automatically.
      */
     cycle: {
       type: Boolean,
       default: true
     },
     /**
-     * Indicates current cycle
+     * Indicates current cycle.
      */
     value: {
       type: Number,

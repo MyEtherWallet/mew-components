@@ -1,0 +1,20 @@
+import { Props, Story, Preview } from '@storybook/addon-docs/blocks'
+import MewAddressSelect from '@/components/MewAddressSelect/MewAddressSelect.vue';
+import './../GlobalStorybook.scss'
+
+# MEW Address Select
+`<mew-address-select />`
+
+## Overview
+
+The mew-address-select component is used to set, save and display addresses - it is shown as both an input field and dropdown. The input field only accepts addresses and will error if it is an invalid value -
+this state is passed in by the **is-valid-address**, **error-messages** or **rules** prop. The **error-messages** or **rules** prop are used to pass in error messages as well. The **items** prop contains all the values that will be displayed in the dropdown.
+ Currently on myetherwallet.com, it is used to display all the addresses that are stored in the address book.
+The two icons on the right of the input field allow options to copy and to save values to the dropdown. An event called **saveAddress** is emitted when the save address icon is clicked. The copy icon can be hidden by the **showCopy** prop.
+If it is a valid address then the address blockie (mew-blockie) will appear on the left.
+
+## Props
+<Props of={MewAddressSelect} />
+<Preview><Story id="mewaddressselect--mew-address-select" /></Preview>
+
+

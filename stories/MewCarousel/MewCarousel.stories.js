@@ -5,11 +5,16 @@ import {
   text
 } from '@storybook/addon-knobs';
 import MewCarousel from '@/components/MewCarousel/MewCarousel.vue';
+import MewCarouselDoc from './MewCarousel.mdx';
 
 export default {
   title: 'MewCarousel',
   parameters: {
-    component: MewCarousel
+    component: MewCarousel,
+    docs: {
+      page: MewCarouselDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs]
 };

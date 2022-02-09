@@ -1,14 +1,18 @@
 import {
   withKnobs,
-  array,
+  object,
   boolean
 } from '@storybook/addon-knobs';
 import MewProgressBar from '@/components/MewProgressBar/MewProgressBar.vue';
+import MewProgressBarDoc from './MewProgressBar.mdx';
 
 export default {
   title: 'MewProgressBar',
   parameters: {
-    component: MewProgressBar
+    component: MewProgressBar,
+    docs: {
+      page: MewProgressBarDoc
+    } 
   },
   decorators: [withKnobs]
 };
@@ -18,14 +22,14 @@ const data =  [
     { color: 'warning darken-1', percentage: '80', tooltip: 'ETH: 3.2'}
   ]
 
-export const mewProgressBar = () => ({
+export const MEWProgressBar = () => ({
   components: { MewProgressBar },
   props: {
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     },
     data: {
-      default: array('data', data)
+      default: object('data', data)
     }
   },
   watch: {

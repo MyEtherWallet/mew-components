@@ -6,11 +6,16 @@ import {
   object
 } from '@storybook/addon-knobs';
 import MewAlert from '@/components/MewAlert/MewAlert.vue';
+import MewAlertDoc from './MewAlert.mdx';
 
 export default {
   title: 'MewAlert',
   parameters: {
     component: MewAlert,
+    docs: {
+      page: MewAlertDoc,
+      inlineStories: true
+    }
   },
   decorators: [withKnobs],
 };

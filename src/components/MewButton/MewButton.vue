@@ -57,14 +57,14 @@ export default {
       default: false,
     },
     /**
-     * Button size: small, medium, large, xlarge.
+     * Button sizes: small, medium, large, xlarge.
      */
     btnSize: {
       type: String,
       default: 'large',
     },
     /**
-     * Sets the button to have 100% width.
+     * Sets the button at 100% width.
      */
     hasFullWidth: {
       type: Boolean,
@@ -80,7 +80,7 @@ export default {
       default: 'background',
     },
     /**
-     * The text that will go in the center of the button.
+     * The text that will be displayed at the center of the button.
      * If not passed, a slot should be used.
      */
     title: {
@@ -88,7 +88,7 @@ export default {
       default: '',
     },
     /**
-     * Applies the button color theme: primary, secondary, basic, error, white
+     * Applies the button color theme: primary, secondary, basic, error, white.
      */
     colorTheme: {
       type: String,
@@ -102,7 +102,8 @@ export default {
       default: false,
     },
     /**
-     * Opens up a new page with the link.
+     * Designates that the component is a link.
+     * when clicked, the link will open up a new page.
      */
     btnLink: {
       type: String,
