@@ -26,7 +26,7 @@ const sizeOptions = {
   large: 'large'
 }
 
-export const mewTokenContainer = () => ({
+export const MEWTokenContainer = () => ({
   components: { MewTokenContainer },
   props: {
     enableDarkMode: {
