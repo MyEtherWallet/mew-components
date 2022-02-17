@@ -45,6 +45,7 @@ export const MEWIcon = () => ({
         'diploma',
         'edit',
         'ensManager',
+        'ensManagerNew',
         'ethBalance',
         'finney',
         'keepkey',

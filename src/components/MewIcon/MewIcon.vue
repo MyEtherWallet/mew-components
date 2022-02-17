@@ -28,6 +28,7 @@ import copy from '@/assets/images/icons/copy.svg';
 import diploma from '@/assets/images/icons/diploma.svg';
 import edit from '@/assets/images/icons/edit.svg';
 import ensManager from '@/assets/images/icons/ens-manager.svg';
+import ensManagerNew from '@/assets/images/icons/ens-manager-new.svg';
 import ethBalance from '@/assets/images/icons/eth-balance.svg';
 import ethBlocks from '@/assets/images/icons/eth-blocks.svg';
 import finney from '@/assets/images/icons/finney.svg';
@@ -97,6 +98,7 @@ export default {
       diploma: diploma,
       edit: edit,
       ensManager: ensManager,
+      ensManagerNew: ensManagerNew,
       ethBalance: ethBalance,
       ethBlocks: ethBlocks,
       finney: finney,
@@ -201,6 +203,8 @@ export default {
           return this.edit;
         case 'ensManager':
           return this.ensManager;
+        case 'ensManagerNew':
+          return this.ensManagerNew;
         case 'ethBalance':
           return this.ethBalance;
         case 'ethBlocks':
