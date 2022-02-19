@@ -1,3 +1,8 @@
+### Release 0.7.20-beta 
+
+### feature 
+- updated mew-select to accept priceSymbol attribute and updated mew-table to truncate text for token column. fixed loading knob on mew-table storybook preview. 
+
 ### Release 0.7.19-beta
 
 ### feature
