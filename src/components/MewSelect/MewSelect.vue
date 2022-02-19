@@ -208,11 +208,11 @@
               }}</span></span>
           </div>
           <div class="d-flex justify-center flex-column align-end">
-            <span>${{ data.item.totalBalance || data.item.price }}</span>
+            <span>{{ data.item.priceSymbol || '$' }}{{ data.item.totalBalance || data.item.price }}</span>
             <span
               class="mew-caption font-weight-regular textSecondary--text"
               v-if="data.item.totalBalance"
-            >@ ${{ data.item.price }}</span>
+            >@ {{ data.item.priceSymbol || '$' }}{{ data.item.price }}</span>
           </div>
         </div>
       </div>

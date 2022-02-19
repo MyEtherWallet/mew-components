@@ -12,7 +12,9 @@ The **hasColor** prop changes the tables background color to *superPrimary darke
 will add a checkbox to each row. The events **selectedAll** or **selectedRow** will be emitted with the item when
 the checkboxes are selected. There are different style customizations for the following values:
  toggle, txHash, token, change, balance, callToAction, and 
-address. All you have to do is pass the value and attribute to **tableHeaders** and **tableData**.
+address. All you have to do is pass the value and attribute to **tableHeaders** and **tableData**. If you would like to 
+utilize the skeleton loading state then you must pass the **loading** prop and you must pass an empty array
+to **tableData**.
 
 
 ## Props
