@@ -208,11 +208,11 @@
               }}</span></span>
           </div>
           <div class="d-flex justify-center flex-column align-end">
-            <span>{{ data.item.priceSymbol || '$' }}{{ data.item.totalBalance || data.item.price }}</span>
+            <span>{{ currencySymbol }}{{ data.item.totalBalance || data.item.price }}</span>
             <span
               class="mew-caption font-weight-regular textSecondary--text"
               v-if="data.item.totalBalance"
-            >@ {{ data.item.priceSymbol || '$' }}{{ data.item.price }}</span>
+            >@ {{ currencySymbol }}{{ data.item.price }}</span>
           </div>
         </div>
       </div>
@@ -225,6 +225,14 @@ import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.
 export default {
   name: 'MewSelect',
   props: {
+    /**
+     * Adds a symbol in front of the price or totalBalance.
+     * Default is '$'.
+     */
+    currencySymbol: {
+      type: String,
+      default: '$'
+    },
     /**
      * Adds a "Buy more" string to the end of the first index of the errorMessages prop.
      */

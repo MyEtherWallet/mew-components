@@ -70,6 +70,9 @@ export const MEWSelect = () => ({
     },
     errorMessages: {
       default: text('error-messages', '')
+    },
+    currencySymbol: {
+      default: text('currency-symbol', '$')
     }
   },
   watch: {
@@ -80,7 +83,7 @@ export const MEWSelect = () => ({
   template: `
     <div>
     <br />
-    <mew-select :loading="loading" :buy-more-str="buyMoreStr"  :error-messages="errorMessages" :is-custom="isCustom" :filter-placeholder="filterPlaceholder" :has-filter="hasFilter" :label="label" :items="isCustom ? customItems : items" :disabled="disabled" :value="value"
+    <mew-select :currency-symbol="currencySymbol" :loading="loading" :buy-more-str="buyMoreStr"  :error-messages="errorMessages" :is-custom="isCustom" :filter-placeholder="filterPlaceholder" :has-filter="hasFilter" :label="label" :items="isCustom ? customItems : items" :disabled="disabled" :value="value"
     />
   </div>`
 });
