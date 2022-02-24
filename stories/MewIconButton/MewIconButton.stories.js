@@ -45,7 +45,7 @@ const optionsObj = {
   display: 'inline-radio',
 };
 
-export const MEWButton = () => ({
+export const MEWIconButton = () => ({
   components: { MewIconButton },
   props: {
     disabled: {

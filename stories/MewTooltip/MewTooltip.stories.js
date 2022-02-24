@@ -17,7 +17,7 @@ export default {
   decorators: [withKnobs]
 };
 
-export const mewTooltip = () => ({
+export const MEWTooltip = () => ({
   components: { MewTooltip },
   props: {
     enableDarkMode: {

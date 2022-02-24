@@ -21,7 +21,7 @@ export default {
 
 const buttonDefaultGroup = ['1D', '1W', '1M', '1Y', 'All'];
 
-const buttonPercentageGroup = ['25%', '50%', '75%', 'Max'];
+// const buttonPercentageGroup = ['25%', '50%', '75%', 'Max'];
 
 const buttonTypes = {
   custom: 'custom',
@@ -29,7 +29,7 @@ const buttonTypes = {
   percentage: 'percentage'
 }
 
-export const mewToggle = () => ({
+export const MEWToggle = () => ({
   components: { MewToggle },
   props: {
     enableDarkMode: {
