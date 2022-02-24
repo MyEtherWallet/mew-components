@@ -2,6 +2,7 @@
 
 ### feature 
 - updated mew-select to get the currency symbol and price. updated mew-table to truncate text for token column. fixed loading knob on mew-table storybook preview. 
+- update eslint config, lint script and mew-select search method [#241] (https://github.com/MyEtherWallet/mew-components/pull/241)
 
 ### Release 0.7.19-beta
 

@@ -221,6 +221,7 @@
 </template>
 <script>
 import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
+import get from 'lodash/get';
 
 export default {
   name: 'MewSelect',
@@ -322,15 +323,9 @@ export default {
       } else {
         const foundItems = this.items.filter((item) => {
           const searchValue = String(newVal).toLowerCase();
-          const value = item.hasOwnProperty('value')
-            ? String(item.value).toLowerCase()
-            : '';
-          const name = item.hasOwnProperty('name')
-            ? String(item.name).toLowerCase()
-            : '';
-          const subtext = item.hasOwnProperty('subtext')
-            ? String(item.subtext).toLowerCase()
-            : '';
+          const value = String(get(item, 'value', '')).toLowerCase();
+          const name = String(get(item, 'name', '')).toLowerCase();
+          const subtext = String(get(item, 'subtext', '')).toLowerCase();
           return (
             name.includes(searchValue) ||
             subtext.includes(searchValue) ||

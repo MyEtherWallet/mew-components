@@ -38,7 +38,7 @@ const linkObj = {
   url: ''
 }
 
-export const mewToast = () => ({
+export const MEWToast = () => ({
   components: { MewToast, MewButton },
   props: {
     duration: {

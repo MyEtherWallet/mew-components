@@ -24,7 +24,7 @@ const textObj = {
   exit: 'Exit Dapp'
 }
 
-export const mewBanner = () => ({
+export const MEWBanner = () => ({
   components: { MewBanner },
   props: {
     enableDarkMode: {

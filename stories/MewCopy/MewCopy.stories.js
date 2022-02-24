@@ -18,7 +18,7 @@ export default {
   decorators: [withKnobs]
 };
 
-export const mewCopy = () => ({
+export const MEWCopy = () => ({
   data() {
     return {
       inputValue: 'Copied value'

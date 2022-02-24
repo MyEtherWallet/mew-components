@@ -36,7 +36,7 @@ const addressesArray = [
   },
 ];
 
-export const mewAddressSelect = () => ({
+export const MEWAddressSelect = () => ({
   components: { MewAddressSelect },
   props: {
     label: {

@@ -24,7 +24,7 @@ const linkObj = {
   url: 'https://www.myetherwallet.com/'
 };
 
-export const mewWarningSheet = () => ({
+export const MEWWarningSheet = () => ({
   components: { MewWarningSheet },
   props: {
     enableDarkMode: {
