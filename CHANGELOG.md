@@ -13,7 +13,7 @@
 - created docs for all the components, renamed mew-color prop "color" to "className" and mew-checkbox prop "colorText" to "className". Also cleaned up mew-icon-button.[#235](https://github.com/MyEtherWallet/mew-components/pull/235)
 
 ### Release 0.7.18-beta
-git logi
+
 ### feature
 
 - added mew menu item slot, removed line heights from typography, added branding [#232]https://github.com/MyEtherWallet/mew-components/pull/232)
