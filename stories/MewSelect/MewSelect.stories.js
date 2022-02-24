@@ -25,9 +25,9 @@ const customItemsArray = [{
 {header: 'My Wallet'},
 { hasNoEth: true, disabled: true, text: 'Your wallet is empty.', linkText: 'Buy ETH', link: 'https://ccswap.myetherwallet.com/#/'},
 { header: 'Other Tokens'},
-{ name: 'ETH', subtext: 'Ethereum', symbol: 'ETH', value: 'Ethereum', img: ethereumIcon, price: '3000'}, 
+{ name: 'ETH', subtext: 'Ethereum', symbol: 'ETH', value: 'Ethereum', img: ethereumIcon, locale: 'en-US', currency: 'USD', price: '3000'}, 
 { name: 'AAVE',  subtext: 'Aave', symbol: 'AAVE', value: 'Aave', tokenBalance: '1.34',  img: null, totalBalance: '234.3430', price: '454.000'},
-{ name: 'LINK', subtext: 'Chainlink', symbol: 'LINK', value: 'Link', img: ethereumIcon, price: '3000'}]
+{ name: 'LINK', subtext: 'Chainlink', symbol: 'LINK', value: 'Link', img: ethereumIcon,  locale: 'en-US', currency: 'USD', price: '3000'}]
 
 const itemsArray = [{ text: 'Select a Token', selectLabel: true, divider: true },
 { name: 'ETH', subtext: 'Ethereum', value: 'btc', img: ethereumIcon }, { name: 'DAI', value: 'Makerdao',  subtext: 'Makerdao', img: ethereumIcon }];
@@ -71,9 +71,6 @@ export const MEWSelect = () => ({
     errorMessages: {
       default: text('error-messages', '')
     },
-    currencySymbol: {
-      default: text('currency-symbol', '$')
-    }
   },
   watch: {
     enableDarkMode(newVal) {
@@ -83,7 +80,7 @@ export const MEWSelect = () => ({
   template: `
     <div>
     <br />
-    <mew-select :currency-symbol="currencySymbol" :loading="loading" :buy-more-str="buyMoreStr"  :error-messages="errorMessages" :is-custom="isCustom" :filter-placeholder="filterPlaceholder" :has-filter="hasFilter" :label="label" :items="isCustom ? customItems : items" :disabled="disabled" :value="value"
+    <mew-select :loading="loading" :buy-more-str="buyMoreStr"  :error-messages="errorMessages" :is-custom="isCustom" :filter-placeholder="filterPlaceholder" :has-filter="hasFilter" :label="label" :items="isCustom ? customItems : items" :disabled="disabled" :value="value"
     />
   </div>`
 });
