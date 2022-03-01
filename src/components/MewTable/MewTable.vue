@@ -70,7 +70,7 @@
             :src="item.tokenImg"
             :alt="item.token"
           >
-          <span>{{ item.token }}</span>
+          <span class="truncate">{{ item.token }}</span>
         </div>
       </template>
       <!--
@@ -282,6 +282,8 @@ export default {
   props: {
     /**
      * Applies skeleton loader 
+     * note: tableData has to be empty
+     * for the prop to work correctly
      */
     loading: {
       type: Boolean,
