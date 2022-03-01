@@ -212,7 +212,7 @@
             <span
               class="mew-caption font-weight-regular textSecondary--text"
               v-if="data.item.totalBalance"
-            >@ {{ data.item.price }}}</span>
+            >@ {{ data.item.price }}</span>
           </div>
         </div>
       </div>
