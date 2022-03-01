@@ -17,7 +17,7 @@ export default {
   decorators: [withKnobs]
 };
 
-export const mewTransformHash = () => ({
+export const MEWTransformHash = () => ({
   components: { MewTransformHash },
   props: {
     enableDarkMode: {

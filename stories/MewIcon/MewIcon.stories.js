@@ -1,4 +1,4 @@
-import { withKnobs, boolean, text, number } from '@storybook/addon-knobs';
+import { withKnobs, boolean, number } from '@storybook/addon-knobs';
 import MewIcon from '@/components/MewIcon/MewIcon.vue';
 import MewIconDoc from './MewIcon.mdx';
 

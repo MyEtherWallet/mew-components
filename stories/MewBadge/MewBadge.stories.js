@@ -27,7 +27,7 @@ const badgeOptions = {
   warning: 'warning'
 }
 
-export const mewBadge = () => ({
+export const MEWBadge = () => ({
   components: { MewBadge },
   props: {
     enableDarkMode: {
