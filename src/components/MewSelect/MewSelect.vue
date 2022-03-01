@@ -208,11 +208,11 @@
               }}</span></span>
           </div>
           <div class="d-flex justify-center flex-column align-end">
-            <span>{{ getCurrency(data.item.totalBalance || data.item.price, data.item.locale, data.item.currency ) }}</span>
+            <span>{{ data.item.totalBalance || data.item.price }}</span>
             <span
               class="mew-caption font-weight-regular textSecondary--text"
               v-if="data.item.totalBalance"
-            >@ {{ getCurrency(data.item.price, data.item.locale, data.item.currency) }}</span>
+            >@ {{ data.item.price }}}</span>
           </div>
         </div>
       </div>
