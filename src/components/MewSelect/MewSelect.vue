@@ -380,12 +380,6 @@ export default {
         : this.defaultItem;
   },
   methods: {
-    getCurrency(price, locale, currency) {
-      if (!locale || !currency) {
-        return '$' + price;
-      }
-      return Intl.NumberFormat(locale, {style: 'currency', currency: currency }).format(price);
-    },
     clear(val) {
       this.selectModel =
         val && Object.keys(val).length !== 0 ? val : this.defaultItem;
