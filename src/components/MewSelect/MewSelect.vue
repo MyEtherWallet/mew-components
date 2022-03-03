@@ -28,16 +28,12 @@
 =====================================================================================
 -->
     <template v-slot:message="item">
-      <span
-        class="mew-label"
-      >{{ item.message }}
-        <a
-          rel="noopener noreferrer"
-          v-if="buyMoreStr"
-          href="https://ccswap.myetherwallet.com/#/"
-          target="_blank"
-          class="mew-label"
-        >{{ buyMoreStr }}</a></span>
+      <span class="mew-label"
+        >{{ item.message }}
+        <a v-if="buyMoreStr" class="mew-label" @click="emitBuyMore">{{
+          buyMoreStr
+        }}</a></span
+      >
     </template>
 
     <!--
@@ -77,10 +73,7 @@
           v-if="loading"
           type="chip"
         />
-        <div
-          v-if="!loading && item.imgs"
-          class="flex-row d-flex align-center"
-        >
+        <div v-if="!loading && item.imgs" class="flex-row d-flex align-center">
           <mew-token-container
             class="label-token-img"
             :loading="loading"
@@ -101,10 +94,7 @@
     Selected item
   =====================================================================================
   -->
-      <div
-        v-if="!item.selectLabel"
-        class="d-flex align-center justify-center"
-      >
+      <div v-if="!item.selectLabel" class="d-flex align-center justify-center">
         <mew-token-container
           class="ml-1"
           :loading="loading"
@@ -112,13 +102,12 @@
           :name="item.name || item"
           size="small"
         />
-        <span
-          class="text-capitalize mt-1 ml-2 basic--text"
-        >{{ item.name ? item.name : item }}
-          <span
-            v-if="item.subtext"
-            class="searchText--text text-capitalize"
-          >- {{ item.subtext }}</span></span>
+        <span class="text-capitalize mt-1 ml-2 basic--text"
+          >{{ item.name ? item.name : item }}
+          <span v-if="item.subtext" class="searchText--text text-capitalize"
+            >- {{ item.subtext }}</span
+          ></span
+        >
       </div>
     </template>
     <template v-slot:item="data">
@@ -142,23 +131,21 @@
         v-if="!isCustom && !loading"
         class="d-flex align-center justify-center"
       >
-        <span
-          class="text-capitalize ml-2 mt-1"
-        >{{ data.item.name ? data.item.name : data.item }}
+        <span class="text-capitalize ml-2 mt-1"
+          >{{ data.item.name ? data.item.name : data.item }}
           <span
             v-if="data.item.subtext"
             class="textSecondary--text text-capitalize"
-          >- {{ data.item.subtext }}</span></span>
+            >- {{ data.item.subtext }}</span
+          ></span
+        >
       </div>
       <!--
   =====================================================================================
     Custom Select Dropdown items
   =====================================================================================
   -->
-      <div
-        v-if="isCustom && !loading"
-        class="d-flex align-center full-width"
-      >
+      <div v-if="isCustom && !loading" class="d-flex align-center full-width">
         <!--
   =====================================================================================
       Empty Wallet Link
@@ -173,7 +160,8 @@
             class="all-pointer-events"
             target="_blank"
             :href="data.item.link"
-          >{{ data.item.linkText }}</a>
+            >{{ data.item.linkText }}</a
+          >
         </div>
         <!--
   =====================================================================================
@@ -184,10 +172,7 @@
           class="d-flex align-center justify-space-between full-width"
           v-if="data.item.name"
         >
-          <div
-            v-if="!loading"
-            class="d-flex align-center"
-          >
+          <div v-if="!loading" class="d-flex align-center">
             <mew-token-container
               class="mr-1"
               :loading="loading"
@@ -195,24 +180,26 @@
               :name="data.item.name"
               size="small"
             />
-            <span
-              class="text-capitalize ml-2 my-2 d-flex flex-column"
-            >{{ data.item.symbol || data.item.name || data.item }}
+            <span class="text-capitalize ml-2 my-2 d-flex flex-column"
+              >{{ data.item.symbol || data.item.name || data.item }}
               <span
                 v-if="data.item.tokenBalance || data.item.subtext"
                 class="mew-caption font-weight-regular textSecondary--text text-capitalize"
-              >{{
-                data.item.tokenBalance
-                  ? data.item.tokenBalance + " " + data.item.symbol
-                  : data.item.subtext
-              }}</span></span>
+                >{{
+                  data.item.tokenBalance
+                    ? data.item.tokenBalance + " " + data.item.symbol
+                    : data.item.subtext
+                }}</span
+              ></span
+            >
           </div>
           <div class="d-flex justify-center flex-column align-end">
             <span>{{ data.item.totalBalance || data.item.price }}</span>
             <span
               class="mew-caption font-weight-regular textSecondary--text"
               v-if="data.item.totalBalance"
-            >@ {{ data.item.price }}</span>
+              >@ {{ data.item.price }}</span
+            >
           </div>
         </div>
       </div>
@@ -220,25 +207,25 @@
   </v-select>
 </template>
 <script>
-import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
-import get from 'lodash/get';
+import MewTokenContainer from "@/components/MewTokenContainer/MewTokenContainer.vue";
+import get from "lodash/get";
 
 export default {
-  name: 'MewSelect',
+  name: "MewSelect",
   props: {
     /**
      * Adds a "Buy more" string to the end of the first index of the errorMessages prop.
      */
     buyMoreStr: {
       type: String,
-      default: '',
+      default: "",
     },
     /**
      * Error messages to display
      */
     errorMessages: {
       type: [String, Array],
-      default: '',
+      default: "",
     },
     /**
      * Adds filter to select items
@@ -252,7 +239,7 @@ export default {
      */
     filterPlaceholder: {
       type: String,
-      default: 'Search token name',
+      default: "Search token name",
     },
     /**
      * MEW select value
@@ -288,7 +275,7 @@ export default {
      */
     label: {
       type: String,
-      default: '',
+      default: "",
     },
     /**
      * Applies Custom Select styles
@@ -306,26 +293,26 @@ export default {
     },
   },
   components: {
-    MewTokenContainer
+    MewTokenContainer,
   },
   data() {
     return {
       imgError: false,
       selectModel: null,
       selectItems: [],
-      search: '',
+      search: "",
     };
   },
   watch: {
     search(newVal) {
-      if (newVal === '' || newVal === null) {
+      if (newVal === "" || newVal === null) {
         this.selectItems = this.items;
       } else {
         const foundItems = this.items.filter((item) => {
           const searchValue = String(newVal).toLowerCase();
-          const value = String(get(item, 'value', '')).toLowerCase();
-          const name = String(get(item, 'name', '')).toLowerCase();
-          const subtext = String(get(item, 'subtext', '')).toLowerCase();
+          const value = String(get(item, "value", "")).toLowerCase();
+          const name = String(get(item, "name", "")).toLowerCase();
+          const subtext = String(get(item, "subtext", "")).toLowerCase();
           return (
             name.includes(searchValue) ||
             subtext.includes(searchValue) ||
@@ -337,9 +324,9 @@ export default {
     },
     selectModel(newVal) {
       setTimeout(() => {
-        this.search = '';
+        this.search = "";
       }, 1000);
-      this.$emit('input', newVal);
+      this.$emit("input", newVal);
     },
     value(newVal) {
       this.selectModel =
@@ -380,14 +367,17 @@ export default {
         : this.defaultItem;
   },
   methods: {
+    emitBuyMore() {
+      this.$emit("buyMore");
+    },
     clear(val) {
       this.selectModel =
         val && Object.keys(val).length !== 0 ? val : this.defaultItem;
     },
     togglePointerEventStyle() {
-      const elems = document.querySelectorAll('div.v-list-item--link');
+      const elems = document.querySelectorAll("div.v-list-item--link");
       if (elems) {
-        const pointerEventStyle = this.loading ? 'none' : 'all';
+        const pointerEventStyle = this.loading ? "none" : "all";
         for (let i = 0; i < elems.length; i++) {
           elems[i].style.pointerEvents = pointerEventStyle;
         }
