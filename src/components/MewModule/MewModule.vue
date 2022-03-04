@@ -24,12 +24,12 @@
             class="left-icon mr-2"
             v-if="showIcon(icon)"
           >
-            <img
+            <mew-token-container
               v-if="iconAlign.toLowerCase() === iconAlignments.left"
-              :src="icon"
-              height="50"
-              alt="left icon"
-            >
+              :img="icon"
+              size="large"
+              alt="left icon"                            
+            />
           </div>
           <div class="d-flex flex-column">
             <span
@@ -53,12 +53,12 @@
             class="right-icon"
             v-if="showIcon(icon)"
           >
-            <img
+            <mew-token-container
               v-if="iconAlign.toLowerCase() === iconAlignments.right"
-              :src="icon"
-              height="50"
-              alt="right icon"
-            >
+              :img="icon"
+              size="large"
+              alt="right icon"                            
+            />
           </div>
           <!--
   =====================================================================================
@@ -103,11 +103,13 @@
 
 <script>
 import MewTooltip from '@/components/MewTooltip/MewTooltip.vue';
+import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
 
 export default {
   name: 'MewModule',
   components: {
-    MewTooltip
+    MewTooltip,
+    MewTokenContainer
   },
   data() {
     return {

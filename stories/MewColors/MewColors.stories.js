@@ -124,65 +124,65 @@ export const All = () => ({
     newColors: [
       {
         shades: [
-          {name: 'backgroundWallet', lightHex: '#F2F4FA', darkHex: '#F2F4FA'},
-          {name: 'backgroundOverlay', lightHex: '#F2FAFA', darkHex: '#F2FAFA'},
-          {name: 'backgroundGrey', lightHex: '#F8F9FB', darkHex: '#F8F9FB'}
+          {name: 'backgroundWallet', lightHex: '#F2F4FA', darkHex: '#000000'},
+          {name: 'backgroundOverlay', lightHex: '#F2FAFA', darkHex: '#000000'},
+          {name: 'backgroundGrey', lightHex: '#F8F9FB', darkHex: '#000000'}
         ]
       },
       {
         shades: [
           {name: 'whiteAlways', lightHex: '#FFFFFF', darkHex: '#FFFFFF'},
-          {name: 'whiteBackground', lightHex: '#FFFFFF', darkHex: '#FFFFFF'},
-          {name: 'whitePopup', lightHex: '#FFFFFF', darkHex: '#FFFFFF'}
+          {name: 'whiteBackground', lightHex: '#FFFFFF', darkHex: '#192439'},
+          {name: 'whitePopup', lightHex: '#FFFFFF', darkHex: '#202B43'}
         ]
       },
       {
         shades: [
-          {name: 'textDark', lightHex: '#192133', darkHex: '#192133'},
-          {name: 'textMedium', lightHex: '#5A678A', darkHex: '#5A678A'},
-          {name: 'textLight', lightHex: '#939FB9', darkHex: '#939FB9'}
+          {name: 'textDark', lightHex: '#192133', darkHex: '#CCD4E6'},
+          {name: 'textMedium', lightHex: '#5A678A', darkHex: '#626E86'},
+          {name: 'textLight', lightHex: '#939FB9', darkHex: '#3A4561'}
         ]
       },
       {
         shades: [
-          {name: 'greenPrimary', lightHex: '#05C0A5', darkHex: '#05C0A5'},
-          {name: 'greenMedium', lightHex: '#C3F0E9', darkHex: '#C3F0E9'},
-          {name: 'greenLight', lightHex: '#EBFAF8', darkHex: '#EBFAF8'}
+          {name: 'greenPrimary', lightHex: '#05C0A5', darkHex: '#06D9B9'},
+          {name: 'greenMedium', lightHex: '#C3F0E9', darkHex: '#0F7E79'},
+          {name: 'greenLight', lightHex: '#EBFAF8', darkHex: '#154853'}
         ]
       },
       {
         shades: [
           {name: 'greyPrimary', lightHex: '#5A678A', darkHex: '#5A678A'},
-          {name: 'greyMedium', lightHex: '#D7DAE3', darkHex: '#D7DAE3'},
-          {name: 'greyLight', lightHex: '#F2F3F6', darkHex: '#F2F3F6'}
+          {name: 'greyMedium', lightHex: '#D7DAE3', darkHex: '#323D57'},
+          {name: 'greyLight', lightHex: '#F2F3F6', darkHex: '#263149'}
         ]
       },
       {
         shades: [
-          {name: 'bluePrimary', lightHex: '#4B83E8', darkHex: '#4B83E8'},
-          {name: 'blueMedium', lightHex: '#D4E1F9', darkHex: '#D4E1F9'},
-          {name: 'blueLight', lightHex: '#EEF3FD', darkHex: '#EEF3FD'}
+          {name: 'bluePrimary', lightHex: '#4B83E8', darkHex: '#6292EB'},
+          {name: 'blueMedium', lightHex: '#D4E1F9', darkHex: '#355288'},
+          {name: 'blueLight', lightHex: '#EEF3FD', darkHex: '#283A5D'}
         ]
       },
       {
         shades: [
-          {name: 'redPrimary', lightHex: '#FF445B', darkHex: '#FF445B'},
-          {name: 'redMedium', lightHex: '#FFD2D8', darkHex: '#FFD2D8'},
-          {name: 'redLight', lightHex: '#FFF0F2', darkHex: '#FFF0F2'}
+          {name: 'redPrimary', lightHex: '#FF445B', darkHex: '#FF5E70'},
+          {name: 'redMedium', lightHex: '#FFD2D8', darkHex: '#8C4155'},
+          {name: 'redLight', lightHex: '#FFF0F2', darkHex: '#473044'}
         ]
       },
       {
         shades: [
-          {name: 'orangePrimary', lightHex: '#F5A623', darkHex: '#F5A623'},
-          {name: 'orangeMedium', lightHex: '#FBDBA7', darkHex: '#FBDBA7'},
-          {name: 'orangeLight', lightHex: '#FEF4E5', darkHex: '#FEF4E5'}
+          {name: 'orangePrimary', lightHex: '#F5A623', darkHex: '#F6AF3C'},
+          {name: 'orangeMedium', lightHex: '#FBDBA7', darkHex: '#87693B'},
+          {name: 'orangeLight', lightHex: '#FEF4E5', darkHex: '#45403A'}
         ]
       },
       {
         shades: [
-          {name: 'disabledPrimary', lightHex: '#CECECE', darkHex: '#CECECE'},
-          {name: 'disabledMedium', lightHex: '#E0E0E0', darkHex: '#E0E0E0'},
-          {name: 'disabledLight', lightHex: '#F6F6F6', darkHex: '#F6F6F6'}
+          {name: 'disabledPrimary', lightHex: '#CECECE', darkHex: '#606670'},
+          {name: 'disabledMedium', lightHex: '#E0E0E0', darkHex: '#383F4A'},
+          {name: 'disabledLight', lightHex: '#F6F6F6', darkHex: '#242D3E'}
         ]
       },
     ]
@@ -200,7 +200,7 @@ export const All = () => ({
         return 'white--text';
       }
 
-      if ((shade.name === 'superPrimary' || shade.name === 'superPrimaryHover' || shade.name === 'white' || shade.name === 'searchInput') && this.$vuetify.theme.dark) {
+      if ((shade.name === 'whiteAlways' || shade.name === 'superPrimary' || shade.name === 'superPrimaryHover' || shade.name === 'white' || shade.name === 'searchInput') && this.$vuetify.theme.dark) {
         return 'black--text';
       }
 
