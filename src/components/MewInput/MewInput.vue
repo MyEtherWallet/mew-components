@@ -33,12 +33,15 @@
 =====================================================================================
 -->
     <template v-slot:message="item">
-      <span class="mew-label"
-        >{{ item.message }}
-        <a v-if="buyMoreStr" class="mew-label" @click="emitBuyMore">{{
-          buyMoreStr
-        }}</a></span
-      >
+      <span
+        class="mew-label"
+      >{{ item.message }}
+        <a
+          v-if="buyMoreStr"
+          rel="noopener noreferrer"
+          class="mew-label"
+          @click="emitBuyMore"
+        >{{ buyMoreStr }}</a></span>
     </template>
     <template v-slot:prepend-inner>
       <!--
@@ -107,13 +110,13 @@
 </template>
 
 <script>
-import MewBlockie from "@/components/MewBlockie/MewBlockie.vue";
-import MewTokenContainer from "@/components/MewTokenContainer/MewTokenContainer.vue";
+import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
+import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
 
-const types = ["password", "text"];
+const types = ['password', 'text'];
 
 export default {
-  name: "MewInput",
+  name: 'MewInput',
   components: {
     MewBlockie,
     MewTokenContainer,
@@ -124,7 +127,7 @@ export default {
      */
     errorMessages: {
       type: [String, Array],
-      default: "",
+      default: '',
     },
     /**
      * Input becomes read only.
@@ -159,21 +162,21 @@ export default {
      */
     label: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * The input placeholder.
      */
     placeholder: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * The input value.
      */
     value: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * The input id.
@@ -187,7 +190,7 @@ export default {
      */
     rightLabel: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * Hides input clear functionality. Clear symbol will be displayed on the right side.
@@ -211,7 +214,7 @@ export default {
      */
     resolvedAddr: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * Enables persistent hint.
@@ -225,28 +228,28 @@ export default {
      */
     hint: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * Sets input type.
      */
     type: {
       type: String,
-      default: "text",
+      default: 'text',
     },
     /**
      * Prepends an image to the beginning of the input.
      */
     image: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * Adds a "Buy more" string to the end of the first index of the errorMessages prop.
      */
     buyMoreStr: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * Displays a button to the right inner side of the input.
@@ -277,14 +280,14 @@ export default {
   },
   data() {
     return {
-      inputValue: "",
+      inputValue: '',
       showPassword: false,
     };
   },
   watch: {
     inputValue(newVal, oldVal) {
       if (newVal !== oldVal) {
-        this.$emit("input", newVal, this.id);
+        this.$emit('input', newVal, this.id);
       }
     },
     value(newVal, oldVal) {
@@ -299,9 +302,9 @@ export default {
     },
     showPasswordIcon() {
       if (this.isPasswordType && !this.hidePasswordIcon) {
-        return !this.showPassword ? "mdi-eye" : "mdi-eye-off";
+        return !this.showPassword ? 'mdi-eye' : 'mdi-eye-off';
       }
-      return "";
+      return '';
     },
     inputType() {
       if (this.isPasswordType && this.showPassword) {
@@ -315,7 +318,7 @@ export default {
   },
   methods: {
     emitBuyMore() {
-      this.$emit("buyMore");
+      this.$emit('buyMore');
     },
     onPasswordIconClick() {
       if (this.isPasswordType) {
@@ -323,7 +326,7 @@ export default {
       }
     },
     clear(val) {
-      this.inputValue = val ? val : "";
+      this.inputValue = val ? val : '';
     },
   },
 };
