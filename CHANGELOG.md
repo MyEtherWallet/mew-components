@@ -1,6 +1,7 @@
 ### Release 0.7.20-beta 
 
 ### feature 
+- update dark mode colors [#246] (https://github.com/MyEtherWallet/mew-components/pull/246)
 - removed static price symbol from mew-select. updated mew-table to truncate text for token column. fixed loading knob on mew-table storybook preview. 
 - update eslint config, lint script and mew-select search method [#241] (https://github.com/MyEtherWallet/mew-components/pull/241)
 
