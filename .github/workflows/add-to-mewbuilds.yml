@@ -38,13 +38,6 @@ jobs:
           GITHUB_TOKEN: ${{secrets.MEW_BOT_TOKEN}}
         run: |
           pip install --user awscli
-          mkdir -p ~/.ssh
-          ssh-keyscan -H $IPFS_NODE >> $HOME/.ssh/known_hosts
-          openssl aes-256-cbc -K ${{secrets.FILE_DECRYPT_KEY}} -iv ${{secrets.FILE_DECRYPT_IV}} -in ssh-keys.tar.enc -out ssh-keys.tar -d
-          tar xvf ssh-keys.tar
-          chmod 400 ipfs-host.pem
-          hashOut=`tar -cjvf - -C dist/ . | ssh -i ipfs-host.pem ubuntu@$IPFS_NODE ./ipfs-publish.sh --`
-          HASH=`echo $hashOut | sed -n 's:.*<hash>\(.*\)</hash>.*:\1:p'`
           aws s3 sync --delete --acl public-read dist/ s3://mewcomponents/v6/build/$GITHUB_SHA
           aws s3 cp s3://mewcomponents/v6/build/$GITHUB_SHA/service-worker.js s3://mewcomponents/v6/build/$GITHUB_SHA/service-worker.js \
             --metadata-directive REPLACE --cache-control max-age=0,no-cache,no-store,must-revalidate \
