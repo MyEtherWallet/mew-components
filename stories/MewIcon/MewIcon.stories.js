@@ -68,6 +68,7 @@ export const MEWIcon = () => ({
         'secalot',
         'shield',
         'stake',
+        'stakeNew',
         'swapToken',
         'tags',
         'team',

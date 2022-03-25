@@ -52,6 +52,7 @@ import rocket from '@/assets/images/icons/rocket.svg';
 import secalot from '@/assets/images/icons/secalot.svg';
 import shield from '@/assets/images/icons/shield.svg';
 import stake from '@/assets/images/icons/stake.svg';
+import stakeNew from '@/assets/images/icons/stake-new.svg';
 import stakewise from '@/assets/images/icons/stakewise.svg';
 import stakewiseGreen from '@/assets/images/icons/stakewise-green.svg';
 import stakewisePurple from '@/assets/images/icons/stakewise-purple.svg';
@@ -122,6 +123,7 @@ export default {
       secalot: secalot,
       shield: shield,
       stake: stake,
+      stakeNew: stakeNew,
       stakewise: stakewise,
       stakewiseGreen: stakewiseGreen,
       stakewisePurple: stakewisePurple,
@@ -251,6 +253,8 @@ export default {
           return this.shield;
         case 'stake':
           return this.stake;
+        case 'stakeNew':
+          return this.stakeNew;
         case 'stakewise':
           return this.stakewise;
         case 'stakewiseGreen':
