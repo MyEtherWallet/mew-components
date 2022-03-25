@@ -39,9 +39,8 @@
         <a
           v-if="buyMoreStr"
           rel="noopener noreferrer"
-          href="https://ccswap.myetherwallet.com/#/"
-          target="_blank"
           class="mew-label"
+          @click="emitBuyMore"
         >{{ buyMoreStr }}</a></span>
     </template>
     <template v-slot:prepend-inner>
@@ -120,7 +119,7 @@ export default {
   name: 'MewInput',
   components: {
     MewBlockie,
-    MewTokenContainer
+    MewTokenContainer,
   },
   props: {
     /**
@@ -318,6 +317,9 @@ export default {
     this.inputValue = this.value;
   },
   methods: {
+    emitBuyMore() {
+      this.$emit('buyMore');
+    },
     onPasswordIconClick() {
       if (this.isPasswordType) {
         this.showPassword = !this.showPassword;

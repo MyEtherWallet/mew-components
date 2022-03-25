@@ -32,11 +32,10 @@
         class="mew-label"
       >{{ item.message }}
         <a
-          rel="noopener noreferrer"
           v-if="buyMoreStr"
-          href="https://ccswap.myetherwallet.com/#/"
-          target="_blank"
+          rel="noopener noreferrer"
           class="mew-label"
+          @click="emitBuyMore"
         >{{ buyMoreStr }}</a></span>
     </template>
 
@@ -208,11 +207,11 @@
               }}</span></span>
           </div>
           <div class="d-flex justify-center flex-column align-end">
-            <span>${{ data.item.totalBalance || data.item.price }}</span>
+            <span>{{ data.item.totalBalance || data.item.price }}</span>
             <span
               class="mew-caption font-weight-regular textSecondary--text"
               v-if="data.item.totalBalance"
-            >@ ${{ data.item.price }}</span>
+            >@ {{ data.item.price }}</span>
           </div>
         </div>
       </div>
@@ -221,6 +220,7 @@
 </template>
 <script>
 import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
+import get from 'lodash/get';
 
 export default {
   name: 'MewSelect',
@@ -305,7 +305,7 @@ export default {
     },
   },
   components: {
-    MewTokenContainer
+    MewTokenContainer,
   },
   data() {
     return {
@@ -322,15 +322,9 @@ export default {
       } else {
         const foundItems = this.items.filter((item) => {
           const searchValue = String(newVal).toLowerCase();
-          const value = item.hasOwnProperty('value')
-            ? String(item.value).toLowerCase()
-            : '';
-          const name = item.hasOwnProperty('name')
-            ? String(item.name).toLowerCase()
-            : '';
-          const subtext = item.hasOwnProperty('subtext')
-            ? String(item.subtext).toLowerCase()
-            : '';
+          const value = String(get(item, 'value', '')).toLowerCase();
+          const name = String(get(item, 'name', '')).toLowerCase();
+          const subtext = String(get(item, 'subtext', '')).toLowerCase();
           return (
             name.includes(searchValue) ||
             subtext.includes(searchValue) ||
@@ -385,6 +379,9 @@ export default {
         : this.defaultItem;
   },
   methods: {
+    emitBuyMore() {
+      this.$emit('buyMore');
+    },
     clear(val) {
       this.selectModel =
         val && Object.keys(val).length !== 0 ? val : this.defaultItem;

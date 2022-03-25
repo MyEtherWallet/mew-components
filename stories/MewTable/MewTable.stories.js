@@ -192,7 +192,7 @@ export const MEWTable = () => ({
       :loading="loading"
       :has-color="hasColor"
       :has-select="hasSelect"
-      :table-data="hasSelect ? tableSelectData : tableData"
+      :table-data="loading ? [] : hasSelect ? tableSelectData : tableData"
       :table-headers="hasSelect ? tableSelectHeaders : tableHeaders"
       :no-data-text="noDataText"
       @selectedRow="onSelect"

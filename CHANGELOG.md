@@ -1,3 +1,21 @@
+### Release 1.0.0
+
+### devop
+
+- add event emit and remove hard coded ccswap for mew-select and mew-input [#248](https://github.com/MyEtherWallet/mew-components/pull/248)
+
+### feature 
+
+- replace img with mew token container [#247] (https://github.com/MyEtherWallet/mew-components/pull/247)
+- update dark mode colors [#246] (https://github.com/MyEtherWallet/mew-components/pull/246)
+
+
+### Release 0.7.20-beta
+
+### feature
+
+- removed static price symbol from mew-select. updated mew-table to truncate text for token column. fixed loading knob on mew-table storybook preview.
+- update eslint config, lint script and mew-select search method [#241](https://github.com/MyEtherWallet/mew-components/pull/241)
 ### Release 0.7.19-beta
 
 ### feature

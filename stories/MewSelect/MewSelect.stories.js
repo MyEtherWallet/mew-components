@@ -70,7 +70,7 @@ export const MEWSelect = () => ({
     },
     errorMessages: {
       default: text('error-messages', '')
-    }
+    },
   },
   watch: {
     enableDarkMode(newVal) {
