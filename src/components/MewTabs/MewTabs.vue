@@ -4,11 +4,10 @@
   Mew Tabs 
 =====================================================================================
 -->
-  <div>
+  <div class="mew-components--mew-tabs">
     <v-tabs
       :class="tabClasses"
       :background-color="background"
-      :color="activeColor"
       :centered="isCentered"
       slider-size="3"
       v-model="onTab"
@@ -23,9 +22,9 @@
           isBlock
             ? 'mew-tab-block'
             : isVertical || isSmall
-              ? 'mew-body font-weight-medium'
-              : 'mew-heading-2',
-          'capitalize',
+            ? 'mew-body font-weight-medium'
+            : 'mew-heading-3',
+          'capitalize'
         ]"
         :ripple="!isVertical"
         v-for="(item, i) in items"
@@ -52,24 +51,15 @@
       </v-tabs-items>
     </v-tabs>
 
-    <div
-      v-for="(item, i) in items"
-      :key="item + i"
-    >
-      <v-slide-x-reverse-transition
-        :hide-on-leave="true"
-        mode="out-in"
-      >
+    <div v-for="(item, i) in items" :key="item + i">
+      <v-slide-x-reverse-transition :hide-on-leave="true" mode="out-in">
         <!--
 =====================================================================================
   Slot: 'tabContent' + number of tab content (used to place custom tab content outside of the 
   tab container)
 =====================================================================================
 -->
-        <slot
-          v-if="onTab === i"
-          :name="'tabContent' + (i + 1)"
-        />
+        <slot v-if="onTab === i" :name="'tabContent' + (i + 1)" />
       </v-slide-x-reverse-transition>
     </div>
   </div>
@@ -77,10 +67,10 @@
 
 <script>
 export default {
-  name: 'MewTabs',
+  name: "MewTabs",
   data() {
     return {
-      onTab: null,
+      onTab: null
     };
   },
   props: {
@@ -90,7 +80,7 @@ export default {
      */
     activeColor: {
       type: String,
-      default: 'titlePrimary',
+      default: "titlePrimary"
     },
     /**
      * Sets the color for the background of mew-tabs.
@@ -98,42 +88,42 @@ export default {
      */
     background: {
       type: String,
-      default: 'transparent',
+      default: "transparent"
     },
     /**
      * Displays arrows if tab items overflow container.
      */
     showArrows: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Sets the active tab.
      */
     activeTab: {
       type: Number,
-      default: 0,
+      default: 0
     },
     /**
      * Sets the tabs as vertical.
      */
     hasUnderline: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Sets the tabs as vertical.
      */
     isVertical: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Sets the tabs to the center of the page.
      */
     isCentered: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Tab content
@@ -142,46 +132,46 @@ export default {
       type: Array,
       default: () => {
         return [];
-      },
+      }
     },
     /**
      * Shows the tab as a block.
      */
     isBlock: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Allows tabs to take up the full-width of the page.
      */
     hasFullWidth: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Sets the font size to 14px (mew-body)
      */
     isSmall: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   computed: {
     tabClasses() {
-      const classes = ['mew-tabs'];
+      const classes = ["mew-tabs"];
       if (this.hasUnderline) {
-        classes.push('mew-tabs-underline');
+        classes.push("mew-tabs-underline");
       }
       if (this.isBlock) {
-        classes.push('mew-tabs-block elevation-3');
+        classes.push("mew-tabs-block elevation-3");
       }
       return classes;
-    },
+    }
   },
   methods: {
     onClick() {
-      this.$emit('onNextStep');
-    },
+      this.$emit("onNextStep");
+    }
   },
   mounted() {
     this.onTab = this.activeTab;
@@ -191,9 +181,9 @@ export default {
       this.onTab = newVal;
     },
     onTab(newVal) {
-      this.$emit('onTab', newVal);
-    },
-  },
+      this.$emit("onTab", newVal);
+    }
+  }
 };
 </script>
 
@@ -236,6 +226,12 @@ export default {
     &:before {
       background-color: transparent;
     }
+  }
+}
+
+.mew-components--mew-tabs {
+  .v-tab {
+    min-width: 55px !important;
   }
 }
 </style>
