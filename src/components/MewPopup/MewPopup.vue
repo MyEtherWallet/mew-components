@@ -12,21 +12,14 @@
     :scrollable="scrollable"
     @click:outside="handleClickOutside"
   >
-    <v-card
-      color="white"
-      class="pa-0"
-    >
+    <v-card color="white" class="pa-0">
       <!--
       =====================================================================================
         Dialog Header
         =====================================================================================
       -->
       <div :class="title ? 'pt-0' : 'pt-5'">
-        <v-btn
-          v-if="!hideCloseBtn"
-          icon
-          class="header-close-icon"
-        >
+        <v-btn v-if="!hideCloseBtn" icon class="header-close-icon">
           <v-icon
             size="x-large"
             color="grey cursor--pointer"
@@ -40,12 +33,10 @@
         v-if="title"
         :class="[
           'justify-center px-5 px-md-7',
-          hasBodyContent ? 'py-5 py-md-8' : 'pb-0 pt-5 pt-md-8',
+          hasBodyContent ? 'py-5 py-md-8' : 'pb-0 pt-5 pt-md-8'
         ]"
       >
-        <div
-          class="mew-heading-2 break-word text-center"
-        >
+        <div class="mew-heading-2 break-word text-center">
           {{ title }}
         </div>
       </v-card-title>
@@ -66,15 +57,8 @@
         Dialog action
       =====================================================================================
       -->
-      <v-card-actions
-        v-if="hasButtons"
-        class="py-5 py-md-8"
-      >
-        <v-row
-          class="pa-0"
-          justify="space-around"
-          dense
-        >
+      <v-card-actions v-if="hasButtons" class="py-5 py-md-8">
+        <v-row class="pa-0" justify="space-around" dense>
           <v-col
             cols="12"
             :sm="!rightBtn ? '12' : '6'"
@@ -115,7 +99,7 @@
 </template>
 
 <script>
-import MewButton from '@/components/MewButton/MewButton.vue';
+import MewButton from "@/components/MewButton/MewButton.vue";
 
 export default {
   components: { MewButton },
@@ -125,21 +109,21 @@ export default {
      */
     title: {
       type: String,
-      default: '',
+      default: ""
     },
     /**
      * Hide top right close button
      */
     hideCloseBtn: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Controls popup visibility.
      */
     show: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Left Button: object of information.
@@ -149,8 +133,8 @@ export default {
     leftBtn: {
       type: Object,
       default: () => {
-        return { text: 'Cancel', color: 'primary', method: () => {} };
-      },
+        return { text: "Cancel", color: "primary", method: () => {} };
+      }
     },
     /**
      * Right Button: object of information.
@@ -160,26 +144,26 @@ export default {
       type: Object,
       default: () => {
         return {
-          text: 'Confirm',
-          color: 'primary',
+          text: "Confirm",
+          color: "primary",
           enabled: true,
-          method: () => {},
+          method: () => {}
         };
-      },
+      }
     },
     /**
      * Makes the popup content scrollable.
      */
     scrollable: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Max width of the popup.
      */
     maxWidth: {
       type: String,
-      default: '600',
+      default: "600"
     },
     /**
      * Displays v-card-text if there is popup body content
@@ -187,22 +171,22 @@ export default {
      */
     hasBodyContent: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Will display popup body content padding if true
      */
     hasPadding: {
       type: Boolean,
-      default: true,
+      default: true
     },
     /**
      * Will display popup body content padding if true
      */
     hasButtons: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
   methods: {
     /**
@@ -210,8 +194,8 @@ export default {
      */
     handleClickOutside() {
       this.leftBtn.method();
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -220,5 +204,6 @@ export default {
   right: 10px;
   top: 10px;
   position: absolute;
+  z-index: 9;
 }
 </style>
