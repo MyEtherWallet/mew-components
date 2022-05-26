@@ -7,11 +7,11 @@
   -->
     <v-data-table
       :class="['mew-table', hasSelect ? 'mew-select-table' : '', hasColor ? 'mew-super-primary-table' : '']"
-      :items="tableData"
-      :item-key="tableHeaders[0].value"
+      :items="indexedItems"
+      item-key="id"
       :headers="tableHeaders"
       :show-select="hasSelect"
-      :hide-default-footer="tableData && tableData.length <= 10"
+      :hide-default-footer="indexedItems && indexedItems.length <= 10"
       :items-per-page="10"
       :loader-height="0"
       :loading="loading"
@@ -323,6 +323,17 @@ export default {
     noDataText: {
       type: String,
       default: ''
+    }
+  },
+  computed: {
+    /**
+     * adds id to tableData items
+     */
+    indexedItems () {
+      return this.tableData.map((item, index) => ({
+        id: index,
+        ...item
+      }))
     }
   },
   methods: {
