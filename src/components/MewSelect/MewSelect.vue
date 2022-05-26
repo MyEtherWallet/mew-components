@@ -32,11 +32,10 @@
         class="mew-label"
       >{{ item.message }}
         <a
-          rel="noopener noreferrer"
           v-if="buyMoreStr"
-          href="https://ccswap.myetherwallet.com/#/"
-          target="_blank"
+          rel="noopener noreferrer"
           class="mew-label"
+          @click="emitBuyMore"
         >{{ buyMoreStr }}</a></span>
     </template>
 
@@ -306,7 +305,7 @@ export default {
     },
   },
   components: {
-    MewTokenContainer
+    MewTokenContainer,
   },
   data() {
     return {
@@ -380,6 +379,9 @@ export default {
         : this.defaultItem;
   },
   methods: {
+    emitBuyMore() {
+      this.$emit('buyMore');
+    },
     clear(val) {
       this.selectModel =
         val && Object.keys(val).length !== 0 ? val : this.defaultItem;
