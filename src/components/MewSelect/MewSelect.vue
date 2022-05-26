@@ -213,7 +213,7 @@
   </v-select>
 </template>
 <script>
-import MewTokenContainer from './MewTokenContainer.vue';
+import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
 import get from 'lodash/get';
 
 export default {
@@ -301,7 +301,7 @@ export default {
       default: false
     },
     /**
-     * Loading state
+     * Normal dropdown with no icon
      */
     normalDropdown: {
       type: Boolean,
