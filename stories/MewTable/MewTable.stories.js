@@ -2,188 +2,200 @@ import {
   withKnobs,
   boolean,
   object,
-  text
-} from '@storybook/addon-knobs';
-import MewTable from '@/components/MewTable/MewTable.vue';
-import MewTableDoc from './MewTable.mdx';
+  text,
+  number,
+} from "@storybook/addon-knobs";
+import MewTable from "@/components/MewTable/MewTable.vue";
+import MewTableDoc from "./MewTable.mdx";
 
 export default {
-  title: 'MewTable',
+  title: "MewTable",
   parameters: {
     component: MewTable,
     docs: {
-      page: MewTableDoc
-    } 
+      page: MewTableDoc,
+    },
   },
-  decorators: [withKnobs]
+  decorators: [withKnobs],
 };
 
 const tableHeaders = [
   {
-    text: 'Activity',
-    value: 'activity',
+    text: "Activity",
+    value: "activity",
     sortable: false,
     filterable: false,
-    width: '100%'
+    width: "100%",
   },
   {
-    text: 'Date',
-    value: 'date',
+    text: "Date",
+    value: "date",
     sortable: false,
     filterable: false,
-    width: '60%'
+    width: "60%",
   },
   {
-    text: 'Tx Hash',
-    value: 'txHash',
+    text: "Tx Hash",
+    value: "txHash",
     sortable: false,
     filterable: false,
     containsLink: true,
-    width: '100%'
+    width: "100%",
   },
   {
-    text: 'Use as collateral',
-    value: 'toggle',
+    text: "Use as collateral",
+    value: "toggle",
     sortable: false,
     filterable: false,
-    width: '100%'
-  }
-]
+    width: "100%",
+  },
+];
 
 const tableData = [
   {
-    activity: 'Deposited 0.0001 ETH into Vault',
-    date: '01/02/2020, 2:16:32 PM',
-    txHash: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
+    activity: "Deposited 0.0001 ETH into Vault",
+    date: "01/02/2020, 2:16:32 PM",
+    txHash: "0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D",
     toggle: {
-      color: 'blue500',
-      label: 'Label',
+      color: "blue500",
+      label: "Label",
       method: onClick,
-      value: true
-    }
+      value: true,
+    },
   },
   {
-    activity: 'Generated 30.0000 new Dai from Vault',
-    date: '01/02/2020, 1:25:53 PM',
-    txHash: '0xAECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
+    activity: "Generated 30.0000 new Dai from Vault",
+    date: "01/02/2020, 1:25:53 PM",
+    txHash: "0xAECAF9CD2367cdbb726E904cD6397eDFcAe6068D",
   },
   {
-    activity: 'Generated 2.0 new Dai from Vault',
-    date: '01/05/2020, 1:25:53 PM',
-    txHash: '0xAECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
-  }
-]
+    activity: "Generated 2.0 new Dai from Vault",
+    date: "01/05/2020, 1:25:53 PM",
+    txHash: "0xAECAF9CD2367cdbb726E904cD6397eDFcAe6068D",
+  },
+];
 
 const tableSelectHeaders = [
   {
-    text: 'Address',
-    value: 'address',
+    text: "Address",
+    value: "address",
     sortable: false,
     filterable: false,
-    width: '70%'
+    width: "70%",
   },
   {
-    text: 'Balance',
-    value: 'balance',
+    text: "Balance",
+    value: "balance",
     sortable: false,
     filterable: false,
-    width: '30%'
+    width: "30%",
   },
   {
-    text: '#Token',
-    value: 'token',
+    text: "#Token",
+    value: "token",
     sortable: false,
     filterable: false,
     containsLink: true,
-    width: '30%'
+    width: "30%",
   },
   {
-    text: '24H',
-    value: 'change',
+    text: "24H",
+    value: "change",
     sortable: false,
     filterable: false,
-    width: '30%'
+    width: "30%",
   },
   {
-    text: '',
-    value: 'callToAction',
+    text: "",
+    value: "callToAction",
     sortable: false,
     filterable: false,
-    width: '50%'
-  }
-]
-
+    width: "50%",
+  },
+];
 
 const tableSelectData = [
   {
-    balance: ['0.0001 ETH', '$300'],
-    token: '21',
-    change: '-0.4',
-    status: '-',
-    tokenImg: 'https://cdn4.iconfinder.com/data/icons/cryptocoins/227/ETH-512.png',
-    address: '0xAECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
+    balance: ["0.0001 ETH", "$300"],
+    token: "21",
+    change: "-0.4",
+    status: "-",
+    tokenImg:
+      "https://cdn4.iconfinder.com/data/icons/cryptocoins/227/ETH-512.png",
+    address: "0xAECAF9CD2367cdbb726E904cD6397eDFcAe6068D",
   },
   {
-    balance: ['2.23 ETH', '$50000'],
-    token: '10',
-    address: 'jessp.eth',
-    resolvedAddr: '0xAECFF9CD2367cdbb726E904cD6397eDFcAe6068D',
-    change: '0.23',
-    status: '+',
+    balance: ["2.23 ETH", "$50000"],
+    token: "10",
+    address: "jessp.eth",
+    resolvedAddr: "0xAECFF9CD2367cdbb726E904cD6397eDFcAe6068D",
+    change: "0.23",
+    status: "+",
     changeData: {
       x: [1, 4, 10, 4],
-      y: [5, 1, 34, 43]
-    }
+      y: [5, 1, 34, 43],
+    },
   },
   {
-    balance: ['0.23 ETH', '$500'],
-    token: '8',
-    change: '-2.3',
-    status: '-',
-    address: '0xAECFF9CD2367cdbb726E904cD6397eDFcAe6068D',
-    callToAction: [{ title: 'Edit', method: onClick, btnStyle: '', colorTheme: 'primary'}, { title: 'Trade', method: onClick, btnStyle: 'outline', colorTheme: 'primary'}]
-  }
-]
+    balance: ["0.23 ETH", "$500"],
+    token: "8",
+    change: "-2.3",
+    status: "-",
+    address: "0xAECFF9CD2367cdbb726E904cD6397eDFcAe6068D",
+    callToAction: [
+      { title: "Edit", method: onClick, btnStyle: "", colorTheme: "primary" },
+      {
+        title: "Trade",
+        method: onClick,
+        btnStyle: "outline",
+        colorTheme: "primary",
+      },
+    ],
+  },
+];
 
 function onClick(item) {
-  console.log('clicked', item)
+  console.log("clicked", item);
 }
 
 export const MEWTable = () => ({
   components: { MewTable },
   props: {
     enableDarkMode: {
-      default: boolean('dark mode ?', false)
+      default: boolean("dark mode ?", false),
     },
     tableHeaders: {
-      default: object('table-headers', tableHeaders)
+      default: object("table-headers", tableHeaders),
     },
     tableSelectHeaders: {
-      default: object('table-select-headers', tableSelectHeaders)
+      default: object("table-select-headers", tableSelectHeaders),
     },
     tableSelectData: {
-      default: object('table-select-data', tableSelectData)
+      default: object("table-select-data", tableSelectData),
     },
     tableData: {
-      default: object('table-data', tableData)
+      default: object("table-data", tableData),
     },
     hasSelect: {
-      default: boolean('has-select', false)
+      default: boolean("has-select", false),
+    },
+    keyIdx: {
+      default: number("Index of value to use as key", 0),
     },
     hasColor: {
-      default: boolean('has-color', true)
+      default: boolean("has-color", true),
     },
     loading: {
-      default: boolean('loading', false)
+      default: boolean("loading", false),
     },
     noDataText: {
-      default: text('no-data-text', '')
-    }
+      default: text("no-data-text", ""),
+    },
   },
   watch: {
     enableDarkMode(newVal) {
       this.$vuetify.theme.dark = newVal === true ? true : false;
-    }
+    },
   },
   template: `
     <div>
@@ -195,6 +207,7 @@ export const MEWTable = () => ({
       :table-data="loading ? [] : hasSelect ? tableSelectData : tableData"
       :table-headers="hasSelect ? tableSelectHeaders : tableHeaders"
       :no-data-text="noDataText"
+      :key-idx="keyIdx"
       @selectedRow="onSelect"
       @selectedAll="onSelectAll"
       @onClick="onClick"
@@ -204,15 +217,15 @@ export const MEWTable = () => ({
   methods: {
     onSelect(newVal) {
       // eslint-disable-next-line no-console
-      console.log('selected:', newVal);
+      console.log("selected:", newVal);
     },
     onSelectAll(newVal) {
       // eslint-disable-next-line no-console
-      console.log('selected all:', newVal);
+      console.log("selected all:", newVal);
     },
     onClick(newVal) {
       // eslint-disable-next-line no-console
-      console.log('on click, row:', newVal);
-    }
-  }
+      console.log("on click, row:", newVal);
+    },
+  },
 });
