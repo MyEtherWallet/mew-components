@@ -1,12 +1,14 @@
 <template>
   <div>
-    <!--
-  =====================================================================================
-    Mew Table
-  =====================================================================================
-  -->
+    <!-- ===================================================================================== -->
+    <!-- Mew Table -->
+    <!-- ===================================================================================== -->
     <v-data-table
-      :class="['mew-table', hasSelect ? 'mew-select-table' : '', hasColor ? 'mew-super-primary-table' : '']"
+      :class="[
+        'mew-table',
+        hasSelect ? 'mew-select-table' : '',
+        hasColor ? 'mew-super-primary-table' : ''
+      ]"
       :items="tableData"
       :item-key="tableHeaders[0].value"
       :headers="tableHeaders"
@@ -18,125 +20,126 @@
       :no-data-text="noDataText"
       @item-selected="onSelect"
       @toggle-select-all="onSelectAll"
-    > 
-      <!--
-  =====================================================================================
-    Loading Mew Table
-  =====================================================================================
-  -->
+    >
+      <!-- ===================================================================================== -->
+      <!-- Loading Mew Table -->
+      <!-- ===================================================================================== -->
       <template
         v-if="loading"
         #loading
-      > 
+      >
         <v-skeleton-loader
+          v-for="i in 3"
+          :key="i"
           class="py-1"
           width="100%"
           min-width="100%"
-          v-for="i in 3"
-          :key="i"
           type="text"
           elevation="0"
         />
       </template>
+
+      <!-- ===================================================================================== -->
+      <!-- Displays checkboxes next to each row (hasSelect needs to be set to true) -->
+      <!-- COMMENTED OUT FOR NOW - USING VUETIFYS CHECKBOX -->
+      <!-- ===================================================================================== -->
       <!--
-  =====================================================================================
-    Displays checkboxes next to each row (hasSelect needs to be set to true)
-    COMMENTED OUT FOR NOW - USING VUETIFYS CHECKBOX
-  =====================================================================================
-  -->
-      <!-- <template
-        v-if="!loading"
-        v-slot:[`item.data-table-select`]="{ isSelected, select, item }"
-      >
-        <mew-checkbox
-          :value="isSelected"
-          dense
-        /> 
-      </template> -->
-      <!--
-  =====================================================================================
-    Displays the token image and token title
-  =====================================================================================
-  -->
+        <template
+          v-if="!loading"
+          v-slot:[`item.data-table-select`]="{ isSelected, select, item }"
+        >
+          <mew-checkbox
+            :value="isSelected"
+            dense
+          /> 
+        </template>
+      -->
+
+      <!-- ===================================================================================== -->
+      <!-- Displays the token image and token title -->
+      <!-- ===================================================================================== -->
       <template
         v-if="!loading"
-        v-slot:[`item.token`]="{item}"
+        #[`item.token`]="{ item }"
       >
         <div class="d-flex align-center">
-          <img
+          <mew-token-container
+            size="small"
+            :img="item.tokenImg"
             class="mr-2"
-            height="20"
-            v-if="item.tokenImg"
-            :src="item.tokenImg"
-            :alt="item.token"
-          >
+          />
           <span class="truncate">{{ item.token }}</span>
         </div>
       </template>
-      <!--
-  =====================================================================================
-    Displays a toggle button
-  =====================================================================================
-  -->
+
+      <!-- ===================================================================================== -->
+      <!-- Displays a toggle button -->
+      <!-- ===================================================================================== -->
       <template
         v-if="!loading"
-        v-slot:[`item.toggle`]="{ item }"
+        #[`item.toggle`]="{ item }"
       >
         <v-switch
           v-if="item.toggle"
-          :disabled="item.toggle.disabled"
-          @click="item.toggle.method(item)"
           v-model="item.toggle.value"
+          :disabled="item.toggle.disabled"
           inset
           :color="item.toggle.color"
+          @click="item.toggle.method(item)"
         >
-          <template #label> 
+          <template #label>
             <span
               v-if="item.toggle.label"
-              :class="item.toggle.color + '--text font-weight-regular mew-body capitalize'"
+              :class="
+                item.toggle.color +
+                  '--text font-weight-regular mew-body capitalize'
+              "
             >{{ item.toggle.label }}</span>
           </template>
         </v-switch>
       </template>
-      <!--
-  =====================================================================================
-    Displays the chart change
-  =====================================================================================
-  -->
+
+      <!-- ===================================================================================== -->
+      <!-- Displays the chart change -->
+      <!-- ===================================================================================== -->
       <template
         v-if="!loading"
-        v-slot:[`item.change`]="{ item }"
+        #[`item.change`]="{ item }"
       >
         <div class="chart-container d-flex align-center">
           <!-- hiding for now because we don't have the data -->
-          <!-- <mew-chart
-            v-if="item.changeData"
-            :data="item.changeData"
-            :color="item.status === '+' ? '#05c0a5' : '#ff445b'"
-          /> -->
+          <!--
+            <mew-chart
+              v-if="item.changeData"
+              :data="item.changeData"
+              :color="item.status === '+' ? '#05c0a5' : '#ff445b'"
+            />
+          -->
           <span
             v-if="item.change !== ''"
-            :class="[item.status === '+' ? 'primary--text' : 'error--text', 'd-flex']"
+            :class="[
+              item.status === '+' ? 'primary--text' : 'error--text',
+              'd-flex'
+            ]"
           >{{ item.change + '%' }}
             <v-icon
-              class="primary--text"
               v-if="item.status === '+'"
+              class="primary--text"
             >mdi-arrow-up-thick</v-icon>
             <v-icon
-              class="error--text"
               v-if="item.status === '-'"
+              class="error--text"
             >mdi-arrow-down-thick</v-icon>
           </span>
         </div>
       </template>
-      <!--
-  =====================================================================================
-    Displays the balance in ETH and USD
-  =====================================================================================
-  -->
+
+      <!-- ===================================================================================== -->
+      <!-- Displays the balance in ETH and USD -->
+      <!-- ===================================================================================== -->
       <template
         v-if="!loading"
-        v-slot:[`item.balance`]="{ item }"
+        #[`item.balance`]="{ item }"
       >
         <div class="d-flex flex-column py-2">
           <span
@@ -146,37 +149,40 @@
           >{{ bal }}</span>
         </div>
       </template>
-      <!--
-  =====================================================================================
-    Displays a call to action button
-  =====================================================================================
-  -->
+
+      <!-- ===================================================================================== -->
+      <!-- Displays a call to action button -->
+      <!-- ===================================================================================== -->
       <template
         v-if="!loading"
-        v-slot:[`item.callToAction`]="{ item }"
+        #[`item.callToAction`]="{ item }"
       >
         <div class="d-flex flex-row py-3 justify-end">
           <mew-button
             v-for="(button, idx) in item.callToAction"
             :key="idx"
-            :class="idx !== item.callToAction.length - 1 && item.callToAction.length > 1? 'mr-1' : ''"
-            @click.native="button.method(item)"
+            :class="
+              idx !== item.callToAction.length - 1 &&
+                item.callToAction.length > 1
+                ? 'mr-1'
+                : ''
+            "
             :title="button.title"
             :disabled="button.disabled"
             btn-size="small"
             :btn-style="button.btnStyle"
             :btn-color-theme="button.colorTheme"
+            @click.native="button.method(item)"
           />
         </div>
       </template>
-      <!--
-  =====================================================================================
-    Displays the tx hash
-  =====================================================================================
-  -->
+
+      <!-- ===================================================================================== -->
+      <!-- Displays the tx hash -->
+      <!-- ===================================================================================== -->
       <template
         v-if="!loading"
-        v-slot:[`item.txHash`]="{ item }"
+        #[`item.txHash`]="{ item }"
       >
         <div :class="[!$vuetify.breakpoint.xs ? 'pr-3' : '']">
           <v-tooltip
@@ -186,12 +192,12 @@
             color="titlePrimary--text"
             top
           >
-            <template v-slot:[`activator`]="{ on }">
+            <template #[`activator`]="{ on }">
               <a
-                v-on="on"
                 :href="'https://www.ethvm.com/tx/' + item.txHash"
                 target="_blank"
                 class="font-weight-medium mew-address d-flex full-width"
+                v-on="on"
               >
                 <mew-transform-hash :hash="item.txHash" />
                 <v-icon
@@ -204,14 +210,13 @@
           </v-tooltip>
         </div>
       </template>
-      <!--
-  =====================================================================================
-    Displays the address hash
-  =====================================================================================
-  -->
+
+      <!-- ===================================================================================== -->
+      <!-- Displays the address hash -->
+      <!-- ===================================================================================== -->
       <template
         v-if="!loading"
-        v-slot:[`item.address`]="{ item }"
+        #[`item.address`]="{ item }"
       >
         <div class="d-flex align-center">
           <mew-blockie
@@ -227,15 +232,17 @@
             color="titlePrimary--text"
             top
           >
-            <template v-slot:activator="{ on }">
+            <template #activator="{ on }">
               <div
-                v-on="on"
                 class="address-container font-weight-medium mew-address d-flex"
-              > 
+                v-on="on"
+              >
                 <span
-                  class="mew-address truncate"
                   v-if="item.resolvedAddr"
-                >{{ item.address }}</span>
+                  class="mew-address truncate"
+                >{{
+                  item.address
+                }}</span>
                 <mew-transform-hash
                   v-if="!item.resolvedAddr"
                   :hash="item.address"
@@ -246,14 +253,13 @@
                 />
                 <a
                   class="address-link"
-                  :href="'https://www.ethvm.com/address/' + (item.resolvedAddr ? item.resolvedAddr : item.address)"
+                  :href="
+                    'https://www.ethvm.com/address/' +
+                      (item.resolvedAddr ? item.resolvedAddr : item.address)
+                  "
                   target="_blank"
                 >
-                  <v-icon
-                    class="call-made"
-                  >
-                    mdi-call-made
-                  </v-icon>
+                  <v-icon class="call-made"> mdi-call-made </v-icon>
                 </a>
               </div>
             </template>
@@ -266,6 +272,7 @@
 </template>
 
 <script>
+import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
 import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
 import MewButton from '@/components/MewButton/MewButton.vue';
 import MewTransformHash from '@/components/MewTransformHash/MewTransformHash.vue';
@@ -274,6 +281,7 @@ import MewCopy from '@/components/MewCopy/MewCopy.vue';
 export default {
   name: 'MewTable',
   components: {
+    MewTokenContainer,
     MewBlockie,
     MewButton,
     MewTransformHash,
@@ -281,7 +289,7 @@ export default {
   },
   props: {
     /**
-     * Applies skeleton loader 
+     * Applies skeleton loader
      * note: tableData has to be empty
      * for the prop to work correctly
      */
@@ -304,7 +312,7 @@ export default {
       default: () => []
     },
     /**
-     * Applies select button to each row. 
+     * Applies select button to each row.
      */
     hasSelect: {
       type: Boolean,
@@ -330,16 +338,16 @@ export default {
      * emits selectedRow when selecting a checkbox
      */
     onSelectAll(item) {
-      this.$emit('selectedAll', item)
+      this.$emit('selectedAll', item);
     },
     /**
      * emits selectedRow when selecting a checkbox
      */
     onSelect(item) {
-      this.$emit('selectedRow', item)
-    },
+      this.$emit('selectedRow', item);
+    }
   }
-}
+};
 </script>
 
 <style lang="scss">
@@ -381,14 +389,14 @@ export default {
     font-size: 18px;
   }
 
-/**
+  /**
   * Table footer
   */
   .v-data-footer {
     border-top: none;
   }
 
-/**
+  /**
   * Checkbox (not active)
   */
   .v-simple-checkbox {
@@ -410,7 +418,6 @@ export default {
     color: inherit;
   }
 
-  
   &.mew-select-table {
     .v-data-table__selected {
       background: inherit !important;
@@ -420,7 +427,7 @@ export default {
     }
   }
 
-/**
+  /**
   * Super primary color table
   */
   &.mew-super-primary-table {
@@ -438,22 +445,22 @@ export default {
       }
     }
   }
-}
-
-/**
+  /**
   * Mobile 
   */
-.v-data-table__mobile-row__cell {
-  width: 60%;
+  .v-data-table__mobile-row__cell {
+    width: 60%;
 
-  div, a {
-    justify-content: flex-end;
+    div,
+    a {
+      justify-content: flex-end;
+    }
   }
-}
 
-.v-data-table-header-mobile {
-  tr > th {
-    width: 100%;
+  .v-data-table-header-mobile {
+    tr > th {
+      width: 100%;
+    }
   }
 }
 </style>
