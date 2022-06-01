@@ -52,7 +52,7 @@ jobs:
           curl --request POST --url "$UPLOAD_URL" --header "x-apikey: $VIRUS_TOTAL_API_KEY" --header 'Accept: application/json' --header 'Content-Type: multipart/form-data' -F "file=@mewcomponents-$GITHUB_SHA.zip"
           VIRUS_TOTAL_URL=https://www.virustotal.com/gui/file/$FILE_SHA256
           curl -H "Authorization: token ${GITHUB_TOKEN}" -X POST \
-            -d "{\"body\": \"Copy of this build can be found at <br/>https://v6.mewbuilds.com/${GITHUB_SHA}/index.html<br/> \
+            -d "{\"body\": \"Copy of this build can be found at <br/>https://mewcomponents.mewbuilds.com/${GITHUB_SHA}/index.html<br/> \
                             https://www.cloudflare-ipfs.com/ipfs/$HASH <br/> \
                             Virus Total analysis <br/> \
                             $VIRUS_TOTAL_URL\"}" \
