@@ -121,15 +121,20 @@
               item.status === '+' ? 'primary--text' : 'error--text',
               'd-flex'
             ]"
-          >{{ item.change + '%' }}
+          >
+            {{ item.change + '%' }}
             <v-icon
               v-if="item.status === '+'"
               class="primary--text"
-            >mdi-arrow-up-thick</v-icon>
+            >
+              mdi-arrow-up-thick
+            </v-icon>
             <v-icon
               v-if="item.status === '-'"
               class="error--text"
-            >mdi-arrow-down-thick</v-icon>
+            >
+              mdi-arrow-down-thick
+            </v-icon>
           </span>
         </div>
       </template>
@@ -146,7 +151,9 @@
             v-for="(bal, idx) in item.balance"
             :key="idx"
             :class="idx === 1 ? 'searchText--text' : ''"
-          >{{ bal }}</span>
+          >
+            {{ bal }}
+          </span>
         </div>
       </template>
 
@@ -203,7 +210,9 @@
                 <v-icon
                   class="arrow-top-right"
                   color="primary"
-                >mdi-arrow-top-right</v-icon>
+                >
+                  mdi-arrow-top-right
+                </v-icon>
               </a>
             </template>
             <span>{{ item.txHash }}</span>
@@ -240,9 +249,9 @@
                 <span
                   v-if="item.resolvedAddr"
                   class="mew-address truncate"
-                >{{
-                  item.address
-                }}</span>
+                >
+                  {{ item.address }}
+                </span>
                 <mew-transform-hash
                   v-if="!item.resolvedAddr"
                   :hash="item.address"
