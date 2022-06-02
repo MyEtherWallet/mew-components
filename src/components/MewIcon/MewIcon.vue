@@ -28,6 +28,7 @@ import copy from '@/assets/images/icons/copy.svg';
 import diploma from '@/assets/images/icons/diploma.svg';
 import edit from '@/assets/images/icons/edit.svg';
 import ensManager from '@/assets/images/icons/ens-manager.svg';
+import ensManagerNew from '@/assets/images/icons/ens-manager-new.svg';
 import ethBalance from '@/assets/images/icons/eth-balance.svg';
 import ethBlocks from '@/assets/images/icons/eth-blocks.svg';
 import finney from '@/assets/images/icons/finney.svg';
@@ -51,6 +52,7 @@ import rocket from '@/assets/images/icons/rocket.svg';
 import secalot from '@/assets/images/icons/secalot.svg';
 import shield from '@/assets/images/icons/shield.svg';
 import stake from '@/assets/images/icons/stake.svg';
+import stakeNew from '@/assets/images/icons/stake-new.svg';
 import stakewise from '@/assets/images/icons/stakewise.svg';
 import stakewiseGreen from '@/assets/images/icons/stakewise-green.svg';
 import stakewisePurple from '@/assets/images/icons/stakewise-purple.svg';
@@ -97,6 +99,7 @@ export default {
       diploma: diploma,
       edit: edit,
       ensManager: ensManager,
+      ensManagerNew: ensManagerNew,
       ethBalance: ethBalance,
       ethBlocks: ethBlocks,
       finney: finney,
@@ -120,6 +123,7 @@ export default {
       secalot: secalot,
       shield: shield,
       stake: stake,
+      stakeNew: stakeNew,
       stakewise: stakewise,
       stakewiseGreen: stakewiseGreen,
       stakewisePurple: stakewisePurple,
@@ -201,6 +205,8 @@ export default {
           return this.edit;
         case 'ensManager':
           return this.ensManager;
+        case 'ensManagerNew':
+          return this.ensManagerNew;
         case 'ethBalance':
           return this.ethBalance;
         case 'ethBlocks':
@@ -247,6 +253,8 @@ export default {
           return this.shield;
         case 'stake':
           return this.stake;
+        case 'stakeNew':
+          return this.stakeNew;
         case 'stakewise':
           return this.stakewise;
         case 'stakewiseGreen':
