@@ -6,19 +6,24 @@
   =====================================================================================
   -->
     <v-data-table
-      :class="['mew-table', hasSelect ? 'mew-select-table' : '', hasColor ? 'mew-super-primary-table' : '']"
-      :items="tableData"
-      :item-key="tableHeaders[0].value"
+      v-model="selected"
+      :class="[
+        'mew-table',
+        hasSelect ? 'mew-select-table' : '',
+        hasColor ? 'mew-super-primary-table' : '',
+      ]"
+      :items="indexedItems"
+      item-key="id"
       :headers="tableHeaders"
       :show-select="hasSelect"
-      :hide-default-footer="tableData && tableData.length <= 10"
+      :hide-default-footer="indexedItems && indexedItems.length <= 10"
       :items-per-page="10"
       :loader-height="0"
       :loading="loading"
       :no-data-text="noDataText"
       @item-selected="onSelect"
       @toggle-select-all="onSelectAll"
-    > 
+    >
       <!--
   =====================================================================================
     Loading Mew Table
@@ -27,7 +32,7 @@
       <template
         v-if="loading"
         #loading
-      > 
+      >
         <v-skeleton-loader
           class="py-1"
           width="100%"
@@ -60,7 +65,7 @@
   -->
       <template
         v-if="!loading"
-        v-slot:[`item.token`]="{item}"
+        v-slot:[`item.token`]="{ item }"
       >
         <div class="d-flex align-center">
           <img
@@ -90,10 +95,13 @@
           inset
           :color="item.toggle.color"
         >
-          <template #label> 
+          <template #label>
             <span
               v-if="item.toggle.label"
-              :class="item.toggle.color + '--text font-weight-regular mew-body capitalize'"
+              :class="
+                item.toggle.color +
+                  '--text font-weight-regular mew-body capitalize'
+              "
             >{{ item.toggle.label }}</span>
           </template>
         </v-switch>
@@ -116,8 +124,11 @@
           /> -->
           <span
             v-if="item.change !== ''"
-            :class="[item.status === '+' ? 'primary--text' : 'error--text', 'd-flex']"
-          >{{ item.change + '%' }}
+            :class="[
+              item.status === '+' ? 'primary--text' : 'error--text',
+              'd-flex',
+            ]"
+          >{{ item.change + "%" }}
             <v-icon
               class="primary--text"
               v-if="item.status === '+'"
@@ -159,7 +170,12 @@
           <mew-button
             v-for="(button, idx) in item.callToAction"
             :key="idx"
-            :class="idx !== item.callToAction.length - 1 && item.callToAction.length > 1? 'mr-1' : ''"
+            :class="
+              idx !== item.callToAction.length - 1 &&
+                item.callToAction.length > 1
+                ? 'mr-1'
+                : ''
+            "
             @click.native="button.method(item)"
             :title="button.title"
             :disabled="button.disabled"
@@ -231,11 +247,13 @@
               <div
                 v-on="on"
                 class="address-container font-weight-medium mew-address d-flex"
-              > 
+              >
                 <span
                   class="mew-address truncate"
                   v-if="item.resolvedAddr"
-                >{{ item.address }}</span>
+                >{{
+                  item.address
+                }}</span>
                 <mew-transform-hash
                   v-if="!item.resolvedAddr"
                   :hash="item.address"
@@ -246,12 +264,13 @@
                 />
                 <a
                   class="address-link"
-                  :href="'https://www.ethvm.com/address/' + (item.resolvedAddr ? item.resolvedAddr : item.address)"
+                  :href="
+                    'https://www.ethvm.com/address/' +
+                      (item.resolvedAddr ? item.resolvedAddr : item.address)
+                  "
                   target="_blank"
                 >
-                  <v-icon
-                    class="call-made"
-                  >
+                  <v-icon class="call-made">
                     mdi-call-made
                   </v-icon>
                 </a>
@@ -277,69 +296,102 @@ export default {
     MewBlockie,
     MewButton,
     MewTransformHash,
-    MewCopy
+    MewCopy,
   },
   props: {
     /**
-     * Applies skeleton loader 
+     * Selected values passable
+     * from parent so values
+     * can be preselected
+     */
+    selectedValues: {
+      type: Array,
+      default: () => [],
+    },
+    /**
+     * Applies skeleton loader
      * note: tableData has to be empty
      * for the prop to work correctly
      */
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * The table headers.
      */
     tableHeaders: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     /**
      * The table data.
      */
     tableData: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     /**
-     * Applies select button to each row. 
+     * Applies select button to each row.
      */
     hasSelect: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Applies superPrimary color to table.
      */
     hasColor: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * No data text
      */
     noDataText: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
+  },
+  data() {
+    return {
+      selected: [],
+    };
+  },
+  computed: {
+    /**
+     * adds id to tableData items
+     */
+    indexedItems() {
+      return this.tableData.map((item, index) => ({
+        id: index,
+        ...item,
+      }));
+    },
+  },
+  watch: {
+    selectedValues: {
+      handler: function(newVal) {
+        this.selected = newVal;
+      },
+      deep: true,
+    },
   },
   methods: {
     /**
      * emits selectedRow when selecting a checkbox
      */
     onSelectAll(item) {
-      this.$emit('selectedAll', item)
+      this.$emit('selectedAll', item);
     },
     /**
      * emits selectedRow when selecting a checkbox
      */
     onSelect(item) {
-      this.$emit('selectedRow', item)
+      this.$emit('selectedRow', item);
     },
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss">
@@ -381,14 +433,14 @@ export default {
     font-size: 18px;
   }
 
-/**
+  /**
   * Table footer
   */
   .v-data-footer {
     border-top: none;
   }
 
-/**
+  /**
   * Checkbox (not active)
   */
   .v-simple-checkbox {
@@ -410,7 +462,6 @@ export default {
     color: inherit;
   }
 
-  
   &.mew-select-table {
     .v-data-table__selected {
       background: inherit !important;
@@ -420,7 +471,7 @@ export default {
     }
   }
 
-/**
+  /**
   * Super primary color table
   */
   &.mew-super-primary-table {
@@ -446,7 +497,8 @@ export default {
 .v-data-table__mobile-row__cell {
   width: 60%;
 
-  div, a {
+  div,
+  a {
     justify-content: flex-end;
   }
 }
