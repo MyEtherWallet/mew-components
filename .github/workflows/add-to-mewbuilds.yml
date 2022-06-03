@@ -40,7 +40,7 @@ jobs:
           VIRUS_TOTAL_API_KEY: ${{secrets.VIRUS_TOTAL_API_KEY}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: |
-          pip install --user awscli
+          pip install --user awscli==1.25.0
           aws s3 sync --delete --acl public-read .out/ s3://mewcomponents/build/$GITHUB_SHA
           aws s3 cp s3://mewcomponents/build/$GITHUB_SHA/index.html s3://mewcomponents/build/$GITHUB_SHA/index.html \
             --metadata-directive REPLACE --cache-control max-age=0,no-cache,no-store,must-revalidate \
