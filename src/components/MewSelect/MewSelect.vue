@@ -78,8 +78,12 @@
           class="no-pointer-events"
           type="chip"
         />
-        <div v-if="!loading && item.imgs" class="flex-row d-flex align-center">
+        <div
+          v-if="!loading && item.imgs"
+          class="flex-row d-flex align-center"
+        >
           <mew-token-container
+            v-if="!normalDropdown"
             v-for="(url, idx) in item.imgs"
             :key="url + idx"
             class="label-token-img"
@@ -99,7 +103,10 @@
     Selected item
   =====================================================================================
   -->
-      <div v-if="!item.selectLabel" class="d-flex align-center justify-center">
+      <div
+        v-if="!item.selectLabel"
+        class="d-flex align-center justify-center"
+      >
         <mew-token-container
           v-if="!normalDropdown"
           class="ml-1"
@@ -108,12 +115,13 @@
           :name="item.name || item"
           size="small"
         />
-        <span class="text-capitalize mt-1 ml-2 basic--text"
-          >{{ item.name ? item.name : item }}
-          <span v-if="item.subtext" class="searchText--text text-capitalize"
-            >- {{ item.subtext }}</span
-          ></span
-        >
+        <span
+          class="text-capitalize mt-1 ml-2 basic--text"
+        >{{ item.name ? item.name : item }}
+          <span
+            v-if="item.subtext"
+            class="searchText--text text-capitalize"
+          >- {{ item.subtext }}</span></span>
       </div>
     </template>
     <template #item="data">
@@ -137,21 +145,23 @@
         v-if="!isCustom && !loading"
         class="d-flex align-center justify-center"
       >
-        <span class="text-capitalize ml-2 mt-1"
-          >{{ data.item.name ? data.item.name : data.item }}
+        <span
+          class="text-capitalize ml-2 mt-1"
+        >{{ data.item.name ? data.item.name : data.item }}
           <span
             v-if="data.item.subtext"
             class="textSecondary--text text-capitalize"
-            >- {{ data.item.subtext }}</span
-          ></span
-        >
+          >- {{ data.item.subtext }}</span></span>
       </div>
       <!--
   =====================================================================================
     Custom Select Dropdown items
   =====================================================================================
   -->
-      <div v-if="isCustom && !loading" class="d-flex align-center full-width">
+      <div
+        v-if="isCustom && !loading"
+        class="d-flex align-center full-width"
+      >
         <!--
   =====================================================================================
       Empty Wallet Link
@@ -166,8 +176,7 @@
             class="all-pointer-events"
             target="_blank"
             :href="data.item.link"
-            >{{ data.item.linkText }}</a
-          >
+          >{{ data.item.linkText }}</a>
         </div>
         <!--
   =====================================================================================
@@ -178,34 +187,37 @@
           v-if="data.item.name"
           class="d-flex align-center justify-space-between full-width"
         >
-          <div v-if="!loading" class="d-flex align-center">
+          <div
+            v-if="!loading"
+            class="d-flex align-center"
+          >
             <mew-token-container
+              v-if="!normalDropdown"
+
               class="mr-1"
               :loading="loading"
               :img="!data.item.img ? null : data.item.img"
               :name="data.item.name"
               size="small"
             />
-            <span class="text-capitalize ml-2 my-2 d-flex flex-column"
-              >{{ data.item.symbol || data.item.name || data.item }}
+            <span
+              class="text-capitalize ml-2 my-2 d-flex flex-column"
+            >{{ data.item.symbol || data.item.name || data.item }}
               <span
                 v-if="data.item.tokenBalance || data.item.subtext"
                 class="mew-caption font-weight-regular textSecondary--text text-capitalize"
-                >{{
-                  data.item.tokenBalance
-                    ? data.item.tokenBalance + ' ' + data.item.symbol
-                    : data.item.subtext
-                }}</span
-              ></span
-            >
+              >{{
+                data.item.tokenBalance
+                  ? data.item.tokenBalance + ' ' + data.item.symbol
+                  : data.item.subtext
+              }}</span></span>
           </div>
           <div class="d-flex justify-center flex-column align-end">
             <span>{{ data.item.totalBalance || data.item.price }}</span>
             <span
               v-if="data.item.totalBalance"
               class="mew-caption font-weight-regular textSecondary--text"
-              >@ {{ data.item.price }}</span
-            >
+            >@ {{ data.item.price }}</span>
           </div>
         </div>
       </div>
