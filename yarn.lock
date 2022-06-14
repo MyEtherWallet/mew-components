@@ -8496,6 +8496,11 @@
   "resolved" "https://registry.npmjs.org/human-signals/-/human-signals-1.1.1.tgz"
   "version" "1.1.1"
 
+"humps@^2.0.1":
+  "integrity" "sha512-E0eIbrFWUhwfXJmsbdjRQFQPrl5pTEoKlz163j1mTqqUnU9PgR4AgB8AIITzuB3vLBdxZXyZ9TDIrwB2OASz4g=="
+  "resolved" "https://registry.npmjs.org/humps/-/humps-2.0.1.tgz"
+  "version" "2.0.1"
+
 "iconv-lite@^0.4.24", "iconv-lite@0.4.24":
   "integrity" "sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA=="
   "resolved" "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.24.tgz"
@@ -14509,6 +14514,13 @@
   "resolved" "https://registry.npmjs.org/tinycolor2/-/tinycolor2-1.4.1.tgz"
   "version" "1.4.1"
 
+"tippy.js@^4.3.5":
+  "integrity" "sha512-NDq3efte8nGK6BOJ1dDN1/WelAwfmh3UtIYXXck6+SxLzbIQNZE/cmRSnwScZ/FyiKdIcvFHvYUgqmoGx8CcyA=="
+  "resolved" "https://registry.npmjs.org/tippy.js/-/tippy.js-4.3.5.tgz"
+  "version" "4.3.5"
+  dependencies:
+    "popper.js" "^1.14.7"
+
 "tmp@^0.0.33":
   "integrity" "sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw=="
   "resolved" "https://registry.npmjs.org/tmp/-/tmp-0.0.33.tgz"
@@ -15326,7 +15338,15 @@
   "resolved" "https://registry.npmjs.org/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz"
   "version" "1.9.1"
 
-"vue@^2.0.0", "vue@^2.6.10", "vue@^2.6.11", "vue@^2.6.4", "vue@^2.6.8":
+"vue-tippy@^4.13.0":
+  "integrity" "sha512-olKDi2plk0Yjs8A/31FwjWHaZKpwVC0/GbDXJH6tSWLEStOnIOW4M79P07aM4KuuCZIPVmuZWXP8zmLGS9Z0pg=="
+  "resolved" "https://registry.npmjs.org/vue-tippy/-/vue-tippy-4.13.0.tgz"
+  "version" "4.13.0"
+  dependencies:
+    "humps" "^2.0.1"
+    "tippy.js" "^4.3.5"
+
+"vue@^2.0.0", "vue@^2.5.9", "vue@^2.6.10", "vue@^2.6.11", "vue@^2.6.4", "vue@^2.6.8":
   "integrity" "sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-2.6.11.tgz"
   "version" "2.6.11"

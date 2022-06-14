@@ -1,52 +1,66 @@
 <template>
-  <!--
-=====================================================================================
-  Mew Tooltip 
-=====================================================================================
--->
-  <div>
-    <v-tooltip
-      eager
-      :max-width="maxWidth"
-      open-on-hover
-      content-class="tooltip-inner"
-      color="titlePrimary--text"
-      top
-    >
-      <template v-slot:activator="{ on }"> 
-        <v-icon
-          class="cursor-pointer mew-body"
-          color="searchText"
-          v-on="on"
-        >
-          mdi-information
-        </v-icon>
-        <slot name="activatorSlot" />
-      </template>
-      <slot name="contentSlot" />
-      <span>{{ text }}</span>
-    </v-tooltip>
-  </div>
+  <tippy-component
+    class="mew-tooltip"
+    style="display: inline-block; line-height: initial"
+    arrow
+    theme="light"
+    :max-width="maxWidth"
+    :content="text"
+  >
+    <!-- Popover trigger -->
+    <template #trigger>
+      <v-icon
+        v-if="!hideIcon"
+        class="cursor-pointer"
+        color="searchText"
+        small
+      >
+        mdi-information
+      </v-icon>
+
+      <slot name="activatorSlot" />
+    </template>
+
+    <!-- Popover content -->
+    <slot name="contentSlot" />
+  </tippy-component>
 </template>
 
 <script>
+import { TippyComponent } from 'vue-tippy';
+
 export default {
   name: 'MewTooltip',
+  components: {
+    TippyComponent
+  },
   props: {
-    /**
-     * The tooltip text.
-     */
+    maxWidth: {
+      type: String,
+      default: '450px'
+    },
     text: {
       type: String,
       default: ''
     },
-    /**
-     * The max width for tooltip text.
-     */
-    maxWidth: {
-      type: [String , Number],
-      default: '100%'
+    hideIcon: {
+      type: Boolean,
+      default: false
     }
   }
-}
+};
 </script>
+
+<style lang="scss">
+.tippy-tooltip.light-theme {
+  background-color: rgb(255, 255, 255);
+  color: initial;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
+  .tippy-arrow {
+    border-top-color: rgb(255, 255, 255);
+  }
+  .tippy-content {
+    word-break: break-all;
+  }
+}
+</style>
