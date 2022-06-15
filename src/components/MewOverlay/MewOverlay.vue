@@ -314,8 +314,9 @@ export default {
 
 .mew-overlay {
   .mobile-title-block {
-    background-color: var(--v-greyLight-base);
-    //border-bottom: 1px solid var(--v-greyLight-base);
+    //background-color: var(--v-greyLight-base);
+    border-bottom: 1px solid var(--v-greyLight-base);
+    background-color: var(--v-whiteAlways-base);
   }
 }
 </style>
