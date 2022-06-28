@@ -1,10 +1,9 @@
 <template>
-  <!--
-=====================================================================================
-  Mew Input
-=====================================================================================
--->
+  <!-- ===================================================================================== -->
+  <!-- Mew Input -->
+  <!-- ===================================================================================== -->
   <v-text-field
+    v-model="inputValue"
     class="mew-input rounded-lg"
     :disabled="disabled"
     :label="label"
@@ -14,7 +13,6 @@
     :solo="hasNoBorder"
     color="primary"
     :autofocus="autofocus"
-    v-model="inputValue"
     :hint="resolvedAddr ? resolvedAddr : hint"
     :persistent-hint="persistentHint || resolvedAddr.length > 0"
     :suffix="rightLabel"
@@ -23,32 +21,30 @@
     :type="inputType"
     :append-icon="showPasswordIcon"
     :readonly="isReadOnly"
-    @click:append="onPasswordIconClick"
     validate-on-blur
     height="62"
+    @click:append="onPasswordIconClick"
+    @keyup="sanitizeInput"
   >
-    <!--
-=====================================================================================
-  Mew Input: Error Messages 
-=====================================================================================
--->
-    <template v-slot:message="item">
-      <span
-        class="mew-label"
-      >{{ item.message }}
+    <!-- ===================================================================================== -->
+    <!-- Mew Input: Error Messages -->
+    <!-- ===================================================================================== -->
+    <template #message="item">
+      <span class="mew-label">
+        {{ item.message }}
         <a
           v-if="buyMoreStr"
           rel="noopener noreferrer"
           class="mew-label"
           @click="emitBuyMore"
-        >{{ buyMoreStr }}</a></span>
+          >{{ buyMoreStr }}</a
+        >
+      </span>
     </template>
-    <template v-slot:prepend-inner>
-      <!--
-=====================================================================================
-  Mew Input: Blockie (displays at the beginning of the input)
-=====================================================================================
--->
+    <template #prepend-inner>
+      <!-- ===================================================================================== -->
+      <!-- Mew Input: Blockie (displays at the beginning of the input) -->
+      <!-- ===================================================================================== -->
       <div
         v-if="showBlockie && !value"
         class="blockie-placeholder mr-1 selectHover"
@@ -60,18 +56,15 @@
         height="25px"
       />
       <div class="d-flex align-center justify-center">
-        <!--
-=====================================================================================
-  slot: prependInnerIcon
-  prepends content to the beginning of the input.
-=====================================================================================
--->
+        <!-- ===================================================================================== -->
+        <!-- slot: prependInnerIcon -->
+        <!-- prepends content to the beginning of the input. -->
+        <!-- ===================================================================================== -->
         <slot name="prependInnerIcon" />
-        <!--
-=====================================================================================
-  Mew Input: Token Image  (displays at the beginning of the input)
-=====================================================================================
--->
+
+        <!-- ===================================================================================== -->
+        <!-- Mew Input: Token Image  (displays at the beginning of the input) -->
+        <!-- ===================================================================================== -->
         <mew-token-container
           v-if="image"
           class="mx-1 mt-1"
@@ -81,20 +74,18 @@
         />
       </div>
     </template>
-    <!--
-=====================================================================================
-  Max Button (displays at the end of the input)
-=====================================================================================
--->
-    <template v-slot:append>
+
+    <!-- ===================================================================================== -->
+    <!-- Max Button (displays at the end of the input) -->
+    <!-- ===================================================================================== -->
+    <template #append>
       <v-btn
         v-if="maxBtnObj.method"
-        @click="maxBtnObj.method"
         :class="[
           maxBtnObj.disabled
             ? 'disabled--text no-pointer-events'
             : 'greyPrimary--text',
-          'rounded-lg mt-n2 mew-caption font-weight-medium',
+          'rounded-lg mt-n2 mew-caption font-weight-medium'
         ]"
         min-width="40"
         min-height="40"
@@ -102,6 +93,7 @@
         width="40"
         depressed
         color="greyLight"
+        @click="maxBtnObj.method"
       >
         {{ maxBtnObj.title }}
       </v-btn>
@@ -112,14 +104,15 @@
 <script>
 import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
 import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
+import _ from 'lodash';
 
-const types = ['password', 'text'];
+const types = ['password', 'text', 'number'];
 
 export default {
   name: 'MewInput',
   components: {
     MewBlockie,
-    MewTokenContainer,
+    MewTokenContainer
   },
   props: {
     /**
@@ -127,77 +120,77 @@ export default {
      */
     errorMessages: {
       type: [String, Array],
-      default: '',
+      default: ''
     },
     /**
      * Input becomes read only.
      */
     isReadOnly: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Prepends the blockie to the beginning of the input.
      */
     showBlockie: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Removes the input border and adds a box shadow.
      */
     hasNoBorder: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Disables the input.
      */
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * The input label.
      */
     label: {
       type: String,
-      default: '',
+      default: ''
     },
     /**
      * The input placeholder.
      */
     placeholder: {
       type: String,
-      default: '',
+      default: ''
     },
     /**
      * The input value.
      */
     value: {
       type: String,
-      default: '',
+      default: ''
     },
     /**
      * The input id.
      */
     id: {
       type: Number,
-      default: null,
+      default: null
     },
     /**
      * Displays text on the right inner side of the input.
      */
     rightLabel: {
       type: String,
-      default: '',
+      default: ''
     },
     /**
      * Hides input clear functionality. Clear symbol will be displayed on the right side.
      */
     hideClearBtn: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * For validating your input - accepts an array of functions that take an input value as an argument and returns either true / false
@@ -207,49 +200,49 @@ export default {
       type: Array,
       default: () => {
         return [];
-      },
+      }
     },
     /**
      * The resolved address.
      */
     resolvedAddr: {
       type: String,
-      default: '',
+      default: ''
     },
     /**
      * Enables persistent hint.
      */
     persistentHint: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Hint text (will be displayed at the bottom of the input).
      */
     hint: {
       type: String,
-      default: '',
+      default: ''
     },
     /**
      * Sets input type.
      */
     type: {
       type: String,
-      default: 'text',
+      default: 'text'
     },
     /**
      * Prepends an image to the beginning of the input.
      */
     image: {
       type: String,
-      default: '',
+      default: ''
     },
     /**
      * Adds a "Buy more" string to the end of the first index of the errorMessages prop.
      */
     buyMoreStr: {
       type: String,
-      default: '',
+      default: ''
     },
     /**
      * Displays a button to the right inner side of the input.
@@ -260,14 +253,14 @@ export default {
       type: Object,
       default: () => {
         return {};
-      },
+      }
     },
     /**
      * Autofocuses the input.
      */
     autofocus: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Hides the toggle show password icon on the right
@@ -275,14 +268,38 @@ export default {
      */
     hidePasswordIcon: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
       inputValue: '',
       showPassword: false,
+      sanitizationBuffer: ''
     };
+  },
+  computed: {
+    isPasswordType() {
+      return this.type === types[0];
+    },
+    isNumberType() {
+      return this.type === types[2];
+    },
+    showPasswordIcon() {
+      if (this.isPasswordType && !this.hidePasswordIcon) {
+        return !this.showPassword ? 'mdi-eye' : 'mdi-eye-off';
+      }
+      return '';
+    },
+    inputType() {
+      if (this.isNumberType) {
+        return types[2];
+      }
+      if (this.isPasswordType && this.showPassword) {
+        return types[1];
+      }
+      return this.type;
+    }
   },
   watch: {
     inputValue(newVal, oldVal) {
@@ -294,29 +311,64 @@ export default {
       if (newVal !== oldVal) {
         this.inputValue = newVal;
       }
-    },
-  },
-  computed: {
-    isPasswordType() {
-      return this.type === types[0];
-    },
-    showPasswordIcon() {
-      if (this.isPasswordType && !this.hidePasswordIcon) {
-        return !this.showPassword ? 'mdi-eye' : 'mdi-eye-off';
-      }
-      return '';
-    },
-    inputType() {
-      if (this.isPasswordType && this.showPassword) {
-        return types[1];
-      }
-      return this.type;
-    },
+    }
   },
   mounted() {
     this.inputValue = this.value;
+    this.sanitizationBuffer = this.value;
   },
   methods: {
+    sanitizeInput(e) {
+      // Sanitize for number type
+      if (this.isNumberType) {
+        const keysNotAllowed = ['-', 'e'];
+        const keyPressed = e.key;
+
+        // Exit for keys not allowed
+        if (keysNotAllowed.includes(keyPressed)) {
+          if (this.inputValue == '') {
+            this.inputValue = '0';
+            return;
+          }
+          this.inputValue = this.sanitizationBuffer;
+          return;
+        }
+
+        // Exit for inputValue '0'
+        if (this.inputValue == '0') {
+          return;
+        }
+
+        // Exit for inputValue '0.'
+        if (this.inputValue == '0.') {
+          return;
+        }
+
+        // Exit for valid decimal point number
+        if (this.inputValue.slice(0, 2) == '0.' && this.inputValue.length > 2) {
+          return;
+        }
+
+        // Insert '0' for empty inputValue
+        if (keyPressed == 'Backspace' && this.inputValue == '') {
+          this.inputValue = '0';
+          this.sanitizationBuffer = this.inputValue;
+          return;
+        }
+
+        // Insert '0' for empty inputValue
+        // (v-text-field returns empty string when user input '0')
+        if (keyPressed == '0' && this.inputValue == '00') {
+          this.inputValue = '0';
+          this.sanitizationBuffer = '0';
+          return;
+        }
+
+        // Remove leading zeros
+        this.inputValue = this.inputValue.replace(/^0+/, '');
+        this.sanitizationBuffer = this.inputValue;
+      }
+    },
     emitBuyMore() {
       this.$emit('buyMore');
     },
@@ -324,13 +376,11 @@ export default {
       if (this.isPasswordType) {
         this.showPassword = !this.showPassword;
       }
-    },
-    clear(val) {
-      this.inputValue = val ? val : '';
-    },
-  },
+    }
+  }
 };
 </script>
+
 <style lang="scss">
 /**
   * Mew Input styles
@@ -339,19 +389,23 @@ export default {
   .mdi-close {
     font-size: 20px !important;
   }
+
   &.v-input--is-focused {
     .mdi-close {
       color: var(--v-titlePrimary-base) !important;
     }
   }
+
   .v-text-field__slot {
     .v-label {
       margin-top: 5px;
     }
+
     .v-label--active {
       margin-top: 0;
     }
   }
+
   .v-input__icon--append {
     .mdi {
       color: var(--v-disabled-base);
