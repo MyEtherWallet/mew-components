@@ -27,6 +27,9 @@ const itemsObj = [
 export const MEWTabs = () => ({
   components: { MewTabs },
   props: {
+    compact: {
+      default: boolean('compact', false)
+    },
     enableDarkMode: {
       default: boolean('dark mode ?', false)
     },
@@ -84,6 +87,7 @@ export const MEWTabs = () => ({
       :is-block="isBlock"
       :is-centered="isCentered"
       :active-tab="activeTab"
+      :compact="compact"
       @onTab="onTab"
     >
       <template v-slot:tabItemContent1>

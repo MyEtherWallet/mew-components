@@ -20,7 +20,7 @@ export default {
 
 const items = [
   { step: 1, name: 'Create password' }, 
-  { step: 2 , name: 'Download keystore file'},
+  { step: 2, name: 'Download keystore file'},
   { step: 3, name: 'Well done'}
 ]
 
@@ -35,6 +35,9 @@ export const MEWStepper = () => ({
     },
     onStep: {
       default: number('on-step', 1)
+    },
+    compact: {
+      default: boolean('compact ?', false)
     }
   },
   watch: {
@@ -48,6 +51,7 @@ export const MEWStepper = () => ({
     <mew-stepper
       :items="items"
       :on-step="onStep"
+      :compact="compact"
     >
       <template v-if="onStep === 1" v-slot:stepperContent1>
         <span>1.This is step 1 content</span>

@@ -4,16 +4,17 @@
     <!-- Mew Table -->
     <!-- ===================================================================================== -->
     <v-data-table
+      v-model="selected"
       :class="[
         'mew-table',
         hasSelect ? 'mew-select-table' : '',
-        hasColor ? 'mew-super-primary-table' : ''
+        hasColor ? 'mew-super-primary-table' : '',
       ]"
-      :items="tableData"
-      :item-key="tableHeaders[0].value"
+      :items="indexedItems"
+      item-key="id"
       :headers="tableHeaders"
       :show-select="hasSelect"
-      :hide-default-footer="tableData && tableData.length <= 10"
+      :hide-default-footer="indexedItems && indexedItems.length <= 10"
       :items-per-page="10"
       :loader-height="0"
       :loading="loading"
@@ -174,6 +175,7 @@
                 ? 'mr-1'
                 : ''
             "
+            @click.native="button.method(item)"
             :title="button.title"
             :disabled="button.disabled"
             btn-size="small"
@@ -294,9 +296,18 @@ export default {
     MewBlockie,
     MewButton,
     MewTransformHash,
-    MewCopy
+    MewCopy,
   },
   props: {
+    /**
+     * Selected values passable
+     * from parent so values
+     * can be preselected
+     */
+    selectedValues: {
+      type: Array,
+      default: () => [],
+    },
     /**
      * Applies skeleton loader
      * note: tableData has to be empty
@@ -304,43 +315,67 @@ export default {
      */
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * The table headers.
      */
     tableHeaders: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     /**
      * The table data.
      */
     tableData: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     /**
      * Applies select button to each row.
      */
     hasSelect: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Applies superPrimary color to table.
      */
     hasColor: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * No data text
      */
     noDataText: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
+  },
+  data() {
+    return {
+      selected: [],
+    };
+  },
+  computed: {
+    /**
+     * adds id to tableData items
+     */
+    indexedItems() {
+      return this.tableData.map((item, index) => ({
+        id: index,
+        ...item,
+      }));
+    },
+  },
+  watch: {
+    selectedValues: {
+      handler: function(newVal) {
+        this.selected = newVal;
+      },
+      deep: true,
+    },
   },
   methods: {
     /**
