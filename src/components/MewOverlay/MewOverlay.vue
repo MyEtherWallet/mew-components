@@ -304,9 +304,7 @@ export default {
     width: 100%;
     z-index: 9999;
   }
-  .mobile-content {
-    //margin-top: 68px;
-  }
+
   .mobile-btn {
     z-index: 99999;
   }
@@ -314,10 +312,8 @@ export default {
 
 .mew-overlay {
   .mobile-title-block {
-    //background-color: var(--v-whiteAlways-base);
     background-color: var(--v-greyLight-base);
     border-bottom: 1px solid var(--v-greyLight-base);
-    
   }
 }
 </style>
