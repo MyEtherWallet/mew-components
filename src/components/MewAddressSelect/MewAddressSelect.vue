@@ -274,6 +274,12 @@ export default {
   },
   methods: {
     /**
+     * Clears the v-model value.
+     */
+    clear() {
+      this.addressValue = '';
+    },
+    /**
      * Emits 'saveAddress' when triggered by save address button.
      */
     saveAddress() {
