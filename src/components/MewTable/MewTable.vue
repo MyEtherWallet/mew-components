@@ -8,7 +8,7 @@
       :class="[
         'mew-table',
         hasSelect ? 'mew-select-table' : '',
-        hasColor ? 'mew-super-primary-table' : '',
+        hasColor ? 'mew-super-primary-table' : ''
       ]"
       :items="indexedItems"
       item-key="id"
@@ -175,12 +175,12 @@
                 ? 'mr-1'
                 : ''
             "
-            @click.native="button.method(item)"
             :title="button.title"
             :disabled="button.disabled"
             btn-size="small"
             :btn-style="button.btnStyle"
             :btn-color-theme="button.colorTheme"
+            @click.native="button.method(item)"
           />
         </div>
       </template>
@@ -262,9 +262,24 @@
                   :copy-value="item.address"
                 />
                 <a
+                  v-if="
+                    validateCoin(item.resolvedAddr) == 'eth' ||
+                      validateCoin(item.address) == 'eth'
+                  "
                   class="address-link"
                   :href="
                     'https://www.ethvm.com/address/' +
+                      (item.resolvedAddr ? item.resolvedAddr : item.address)
+                  "
+                  target="_blank"
+                >
+                  <v-icon class="call-made"> mdi-call-made </v-icon>
+                </a>
+                <a
+                  v-if="validateCoin(item.address) == 'btc'"
+                  class="address-link"
+                  :href="
+                    'https://www.blockchain.com/btc/address/' +
                       (item.resolvedAddr ? item.resolvedAddr : item.address)
                   "
                   target="_blank"
@@ -282,6 +297,7 @@
 </template>
 
 <script>
+import MultiCoinValidator from 'multicoin-address-validator';
 import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
 import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
 import MewButton from '@/components/MewButton/MewButton.vue';
@@ -295,7 +311,7 @@ export default {
     MewBlockie,
     MewButton,
     MewTransformHash,
-    MewCopy,
+    MewCopy
   },
   props: {
     /**
@@ -305,7 +321,7 @@ export default {
      */
     selectedValues: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     /**
      * Applies skeleton loader
@@ -314,47 +330,47 @@ export default {
      */
     loading: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * The table headers.
      */
     tableHeaders: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     /**
      * The table data.
      */
     tableData: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     /**
      * Applies select button to each row.
      */
     hasSelect: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Applies superPrimary color to table.
      */
     hasColor: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * No data text
      */
     noDataText: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
   data() {
     return {
-      selected: [],
+      selected: []
     };
   },
   computed: {
@@ -364,19 +380,33 @@ export default {
     indexedItems() {
       return this.tableData.map((item, index) => ({
         id: index,
-        ...item,
+        ...item
       }));
-    },
+    }
   },
   watch: {
     selectedValues: {
-      handler: function(newVal) {
+      handler: function (newVal) {
         this.selected = newVal;
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
   methods: {
+    validateCoin(address) {
+      if (!address) {
+        return false;
+      }
+
+      if (MultiCoinValidator.validate(address, 'eth')) {
+        return 'eth';
+      }
+      if (MultiCoinValidator.validate(address, 'btc')) {
+        return 'btc';
+      }
+
+      return false;
+    },
     /**
      * emits selectedRow when selecting a checkbox
      */

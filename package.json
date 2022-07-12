@@ -35,6 +35,7 @@
     "lodash": "^4.17.21",
     "material-design-icons-iconfont": "^5.0.1",
     "minimist": "^1.2.5",
+    "multicoin-address-validator": "git+https://github.com/MyEtherWallet/multicoin-address-validator.git",
     "rollup-plugin-uglify-es": "0.0.1",
     "style-loader": "^1.2.1",
     "vue": "^2.6.10",
