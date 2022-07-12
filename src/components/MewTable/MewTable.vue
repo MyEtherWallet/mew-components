@@ -181,7 +181,6 @@
             btn-size="small"
             :btn-style="button.btnStyle"
             :btn-color-theme="button.colorTheme"
-            @click.native="button.method(item)"
           />
         </div>
       </template>
