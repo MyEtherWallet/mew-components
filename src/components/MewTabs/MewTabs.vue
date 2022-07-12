@@ -1,17 +1,55 @@
 <template>
-  <!--
-=====================================================================================
-  Mew Tabs 
-=====================================================================================
--->
+  <!-- ===================================================================================== -->
+  <!-- Mew Tabs -->
+  <!-- ===================================================================================== -->
   <div>
+    <!-- ================================================================= -->
+    <!-- Compact(Mobile) tabs -->
+    <!-- ================================================================= -->
+    <div v-if="compact">
+      <!-- ========================================= -->
+      <!-- Mobile tabs selector buttons -->
+      <!-- ========================================= -->
+      <v-chip-group
+        v-model="onTab"
+        mandatory
+        column
+      >
+        <v-chip
+          v-for="(mobileItem, mobileItemKey) in items"
+          :key="mobileItemKey"
+          class="ma-1"
+          active-class="greenPrimary text--primary"
+          outlined
+        >
+          {{ mobileItem['name'] }}
+        </v-chip>
+      </v-chip-group>
+
+      <!-- ========================================= -->
+      <!-- Mobile tabs contents -->
+      <!-- ========================================= -->
+      <template v-for="(mobileItem, mobileItemKey) in items">
+        <div :key="mobileItemKey">
+          <slot
+            v-if="onTab == mobileItemKey"
+            :name="'tabItemContent' + (mobileItemKey + 1)"
+          />
+        </div>
+      </template>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- Desktop tabs -->
+    <!-- ================================================================= -->
     <v-tabs
+      v-if="!compact"
+      v-model="onTab"
       :class="tabClasses"
       :background-color="background"
       :color="activeColor"
       :centered="isCentered"
       slider-size="3"
-      v-model="onTab"
       :hide-slider="isBlock || isVertical"
       :grow="isBlock || hasFullWidth"
       :vertical="isVertical"
@@ -19,34 +57,32 @@
       :align-with-title="!isBlock && !isCentered && !isVertical"
     >
       <v-tab
+        v-for="(item, i) in items"
+        :key="item + i"
         :class="[
           isBlock
             ? 'mew-tab-block'
             : isVertical || isSmall
               ? 'mew-body font-weight-medium'
               : 'mew-heading-2',
-          'capitalize',
+          'capitalize'
         ]"
         :ripple="!isVertical"
-        v-for="(item, i) in items"
-        :key="item + i"
       >
         {{ item.name }}
       </v-tab>
       <v-tabs-items v-model="onTab">
         <v-tab-item
+          v-for="(item, i) in items"
+          :key="item + i"
           :reverse-transition="
             !isVertical ? 'slide-x-transition' : 'slide-y-transition'
           "
-          v-for="(item, i) in items"
-          :key="item + i"
         >
-          <!--
-=====================================================================================
-  Slot: 'tabItemContent' + number of tab content (used to place custom tab content 
-  inside of the tab container)
-=====================================================================================
--->
+          <!-- ===================================================================================== -->
+          <!-- Slot: 'tabItemContent' + number of tab content (used to place custom tab -->
+          <!-- content inside of the tab container) -->
+          <!-- ===================================================================================== -->
           <slot :name="'tabItemContent' + (i + 1)" />
         </v-tab-item>
       </v-tabs-items>
@@ -60,12 +96,10 @@
         :hide-on-leave="true"
         mode="out-in"
       >
-        <!--
-=====================================================================================
-  Slot: 'tabContent' + number of tab content (used to place custom tab content outside of the 
-  tab container)
-=====================================================================================
--->
+        <!-- ===================================================================================== -->
+        <!-- Slot: 'tabContent' + number of tab content (used to place custom tab -->
+        <!-- content outside of the tab container) -->
+        <!-- ===================================================================================== -->
         <slot
           v-if="onTab === i"
           :name="'tabContent' + (i + 1)"
@@ -78,11 +112,6 @@
 <script>
 export default {
   name: 'MewTabs',
-  data() {
-    return {
-      onTab: null,
-    };
-  },
   props: {
     /**
      * Sets the color for active tab.
@@ -90,7 +119,7 @@ export default {
      */
     activeColor: {
       type: String,
-      default: 'titlePrimary',
+      default: 'titlePrimary'
     },
     /**
      * Sets the color for the background of mew-tabs.
@@ -98,42 +127,42 @@ export default {
      */
     background: {
       type: String,
-      default: 'transparent',
+      default: 'transparent'
     },
     /**
      * Displays arrows if tab items overflow container.
      */
     showArrows: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Sets the active tab.
      */
     activeTab: {
       type: Number,
-      default: 0,
+      default: 0
     },
     /**
      * Sets the tabs as vertical.
      */
     hasUnderline: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Sets the tabs as vertical.
      */
     isVertical: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Sets the tabs to the center of the page.
      */
     isCentered: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Tab content
@@ -142,29 +171,38 @@ export default {
       type: Array,
       default: () => {
         return [];
-      },
+      }
     },
     /**
      * Shows the tab as a block.
      */
     isBlock: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Allows tabs to take up the full-width of the page.
      */
     hasFullWidth: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Sets the font size to 14px (mew-body)
      */
     isSmall: {
       type: Boolean,
-      default: false,
+      default: false
     },
+    compact: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      onTab: null
+    };
   },
   computed: {
     tabClasses() {
@@ -176,15 +214,7 @@ export default {
         classes.push('mew-tabs-block elevation-3');
       }
       return classes;
-    },
-  },
-  methods: {
-    onClick() {
-      this.$emit('onNextStep');
-    },
-  },
-  mounted() {
-    this.onTab = this.activeTab;
+    }
   },
   watch: {
     activeTab(newVal) {
@@ -192,8 +222,11 @@ export default {
     },
     onTab(newVal) {
       this.$emit('onTab', newVal);
-    },
+    }
   },
+  mounted() {
+    this.onTab = this.activeTab;
+  }
 };
 </script>
 
@@ -228,7 +261,7 @@ export default {
 .mew-tabs {
   &.v-tabs--vertical > .v-tabs-bar .v-tab {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     padding-left: 0;
     &:hover {
       text-decoration: underline;
@@ -236,6 +269,16 @@ export default {
     &:before {
       background-color: transparent;
     }
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+.v-chip--active {
+  border: 2px solid var(--v-greenPrimary-base) !important;
+
+  &::before {
+    background-color: white;
   }
 }
 </style>

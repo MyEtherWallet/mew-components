@@ -1,45 +1,41 @@
 <template>
-  <!--
-=====================================================================================
-  Mew Token Container 
-=====================================================================================
--->
+  <!-- ===================================================================================== -->
+  <!-- Mew Token Container -->
+  <!-- ===================================================================================== -->
   <div
-    :style="'height:' + getSize + ';width:' + getSize"
     class="mew-token-container d-flex align-center justify-center"
   >
-    <!--
-=====================================================================================
- Loading State
-=====================================================================================
--->
+    <!-- ===================================================================================== -->
+    <!-- Loading State -->
+    <!-- ===================================================================================== -->
     <v-skeleton-loader
-      class="token-skeleton"
       v-if="loading"
+      class="token-skeleton"
       :height="getSize"
       :width="getSize"
       type="avatar"
     />
-    <!--
-=====================================================================================
-  Img
-=====================================================================================
--->
+    
+    <!-- ===================================================================================== -->
+    <!-- Img -->
+    <!-- ===================================================================================== -->
     <img
       v-if="!loading && img"
-      :height="getSize"
+      :style="{ height: `${getSize}`, width: `${getSize}` }"
       :src="img || ethTokenPlaceholder"
       :alt="name"
       loading="lazy"
     >
-    <!--
-=====================================================================================
-  Img Placeholder
-=====================================================================================
--->
+
+    <!-- ===================================================================================== -->
+    <!-- Img Placeholder -->
+    <!-- ===================================================================================== -->
     <span
-      :class="['d-flex align-center justify-center full-height textLight--text text-uppercase font-weight-medium', getFontClass]"
       v-if="!loading && !img"
+      :class="[
+        'd-flex align-center justify-center full-height textLight--text text-uppercase font-weight-medium',
+        getFontClass
+      ]"
     >
       {{ getPlaceholderText }}
     </span>
@@ -51,45 +47,45 @@ import ethTokenPlaceholder from '@/assets/images/icons/eth.svg';
 
 export default {
   name: 'MewTokenContainer',
-  data() {
-    return {
-      ethTokenPlaceholder,
-      sizeOptions: {
-        small: 'small',
-        medium: 'medium',
-        large: 'large',
-      },
-    };
-  },
   props: {
     /**
      * Turns on loading state if true.
      */
     loading: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Accepts small, medium or large sizes.
      */
     size: {
       type: String,
-      default: 'small',
+      default: 'small'
     },
     /**
      * Token name. Used for placeholder if there is no icon img.
      */
     name: {
       type: String,
-      default: 'MEW',
+      default: 'MEW'
     },
     /**
      * Token Icon img src
      */
     img: {
       type: [String, Array],
-      default: '',
-    },
+      default: ''
+    }
+  },
+  data() {
+    return {
+      ethTokenPlaceholder,
+      sizeOptions: {
+        small: 'small',
+        medium: 'medium',
+        large: 'large'
+      }
+    };
   },
   computed: {
     /**
@@ -128,22 +124,22 @@ export default {
       }
 
       return '52px';
-    },
-  },
+    }
+  }
 };
 </script>
-<style lang="scss" scoped>
-.mew-token-container {
-  background-color: var(--v-white-base);
-  border-radius: 50%;
-  box-shadow: inset 0px 0px 2px rgba(25, 33, 51, 0.16);
-}
-</style>
+
 <style lang="scss">
 /**
   * has to be global styles to override vuetify
   */
 .mew-token-container {
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--v-white-base);
+  border-radius: 50%;
+  box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.3);
+
   .token-skeleton {
     .v-skeleton-loader__avatar {
       background-color: var(--v-greyLight-base);
