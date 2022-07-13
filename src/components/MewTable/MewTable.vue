@@ -120,10 +120,10 @@
             v-if="item.change !== ''"
             :class="[
               item.status === '+' ? 'primary--text' : 'error--text',
-              'd-flex'
+              'd-flex',
             ]"
           >
-            {{ item.change + '%' }}
+            {{ item.change + "%" }}
             <v-icon
               v-if="item.status === '+'"
               class="primary--text"
@@ -175,7 +175,6 @@
                 ? 'mr-1'
                 : ''
             "
-            @click.native="button.method(item)"
             :title="button.title"
             :disabled="button.disabled"
             btn-size="small"
@@ -389,8 +388,8 @@ export default {
      */
     onSelect(item) {
       this.$emit('selectedRow', item);
-    }
-  }
+    },
+  },
 };
 </script>
 
