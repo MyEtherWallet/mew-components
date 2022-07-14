@@ -15,7 +15,7 @@
     :placeholder="placeholder"
     :disabled="disabled"
     :error-messages="errorMessages"
-    :hint="resolvedAddr ? resolvedAddr : ''"
+    :hint="hint || resolvedAddr || ''"
     :persistent-hint="resolvedAddr.length > 0"
     :rules="rules"
     :no-data-text="noDataText"
@@ -143,6 +143,13 @@ export default {
     MewTransformHash
   },
   props: {
+    /**
+     * Text displayed under the input container. 
+     */
+    hint: {
+      type: String,
+      default: ''
+    },
     /**
      * For validating your input - accepts an array of functions that take
      * an input value as an argument and return either true / false or a
