@@ -82,15 +82,16 @@
           v-if="!loading && item.imgs"
           class="flex-row d-flex align-center"
         >
-          <mew-token-container
-            v-if="!normalDropdown"
-            v-for="(url, idx) in item.imgs"
-            :key="url + idx"
-            class="label-token-img"
-            :loading="loading"
-            :img="url"
-            size="small"
-          />
+          <div v-if="!normalDropdown">
+            <mew-token-container
+              v-for="(url, idx) in item.imgs"
+              :key="url + idx"
+              class="label-token-img"
+              :loading="loading"
+              :img="url"
+              size="small"
+            />
+          </div>
           <div
             class="total-token-placeholder inputBorder d-flex align-center justify-center mew-caption"
           >
@@ -193,7 +194,6 @@
           >
             <mew-token-container
               v-if="!normalDropdown"
-
               class="mr-1"
               :loading="loading"
               :img="!data.item.img ? null : data.item.img"
@@ -208,7 +208,7 @@
                 class="mew-caption font-weight-regular textSecondary--text text-capitalize"
               >{{
                 data.item.tokenBalance
-                  ? data.item.tokenBalance + ' ' + data.item.symbol
+                  ? data.item.tokenBalance + " " + data.item.symbol
                   : data.item.subtext
               }}</span></span>
           </div>
@@ -231,7 +231,7 @@ import get from 'lodash/get';
 export default {
   name: 'MewSelect',
   components: {
-    MewTokenContainer
+    MewTokenContainer,
   },
   props: {
     /**
@@ -239,28 +239,28 @@ export default {
      */
     buyMoreStr: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Error messages to display
      */
     errorMessages: {
       type: [String, Array],
-      default: ''
+      default: '',
     },
     /**
      * Adds filter to select items
      */
     hasFilter: {
       type: Boolean,
-      default: true //  change to false
+      default: true, //  change to false
     },
     /**
      * Filter placeholder
      */
     filterPlaceholder: {
       type: String,
-      default: 'Search token name'
+      default: 'Search token name',
     },
     /**
      * MEW select value
@@ -269,14 +269,14 @@ export default {
       type: Object,
       default: () => {
         return {};
-      }
+      },
     },
     /**
      * Disables the select dropdown.
      */
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Can be an array of objects or array of strings. When using objects, will look for a text and value field.
@@ -289,57 +289,57 @@ export default {
       type: Array,
       default: () => {
         return [];
-      }
+      },
     },
     /**
      * Sets the select label
      */
     label: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Applies Custom Select styles
      */
     isCustom: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Loading state
      */
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Normal dropdown with no icon
      */
     normalDropdown: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
       selectModel: null,
       selectItems: [],
-      search: ''
+      search: '',
     };
   },
   computed: {
     defaultItem() {
-      return this.items.find(obj => {
+      return this.items.find((obj) => {
         return obj.selectLabel || obj.name;
       });
-    }
+    },
   },
   watch: {
     search(newVal) {
       if (newVal === '' || newVal === null) {
         this.selectItems = this.items;
       } else {
-        const foundItems = this.items.filter(item => {
+        const foundItems = this.items.filter((item) => {
           const searchValue = String(newVal).toLowerCase();
           const value = String(get(item, 'value', '')).toLowerCase();
           const name = String(get(item, 'name', '')).toLowerCase();
@@ -373,15 +373,15 @@ export default {
       }
     },
     items: {
-      handler: function (newVal) {
+      handler: function(newVal) {
         this.selectItems = newVal;
         this.selectModel =
           this.value && Object.keys(this.value).length !== 0
             ? this.value
             : this.defaultItem;
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   mounted() {
     this.selectItems = this.items;
@@ -413,8 +413,8 @@ export default {
           this.$refs.filterTextField.$refs.input.focus();
         }
       }, 100);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
