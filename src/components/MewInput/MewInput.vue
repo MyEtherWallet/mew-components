@@ -22,6 +22,7 @@
     :append-icon="showPasswordIcon"
     :readonly="isReadOnly"
     validate-on-blur
+    hide-spin-buttons
     height="62"
     @click:append="onPasswordIconClick"
     @keyup="sanitizeInput"
@@ -37,8 +38,9 @@
           rel="noopener noreferrer"
           class="mew-label"
           @click="emitBuyMore"
-          >{{ buyMoreStr }}</a
         >
+          {{ buyMoreStr }}
+        </a>
       </span>
     </template>
     <template #prepend-inner>
@@ -85,7 +87,7 @@
           maxBtnObj.disabled
             ? 'disabled--text no-pointer-events'
             : 'greyPrimary--text',
-          'rounded-lg mt-n2 mew-caption font-weight-medium'
+          'rounded-lg mt-n2 mew-caption font-weight-medium',
         ]"
         min-width="40"
         min-height="40"
@@ -111,7 +113,7 @@ export default {
   name: 'MewInput',
   components: {
     MewBlockie,
-    MewTokenContainer
+    MewTokenContainer,
   },
   props: {
     /**
@@ -119,77 +121,77 @@ export default {
      */
     errorMessages: {
       type: [String, Array],
-      default: ''
+      default: '',
     },
     /**
      * Input becomes read only.
      */
     isReadOnly: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Prepends the blockie to the beginning of the input.
      */
     showBlockie: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Removes the input border and adds a box shadow.
      */
     hasNoBorder: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Disables the input.
      */
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * The input label.
      */
     label: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * The input placeholder.
      */
     placeholder: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * The input value.
      */
     value: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * The input id.
      */
     id: {
       type: Number,
-      default: null
+      default: null,
     },
     /**
      * Displays text on the right inner side of the input.
      */
     rightLabel: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Hides input clear functionality. Clear symbol will be displayed on the right side.
      */
     hideClearBtn: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * For validating your input - accepts an array of functions that take an input value as an argument and returns either true / false
@@ -199,49 +201,49 @@ export default {
       type: Array,
       default: () => {
         return [];
-      }
+      },
     },
     /**
      * The resolved address.
      */
     resolvedAddr: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Enables persistent hint.
      */
     persistentHint: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Hint text (will be displayed at the bottom of the input).
      */
     hint: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Sets input type.
      */
     type: {
       type: String,
-      default: 'text'
+      default: 'text',
     },
     /**
      * Prepends an image to the beginning of the input.
      */
     image: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Adds a "Buy more" string to the end of the first index of the errorMessages prop.
      */
     buyMoreStr: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Displays a button to the right inner side of the input.
@@ -252,14 +254,14 @@ export default {
       type: Object,
       default: () => {
         return {};
-      }
+      },
     },
     /**
      * Autofocuses the input.
      */
     autofocus: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Hides the toggle show password icon on the right
@@ -267,14 +269,14 @@ export default {
      */
     hidePasswordIcon: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
       inputValue: '',
       showPassword: false,
-      sanitizationBuffer: ''
+      sanitizationBuffer: '',
     };
   },
   computed: {
@@ -298,7 +300,7 @@ export default {
         return types[1];
       }
       return this.type;
-    }
+    },
   },
   watch: {
     inputValue(newVal, oldVal) {
@@ -310,7 +312,7 @@ export default {
       if (newVal !== oldVal) {
         this.inputValue = newVal;
       }
-    }
+    },
   },
   mounted() {
     this.inputValue = this.value;
@@ -375,8 +377,8 @@ export default {
       if (this.isPasswordType) {
         this.showPassword = !this.showPassword;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
