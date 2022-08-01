@@ -217,11 +217,11 @@
   </v-select>
 </template>
 <script>
-import MewTokenContainer from "@/components/MewTokenContainer/MewTokenContainer.vue";
-import get from "lodash/get";
+import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
+import get from 'lodash/get';
 
 export default {
-  name: "MewSelect",
+  name: 'MewSelect',
   components: {
     MewTokenContainer,
   },
@@ -231,14 +231,14 @@ export default {
      */
     buyMoreStr: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * Error messages to display
      */
     errorMessages: {
       type: [String, Array],
-      default: "",
+      default: '',
     },
     /**
      * Adds filter to select items
@@ -252,7 +252,7 @@ export default {
      */
     filterPlaceholder: {
       type: String,
-      default: "Search token name",
+      default: 'Search token name',
     },
     /**
      * MEW select value
@@ -288,7 +288,7 @@ export default {
      */
     label: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * Applies Custom Select styles
@@ -316,7 +316,7 @@ export default {
     return {
       selectModel: null,
       selectItems: [],
-      search: "",
+      search: '',
     };
   },
   computed: {
@@ -328,28 +328,39 @@ export default {
   },
   watch: {
     search(newVal) {
-      if (newVal === "" || newVal === null) {
+      if (newVal === '' || newVal === null) {
         this.selectItems = this.items;
       } else {
+        const foundItem = this.items.filter((item) => {
+          const searchValue = String(newVal).toLowerCase();
+          const value = String(get(item, 'value', '')).toLowerCase();
+          const name = String(get(item, 'name', '')).toLowerCase();
+          const subtext = String(get(item, 'subtext', '')).toLowerCase();
+          return (
+            name === searchValue ||
+            subtext === searchValue ||
+            value === searchValue
+          );
+        });
         const foundItems = this.items.filter((item) => {
           const searchValue = String(newVal).toLowerCase();
-          const value = String(get(item, "value", "")).toLowerCase();
-          const name = String(get(item, "name", "")).toLowerCase();
-          const subtext = String(get(item, "subtext", "")).toLowerCase();
+          const value = String(get(item, 'value', '')).toLowerCase();
+          const name = String(get(item, 'name', '')).toLowerCase();
+          const subtext = String(get(item, 'subtext', '')).toLowerCase();
           return (
             name.includes(searchValue) ||
             subtext.includes(searchValue) ||
             value.includes(searchValue)
           );
         });
-        this.selectItems = foundItems;
+        this.selectItems = [...foundItem, ...foundItems];
       }
     },
     selectModel(newVal) {
       setTimeout(() => {
-        this.search = "";
+        this.search = '';
       }, 1000);
-      this.$emit("input", newVal);
+      this.$emit('input', newVal);
     },
     value(newVal) {
       this.selectModel =
@@ -384,12 +395,12 @@ export default {
   },
   methods: {
     emitBuyMore() {
-      this.$emit("buyMore");
+      this.$emit('buyMore');
     },
     togglePointerEventStyle() {
-      const elems = document.querySelectorAll("div.v-list-item--link");
+      const elems = document.querySelectorAll('div.v-list-item--link');
       if (elems) {
-        const pointerEventStyle = this.loading ? "none" : "all";
+        const pointerEventStyle = this.loading ? 'none' : 'all';
         for (let i = 0; i < elems.length; i++) {
           elems[i].style.pointerEvents = pointerEventStyle;
         }
