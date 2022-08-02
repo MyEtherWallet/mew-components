@@ -73,6 +73,9 @@ export const MEWSelect = () => ({
     },
     normalDropdown: {
       default: boolean('normal-dropdown', false)
+    },
+    noCapitalize: {
+      default: boolean('no-capitalize', false)
     }
   },
   watch: {
@@ -83,7 +86,7 @@ export const MEWSelect = () => ({
   template: `
     <div>
     <br />
-    <mew-select :loading="loading" :buy-more-str="buyMoreStr"  :error-messages="errorMessages" :is-custom="isCustom" :filter-placeholder="filterPlaceholder" :has-filter="hasFilter" :label="label" :items="isCustom ? customItems : items" :disabled="disabled" :value="value" :normal-dropdown="normalDropdown"
+    <mew-select :loading="loading" :buy-more-str="buyMoreStr"  :error-messages="errorMessages" :is-custom="isCustom" :filter-placeholder="filterPlaceholder" :has-filter="hasFilter" :label="label" :items="isCustom ? customItems : items" :disabled="disabled" :value="value" :normal-dropdown="normalDropdown" :no-capitalize="noCapitalize"
     />
   </div>`
 });
