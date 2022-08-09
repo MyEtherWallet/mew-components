@@ -35,6 +35,9 @@ export const MEWTokenContainer = () => ({
     size: {
       default: optionsKnob('size', sizeOptions, sizeOptions.small, { display: 'inline-radio' })
     },
+    borderSize: {
+      default: boolean('border-size', false)
+    },
     img: {
       default: files('img', '.png, .svg', '')
     },
@@ -55,6 +58,7 @@ export const MEWTokenContainer = () => ({
     <br />
     <mew-token-container
       :size="size"
+      :border-size="borderSize"
       :img="img"
       :name="name"
       :loading="loading"

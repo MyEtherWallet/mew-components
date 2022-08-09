@@ -29,7 +29,7 @@
       :src="img || ethTokenPlaceholder"
       :alt="name"
       loading="lazy"
-    />
+    >
 
     <!-- ===================================================================================== -->
     <!-- Img Placeholder -->
@@ -66,6 +66,9 @@ export default {
       type: String,
       default: 'small'
     },
+    /**
+     * Set a custom border size for icon.
+     */
     borderSize: {
       type: String,
       default: ''
