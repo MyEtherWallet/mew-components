@@ -105,7 +105,7 @@
       <div v-if="!item.selectLabel" class="d-flex align-center justify-center">
         <mew-token-container
           v-if="!normalDropdown"
-          class="ml-1"
+          class="ml-1 flex-shrink-0"
           :loading="loading"
           :img="item.img"
           :name="item.name || item"
@@ -197,7 +197,7 @@
                 class="mew-caption font-weight-regular textSecondary--text text-capitalize"
                 >{{
                   data.item.tokenBalance
-                    ? data.item.tokenBalance + " " + data.item.symbol
+                    ? data.item.tokenBalance + ' ' + data.item.symbol
                     : data.item.subtext
                 }}</span
               ></span
@@ -217,13 +217,13 @@
   </v-select>
 </template>
 <script>
-import MewTokenContainer from "@/components/MewTokenContainer/MewTokenContainer.vue";
-import get from "lodash/get";
+import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
+import get from 'lodash/get';
 
 export default {
-  name: "MewSelect",
+  name: 'MewSelect',
   components: {
-    MewTokenContainer,
+    MewTokenContainer
   },
   props: {
     /**
@@ -231,28 +231,28 @@ export default {
      */
     buyMoreStr: {
       type: String,
-      default: "",
+      default: ''
     },
     /**
      * Error messages to display
      */
     errorMessages: {
       type: [String, Array],
-      default: "",
+      default: ''
     },
     /**
      * Adds filter to select items
      */
     hasFilter: {
       type: Boolean,
-      default: true, //  change to false
+      default: true //  change to false
     },
     /**
      * Filter placeholder
      */
     filterPlaceholder: {
       type: String,
-      default: "Search token name",
+      default: 'Search token name'
     },
     /**
      * MEW select value
@@ -261,14 +261,14 @@ export default {
       type: Object,
       default: () => {
         return {};
-      },
+      }
     },
     /**
      * Disables the select dropdown.
      */
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Can be an array of objects or array of strings. When using objects, will look for a text and value field.
@@ -281,61 +281,61 @@ export default {
       type: Array,
       default: () => {
         return [];
-      },
+      }
     },
     /**
      * Sets the select label
      */
     label: {
       type: String,
-      default: "",
+      default: ''
     },
     /**
      * Applies Custom Select styles
      */
     isCustom: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Loading state
      */
     loading: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Normal dropdown with no icon
      */
     normalDropdown: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
       selectModel: null,
       selectItems: [],
-      search: "",
+      search: ''
     };
   },
   computed: {
     defaultItem() {
-      return this.items.find((obj) => {
+      return this.items.find(obj => {
         return obj.selectLabel || obj.name;
       });
-    },
+    }
   },
   watch: {
     search(newVal) {
-      if (newVal === "" || newVal === null) {
+      if (newVal === '' || newVal === null) {
         this.selectItems = this.items;
       } else {
-        const foundItems = this.items.filter((item) => {
+        const foundItems = this.items.filter(item => {
           const searchValue = String(newVal).toLowerCase();
-          const value = String(get(item, "value", "")).toLowerCase();
-          const name = String(get(item, "name", "")).toLowerCase();
-          const subtext = String(get(item, "subtext", "")).toLowerCase();
+          const value = String(get(item, 'value', '')).toLowerCase();
+          const name = String(get(item, 'name', '')).toLowerCase();
+          const subtext = String(get(item, 'subtext', '')).toLowerCase();
           return (
             name.includes(searchValue) ||
             subtext.includes(searchValue) ||
@@ -347,9 +347,9 @@ export default {
     },
     selectModel(newVal) {
       setTimeout(() => {
-        this.search = "";
+        this.search = '';
       }, 1000);
-      this.$emit("input", newVal);
+      this.$emit('input', newVal);
     },
     value(newVal) {
       this.selectModel =
@@ -365,15 +365,15 @@ export default {
       }
     },
     items: {
-      handler: function(newVal) {
+      handler: function (newVal) {
         this.selectItems = newVal;
         this.selectModel =
           this.value && Object.keys(this.value).length !== 0
             ? this.value
             : this.defaultItem;
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
   mounted() {
     this.selectItems = this.items;
@@ -384,12 +384,12 @@ export default {
   },
   methods: {
     emitBuyMore() {
-      this.$emit("buyMore");
+      this.$emit('buyMore');
     },
     togglePointerEventStyle() {
-      const elems = document.querySelectorAll("div.v-list-item--link");
+      const elems = document.querySelectorAll('div.v-list-item--link');
       if (elems) {
-        const pointerEventStyle = this.loading ? "none" : "all";
+        const pointerEventStyle = this.loading ? 'none' : 'all';
         for (let i = 0; i < elems.length; i++) {
           elems[i].style.pointerEvents = pointerEventStyle;
         }
@@ -405,8 +405,8 @@ export default {
           this.$refs.filterTextField.$refs.input.focus();
         }
       }, 100);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">
