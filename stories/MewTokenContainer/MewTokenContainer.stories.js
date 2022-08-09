@@ -36,7 +36,7 @@ export const MEWTokenContainer = () => ({
       default: optionsKnob('size', sizeOptions, sizeOptions.small, { display: 'inline-radio' })
     },
     borderSize: {
-      default: boolean('border-size', false)
+      default: text('border-size', '')
     },
     img: {
       default: files('img', '.png, .svg', '')
