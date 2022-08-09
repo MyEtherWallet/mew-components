@@ -331,29 +331,24 @@ export default {
       if (newVal === '' || newVal === null) {
         this.selectItems = this.items;
       } else {
-        const foundItem = this.items.filter((item) => {
+        const foundItems = this.items.reduce((foundTokens, item) => {
           const searchValue = String(newVal).toLowerCase();
           const value = String(get(item, 'value', '')).toLowerCase();
           const name = String(get(item, 'name', '')).toLowerCase();
           const subtext = String(get(item, 'subtext', '')).toLowerCase();
-          return (
+          if (
             name === searchValue ||
             subtext === searchValue ||
             value === searchValue
-          );
-        });
-        const foundItems = this.items.filter((item) => {
-          const searchValue = String(newVal).toLowerCase();
-          const value = String(get(item, 'value', '')).toLowerCase();
-          const name = String(get(item, 'name', '')).toLowerCase();
-          const subtext = String(get(item, 'subtext', '')).toLowerCase();
-          return (
+          ) foundTokens.unshift(item);
+          else if (
             name.includes(searchValue) ||
             subtext.includes(searchValue) ||
             value.includes(searchValue)
-          );
-        });
-        this.selectItems = [...foundItem, ...foundItems];
+          ) foundTokens.push(item);
+          return foundTokens;
+        }, []);
+        this.selectItems = foundItems;
       }
     },
     selectModel(newVal) {
