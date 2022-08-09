@@ -262,10 +262,7 @@
                   :copy-value="item.address"
                 />
                 <a
-                  v-if="
-                    validateCoin(item.resolvedAddr) == 'eth' ||
-                      validateCoin(item.address) == 'eth'
-                  "
+                  v-if=" item.coinType == 'eth' "
                   class="address-link"
                   :href="
                     'https://www.ethvm.com/address/' +
@@ -276,7 +273,7 @@
                   <v-icon class="call-made"> mdi-call-made </v-icon>
                 </a>
                 <a
-                  v-if="validateCoin(item.address) == 'btc'"
+                  v-if=" item.coinType == 'btc' "
                   class="address-link"
                   :href="
                     'https://www.blockchain.com/btc/address/' +
@@ -297,7 +294,6 @@
 </template>
 
 <script>
-import MultiCoinValidator from 'multicoin-address-validator';
 import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
 import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
 import MewButton from '@/components/MewButton/MewButton.vue';
@@ -393,20 +389,6 @@ export default {
     }
   },
   methods: {
-    validateCoin(address) {
-      if (!address) {
-        return false;
-      }
-
-      if (MultiCoinValidator.validate(address, 'eth')) {
-        return 'eth';
-      }
-      if (MultiCoinValidator.validate(address, 'btc')) {
-        return 'btc';
-      }
-
-      return false;
-    },
     /**
      * emits selectedRow when selecting a checkbox
      */
