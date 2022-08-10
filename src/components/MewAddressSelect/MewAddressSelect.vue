@@ -16,7 +16,7 @@
     :disabled="disabled"
     :error-messages="errorMessages"
     :hint="hint || resolvedAddr || ''"
-    :persistent-hint="resolvedAddr.length > 0"
+    :persistent-hint="resolvedAddr.length > 0 || hint.length > 0"
     :rules="rules"
     :no-data-text="noDataText"
     :menu-props="{ value: dropdown, closeOnClick: true }"
@@ -56,11 +56,7 @@
           :tooltip="copyTooltip"
           :copy-value="addressValue.address || addressValue"
         />
-        <v-tooltip
-          content-class="tooltip-inner"
-          color="titlePrimary--text"
-          top
-        >
+        <v-tooltip content-class="tooltip-inner" color="titlePrimary--text" top>
           <template #activator="{ on }">
             <v-icon
               :class="[
@@ -86,9 +82,7 @@
         class="dropdown-icon-container d-flex align-center justify-center cursor-pointer full-height"
         @click="toggle"
       >
-        <v-icon class="mew-heading-1 mx-5">
-          mdi-chevron-down
-        </v-icon>
+        <v-icon class="mew-heading-1 mx-5"> mdi-chevron-down </v-icon>
       </div>
     </template>
 
@@ -114,10 +108,7 @@
             v-if="!item.resolvedAddr || item.resolvedAddr === ''"
             :hash="item.address"
           />
-          <span
-            v-else
-            class="mew-address"
-          >{{ item.address }}</span>
+          <span v-else class="mew-address">{{ item.address }}</span>
         </div>
         <div class="overline primary--text font-weight-medium ml-3">
           {{ item.nickname }}
@@ -144,7 +135,7 @@ export default {
   },
   props: {
     /**
-     * Text displayed under the input container. 
+     * Text displayed under the input container.
      */
     hint: {
       type: String,
@@ -272,20 +263,17 @@ export default {
      * the blockie for the regular address value.
      */
     blockieHash() {
+      return this.addressValue.address || this.addressValue;
+      /*
       return this.resolvedAddr.length > 0
         ? this.resolvedAddr
         : this.addressValue.address
         ? this.addressValue.address
         : this.addressValue;
+      */
     }
   },
   methods: {
-    /**
-     * Clears the v-model value.
-     */
-    clear() {
-      this.addressValue = '';
-    },
     /**
      * Emits 'saveAddress' when triggered by save address button.
      */
