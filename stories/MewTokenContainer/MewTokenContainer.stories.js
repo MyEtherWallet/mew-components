@@ -29,7 +29,7 @@ export const MEWTokenContainer = () => ({
       default: text('size', 'small')
     },
     borderSize: {
-      default: text('borderSize', '')
+      default: text('border-size', '')
     },
     img: {
       default: files('img', '.png, .svg', '')
