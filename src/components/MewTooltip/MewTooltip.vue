@@ -80,4 +80,8 @@ export default {
     word-break: break-all;
   }
 }
+.tippy-tooltip.light-theme .tippy-content {
+  word-break: break-word !important;
+  text-align: left !important;
+}
 </style>
