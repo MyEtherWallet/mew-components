@@ -8,7 +8,7 @@
       :class="[
         'mew-table',
         hasSelect ? 'mew-select-table' : '',
-        hasColor ? 'mew-super-primary-table' : '',
+        hasColor ? 'mew-super-primary-table' : ''
       ]"
       :items="indexedItems"
       item-key="id"
@@ -67,7 +67,7 @@
           <mew-token-container
             size="small"
             :img="item.tokenImg"
-            class="mr-2"
+            class="mr-2 flex-shrink-0"
           />
           <span class="truncate">{{ item.token }}</span>
         </div>
@@ -120,10 +120,10 @@
             v-if="item.change !== ''"
             :class="[
               item.status === '+' ? 'primary--text' : 'error--text',
-              'd-flex',
+              'd-flex'
             ]"
           >
-            {{ item.change + "%" }}
+            {{ item.change + '%' }}
             <v-icon
               v-if="item.status === '+'"
               class="primary--text"
@@ -295,7 +295,7 @@ export default {
     MewBlockie,
     MewButton,
     MewTransformHash,
-    MewCopy,
+    MewCopy
   },
   props: {
     /**
@@ -305,7 +305,7 @@ export default {
      */
     selectedValues: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     /**
      * Applies skeleton loader
@@ -314,47 +314,47 @@ export default {
      */
     loading: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * The table headers.
      */
     tableHeaders: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     /**
      * The table data.
      */
     tableData: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     /**
      * Applies select button to each row.
      */
     hasSelect: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Applies superPrimary color to table.
      */
     hasColor: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * No data text
      */
     noDataText: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
   data() {
     return {
-      selected: [],
+      selected: []
     };
   },
   computed: {
@@ -364,17 +364,17 @@ export default {
     indexedItems() {
       return this.tableData.map((item, index) => ({
         id: index,
-        ...item,
+        ...item
       }));
-    },
+    }
   },
   watch: {
     selectedValues: {
-      handler: function(newVal) {
+      handler: function (newVal) {
         this.selected = newVal;
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
   methods: {
     /**
@@ -388,8 +388,8 @@ export default {
      */
     onSelect(item) {
       this.$emit('selectedRow', item);
-    },
-  },
+    }
+  }
 };
 </script>
 

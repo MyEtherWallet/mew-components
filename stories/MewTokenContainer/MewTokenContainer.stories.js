@@ -1,7 +1,6 @@
 import {
   withKnobs,
   boolean,
-  optionsKnob,
   text,
   files
 } from '@storybook/addon-knobs';
@@ -20,12 +19,6 @@ export default {
   decorators: [withKnobs]
 };
 
-const sizeOptions = {
-  small: 'small',
-  medium: 'medium',
-  large: 'large'
-}
-
 export const MEWTokenContainer = () => ({
   components: { MewTokenContainer },
   props: {
@@ -33,7 +26,10 @@ export const MEWTokenContainer = () => ({
       default: boolean('dark mode ?', false)
     },
     size: {
-      default: optionsKnob('size', sizeOptions, sizeOptions.small, { display: 'inline-radio' })
+      default: text('size', 'small')
+    },
+    borderSize: {
+      default: text('border-size', '')
     },
     img: {
       default: files('img', '.png, .svg', '')
@@ -55,6 +51,7 @@ export const MEWTokenContainer = () => ({
     <br />
     <mew-token-container
       :size="size"
+      :border-size="borderSize"
       :img="img"
       :name="name"
       :loading="loading"
