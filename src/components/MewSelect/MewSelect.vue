@@ -111,9 +111,14 @@
           :name="item.name || item"
           size="small"
         />
-        <span class="text-capitalize mt-1 ml-2 basic--text"
+        <span
+          :class="noCapitalize ? '' : 'text-capitalize'"
+          class="mt-1 ml-2 basic--text"
           >{{ item.name ? item.name : item }}
-          <span v-if="item.subtext" class="searchText--text text-capitalize"
+          <span
+            v-if="item.subtext"
+            :class="noCapitalize ? '' : 'text-capitalize'"
+            class="searchText--text"
             >- {{ item.subtext }}</span
           ></span
         >
@@ -140,11 +145,12 @@
         v-if="!isCustom && !loading"
         class="d-flex align-center justify-center"
       >
-        <span class="text-capitalize ml-2 mt-1"
+        <span :class="noCapitalize ? '' : 'text-capitalize'" class="ml-2 mt-1"
           >{{ data.item.name ? data.item.name : data.item }}
           <span
             v-if="data.item.subtext"
-            class="textSecondary--text text-capitalize"
+            :class="noCapitalize ? '' : 'text-capitalize'"
+            class="textSecondary--text"
             >- {{ data.item.subtext }}</span
           ></span
         >
@@ -190,11 +196,14 @@
               :name="data.item.name"
               size="small"
             />
-            <span class="text-capitalize ml-2 my-2 d-flex flex-column"
+            <span
+              :class="noCapitalize ? '' : 'text-capitalize'"
+              class="ml-2 my-2 d-flex flex-column"
               >{{ data.item.symbol || data.item.name || data.item }}
               <span
                 v-if="data.item.tokenBalance || data.item.subtext"
-                class="mew-caption font-weight-regular textSecondary--text text-capitalize"
+                :class="noCapitalize ? '' : 'text-capitalize'"
+                class="mew-caption font-weight-regular textSecondary--text"
                 >{{
                   data.item.tokenBalance
                     ? data.item.tokenBalance + " " + data.item.symbol
@@ -217,11 +226,11 @@
   </v-select>
 </template>
 <script>
-import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
-import get from 'lodash/get';
+import MewTokenContainer from "@/components/MewTokenContainer/MewTokenContainer.vue";
+import get from "lodash/get";
 
 export default {
-  name: 'MewSelect',
+  name: "MewSelect",
   components: {
     MewTokenContainer,
   },
@@ -231,14 +240,14 @@ export default {
      */
     buyMoreStr: {
       type: String,
-      default: '',
+      default: "",
     },
     /**
      * Error messages to display
      */
     errorMessages: {
       type: [String, Array],
-      default: '',
+      default: "",
     },
     /**
      * Adds filter to select items
@@ -252,7 +261,7 @@ export default {
      */
     filterPlaceholder: {
       type: String,
-      default: 'Search token name',
+      default: "Search token name",
     },
     /**
      * MEW select value
@@ -288,7 +297,7 @@ export default {
      */
     label: {
       type: String,
-      default: '',
+      default: "",
     },
     /**
      * Applies Custom Select styles
@@ -311,12 +320,19 @@ export default {
       type: Boolean,
       default: false,
     },
+    /**
+     * Remove Capitalize style from all forms
+     */
+    noCapitalize: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
       selectModel: null,
       selectItems: [],
-      search: '',
+      search: "",
     };
   },
   computed: {
@@ -328,24 +344,27 @@ export default {
   },
   watch: {
     search(newVal) {
-      if (newVal === '' || newVal === null) {
+      if (newVal === "" || newVal === null) {
         this.selectItems = this.items;
       } else {
         const foundItems = this.items.reduce((foundTokens, item) => {
           const searchValue = String(newVal).toLowerCase();
-          const value = String(get(item, 'value', '')).toLowerCase();
-          const name = String(get(item, 'name', '')).toLowerCase();
-          const subtext = String(get(item, 'subtext', '')).toLowerCase();
+          const value = String(get(item, "value", "")).toLowerCase();
+          const name = String(get(item, "name", "")).toLowerCase();
+          const subtext = String(get(item, "subtext", "")).toLowerCase();
           if (
             name === searchValue ||
             subtext === searchValue ||
             value === searchValue
-          ) foundTokens.unshift(item);
-          else if (
+          ) {
+            foundTokens.unshift(item);
+          } else if (
             name.includes(searchValue) ||
             subtext.includes(searchValue) ||
             value.includes(searchValue)
-          ) foundTokens.push(item);
+          ) {
+            foundTokens.push(item);
+          }
           return foundTokens;
         }, []);
         this.selectItems = foundItems;
@@ -353,9 +372,9 @@ export default {
     },
     selectModel(newVal) {
       setTimeout(() => {
-        this.search = '';
+        this.search = "";
       }, 1000);
-      this.$emit('input', newVal);
+      this.$emit("input", newVal);
     },
     value(newVal) {
       this.selectModel =
@@ -390,12 +409,12 @@ export default {
   },
   methods: {
     emitBuyMore() {
-      this.$emit('buyMore');
+      this.$emit("buyMore");
     },
     togglePointerEventStyle() {
-      const elems = document.querySelectorAll('div.v-list-item--link');
+      const elems = document.querySelectorAll("div.v-list-item--link");
       if (elems) {
-        const pointerEventStyle = this.loading ? 'none' : 'all';
+        const pointerEventStyle = this.loading ? "none" : "all";
         for (let i = 0; i < elems.length; i++) {
           elems[i].style.pointerEvents = pointerEventStyle;
         }
