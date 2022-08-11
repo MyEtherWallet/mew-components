@@ -102,7 +102,10 @@
     Selected item
   =====================================================================================
   -->
-      <div v-if="!item.selectLabel" class="d-flex align-center justify-center">
+      <div
+        v-if="!item.selectLabel"
+        class="d-flex align-center justify-center"
+      >
         <mew-token-container
           v-if="!normalDropdown"
           class="ml-1 flex-shrink-0"
@@ -114,14 +117,12 @@
         <span
           :class="noCapitalize ? '' : 'text-capitalize'"
           class="mt-1 ml-2 basic--text"
-          >{{ item.name ? item.name : item }}
+        >{{ item.name ? item.name : item }}
           <span
             v-if="item.subtext"
             :class="noCapitalize ? '' : 'text-capitalize'"
             class="searchText--text"
-            >- {{ item.subtext }}</span
-          ></span
-        >
+          >- {{ item.subtext }}</span></span>
       </div>
     </template>
     <template #item="data">
@@ -145,22 +146,25 @@
         v-if="!isCustom && !loading"
         class="d-flex align-center justify-center"
       >
-        <span :class="noCapitalize ? '' : 'text-capitalize'" class="ml-2 mt-1"
-          >{{ data.item.name ? data.item.name : data.item }}
+        <span
+          :class="noCapitalize ? '' : 'text-capitalize'"
+          class="ml-2 mt-1"
+        >{{ data.item.name ? data.item.name : data.item }}
           <span
             v-if="data.item.subtext"
             :class="noCapitalize ? '' : 'text-capitalize'"
             class="textSecondary--text"
-            >- {{ data.item.subtext }}</span
-          ></span
-        >
+          >- {{ data.item.subtext }}</span></span>
       </div>
       <!--
   =====================================================================================
     Custom Select Dropdown items
   =====================================================================================
   -->
-      <div v-if="isCustom && !loading" class="d-flex align-center full-width">
+      <div
+        v-if="isCustom && !loading"
+        class="d-flex align-center full-width"
+      >
         <!--
   =====================================================================================
       Empty Wallet Link
@@ -175,8 +179,7 @@
             class="all-pointer-events"
             target="_blank"
             :href="data.item.link"
-            >{{ data.item.linkText }}</a
-          >
+          >{{ data.item.linkText }}</a>
         </div>
         <!--
   =====================================================================================
@@ -187,7 +190,10 @@
           v-if="data.item.name"
           class="d-flex align-center justify-space-between full-width"
         >
-          <div v-if="!loading" class="d-flex align-center">
+          <div
+            v-if="!loading"
+            class="d-flex align-center"
+          >
             <mew-token-container
               v-if="!normalDropdown"
               class="mr-1"
@@ -199,26 +205,23 @@
             <span
               :class="noCapitalize ? '' : 'text-capitalize'"
               class="ml-2 my-2 d-flex flex-column"
-              >{{ data.item.symbol || data.item.name || data.item }}
+            >{{ data.item.symbol || data.item.name || data.item }}
               <span
                 v-if="data.item.tokenBalance || data.item.subtext"
                 :class="noCapitalize ? '' : 'text-capitalize'"
                 class="mew-caption font-weight-regular textSecondary--text"
-                >{{
-                  data.item.tokenBalance
-                    ? data.item.tokenBalance + " " + data.item.symbol
-                    : data.item.subtext
-                }}</span
-              ></span
-            >
+              >{{
+                data.item.tokenBalance
+                  ? data.item.tokenBalance + " " + data.item.symbol
+                  : data.item.subtext
+              }}</span></span>
           </div>
           <div class="d-flex justify-center flex-column align-end">
             <span>{{ data.item.totalBalance || data.item.price }}</span>
             <span
               v-if="data.item.totalBalance"
               class="mew-caption font-weight-regular textSecondary--text"
-              >@ {{ data.item.price }}</span
-            >
+            >@ {{ data.item.price }}</span>
           </div>
         </div>
       </div>
@@ -232,7 +235,7 @@ import get from 'lodash/get';
 export default {
   name: 'MewSelect',
   components: {
-    MewTokenContainer
+    MewTokenContainer,
   },
   props: {
     /**
@@ -240,28 +243,28 @@ export default {
      */
     buyMoreStr: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Error messages to display
      */
     errorMessages: {
       type: [String, Array],
-      default: ''
+      default: '',
     },
     /**
      * Adds filter to select items
      */
     hasFilter: {
       type: Boolean,
-      default: true //  change to false
+      default: true, //  change to false
     },
     /**
      * Filter placeholder
      */
     filterPlaceholder: {
       type: String,
-      default: 'Search token name'
+      default: 'Search token name',
     },
     /**
      * MEW select value
@@ -270,14 +273,14 @@ export default {
       type: Object,
       default: () => {
         return {};
-      }
+      },
     },
     /**
      * Disables the select dropdown.
      */
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Can be an array of objects or array of strings. When using objects, will look for a text and value field.
@@ -290,35 +293,34 @@ export default {
       type: Array,
       default: () => {
         return [];
-      }
+      },
     },
     /**
      * Sets the select label
      */
     label: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Applies Custom Select styles
      */
     isCustom: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Loading state
      */
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Normal dropdown with no icon
      */
     normalDropdown: {
       type: Boolean,
-<<<<<<< HEAD
       default: false,
     },
     /**
@@ -328,24 +330,20 @@ export default {
       type: Boolean,
       default: false,
     },
-=======
-      default: false
-    }
->>>>>>> fddc87c4b5d1dc3e0fe0ab38cd745376ab5fc31f
   },
   data() {
     return {
       selectModel: null,
       selectItems: [],
-      search: ''
+      search: '',
     };
   },
   computed: {
     defaultItem() {
-      return this.items.find(obj => {
+      return this.items.find((obj) => {
         return obj.selectLabel || obj.name;
       });
-    }
+    },
   },
   watch: {
     search(newVal) {
@@ -354,9 +352,9 @@ export default {
       } else {
         const foundItems = this.items.reduce((foundTokens, item) => {
           const searchValue = String(newVal).toLowerCase();
-          const value = String(get(item, "value", "")).toLowerCase();
-          const name = String(get(item, "name", "")).toLowerCase();
-          const subtext = String(get(item, "subtext", "")).toLowerCase();
+          const value = String(get(item, 'value', '')).toLowerCase();
+          const name = String(get(item, 'name', '')).toLowerCase();
+          const subtext = String(get(item, 'subtext', '')).toLowerCase();
           if (
             name === searchValue ||
             subtext === searchValue ||
@@ -395,15 +393,15 @@ export default {
       }
     },
     items: {
-      handler: function (newVal) {
+      handler: function(newVal) {
         this.selectItems = newVal;
         this.selectModel =
           this.value && Object.keys(this.value).length !== 0
             ? this.value
             : this.defaultItem;
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   mounted() {
     this.selectItems = this.items;
@@ -435,8 +433,8 @@ export default {
           this.$refs.filterTextField.$refs.input.focus();
         }
       }, 100);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">

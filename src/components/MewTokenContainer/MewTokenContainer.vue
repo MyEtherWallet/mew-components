@@ -29,7 +29,7 @@
       :src="img || ethTokenPlaceholder"
       :alt="name"
       loading="lazy"
-    />
+    >
 
     <!-- ===================================================================================== -->
     <!-- Img Placeholder -->

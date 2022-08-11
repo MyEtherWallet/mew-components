@@ -25,7 +25,10 @@
       <!-- ===================================================================================== -->
       <!-- Loading Mew Table -->
       <!-- ===================================================================================== -->
-      <template v-if="loading" #loading>
+      <template
+        v-if="loading"
+        #loading
+      >
         <v-skeleton-loader
           v-for="i in 3"
           :key="i"
@@ -56,7 +59,10 @@
       <!-- ===================================================================================== -->
       <!-- Displays the token image and token title -->
       <!-- ===================================================================================== -->
-      <template v-if="!loading" #[`item.token`]="{ item }">
+      <template
+        v-if="!loading"
+        #[`item.token`]="{ item }"
+      >
         <div class="d-flex align-center">
           <mew-token-container
             size="small"
@@ -70,7 +76,10 @@
       <!-- ===================================================================================== -->
       <!-- Displays a toggle button -->
       <!-- ===================================================================================== -->
-      <template v-if="!loading" #[`item.toggle`]="{ item }">
+      <template
+        v-if="!loading"
+        #[`item.toggle`]="{ item }"
+      >
         <v-switch
           v-if="item.toggle"
           v-model="item.toggle.value"
@@ -84,10 +93,9 @@
               v-if="item.toggle.label"
               :class="
                 item.toggle.color +
-                '--text font-weight-regular mew-body capitalize'
+                  '--text font-weight-regular mew-body capitalize'
               "
-              >{{ item.toggle.label }}</span
-            >
+            >{{ item.toggle.label }}</span>
           </template>
         </v-switch>
       </template>
@@ -95,7 +103,10 @@
       <!-- ===================================================================================== -->
       <!-- Displays the chart change -->
       <!-- ===================================================================================== -->
-      <template v-if="!loading" #[`item.change`]="{ item }">
+      <template
+        v-if="!loading"
+        #[`item.change`]="{ item }"
+      >
         <div class="chart-container d-flex align-center">
           <!-- hiding for now because we don't have the data -->
           <!--
@@ -113,10 +124,16 @@
             ]"
           >
             {{ item.change + '%' }}
-            <v-icon v-if="item.status === '+'" class="primary--text">
+            <v-icon
+              v-if="item.status === '+'"
+              class="primary--text"
+            >
               mdi-arrow-up-thick
             </v-icon>
-            <v-icon v-if="item.status === '-'" class="error--text">
+            <v-icon
+              v-if="item.status === '-'"
+              class="error--text"
+            >
               mdi-arrow-down-thick
             </v-icon>
           </span>
@@ -126,7 +143,10 @@
       <!-- ===================================================================================== -->
       <!-- Displays the balance in ETH and USD -->
       <!-- ===================================================================================== -->
-      <template v-if="!loading" #[`item.balance`]="{ item }">
+      <template
+        v-if="!loading"
+        #[`item.balance`]="{ item }"
+      >
         <div class="d-flex flex-column py-2">
           <span
             v-for="(bal, idx) in item.balance"
@@ -141,14 +161,17 @@
       <!-- ===================================================================================== -->
       <!-- Displays a call to action button -->
       <!-- ===================================================================================== -->
-      <template v-if="!loading" #[`item.callToAction`]="{ item }">
+      <template
+        v-if="!loading"
+        #[`item.callToAction`]="{ item }"
+      >
         <div class="d-flex flex-row py-3 justify-end">
           <mew-button
             v-for="(button, idx) in item.callToAction"
             :key="idx"
             :class="
               idx !== item.callToAction.length - 1 &&
-              item.callToAction.length > 1
+                item.callToAction.length > 1
                 ? 'mr-1'
                 : ''
             "
@@ -165,7 +188,10 @@
       <!-- ===================================================================================== -->
       <!-- Displays the tx hash -->
       <!-- ===================================================================================== -->
-      <template v-if="!loading" #[`item.txHash`]="{ item }">
+      <template
+        v-if="!loading"
+        #[`item.txHash`]="{ item }"
+      >
         <div :class="[!$vuetify.breakpoint.xs ? 'pr-3' : '']">
           <v-tooltip
             eager
@@ -182,7 +208,10 @@
                 v-on="on"
               >
                 <mew-transform-hash :hash="item.txHash" />
-                <v-icon class="arrow-top-right" color="primary">
+                <v-icon
+                  class="arrow-top-right"
+                  color="primary"
+                >
                   mdi-arrow-top-right
                 </v-icon>
               </a>
@@ -195,7 +224,10 @@
       <!-- ===================================================================================== -->
       <!-- Displays the address hash -->
       <!-- ===================================================================================== -->
-      <template v-if="!loading" #[`item.address`]="{ item }">
+      <template
+        v-if="!loading"
+        #[`item.address`]="{ item }"
+      >
         <div class="d-flex align-center">
           <mew-blockie
             class="mr-2 d-none d-sm-flex"
@@ -215,19 +247,25 @@
                 class="address-container font-weight-medium mew-address d-flex"
                 v-on="on"
               >
-                <span v-if="item.resolvedAddr" class="mew-address truncate">
+                <span
+                  v-if="item.resolvedAddr"
+                  class="mew-address truncate"
+                >
                   {{ item.address }}
                 </span>
                 <mew-transform-hash
                   v-if="!item.resolvedAddr"
                   :hash="item.address"
                 />
-                <mew-copy class="ml-3" :copy-value="item.address" />
+                <mew-copy
+                  class="ml-3"
+                  :copy-value="item.address"
+                />
                 <a
                   class="address-link"
                   :href="
                     'https://www.ethvm.com/address/' +
-                    (item.resolvedAddr ? item.resolvedAddr : item.address)
+                      (item.resolvedAddr ? item.resolvedAddr : item.address)
                   "
                   target="_blank"
                 >
