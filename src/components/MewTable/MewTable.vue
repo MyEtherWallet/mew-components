@@ -262,9 +262,21 @@
                   :copy-value="item.address"
                 />
                 <a
+                  v-if=" item.coinType == 'eth' "
                   class="address-link"
                   :href="
                     'https://www.ethvm.com/address/' +
+                      (item.resolvedAddr ? item.resolvedAddr : item.address)
+                  "
+                  target="_blank"
+                >
+                  <v-icon class="call-made"> mdi-call-made </v-icon>
+                </a>
+                <a
+                  v-if=" item.coinType == 'btc' "
+                  class="address-link"
+                  :href="
+                    'https://www.blockchain.com/btc/address/' +
                       (item.resolvedAddr ? item.resolvedAddr : item.address)
                   "
                   target="_blank"
