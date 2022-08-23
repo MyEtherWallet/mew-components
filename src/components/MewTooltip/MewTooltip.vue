@@ -17,7 +17,10 @@
       >
         mdi-information
       </v-icon>
-      <slot name="activatorSlot" />
+      <slot
+        name="activatorSlot"
+        class="d-flex"
+      />
     </template>
     <!-- Popover content -->
     <slot name="contentSlot" />
@@ -49,10 +52,6 @@ export default {
 </script>
 
 <style lang="scss">
-.mew-tooltip > div {
-  display: inline-block;
-}
-
 .tippy-tooltip.light-theme {
   background-color: rgb(255, 255, 255);
   color: initial;

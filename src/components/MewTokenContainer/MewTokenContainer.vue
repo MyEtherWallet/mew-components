@@ -2,13 +2,7 @@
   <!-- ===================================================================================== -->
   <!-- Mew Token Container -->
   <!-- ===================================================================================== -->
-  <div
-    class="mew-token-container d-flex align-center justify-center"
-    :style="{
-      height: borderSize ? borderSize : getSize,
-      width: borderSize ? borderSize : getSize
-    }"
-  >
+  <div class="mew-token-container d-flex align-center justify-center">
     <!-- ===================================================================================== -->
     <!-- Loading State -->
     <!-- ===================================================================================== -->
@@ -26,9 +20,10 @@
     <img
       v-if="!loading && img"
       :style="{ height: `${getSize}`, width: `${getSize}` }"
-      :src="img || ethTokenPlaceholder"
+      :src="img && !invalidImg ? img : ethTokenPlaceholder"
       :alt="name"
       loading="lazy"
+      @error="invalidImg = true"
     >
 
     <!-- ===================================================================================== -->
@@ -66,10 +61,6 @@ export default {
       type: String,
       default: 'small'
     },
-    borderSize: {
-      type: String,
-      default: ''
-    },
     /**
      * Token name. Used for placeholder if there is no icon img.
      */
@@ -87,6 +78,7 @@ export default {
   },
   data() {
     return {
+      invalidImg: false,
       ethTokenPlaceholder,
       sizeOptions: {
         small: 'small',
@@ -126,14 +118,12 @@ export default {
       if (this.size.toLowerCase() === this.sizeOptions.small) {
         return '24px';
       }
+
       if (this.size.toLowerCase() === this.sizeOptions.medium) {
         return '32px';
       }
-      if (this.size.toLowerCase() === this.sizeOptions.large) {
-        return '52px';
-      }
 
-      return this.size;
+      return '52px';
     }
   }
 };
@@ -144,6 +134,7 @@ export default {
   * has to be global styles to override vuetify
   */
 .mew-token-container {
+  height: 100%;
   overflow: hidden;
   background-color: var(--v-white-base);
   border-radius: 50%;
