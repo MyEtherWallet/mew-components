@@ -52,10 +52,6 @@ export default {
 </script>
 
 <style lang="scss">
-.mew-tooltip > div {
-  display: flex !important;
-}
-
 .tippy-tooltip.light-theme {
   background-color: rgb(255, 255, 255);
   color: initial;
