@@ -16,7 +16,7 @@
     :disabled="disabled"
     :error-messages="errorMessages"
     :hint="hint || resolvedAddr || ''"
-    :persistent-hint="hint.length > 0 || resolvedAddr.length > 0"
+    :persistent-hint="resolvedAddr.length > 0"
     :rules="rules"
     :no-data-text="noDataText"
     :menu-props="{ value: dropdown, closeOnClick: true }"
@@ -144,7 +144,7 @@ export default {
   },
   props: {
     /**
-     * Text displayed under the input container. 
+     * Text displayed under the input container.
      */
     hint: {
       type: String,
@@ -272,20 +272,17 @@ export default {
      * the blockie for the regular address value.
      */
     blockieHash() {
+      return this.addressValue.address || this.addressValue;
+      /*
       return this.resolvedAddr.length > 0
         ? this.resolvedAddr
         : this.addressValue.address
         ? this.addressValue.address
         : this.addressValue;
+      */
     }
   },
   methods: {
-    /**
-     * Clears the v-model value.
-     */
-    clear() {
-      this.addressValue = '';
-    },
     /**
      * Emits 'saveAddress' when triggered by save address button.
      */
