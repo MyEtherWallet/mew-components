@@ -2,7 +2,11 @@
   <!-- ===================================================================================== -->
   <!-- Mew Token Container -->
   <!-- ===================================================================================== -->
-  <div class="mew-token-container d-flex align-center justify-center">
+  <div class="mew-token-container d-flex align-center justify-center"
+    :style="{
+      height: borderSize ? borderSize : getSize,
+      width: borderSize ? borderSize : getSize
+    }">
     <!-- ===================================================================================== -->
     <!-- Loading State -->
     <!-- ===================================================================================== -->
@@ -20,11 +24,10 @@
     <img
       v-if="!loading && img"
       :style="{ height: `${getSize}`, width: `${getSize}` }"
-      :src="img && !invalidImg ? img : ethTokenPlaceholder"
+      :src="img || ethTokenPlaceholder"
       :alt="name"
       loading="lazy"
-      @error="invalidImg = true"
-    >
+    />
 
     <!-- ===================================================================================== -->
     <!-- Img Placeholder -->
@@ -61,6 +64,10 @@ export default {
       type: String,
       default: 'small'
     },
+    borderSize: {
+      type: String,
+      default: ''
+    },
     /**
      * Token name. Used for placeholder if there is no icon img.
      */
@@ -78,7 +85,6 @@ export default {
   },
   data() {
     return {
-      invalidImg: false,
       ethTokenPlaceholder,
       sizeOptions: {
         small: 'small',
@@ -123,7 +129,11 @@ export default {
         return '32px';
       }
 
-      return '52px';
+      if (this.size.toLowerCase() === this.sizeOptions.large) {
+        return '52px';
+      }
+
+      return this.size;
     }
   }
 };
@@ -134,7 +144,6 @@ export default {
   * has to be global styles to override vuetify
   */
 .mew-token-container {
-  height: 100%;
   overflow: hidden;
   background-color: var(--v-white-base);
   border-radius: 50%;
