@@ -7,6 +7,10 @@
 - adjust button letter spacing [#299](https://github.com/MyEtherWallet/mew-components/pull/299)
 - update mew token container [#298](https://github.com/MyEtherWallet/mew-components/pull/298)
 - revert error for mewtokencontainer [#297](https://github.com/MyEtherWallet/mew-components/pull/297)
+
+### fix
+
+- mew-address-select showing wrong identicon bug [#296](https://github.com/MyEtherWallet/mew-components/pull/296)
 ### Release 1.1.0
 
 ### devop
