@@ -480,7 +480,7 @@ export default {
 .mew-select-search {
   background: var(--v-white-base);
   border-bottom: 1px solid var(--v-dropdownBorder-base);
-  border-radius: 5px;
+  border-radius: 0px;
   height: 42px;
   padding: 12px 16px;
   position: sticky;

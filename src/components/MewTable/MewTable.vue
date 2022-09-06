@@ -179,7 +179,7 @@
             :disabled="button.disabled"
             btn-size="small"
             :btn-style="button.btnStyle"
-            :btn-color-theme="button.colorTheme"
+            :color-theme="button.colorTheme"
             @click.native="button.method(item)"
           />
         </div>
@@ -202,7 +202,7 @@
           >
             <template #[`activator`]="{ on }">
               <a
-                :href="'https://www.ethvm.com/tx/' + item.txHash"
+                :href="explorerTx(item)"
                 target="_blank"
                 class="font-weight-medium mew-address d-flex full-width"
                 v-on="on"
@@ -262,23 +262,9 @@
                   :copy-value="item.address"
                 />
                 <a
-                  v-if=" item.coinType == 'eth' "
+                  v-if="explorerAddr(item) !== ''"
                   class="address-link"
-                  :href="
-                    'https://www.ethvm.com/address/' +
-                      (item.resolvedAddr ? item.resolvedAddr : item.address)
-                  "
-                  target="_blank"
-                >
-                  <v-icon class="call-made"> mdi-call-made </v-icon>
-                </a>
-                <a
-                  v-if=" item.coinType == 'btc' "
-                  class="address-link"
-                  :href="
-                    'https://www.blockchain.com/btc/address/' +
-                      (item.resolvedAddr ? item.resolvedAddr : item.address)
-                  "
+                  :href="explorerAddr(item)"
                   target="_blank"
                 >
                   <v-icon class="call-made"> mdi-call-made </v-icon>
@@ -378,6 +364,20 @@ export default {
         id: index,
         ...item
       }));
+    },
+    /**
+     * Default Tx Explorer
+     * if item doesn't include it
+     */
+    defaultExplorerTx() {
+      return 'https://ethvm.com/tx/[[txHash]]';
+    },
+    /**
+     * Default Address Explorer
+     * if item doesn't include it
+     */
+    defaultExplorerAddr() {
+      return 'https://ethvm.com/address/[[address]]';
     }
   },
   watch: {
@@ -400,6 +400,42 @@ export default {
      */
     onSelect(item) {
       this.$emit('selectedRow', item);
+    },
+    /**
+     * Get Tx Explorer from item
+     * return EthVM if explorer undefined
+     */
+    explorerTx(item) {
+      const explorer = item.explorerTx
+        ? item.explorerTx
+        : this.defaultExplorerTx;
+      return explorer.replace('[[txHash]]', item.txHash);
+    },
+    /**
+     * Get Address Explorer from item
+     * return EthVM if coinType/explorer is
+     * undefined but address is supported
+     */
+    explorerAddr(item) {
+      const address =
+        item.resolvedAddr && !item.resolvedAddr.includes('.')
+          ? item.resolvedAddr
+          : item.address;
+      const coinType = item.coinType;
+      if (coinType && coinType.toLowerCase() === 'bitcoin')
+        return 'https://www.blockchain.com/btc/address/' + address;
+      const prefix = address.substring(0, 2);
+      if (
+        item.explorerAddr ||
+        (coinType && coinType.toLowerCase() === 'ethereum') ||
+        (prefix === '0x' && address.length === 42)
+      ) {
+        const explorer = item.explorerAddr
+          ? item.explorerAddr
+          : this.defaultExplorerAddr;
+        return explorer.replace('[[address]]', address);
+      }
+      return '';
     }
   }
 };
