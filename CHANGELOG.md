@@ -5,6 +5,7 @@
 - Add optional explorer for mew table [#301](https://github.com/MyEtherWallet/mew-components/pull/301)
 - remove select search border radius [#300](https://github.com/MyEtherWallet/mew-components/pull/300)
 - adjust button letter spacing [#299](https://github.com/MyEtherWallet/mew-components/pull/299)
+- revert error for mewtokencontainer [#298](https://github.com/MyEtherWallet/mew-components/pull/298)
 ### Release 1.1.0
 
 ### devop
