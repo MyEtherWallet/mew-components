@@ -1,9 +1,7 @@
 <template>
-  <!--
-  =====================================================================================
-    Mew Button
-  =====================================================================================
-  -->
+  <!-- ===================================================================================== -->
+  <!-- Mew Button -->
+  <!-- ===================================================================================== -->
   <v-btn
     :target="btnLink ? '_blank' : ''"
     :href="btnLink"
@@ -15,31 +13,23 @@
     :outlined="hasOutline"
     :text="isTransparent"
   >
-    <!--
-  =====================================================================================
-    Loaded Button Content 
-  =====================================================================================
-  -->
+    <!-- ===================================================================================== -->
+    <!-- Loaded Button Content -->
+    <!-- ===================================================================================== -->
     <div
       :class="[
         hasFullWidth ? 'full-width' : '',
-        'd-flex justify-center align-center',
+        'd-flex justify-center align-center'
       ]"
     >
-      <!--
-  =====================================================================================
-   Button text (if no title prop is passed, then slot should be used)
-  =====================================================================================
-  -->
-      <span
-        v-if="title"
-        class="font-weight-regular"
-      >{{ title }} </span>
-      <!--
-  =====================================================================================
-    slot: default
-  =====================================================================================
-  -->
+      <!-- ===================================================================================== -->
+      <!-- Button text (if no title prop is passed, then slot should be used) -->
+      <!-- ===================================================================================== -->
+      <span v-if="title" class="font-weight-regular">{{ title }} </span>
+
+      <!-- ===================================================================================== -->
+      <!-- slot: default -->
+      <!-- ===================================================================================== -->
       <slot />
     </div>
   </v-btn>
@@ -54,21 +44,21 @@ export default {
      */
     loading: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Button sizes: small, medium, large, xlarge.
      */
     btnSize: {
       type: String,
-      default: 'large',
+      default: 'large'
     },
     /**
      * Sets the button at 100% width.
      */
     hasFullWidth: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Applies the button style: background, light, transparent, or outline.
@@ -77,7 +67,7 @@ export default {
      */
     btnStyle: {
       type: String,
-      default: 'background',
+      default: 'background'
     },
     /**
      * The text that will be displayed at the center of the button.
@@ -85,21 +75,21 @@ export default {
      */
     title: {
       type: String,
-      default: '',
+      default: ''
     },
     /**
      * Applies the button color theme: primary, secondary, basic, error, white.
      */
     colorTheme: {
       type: String,
-      default: 'primary',
+      default: 'primary'
     },
     /**
      * Removes the ability to click or target the component.
      */
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Designates that the component is a link.
@@ -107,8 +97,8 @@ export default {
      */
     btnLink: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
   data() {
     return {
@@ -119,7 +109,7 @@ export default {
         secondary: 'secondary',
         primary: 'primary',
         basic: 'basic',
-        error: 'error',
+        error: 'error'
       },
       /**
        * all btn style options
@@ -128,8 +118,8 @@ export default {
         light: 'light',
         transparent: 'transparent',
         outline: 'outline',
-        background: 'background',
-      },
+        background: 'background'
+      }
     };
   },
   computed: {
@@ -302,8 +292,8 @@ export default {
      */
     isBackground() {
       return this.btnStyle.toLowerCase() === this.btnStyles.background;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -315,6 +305,8 @@ export default {
 // MEW BUTTON STYLES
 .v-application {
   .v-btn.mew-button {
+    letter-spacing: 0.5px;
+
     border-radius: 10px !important;
     // BUTTON SIZES
     &.small-btn {
