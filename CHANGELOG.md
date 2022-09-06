@@ -1,3 +1,7 @@
+### Release 1.3.3
+
+- Add optional explorer for mew table [#301](https://github.com/MyEtherWallet/mew-components/pull/301)
+
 ### Release 1.1.0
 
 ### devop
