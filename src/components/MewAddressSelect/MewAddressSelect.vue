@@ -16,7 +16,7 @@
     :disabled="disabled"
     :error-messages="errorMessages"
     :hint="hint || resolvedAddr || ''"
-    :persistent-hint="resolvedAddr.length > 0"
+    :persistent-hint="resolvedAddr.length > 0 || hint.length > 0"
     :rules="rules"
     :no-data-text="noDataText"
     :menu-props="{ value: dropdown, closeOnClick: true }"
@@ -57,6 +57,7 @@
           :copy-value="addressValue.address || addressValue"
         />
         <v-tooltip
+          v-if="showSave"
           content-class="tooltip-inner"
           color="titlePrimary--text"
           top
@@ -231,6 +232,13 @@ export default {
      * Displays copy button.
      */
     showCopy: {
+      type: Boolean,
+      default: true
+    },
+    /**
+     * Displays save button.
+     */
+    showSave: {
       type: Boolean,
       default: true
     },

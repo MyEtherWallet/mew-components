@@ -14,8 +14,8 @@ export default {
     component: MewAddressSelect,
     docs: {
       page: MewAddressSelectDoc,
-      inlineStories: true
-    }
+      inlineStories: true,
+    },
   },
   decorators: [withKnobs],
 };
@@ -63,6 +63,9 @@ export const MEWAddressSelect = () => ({
     showCopy: {
       default: boolean('show-copy', true),
     },
+    showSave: {
+      default: boolean('show-save', true),
+    },
     noDataText: {
       default: text('no-data-text', ''),
     },
@@ -93,7 +96,7 @@ export const MEWAddressSelect = () => ({
   template: `
     <div>
     <br />
-    <mew-address-select ref="address" :hint="hint" :error-messages="errorMessages" :no-data-text="noDataText" :rules="rules" :resolved-addr="resolvedAddr" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" :is-valid-address="isValidAddress" :show-copy="showCopy" :label="label" :items="items" @saveAddress="onSaveAddress" @input="onSelectValue"/>
+    <mew-address-select ref="address" :show-save="showSave" :hint="hint" :error-messages="errorMessages" :no-data-text="noDataText" :rules="rules" :resolved-addr="resolvedAddr" :copy-tooltip="copyTooltip" :save-tooltip="saveTooltip" :disabled="disabled" :enable-save-address="enableSaveAddress" :is-valid-address="isValidAddress" :show-copy="showCopy" :label="label" :items="items" @saveAddress="onSaveAddress" @input="onSelectValue"/>
   </div>`,
   methods: {
     onSaveAddress() {
