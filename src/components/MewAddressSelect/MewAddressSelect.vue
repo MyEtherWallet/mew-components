@@ -57,6 +57,7 @@
           :copy-value="addressValue.address || addressValue"
         />
         <v-tooltip
+          v-if="showSave"
           content-class="tooltip-inner"
           color="titlePrimary--text"
           top
@@ -231,6 +232,13 @@ export default {
      * Displays copy button.
      */
     showCopy: {
+      type: Boolean,
+      default: true
+    },
+    /**
+     * Displays save button.
+     */
+    showSave: {
       type: Boolean,
       default: true
     },
