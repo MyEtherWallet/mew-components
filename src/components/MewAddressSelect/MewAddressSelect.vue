@@ -280,14 +280,11 @@ export default {
      * the blockie for the regular address value.
      */
     blockieHash() {
-      return this.addressValue.address || this.addressValue;
-      /*
+      // return this.addressValue.address || this.addressValue;
+
       return this.resolvedAddr.length > 0
         ? this.resolvedAddr
-        : this.addressValue.address
-        ? this.addressValue.address
-        : this.addressValue;
-      */
+        : this.addressValue.address || this.addressValue;
     }
   },
   methods: {
