@@ -21,7 +21,6 @@
         hasFullWidth ? 'full-width' : '',
         'd-flex justify-center align-center'
       ]"
-      class=""
     >
       <!-- ===================================================================================== -->
       <!-- Button text (if no title prop is passed, then slot should be used) -->
