@@ -1,7 +1,6 @@
 ### Release 1.3.5
 ### devop
-- allow users to hide address select save icon [#302](https://github.com/MyEtherWallet/mew-components/pull/302)
-- fix persistent hint [#303](https://github.com/MyEtherWallet/mew-components/pull/303)
+- Remove text capital style from mew button [#306](https://github.com/MyEtherWallet/mew-components/pull/306)
 
 
 ### Release 1.3.4
