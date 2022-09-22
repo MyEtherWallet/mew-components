@@ -61,6 +61,9 @@
         left
         absolute
         text
+        rounded
+        min-width="48"
+        min-height="48"
         color="textBlack2"
         :class="[
           'd-flex action-btn align-center pa-3',
