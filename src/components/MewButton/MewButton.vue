@@ -27,9 +27,10 @@
       <!-- ===================================================================================== -->
       <span
         v-if="title"
-        class="font-weight-regular"
-      >{{ title }} </span>
-
+        class="font-weight-regular reset-text-style"
+      >
+        {{ title }} 
+      </span>
       <!-- ===================================================================================== -->
       <!-- slot: default -->
       <!-- ===================================================================================== -->
@@ -302,6 +303,9 @@ export default {
 
 <style lang="scss" scoped>
 // Adding full width to the container itself
+.reset-text-style {
+  text-transform: none;
+}
 .full-width {
   width: 100%;
 }

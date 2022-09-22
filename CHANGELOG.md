@@ -1,3 +1,13 @@
+### Release 1.3.5
+### devop
+- Remove text capital style from mew button [#306](https://github.com/MyEtherWallet/mew-components/pull/306)
+
+### fix
+- use token container for notification swap tokens [#307](https://github.com/MyEtherWallet/mew-components/pull/307)
+- ledger back button [#308](https://github.com/MyEtherWallet/mew-components/pull/308)
+- token display on tablet view [#309](https://github.com/MyEtherWallet/mew-components/pull/309)
+
+
 ### Release 1.3.4
 ### devop
 - allow users to hide address select save icon [#302](https://github.com/MyEtherWallet/mew-components/pull/302)

@@ -61,23 +61,19 @@
                   <!-- ===================================================================================== -->
                   <div
                     v-else
-                    class="d-flex flex-column currency-symbol"
+                    class="d-flex flex-column currency-symbol ml-2"
                   >
-                    <img
-                      :src="
-                        notification.fromObj.icon
-                          ? notification.fromObj.icon
-                          : ethTokenPlaceholder
-                      "
-                      width="24px"
-                      height="24px"
-                    >
-                    <img
-                      :src="notification.toObj.icon"
-                      width="24px"
-                      height="24px"
+                    <MewTokenContainer
+                      :img=" notification.fromObj.icon
+                        ? notification.fromObj.icon
+                        : ethTokenPlaceholder"
+                      token-border
+                    />
+                    <MewTokenContainer
+                      :img="notification.toObj.icon"
                       class="overlap"
-                    >
+                      token-border
+                    />
                   </div>
 
                   <!-- ===================================================================================== -->
@@ -204,6 +200,7 @@
 </template>
 
 <script>
+import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
 import MewBadge from '@/components/MewBadge/MewBadge.vue';
 import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
 import MewTransformHash from '@/components/MewTransformHash/MewTransformHash.vue';
@@ -212,6 +209,7 @@ import ethTokenPlaceholder from '@/assets/images/icons/eth.svg';
 export default {
   name: 'MewNotification',
   components: {
+    MewTokenContainer,
     MewBadge,
     MewBlockie,
     MewTransformHash
@@ -472,7 +470,7 @@ export default {
   }
   .overlap {
     position: absolute;
-    left: 14px;
+    left: 15px;
   }
 }
 </style>
