@@ -2,6 +2,9 @@
 ### devop
 - Remove text capital style from mew button [#306](https://github.com/MyEtherWallet/mew-components/pull/306)
 
+### fix
+- use token container for notification swap tokens [#307](https://github.com/MyEtherWallet/mew-components/pull/307)
+
 
 ### Release 1.3.4
 ### devop
