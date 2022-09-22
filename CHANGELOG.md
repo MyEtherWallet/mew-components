@@ -5,6 +5,7 @@
 ### fix
 - use token container for notification swap tokens [#307](https://github.com/MyEtherWallet/mew-components/pull/307)
 - ledger back button [#308](https://github.com/MyEtherWallet/mew-components/pull/308)
+- token display on tablet view [#309](https://github.com/MyEtherWallet/mew-components/pull/309)
 
 
 ### Release 1.3.4
