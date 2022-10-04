@@ -314,6 +314,8 @@ export default {
   .v-btn.mew-button {
     letter-spacing: 0.5px;
 
+    text-transform: none;
+
     border-radius: 10px !important;
     // BUTTON SIZES
     &.small-btn {
