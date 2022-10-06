@@ -1,7 +1,7 @@
 <template>
   <tippy-component
     class="mew-tooltip"
-    style="line-height: 1px"
+    style="line-height: initial"
     arrow
     theme="light"
     :max-width="maxWidth"
@@ -9,18 +9,10 @@
   >
     <!-- Popover trigger -->
     <template #trigger>
-      <v-icon
-        v-if="!hideIcon"
-        class="cursor-pointer"
-        color="searchText"
-        small
-      >
+      <v-icon v-if="!hideIcon" class="cursor-pointer" color="searchText" small>
         mdi-information
       </v-icon>
-      <slot
-        name="activatorSlot"
-        class="d-flex"
-      />
+      <slot name="activatorSlot" class="d-flex" />
     </template>
     <!-- Popover content -->
     <slot name="contentSlot" />
