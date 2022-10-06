@@ -1,19 +1,23 @@
-
-import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import MewStepper from '@/components/MewStepper/MewStepper.vue';
-import './../GlobalStorybook.scss'
+import { Story, Preview, Props } from "@storybook/addon-docs";
+import MewStepper from "@/components/MewStepper/MewStepper.vue";
+import "./../GlobalStorybook.scss";
 
 # MEW Stepper
+
 `<mew-stepper />`
 
 ## Overview
-The MEW stepper component is used to display the progress of the user through numbered steps. Right now, this is mainly used on the create wallet page. 
-In order to show the correct steps and information, you must pass an array of objects to the **items** prop. Each step object is required to have the attributes *step* 
-(which tells the user which step it is) and *name* (which is the title of the step). You may add as many steps as needed. Another prop that is required is **onStep**,
- which tells the user which step they are currently on. This helps track the progress of the user by notifying the user what steps they have completed, and what steps are still left. 
- In order to display the content of each step, you must use the slots provided, which are **stepperContent + (the step number)**, i.e., stepperContent1. 
- We are using slots instead of vuetify’s `<v-stepper-content>` due to design reasons. 
-## Props
-<Props of={MewStepper} />
-<Preview><Story id="mewstepper--mew-stepper" /></Preview>
 
+The MEW stepper component is used to display the progress of the user through numbered steps. Right now, this is mainly used on the create wallet page.
+In order to show the correct steps and information, you must pass an array of objects to the **items** prop. Each step object is required to have the attributes _step_
+(which tells the user which step it is) and _name_ (which is the title of the step). You may add as many steps as needed. Another prop that is required is **onStep**,
+which tells the user which step they are currently on. This helps track the progress of the user by notifying the user what steps they have completed, and what steps are still left.
+In order to display the content of each step, you must use the slots provided, which are **stepperContent + (the step number)**, i.e., stepperContent1.
+We are using slots instead of vuetify’s `<v-stepper-content>` due to design reasons.
+
+## Props
+
+<Props of={MewStepper} />
+<Preview>
+  <Story id='mewstepper--mew-stepper' />
+</Preview>

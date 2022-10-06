@@ -1,18 +1,22 @@
-
-import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import MewCarousel from '@/components/MewCarousel/MewCarousel.vue';
-import './../GlobalStorybook.scss'
+import { Story, Preview, Props } from "@storybook/addon-docs";
+import MewCarousel from "@/components/MewCarousel/MewCarousel.vue";
+import "./../GlobalStorybook.scss";
 
 # MEW Carousel
+
 `<mew-carousel />`
 
 ## Overview
-MEW Carousel is used to cycle through different content on a rotating timer (6s). Each slide is customizable by a slot, **slide** + **the number of the slide**, i.e. *slide1*.
-The total number of slides is indicated by the **totalSlides** prop or if you would like each slide to link the user 
-to a different page then you may also pass an array of links to the prop as well. There is an option to not allow the 
+
+MEW Carousel is used to cycle through different content on a rotating timer (6s). Each slide is customizable by a slot, **slide** + **the number of the slide**, i.e. _slide1_.
+The total number of slides is indicated by the **totalSlides** prop or if you would like each slide to link the user
+to a different page then you may also pass an array of links to the prop as well. There is an option to not allow the
 carousel to cycle automatically by passing false to the **cycle** prop. You may also indicate which slide the carousel
 should start on with the **value** prop.
-## Props
-<Props of={MewCarousel} />
-<Preview><Story id="mewcarousel--mew-carousel" /></Preview>
 
+## Props
+
+<Props of={MewCarousel} />
+<Preview>
+  <Story id='mewcarousel--mew-carousel' />
+</Preview>

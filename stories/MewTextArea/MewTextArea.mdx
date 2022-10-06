@@ -1,18 +1,21 @@
-
-import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import MewTextArea from '@/components/MewTextArea/MewTextArea.vue';
-import './../GlobalStorybook.scss'
+import { Story, Preview, Props } from "@storybook/addon-docs";
+import MewTextArea from "@/components/MewTextArea/MewTextArea.vue";
+import "./../GlobalStorybook.scss";
 
 # MEW Text Area
+
 `<mew-text-area />`
 
 ## Overview
+
 The MEW text area component uses Vuetify's v-textarea but is customized with MEW theme styles.
 It is used to collect large amounts of textual data from an user. When the user types in information,
 an event called **input** will be emitted with the value. You may also validate this component by
-passing validation rules to the **rules** prop. 
+passing validation rules to the **rules** prop.
 
 ## Props
-<Props of={MewTextArea} />
-<Preview><Story id="mewtextarea--mew-text-area" /></Preview>
 
+<Props of={MewTextArea} />
+<Preview>
+  <Story id='mewtextarea--mew-text-area' />
+</Preview>

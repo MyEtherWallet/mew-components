@@ -1,18 +1,21 @@
-
-import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import MewSelect from '@/components/MewSelect/MewSelect.vue';
-import './../GlobalStorybook.scss'
+import { Story, Preview, Props } from "@storybook/addon-docs";
+import MewSelect from "@/components/MewSelect/MewSelect.vue";
+import "./../GlobalStorybook.scss";
 
 # MEW Select
+
 `<mew-select />`
 
 ## Overview
-MEW select replaces Vuetify's v-select with acceptable MEW theme options. It is used as a way to collect 
+
+MEW select replaces Vuetify's v-select with acceptable MEW theme options. It is used as a way to collect
 information from a list of options. There are two main styles to this component, one which is the default style
-and the other one which will show more customized options like adding a filter input or icon. This is enabled by the 
+and the other one which will show more customized options like adding a filter input or icon. This is enabled by the
 **isCustom** prop. This style is mainly used to display tokens on the wallet pages.
 
 ## Props
-<Props of={MewSelect} />
-<Preview><Story id="mewselect--mew-select" /></Preview>
 
+<Props of={MewSelect} />
+<Preview>
+  <Story id='mewselect--mew-select' />
+</Preview>

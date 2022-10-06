@@ -1,17 +1,21 @@
-import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import MewWarningSheet from '@/components/MewWarningSheet/MewWarningSheet.vue';
-import './../GlobalStorybook.scss'
+import { Story, Preview, Props } from "@storybook/addon-docs";
+import MewWarningSheet from "@/components/MewWarningSheet/MewWarningSheet.vue";
+import "./../GlobalStorybook.scss";
 
 # MEW Warning Sheet
+
 `<mew-warning-sheet />`
 
 ## Overview
+
 The MEW warning sheet component is a flex component that is usually used on the platform to display
- a warning message to the user and a link that will provide additional educational content.
-  It has an icon that is permanently positioned to the left of the message. Please see the usage example on V6. 
+a warning message to the user and a link that will provide additional educational content.
+It has an icon that is permanently positioned to the left of the message. Please see the usage example on V6.
 It has 3 props to display text: **title**, **description**, and **linkObj** content.
 
 ## Props
-<Props of={MewWarningSheet} />
-<Preview><Story id="mewwarningsheet--mew-warning-sheet"/></Preview>
 
+<Props of={MewWarningSheet} />
+<Preview>
+  <Story id='mewwarningsheet--mew-warning-sheet' />
+</Preview>
