@@ -104,17 +104,17 @@
                           class="ml-1 detail-hash"
                         />
                       </div>
-                      <div class="caption mew-heading-2">
-                        <div class="d-inline-block mr-1">
+                      <div class="caption mew-heading-2 d-flex align-center">
+                        <div class="mr-1 line-height-initial">
                           {{ notification.fromObj.amount }}
                           <span class="textPrimary--text">{{
                             notification.fromObj.currency
                           }}</span>
                         </div>
-                        <v-icon class="subtitle-1 d-inline-block">
+                        <v-icon class="subtitle-1 mr-1">
                           mdi-arrow-right
                         </v-icon>
-                        <div class="d-inline-block mr-3">
+                        <div class="mr-3 line-height-initial">
                           {{ notification.toObj.amount }}
                           <span class="textPrimary--text">{{
                             notification.toObj.currency
@@ -472,5 +472,9 @@ export default {
     position: absolute;
     left: 15px;
   }
+}
+
+.line-height-initial {
+  line-height: initial;
 }
 </style>
