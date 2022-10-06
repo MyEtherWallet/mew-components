@@ -1,3 +1,8 @@
+### Release 1.3.6
+### devop
+- remove dapp btn capitalization [#313](https://github.com/MyEtherWallet/mew-components/pull/313)
+
+
 ### Release 1.3.5
 ### devop
 - Remove text capital style from mew button [#306](https://github.com/MyEtherWallet/mew-components/pull/306)
