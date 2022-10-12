@@ -1,5 +1,5 @@
 import vuetifyConfig from "../src/plugins/vuetify";
-import "vuetify/src/styles/main.sass";
+import "vuetify/lib/styles/main.sass";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import { DocsPage, DocsContainer } from "@storybook/addon-docs";
 
