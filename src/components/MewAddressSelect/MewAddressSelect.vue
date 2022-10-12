@@ -87,7 +87,9 @@
         class="dropdown-icon-container d-flex align-center justify-center cursor-pointer full-height"
         @click="toggle"
       >
-        <v-icon class="mew-heading-1 mx-5"> mdi-chevron-down </v-icon>
+        <v-icon class="mew-heading-1 mx-5">
+          mdi-chevron-down
+        </v-icon>
       </div>
     </template>
 
@@ -113,7 +115,10 @@
             v-if="!item.resolvedAddr || item.resolvedAddr === ''"
             :hash="item.address"
           />
-          <span v-else class="mew-address">{{ item.address }}</span>
+          <span
+            v-else
+            class="mew-address"
+          >{{ item.address }}</span>
         </div>
         <div class="overline primary--text font-weight-medium ml-3">
           {{ item.nickname }}
