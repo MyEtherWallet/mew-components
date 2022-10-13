@@ -5,7 +5,6 @@
   <v-combobox
     ref="mewAddressSelect"
     v-model="addressValue"
-    height="62"
     class="address-select pa-0 rounded-lg"
     color="primary"
     :items="items"
@@ -344,6 +343,7 @@ export default {
     * Address select input.
     */
   .address-select {
+    height: 62px;
     &.v-text-field {
       input {
         font-family: 'PT Mono';
