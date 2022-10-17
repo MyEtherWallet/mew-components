@@ -283,7 +283,6 @@ export default {
      */
     blockieHash() {
       // return this.addressValue.address || this.addressValue;
-
       return this.resolvedAddr.length > 0
         ? this.resolvedAddr
         : this.addressValue.address || this.addressValue;
@@ -356,7 +355,6 @@ export default {
       height: 100%;
       margin-top: 0;
     }
-
     .icon-container {
       .copy-icon {
         font-size: 20px;
@@ -371,13 +369,11 @@ export default {
         }
       }
     }
-
     &.v-select.v-input--is-focused {
       .mdi-chevron-down {
         color: var(--v-titlePrimary-base);
       }
     }
-
     .dropdown-icon-container {
       border-left: 1px solid var(--v-disabled-base);
       margin-left: 15px;
@@ -386,3 +382,4 @@ export default {
   }
 }
 </style>
+
