@@ -6,7 +6,6 @@
   -->
   <v-select
     v-model="selectModel"
-    height="62"
     class="mew-select rounded-lg"
     color="primary"
     append-icon="mdi-chevron-down"
@@ -442,6 +441,7 @@ export default {
   * Mew Select styles
   */
 .mew-select {
+  height: 62px;
   .mdi-chevron-down {
     color: var(--v-titlePrimary-base);
     cursor: pointer;
