@@ -1,3 +1,11 @@
+### Release 1.3.8
+
+### fix
+
+- mew notification arrow on swap alignment [#319](https://github.com/MyEtherWallet/mew-components/pull/319)
+- address hook horizontal alignment [#317](https://github.com/MyEtherWallet/mew-components/pull/317)
+- token selector horizontal alignment [#316](https://github.com/MyEtherWallet/mew-components/pull/316)
+
 ### devop
 
 - ignore e on mew-input type number [#315](https://github.com/MyEtherWallet/mew-components/pull/315)
