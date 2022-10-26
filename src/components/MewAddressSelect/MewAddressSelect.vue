@@ -5,7 +5,6 @@
   <v-combobox
     ref="mewAddressSelect"
     v-model="addressValue"
-    height="62"
     class="address-select pa-0 rounded-lg"
     color="primary"
     :items="items"
@@ -87,7 +86,9 @@
         class="dropdown-icon-container d-flex align-center justify-center cursor-pointer full-height"
         @click="toggle"
       >
-        <v-icon class="mew-heading-1 mx-5"> mdi-chevron-down </v-icon>
+        <v-icon class="mew-heading-1 mx-5">
+          mdi-chevron-down
+        </v-icon>
       </div>
     </template>
 
@@ -113,7 +114,10 @@
             v-if="!item.resolvedAddr || item.resolvedAddr === ''"
             :hash="item.address"
           />
-          <span v-else class="mew-address">{{ item.address }}</span>
+          <span
+            v-else
+            class="mew-address"
+          >{{ item.address }}</span>
         </div>
         <div class="overline primary--text font-weight-medium ml-3">
           {{ item.nickname }}
@@ -344,6 +348,7 @@ export default {
     * Address select input.
     */
   .address-select {
+    min-height: 62px;
     &.v-text-field {
       input {
         font-family: 'PT Mono';

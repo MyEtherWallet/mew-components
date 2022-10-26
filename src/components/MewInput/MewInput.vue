@@ -24,6 +24,7 @@
     :append-icon="showPasswordIcon"
     :readonly="isReadOnly"
     @click:append="onPasswordIconClick"
+    @keydown.native="preventCharE($event)"
     validate-on-blur
     height="62"
   >
@@ -327,6 +328,9 @@ export default {
     },
     clear(val) {
       this.inputValue = val ? val : '';
+    },
+    preventCharE(e) {
+      if (this.type === 'number' && e.key === 'e') e.preventDefault();
     },
   },
 };

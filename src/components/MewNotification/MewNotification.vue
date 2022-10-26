@@ -18,7 +18,7 @@
             class="px-2 py-0"
             :color="backgroundColor"
           >
-            <v-container
+            <v-container 
               fluid
               class="px-0"
             >
@@ -32,9 +32,7 @@
                   <!-- ===================================================================================== -->
                   <div
                     v-if="
-                      $vuetify.breakpoint.smAndUp &&
-                        !notification.read &&
-                        showIndicator
+                      $vuetify.breakpoint.smAndUp && !notification.read && showIndicator
                     "
                     :class="[
                       getClasses(notification.status.value.toLowerCase()),
@@ -59,14 +57,16 @@
                   <!-- ===================================================================================== -->
                   <!-- Displays swap icons if it is a swap notification -->
                   <!-- ===================================================================================== -->
-                  <div
+                  <div 
                     v-else
                     class="d-flex flex-column currency-symbol ml-2"
                   >
                     <MewTokenContainer
-                      :img=" notification.fromObj.icon
-                        ? notification.fromObj.icon
-                        : ethTokenPlaceholder"
+                      :img="
+                        notification.fromObj.icon
+                          ? notification.fromObj.icon
+                          : ethTokenPlaceholder
+                      "
                       token-border
                     />
                     <MewTokenContainer
@@ -124,7 +124,7 @@
                     </div>
                   </div>
                 </v-col>
-                <v-col
+                <v-col 
                   cols="4"
                   class="text-right pr-2"
                 >
@@ -143,17 +143,17 @@
           </v-expansion-panel-header>
 
           <v-expansion-panel-content
-            class="pa-0"
+            class="pa-0" 
             :color="backgroundColor"
           >
             <div class="expanded-container capitalize">
               <v-container>
-                <v-row
+                <v-row 
                   v-for="(detail, idx) in getDetails"
                   :key="idx"
                 >
-                  <v-col
-                    cols="6"
+                  <v-col 
+                    cols="6" 
                     class="textPrimary--text"
                   >
                     {{ detail.string }}:
@@ -178,7 +178,7 @@
                       top
                     >
                       <template #activator="{ on }">
-                        <a
+                        <a 
                           :href="detail.link"
                           target="_blank"
                           v-on="on"
@@ -205,7 +205,6 @@ import MewBadge from '@/components/MewBadge/MewBadge.vue';
 import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
 import MewTransformHash from '@/components/MewTransformHash/MewTransformHash.vue';
 import ethTokenPlaceholder from '@/assets/images/icons/eth.svg';
-
 export default {
   name: 'MewNotification',
   components: {
@@ -287,6 +286,10 @@ export default {
     showIndicator: {
       type: Boolean,
       default: true
+    },
+    activeOnToggle: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -339,6 +342,11 @@ export default {
     },
     isSwap() {
       return this.notification.type.value.toLowerCase() === this.txTypes.swap;
+    }
+  },
+  watch: {
+    activeOnToggle() {
+      this.onToggle();
     }
   },
   methods: {
@@ -397,74 +405,61 @@ export default {
 .primary {
   border-radius: 0 !important;
 }
-
 .v-expansion-panel {
   overflow: hidden;
 }
-
 .notification-container {
   .detail-container {
     max-width: 85%;
-
     .detail-hash {
       max-width: 60%;
     }
   }
-
   .indicator {
     border-radius: 50% !important;
     display: table;
     height: 6px;
     width: 6px;
   }
-
   .expanded-container {
     .container {
       border-top: 1px solid var(--v-inputBorder-base);
     }
   }
 }
-
 .success-type {
   //background-color: var(--v-superPrimary-base);
   border: 1px solid var(--v-primary-base);
   &.expanded {
     border: 1px solid var(--v-superPrimary-base);
   }
-
   &.read {
     border: 1px solid var(--v-superPrimary-base);
   }
 }
-
 .pending-type {
   //background-color: var(--v-warning-base);
   border: 1px solid var(--v-warning-darken1);
   &.expanded {
     border: 1px solid var(--v-warning-base);
   }
-
   &.read {
     border: 1px solid var(--v-warning-base);
   }
 }
-
 .failed-type {
   //background-color: var(--v-error-lighten1);
   border: 1px solid var(--v-error-base);
   &.expanded {
     border: 1px solid var(--v-error-lighten1);
   }
-
   &.read {
     border: 1px solid var(--v-error-lighten1);
   }
 }
-
 .currency-symbol {
   position: relative;
   width: 35px;
-
   img {
     border-radius: 50%;
   }
@@ -473,7 +468,6 @@ export default {
     left: 15px;
   }
 }
-
 .line-height-initial {
   line-height: initial;
 }
