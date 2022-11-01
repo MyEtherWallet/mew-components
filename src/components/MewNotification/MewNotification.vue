@@ -23,7 +23,7 @@
               class="px-0"
             >
               <v-row dense>
-                <v-col
+                <v-col 
                   class="d-flex align-center"
                   cols="8"
                 >
@@ -32,7 +32,9 @@
                   <!-- ===================================================================================== -->
                   <div
                     v-if="
-                      $vuetify.breakpoint.smAndUp && !notification.read && showIndicator
+                      $vuetify.breakpoint.smAndUp &&
+                        !notification.read &&
+                        showIndicator
                     "
                     :class="[
                       getClasses(notification.status.value.toLowerCase()),
@@ -58,7 +60,7 @@
                   <!-- Displays swap icons if it is a swap notification -->
                   <!-- ===================================================================================== -->
                   <div 
-                    v-else
+                    v-else 
                     class="d-flex flex-column currency-symbol ml-2"
                   >
                     <MewTokenContainer
@@ -104,19 +106,23 @@
                           class="ml-1 detail-hash"
                         />
                       </div>
-                      <div class="caption mew-heading-2 d-flex align-center">
-                        <div class="mr-1 line-height-initial">
-                          {{ notification.fromObj.amount }}
-                          <span class="textPrimary--text">{{
+                      <div class="caption mew-heading-2 mr-3 align-center">
+                        <div
+                          class="mr-1 line-height-initial d-flex amount-font"
+                        >
+                          {{ fromAmount }}
+                          <span class="textPrimary--text ml-1">{{
                             notification.fromObj.currency
                           }}</span>
                         </div>
-                        <v-icon class="subtitle-1 mr-1">
-                          mdi-arrow-right
-                        </v-icon>
-                        <div class="mr-3 line-height-initial">
-                          {{ notification.toObj.amount }}
-                          <span class="textPrimary--text">{{
+                        <div
+                          class="amount-container amount-font mr-3 d-flex line-height-initial"
+                        >
+                          <v-icon class="subtitle-1 mr-1">
+                            mdi-arrow-right
+                          </v-icon>
+                          {{ toAmount }}
+                          <span class="textPrimary--text ml-1">{{
                             notification.toObj.currency
                           }}</span>
                         </div>
@@ -142,8 +148,8 @@
             </v-container>
           </v-expansion-panel-header>
 
-          <v-expansion-panel-content
-            class="pa-0" 
+          <v-expansion-panel-content 
+            class="pa-0"
             :color="backgroundColor"
           >
             <div class="expanded-container capitalize">
@@ -179,7 +185,7 @@
                     >
                       <template #activator="{ on }">
                         <a 
-                          :href="detail.link"
+                          :href="detail.link" 
                           target="_blank"
                           v-on="on"
                         >
@@ -286,16 +292,12 @@ export default {
     showIndicator: {
       type: Boolean,
       default: true
-    },
-    activeOnToggle: {
-      type: Boolean,
-      default: true
     }
   },
   data() {
     return {
       ethTokenPlaceholder: ethTokenPlaceholder,
-      expanded: false,
+      // expanded: false,
       txTypes: {
         in: 'txIn',
         out: 'txOut',
@@ -310,6 +312,16 @@ export default {
     };
   },
   computed: {
+    fromAmount() {
+      return this.notification.fromObj.amount.length > 10
+        ? this.notification.fromObj.amount.slice(0, 9 - 1) + '...'
+        : this.notification.fromObj.amount;
+    },
+    toAmount() {
+      return this.notification.toObj.amount.length > 10
+        ? this.notification.toObj.amount.slice(0, 9 - 1) + '...'
+        : this.notification.toObj.amount;
+    },
     backgroundColor() {
       if (this.notification.status.value == this.txStatusOptions.pending) {
         return 'warning';
@@ -342,11 +354,6 @@ export default {
     },
     isSwap() {
       return this.notification.type.value.toLowerCase() === this.txTypes.swap;
-    }
-  },
-  watch: {
-    activeOnToggle() {
-      this.onToggle();
     }
   },
   methods: {
@@ -383,10 +390,10 @@ export default {
         }
         return 'failed-type';
       }
-    },
-    onToggle() {
-      this.expanded = !this.expanded;
     }
+    // onToggle() {
+    //   this.expanded = !this.expanded;
+    // }
   }
 };
 </script>
@@ -400,6 +407,9 @@ export default {
 </style>
 
 <style lang="scss" scoped>
+.amount-font {
+  font-size: 12px;
+}
 .warning,
 .error,
 .primary {
