@@ -1,41 +1,72 @@
 export default {
   icons: {
-    iconfont: 'mdi'
+    iconfont: 'mdi',
   },
   theme: {
     options: {
-      customProperties: true
+      customProperties: true,
     },
     themes: {
       light: {
-      // new colors
+        // Text
+        textDark: '#1F242F',
+        textMedium: '#626978',
+        textLight: '#9BA1AE',
+        // Grey
+        greyPrimary: '#626978',
+        greyMedium: '#E4E7ED',
+        greyLight: '#F9FAFE',
+        // Asphalt
+        asphalt10: '#F9FAFE',
+        asphalt25: '#F5F7FB',
+        asphalt50: '#EDF0F5',
+        asphalt75: '#E4E7ED',
+        asphalt100: '#DADEE5',
+        asphalt200: '#CACFD7',
+        asphalt300: '#B7BCC7',
+        asphalt400: '#9BA1AE',
+        asphalt500: '#777E8C',
+        asphalt600: '#626978',
+        asphalt700: '#474D5B',
+        asphalt800: '#333945',
+        asphalt900: '#1F242F',
+        // Backgrounds
+        walletBg: '#F2F4FA',
+        overlayBg: '#F2FAFA',
+        greyBg: '#F8F9FB',
+        // Whites
+        alwaysWhite: '#FFFFFF',
+        whiteBg: '#FFFFFF',
+        popupBg: '#FFFFFF',
+        // Blue
+        bluePrimary: '#4B83E8',
+        blueMedium: '#D4E1F9',
+        blueLight: '#EEF3FD',
+        // Green
+        greenPrimary: '#05C0A5',
+        greenMedium: '#C3F0E9',
+        greenLight: '#EBFAF8',
+        // Red
+        redPrimary: '#FF445B',
+        redMedium: '#FFD2D8',
+        redLight: '#FFF0F2',
+        // Orange
+        orangePrimary: '#F5A623',
+        orangeMedium: '#FBDBA7',
+        orangeLight: '#FEF4E5',
+        // Disabled
+        disabledPrimary: '#CECECE',
+        disabledMedium: '#E0E0E0',
+        disabledLight: '#F6F6F6 ',
+        // =========================================================
+        // =========================================================
+        // new colors
         backgroundWallet: '#F2F4FA',
         backgroundOverlay: '#F2FAFA',
         backgroundGrey: '#F8F9FB',
         whiteAlways: '#FFFFFF',
         whiteBackground: '#FFFFFF',
         whitePopup: '#FFFFFF',
-        textDark: '#192133',
-        textMedium: '#5A678A',
-        textLight: '#939FB9',
-        greyPrimary:'#5A678A',
-        greyMedium: '#D7DAE3',
-        greyLight: '#F2F3F6',
-        greenPrimary: '#05C0A5',
-        greenMedium: '#C3F0E9',
-        greenLight: '#EBFAF8',
-        bluePrimary: '#4B83E8',
-        blueMedium: '#D4E1F9',
-        blueLight: '#EEF3FD',
-        redPrimary: '#FF445B',
-        redMedium: '#FFD2D8',
-        redLight: '#FFF0F2',
-        orangePrimary: '#F5A623',
-        orangeMedium: '#FBDBA7',
-        orangeLight: '#FEF4E5',
-        disabledPrimary: '#CECECE',
-        disabledMedium: '#E0E0E0',
-        disabledLight: '#F6F6F6',
         //old colors
         primaryHover: '#1eb19b',
         primaryActive: '#56c5b4',
@@ -47,7 +78,7 @@ export default {
         selectHover: '#E5EAEE',
         superPrimary: {
           base: '#f2fafa',
-          darken1: '#e3f2f2'
+          darken1: '#e3f2f2',
         },
         superPrimaryHover: '#f5fdfb',
         emerald100: '#f2fafa',
@@ -73,7 +104,6 @@ export default {
         white: '#fff',
         black: '#000',
         mewBg: '#fff',
-        walletBg: '#f2f4fa',
         boxShadow: '#ececec',
         expandHeader: '#184f90',
         primary: '#05c0a5',
@@ -83,12 +113,12 @@ export default {
         error: {
           base: '#ff445b',
           lighten1: '#ffd7dc',
-          lighten2: '#e96071'
+          lighten2: '#e96071',
         },
         warning: {
           base: '#FFF2DC',
           darken1: '#f5a623',
-          darken2: '#ff7700'
+          darken2: '#ff7700',
         },
         disabled: '#cecece',
         tableHeader: '#f9f9f9',
@@ -99,38 +129,69 @@ export default {
         textBlack2: '#5F6368',
         buttonSelect: '#D7F5F4',
         blue100: '#F3F5FB',
-        surface: '#192133' // name from figma. not sure if its correct
+        surface: '#192133', // name from figma. not sure if its correct
       },
       dark: {
-      // new colors
+        // Text
+        textDark: '#1F242F',
+        textMedium: '#626978',
+        textLight: '#9BA1AE',
+        // Grey
+        greyPrimary: '#626978',
+        greyMedium: '#E4E7ED',
+        greyLight: '#F9FAFE',
+        // Asphalt
+        asphalt10: '#F9FAFE',
+        asphalt25: '#F5F7FB',
+        asphalt50: '#EDF0F5',
+        asphalt75: '#E4E7ED',
+        asphalt100: '#DADEE5',
+        asphalt200: '#CACFD7',
+        asphalt300: '#B7BCC7',
+        asphalt400: '#9BA1AE',
+        asphalt500: '#777E8C',
+        asphalt600: '#626978',
+        asphalt700: '#474D5B',
+        asphalt800: '#333945',
+        asphalt900: '#1F242F',
+        // Backgrounds
+        walletBg: '#000000',
+        overlayBg: '#000000',
+        greyBg: '#000000',
+        // Whites
+        alwaysWhite: '#FFFFFF',
+        whiteBg: '#151518',
+        popupBg: '#1B1C25 ',
+        // Blue
+        bluePrimary: '#6292EB',
+        blueMedium: '#355288',
+        blueLight: '#283A5D',
+        // Green
+        greenPrimary: '#06D9B9',
+        greenMedium: '#0F7E79',
+        greenLight: '#154853',
+        // Red
+        redPrimary: '#FF5E70',
+        redMedium: '#8C4155',
+        redLight: '#473044',
+        // Orange
+        orangePrimary: '#F6AF3C',
+        orangeMedium: '#87693B',
+        orangeLight: '#45403A',
+        // Disabled
+        disabledPrimary: '#606670',
+        disabledMedium: '#383F4A',
+        disabledLight: '#242D3E ',
+        // =========================================================
+        // =========================================================
+        // new colors
         backgroundWallet: '#000000',
         backgroundOverlay: '#000000',
         backgroundGrey: '#000000',
         whiteAlways: '#FFFFFF',
         whiteBackground: '#192439',
         whitePopup: '#202B43',
-        textDark: '#CCD4E6',
-        textMedium: '#626E86',
-        textLight: '#3A4561',
-        greyPrimary:'#5A678A',
-        greyMedium: '#323D57',
-        greyLight: '#263149',
-        greenPrimary: '#06D9B9',
-        greenMedium: '#107E7A',
-        greenLight: '#154853',
-        bluePrimary: '#6292EB',
-        blueMedium: '#355288',
-        blueLight: '#283A5D',
-        redPrimary: '#FF5E70',
-        redMedium: '#8C4155',
-        redLight: '#473044',
-        orangePrimary: '#F6AF3C',
-        orangeMedium: '#87693B',
-        orangeLight: '#45403A',
-        disabledPrimary: '#606670',
-        disabledMedium: '#383F4A',
-        disabledLight: '#242D3E',
-      //old colors
+        //old colors
         primaryHover: '#1eb19b',
         primaryActive: '#56c5b4',
         primaryOutlineHover: '#03292c',
@@ -145,7 +206,7 @@ export default {
         selectHover: '#2c3448',
         superPrimary: {
           base: '#242c48',
-          darken1: '#e3f2f2'
+          darken1: '#e3f2f2',
         },
         superPrimaryHover: '#f5fdfb',
         emerald100: '#151a29',
@@ -165,7 +226,6 @@ export default {
         searchText: '#96a8b6',
         white: '#fff',
         mewBg: '#151a29',
-        walletBg: '#151a29',
         black: '#000',
         boxShadow: '#3c3c3c',
         expandHeader: '#184f90',
@@ -181,11 +241,11 @@ export default {
         error: {
           base: '#ff445b',
           lighten1: '#ffd7dc',
-          lighten2: '#e96071'
+          lighten2: '#e96071',
         },
         warning: {
           base: '#0f1320',
-          darken1: '#f5a623'
+          darken1: '#f5a623',
         },
         disabled: '#1f2b42',
         tableHeader: '#0f1320',
@@ -196,8 +256,8 @@ export default {
         textBlack2: '#5F6368',
         buttonSelect: '#D7F5F4',
         blue100: '#F3F5FB',
-        surface: '#192133' //name from figma
-      }
-    }
-  }
-}
+        surface: '#192133', //name from figma
+      },
+    },
+  },
+};
