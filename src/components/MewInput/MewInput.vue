@@ -1,11 +1,11 @@
 <template>
-  <!-- ===================================================================================== -->
-  <!-- Mew Input -->
-  <!-- ===================================================================================== -->
+  <!--
+=====================================================================================
+  Mew Input
+=====================================================================================
+-->
   <v-text-field
-    v-model="inputValue"
     class="mew-input rounded-lg"
-    :class="hideValue ? 'hide-value' : ''"
     :disabled="disabled"
     :label="label"
     :placeholder="placeholder"
@@ -14,6 +14,7 @@
     :solo="hasNoBorder"
     color="primary"
     :autofocus="autofocus"
+    v-model="inputValue"
     :hint="resolvedAddr ? resolvedAddr : hint"
     :persistent-hint="persistentHint || resolvedAddr.length > 0"
     :suffix="rightLabel"
@@ -22,14 +23,17 @@
     :type="inputType"
     :append-icon="showPasswordIcon"
     :readonly="isReadOnly"
+    @click:append="onPasswordIconClick"
+    @keydown.native="preventCharE($event)"
     validate-on-blur
     height="62"
-    @click:append="onPasswordIconClick"
   >
-    <!-- ===================================================================================== -->
-    <!-- Mew Input: Error Messages -->
-    <!-- ===================================================================================== -->
-    <template #message="item">
+    <!--
+=====================================================================================
+  Mew Input: Error Messages 
+=====================================================================================
+-->
+    <template v-slot:message="item">
       <span
         class="mew-label"
       >{{ item.message }}
@@ -40,10 +44,12 @@
           @click="emitBuyMore"
         >{{ buyMoreStr }}</a></span>
     </template>
-    <template #prepend-inner>
-      <!-- ===================================================================================== -->
-      <!-- Mew Input: Blockie (displays at the beginning of the input) -->
-      <!-- ===================================================================================== -->
+    <template v-slot:prepend-inner>
+      <!--
+=====================================================================================
+  Mew Input: Blockie (displays at the beginning of the input)
+=====================================================================================
+-->
       <div
         v-if="showBlockie && !value"
         class="blockie-placeholder mr-1 selectHover"
@@ -55,15 +61,18 @@
         height="25px"
       />
       <div class="d-flex align-center justify-center">
-        <!-- ===================================================================================== -->
-        <!-- slot: prependInnerIcon -->
-        <!-- prepends content to the beginning of the input. -->
-        <!-- ===================================================================================== -->
+        <!--
+=====================================================================================
+  slot: prependInnerIcon
+  prepends content to the beginning of the input.
+=====================================================================================
+-->
         <slot name="prependInnerIcon" />
-        
-        <!-- ===================================================================================== -->
-        <!-- Mew Input: Token Image  (displays at the beginning of the input) -->
-        <!-- ===================================================================================== -->
+        <!--
+=====================================================================================
+  Mew Input: Token Image  (displays at the beginning of the input)
+=====================================================================================
+-->
         <mew-token-container
           v-if="image"
           class="mx-1 mt-1"
@@ -73,18 +82,20 @@
         />
       </div>
     </template>
-    
-    <!-- ===================================================================================== -->
-    <!-- Max Button (displays at the end of the input) -->
-    <!-- ===================================================================================== -->
-    <template #append>
+    <!--
+=====================================================================================
+  Max Button (displays at the end of the input)
+=====================================================================================
+-->
+    <template v-slot:append>
       <v-btn
         v-if="maxBtnObj.method"
+        @click="maxBtnObj.method"
         :class="[
           maxBtnObj.disabled
             ? 'disabled--text no-pointer-events'
             : 'greyPrimary--text',
-          'rounded-lg mt-n2 mew-caption font-weight-medium'
+          'rounded-lg mt-n2 mew-caption font-weight-medium',
         ]"
         min-width="40"
         min-height="40"
@@ -92,7 +103,6 @@
         width="40"
         depressed
         color="greyLight"
-        @click="maxBtnObj.method"
       >
         {{ maxBtnObj.title }}
       </v-btn>
@@ -110,7 +120,7 @@ export default {
   name: 'MewInput',
   components: {
     MewBlockie,
-    MewTokenContainer
+    MewTokenContainer,
   },
   props: {
     /**
@@ -118,77 +128,77 @@ export default {
      */
     errorMessages: {
       type: [String, Array],
-      default: ''
+      default: '',
     },
     /**
      * Input becomes read only.
      */
     isReadOnly: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Prepends the blockie to the beginning of the input.
      */
     showBlockie: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Removes the input border and adds a box shadow.
      */
     hasNoBorder: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Disables the input.
      */
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * The input label.
      */
     label: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * The input placeholder.
      */
     placeholder: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * The input value.
      */
     value: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * The input id.
      */
     id: {
       type: Number,
-      default: null
+      default: null,
     },
     /**
      * Displays text on the right inner side of the input.
      */
     rightLabel: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Hides input clear functionality. Clear symbol will be displayed on the right side.
      */
     hideClearBtn: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * For validating your input - accepts an array of functions that take an input value as an argument and returns either true / false
@@ -198,49 +208,49 @@ export default {
       type: Array,
       default: () => {
         return [];
-      }
+      },
     },
     /**
      * The resolved address.
      */
     resolvedAddr: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Enables persistent hint.
      */
     persistentHint: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Hint text (will be displayed at the bottom of the input).
      */
     hint: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Sets input type.
      */
     type: {
       type: String,
-      default: 'text'
+      default: 'text',
     },
     /**
      * Prepends an image to the beginning of the input.
      */
     image: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Adds a "Buy more" string to the end of the first index of the errorMessages prop.
      */
     buyMoreStr: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Displays a button to the right inner side of the input.
@@ -251,14 +261,14 @@ export default {
       type: Object,
       default: () => {
         return {};
-      }
+      },
     },
     /**
      * Autofocuses the input.
      */
     autofocus: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Hides the toggle show password icon on the right
@@ -266,21 +276,26 @@ export default {
      */
     hidePasswordIcon: {
       type: Boolean,
-      default: false
+      default: false,
     },
-    /**
-     * Hide password and key value
-     */
-    hideValue: {
-      type: Boolean,
-      default: false
-    }
   },
   data() {
     return {
       inputValue: '',
-      showPassword: false
+      showPassword: false,
     };
+  },
+  watch: {
+    inputValue(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.$emit('input', newVal, this.id);
+      }
+    },
+    value(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.inputValue = newVal;
+      }
+    },
   },
   computed: {
     isPasswordType() {
@@ -297,19 +312,7 @@ export default {
         return types[1];
       }
       return this.type;
-    }
-  },
-  watch: {
-    inputValue(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        this.$emit('input', newVal, this.id);
-      }
     },
-    value(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        this.inputValue = newVal;
-      }
-    }
   },
   mounted() {
     this.inputValue = this.value;
@@ -325,21 +328,18 @@ export default {
     },
     clear(val) {
       this.inputValue = val ? val : '';
-    }
-  }
+    },
+    preventCharE(e) {
+      if (this.type === 'number' && e.key === 'e') e.preventDefault();
+    },
+  },
 };
 </script>
-
 <style lang="scss">
 /**
   * Mew Input styles
   */
 .mew-input {
-  &.hide-value {
-    input {
-      -webkit-text-security: disc;
-    }
-  }
   .mdi-close {
     font-size: 20px !important;
   }
