@@ -6,12 +6,9 @@ import './../GlobalStorybook.scss'
 `<mew-light-table />`
 
 ## Overview
-The MEW table component uses Vuetify's v-data-table but is customized with MEW theme styles.
-The **hasColor** prop changes the tables background color to *superPrimary darken1* and the **hasSelect** prop
-will add a checkbox to each row. The events **selectedAll** or **selectedRow** will be emitted with the item when
-the checkboxes are selected. There are different style customizations for the following values:
- toggle, txHash, token, change, balance, callToAction, and 
-address. All you have to do is pass the value and attribute to **tableHeaders** and **tableData**. If you would like to 
+The MEW light table component uses HTML's table but is customized with MEW theme styles.
+The **isMobile** prop changes the tables background color to *blueLight-base* and the table format to fit a mobile display.
+All you have to do is pass the value and attribute to **tableHeaders** and **tableData**. If you would like to 
 utilize the skeleton loading state then you must pass the **loading** prop and you must pass an empty array
 to **tableData**.
 

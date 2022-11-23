@@ -3,8 +3,7 @@ import {
   boolean,
   number,
   text,
-  // object,
-  // text
+  object
 } from '@storybook/addon-knobs';
 import MewLightTable from '@/components/MewLightTable/MewLightTable.vue';
 import MewLightTableDoc from './MewLightTable.mdx';
@@ -20,60 +19,96 @@ export default {
   decorators: [withKnobs]
 };
 
+const tableHeaders = [
+  'TOKEN',
+  'PRICE',
+  'MARKET CAP',
+  '24H',
+  'BALANCE',
+  ''
+]
+
+const tableData = [
+  {
+    token: 'ETH',
+    tokenImg: 'https://cdn4.iconfinder.com/data/icons/cryptocoins/227/ETH-512.png',
+    price: '$1,122.97',
+    cap: '$278.65B',
+    change: '5.75',
+    status: '+',
+    balance: [
+      '2.2674',
+      '$3,343.98'
+    ],
+    callToAction: [
+      {
+        title: 'Swap',
+        method: data => onClick(data.token),
+        btnStyle: 'outline',
+        colorTheme: 'greenPrimary'
+      }
+    ]
+  },
+  {
+    token: 'AAVE',
+    tokenImg: 'https://cdn2.iconfinder.com/data/icons/cryptocurrency-logo/128/ic_aave-512.png',
+    price: '$22.97',
+    cap: '$28.17B',
+    change: '0.75',
+    status: '-',
+    balance: [
+      '2.2674',
+      '$43.98'
+    ],
+    callToAction: [
+      {
+        title: 'Swap',
+        method: data => onClick(data.token),
+        btnStyle: 'outline',
+        colorTheme: 'greenPrimary'
+      }
+    ]
+  },
+  {
+    token: 'MATIC',
+    tokenImg: 'https://cdn2.iconfinder.com/data/icons/cryptocurrency-logo/128/ic_polygon-512.png',
+    price: '$0.97',
+    cap: '$78.64B',
+    change: '1.75',
+    status: '+',
+    balance: [
+      '2,267.4523',
+      '$1,943.98'
+    ],
+    callToAction: []
+  },
+]
+
+function onClick(item) {
+  console.log('clicked', item)
+}
+
 export const MEWLightTable = () => ({
   components: { MewLightTable },
   props: {
-    hasFullWidth: {
-      default: boolean('hasFullWidth', false)
-    },
-    hoverEffect: {
-      default: boolean('hoverEffect', false)
-    },
-    background: {
-      default: boolean('background', false)
-    },
-    mobileBackground: {
-      default: boolean('mobileBackground', false)
-    },
-    borderAround: {
-      default: boolean('borderAround', false)
-    },
-    borderTopBottom: {
-      default: boolean('borderTopBottom', false)
-    },
-    borderTop: {
-      default: boolean('borderTop', false)
-    },
-    borderBottom: {
-      default: boolean('borderBottom', false)
-    },
-    divider: {
-      default: boolean('divider', false)
-    },
-    flat: {
-      default: boolean('flat', false)
-    },
-    paddingAround: {
-      default: boolean('paddingAround', false)
-    },
-    paddingSide: {
-      default: boolean('paddingSide', false)
-    },
-    roundCorner: {
-      default: boolean('roundCorner', false)
-    },
-    notablePadding: {
-      default: boolean('notablePadding', false)
+    isMobile: {
+      default: boolean('is-mobile', false)
     },
     loading: {
       default: boolean('loading', false)
     },
     loaderCount: {
-      default: number('loaderCount', 1)
+      default: number('loader-count', 1)
     },
     title: {
       default: text('title', '')
     },
+    tableHeaders: {
+      default: object('table-headers', tableHeaders)
+    },
+    tableData: {
+      default: object('table-data', tableData)
+    }
   },
   watch: {
     enableDarkMode(newVal) {
@@ -83,31 +118,14 @@ export const MEWLightTable = () => ({
   template: `
     <div>
     <br />
-    <mew-table
+    <mew-light-table
       :loading="loading"
-      :has-color="hasColor"
-      :has-select="hasSelect"
-      :table-data="loading ? [] : hasSelect ? tableSelectData : tableData"
-      :table-headers="hasSelect ? tableSelectHeaders : tableHeaders"
-      :no-data-text="noDataText"
-      @selectedRow="onSelect"
-      @selectedAll="onSelectAll"
-      @onClick="onClick"
+      :loader-count="loaderCount"
+      :table-data="loading ? [] : tableData"
+      :table-headers="tableHeaders"
+      :is-mobile="isMobile"
+      :title="title"
     />
     
-  </div>`,
-  methods: {
-    onSelect(newVal) {
-      // eslint-disable-next-line no-console
-      console.log('selected:', newVal);
-    },
-    onSelectAll(newVal) {
-      // eslint-disable-next-line no-console
-      console.log('selected all:', newVal);
-    },
-    onClick(newVal) {
-      // eslint-disable-next-line no-console
-      console.log('on click, row:', newVal);
-    }
-  }
+  </div>`
 });
