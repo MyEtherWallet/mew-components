@@ -20,11 +20,11 @@ export default {
 };
 
 const tableHeaders = [
-  'TOKEN',
-  'PRICE',
-  'MARKET CAP',
+  'Token',
+  'Price',
+  'Market Cap',
   '24H',
-  'BALANCE',
+  'Balance',
   ''
 ]
 

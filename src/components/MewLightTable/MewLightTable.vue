@@ -21,7 +21,7 @@
               v-for="(header, dataKey) in tableHeaders"
               :key="dataKey"
             >
-              {{ header }}
+              {{ header.toUpperCase() }}
             </td>
           </tr>
         </thead>
@@ -147,11 +147,18 @@
       >
         {{ title }}
       </div>
-      <div class="d-flex align-center justify-space-between mb-1">
+      <div 
+        v-for="(header, data) in tableHeaders"
+        :key="data"
+        class="d-flex align-center justify-space-between mb-1"
+      >
         <div class="mew-label font-weight-bold">
-          Token
+          {{ header }}
         </div>
-        <div class="mew-label d-flex align-center">
+        <div
+          v-if="header.toUpperCase() === 'TOKEN'"
+          class="mew-label d-flex align-center"
+        >
           <mew-token-container
             :img="td.tokenImg"
             size="17px"
@@ -159,28 +166,22 @@
           />
           {{ td.token }}
         </div>
-      </div>
-      <div class="d-flex align-center justify-space-between mb-1">
-        <div class="mew-label font-weight-bold">
-          Price
-        </div>
-        <div class="mew-label">
+        <div 
+          v-else-if="header.toUpperCase() === 'PRICE'"
+          class="mew-label"
+        >
           {{ td.price }}
         </div>
-      </div>
-      <div class="d-flex align-center justify-space-between mb-1">
-        <div class="mew-label font-weight-bold">
-          Market Cap
-        </div>
-        <div class="mew-label">
+        <div 
+          v-else-if="header.toUpperCase() === 'MARKET CAP'"
+          class="mew-label"
+        >
           {{ td.cap }}
         </div>
-      </div>
-      <div class="d-flex align-center justify-space-between mb-1">
-        <div class="mew-label font-weight-bold">
-          24H
-        </div>
-        <div class="mew-label">
+        <div 
+          v-else-if="header.toUpperCase() === '24H'"
+          class="mew-label"
+        >
           <div class="d-flex align-center">
             <div class="mew-label">
               {{ td.change ? `${td.change}%` : '' }}
@@ -201,15 +202,14 @@
             </v-icon>
           </div>
         </div>
-      </div>
-      <div class="d-flex align-center justify-space-between mb-1">
-        <div class="mew-label font-weight-bold">
-          Balance
-        </div>
-        <div class="mew-label d-flex align-center">
+        <div 
+          v-else-if="header.toUpperCase() === 'BALANCE'"
+          class="mew-label d-flex align-center"
+        >
           {{ td.balance[0] }} {{ td.balance[1] }}
         </div>
       </div>
+
       <div class="text-right mt-3">
         <template v-if="td.callToAction">
           <v-btn
