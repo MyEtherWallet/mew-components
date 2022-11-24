@@ -170,12 +170,9 @@
                     cols="6"
                     class="text-right"
                   >
-                    <v-tooltip
-                      eager
-                      open-on-hover
+                    <mew-tooltip
                       content-class="tooltip-inner"
                       color="titlePrimary--text"
-                      top
                     >
                       <template #activator="{ on }">
                         <a 
@@ -187,7 +184,7 @@
                         </a>
                       </template>
                       <span>{{ detail.value }}</span>
-                    </v-tooltip>
+                    </mew-tooltip>
                   </v-col>
                 </v-row>
               </v-container>
@@ -205,13 +202,15 @@ import MewBadge from '@/components/MewBadge/MewBadge.vue';
 import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
 import MewTransformHash from '@/components/MewTransformHash/MewTransformHash.vue';
 import ethTokenPlaceholder from '@/assets/images/icons/eth.svg';
+import MewTooltip from '@/components/MewTooltip/MewTooltip.vue';
 export default {
   name: 'MewNotification',
   components: {
     MewTokenContainer,
     MewBadge,
     MewBlockie,
-    MewTransformHash
+    MewTransformHash,
+    MewTooltip
   },
   props: {
     /**
