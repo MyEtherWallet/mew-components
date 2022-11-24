@@ -173,8 +173,10 @@
                     <mew-tooltip
                       content-class="tooltip-inner"
                       color="titlePrimary--text"
+                      max-width="550px"
+                      hide-icon
                     >
-                      <template #activator="{ on }">
+                      <template #activatorSlot="{ on }">
                         <a 
                           :href="detail.link"
                           target="_blank"
@@ -183,7 +185,9 @@
                           <mew-transform-hash :hash="detail.value" />
                         </a>
                       </template>
-                      <span>{{ detail.value }}</span>
+                      <template #contentSlot>
+                        <span>{{ detail.value }}</span>
+                      </template>
                     </mew-tooltip>
                   </v-col>
                 </v-row>
