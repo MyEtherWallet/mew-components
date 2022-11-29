@@ -3,9 +3,9 @@
     <!-- ==================================================================== -->
     <!-- Desktop table -->
     <!-- ==================================================================== -->
-    <div 
+    <div
       v-if="!isMobile"
-      class="mt-4 mb-4 core-components--app-table box-shadow border-bottom"
+      class="mt-4 mb-4 core-components--app-table alteranting-background border-bottom"
       :style="containerStyle"
     >
       <div
@@ -31,35 +31,33 @@
             :key="dataKey"
           >
             <td v-if="td.token">
-              <div
-                class="d-flex align-center"
-              >
+              <div class="d-flex align-center mew-label">
                 <mew-token-container
                   v-if="td.tokenImg"
                   :img="td.tokenImg"
-                  size="22px"
+                  size="20px"
                   class="mr-2"
                 />
                 {{ td.token }}
               </div>
             </td>
-            <td>
-              <div v-if="td.price">
-                {{ td.price }}
-                <span
-                  style="font-size: 12px"
-                  class="textLight--text"
-                >/ token</span>
-              </div>
+            <td class="mew-label">
+              {{ td.price }}
+              <span
+                v-if="td.price"
+                class="textLight--text"
+              >/ token</span>
             </td>
-            <td>{{ td.cap }}</td>
+            <td class="mew-label">
+              {{ td.cap }}
+            </td>
             <td>
               <div v-if="td.change">
                 <div
                   v-if="td.status == '+'"
                   class="d-flex align-center"
                 >
-                  <div class="greenPrimary--text">
+                  <div class="mew-label greenPrimary--text">
                     {{ td.change }}%
                   </div>
                   <v-icon
@@ -73,7 +71,7 @@
                   v-else
                   class="d-flex align-center"
                 >
-                  <div class="redPrimary--text">
+                  <div class="mew-label redPrimary--text">
                     {{ td.change }}%
                   </div>
                   <v-icon
@@ -86,27 +84,36 @@
               </div>
             </td>
             <td>
-              <div>{{ td.balance[0] }}</div>
-              <div
-                style="font-size: 12px; margin-top: -2px"
-                class="textLight--text"
-              >
+              <div class="mew-label mb-n1">
+                {{ td.balance[0] }}
+              </div>
+              <div style="font-size: 10px">
                 {{ td.balance[1] }}
               </div>
             </td>
             <td>
               <template v-if="td.callToAction">
-                <v-btn
-                  v-for="(button, idx) in td.callToAction"
-                  :key="idx"
-                  small
-                  depressed
-                  outlined
-                  color="greenPrimary"
-                  @click="button.method(td)"
-                >
-                  {{ button.title }}
-                </v-btn>
+                <!-- ===================================================================================== -->
+                <!-- Displays a call to action button -->
+                <!-- ===================================================================================== -->
+                <div class="d-flex flex-row py-3 justify-end">
+                  <mew-button
+                    v-for="(button, idx) in td.callToAction"
+                    :key="idx"
+                    :class="
+                      idx !== td.callToAction.length - 1 &&
+                        td.callToAction.length > 1
+                        ? 'mr-1'
+                        : ''
+                    "
+                    :title="button.title"
+                    :disabled="button.disabled"
+                    btn-size="small"
+                    btn-style="outline"
+                    color-theme="greenPrimary"
+                    @click.native="button.method(td)"
+                  />
+                </div>
               </template>
             </td>
           </tr>
@@ -135,10 +142,10 @@
     <!-- Mobile table -->
     <!-- ==================================================================== -->
     <div
-      v-else
       v-for="(td, dataKey) in tableDataPaginated"
+      v-else
       :key="dataKey"
-      class="mx-4 mt-2 core-components--app-table border-around padding-around round-corner mobile-background box-shadow"
+      class="mx-4 mt-2 core-components--app-table border-around padding-around round-corner mobile-background"
       :style="containerStyle"
     >
       <div
@@ -147,7 +154,7 @@
       >
         {{ title }}
       </div>
-      <div 
+      <div
         v-for="(header, data) in tableHeaders"
         :key="data"
         class="d-flex align-center justify-space-between mb-1"
@@ -166,19 +173,19 @@
           />
           {{ td.token }}
         </div>
-        <div 
+        <div
           v-else-if="header.toUpperCase() === 'PRICE'"
           class="mew-label"
         >
           {{ td.price }}
         </div>
-        <div 
+        <div
           v-else-if="header.toUpperCase() === 'MARKET CAP'"
           class="mew-label"
         >
           {{ td.cap }}
         </div>
-        <div 
+        <div
           v-else-if="header.toUpperCase() === '24H'"
           class="mew-label"
         >
@@ -202,7 +209,7 @@
             </v-icon>
           </div>
         </div>
-        <div 
+        <div
           v-else-if="header.toUpperCase() === 'BALANCE'"
           class="mew-label d-flex align-center"
         >
@@ -258,11 +265,12 @@
 </template>
 
 <script>
-import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
+import MewTokenContainer from '../MewTokenContainer/MewTokenContainer.vue';
+import MewButton from '../MewButton/MewButton.vue';
 
 export default {
   name: 'MewLightTable',
-  components: {MewTokenContainer},
+  components: { MewTokenContainer, MewButton },
   props: {
     /**
      * Applies skeleton loader
@@ -305,9 +313,6 @@ export default {
     };
   },
   computed: {
-    // isMobile() {
-    //   return this.$vuetify.breakpoint.mdAndDown;
-    // },
     pageLength() {
       return Math.ceil(this.tableData.length / this.itemsPerPage);
     },
@@ -346,6 +351,7 @@ export default {
     padding: 0px 20px;
   }
 }
+
 // Default styles
 .core-components--app-table {
   --bg-color: #f4f7fe;
@@ -367,6 +373,7 @@ export default {
     }
   }
 }
+
 // Options by props
 .box-shadow {
   box-shadow: 0 2px 6px var(--shadow-color);
@@ -413,6 +420,7 @@ export default {
 .padding-around {
   padding: 15px 15px 15px 15px;
 }
+
 .padding-side {
   padding: 0px 10px;
 }
