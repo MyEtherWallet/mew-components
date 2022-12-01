@@ -1,335 +1,135 @@
 <template>
-  <div>
-    <!-- ==================================================================== -->
-    <!-- Desktop table -->
-    <!-- ==================================================================== -->
+  <div
+    class="core-components--app-table"
+    :class="containerClass"
+    :style="containerStyle"
+  >
     <div
-      v-if="!isMobile"
-      class="mt-4 mb-4 core-components--app-table alteranting-background border-bottom"
-      :style="containerStyle"
+      v-if="title"
+      class="font-weight-bold mt-6 ml-5 mb-10"
+    >
+      {{ title }}
+    </div>
+    <slot />
+    <div
+      v-if="loading"
+      class="skeleton-loader-container"
     >
       <div
-        v-if="title"
-        class="font-weight-bold mt-6 ml-5 mb-10"
+        v-for="n in Number(loaderCount)"
+        :key="n"
       >
-        {{ title }}
-      </div>
-      <table v-if="!loading">
-        <thead>
-          <tr>
-            <td
-              v-for="(header, dataKey) in tableHeaders"
-              :key="dataKey"
-            >
-              {{ header.toUpperCase() }}
-            </td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="(td, dataKey) in tableData"
-            :key="dataKey"
-          >
-            <td v-if="td.token">
-              <div class="d-flex align-center mew-label">
-                <mew-token-container
-                  v-if="td.tokenImg"
-                  :img="td.tokenImg"
-                  size="20px"
-                  class="mr-2"
-                />
-                {{ td.token }}
-              </div>
-            </td>
-            <td class="mew-label">
-              {{ td.price }}
-              <span
-                v-if="td.price"
-                class="textLight--text"
-              >/ token</span>
-            </td>
-            <td class="mew-label">
-              {{ td.cap }}
-            </td>
-            <td>
-              <div v-if="td.change">
-                <div
-                  v-if="td.status == '+'"
-                  class="d-flex align-center"
-                >
-                  <div class="mew-label greenPrimary--text">
-                    {{ td.change }}%
-                  </div>
-                  <v-icon
-                    small
-                    color="greenPrimary"
-                  >
-                    mdi-arrow-up-thick
-                  </v-icon>
-                </div>
-                <div
-                  v-else
-                  class="d-flex align-center"
-                >
-                  <div class="mew-label redPrimary--text">
-                    {{ td.change }}%
-                  </div>
-                  <v-icon
-                    small
-                    color="redPrimary"
-                  >
-                    mdi-arrow-down-thick
-                  </v-icon>
-                </div>
-              </div>
-            </td>
-            <td>
-              <div class="mew-label mb-n1">
-                {{ td.balance[0] }}
-              </div>
-              <div style="font-size: 10px">
-                {{ td.balance[1] }}
-              </div>
-            </td>
-            <td>
-              <template v-if="td.callToAction">
-                <!-- ===================================================================================== -->
-                <!-- Displays a call to action button -->
-                <!-- ===================================================================================== -->
-                <div class="d-flex flex-row py-3 justify-end">
-                  <mew-button
-                    v-for="(button, idx) in td.callToAction"
-                    :key="idx"
-                    :class="
-                      idx !== td.callToAction.length - 1 &&
-                        td.callToAction.length > 1
-                        ? 'mr-1'
-                        : ''
-                    "
-                    :title="button.title"
-                    :disabled="button.disabled"
-                    btn-size="small"
-                    btn-style="outline"
-                    color-theme="greenPrimary"
-                    @click.native="button.method(td)"
-                  />
-                </div>
-              </template>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- ==================================================================== -->
-      <!-- Loading state -->
-      <!-- ==================================================================== -->
-      <div
-        v-if="loading"
-        class="skeleton-loader-container"
-      >
-        <div
-          v-for="n in Number(loaderCount)"
-          :key="n"
-        >
-          <v-skeleton-loader
-            width="100%"
-            type="heading"
-          />
-        </div>
+        <v-skeleton-loader
+          width="100%"
+          type="heading"
+        />
       </div>
     </div>
-
-    <!-- ==================================================================== -->
-    <!-- Mobile table -->
-    <!-- ==================================================================== -->
-    <div
-      v-for="(td, dataKey) in tableDataPaginated"
-      v-else
-      :key="dataKey"
-      class="mx-4 mt-2 core-components--app-table border-around padding-around round-corner mobile-background"
-      :style="containerStyle"
-    >
-      <div
-        v-if="title"
-        class="font-weight-bold mt-6 ml-5 mb-10"
-      >
-        {{ title }}
-      </div>
-      <div
-        v-for="(header, data) in tableHeaders"
-        :key="data"
-        class="d-flex align-center justify-space-between mb-1"
-      >
-        <div class="mew-label font-weight-bold">
-          {{ header }}
-        </div>
-        <div
-          v-if="header.toUpperCase() === 'TOKEN'"
-          class="mew-label d-flex align-center"
-        >
-          <mew-token-container
-            :img="td.tokenImg"
-            size="17px"
-            class="mr-2"
-          />
-          {{ td.token }}
-        </div>
-        <div
-          v-else-if="header.toUpperCase() === 'PRICE'"
-          class="mew-label"
-        >
-          {{ td.price }}
-        </div>
-        <div
-          v-else-if="header.toUpperCase() === 'MARKET CAP'"
-          class="mew-label"
-        >
-          {{ td.cap }}
-        </div>
-        <div
-          v-else-if="header.toUpperCase() === '24H'"
-          class="mew-label"
-        >
-          <div class="d-flex align-center">
-            <div class="mew-label">
-              {{ td.change ? `${td.change}%` : '' }}
-            </div>
-            <v-icon
-              v-if="td.status == '+'"
-              small
-              color="greenPrimary"
-            >
-              mdi-arrow-up-thick
-            </v-icon>
-            <v-icon
-              v-else-if="td.change !== '' && td.status === '-'"
-              small
-              color="redPrimary"
-            >
-              mdi-arrow-down-thick
-            </v-icon>
-          </div>
-        </div>
-        <div
-          v-else-if="header.toUpperCase() === 'BALANCE'"
-          class="mew-label d-flex align-center"
-        >
-          {{ td.balance[0] }} {{ td.balance[1] }}
-        </div>
-      </div>
-
-      <div class="text-right mt-3">
-        <template v-if="td.callToAction">
-          <v-btn
-            v-for="(button, idx) in td.callToAction"
-            :key="idx"
-            outlined
-            color="greenPrimary"
-            small
-            depressed
-            @click="button.method(td)"
-          >
-            <div class="greenPrimary--text mew-label text-transform--none">
-              {{ button.title }}
-            </div>
-          </v-btn>
-        </template>
-      </div>
-      <!-- ==================================================================== -->
-      <!-- Loading state -->
-      <!-- ==================================================================== -->
-      <div
-        v-if="loading"
-        class="skeleton-loader-container"
-      >
-        <div
-          v-for="n in Number(loaderCount)"
-          :key="n"
-        >
-          <v-skeleton-loader
-            width="100%"
-            type="heading"
-          />
-        </div>
-      </div>
-    </div>
-    <!-- ==================================================================== -->
-    <!-- Pagination for both desktop and mobile -->
-    <!-- ==================================================================== -->
-    <v-pagination
-      v-if="pageLength && false"
-      v-model="page"
-      class="mt-6"
-      :length="pageLength"
-    />
   </div>
 </template>
 
 <script>
-import MewTokenContainer from '../MewTokenContainer/MewTokenContainer.vue';
-import MewButton from '../MewButton/MewButton.vue';
-
 export default {
-  name: 'MewLightTable',
-  components: { MewTokenContainer, MewButton },
+  name: 'AppTable',
+  components: {},
   props: {
-    /**
-     * Applies skeleton loader
-     */
+    fullWidth: {
+      type: Boolean,
+      default: false,
+    },
+    hoverEffect: {
+      type: Boolean,
+      default: false,
+    },
+    background: {
+      type: Boolean,
+      default: false,
+    },
+    mobileBackground: {
+      type: Boolean,
+      default: false,
+    },
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     loaderCount: {
       type: [String, Number],
-      default: 1
+      default: 1,
+    },
+    borderAround: {
+      type: Boolean,
+      default: false,
+    },
+    borderTopBottom: {
+      type: Boolean,
+      default: false,
+    },
+    borderTop: {
+      type: Boolean,
+      default: false,
+    },
+    borderBottom: {
+      type: Boolean,
+      default: false,
+    },
+    divider: {
+      type: Boolean,
+      default: false,
+    },
+    flat: {
+      type: Boolean,
+      default: false,
     },
     title: {
       type: String,
-      default: ''
+      default: '',
     },
-    /**
-     * The table headers.
-     */
-    tableHeaders: {
-      type: Array,
-      default: () => []
-    },
-    /**
-     * The table data.
-     */
-    tableData: {
-      type: Array,
-      default: () => []
-    },
-    isMobile: {
+    paddingAround: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
+    paddingSide: {
+      type: Boolean,
+      default: false,
+    },
+    roundCorner: {
+      type: Boolean,
+      default: false,
+    },
+    noTablePadding: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
-    return {
-      page: 1,
-      itemsPerPage: 10
-    };
+    return {};
   },
   computed: {
-    pageLength() {
-      return Math.ceil(this.tableData.length / this.itemsPerPage);
-    },
-    tableDataPaginated() {
-      return this.paginate(this.tableData, this.itemsPerPage, this.page);
-    },
     containerStyle() {
       return {
-        display: 'block'
+        display: this.fullWidth ? 'block' : 'inline-block',
       };
-    }
+    },
+    containerClass() {
+      return [
+        this.hoverEffect ? 'hover-effect' : '',
+        this.background ? 'alteranting-background' : '',
+        this.borderAround ? 'border-around' : '',
+        this.borderTopBottom ? 'border-top-bottom' : '',
+        this.borderTop ? 'border-top' : '',
+        this.borderBottom ? 'border-bottom' : '',
+        this.roundCorner ? 'round-corner' : '',
+        this.loading ? 'loading' : '',
+        this.flat ? '' : 'box-shadow',
+        this.divider ? 'divider' : '',
+        this.paddingAround ? 'padding-around' : '',
+        this.paddingSide ? 'padding-side' : '',
+        this.mobileBackground ? 'mobile-background' : '',
+        this.noTablePadding ? 'no-table-padding' : '',
+      ];
+    },
   },
-  methods: {
-    paginate(array, pageSize, pageNumber) {
-      return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
-    }
-  }
 };
 </script>
 

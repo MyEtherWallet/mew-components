@@ -2,8 +2,7 @@ import {
   withKnobs,
   boolean,
   number,
-  text,
-  object
+  text
 } from '@storybook/addon-knobs';
 import MewLightTable from '@/components/MewLightTable/MewLightTable.vue';
 import MewLightTableDoc from './MewLightTable.mdx';
@@ -19,95 +18,59 @@ export default {
   decorators: [withKnobs]
 };
 
-const tableHeaders = [
-  'Token',
-  'Price',
-  'Market Cap',
-  '24H',
-  'Balance',
-  ''
-]
-
-const tableData = [
-  {
-    token: 'ETH',
-    tokenImg: 'https://cdn4.iconfinder.com/data/icons/cryptocoins/227/ETH-512.png',
-    price: '$1,122.97',
-    cap: '$278.65B',
-    change: '5.75',
-    status: '+',
-    balance: [
-      '2.2674',
-      '$3,343.98'
-    ],
-    callToAction: [
-      {
-        title: 'Swap',
-        method: data => onClick(data.token),
-        btnStyle: 'outline',
-        colorTheme: 'greenPrimary'
-      }
-    ]
-  },
-  {
-    token: 'AAVE',
-    tokenImg: 'https://cdn2.iconfinder.com/data/icons/cryptocurrency-logo/128/ic_aave-512.png',
-    price: '$22.97',
-    cap: '$28.17B',
-    change: '0.75',
-    status: '-',
-    balance: [
-      '2.2674',
-      '$43.98'
-    ],
-    callToAction: [
-      {
-        title: 'Swap',
-        method: data => onClick(data.token),
-        btnStyle: 'outline',
-        colorTheme: 'greenPrimary'
-      }
-    ]
-  },
-  {
-    token: 'MATIC',
-    tokenImg: 'https://cdn2.iconfinder.com/data/icons/cryptocurrency-logo/128/ic_polygon-512.png',
-    price: '$0.97',
-    cap: '$78.64B',
-    change: '1.75',
-    status: '+',
-    balance: [
-      '2,267.4523',
-      '$1,943.98'
-    ],
-    callToAction: []
-  },
-]
-
-function onClick(item) {
-  console.log('clicked', item)
-}
-
 export const MEWLightTable = () => ({
   components: { MewLightTable },
   props: {
-    isMobile: {
-      default: boolean('is-mobile', false)
+    fullWidth: {
+      default: boolean('full-width', false)
+    },
+    hoverEffect: {
+      default: boolean('hover-effect', false)
+    },
+    background: {
+      default: boolean('background', true)
+    },
+    mobileBackground: {
+      default: boolean('mobile-background', false)
+    },
+    borderAround: {
+      default: boolean('border-around', true)
+    },
+    borderTopBottom: {
+      default: boolean('border-top-bottom', false)
+    },
+    borderTop: {
+      default: boolean('border-top', false)
+    },
+    borderBottom: {
+      default: boolean('border-bottom', false)
+    },
+    divider: {
+      default: boolean('divider', true)
+    },
+    flat: {
+      default: boolean('flat', false)
+    },
+    paddingAround: {
+      default: boolean('padding-around', false)
+    },
+    paddingSide: {
+      default: boolean('padding-side', false)
+    },
+    roundCorner: {
+      default: boolean('round-corner', true)
+    },
+    noTablePadding: {
+      default: boolean('no-table-padding', false)
     },
     loading: {
       default: boolean('loading', false)
     },
     loaderCount: {
-      default: number('loader-count', 1)
+      default: number('loader-count', 5)
     },
     title: {
       default: text('title', '')
-    },
-    tableHeaders: {
-      default: object('table-headers', tableHeaders)
-    },
-    tableData: {
-      default: object('table-data', tableData)
     }
   },
   watch: {
@@ -119,13 +82,82 @@ export const MEWLightTable = () => ({
     <div>
     <br />
     <mew-light-table
+      :full-width="fullWidth"
+      :hover-effect="hoverEffect"
+      :background="background"
+      :mobile-background="mobileBackground"
       :loading="loading"
       :loader-count="loaderCount"
-      :table-data="loading ? [] : tableData"
-      :table-headers="tableHeaders"
-      :is-mobile="isMobile"
       :title="title"
-    />
-    
-  </div>`
+      :border-around="borderAround"
+      :border-top-bottom="borderTopBottom"
+      :border-top="borderTop"
+      :border-bottom="borderBottom"
+      :divider="divider"
+      :flat="flat"
+      :padding-around="paddingAround"
+      :padding-side="paddingSide"
+      :round-corner="roundCorner"
+      :no-table-padding="noTablePadding"
+    >
+      <table>
+        <thead>
+          <tr>
+            <td>TOKEN</td>
+            <td>PRICE</td>
+            <td>MARKET CAP</td>
+            <td>BALANCE</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-size: 12px">ETH</td>
+            <td style="font-size: 12px">$1,286.56 / token</td>
+            <td style="font-size: 12px">155.1077B</td>
+            <td style="font-size: 12px">
+            0.715128 ETH
+            ($920.05)
+            </td>
+          </tr>
+          <tr>
+            <td style="font-size: 12px">ETH</td>
+            <td style="font-size: 12px">$1,286.56 / token</td>
+            <td style="font-size: 12px">155.1077B</td>
+            <td style="font-size: 12px">
+            0.715128 ETH
+            ($920.05)
+            </td>
+          </tr>
+          <tr>
+            <td style="font-size: 12px">ETH</td>
+            <td style="font-size: 12px">$1,286.56 / token</td>
+            <td style="font-size: 12px">155.1077B</td>
+            <td style="font-size: 12px">
+            0.715128 ETH
+            ($920.05)
+            </td>
+          </tr>
+          <tr>
+            <td style="font-size: 12px">ETH</td>
+            <td style="font-size: 12px">$1,286.56 / token</td>
+            <td style="font-size: 12px">155.1077B</td>
+            <td style="font-size: 12px">
+            0.715128 ETH
+            ($920.05)
+            </td>
+          </tr>
+          <tr>
+            <td style="font-size: 12px">ETH</td>
+            <td style="font-size: 12px">$1,286.56 / token</td>
+            <td style="font-size: 12px">155.1077B</td>
+            <td style="font-size: 12px">
+            0.715128 ETH
+            ($920.05)
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </mew-light-table>    
+  </div>
+  `
 });
