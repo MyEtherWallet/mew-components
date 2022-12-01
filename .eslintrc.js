@@ -1,54 +1,27 @@
 module.exports = {
-  globals: {
-    VERSION: 'readonly',
-    ROUTER_MODE: 'readonly',
-    NODE_ENV: 'readonly'
+  'env': {
+    'browser': true,
+    'es6': true,
+    'node': true
   },
-  root: true,
-  env: {
-    node: true,
-    jest: true
-  },
-  extends: [
-    'plugin:vue/recommended',
-    '@vue/prettier',
+  'extends': [
     'eslint:recommended',
-    'plugin:security/recommended'
+    'plugin:vue/essential',
+    'plugin:vue/strongly-recommended',
+    'plugin:storybook/recommended'
   ],
-  rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-else-return': ['error', { allowElseIf: true }],
-    'arrow-parens': 'off',
-    'generator-star-spacing': 'off',
-    semi: 'off',
-    'prefer-const': 'error',
-    'no-var': 'error',
-    'security/detect-new-buffer': 'off',
-    'security/detect-object-injection': 'off',
-    'require-atomic-updates': 'off',
-    'no-prototype-builtins': 'off',
-    'no-irregular-whitespace': [
-      'error',
-      {
-        skipComments: true,
-        skipTemplates: true,
-        skipStrings: true,
-        skipRegExps: true
-      }
-    ],
-    'vue/custom-event-name-casing': 'off',
-    'vue/no-unused-properties': [
-      'error',
-      {
-        groups: ['props', 'data', 'computed', 'methods', 'setup'],
-        deepData: false,
-        ignorePublicMembers: false
-      }
-    ]
+  'globals': {
+    'Atomics': 'readonly',
+    'SharedArrayBuffer': 'readonly'
   },
-  parserOptions: {
-    parser: 'babel-eslint'
+  'parserOptions': {
+    'ecmaVersion': 2018,
+    'sourceType': 'module'
   },
-  plugins: ['security']
+  'plugins': [
+    'vue'
+  ],
+  'rules': {
+    'quotes': ['error', 'single']
+  }
 };
