@@ -1,3 +1,10 @@
+### Release 1.3.9
+
+### devop
+
+- use mew-tooltip and fix overlap [#326](https://github.com/MyEtherWallet/mew-components/pull/326)
+- update MewNotification tooltip [#325](https://github.com/MyEtherWallet/mew-components/pull/325)
+
 ### Release 1.3.8
 
 ### fix
