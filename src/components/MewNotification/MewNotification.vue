@@ -41,7 +41,7 @@
                       'indicator',
                       'ml-2',
                       'd-none',
-                      'd-sm-flex'
+                      'd-sm-flex',
                     ]"
                   />
 
@@ -183,7 +183,7 @@
                       hide-icon
                     >
                       <template #activatorSlot="{ on }">
-                        <a 
+                        <a
                           :href="detail.link"
                           target="_blank"
                           v-on="on"
@@ -221,7 +221,7 @@ export default {
     MewBadge,
     MewBlockie,
     MewTransformHash,
-    MewTooltip
+    MewTooltip,
   },
   props: {
     /**
@@ -240,63 +240,63 @@ export default {
         return {
           txHash: {
             value: '',
-            string: ''
+            string: '',
           },
           gasPrice: {
             value: '',
-            string: ''
+            string: '',
           },
           gasLimit: {
             value: '',
-            string: ''
+            string: '',
           },
           total: {
             value: '',
-            string: ''
+            string: '',
           },
           from: {
             value: '',
-            string: ''
+            string: '',
           },
           to: {
             value: '',
-            string: ''
+            string: '',
           },
           amount: {
             value: '',
-            string: ''
+            string: '',
           },
           timestamp: {
             value: '',
-            string: ''
+            string: '',
           },
           status: {
             value: '',
-            string: ''
+            string: '',
           },
           type: {
             value: '',
-            string: ''
+            string: '',
           },
           fromObj: {
             currency: '',
             amount: '',
-            icon: ''
+            icon: '',
           },
           toObj: {
             currency: '',
             amount: '',
             icon: '',
-            to: ''
+            to: '',
           },
-          read: false
+          read: false,
         };
-      }
+      },
     },
     showIndicator: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   data() {
     return {
@@ -304,14 +304,14 @@ export default {
       txTypes: {
         in: 'txIn',
         out: 'txOut',
-        swap: 'swap'
+        swap: 'swap',
       },
       txStatusOptions: {
         success: 'success',
         pending: 'pending',
-        failed: 'failed'
+        failed: 'failed',
       },
-      hashType: 'Transaction Hash'
+      hashType: 'Transaction Hash',
     };
   },
   computed: {
@@ -346,7 +346,7 @@ export default {
           'gasLimit',
           'total',
           'timestamp',
-          'status'
+          'status',
         ];
       for (const key in this.notification) {
         if (detailTypes.indexOf(key) >= 0) {
@@ -357,7 +357,7 @@ export default {
     },
     isSwap() {
       return this.notification.type.value.toLowerCase() === this.txTypes.swap;
-    }
+    },
   },
   methods: {
     isHash(type) {
@@ -393,8 +393,8 @@ export default {
         }
         return 'failed-type';
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

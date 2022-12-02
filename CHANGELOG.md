@@ -1,3 +1,16 @@
+### Release 1.3.9
+
+### devop
+
+- use mew-tooltip and fix overlap [#326](https://github.com/MyEtherWallet/mew-components/pull/326)
+- update colors [#323](https://github.com/MyEtherWallet/mew-components/pull/323)
+- add new mew light table [#318](https://github.com/MyEtherWallet/mew-components/pull/318)
+
+### fix
+
+- mew-overlay double scrollbar bug [#324](https://github.com/MyEtherWallet/mew-components/pull/324)
+- prevent save password popup from chrome browser [#321](https://github.com/MyEtherWallet/mew-components/pull/321)
+
 ### Release 1.3.8
 
 ### fix
