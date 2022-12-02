@@ -266,11 +266,27 @@ export default {
   },
   watch: {
     showOverlay(newVal) {
+      this.removeHtmlScrollbar();
       this.isOverlayShown = newVal;
     }
   },
+  destroyed() {
+    this.restoreHtmlScrollbar();
+  },
   mounted() {
     this.isOverlayShown = this.showOverlay;
+  },
+  methods: {
+    // Remove html element's side bar to fix double sidebar bug
+    removeHtmlScrollbar() {
+      const htmlElement = document.querySelector('html');
+      htmlElement.style.overflow = 'hidden';
+    },
+    // Restore html element's side bar on exit
+    restoreHtmlScrollbar() {
+      const htmlElement = document.querySelector('html');
+      htmlElement.style.overflow = null;
+    }
   }
 };
 </script>

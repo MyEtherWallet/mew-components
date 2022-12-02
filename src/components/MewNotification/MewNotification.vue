@@ -18,7 +18,7 @@
             class="px-2 py-0"
             :color="backgroundColor"
           >
-            <v-container 
+            <v-container
               fluid
               class="px-0"
             >
@@ -32,14 +32,16 @@
                   <!-- ===================================================================================== -->
                   <div
                     v-if="
-                      $vuetify.breakpoint.smAndUp && !notification.read && showIndicator
+                      $vuetify.breakpoint.smAndUp &&
+                        !notification.read &&
+                        showIndicator
                     "
                     :class="[
                       getClasses(notification.status.value.toLowerCase()),
                       'indicator',
                       'ml-2',
                       'd-none',
-                      'd-sm-flex'
+                      'd-sm-flex',
                     ]"
                   />
 
@@ -57,7 +59,7 @@
                   <!-- ===================================================================================== -->
                   <!-- Displays swap icons if it is a swap notification -->
                   <!-- ===================================================================================== -->
-                  <div 
+                  <div
                     v-else
                     class="d-flex flex-column currency-symbol ml-2"
                   >
@@ -104,19 +106,23 @@
                           class="ml-1 detail-hash"
                         />
                       </div>
-                      <div class="caption mew-heading-2 d-flex align-center">
-                        <div class="mr-1 line-height-initial">
-                          {{ notification.fromObj.amount }}
-                          <span class="textPrimary--text">{{
+                      <div class="caption mew-heading-2 mr-3 align-center">
+                        <div
+                          class="mr-1 line-height-initial d-flex amount-font"
+                        >
+                          {{ fromAmount }}
+                          <span class="textPrimary--text ml-1">{{
                             notification.fromObj.currency
                           }}</span>
                         </div>
-                        <v-icon class="subtitle-1 mr-1">
-                          mdi-arrow-right
-                        </v-icon>
-                        <div class="mr-3 line-height-initial">
-                          {{ notification.toObj.amount }}
-                          <span class="textPrimary--text">{{
+                        <div
+                          class="amount-container amount-font mr-3 d-flex line-height-initial"
+                        >
+                          <v-icon class="subtitle-1 mr-1">
+                            mdi-arrow-right
+                          </v-icon>
+                          {{ toAmount }}
+                          <span class="textPrimary--text ml-1">{{
                             notification.toObj.currency
                           }}</span>
                         </div>
@@ -124,7 +130,7 @@
                     </div>
                   </div>
                 </v-col>
-                <v-col 
+                <v-col
                   cols="4"
                   class="text-right pr-2"
                 >
@@ -143,17 +149,17 @@
           </v-expansion-panel-header>
 
           <v-expansion-panel-content
-            class="pa-0" 
+            class="pa-0"
             :color="backgroundColor"
           >
             <div class="expanded-container capitalize">
               <v-container>
-                <v-row 
+                <v-row
                   v-for="(detail, idx) in getDetails"
                   :key="idx"
                 >
-                  <v-col 
-                    cols="6" 
+                  <v-col
+                    cols="6"
                     class="textPrimary--text"
                   >
                     {{ detail.string }}:
@@ -170,15 +176,14 @@
                     cols="6"
                     class="text-right"
                   >
-                    <v-tooltip
-                      eager
-                      open-on-hover
+                    <mew-tooltip
                       content-class="tooltip-inner"
                       color="titlePrimary--text"
-                      top
+                      max-width="550px"
+                      hide-icon
                     >
-                      <template #activator="{ on }">
-                        <a 
+                      <template #activatorSlot="{ on }">
+                        <a
                           :href="detail.link"
                           target="_blank"
                           v-on="on"
@@ -186,8 +191,10 @@
                           <mew-transform-hash :hash="detail.value" />
                         </a>
                       </template>
-                      <span>{{ detail.value }}</span>
-                    </v-tooltip>
+                      <template #contentSlot>
+                        <span>{{ detail.value }}</span>
+                      </template>
+                    </mew-tooltip>
                   </v-col>
                 </v-row>
               </v-container>
@@ -205,13 +212,16 @@ import MewBadge from '@/components/MewBadge/MewBadge.vue';
 import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
 import MewTransformHash from '@/components/MewTransformHash/MewTransformHash.vue';
 import ethTokenPlaceholder from '@/assets/images/icons/eth.svg';
+import MewTooltip from '@/components/MewTooltip/MewTooltip.vue';
+
 export default {
   name: 'MewNotification',
   components: {
     MewTokenContainer,
     MewBadge,
     MewBlockie,
-    MewTransformHash
+    MewTransformHash,
+    MewTooltip,
   },
   props: {
     /**
@@ -230,86 +240,91 @@ export default {
         return {
           txHash: {
             value: '',
-            string: ''
+            string: '',
           },
           gasPrice: {
             value: '',
-            string: ''
+            string: '',
           },
           gasLimit: {
             value: '',
-            string: ''
+            string: '',
           },
           total: {
             value: '',
-            string: ''
+            string: '',
           },
           from: {
             value: '',
-            string: ''
+            string: '',
           },
           to: {
             value: '',
-            string: ''
+            string: '',
           },
           amount: {
             value: '',
-            string: ''
+            string: '',
           },
           timestamp: {
             value: '',
-            string: ''
+            string: '',
           },
           status: {
             value: '',
-            string: ''
+            string: '',
           },
           type: {
             value: '',
-            string: ''
+            string: '',
           },
           fromObj: {
             currency: '',
             amount: '',
-            icon: ''
+            icon: '',
           },
           toObj: {
             currency: '',
             amount: '',
             icon: '',
-            to: ''
+            to: '',
           },
-          read: false
+          read: false,
         };
-      }
+      },
     },
     showIndicator: {
       type: Boolean,
-      default: true
+      default: true,
     },
-    activeOnToggle: {
-      type: Boolean,
-      default: true
-    }
   },
   data() {
     return {
       ethTokenPlaceholder: ethTokenPlaceholder,
-      expanded: false,
       txTypes: {
         in: 'txIn',
         out: 'txOut',
-        swap: 'swap'
+        swap: 'swap',
       },
       txStatusOptions: {
         success: 'success',
         pending: 'pending',
-        failed: 'failed'
+        failed: 'failed',
       },
-      hashType: 'Transaction Hash'
+      hashType: 'Transaction Hash',
     };
   },
   computed: {
+    fromAmount() {
+      return this.notification.fromObj.amount.length > 10
+        ? this.notification.fromObj.amount.slice(0, 9 - 1) + '...'
+        : this.notification.fromObj.amount;
+    },
+    toAmount() {
+      return this.notification.toObj.amount.length > 10
+        ? this.notification.toObj.amount.slice(0, 9 - 1) + '...'
+        : this.notification.toObj.amount;
+    },
     backgroundColor() {
       if (this.notification.status.value == this.txStatusOptions.pending) {
         return 'warning';
@@ -331,7 +346,7 @@ export default {
           'gasLimit',
           'total',
           'timestamp',
-          'status'
+          'status',
         ];
       for (const key in this.notification) {
         if (detailTypes.indexOf(key) >= 0) {
@@ -342,12 +357,7 @@ export default {
     },
     isSwap() {
       return this.notification.type.value.toLowerCase() === this.txTypes.swap;
-    }
-  },
-  watch: {
-    activeOnToggle() {
-      this.onToggle();
-    }
+    },
   },
   methods: {
     isHash(type) {
@@ -384,10 +394,7 @@ export default {
         return 'failed-type';
       }
     },
-    onToggle() {
-      this.expanded = !this.expanded;
-    }
-  }
+  },
 };
 </script>
 
@@ -400,66 +407,82 @@ export default {
 </style>
 
 <style lang="scss" scoped>
+.amount-font {
+  font-size: 12px;
+}
 .warning,
 .error,
 .primary {
   border-radius: 0 !important;
 }
+
 .v-expansion-panel {
   overflow: hidden;
 }
+
 .notification-container {
   .detail-container {
     max-width: 85%;
+
     .detail-hash {
       max-width: 60%;
     }
   }
+
   .indicator {
     border-radius: 50% !important;
     display: table;
     height: 6px;
     width: 6px;
   }
+
   .expanded-container {
     .container {
       border-top: 1px solid var(--v-inputBorder-base);
     }
   }
 }
+
 .success-type {
   //background-color: var(--v-superPrimary-base);
   border: 1px solid var(--v-primary-base);
   &.expanded {
     border: 1px solid var(--v-superPrimary-base);
   }
+
   &.read {
     border: 1px solid var(--v-superPrimary-base);
   }
 }
+
 .pending-type {
   //background-color: var(--v-warning-base);
   border: 1px solid var(--v-warning-darken1);
   &.expanded {
     border: 1px solid var(--v-warning-base);
   }
+
   &.read {
     border: 1px solid var(--v-warning-base);
   }
 }
+
 .failed-type {
   //background-color: var(--v-error-lighten1);
   border: 1px solid var(--v-error-base);
   &.expanded {
     border: 1px solid var(--v-error-lighten1);
   }
+
   &.read {
     border: 1px solid var(--v-error-lighten1);
   }
 }
+
 .currency-symbol {
   position: relative;
   width: 35px;
+
   img {
     border-radius: 50%;
   }
@@ -468,6 +491,7 @@ export default {
     left: 15px;
   }
 }
+
 .line-height-initial {
   line-height: initial;
 }
