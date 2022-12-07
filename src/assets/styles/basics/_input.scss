@@ -137,4 +137,10 @@
     width: 25px;
     border-radius: 50%;
   }
+/**
+  * Adjust dialog corder border radius
+  */
+  .v-dialog {
+    border-radius: 12px !important;
+  }
 }

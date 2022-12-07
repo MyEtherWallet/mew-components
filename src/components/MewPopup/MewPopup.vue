@@ -43,7 +43,10 @@
           hasBodyContent ? 'py-5 py-md-8' : 'pb-0 pt-5 pt-md-8'
         ]"
       >
-        <div class="mew-heading-2 break-word text-center">
+        <div
+          class="break-word text-center"
+          :class="largeTitle ? 'mew-subtitle' : 'mew-heading-2'"
+        >
           {{ title }}
         </div>
       </v-card-title>
@@ -124,6 +127,10 @@ export default {
     title: {
       type: String,
       default: ''
+    },
+    largeTitle: {
+      type: Boolean,
+      default: false
     },
     /**
      * Hide top right close button
