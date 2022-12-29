@@ -1,3 +1,7 @@
+### Release 1.3.10
+
+- fix overlap [#330](https://github.com/MyEtherWallet/mew-components/pull/330)
+
 ### Release 1.3.9
 
 ### devop
