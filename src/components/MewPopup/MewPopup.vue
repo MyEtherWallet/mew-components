@@ -12,21 +12,14 @@
     :scrollable="scrollable"
     @click:outside="handleClickOutside"
   >
-    <v-card
-      color="white"
-      class="pa-0"
-    >
+    <v-card color="bgWalletBlock" class="pa-0">
       <!--
       =====================================================================================
         Dialog Header
         =====================================================================================
       -->
       <div :class="title ? 'pt-0' : 'pt-5'">
-        <v-btn
-          v-if="!hideCloseBtn"
-          icon
-          class="header-close-icon"
-        >
+        <v-btn v-if="!hideCloseBtn" icon class="header-close-icon">
           <v-icon
             size="x-large"
             color="grey cursor--pointer"
@@ -43,7 +36,10 @@
           hasBodyContent ? 'py-5 py-md-8' : 'pb-0 pt-5 pt-md-8'
         ]"
       >
-        <div class="mew-heading-2 break-word text-center">
+        <div
+          class="break-word text-center"
+          :class="largeTitle ? 'mew-subtitle' : 'mew-heading-2'"
+        >
           {{ title }}
         </div>
       </v-card-title>
@@ -64,15 +60,8 @@
         Dialog action
       =====================================================================================
       -->
-      <v-card-actions
-        v-if="hasButtons"
-        class="py-5 py-md-8"
-      >
-        <v-row
-          class="pa-0"
-          justify="space-around"
-          dense
-        >
+      <v-card-actions v-if="hasButtons" class="py-5 py-md-8">
+        <v-row class="pa-0" justify="space-around" dense>
           <v-col
             cols="12"
             :sm="!rightBtn ? '12' : '6'"
@@ -124,6 +113,10 @@ export default {
     title: {
       type: String,
       default: ''
+    },
+    largeTitle: {
+      type: Boolean,
+      default: false
     },
     /**
      * Hide top right close button

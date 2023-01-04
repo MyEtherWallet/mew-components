@@ -18,15 +18,8 @@
         class="mobile-title-block pa-3 d-flex align-center justify-space-between full-width"
       >
         <div style="min-width: 36px">
-          <v-btn
-            v-if="back"
-            icon
-            color="textBlack2"
-            @click="back"
-          >
-            <v-icon size="24">
-              mdi-arrow-left
-            </v-icon>
+          <v-btn v-if="back" icon color="textBlack2" @click="back">
+            <v-icon size="24"> mdi-arrow-left </v-icon>
           </v-btn>
         </div>
         <h3
@@ -36,18 +29,8 @@
           {{ title }}
         </h3>
         <div style="min-width: 36px">
-          <v-btn
-            v-if="close"
-            icon
-            color="textBlack2"
-            @click="close"
-          >
-            <v-icon
-              size="24"
-              color="textBlack2"
-            >
-              mdi-close
-            </v-icon>
+          <v-btn v-if="close" icon color="textBlack2" @click="close">
+            <v-icon size="24" color="textBlack2"> mdi-close </v-icon>
           </v-btn>
         </div>
       </div>
@@ -67,14 +50,12 @@
         color="textBlack2"
         :class="[
           'd-flex action-btn align-center pa-3',
-          isMobile ? 'mt-3 ml-n1 mobile-btn' : 'mt-4 ml-1',
+          isMobile ? 'mt-3 ml-n1 mobile-btn' : 'mt-4 ml-1'
         ]"
         fab
         @click="back"
       >
-        <v-icon size="24">
-          mdi-arrow-left
-        </v-icon>
+        <v-icon size="24"> mdi-arrow-left </v-icon>
       </v-btn>
       <v-btn
         v-if="close && !isMobile"
@@ -87,21 +68,13 @@
         :class="[
           'd-flex action-btn align-center pa-3',
           ,
-          isMobile ? 'mt-3 mr-n1 mobile-btn' : 'mt-4 mr-1',
+          isMobile ? 'mt-3 mr-n1 mobile-btn' : 'mt-4 mr-1'
         ]"
         @click="close"
       >
-        <v-icon
-          size="24"
-          color="textBlack2"
-        >
-          mdi-close
-        </v-icon>
+        <v-icon size="24" color="textBlack2"> mdi-close </v-icon>
       </v-btn>
-      <v-container
-        :class="['ma-0 pa-0', isMobile ? 'full-height' : '']"
-        fluid
-      >
+      <v-container :class="['ma-0 pa-0', isMobile ? 'full-height' : '']" fluid>
         <!-- ===================================================================================== -->
         <!-- White sheet (displays on the overlay - size is based on the contentSize prop) -->
         <!-- ===================================================================================== -->
@@ -109,7 +82,7 @@
           <v-sheet
             :width="isMobile ? '100%' : sheetWidth"
             height="100%"
-            color="white"
+            color="bgWalletBlock"
             :class="['white-sheet-container', isMobile ? 'mt-0' : 'mt-4']"
           >
             <div
@@ -125,8 +98,8 @@
                   isMobile
                     ? 'mew-heading-2 ml-3'
                     : isMobile && !back
-                      ? 'mew-heading-2 ml-4'
-                      : 'mew-subtitle',
+                    ? 'mew-heading-2 ml-4'
+                    : 'mew-subtitle'
                 ]"
               >
                 {{ title }}
@@ -139,7 +112,7 @@
             <div
               :class="[
                 'd-flex flex-column align-center justify-center',
-                isMobile ? 'px-3 pb-6 mobile-content' : 'px-8 pb-8',
+                isMobile ? 'px-3 pb-6 mobile-content' : 'px-8 pb-8'
               ]"
             >
               <slot />
@@ -150,10 +123,7 @@
         <!-- ===================================================================================== -->
         <!-- Footer -->
         <!-- ===================================================================================== -->
-        <v-row
-          justify="center"
-          class="ma-0 py-8 footer-text"
-        >
+        <v-row justify="center" class="ma-0 py-8 footer-text">
           {{ footer.text }}
           <a
             v-if="footer && footer.linkTitle && footer.link"
@@ -175,7 +145,7 @@ const sizes = {
   small: 'small',
   medium: 'medium',
   large: 'large',
-  xlarge: 'xlarge',
+  xlarge: 'xlarge'
 };
 
 export default {
@@ -190,7 +160,7 @@ export default {
       type: Object,
       default: () => {
         return {};
-      },
+      }
     },
     /**
      * Opens the overlay from
@@ -198,7 +168,7 @@ export default {
      */
     showOverlay: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Overlay title.
@@ -206,7 +176,7 @@ export default {
      */
     title: {
       type: String,
-      default: '',
+      default: ''
     },
     /**
      * Function that gets triggered
@@ -217,7 +187,7 @@ export default {
       type: Function,
       default: () => {
         return {};
-      },
+      }
     },
     /**
      * Function that gets triggered
@@ -225,7 +195,7 @@ export default {
      */
     back: {
       type: Function,
-      default: null,
+      default: null
     },
     /**
      * Applies the size of the white sheet on the overlay.
@@ -234,12 +204,12 @@ export default {
      */
     contentSize: {
       type: String,
-      default: 'small',
-    },
+      default: 'small'
+    }
   },
   data() {
     return {
-      isOverlayShown: false,
+      isOverlayShown: false
     };
   },
   computed: {
@@ -262,17 +232,13 @@ export default {
         }
       }
       return '384px';
-    },
+    }
   },
   watch: {
     showOverlay(newVal) {
-      if (newVal) {
-        this.removeHtmlScrollbar();
-      } else {
-        this.restoreHtmlScrollbar();
-      }
+      this.removeHtmlScrollbar();
       this.isOverlayShown = newVal;
-    },
+    }
   },
   destroyed() {
     this.restoreHtmlScrollbar();
@@ -290,15 +256,15 @@ export default {
     restoreHtmlScrollbar() {
       const htmlElement = document.querySelector('html');
       htmlElement.style.overflow = null;
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .mew-overlay-container::before,
 .mew-overlay-container::after {
-  content: "";
+  content: '';
   margin: auto;
 }
 

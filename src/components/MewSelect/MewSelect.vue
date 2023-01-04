@@ -1,9 +1,7 @@
 <template>
-  <!--
-  =====================================================================================
-    Mew Select
-  =====================================================================================
-  -->
+  <!-- ===================================================================================== -->
+  <!-- Mew Select -->
+  <!-- ===================================================================================== -->
   <v-select
     v-model="selectModel"
     class="mew-select rounded-lg"
@@ -21,11 +19,9 @@
     outlined
     @click="onClick"
   >
-    <!--
-=====================================================================================
-  Mew select: Error Messages 
-=====================================================================================
--->
+    <!-- ===================================================================================== -->
+    <!-- Mew select: Error Messages -->
+    <!-- ===================================================================================== -->
     <template #message="item">
       <span class="mew-label">
         {{ item.message }}
@@ -40,11 +36,9 @@
       </span>
     </template>
 
-    <!--
-  =====================================================================================
-    Filter for dropdown items
-  =====================================================================================
-  -->
+    <!-- ===================================================================================== -->
+    <!-- Filter for dropdown items -->
+    <!-- ===================================================================================== -->
     <template #prepend-item>
       <v-text-field
         v-if="hasFilter || isCustom"
@@ -62,11 +56,9 @@
       />
     </template>
     <template #selection="{ item }">
-      <!--
-  =====================================================================================
-    Select Token Placeholder
-  =====================================================================================
-  -->
+      <!-- ===================================================================================== -->
+      <!-- Select Token Placeholder -->
+      <!-- ===================================================================================== -->
       <div
         v-if="item.selectLabel"
         class="d-flex align-center flex-row justify-space-between full-width basic--text"
@@ -96,15 +88,11 @@
           </div>
         </div>
       </div>
-      <!--
-  =====================================================================================
-    Selected item
-  =====================================================================================
-  -->
-      <div
-        v-if="!item.selectLabel"
-        class="d-flex align-center justify-center"
-      >
+
+      <!-- ===================================================================================== -->
+      <!-- Selected item -->
+      <!-- ===================================================================================== -->
+      <div v-if="!item.selectLabel" class="d-flex align-center justify-center">
         <mew-token-container
           v-if="!normalDropdown"
           class="ml-1 flex-shrink-0"
@@ -116,59 +104,52 @@
         <span
           :class="noCapitalize ? '' : 'text-capitalize'"
           class="mt-1 ml-2 basic--text"
-        >{{ item.name ? item.name : item }}
+          >{{ item.name ? item.name : item }}
           <span
             v-if="item.subtext"
             :class="noCapitalize ? '' : 'text-capitalize'"
             class="searchText--text"
-          >- {{ item.subtext }}</span></span>
+            >- {{ item.subtext }}</span
+          ></span
+        >
       </div>
     </template>
     <template #item="data">
-      <!--
-  =====================================================================================
-    Loading Select Dropdown items
-  =====================================================================================
-  -->
+      <!-- ===================================================================================== -->
+      <!-- Loading Select Dropdown items -->
+      <!-- ===================================================================================== -->
       <v-skeleton-loader
         v-if="loading"
         class="no-pointer-events mew-select-loading"
         min-width="100%"
         type="list-item-avatar"
       />
-      <!--
-  =====================================================================================
-    Default Select Dropdown items
-  =====================================================================================
-  -->
+
+      <!-- ===================================================================================== -->
+      <!-- Default Select Dropdown items -->
+      <!-- ===================================================================================== -->
       <div
         v-if="!isCustom && !loading"
         class="d-flex align-center justify-center"
       >
-        <span
-          :class="noCapitalize ? '' : 'text-capitalize'"
-          class="ml-2 mt-1"
-        >{{ data.item.name ? data.item.name : data.item }}
+        <span :class="noCapitalize ? '' : 'text-capitalize'" class="ml-2 mt-1"
+          >{{ data.item.name ? data.item.name : data.item }}
           <span
             v-if="data.item.subtext"
             :class="noCapitalize ? '' : 'text-capitalize'"
             class="textSecondary--text"
-          >- {{ data.item.subtext }}</span></span>
+            >- {{ data.item.subtext }}</span
+          ></span
+        >
       </div>
-      <!--
-  =====================================================================================
-    Custom Select Dropdown items
-  =====================================================================================
-  -->
-      <div
-        v-if="isCustom && !loading"
-        class="d-flex align-center full-width"
-      >
-        <!--
-  =====================================================================================
-      Empty Wallet Link
-  =====================================================================================
-  -->
+
+      <!-- ===================================================================================== -->
+      <!-- Custom Select Dropdown items -->
+      <!-- ===================================================================================== -->
+      <div v-if="isCustom && !loading" class="d-flex align-center full-width">
+        <!-- ===================================================================================== -->
+        <!-- Empty Wallet Link -->
+        <!-- ===================================================================================== -->
         <div
           v-if="data.item.hasNoEth"
           class="no-pointer-events titlePrimary--text"
@@ -178,21 +159,18 @@
             class="all-pointer-events"
             target="_blank"
             :href="data.item.link"
-          >{{ data.item.linkText }}</a>
+            >{{ data.item.linkText }}</a
+          >
         </div>
-        <!--
-  =====================================================================================
-    Custom Dropdown Item
-  =====================================================================================
-  -->
+
+        <!-- ===================================================================================== -->
+        <!-- Custom Dropdown Item -->
+        <!-- ===================================================================================== -->
         <div
           v-if="data.item.name"
           class="d-flex align-center justify-space-between full-width"
         >
-          <div
-            v-if="!loading"
-            class="d-flex align-center"
-          >
+          <div v-if="!loading" class="d-flex align-center">
             <mew-token-container
               v-if="!normalDropdown"
               class="mr-1"
@@ -204,23 +182,26 @@
             <span
               :class="noCapitalize ? '' : 'text-capitalize'"
               class="ml-2 my-2 d-flex flex-column"
-            >{{ data.item.symbol || data.item.name || data.item }}
+              >{{ data.item.symbol || data.item.name || data.item }}
               <span
                 v-if="data.item.tokenBalance || data.item.subtext"
                 :class="noCapitalize ? '' : 'text-capitalize'"
                 class="mew-caption font-weight-regular textSecondary--text"
-              >{{
-                data.item.tokenBalance
-                  ? data.item.tokenBalance + " " + data.item.symbol
-                  : data.item.subtext
-              }}</span></span>
+                >{{
+                  data.item.tokenBalance
+                    ? data.item.tokenBalance + ' ' + data.item.symbol
+                    : data.item.subtext
+                }}</span
+              ></span
+            >
           </div>
           <div class="d-flex justify-center flex-column align-end">
             <span>{{ data.item.totalBalance || data.item.price }}</span>
             <span
               v-if="data.item.totalBalance"
               class="mew-caption font-weight-regular textSecondary--text"
-            >@ {{ data.item.price }}</span>
+              >@ {{ data.item.price }}</span
+            >
           </div>
         </div>
       </div>
@@ -234,7 +215,7 @@ import get from 'lodash/get';
 export default {
   name: 'MewSelect',
   components: {
-    MewTokenContainer,
+    MewTokenContainer
   },
   props: {
     /**
@@ -242,28 +223,28 @@ export default {
      */
     buyMoreStr: {
       type: String,
-      default: '',
+      default: ''
     },
     /**
      * Error messages to display
      */
     errorMessages: {
       type: [String, Array],
-      default: '',
+      default: ''
     },
     /**
      * Adds filter to select items
      */
     hasFilter: {
       type: Boolean,
-      default: true, //  change to false
+      default: true //  change to false
     },
     /**
      * Filter placeholder
      */
     filterPlaceholder: {
       type: String,
-      default: 'Search token name',
+      default: 'Search token name'
     },
     /**
      * MEW select value
@@ -272,14 +253,14 @@ export default {
       type: Object,
       default: () => {
         return {};
-      },
+      }
     },
     /**
      * Disables the select dropdown.
      */
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Can be an array of objects or array of strings. When using objects, will look for a text and value field.
@@ -292,57 +273,57 @@ export default {
       type: Array,
       default: () => {
         return [];
-      },
+      }
     },
     /**
      * Sets the select label
      */
     label: {
       type: String,
-      default: '',
+      default: ''
     },
     /**
      * Applies Custom Select styles
      */
     isCustom: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Loading state
      */
     loading: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Normal dropdown with no icon
      */
     normalDropdown: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Remove Capitalize style from all forms
      */
     noCapitalize: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
       selectModel: null,
       selectItems: [],
-      search: '',
+      search: ''
     };
   },
   computed: {
     defaultItem() {
-      return this.items.find((obj) => {
+      return this.items.find(obj => {
         return obj.selectLabel || obj.name;
       });
-    },
+    }
   },
   watch: {
     search(newVal) {
@@ -392,15 +373,15 @@ export default {
       }
     },
     items: {
-      handler: function(newVal) {
+      handler: function (newVal) {
         this.selectItems = newVal;
         this.selectModel =
           this.value && Object.keys(this.value).length !== 0
             ? this.value
             : this.defaultItem;
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
   mounted() {
     this.selectItems = this.items;
@@ -432,10 +413,11 @@ export default {
           this.$refs.filterTextField.$refs.input.focus();
         }
       }, 100);
-    },
-  },
+    }
+  }
 };
 </script>
+
 <style lang="scss">
 /**
   * Mew Select styles
@@ -478,7 +460,7 @@ export default {
   * Mew Select Search
   */
 .mew-select-search {
-  background: var(--v-white-base);
+  background: var(--v-inputPrimary-base);
   border-bottom: 1px solid var(--v-dropdownBorder-base);
   border-radius: 0px;
   height: 42px;
@@ -488,7 +470,11 @@ export default {
   width: 100%;
   z-index: 9999;
   .v-icon {
+    color: var(--v-textMedium-base) !important;
     font-size: 18px;
+  }
+  .disabled--text {
+    color: var(--v-textMedium-base) !important;
   }
 }
 /**
@@ -504,5 +490,18 @@ export default {
       height: 14px;
     }
   }
+}
+.v-select-list.theme--dark {
+  background-color: var(--v-inputPrimary-base) !important;
+  .v-input__slot {
+    background-color: var(--v-inputPrimary-base) !important;
+  }
+  .v-list-item {
+    border-bottom: 0 !important;
+  }
+}
+.v-subheader.theme--dark {
+  background-color: var(--v-inputPrimary-base) !important;
+  border: 0 !important;
 }
 </style>
