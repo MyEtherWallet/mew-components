@@ -1,22 +1,24 @@
-
-import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import MewPopup from '@/components/MewPopup/MewPopup.vue';
-import './../GlobalStorybook.scss'
+import { Story, Preview, Props } from "@storybook/addon-docs";
+import MewPopup from "@/components/MewPopup/MewPopup.vue";
+import "./../GlobalStorybook.scss";
 
 # MEW Popup
+
 `<mew-popup />`
 
 ## Overview
-The MEW popup component is used to confirm an action. 
-The component is triggered open by setting the prop **show** to true.
-The component takes a **title** string prop, which is displayed as the header, and uses a default slot to 
-set the content.
- There are two actions buttons that are shown at the bottom of the popup - these buttons are 
- set and enabled by the **leftBtn** prop and **rightBtn** prop. These objects take a text,
- color, and method attribute. The right btn also has an *enabled* attribute as well.
 
+The MEW popup component is used to confirm an action.
+The component is triggered open by setting the prop **show** to true.
+The component takes a **title** string prop, which is displayed as the header, and uses a default slot to
+set the content.
+There are two actions buttons that are shown at the bottom of the popup - these buttons are
+set and enabled by the **leftBtn** prop and **rightBtn** prop. These objects take a text,
+color, and method attribute. The right btn also has an _enabled_ attribute as well.
 
 ## Props
-<Props of={MewPopup} />
-<Preview><Story id="mewpopup--mew-popup" /></Preview>
 
+<Props of={MewPopup} />
+<Preview>
+  <Story id='mewpopup--mew-popup' />
+</Preview>

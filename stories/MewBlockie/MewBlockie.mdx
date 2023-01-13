@@ -1,14 +1,16 @@
-
-import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import MewBlockie from '@/components/MewBlockie/MewBlockie.vue';
-import './../GlobalStorybook.scss'
+import { Story, Preview, Props } from "@storybook/addon-docs";
+import MewBlockie from "@/components/MewBlockie/MewBlockie.vue";
+import "./../GlobalStorybook.scss";
 
 # MEW Blockie
+
 The mew-blockie component is used to display the circular Ethereum address identicon,
- which is used to identify that the user is using or sending to the correct address. This component has several props. The correct ethereum address string prop is required in order to display the information. The currency prop is used to show a small currency icon within the identicon.
+which is used to identify that the user is using or sending to the correct address. This component has several props. The correct ethereum address string prop is required in order to display the information. The currency prop is used to show a small currency icon within the identicon.
 An icon comes with predefined icon sizes, which can be edited.
 
 ## Props
-<Props of={MewBlockie} />
-<Preview><Story id="mewblockie--mew-blockie" /></Preview>
 
+<Props of={MewBlockie} />
+<Preview>
+  <Story id='mewblockie--mew-blockie' />
+</Preview>

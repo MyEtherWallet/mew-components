@@ -1,18 +1,23 @@
-import { Props, Story, Preview } from '@storybook/addon-docs/blocks'
-import MewTooltip from '@/components/MewTooltip/MewTooltip.vue';
-import './../GlobalStorybook.scss'
+import { Props, Story, Preview } from "@storybook/addon-docs";
+import MewTooltip from "@/components/MewTooltip/MewTooltip.vue";
+import "./../GlobalStorybook.scss";
 
-# MEW Tooltip 
+# MEW Tooltip
+
 `<mew-tooltip />`
 
 ## Overview
 
 MEW tooltip component is used to display a brief,
- informative message box when hovering over an item on desktop view or through touch on mobile view. 
- The **text** prop is used to pass informational text. The text container has a grey outline and white background. 
+informative message box when hovering over an item on desktop view or through touch on mobile view.
+The **text** prop is used to pass informational text. The text container has a grey outline and white background.
 
 ## Props
+
 <Props of={MewTooltip} />
 
 ## Example
-<Preview><Story id="mewtooltip--mew-tooltip" /></Preview>
+
+<Preview>
+  <Story id='mewtooltip--mew-tooltip' />
+</Preview>

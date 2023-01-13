@@ -1,14 +1,17 @@
-
-import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import MewProgressBar from '@/components/MewProgressBar/MewProgressBar.vue';
-import './../GlobalStorybook.scss'
+import { Story, Preview, Props } from "@storybook/addon-docs";
+import MewProgressBar from "@/components/MewProgressBar/MewProgressBar.vue";
+import "./../GlobalStorybook.scss";
 
 # MEW Progress Bar
+
 `<mew-progress-bar />`
 
 ## Overview
+
 The MEW progress bar component is used to visually display different types of data. The **data** prop takes an array of objects and each
 object must include the following attributes: color, percentage, and tooltip.
-<Props of={MewProgressBar} />
-<Preview><Story id="mewprogressbar--mew-progress-bar" /></Preview>
 
+<Props of={MewProgressBar} />
+<Preview>
+  <Story id='mewprogressbar--mew-progress-bar' />
+</Preview>

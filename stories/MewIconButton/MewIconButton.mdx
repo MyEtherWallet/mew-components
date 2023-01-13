@@ -1,8 +1,9 @@
-import { Props, Story, Preview } from '@storybook/addon-docs/blocks'
-import MewIconButton from '@/components/MewIconButton/MewIconButton.vue';
-import './../GlobalStorybook.scss'
+import { Props, Story, Preview } from "@storybook/addon-docs";
+import MewIconButton from "@/components/MewIconButton/MewIconButton.vue";
+import "./../GlobalStorybook.scss";
 
-# MEW Icon Button 
+# MEW Icon Button
+
 `<mew-icon-button />`
 
 ## Overview
@@ -13,35 +14,42 @@ to the **btnSize** prop. There are
 also 5 different icon sizes that you can pass to the **mdiIconSize** prop. Please see below all the different button styles that you can pass to
 the **btnStyle** prop.
 
-MEW icon button color theme options include: primary, secondary, basic, error, royal (blue500). 
+MEW icon button color theme options include: primary, secondary, basic, error, royal (blue500).
 
 ## Props
+
 <Props of={MewIconButton} />
 
 # Button Styles
 
-<br/>
+<br />
 
 ## I. Background
 
 btn-style=”background”
 
 This is a default button with a default primary colorTheme. It inherits the background color from the colorTheme prop with white text.
-<Preview><Story id="mewbutton--background-button" /></Preview>
+
+<Preview>
+  <Story id='mewbutton--background-button' />
+</Preview>
 
 ## II. Outline
 
 btn-style=”outline”
 
-Outlined buttons inherit their borders and text color from the colorTheme prop with a transparent background. 
+Outlined buttons inherit their borders and text color from the colorTheme prop with a transparent background.
 
-<Preview><Story id="mewbutton--outline-button" /></Preview>
-
+<Preview>
+  <Story id='mewbutton--outline-button' />
+</Preview>
 
 ## III. Transparent
+
 btn-style=”transparent”
 
 Transparent Buttons only have text, no box shadow, and no background color. The button’s container will be shown only when hovered. The text Color is inherited from the colorTheme prop.
 
-<Preview><Story id="mewbutton--transparent-button" /></Preview>
-
+<Preview>
+  <Story id='mewbutton--transparent-button' />
+</Preview>

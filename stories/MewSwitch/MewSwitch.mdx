@@ -1,18 +1,21 @@
-
-import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import MewSwitch from '@/components/MewSwitch/MewSwitch.vue';
-import './../GlobalStorybook.scss'
+import { Story, Preview, Props } from "@storybook/addon-docs";
+import MewSwitch from "@/components/MewSwitch/MewSwitch.vue";
+import "./../GlobalStorybook.scss";
 
 # MEW Switch
+
 `<mew-switch />`
 
 ## Overview
+
 The MEW switch component uses Vuetify's v-switch but is customized with MEW theme styles.
-The component provides users the ability to pick between two different values. In order to 
+The component provides users the ability to pick between two different values. In order to
 add an label, you must pass a string to the **label** prop. When the toggle switches,
 an event called **switch** will be emitted with the value.
 
 ## Props
-<Props of={MewSwitch} />
-<Preview><Story id="mewswitch--mew-switch" /></Preview>
 
+<Props of={MewSwitch} />
+<Preview>
+  <Story id='mewswitch--mew-switch' />
+</Preview>

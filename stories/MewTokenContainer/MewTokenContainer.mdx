@@ -1,17 +1,21 @@
+import { Story, Preview, Props } from "@storybook/addon-docs";
+import MewTokenContainer from "@/components/MewTokenContainer/MewTokenContainer.vue";
+import "./../GlobalStorybook.scss";
 
-import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
-import './../GlobalStorybook.scss'
+# MEW Token Container
 
-# MEW Token Container 
 `<mew-token-container />`
 
 ## Overview
-The mew-token-container component is used to display token icons found on the interface. 
+
+The mew-token-container component is used to display token icons found on the interface.
 There are 3 **size** prop options: small (24px), medium(32px), and large(52px).Size small is used as default. Also a pixel value is accepted.
 To use **borderSize** prop, you must give pixel value to **size** prop.
 Acceptable icon prop formats are ‘.png’ and ‘.svg’. If the **img** prop is not specified, the placeholder is used.
-## Props
-<Props of={MewTokenContainer} />
-<Preview><Story id="mewtokencontainer--mew-token-container" /></Preview>
 
+## Props
+
+<Props of={MewTokenContainer} />
+<Preview>
+  <Story id='mewtokencontainer--mew-token-container' />
+</Preview>
