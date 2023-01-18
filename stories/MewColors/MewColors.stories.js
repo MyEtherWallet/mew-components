@@ -208,8 +208,7 @@ export const All = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <div class="mew-heading-2">New colors</div>
     <br />
     <v-row align="center" v-for="( color, idx) in newColors" :key="color + idx">

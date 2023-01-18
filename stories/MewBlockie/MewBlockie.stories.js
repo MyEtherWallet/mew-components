@@ -35,8 +35,7 @@ export const MEWBlockie = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-blockie :address="address" :width="width" :height="height" :flat="flat"
     />
   </div>`

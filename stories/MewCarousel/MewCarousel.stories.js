@@ -50,8 +50,7 @@ export const MEWCarousel = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-carousel
       :carousel-height="carouselHeight"
       :total-slides="totalSlides"

@@ -34,16 +34,15 @@
 =====================================================================================
 -->
     <template #message="item">
-      <span class="mew-label"
-        >{{ item.message }}
+      <span
+        class="mew-label"
+      >{{ item.message }}
         <a
           v-if="buyMoreStr"
           rel="noopener noreferrer"
           class="mew-label"
           @click="emitBuyMore"
-          >{{ buyMoreStr }}</a
-        ></span
-      >
+        >{{ buyMoreStr }}</a></span>
     </template>
     <template #prepend-inner>
       <!--
@@ -94,7 +93,7 @@
         :class="[
           maxBtnObj.disabled
             ? 'disabled--text no-pointer-events'
-            : 'greyPrimary--text',
+            : 'textDarkWhite--text',
           'rounded-lg mt-n2 mew-caption font-weight-medium'
         ]"
         min-width="40"
@@ -102,7 +101,7 @@
         height="40"
         width="40"
         depressed
-        color="greyLight"
+        color="maxButton"
         @click="maxBtnObj.method"
       >
         {{ maxBtnObj.title }}
@@ -338,6 +337,7 @@ export default {
   }
 };
 </script>
+
 <style lang="scss">
 /**
   * Mew Input styles

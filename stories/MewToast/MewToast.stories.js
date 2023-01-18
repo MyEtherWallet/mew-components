@@ -69,8 +69,7 @@ export const MEWToast = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-button title="Show Toast" @click.native=onBtnClick() />
     <mew-toast
       ref="toast" 

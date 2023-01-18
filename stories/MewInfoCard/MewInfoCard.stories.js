@@ -49,8 +49,7 @@ export const MEWInfoCard = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-info-card
       :title="title"
       :desc="desc"

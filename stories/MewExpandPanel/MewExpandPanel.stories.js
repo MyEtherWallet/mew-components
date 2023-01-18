@@ -50,8 +50,7 @@ export const MEWExpandPanel = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-expand-panel
       ref="expandPanel"
       :is-accordion="isAccordion"

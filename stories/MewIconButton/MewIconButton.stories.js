@@ -48,6 +48,9 @@ const optionsObj = {
 export const MEWIconButton = () => ({
   components: { MewIconButton },
   props: {
+    enableDarkMode: {
+      default: boolean('dark mode ?', false),
+    },
     disabled: {
       default: boolean('disabled', false),
     },
@@ -96,10 +99,13 @@ export const MEWIconButton = () => ({
       default: boolean('rounded', false),
     },
   },
-  watch: {},
+  watch: {
+    enableDarkMode(newVal) {
+      this.$vuetify.theme.dark = newVal === true ? true : false;
+    },
+  },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-icon-button
       :mdi-icon="mdiIcon"
       :mdi-icon-size="mdiIconSize"

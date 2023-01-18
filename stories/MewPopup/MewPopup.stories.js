@@ -78,8 +78,7 @@ export const MEWPopup = () => ({
     },
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-popup
       :show="show"
       :title="title"

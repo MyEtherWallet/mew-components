@@ -73,8 +73,7 @@ export const MEWTabs = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-tabs
       :is-small="isSmall"
       :has-full-width="hasFullWidth"

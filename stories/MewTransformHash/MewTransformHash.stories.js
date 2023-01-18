@@ -36,8 +36,7 @@ export const MEWTransformHash = () => ({
     }
   },
   template: `
-    <div class="d-flex align-center text-center mt-10">
-      <br />
+  <div class="bgStorybook pa-15 d-flex align-center text-center">
       <mew-transform-hash
         :justify-start="justifyStart"
         :hash="hash"

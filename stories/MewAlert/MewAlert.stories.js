@@ -73,8 +73,7 @@ export const MEWAlert = () => ({
     },
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-alert :link-object="linkObject" :has-white-background="hasWhiteBackground" :hide-alert-icon="hideAlertIcon" :hide-close-icon="hideCloseIcon" :title="title" :description="description" :theme="theme" />
   </div>`,
   methods: {

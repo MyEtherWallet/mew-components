@@ -42,8 +42,7 @@ export const MEWTextArea = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-text-area @input="onInput" :rules="rules" :label="label" :value="value" />
   </div>`,
   methods: {

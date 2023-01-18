@@ -10,7 +10,11 @@
       <!-- ========================================= -->
       <!-- Mobile tabs selector buttons -->
       <!-- ========================================= -->
-      <v-chip-group v-model="onTab" mandatory column>
+      <v-chip-group
+        v-model="onTab"
+        mandatory
+        column
+      >
         <v-chip
           v-for="(mobileItem, mobileItemKey) in items"
           :key="mobileItemKey"
@@ -59,8 +63,8 @@
           isBlock
             ? 'mew-tab-block'
             : isVertical || isSmall
-            ? 'mew-body font-weight-medium'
-            : 'mew-heading-2',
+              ? 'mew-body font-weight-medium'
+              : 'mew-heading-2',
           'capitalize'
         ]"
         :ripple="!isVertical"
@@ -84,13 +88,22 @@
       </v-tabs-items>
     </v-tabs>
 
-    <div v-for="(item, i) in items" :key="item + i">
-      <v-slide-x-reverse-transition :hide-on-leave="true" mode="out-in">
+    <div
+      v-for="(item, i) in items"
+      :key="item + i"
+    >
+      <v-slide-x-reverse-transition
+        :hide-on-leave="true"
+        mode="out-in"
+      >
         <!-- ===================================================================================== -->
         <!-- Slot: 'tabContent' + number of tab content (used to place custom tab -->
         <!-- content outside of the tab container) -->
         <!-- ===================================================================================== -->
-        <slot v-if="onTab === i" :name="'tabContent' + (i + 1)" />
+        <slot
+          v-if="onTab === i"
+          :name="'tabContent' + (i + 1)"
+        />
       </v-slide-x-reverse-transition>
     </div>
   </div>
@@ -271,5 +284,9 @@ export default {
   &::before {
     background-color: white;
   }
+}
+
+.theme--dark.v-tabs-items {
+  background-color: transparent !important;
 }
 </style>

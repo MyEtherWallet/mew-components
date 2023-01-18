@@ -19,7 +19,7 @@
       <!-- ===================================================================================== -->
       <v-expansion-panel-header
         :class="['pa-5']"
-        :color="isGreyTheme ? 'greyLight' : 'inputPrimary'"
+        :color="isGreyTheme ? 'bgWalletBlock' : 'inputPrimary'"
       >
         <!-- ===================================================================================== -->
         <!-- Panel Header - Left -->
@@ -33,14 +33,16 @@
         <!-- ===================================================================================== -->
         <!-- Panel Header - Right -->
         <!-- ===================================================================================== -->
-        <div slot="actions" class="d-flex align-center justify-center">
+        <div
+          slot="actions"
+          class="d-flex align-center justify-center"
+        >
           <span
             :class="[
               'mew-body mr-5 text-right',
               isGreyTheme ? 'textMedium--text' : 'textLight--text'
             ]"
-            >{{ item.toggleTitle }}</span
-          >
+          >{{ item.toggleTitle }}</span>
 
           <!-- ===================================================================================== -->
           <!-- Chevron icon to toggle expand -->
@@ -51,7 +53,10 @@
           >
             mdi-chevron-down
           </v-icon>
-          <v-icon v-else :color="isGreyTheme ? 'textMedium' : 'textLight'">
+          <v-icon
+            v-else
+            :color="isGreyTheme ? 'textMedium' : 'textLight'"
+          >
             mdi-chevron-down
           </v-icon>
         </div>

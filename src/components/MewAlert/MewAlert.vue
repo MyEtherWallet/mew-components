@@ -21,18 +21,19 @@
     <div :class="[hideAlertIcon ? '' : 'pl-1']">
       <span
         v-if="title"
-        class="mew-body font-weight-bold textAlwaysDark--text"
-        >{{ title }}</span
+        class="mew-body font-weight-bold textDark--text"
+      >{{ title }}</span>
+      <div
+        v-if="description"
+        class="mew-body textDark--text"
       >
-      <div v-if="description" class="mew-body textAlwaysDark--text">
         {{ description }}
         <a
           v-if="linkObject"
           target="_blank"
-          class="textAlwaysDark--text text-decoration-underline"
+          class="textDark--text text-decoration-underline"
           :href="linkObject.url"
-          >{{ linkObject.text }}</a
-        >
+        >{{ linkObject.text }}</a>
       </div>
       <!--
   =====================================================================================
@@ -48,8 +49,19 @@
   =====================================================================================
   -->
     <template #close="{ toggle }">
-      <v-btn v-if="!hideCloseIcon" class="close-btn" icon @click="toggle">
-        <v-icon :color="alertColor" size="16" class="pa-1"> mdi-close </v-icon>
+      <v-btn
+        v-if="!hideCloseIcon"
+        class="close-btn"
+        icon
+        @click="toggle"
+      >
+        <v-icon
+          :color="alertColor"
+          size="16"
+          class="pa-1"
+        >
+          mdi-close
+        </v-icon>
       </v-btn>
     </template>
   </v-alert>

@@ -4,10 +4,10 @@
     Mew Copy
   =====================================================================================
   -->
-  <div>
+  <div class="mew-component-mew-copy">
     <v-tooltip
       content-class="tooltip-inner"
-      color="titlePrimary--text"
+      color="textMedium--text"
       top
     >
       <template v-slot:activator="{ on }">
@@ -16,6 +16,7 @@
           :class="['copy-icon cursor-pointer', className]"
           v-on="on"
           @click="copyToClipboard"
+          color="textMedium"
         >
           mdi-content-copy
         </v-icon> 
@@ -51,7 +52,7 @@ export default {
      */
     className: {
       type: String,
-      default: 'basic--text'
+      default: ''
     },
     /**
      * Makes the icon smaller.
@@ -96,6 +97,11 @@ export default {
   .v-icon.copy-icon {
     &:hover {
       color: var(--v-primary-base) !important;
+    }
+  }
+  .mew-component-mew-copy {
+    .v-icon.v-icon.v-icon--link {
+      color: var(--v-textMediumWhite-base) !important;
     }
   }
 </style>
