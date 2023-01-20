@@ -111,6 +111,7 @@
             height="25px"
           />
           <mew-transform-hash
+            class="pr-6"
             v-if="!item.resolvedAddr || item.resolvedAddr === ''"
             :hash="item.address"
           />
