@@ -45,8 +45,7 @@ export const MEWMenu = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-menu
       :list-obj="listObj"
       :activator-text-color="activatorTextColor"

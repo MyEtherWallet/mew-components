@@ -186,8 +186,7 @@ export const MEWTable = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-table
       :loading="loading"
       :has-color="hasColor"
@@ -199,7 +198,6 @@ export const MEWTable = () => ({
       @selectedAll="onSelectAll"
       @onClick="onClick"
     />
-    
   </div>`,
   methods: {
     onSelect(newVal) {

@@ -51,8 +51,7 @@ export const MEWToggle = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-toggle
       :on-toggle-btn-idx="onToggleBtnIdx"
       :button-group="buttonGroup"

@@ -91,8 +91,7 @@ export const MEWNotification = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-notification
       :show-indicator="showIndicator"
       :notification="notification"

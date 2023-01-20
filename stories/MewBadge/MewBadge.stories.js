@@ -46,8 +46,7 @@ export const MEWBadge = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-badge
       :badge-type="badgeType"
       :badge-title="badgeTitle"

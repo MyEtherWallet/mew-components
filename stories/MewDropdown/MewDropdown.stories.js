@@ -38,8 +38,7 @@ export const MEWDropdown = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-dropdown
       :is-opened="isOpened"
       :popup-title="popupTitle"

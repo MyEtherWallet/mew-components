@@ -83,8 +83,7 @@ export const All = () => ({
     };
   },
   template: `
-    <div>
-    <br/>
+  <div class="bgStorybook pa-15">
     <h3 :style="headerStyle">font-family:</h3>
     <div :style="{ fontWeight: 400 }">Roboto</div>
     <div :style="markupStyle">Primary</div>

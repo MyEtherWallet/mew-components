@@ -43,8 +43,7 @@ export const MEWBanner = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-banner @close-banner="closeBanner" :banner-img="bannerImg" :text-obj="textObj" />
   </div>`,
   methods: {

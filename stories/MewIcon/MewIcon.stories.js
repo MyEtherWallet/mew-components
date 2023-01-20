@@ -98,8 +98,7 @@ export const MEWIcon = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <span class="mew-heading-1 mb-3">Icons</span>
     <v-row class="mt-3" align="center"> 
       <v-col cols="6" sm="4" lg="2" xl="2" v-for="(icon, idx) in icons" :key="icon + idx">

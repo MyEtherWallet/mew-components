@@ -92,8 +92,7 @@ export const MEWSearch = () => ({
     },
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-search :on-search="onSearch" :on-date-search="onDateSearch" :is-filled="isFilled" :error-messages="errorMessages" :is-compact="isCompact" :menu-select="menuSelect" :is-search-block="isSearchBlock" :can-search-date="canSearchDate" :disabled="disabled" :placeholder="placeholder" :value="value" :type="type"
     />
   </div>`,

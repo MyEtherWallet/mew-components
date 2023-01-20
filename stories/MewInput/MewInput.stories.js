@@ -128,8 +128,7 @@ export const MEWInput = () => ({
     },
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-input ref="input" :hide-password-icon="hidePasswordIcon" :autofocus="autofocus" :buy-more-str="buyMoreStr" :max-btn-obj="maxBtnObj" :error-messages="errorMessages" :persistent-hint="persistentHint" :image="image" :id="id" :hint="hint" :resolved-addr="resolvedAddr" :show-blockie="showBlockie" :has-no-border="hasNoBorder" :rules="rules" :hide-clear-btn="hideClearBtn" :right-label="rightLabel" :disabled="disabled" :label="label" :placeholder="placeholder" :value="value" :type="type" :is-read-only="isReadOnly"
     />
   </div>`,

@@ -43,8 +43,7 @@ export const MEWChart = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-chart :data="data" :color="color"/>
   </div>`
 });

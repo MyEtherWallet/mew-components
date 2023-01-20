@@ -2,7 +2,7 @@
   <!-- ===================================================================================== -->
   <!-- Mew Tabs -->
   <!-- ===================================================================================== -->
-  <div>
+  <div class="mew-components--mew-tabs">
     <!-- ================================================================= -->
     <!-- Compact(Mobile) tabs -->
     <!-- ================================================================= -->
@@ -231,6 +231,10 @@ export default {
 </script>
 
 <style lang="scss">
+.mew-components--mew-tabs .v-tabs--vertical > .v-window {
+  background-color: transparent !important;
+}
+
 .mew-tabs-underline {
   .v-slide-group__content {
     border-bottom: 1px solid var(--v-inputBorder-base);
@@ -280,5 +284,9 @@ export default {
   &::before {
     background-color: white;
   }
+}
+
+.theme--dark.v-tabs-items {
+  background-color: transparent !important;
 }
 </style>

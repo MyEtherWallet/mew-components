@@ -46,8 +46,7 @@ export const MEWWarningSheet = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-warning-sheet
       :title="title"
       :description="description"
