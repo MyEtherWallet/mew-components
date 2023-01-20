@@ -79,8 +79,7 @@ export const MEWLightTable = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-light-table
       :full-width="fullWidth"
       :hover-effect="hoverEffect"

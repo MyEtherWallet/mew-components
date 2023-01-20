@@ -25,11 +25,8 @@
       <!-- ===================================================================================== -->
       <!-- Button text (if no title prop is passed, then slot should be used) -->
       <!-- ===================================================================================== -->
-      <span
-        v-if="title"
-        class="font-weight-regular reset-text-style"
-      >
-        {{ title }} 
+      <span v-if="title" class="font-weight-regular reset-text-style">
+        {{ title }}
       </span>
       <!-- ===================================================================================== -->
       <!-- slot: default -->
@@ -154,6 +151,7 @@ export default {
     /**
      * @returns the process circular loading color.
      */
+    /*
     loadingColor() {
       if (!this.disabled && this.isLight && this.isPrimaryTheme) {
         return 'greenPrimary';
@@ -181,6 +179,7 @@ export default {
 
       return 'white';
     },
+    */
     /**
      * @returns button color based on color theme and btn style props.
      */
@@ -205,7 +204,7 @@ export default {
 
       // PRIMARY COLORS
       if (this.isPrimaryTheme && this.isLight) {
-        return 'backgroundOverlay';
+        return 'buttonGrayLight';
       }
 
       if (this.isPrimaryTheme) {

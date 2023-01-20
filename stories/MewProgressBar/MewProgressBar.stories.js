@@ -38,8 +38,7 @@ export const MEWProgressBar = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-progress-bar :data="data" />
   </div>`
 });

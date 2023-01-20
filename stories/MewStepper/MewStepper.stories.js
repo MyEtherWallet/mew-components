@@ -46,8 +46,7 @@ export const MEWStepper = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-stepper
       :items="items"
       :on-step="onStep"

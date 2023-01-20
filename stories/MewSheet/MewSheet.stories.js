@@ -29,8 +29,7 @@ export const MEWSheet = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-sheet
     >
       <template>

@@ -91,8 +91,7 @@ export const MEWButton = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-button
       :loading="loading"
       :btn-link="btnLink"
@@ -143,8 +142,7 @@ export const BackgroundButton = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-button
       :btn-link="btnLink"
       :disabled="disabled"
@@ -194,8 +192,7 @@ export const OutlineButton = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-button
       :btn-link="btnLink"
       :disabled="disabled"
@@ -245,8 +242,7 @@ export const TransparentButton = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-button
       :btn-link="btnLink"
       :disabled="disabled"
@@ -301,8 +297,7 @@ export const SlotButton = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-button
       :btn-link="btnLink"
       :disabled="disabled"

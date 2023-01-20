@@ -36,8 +36,7 @@ export const MEWTooltip = () => ({
     }
   },
   template: `
-    <div class="text-center mt-10">
-    <br />
+  <div class="bgStorybook pa-15 text-center">
     <mew-tooltip
       :text="text"
       :max-width="maxWidth"

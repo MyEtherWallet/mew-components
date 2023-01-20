@@ -78,8 +78,7 @@ export const MEWModule = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-module
       :mew-tooltip-text="mewTooltipText"
       :has-body-padding="hasBodyPadding"

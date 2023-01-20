@@ -5,6 +5,7 @@
   =====================================================================================
   -->
   <v-alert
+    class="mew-alert mb-0 bs-small"
     :class="[alertClasses, hideAlertIcon ? 'pl-7' : 'pl-4', 'py-3 pr-5']"
     colored-border
     :color="alertColor"
@@ -21,9 +22,7 @@
       <span
         v-if="title"
         class="mew-body font-weight-bold textDark--text"
-      >{{
-        title
-      }}</span>
+      >{{ title }}</span>
       <div
         v-if="description"
         class="mew-body textDark--text"
@@ -49,12 +48,12 @@
    TODO: change this to mew-icon component after icon buttons are finalized.
   =====================================================================================
   -->
-    <template v-slot:close="{ toggle }">
+    <template #close="{ toggle }">
       <v-btn
         v-if="!hideCloseIcon"
         class="close-btn"
-        @click="toggle"
         icon
+        @click="toggle"
       >
         <v-icon
           :color="alertColor"
@@ -77,42 +76,42 @@ export default {
      */
     theme: {
       type: String,
-      default: 'info',
+      default: 'info'
     },
     /**
      * Sets a white background for the entire alert.
      */
     hasWhiteBackground: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Hides top left icon.
      */
     hideAlertIcon: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Hides close button.
      */
     hideCloseIcon: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Adds a title to the alert.
      */
     title: {
       type: String,
-      default: '',
+      default: ''
     },
     /**
      * Adds a description to the alert.
      */
     description: {
       type: String,
-      default: '',
+      default: ''
     },
     /**
      * Expects a link object with attributes text and url, i.e { url: 'www.myetherwallet.com', text: 'Home" }
@@ -120,8 +119,8 @@ export default {
      */
     linkObject: {
       type: Object,
-      default: () => {},
-    },
+      default: () => {}
+    }
   },
   data() {
     return {
@@ -132,8 +131,8 @@ export default {
         error: 'error',
         warning: 'warning',
         success: 'success',
-        info: 'info',
-      },
+        info: 'info'
+      }
     };
   },
   computed: {
@@ -201,7 +200,7 @@ export default {
      * @returns specific mew alert classes. Used for styling.
      */
     alertClasses() {
-      const classes = ['mew-alert mb-0'];
+      const classes = [];
       if (this.hasWhiteBackground) {
         classes.push('white');
       }
@@ -218,8 +217,8 @@ export default {
         classes.push('greenLight');
       }
       return classes;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -229,7 +228,6 @@ export default {
   */
 .mew-alert {
   border-radius: 8px;
-  box-shadow: 0px 1.6px 6px rgba(90, 103, 138, 0.6) !important;
   .close-btn {
     height: auto;
     width: auto;

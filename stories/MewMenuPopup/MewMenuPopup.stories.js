@@ -66,8 +66,7 @@ export const MEWMenuPopup = () => ({
     }
   },
   template: `
-    <div style="display: inline-block; margin: 0 auto;">
-    <br />
+  <div class="bgStorybook pa-15" style="display: inline-block; margin: 0 auto">
     <mew-menu-popup
       :btn-title="btnTitle"
       :btn-size="btnSize"

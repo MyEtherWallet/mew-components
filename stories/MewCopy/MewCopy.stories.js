@@ -48,8 +48,7 @@ export const MEWCopy = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-copy
       :is-small="isSmall"
       :tooltip="tooltip"

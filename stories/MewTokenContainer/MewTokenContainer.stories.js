@@ -47,8 +47,7 @@ export const MEWTokenContainer = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-token-container
       :size="size"
       :border-size="borderSize"

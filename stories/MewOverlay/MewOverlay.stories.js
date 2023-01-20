@@ -71,8 +71,7 @@ export const MEWOverlay = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-overlay
       :back="back"
       :footer="footer"

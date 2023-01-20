@@ -1,21 +1,31 @@
+const baseColors = {
+  // Asphalt
+  asphalt5: '#1c2136',
+  asphalt10: '#2E3046',
+  asphalt25: '#33364B',
+  asphalt50: '#393D50',
+  asphalt75: '#3F4356',
+  asphalt100: '#4A4E5F',
+  asphalt200: '#565B6C',
+  asphalt300: '#666C7B',
+  asphalt400: '#7B8290',
+  asphalt500: '#8F97A3 ',
+  asphalt600: '#A3ACB8',
+  asphalt700: '#BBC0CB',
+  asphalt800: '#D2D6DD',
+  asphalt900: '#FFFFFF'
+};
+
 export default {
   icons: {
-    iconfont: 'mdi',
+    iconfont: 'mdi'
   },
   theme: {
     options: {
-      customProperties: true,
+      customProperties: true
     },
     themes: {
       light: {
-        // Text
-        textDark: '#1F242F',
-        textMedium: '#626978',
-        textLight: '#9BA1AE',
-        // Grey
-        greyPrimary: '#626978',
-        greyMedium: '#E4E7ED',
-        greyLight: '#F9FAFE',
         // Asphalt
         asphalt10: '#F9FAFE',
         asphalt25: '#F5F7FB',
@@ -31,9 +41,27 @@ export default {
         asphalt800: '#333945',
         asphalt900: '#1F242F',
         // Backgrounds
-        walletBg: '#F2F4FA',
-        overlayBg: '#F2FAFA',
-        greyBg: '#F8F9FB',
+        bgSideMenu: '#07385f',
+        bgWallet: '#F2F4FA',
+        bgWalletBlock: '#FFFFFF',
+        bgWalletBlockDark: '#F2F4FA',
+        bgOverlay: '#F2FAFA',
+        bgGrey: '#F8F9FB',
+        bgBlack: '#000000',
+        bgStorybook: '#FFFFFF',
+        // Box shadow
+        boxShadow: '#ececec',
+        // Text
+        textAlwaysDark: '#1F242F',
+        textDark: '#1F242F',
+        textMedium: '#626978',
+        textLight: '#9BA1AE',
+        textDarkWhite: '#1F242F',
+        textMediumWhite: '#626978',
+        // Grey
+        greyPrimary: '#626978',
+        greyMedium: '#E4E7ED',
+        greyLight: '#f2f4fa',
         // Whites
         alwaysWhite: '#FFFFFF',
         whiteBg: '#FFFFFF',
@@ -58,6 +86,19 @@ export default {
         disabledPrimary: '#CECECE',
         disabledMedium: '#E0E0E0',
         disabledLight: '#F6F6F6 ',
+        // Buttons
+        buttonWhite: '#FFFFFF',
+        buttonGrayLight: '#F2F4FA',
+        buttonGrayDark: '#626978',
+        buttonToggleDark: '#1F242F',
+        buttonBorder: '#d1d1d1',
+        // Inputs
+        inputPrimary: '#FFFFFF',
+        // Border
+        borderInput: '#e0e0e0',
+        borderTable: '#EAEAEA',
+        // Table
+        tableBg: '#f4f7fe',
         // =========================================================
         // =========================================================
         // new colors
@@ -78,7 +119,7 @@ export default {
         selectHover: '#E5EAEE',
         superPrimary: {
           base: '#f2fafa',
-          darken1: '#e3f2f2',
+          darken1: '#e3f2f2'
         },
         superPrimaryHover: '#f5fdfb',
         emerald100: '#f2fafa',
@@ -104,21 +145,20 @@ export default {
         white: '#fff',
         black: '#000',
         mewBg: '#fff',
-        boxShadow: '#ececec',
         expandHeader: '#184f90',
         primary: '#05c0a5',
-        blue500: '#5a78f0',
+        blue500: '#6e9fc9',
         basic: '#0b1a40',
         success: '#2cc479',
         error: {
           base: '#ff445b',
           lighten1: '#ffd7dc',
-          lighten2: '#e96071',
+          lighten2: '#e96071'
         },
         warning: {
           base: '#FFF2DC',
           darken1: '#f5a623',
-          darken2: '#ff7700',
+          darken2: '#ff7700'
         },
         disabled: '#cecece',
         tableHeader: '#f9f9f9',
@@ -129,17 +169,9 @@ export default {
         textBlack2: '#5F6368',
         buttonSelect: '#D7F5F4',
         blue100: '#F3F5FB',
-        surface: '#192133', // name from figma. not sure if its correct
+        surface: '#192133' // name from figma. not sure if its correct
       },
       dark: {
-        // Text
-        textDark: '#1F242F',
-        textMedium: '#626978',
-        textLight: '#9BA1AE',
-        // Grey
-        greyPrimary: '#626978',
-        greyMedium: '#E4E7ED',
-        greyLight: '#F9FAFE',
         // Asphalt
         asphalt10: '#F9FAFE',
         asphalt25: '#F5F7FB',
@@ -155,9 +187,27 @@ export default {
         asphalt800: '#333945',
         asphalt900: '#1F242F',
         // Backgrounds
-        walletBg: '#000000',
-        overlayBg: '#000000',
-        greyBg: '#000000',
+        bgSideMenu: '#292B42',
+        bgWallet: '#1c2136',
+        bgWalletBlock: '#292B42',
+        bgWalletBlockDark: '#1c2136',
+        bgOverlay: '#292B42',
+        bgGrey: '#F8F9FB',
+        bgBlack: '#000000',
+        bgStorybook: '#1c2136',
+        //Box shadow
+        boxShadow: '#3c3c3c',
+        // Text
+        textAlwaysDark: '#1F242F',
+        textDark: '#FFFFFF',
+        textMedium: '#A5B0C7',
+        textLight: '#9BA1AE',
+        textDarkWhite: '#FFFFFF',
+        textMediumWhite: '#FFFFFF',
+        // Grey
+        greyPrimary: '#626978',
+        greyMedium: '#566075',
+        greyLight: '#F9FAFE',
         // Whites
         alwaysWhite: '#FFFFFF',
         whiteBg: '#151518',
@@ -182,6 +232,19 @@ export default {
         disabledPrimary: '#606670',
         disabledMedium: '#383F4A',
         disabledLight: '#242D3E ',
+        // Buttons
+        buttonWhite: '#1c2136',
+        buttonGrayLight: baseColors.asphalt5,
+        buttonGrayDark: '#FFFFFF',
+        buttonToggleDark: '#1F242F',
+        buttonBorder: '#4d4f7d',
+        // Inputs
+        inputPrimary: '#292B42',
+        // Border
+        borderInput: '#667f9b',
+        borderTable: baseColors.asphalt700,
+        // Table
+        tableBg: '#1c2136',
         // =========================================================
         // =========================================================
         // new colors
@@ -206,7 +269,7 @@ export default {
         selectHover: '#2c3448',
         superPrimary: {
           base: '#242c48',
-          darken1: '#e3f2f2',
+          darken1: '#e3f2f2'
         },
         superPrimaryHover: '#f5fdfb',
         emerald100: '#151a29',
@@ -227,7 +290,6 @@ export default {
         white: '#fff',
         mewBg: '#151a29',
         black: '#000',
-        boxShadow: '#3c3c3c',
         expandHeader: '#184f90',
         titlePrimary: '#95aed8',
         titleSecondary: '#4E5A6E',
@@ -235,29 +297,29 @@ export default {
         textPrimaryModule: '#95aed8',
         textSecondaryModule: '#95aed8',
         primary: '#05c0a5',
-        blue500: '#5c79f0',
-        basic: '#151A29',
+        blue500: '#72cce9',
+        basic: '#FFFFFF',
         success: '#2cc479',
         error: {
           base: '#ff445b',
           lighten1: '#ffd7dc',
-          lighten2: '#e96071',
+          lighten2: '#e96071'
         },
         warning: {
-          base: '#0f1320',
-          darken1: '#f5a623',
+          base: baseColors.asphalt5,
+          darken1: '#f5a623'
         },
         disabled: '#1f2b42',
         tableHeader: '#0f1320',
         selectHeaderBg: '#F8FAFC',
         selectBorder: '#F1F1F1',
-        maxButton: '#F6F8FD',
+        maxButton: '#05071f',
         textBlack: '#202124',
         textBlack2: '#5F6368',
         buttonSelect: '#D7F5F4',
         blue100: '#F3F5FB',
-        surface: '#192133', //name from figma
-      },
-    },
-  },
+        surface: '#192133' //name from figma
+      }
+    }
+  }
 };

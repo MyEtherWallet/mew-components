@@ -56,8 +56,7 @@ export const MEWCheckbox = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-checkbox
       :label="label"
       :dense="dense"

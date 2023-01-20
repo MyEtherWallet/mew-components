@@ -58,7 +58,7 @@
         <v-tooltip
           v-if="showSave"
           content-class="tooltip-inner"
-          color="titlePrimary--text"
+          color="textMediumWhite"
           top
         >
           <template #activator="{ on }">
@@ -384,7 +384,7 @@ export default {
     }
 
     .dropdown-icon-container {
-      border-left: 1px solid var(--v-disabled-base);
+      border-left: 1px solid var(--v-inputDividerBorder-base);
       margin-left: 15px;
       margin-right: -15px;
     }

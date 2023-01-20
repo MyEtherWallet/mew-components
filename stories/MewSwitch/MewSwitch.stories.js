@@ -38,8 +38,7 @@ export const MEWSwitch = () => ({
     }
   },
   template: `
-    <div>
-    <br />
+  <div class="bgStorybook pa-15">
     <mew-switch
       :label="label"
       :value="value"
