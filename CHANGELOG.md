@@ -1,6 +1,9 @@
+### 1.4.1
+
+- dark theme notification slot color issues [#336](https://github.com/MyEtherWallet/mew-components/pull/336)
+
 ### 1.4.0
 
-- dark mode [#333](https://github.com/MyEtherWallet/mew-components/pull/333)
 - new popup [#328](https://github.com/MyEtherWallet/mew-components/pull/328)
 - new popup [#328](https://github.com/MyEtherWallet/mew-components/pull/328)
 

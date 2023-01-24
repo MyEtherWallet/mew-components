@@ -58,7 +58,10 @@
       Loaded Button Content 
     =====================================================================================
     -->
-    <div v-if="!loading" class="d-flex justify-center align-center">
+    <div
+      v-if="!loading"
+      class="d-flex justify-center align-center"
+    >
       <!--
       =====================================================================================
       Button text (if no title prop is passed, then slot should be used)
