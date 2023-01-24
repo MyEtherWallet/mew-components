@@ -19,7 +19,10 @@
   =====================================================================================
   -->
     <v-container fluid>
-      <v-row align="center" justify="space-between">
+      <v-row
+        align="center"
+        justify="space-between"
+      >
         <div
           :class="[
             'left-wrapper pl-8 mt-2 d-flex flex-row',
@@ -29,7 +32,10 @@
             hasIndicator ? 'indicator pl-md-13' : ''
           ]"
         >
-          <div v-if="showIcon(icon)" class="left-icon mr-2">
+          <div
+            v-if="showIcon(icon)"
+            class="left-icon mr-2"
+          >
             <mew-token-container
               v-if="iconAlign.toLowerCase() === iconAlignments.left"
               :img="icon"
@@ -41,24 +47,25 @@
             <span
               v-if="subtitle"
               class="mew-heading-3 textPrimaryModule--text text-uppercase"
-              >{{ subtitle }}</span
-            >
+            >{{ subtitle }}</span>
             <span
               v-if="title"
               :class="['titlePrimary--text d-flex align-center', titleSize]"
-              >{{ title }}
+            >{{ title }}
               <mew-tooltip
                 v-if="mewTooltipText"
                 class="mb-1 ml-1"
                 :text="mewTooltipText"
-            /></span>
+              /></span>
             <span
               v-if="caption"
               class="mew-body textSecondaryModule--text font-weight-bold"
-              >{{ caption }}</span
-            >
+            >{{ caption }}</span>
           </div>
-          <div v-if="showIcon(icon)" class="right-icon">
+          <div
+            v-if="showIcon(icon)"
+            class="right-icon"
+          >
             <mew-token-container
               v-if="iconAlign.toLowerCase() === iconAlignments.right"
               :img="icon"
@@ -87,7 +94,10 @@
     Module Body
   =====================================================================================
   -->
-      <v-row align="center" justify="center">
+      <v-row
+        align="center"
+        justify="center"
+      >
         <!--
   =====================================================================================
     Slot: moduleBody (used to place custom ui on the body content)

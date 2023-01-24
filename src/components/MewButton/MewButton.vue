@@ -25,7 +25,10 @@
       <!-- ===================================================================================== -->
       <!-- Button text (if no title prop is passed, then slot should be used) -->
       <!-- ===================================================================================== -->
-      <span v-if="title" class="font-weight-regular reset-text-style">
+      <span
+        v-if="title"
+        class="font-weight-regular reset-text-style"
+      >
         {{ title }}
       </span>
       <!-- ===================================================================================== -->

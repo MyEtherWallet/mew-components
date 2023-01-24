@@ -64,10 +64,19 @@
         color="primary"
         @click="onSearch"
       >
-        <v-icon color="white"> mdi-magnify </v-icon>
+        <v-icon color="white">
+          mdi-magnify
+        </v-icon>
       </v-btn>
-      <v-divider v-if="isSearchBlock && canSearchDate" vertical light />
-      <div v-if="isSearchBlock && canSearchDate" class="pl-3 pr-4">
+      <v-divider
+        v-if="isSearchBlock && canSearchDate"
+        vertical
+        light
+      />
+      <div
+        v-if="isSearchBlock && canSearchDate"
+        class="pl-3 pr-4"
+      >
         <mew-icon-button
           btn-style="transparent"
           mdi-icon-size="medium"
