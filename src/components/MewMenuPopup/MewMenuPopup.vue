@@ -170,12 +170,14 @@ export default {
     // =============================================================================
     detactOutsideClick(e) {
       const targetEl = e.target;
+      const contentEl = this.contentEl;
+      const activatorEl = this.activatorEl;
       if (
         !(
           targetEl == this.contentEl ||
           targetEl == this.activatorEl ||
-          this.contentEl.contains(targetEl) ||
-          this.activatorEl.contains(targetEl)
+          (contentEl && this.contentEl.contains(targetEl)) ||
+          (activatorEl && this.activatorEl.contains(targetEl))
         )
       ) {
         this.show = false;
