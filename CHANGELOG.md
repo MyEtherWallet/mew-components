@@ -1,3 +1,7 @@
+### 1.4.4
+
+- scroll mew select to top when searching [#341](https://github.com/MyEtherWallet/mew-components/pull/341)
+
 ### 1.4.3-hotfix.2
 
 - fix menu popup overflow [#340](https://github.com/MyEtherWallet/mew-components/pull/340)

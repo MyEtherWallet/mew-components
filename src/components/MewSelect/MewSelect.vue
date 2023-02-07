@@ -195,7 +195,7 @@
                 class="mew-caption font-weight-regular textSecondary--text"
               >{{
                 data.item.tokenBalance
-                  ? data.item.tokenBalance + ' ' + data.item.symbol
+                  ? data.item.tokenBalance + " " + data.item.symbol
                   : data.item.subtext
               }}</span></span>
           </div>
@@ -218,7 +218,7 @@ import get from 'lodash/get';
 export default {
   name: 'MewSelect',
   components: {
-    MewTokenContainer
+    MewTokenContainer,
   },
   props: {
     /**
@@ -226,28 +226,28 @@ export default {
      */
     buyMoreStr: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Error messages to display
      */
     errorMessages: {
       type: [String, Array],
-      default: ''
+      default: '',
     },
     /**
      * Adds filter to select items
      */
     hasFilter: {
       type: Boolean,
-      default: true //  change to false
+      default: true, //  change to false
     },
     /**
      * Filter placeholder
      */
     filterPlaceholder: {
       type: String,
-      default: 'Search token name'
+      default: 'Search token name',
     },
     /**
      * MEW select value
@@ -256,14 +256,14 @@ export default {
       type: Object,
       default: () => {
         return {};
-      }
+      },
     },
     /**
      * Disables the select dropdown.
      */
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Can be an array of objects or array of strings. When using objects, will look for a text and value field.
@@ -276,60 +276,64 @@ export default {
       type: Array,
       default: () => {
         return [];
-      }
+      },
     },
     /**
      * Sets the select label
      */
     label: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Applies Custom Select styles
      */
     isCustom: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Loading state
      */
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Normal dropdown with no icon
      */
     normalDropdown: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Remove Capitalize style from all forms
      */
     noCapitalize: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
       selectModel: null,
       selectItems: [],
-      search: ''
+      search: '',
     };
   },
   computed: {
     defaultItem() {
-      return this.items.find(obj => {
+      return this.items.find((obj) => {
         return obj.selectLabel || obj.name;
       });
-    }
+    },
   },
   watch: {
     search(newVal) {
+      const dropdown = document.querySelector('.v-menu__content');
+      if (dropdown) {
+        dropdown.scroll(0, 0);
+      }
       if (newVal === '' || newVal === null) {
         this.selectItems = this.items;
       } else {
@@ -376,15 +380,15 @@ export default {
       }
     },
     items: {
-      handler: function (newVal) {
+      handler: function(newVal) {
         this.selectItems = newVal;
         this.selectModel =
           this.value && Object.keys(this.value).length !== 0
             ? this.value
             : this.defaultItem;
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   mounted() {
     this.selectItems = this.items;
@@ -416,8 +420,8 @@ export default {
           this.$refs.filterTextField.$refs.input.focus();
         }
       }, 100);
-    }
-  }
+    },
+  },
 };
 </script>
 
