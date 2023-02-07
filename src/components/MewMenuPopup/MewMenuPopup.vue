@@ -2,6 +2,7 @@
   <div class="mew-menu-popup">
     <div
       id="unique-id--mew-menu-popup--activator"
+      ref="activator"
       class="mew-menu-popup-activator"
       @click.stop="toggleMenu"
     >
@@ -9,7 +10,8 @@
       <!-- Activator button by prop -->
       <!-- ================================================================== -->
       <v-btn
-        id="unique-id--mew-menu-popup--activator-button"
+        v-if="btnTitle"
+        class="px-3"
         :icon="icon"
         :color="color"
         :outlined="outlined"
@@ -24,7 +26,7 @@
           :src="btnIcon"
           alt="Icon"
           :class="btnTitle ? 'mr-2' : ''"
-        >
+        />
         <span :style="btnTitleStyle">{{ btnTitle }}</span>
       </v-btn>
 
@@ -37,7 +39,6 @@
       <!-- Top arrow for content window -->
       <!-- ================================================================== -->
       <div
-        id="unique-id--mew-menu-popup--top-arrow"
         class="top-arrow content-fade-base"
         :class="show ? '' : 'content-fade-out'"
       />
@@ -48,7 +49,7 @@
     <!-- ================================================================== -->
     <div style="position: relative">
       <div
-        id="unique-id--mew-menu-popup--content"
+        ref="content"
         class="mew-menu-popup-content content-fade-base"
         :class="show ? '' : 'content-fade-out'"
         :style="contentWindowStyle"
@@ -62,6 +63,10 @@
 <script>
 export default {
   props: {
+    value: {
+      type: Boolean,
+      default: false,
+    },
     icon: {
       type: Boolean,
       default: false,
@@ -72,27 +77,27 @@ export default {
     },
     color: {
       type: String,
-      default: 'white',
+      default: "white",
     },
     btnTitle: {
       type: String,
-      default: '',
+      default: "",
     },
     btnSize: {
       type: String,
-      default: 'large',
+      default: "large",
     },
     btnFontSize: {
       type: String,
-      default: '14px',
+      default: "14px",
     },
     btnIcon: {
       type: String,
-      default: '',
+      default: "",
     },
     btnIconSize: {
       type: String,
-      default: '30px',
+      default: "30px",
     },
     left: {
       type: Boolean,
@@ -105,15 +110,17 @@ export default {
   },
   data() {
     return {
-      show: false,
+      show: this.value,
     };
   },
   computed: {
     activatorEl() {
-      return document.querySelector('#unique-id--mew-menu-popup--activator');
+      //return document.querySelector('#unique-id--mew-menu-popup--activator');
+      return this.$refs.activator;
     },
     contentEl() {
-      return document.querySelector('#unique-id--mew-menu-popup--content');
+      //return document.querySelector('#unique-id--mew-menu-popup--content');
+      return this.$refs.content;
     },
     btnTitleStyle() {
       return `
@@ -142,32 +149,37 @@ export default {
       `;
     },
   },
+  watch: {
+    value(val) {
+      this.show = val;
+    },
+  },
   methods: {
     toggleMenu() {
       this.show = !this.show;
       if (this.show) {
-        window.addEventListener('click', this.detactOutsideClick);
+        window.addEventListener("click", this.detactOutsideClick);
       } else {
-        window.removeEventListener('click', this.detactOutsideClick);
+        window.removeEventListener("click", this.detactOutsideClick);
       }
+
+      this.$emit("input", this.show);
     },
     // =============================================================================
     // Whenever outside of menu content window is clicked, close the menu
     // =============================================================================
     detactOutsideClick(e) {
       const targetEl = e.target;
-      const contentEl = this.contentEl;
-      const activatorEl = this.activatorEl;
       if (
         !(
           targetEl == this.contentEl ||
           targetEl == this.activatorEl ||
-          (contentEl && contentEl.contains(targetEl)) ||
-          (activatorEl && activatorEl.contains(targetEl))
+          this.contentEl.contains(targetEl) ||
+          this.activatorEl.contains(targetEl)
         )
       ) {
         this.show = false;
-        window.removeEventListener('click', this.detactOutsideClick);
+        window.removeEventListener("click", this.detactOutsideClick);
       }
     },
   },
@@ -183,7 +195,7 @@ export default {
   display: inline-block;
 
   .v-btn {
-    border-radius: 10px;
+    border-radius: 8px;
     text-transform: none;
   }
 }
@@ -195,6 +207,7 @@ export default {
   display: inline-block;
   cursor: pointer;
   user-select: none;
+  position: relative;
 }
 
 // ======================================================================
@@ -219,9 +232,9 @@ export default {
 // content container
 // ======================================================================
 .mew-menu-popup-content {
+  max-height: 400px;
   background-color: white;
   border-radius: 4px;
-  overflow: scroll;
   box-shadow: 0 5px 5px -3px rgb(13 41 66 / 20%),
     0 8px 10px 1px rgb(13 41 66 / 14%), 0 3px 14px 2px rgb(13 41 66 / 12%);
   position: absolute;
