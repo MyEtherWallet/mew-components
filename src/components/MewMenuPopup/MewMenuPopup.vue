@@ -26,7 +26,7 @@
           :src="btnIcon"
           alt="Icon"
           :class="btnTitle ? 'mr-2' : ''"
-        />
+        >
         <span :style="btnTitleStyle">{{ btnTitle }}</span>
       </v-btn>
 
@@ -77,27 +77,27 @@ export default {
     },
     color: {
       type: String,
-      default: "white",
+      default: 'white',
     },
     btnTitle: {
       type: String,
-      default: "",
+      default: '',
     },
     btnSize: {
       type: String,
-      default: "large",
+      default: 'large',
     },
     btnFontSize: {
       type: String,
-      default: "14px",
+      default: '14px',
     },
     btnIcon: {
       type: String,
-      default: "",
+      default: '',
     },
     btnIconSize: {
       type: String,
-      default: "30px",
+      default: '30px',
     },
     left: {
       type: Boolean,
@@ -158,12 +158,12 @@ export default {
     toggleMenu() {
       this.show = !this.show;
       if (this.show) {
-        window.addEventListener("click", this.detactOutsideClick);
+        window.addEventListener('click', this.detactOutsideClick);
       } else {
-        window.removeEventListener("click", this.detactOutsideClick);
+        window.removeEventListener('click', this.detactOutsideClick);
       }
 
-      this.$emit("input", this.show);
+      this.$emit('input', this.show);
     },
     // =============================================================================
     // Whenever outside of menu content window is clicked, close the menu
@@ -181,7 +181,7 @@ export default {
         )
       ) {
         this.show = false;
-        window.removeEventListener("click", this.detactOutsideClick);
+        window.removeEventListener('click', this.detactOutsideClick);
       }
     },
   },
