@@ -1,3 +1,7 @@
+### 1.4.2
+
+- fix menu popup scroll [#337](https://github.com/MyEtherWallet/mew-components/pull/337)
+
 ### 1.4.1
 
 - dark theme notification slot color issues [#336](https://github.com/MyEtherWallet/mew-components/pull/336)
