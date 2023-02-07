@@ -1,9 +1,4 @@
-import {
-  withKnobs,
-  boolean,
-  text,
-  optionsKnob
-} from '@storybook/addon-knobs';
+import { withKnobs, boolean, text, optionsKnob } from '@storybook/addon-knobs';
 import MewMenuPopup from '@/components/MewMenuPopup/MewMenuPopup.vue';
 import MewMenuDoc from './MewMenuPopup.mdx';
 
@@ -13,10 +8,10 @@ export default {
     component: MewMenuPopup,
     docs: {
       page: MewMenuDoc,
-      inlineStories: true
-    }
+      inlineStories: true,
+    },
   },
-  decorators: [withKnobs]
+  decorators: [withKnobs],
 };
 
 const btnSizeOptions = {
@@ -24,46 +19,51 @@ const btnSizeOptions = {
   small: 'small',
   default: 'default',
   large: 'large',
-  'x-large': 'x-large'
+  'x-large': 'x-large',
 };
 
 // used to display options on knob
 const optionsObj = {
-  display: 'inline-radio'
+  display: 'inline-radio',
 };
 
 export const MEWMenuPopup = () => ({
   components: { MewMenuPopup },
   props: {
     btnTitle: {
-      default: text('btn-title', 'Click')
+      default: text('btn-title', 'Click'),
     },
     btnSize: {
-      default: optionsKnob('btn-size', btnSizeOptions, btnSizeOptions.large , optionsObj)
+      default: optionsKnob(
+        'btn-size',
+        btnSizeOptions,
+        btnSizeOptions.large,
+        optionsObj
+      ),
     },
     left: {
-      default: boolean('left', false)
+      default: boolean('left', false),
     },
     right: {
-      default: boolean('right', false)
+      default: boolean('right', false),
     },
     icon: {
-      default: boolean('icon', false)
+      default: boolean('icon', false),
     },
     outlined: {
-      default: boolean('outlined', false)
+      default: boolean('outlined', false),
     },
     btnFontSize: {
-      default: text('btn-font-size', '12px')
+      default: text('btn-font-size', '12px'),
     },
     color: {
-      default: text('color', 'primary')
-    }
+      default: text('color', 'primary'),
+    },
   },
   watch: {
     enableDarkMode(newVal) {
       this.$vuetify.theme.dark = newVal === true ? true : false;
-    }
+    },
   },
   template: `
   <div class="bgStorybook pa-15" style="display: inline-block; margin: 0 auto">
@@ -85,5 +85,5 @@ export const MEWMenuPopup = () => ({
         </ul>
       </div>
     </mew-menu-popup>
-  </div>`
+  </div>`,
 });

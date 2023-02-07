@@ -64,48 +64,48 @@ export default {
   props: {
     icon: {
       type: Boolean,
-      default: false
+      default: false,
     },
     outlined: {
       type: Boolean,
-      default: false
+      default: false,
     },
     color: {
       type: String,
-      default: 'white'
+      default: 'white',
     },
     btnTitle: {
       type: String,
-      default: ''
+      default: '',
     },
     btnSize: {
       type: String,
-      default: 'large'
+      default: 'large',
     },
     btnFontSize: {
       type: String,
-      default: '14px'
+      default: '14px',
     },
     btnIcon: {
       type: String,
-      default: ''
+      default: '',
     },
     btnIconSize: {
       type: String,
-      default: '30px'
+      default: '30px',
     },
     left: {
       type: Boolean,
-      default: false
+      default: false,
     },
     right: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
-      show: false
+      show: false,
     };
   },
   computed: {
@@ -140,7 +140,7 @@ export default {
           left: 50%;
           transform: translate(-50%, 0);
       `;
-    }
+    },
   },
   methods: {
     toggleMenu() {
@@ -167,8 +167,8 @@ export default {
         this.show = false;
         window.removeEventListener('click', this.detactOutsideClick);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -219,7 +219,7 @@ export default {
 .mew-menu-popup-content {
   background-color: white;
   border-radius: 4px;
-  overflow: hidden;
+  overflow: scroll;
   box-shadow: 0 5px 5px -3px rgb(13 41 66 / 20%),
     0 8px 10px 1px rgb(13 41 66 / 14%), 0 3px 14px 2px rgb(13 41 66 / 12%);
   position: absolute;
