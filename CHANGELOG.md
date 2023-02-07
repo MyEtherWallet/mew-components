@@ -1,3 +1,7 @@
+### 1.4.3-hotfix.2
+
+- fix menu popup overflow [#340](https://github.com/MyEtherWallet/mew-components/pull/340)
+
 ### 1.4.3-hotfix.1
 
 - fix menu popup overflow [#339](https://github.com/MyEtherWallet/mew-components/pull/339)
