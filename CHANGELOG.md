@@ -1,3 +1,7 @@
+### 1.4.3
+
+- actually export menu pop up [#338](https://github.com/MyEtherWallet/mew-components/pull/338)
+
 ### 1.4.2
 
 - fix menu popup scroll [#337](https://github.com/MyEtherWallet/mew-components/pull/337)
