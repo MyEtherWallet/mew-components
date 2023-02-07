@@ -232,14 +232,15 @@ export default {
 // content container
 // ======================================================================
 .mew-menu-popup-content {
-  max-height: 400px;
   background-color: white;
   border-radius: 4px;
   box-shadow: 0 5px 5px -3px rgb(13 41 66 / 20%),
     0 8px 10px 1px rgb(13 41 66 / 14%), 0 3px 14px 2px rgb(13 41 66 / 12%);
+  max-height: 400px;
+  overflow-x: hidden;
   position: absolute;
-  z-index: 999;
   top: 16px;
+  z-index: 999;
 }
 
 // ======================================================================
