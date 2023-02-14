@@ -1,3 +1,7 @@
+### 1.4.5
+
+- better query selecting that only affects currently active mew-select menu [#342](https://github.com/MyEtherWallet/mew-components/pull/342)
+
 ### 1.4.4
 
 - scroll mew select to top when searching [#341](https://github.com/MyEtherWallet/mew-components/pull/341)
