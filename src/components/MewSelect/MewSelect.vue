@@ -92,7 +92,10 @@
       <!-- ===================================================================================== -->
       <!-- Selected item -->
       <!-- ===================================================================================== -->
-      <div v-if="!item.selectLabel" class="d-flex align-center justify-center">
+      <div
+        v-if="!item.selectLabel"
+        class="d-flex align-center justify-center"
+      >
         <mew-token-container
           v-if="!normalDropdown"
           class="ml-1 flex-shrink-0"
@@ -104,14 +107,12 @@
         <span
           :class="noCapitalize ? '' : 'text-capitalize'"
           class="mt-1 ml-2 basic--text"
-          >{{ item.name ? item.name : item }}
+        >{{ item.name ? item.name : item }}
           <span
             v-if="item.subtext"
             :class="noCapitalize ? '' : 'text-capitalize'"
             class="searchText--text"
-            >- {{ item.subtext }}</span
-          ></span
-        >
+          >- {{ item.subtext }}</span></span>
       </div>
     </template>
     <template #item="data">
@@ -132,21 +133,24 @@
         v-if="!isCustom && !loading"
         class="d-flex align-center justify-center"
       >
-        <span :class="noCapitalize ? '' : 'text-capitalize'" class="ml-2 mt-1"
-          >{{ data.item.name ? data.item.name : data.item }}
+        <span
+          :class="noCapitalize ? '' : 'text-capitalize'"
+          class="ml-2 mt-1"
+        >{{ data.item.name ? data.item.name : data.item }}
           <span
             v-if="data.item.subtext"
             :class="noCapitalize ? '' : 'text-capitalize'"
             class="textSecondary--text"
-            >- {{ data.item.subtext }}</span
-          ></span
-        >
+          >- {{ data.item.subtext }}</span></span>
       </div>
 
       <!-- ===================================================================================== -->
       <!-- Custom Select Dropdown items -->
       <!-- ===================================================================================== -->
-      <div v-if="isCustom && !loading" class="d-flex align-center full-width">
+      <div
+        v-if="isCustom && !loading"
+        class="d-flex align-center full-width"
+      >
         <!-- ===================================================================================== -->
         <!-- Empty Wallet Link -->
         <!-- ===================================================================================== -->
@@ -159,8 +163,7 @@
             class="all-pointer-events"
             target="_blank"
             :href="data.item.link"
-            >{{ data.item.linkText }}</a
-          >
+          >{{ data.item.linkText }}</a>
         </div>
 
         <!-- ===================================================================================== -->
@@ -170,7 +173,10 @@
           v-if="data.item.name"
           class="d-flex align-center justify-space-between full-width"
         >
-          <div v-if="!loading" class="d-flex align-center">
+          <div
+            v-if="!loading"
+            class="d-flex align-center"
+          >
             <mew-token-container
               v-if="!normalDropdown"
               class="mr-1"
@@ -182,26 +188,23 @@
             <span
               :class="noCapitalize ? '' : 'text-capitalize'"
               class="ml-2 my-2 d-flex flex-column"
-              >{{ data.item.symbol || data.item.name || data.item }}
+            >{{ data.item.symbol || data.item.name || data.item }}
               <span
                 v-if="data.item.tokenBalance || data.item.subtext"
                 :class="noCapitalize ? '' : 'text-capitalize'"
                 class="mew-caption font-weight-regular textSecondary--text"
-                >{{
-                  data.item.tokenBalance
-                    ? data.item.tokenBalance + " " + data.item.symbol
-                    : data.item.subtext
-                }}</span
-              ></span
-            >
+              >{{
+                data.item.tokenBalance
+                  ? data.item.tokenBalance + " " + data.item.symbol
+                  : data.item.subtext
+              }}</span></span>
           </div>
           <div class="d-flex justify-center flex-column align-end">
             <span>{{ data.item.totalBalance || data.item.price }}</span>
             <span
               v-if="data.item.totalBalance"
               class="mew-caption font-weight-regular textSecondary--text"
-              >@ {{ data.item.price }}</span
-            >
+            >@ {{ data.item.price }}</span>
           </div>
         </div>
       </div>
@@ -209,11 +212,11 @@
   </v-select>
 </template>
 <script>
-import MewTokenContainer from "@/components/MewTokenContainer/MewTokenContainer.vue";
-import get from "lodash/get";
+import MewTokenContainer from '@/components/MewTokenContainer/MewTokenContainer.vue';
+import get from 'lodash/get';
 
 export default {
-  name: "MewSelect",
+  name: 'MewSelect',
   components: {
     MewTokenContainer,
   },
@@ -223,14 +226,14 @@ export default {
      */
     buyMoreStr: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * Error messages to display
      */
     errorMessages: {
       type: [String, Array],
-      default: "",
+      default: '',
     },
     /**
      * Adds filter to select items
@@ -244,7 +247,7 @@ export default {
      */
     filterPlaceholder: {
       type: String,
-      default: "Search token name",
+      default: 'Search token name',
     },
     /**
      * MEW select value
@@ -280,7 +283,7 @@ export default {
      */
     label: {
       type: String,
-      default: "",
+      default: '',
     },
     /**
      * Applies Custom Select styles
@@ -315,7 +318,7 @@ export default {
     return {
       selectModel: null,
       selectItems: [],
-      search: "",
+      search: '',
     };
   },
   computed: {
@@ -327,18 +330,18 @@ export default {
   },
   watch: {
     search(newVal) {
-      const dropdown = document.querySelector("div.menuable__content__active");
+      const dropdown = document.querySelector('div.menuable__content__active');
       if (dropdown) {
         dropdown.scroll(0, 0);
       }
-      if (newVal === "" || newVal === null) {
+      if (newVal === '' || newVal === null) {
         this.selectItems = this.items;
       } else {
         const foundItems = this.items.reduce((foundTokens, item) => {
           const searchValue = String(newVal).toLowerCase();
-          const value = String(get(item, "value", "")).toLowerCase();
-          const name = String(get(item, "name", "")).toLowerCase();
-          const subtext = String(get(item, "subtext", "")).toLowerCase();
+          const value = String(get(item, 'value', '')).toLowerCase();
+          const name = String(get(item, 'name', '')).toLowerCase();
+          const subtext = String(get(item, 'subtext', '')).toLowerCase();
           if (
             name === searchValue ||
             subtext === searchValue ||
@@ -359,9 +362,9 @@ export default {
     },
     selectModel(newVal) {
       setTimeout(() => {
-        this.search = "";
+        this.search = '';
       }, 1000);
-      this.$emit("input", newVal);
+      this.$emit('input', newVal);
     },
     value(newVal) {
       this.selectModel =
@@ -396,12 +399,12 @@ export default {
   },
   methods: {
     emitBuyMore() {
-      this.$emit("buyMore");
+      this.$emit('buyMore');
     },
     togglePointerEventStyle() {
-      const elems = document.querySelectorAll("div.v-list-item--link");
+      const elems = document.querySelectorAll('div.v-list-item--link');
       if (elems) {
-        const pointerEventStyle = this.loading ? "none" : "all";
+        const pointerEventStyle = this.loading ? 'none' : 'all';
         for (let i = 0; i < elems.length; i++) {
           elems[i].style.pointerEvents = pointerEventStyle;
         }

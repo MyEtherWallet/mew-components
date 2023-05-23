@@ -13,16 +13,16 @@ const baseColors = {
   asphalt600: '#A3ACB8',
   asphalt700: '#BBC0CB',
   asphalt800: '#D2D6DD',
-  asphalt900: '#FFFFFF'
+  asphalt900: '#FFFFFF',
 };
 
 export default {
   icons: {
-    iconfont: 'mdi'
+    iconfont: 'mdi',
   },
   theme: {
     options: {
-      customProperties: true
+      customProperties: true,
     },
     themes: {
       light: {
@@ -85,7 +85,7 @@ export default {
         // Disabled
         disabledPrimary: '#CECECE',
         disabledMedium: '#E0E0E0',
-        disabledLight: '#F6F6F6 ',
+        disabledLight: '#F6F6F6',
         // Buttons
         buttonWhite: '#FFFFFF',
         buttonGrayLight: '#F2F4FA',
@@ -119,7 +119,7 @@ export default {
         selectHover: '#E5EAEE',
         superPrimary: {
           base: '#f2fafa',
-          darken1: '#e3f2f2'
+          darken1: '#e3f2f2',
         },
         superPrimaryHover: '#f5fdfb',
         emerald100: '#f2fafa',
@@ -153,12 +153,12 @@ export default {
         error: {
           base: '#ff445b',
           lighten1: '#ffd7dc',
-          lighten2: '#e96071'
+          lighten2: '#e96071',
         },
         warning: {
           base: '#FFF2DC',
           darken1: '#f5a623',
-          darken2: '#ff7700'
+          darken2: '#ff7700',
         },
         disabled: '#cecece',
         tableHeader: '#f9f9f9',
@@ -169,7 +169,7 @@ export default {
         textBlack2: '#5F6368',
         buttonSelect: '#D7F5F4',
         blue100: '#F3F5FB',
-        surface: '#192133' // name from figma. not sure if its correct
+        surface: '#192133', // name from figma. not sure if its correct
       },
       dark: {
         // Asphalt
@@ -269,7 +269,7 @@ export default {
         selectHover: '#2c3448',
         superPrimary: {
           base: '#242c48',
-          darken1: '#e3f2f2'
+          darken1: '#e3f2f2',
         },
         superPrimaryHover: '#f5fdfb',
         emerald100: '#151a29',
@@ -303,11 +303,11 @@ export default {
         error: {
           base: '#ff445b',
           lighten1: '#ffd7dc',
-          lighten2: '#e96071'
+          lighten2: '#e96071',
         },
         warning: {
           base: baseColors.asphalt5,
-          darken1: '#f5a623'
+          darken1: '#f5a623',
         },
         disabled: '#1f2b42',
         tableHeader: '#0f1320',
@@ -318,8 +318,8 @@ export default {
         textBlack2: '#5F6368',
         buttonSelect: '#D7F5F4',
         blue100: '#F3F5FB',
-        surface: '#192133' //name from figma
-      }
-    }
-  }
+        surface: '#192133', //name from figma
+      },
+    },
+  },
 };
