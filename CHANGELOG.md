@@ -1,3 +1,7 @@
+### 1.4.6
+
+- fix error on console for color code [#343](https://github.com/MyEtherWallet/mew-components/pull/343)
+
 ### 1.4.5
 
 - better query selecting that only affects currently active mew-select menu [#342](https://github.com/MyEtherWallet/mew-components/pull/342)
