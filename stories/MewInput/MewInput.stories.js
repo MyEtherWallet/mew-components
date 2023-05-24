@@ -17,8 +17,8 @@ export default {
     component: MewInput,
     docs: {
       page: MewInputDoc,
-      inlineStories: true
-    }
+      inlineStories: true,
+    },
   },
   decorators: [withKnobs],
 };
@@ -46,6 +46,7 @@ const maxBtnObj = {
   title: 'Max',
   disabled: false,
   method: onClick,
+  loading: false,
 };
 
 function onClick() {
@@ -119,8 +120,8 @@ export const MEWInput = () => ({
       default: object('max-btn-obj', maxBtnObj),
     },
     hidePasswordIcon: {
-      default: boolean('hide-password-icon', false)
-    }
+      default: boolean('hide-password-icon', false),
+    },
   },
   watch: {
     enableDarkMode(newVal) {

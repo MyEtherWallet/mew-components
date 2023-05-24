@@ -1,3 +1,7 @@
+### 1.4.7
+
+- add loading state to max button [#344](https://github.com/MyEtherWallet/mew-components/pull/344)
+
 ### 1.4.6
 
 - fix error on console for color code [#343](https://github.com/MyEtherWallet/mew-components/pull/343)

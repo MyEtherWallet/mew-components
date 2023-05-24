@@ -94,13 +94,14 @@
           maxBtnObj.disabled
             ? 'disabled--text no-pointer-events'
             : 'textDarkWhite--text',
-          'rounded-lg mt-n2 mew-caption font-weight-medium'
+          'rounded-lg mt-n2 mew-caption font-weight-medium',
         ]"
         min-width="40"
         min-height="40"
         height="40"
         width="40"
         depressed
+        :loading="maxBtnObj.loading"
         color="maxButton"
         @click="maxBtnObj.method"
       >
@@ -120,7 +121,7 @@ export default {
   name: 'MewInput',
   components: {
     MewBlockie,
-    MewTokenContainer
+    MewTokenContainer,
   },
   props: {
     /**
@@ -128,77 +129,77 @@ export default {
      */
     errorMessages: {
       type: [String, Array],
-      default: ''
+      default: '',
     },
     /**
      * Input becomes read only.
      */
     isReadOnly: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Prepends the blockie to the beginning of the input.
      */
     showBlockie: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Removes the input border and adds a box shadow.
      */
     hasNoBorder: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Disables the input.
      */
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * The input label.
      */
     label: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * The input placeholder.
      */
     placeholder: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * The input value.
      */
     value: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * The input id.
      */
     id: {
       type: Number,
-      default: null
+      default: null,
     },
     /**
      * Displays text on the right inner side of the input.
      */
     rightLabel: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Hides input clear functionality. Clear symbol will be displayed on the right side.
      */
     hideClearBtn: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * For validating your input - accepts an array of functions that take an input value as an argument and returns either true / false
@@ -208,67 +209,67 @@ export default {
       type: Array,
       default: () => {
         return [];
-      }
+      },
     },
     /**
      * The resolved address.
      */
     resolvedAddr: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Enables persistent hint.
      */
     persistentHint: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Hint text (will be displayed at the bottom of the input).
      */
     hint: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Sets input type.
      */
     type: {
       type: String,
-      default: 'text'
+      default: 'text',
     },
     /**
      * Prepends an image to the beginning of the input.
      */
     image: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Adds a "Buy more" string to the end of the first index of the errorMessages prop.
      */
     buyMoreStr: {
       type: String,
-      default: ''
+      default: '',
     },
     /**
      * Displays a button to the right inner side of the input.
      * Takes an object.
-     * i.e. {title: 'Max', disabled: false, method: () => {}}.
+     * i.e. {title: 'Max', disabled: false, method: () => {}, loading: false}.
      */
     maxBtnObj: {
       type: Object,
       default: () => {
         return {};
-      }
+      },
     },
     /**
      * Autofocuses the input.
      */
     autofocus: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Hides the toggle show password icon on the right
@@ -276,13 +277,13 @@ export default {
      */
     hidePasswordIcon: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
       inputValue: '',
-      showPassword: false
+      showPassword: false,
     };
   },
   computed: {
@@ -300,7 +301,7 @@ export default {
         return types[1];
       }
       return this.type;
-    }
+    },
   },
   watch: {
     inputValue(newVal, oldVal) {
@@ -312,7 +313,7 @@ export default {
       if (newVal !== oldVal) {
         this.inputValue = newVal;
       }
-    }
+    },
   },
   mounted() {
     this.inputValue = this.value;
@@ -328,13 +329,13 @@ export default {
     },
     /*eslint-disable */
     clear(val) {
-      this.inputValue = val ? val : '';
+      this.inputValue = val ? val : "";
     },
     /*eslint-enable */
     preventCharE(e) {
       if (this.type === 'number' && e.key === 'e') e.preventDefault();
-    }
-  }
+    },
+  },
 };
 </script>
 
