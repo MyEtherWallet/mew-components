@@ -32,8 +32,9 @@
       class="mew-stepper"
     >
       <v-stepper-header>
-        <template v-for="(item, i) in items">
+        <template>
           <v-stepper-step
+            v-for="(item, i) in items"
             :key="i + item"
             color="expandHeader"
             :step="i + 1"

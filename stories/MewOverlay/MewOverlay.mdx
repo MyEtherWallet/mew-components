@@ -1,16 +1,19 @@
-
-import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import MewOverlay from '@/components/MewOverlay/MewOverlay.vue';
-import './../GlobalStorybook.scss'
+import { Story, Preview, Props } from "@storybook/addon-docs";
+import MewOverlay from "@/components/MewOverlay/MewOverlay.vue";
+import "./../GlobalStorybook.scss";
 
 # MEW Overlay
+
 `<mew-overlay />`
 
 ## Overview
+
 The MEW overlay component replaces Vuetifys v-bottom-sheet with acceptable MEW theme options.
-The component slides from the bottom and overlays the entire screen. This is controlled by the 
+The component slides from the bottom and overlays the entire screen. This is controlled by the
 **showOverlay** prop. There are four different sizes: small, medium, large and xlarge. Although
 the component takes a title and footer prop, the body content is completely customizable by the default slot.
-<Props of={MewOverlay} />
-<Preview><Story id="mewoverlay--mew-overlay" /></Preview>
 
+<Props of={MewOverlay} />
+<Preview>
+  <Story id='mewoverlay--mew-overlay' />
+</Preview>

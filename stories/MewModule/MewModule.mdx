@@ -1,27 +1,30 @@
-
-import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import MewModule from '@/components/MewModule/MewModule.vue';
-import './../GlobalStorybook.scss'
+import { Story, Preview, Props } from "@storybook/addon-docs";
+import MewModule from "@/components/MewModule/MewModule.vue";
+import "./../GlobalStorybook.scss";
 
 # MEW Module
+
 `<mew-module />`
 
 ## Overview
+
 The MEW module component is used mainly as a template to display information.
- This is currently being used on the dashboard and wallet pages. 
- There are many optional props so it can be customized to fit your needs.
- The **colorType** prop takes a string and is the color that will be displayed in the background.
-  The colors that can be used are found in MEWColors. The **title** prop takes a string and is the header of the template. 
-  The **titleSize** takes a string and a size class that can be found in MEWTypography. 
-  This is so you can adjust the title to the required size. 
-  The **subtitle** prop takes a string and will be found on top of the title prop.
-   The **caption** prop takes a string as well and will be found under the title prop. 
-   You can add an icon next to the title by passing the img source to the **icon** prop (this may change).
-    The **iconAlign** prop allows you to set the icon to the left or right of the title. You must pass this as a string. 
-    The **hasIndicator** prop takes a boolean and adds a green vertical marker to the left side of the template. Last but not least, 
-    the **hasElevation** prop takes a boolean and adds elevation to the component. 
+This is currently being used on the dashboard and wallet pages.
+There are many optional props so it can be customized to fit your needs.
+The **colorType** prop takes a string and is the color that will be displayed in the background.
+The colors that can be used are found in MEWColors. The **title** prop takes a string and is the header of the template.
+The **titleSize** takes a string and a size class that can be found in MEWTypography.
+This is so you can adjust the title to the required size.
+The **subtitle** prop takes a string and will be found on top of the title prop.
+The **caption** prop takes a string as well and will be found under the title prop.
+You can add an icon next to the title by passing the img source to the **icon** prop (this may change).
+The **iconAlign** prop allows you to set the icon to the left or right of the title. You must pass this as a string.
+The **hasIndicator** prop takes a boolean and adds a green vertical marker to the left side of the template. Last but not least,
+the **hasElevation** prop takes a boolean and adds elevation to the component.
 
 ## Props
-<Props of={MewModule} />
-<Preview><Story id="mewmodule--mew-module" /></Preview>
 
+<Props of={MewModule} />
+<Preview>
+  <Story id='mewmodule--mew-module' />
+</Preview>

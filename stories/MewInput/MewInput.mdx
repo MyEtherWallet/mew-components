@@ -1,26 +1,27 @@
-
-import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import MewInput from '@/components/MewInput/MewInput.vue';
-import './../GlobalStorybook.scss'
+import { Story, Preview, Props } from "@storybook/addon-docs";
+import MewInput from "@/components/MewInput/MewInput.vue";
+import "./../GlobalStorybook.scss";
 
 # MEW Input
+
 `<mew-input />`
 
 ## Overview
-MEW Input component replaces the Vuetify v-text-field with acceptable MEW theme options. 
+
+MEW Input component replaces the Vuetify v-text-field with acceptable MEW theme options.
 This input can be used in different scenarios - all you have to do is pass the type
 to the **type** prop. The main two types we use are text and password. Passing a password type will
-automatically hide the input text and will add a button icon on the right that toggles whether or not the input text is shown. 
+automatically hide the input text and will add a button icon on the right that toggles whether or not the input text is shown.
 There is an option to hide this icon with the **hidePasswordIcon** prop. <br />
-Users will also use this input to enter their address or address name. If its valid, a blockie icon will 
-be prepended to the input if **showBlockie** is true 
+Users will also use this input to enter their address or address name. If its valid, a blockie icon will
+be prepended to the input if **showBlockie** is true
 and if it is an address name, then the resolved address can be shown at the bottom of the input
 with the **resolvedAddr** prop. You will also have to pass the resolved addr in order to show the correct blockie.
- There are also options to prepend images and to do this, 
-you can pass the src url to the **image** prop - this image will be contained in a mew-token-container component 
+There are also options to prepend images and to do this,
+you can pass the src url to the **image** prop - this image will be contained in a mew-token-container component
 or you may use the **prependInnerIcon** slot
 to add your own customized icon or image. <br />
-Users will also use this input field to set number values. There is a **maxBtnObj** prop that 
+Users will also use this input field to set number values. There is a **maxBtnObj** prop that
 takes a title, method, and disabled attribute. If this is passed then a button will be shown on the right and
 we currently use this button on MEW to set the max amount allowed on the input. <br />
 You can set error messages or hints at the bottom of the input by using the **errorMessages**, **rules**, or **hint** props.
@@ -28,6 +29,8 @@ You can set error messages or hints at the bottom of the input by using the **er
 https://vuetifyjs.com/en/api/v-text-field/#props
 
 ## Props
-<Props of={MewInput} />
-<Preview><Story id="mewinput--mew-input" /></Preview>
 
+<Props of={MewInput} />
+<Preview>
+  <Story id='mewinput--mew-input' />
+</Preview>

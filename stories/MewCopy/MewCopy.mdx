@@ -1,14 +1,17 @@
+import { Story, Preview, Props } from "@storybook/addon-docs";
+import MewCopy from "@/components/MewCopy/MewCopy.vue";
+import "./../GlobalStorybook.scss";
 
-import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import MewCopy from '@/components/MewCopy/MewCopy.vue';
-import './../GlobalStorybook.scss'
+# MEW Copy
 
-# MEW Copy  
 `<mew-copy />`
 
 ## Overview
-The mew-copy component provides a way for users to copy specific values to their clipboard. You can control the icon color by passing 
-a class to the **className** prop. Must pass the value you would like to copy to the **copyValue** prop.
-<Props of={MewCopy} />
-<Preview><Story id="mewcopy--mew-copy" /></Preview>
 
+The mew-copy component provides a way for users to copy specific values to their clipboard. You can control the icon color by passing
+a class to the **className** prop. Must pass the value you would like to copy to the **copyValue** prop.
+
+<Props of={MewCopy} />
+<Preview>
+  <Story id='mewcopy--mew-copy' />
+</Preview>

@@ -1,13 +1,15 @@
 /* eslint-disable no-unused-vars */
-import Vue from 'vue';
+import { createApp } from 'vue';
 import router from './router';
-import store from './store';
 import vuetify from './plugins/vuetify';
-Vue.config.productionTip = false;
+import { createPinia } from 'pinia';
 
-new Vue({
-  router,
-  store,
-  vuetify,
-  render: h => h()
-}).$mount('#app');
+const app = createApp({
+  render: (h) => h(),
+});
+const pinia = createPinia();
+
+app.use(router);
+app.use(pinia);
+app.use(vuetify);
+app.mount('#app');

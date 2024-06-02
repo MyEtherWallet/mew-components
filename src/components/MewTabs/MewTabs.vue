@@ -29,8 +29,11 @@
       <!-- ========================================= -->
       <!-- Mobile tabs contents -->
       <!-- ========================================= -->
-      <template v-for="(mobileItem, mobileItemKey) in items">
-        <div :key="mobileItemKey">
+      <template>
+        <div
+          v-for="(mobileItem, mobileItemKey) in items"
+          :key="mobileItemKey"
+        >
           <slot
             v-if="onTab == mobileItemKey"
             :name="'tabItemContent' + (mobileItemKey + 1)"
